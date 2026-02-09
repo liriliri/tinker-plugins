@@ -1,0 +1,23 @@
+{
+  "name": "tinker-plugins",
+  "version": "0.1.0",
+  "description": "Tinker official plugins",
+  "keywords": [
+    "tinker"
+  ],
+  "homepage": "https://github.com/liriliri/tinker-plugins#readme",
+  "bugs": {
+    "url": "https://github.com/liriliri/tinker-plugins/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "license": "MIT",
+  "author": "surunzi",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
