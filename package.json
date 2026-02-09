@@ -5,6 +5,10 @@
   "keywords": [
     "tinker"
   ],
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "homepage": "https://github.com/liriliri/tinker-plugins#readme",
   "bugs": {
     "url": "https://github.com/liriliri/tinker-plugins/issues"
