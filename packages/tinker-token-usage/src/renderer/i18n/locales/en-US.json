@@ -1,0 +1,14 @@
+{
+  "title": "Token Usage Statistics",
+  "subtitle": "Track token usage for Claude Code and Codex",
+  "loading": "Loading...",
+  "refresh": "Refresh",
+  "totalUsage": "Total Usage",
+  "claudeCode": "Claude Code",
+  "codex": "Codex",
+  "inputTokens": "Input Tokens",
+  "outputTokens": "Output Tokens",
+  "totalTokens": "Total Tokens",
+  "date": "Date",
+  "usage": "Usage"
+}

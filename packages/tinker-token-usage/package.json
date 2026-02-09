@@ -1,0 +1,63 @@
+{
+  "name": "tinker-token-usage",
+  "version": "0.1.0",
+  "description": "Token Usage Statistics Plugin for Tinker",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:preload\"",
+    "dev:renderer": "vite",
+    "dev:preload": "vite build --watch --config vite.preload.ts",
+    "build": "concurrently \"npm run build:renderer\" \"npm run build:preload\"",
+    "build:renderer": "vite build",
+    "build:preload": "vite build --config vite.preload.ts",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "token-usage",
+    "claude",
+    "codex"
+  ],
+  "tinker": {
+    "name": "Token Usage",
+    "main": "dist/renderer/index.html",
+    "preload": "dist/preload/index.js",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "Token 统计"
+      }
+    }
+  },
+  "devDependencies": {
+    "@radix-ui/react-scroll-area": "^1.2.10",
+    "@radix-ui/react-separator": "^1.1.8",
+    "@radix-ui/react-tabs": "^1.1.13",
+    "@radix-ui/react-tooltip": "^1.2.8",
+    "@tailwindcss/postcss": "^4.1.17",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.1.9",
+    "@types/react-dom": "^19.1.7",
+    "@vitejs/plugin-react": "^4.7.0",
+    "autoprefixer": "^10.4.22",
+    "ccusage": "^18.0.5",
+    "concurrently": "^9.2.0",
+    "electron": "^30.5.1",
+    "i18next": "^25.8.4",
+    "licia": "^1.48.0",
+    "mobx": "^6.15.0",
+    "mobx-react-lite": "^4.1.1",
+    "postcss": "^8.5.6",
+    "prettier": "^3.8.1",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-i18next": "^16.5.4",
+    "sass": "^1.89.2",
+    "tailwindcss": "^4.1.17",
+    "typescript": "^5.8.3",
+    "vite": "^5.4.19"
+  }
+}

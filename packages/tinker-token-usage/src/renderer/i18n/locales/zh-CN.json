@@ -1,0 +1,14 @@
+{
+  "title": "Token 使用统计",
+  "subtitle": "统计 Claude Code 和 Codex 的 Token 使用量",
+  "loading": "加载中...",
+  "refresh": "刷新",
+  "totalUsage": "总使用量",
+  "claudeCode": "Claude Code",
+  "codex": "Codex",
+  "inputTokens": "输入 Token",
+  "outputTokens": "输出 Token",
+  "totalTokens": "总 Token",
+  "date": "日期",
+  "usage": "使用量"
+}
