@@ -77,7 +77,7 @@ const tokenUsageObj = {
 
       return {
         total,
-        byDay: byDay.sort((a, b) => b.date.localeCompare(a.date)), // Sort by date descending
+        byDay: byDay.sort((a, b) => a.date.localeCompare(b.date)), // Sort by date ascending
       }
     } catch (error) {
       console.error('Failed to get token usage:', error)

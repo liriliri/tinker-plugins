@@ -1,19 +1,8 @@
 {
-  "title": "Token Usage Statistics",
-  "subtitle": "Track token usage for Claude Code and Codex",
   "loading": "Loading...",
   "refresh": "Refresh",
-  "totalUsage": "Total Usage",
-  "claudeCode": "Claude Code",
-  "codex": "Codex",
-  "inputTokens": "Input Tokens",
-  "outputTokens": "Output Tokens",
-  "totalTokens": "Total Tokens",
-  "date": "Date",
-  "usage": "Usage",
-  "last7Days": "Last 7 Days",
-  "last30Days": "Last 30 Days",
-  "last90Days": "Last 90 Days",
-  "allTime": "All Time",
-  "quickSelect": "Quick Select"
+  "inputTokens": "input tokens",
+  "outputTokens": "output tokens",
+  "totalTokens": "total tokens",
+  "cost": "cost"
 }
