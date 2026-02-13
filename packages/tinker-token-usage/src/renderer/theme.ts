@@ -17,7 +17,7 @@ export const tw = {
   },
 
   border: {
-    card: 'border border-neutral-200/50 dark:border-neutral-800/50',
+    card: 'border border-neutral-300 dark:border-neutral-700',
     table: 'border-b border-neutral-200 dark:border-neutral-700',
     tableRow: 'border-b border-neutral-100 dark:border-neutral-800',
     section: 'border-b border-neutral-200/50 dark:border-neutral-800/50',
@@ -54,32 +54,12 @@ export const tw = {
     },
   },
 
-  table: {
-    header:
-      'text-left text-xs font-semibold text-neutral-600 dark:text-neutral-400 uppercase tracking-wider pb-3',
-    headerRight:
-      'text-right text-xs font-semibold text-neutral-600 dark:text-neutral-400 uppercase tracking-wider pb-3',
-    cell: 'py-3 font-mono text-sm text-neutral-700 dark:text-neutral-300',
-    cellRight:
-      'py-3 text-right font-mono text-sm text-neutral-700 dark:text-neutral-300',
-    cellBold:
-      'py-3 text-right font-mono text-sm font-semibold text-neutral-900 dark:text-neutral-100',
-    row: 'hover:bg-neutral-50 dark:hover:bg-neutral-800/50 transition-colors',
-  },
-
   card: {
     container: 'rounded-lg p-6',
     containerLarge: 'rounded-lg',
     label:
       'text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-2',
     value: 'text-3xl font-bold bg-gradient-to-br bg-clip-text text-transparent',
-  },
-
-  scrollbar: {
-    track:
-      'flex select-none touch-none p-0.5 bg-neutral-100 dark:bg-neutral-800 transition-colors duration-150 ease-out hover:bg-neutral-200 dark:hover:bg-neutral-700',
-    thumb:
-      "flex-1 bg-neutral-400 dark:bg-neutral-600 rounded-full relative before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-full before:h-full before:min-w-[44px] before:min-h-[44px]",
   },
 
   error: {

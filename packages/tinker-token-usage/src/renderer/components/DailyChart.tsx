@@ -34,14 +34,10 @@ const DailyChart = observer(() => {
     }
   }, [usageData])
 
-  // Initialize with full date range
+  // Reset zoom when data changes
   useEffect(() => {
-    if (chartData && chartData.rawDates.length > 0) {
-      const startDate = chartData.rawDates[0]
-      const endDate = chartData.rawDates[chartData.rawDates.length - 1]
-      store.setDateRange(startDate, endDate)
-    }
-  }, [chartData])
+    setZoom(null)
+  }, [usageData])
 
   const handleDataZoom = (params: any) => {
     const payload = Array.isArray(params?.batch) ? params.batch[0] : params
@@ -76,7 +72,7 @@ const DailyChart = observer(() => {
 
   const chartOption = {
     backgroundColor: 'transparent',
-    color: ['#df754f', '#10b981', '#a855f7', '#f59e0b'],
+    color: ['#3b82f6', '#10b981', '#a855f7', '#f59e0b'],
     tooltip: {
       trigger: 'axis',
       backgroundColor: 'rgba(255, 255, 255, 0.95)',
@@ -149,8 +145,8 @@ const DailyChart = observer(() => {
         smooth: true,
         data: chartData.inputTokens,
         yAxisIndex: 0,
-        itemStyle: { color: '#df754f' },
-        lineStyle: { color: '#df754f' },
+        itemStyle: { color: '#3b82f6' },
+        lineStyle: { color: '#3b82f6' },
       },
       store.seriesVisibility.outputTokens && {
         name: t('outputTokens'),

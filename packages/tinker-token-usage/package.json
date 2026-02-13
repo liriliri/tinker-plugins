@@ -49,6 +49,7 @@
     "electron": "^30.5.1",
     "i18next": "^25.8.4",
     "licia": "^1.48.0",
+    "lucide-react": "^0.564.0",
     "mobx": "^6.15.0",
     "mobx-react-lite": "^4.1.1",
     "postcss": "^8.5.6",

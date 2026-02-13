@@ -4,7 +4,7 @@ import * as Tooltip from '@radix-ui/react-tooltip'
 import className from 'licia/className'
 import store from '../store'
 import { tw } from '../theme'
-import { formatNumber, formatCost } from '../utils/format'
+import { formatNumber, formatCost, formatDate } from '../utils/format'
 import StatCard from './StatCard'
 import ErrorMessage from './ErrorMessage'
 import RefreshButton from './RefreshButton'
@@ -17,7 +17,7 @@ const TokenUsage = observer(() => {
   const formatDateRange = () => {
     if (!dateRange) return ''
 
-    const formatDate = (dateStr: string) => {
+    const formatDateFull = (dateStr: string) => {
       try {
         const date = new Date(dateStr)
         return date.toLocaleDateString(undefined, {
@@ -31,10 +31,10 @@ const TokenUsage = observer(() => {
     }
 
     if (dateRange.start === dateRange.end) {
-      return formatDate(dateRange.start)
+      return formatDateFull(dateRange.start)
     }
 
-    return `${formatDate(dateRange.start)} - ${formatDate(dateRange.end)}`
+    return `${formatDateFull(dateRange.start)} - ${formatDateFull(dateRange.end)}`
   }
 
   return (

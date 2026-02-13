@@ -1,4 +1,4 @@
-import { makeAutoObservable, computed } from 'mobx'
+import { makeAutoObservable } from 'mobx'
 import waitUntil from 'licia/waitUntil'
 import { TokenUsageData } from '../preload'
 
@@ -7,10 +7,21 @@ class Store {
   isDark: boolean = false
 
   // Token usage state
-  usageData: TokenUsageData | null = null
+  usageData: TokenUsageData | null = {
+    total: {
+      inputTokens: 0,
+      outputTokens: 0,
+      totalTokens: 0,
+      totalCost: 0,
+    },
+    byDay: [],
+  }
   loading: boolean = false
   error: string | null = null
-  dateRange: { start: string; end: string } | null = null
+  dateRange: { start: string; end: string } | null = (() => {
+    const today = new Date().toISOString().split('T')[0]
+    return { start: today, end: today }
+  })()
   seriesVisibility: {
     inputTokens: boolean
     outputTokens: boolean
@@ -116,9 +127,26 @@ class Store {
     try {
       const data = await tokenUsage.getUsage()
       this.setUsageData(data)
+      // Update date range to actual data range
+      if (data.byDay && data.byDay.length > 0) {
+        const startDate = data.byDay[0].date
+        const endDate = data.byDay[data.byDay.length - 1].date
+        this.setDateRange(startDate, endDate)
+      }
     } catch (error) {
-      this.setError(error instanceof Error ? error.message : String(error))
       console.error('Failed to load token usage data:', error)
+      // On error, show zero data instead of error message
+      const today = new Date().toISOString().split('T')[0]
+      this.setUsageData({
+        total: {
+          inputTokens: 0,
+          outputTokens: 0,
+          totalTokens: 0,
+          totalCost: 0,
+        },
+        byDay: [],
+      })
+      this.setDateRange(today, today)
     } finally {
       this.setLoading(false)
     }
