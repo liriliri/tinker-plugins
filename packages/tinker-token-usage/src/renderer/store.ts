@@ -1,6 +1,7 @@
 import { makeAutoObservable } from 'mobx'
 import waitUntil from 'licia/waitUntil'
 import { TokenUsageData } from '../preload'
+import type { DateRange } from 'react-day-picker'
 
 class Store {
   // Theme management
@@ -10,6 +11,9 @@ class Store {
   usageData: TokenUsageData | null = null
   loading: boolean = false
   error: string | null = null
+
+  // Date range filter
+  dateRange: DateRange | undefined = undefined
 
   constructor() {
     makeAutoObservable(this)
@@ -72,6 +76,60 @@ class Store {
 
   async refresh() {
     await this.loadUsageData()
+  }
+
+  // Date range methods
+  setDateRange(range: DateRange | undefined) {
+    this.dateRange = range
+  }
+
+  // Computed property to get filtered usage data
+  get filteredUsageData(): TokenUsageData | null {
+    if (!this.usageData) return null
+    if (!this.dateRange || !this.dateRange.from) return this.usageData
+
+    const fromDate = new Date(this.dateRange.from)
+    fromDate.setHours(0, 0, 0, 0)
+
+    const toDate = this.dateRange.to ? new Date(this.dateRange.to) : new Date()
+    toDate.setHours(23, 59, 59, 999)
+
+    // Filter byDay data
+    const filteredByDay = this.usageData.byDay.filter((day) => {
+      const dayDate = new Date(day.date)
+      return dayDate >= fromDate && dayDate <= toDate
+    })
+
+    // Recalculate totals
+    let totalInputTokens = 0
+    let totalOutputTokens = 0
+    let totalCacheCreationTokens = 0
+    let totalCacheReadTokens = 0
+    let totalCost = 0
+
+    filteredByDay.forEach((day) => {
+      totalInputTokens += day.inputTokens
+      totalOutputTokens += day.outputTokens
+      totalCacheCreationTokens += day.cacheCreationTokens
+      totalCacheReadTokens += day.cacheReadTokens
+      totalCost += day.totalCost
+    })
+
+    return {
+      total: {
+        inputTokens: totalInputTokens,
+        outputTokens: totalOutputTokens,
+        cacheCreationTokens: totalCacheCreationTokens,
+        cacheReadTokens: totalCacheReadTokens,
+        totalTokens:
+          totalInputTokens +
+          totalOutputTokens +
+          totalCacheCreationTokens +
+          totalCacheReadTokens,
+        totalCost,
+      },
+      byDay: filteredByDay,
+    }
   }
 }
 

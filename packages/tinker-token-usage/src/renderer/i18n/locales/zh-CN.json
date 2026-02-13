@@ -10,5 +10,10 @@
   "outputTokens": "输出 Token",
   "totalTokens": "总 Token",
   "date": "日期",
-  "usage": "使用量"
+  "usage": "使用量",
+  "last7Days": "最近 7 天",
+  "last30Days": "最近 30 天",
+  "last90Days": "最近 90 天",
+  "allTime": "全部时间",
+  "quickSelect": "快速选择"
 }

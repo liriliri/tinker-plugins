@@ -1,0 +1,96 @@
+.date-range-picker {
+  .rdp {
+    --rdp-accent-color: #df754f;
+    --rdp-background-color: rgba(223, 117, 79, 0.1);
+
+    margin: 0;
+  }
+
+  .rdp-months {
+    gap: 1rem;
+  }
+
+  .rdp-month_caption {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: rgb(115 115 115);
+  }
+
+  :global(.dark) & {
+    .rdp-month_caption {
+      color: rgb(163 163 163);
+    }
+
+    .rdp-day {
+      color: rgb(229 229 229);
+    }
+
+    .rdp-day:hover:not(.rdp-day_selected) {
+      background-color: rgba(115, 115, 115, 0.2);
+    }
+
+    .rdp-day_selected {
+      background-color: #df754f;
+      color: white;
+    }
+
+    .rdp-day_outside {
+      color: rgb(115 115 115);
+    }
+
+    .rdp-day_disabled {
+      color: rgb(82 82 82);
+    }
+  }
+
+  .rdp-nav {
+    gap: 0.25rem;
+  }
+
+  .rdp-button {
+    border-radius: 0.375rem;
+    transition: all 0.2s;
+  }
+
+  .rdp-button:hover:not(:disabled) {
+    background-color: rgba(223, 117, 79, 0.1);
+  }
+
+  .rdp-day {
+    border-radius: 0.375rem;
+    transition: all 0.2s;
+  }
+
+  .rdp-day:hover:not(.rdp-day_selected) {
+    background-color: rgba(245, 245, 245);
+  }
+
+  .rdp-day_selected {
+    background-color: #df754f;
+    color: white;
+    font-weight: 500;
+  }
+
+  .rdp-day_selected:hover {
+    background-color: #d66638;
+  }
+
+  .rdp-day_today:not(.rdp-day_selected) {
+    font-weight: 600;
+    color: #df754f;
+  }
+
+  .rdp-day_outside {
+    color: rgb(163 163 163);
+  }
+
+  .rdp-day_disabled {
+    color: rgb(212 212 212);
+    cursor: not-allowed;
+  }
+
+  .rdp-day_range_middle {
+    background-color: rgba(223, 117, 79, 0.1);
+  }
+}
