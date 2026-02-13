@@ -74,129 +74,124 @@ const DailyChart = observer(() => {
     )
   }
 
+  const chartOption = {
+    backgroundColor: 'transparent',
+    color: ['#df754f', '#10b981', '#a855f7', '#f59e0b'],
+    tooltip: {
+      trigger: 'axis',
+      backgroundColor: 'rgba(255, 255, 255, 0.95)',
+      borderColor: 'rgba(148, 163, 184, 0.35)',
+      textStyle: { color: '#0f172a' },
+      formatter: (params: any) => {
+        let result = `<div style="font-weight: 600; margin-bottom: 4px;">${params[0].axisValue}</div>`
+        params.forEach((param: any) => {
+          if (param.seriesName === t('cost')) {
+            result += `<div style="margin: 2px 0;">${param.marker} ${param.seriesName}: $${param.value.toFixed(4)}</div>`
+          } else {
+            result += `<div style="margin: 2px 0;">${param.marker} ${param.seriesName}: ${formatNumber(param.value)}</div>`
+          }
+        })
+        return result
+      },
+    },
+    grid: { left: 60, right: 60, top: 30, bottom: 80 },
+    dataZoom: [
+      {
+        type: 'inside',
+        xAxisIndex: 0,
+        start: zoom?.start,
+        end: zoom?.end,
+      },
+      {
+        type: 'slider',
+        xAxisIndex: 0,
+        height: 24,
+        bottom: 20,
+        borderColor: 'rgba(148, 163, 184, 0.35)',
+        fillerColor: 'rgba(59, 130, 246, 0.12)',
+        handleStyle: { color: 'rgba(59, 130, 246, 0.6)' },
+        start: zoom?.start,
+        end: zoom?.end,
+      },
+    ],
+    xAxis: {
+      type: 'category',
+      data: chartData.dates,
+      axisLabel: { hideOverlap: true, color: '#64748b' },
+      axisLine: { lineStyle: { color: 'rgba(148, 163, 184, 0.35)' } },
+    },
+    yAxis: [
+      {
+        type: 'value',
+        name: 'tokens',
+        position: 'left',
+        axisLabel: {
+          color: '#64748b',
+          formatter: (value: number) => formatNumber(value),
+        },
+        splitLine: { lineStyle: { color: 'rgba(148, 163, 184, 0.18)' } },
+      },
+      {
+        type: 'value',
+        name: `${t('cost')} ($)`,
+        position: 'right',
+        axisLabel: {
+          color: '#64748b',
+          formatter: (value: number) => `$${value.toFixed(4)}`,
+        },
+        splitLine: { show: false },
+      },
+    ],
+    series: [
+      store.seriesVisibility.inputTokens && {
+        name: t('inputTokens'),
+        type: 'line',
+        smooth: true,
+        data: chartData.inputTokens,
+        yAxisIndex: 0,
+        itemStyle: { color: '#df754f' },
+        lineStyle: { color: '#df754f' },
+      },
+      store.seriesVisibility.outputTokens && {
+        name: t('outputTokens'),
+        type: 'line',
+        smooth: true,
+        data: chartData.outputTokens,
+        yAxisIndex: 0,
+        itemStyle: { color: '#10b981' },
+        lineStyle: { color: '#10b981' },
+      },
+      store.seriesVisibility.totalTokens && {
+        name: t('totalTokens'),
+        type: 'line',
+        smooth: true,
+        data: chartData.totalTokens,
+        yAxisIndex: 0,
+        itemStyle: { color: '#a855f7' },
+        lineStyle: { color: '#a855f7' },
+      },
+      store.seriesVisibility.cost && {
+        name: t('cost'),
+        type: 'line',
+        smooth: true,
+        data: chartData.costs,
+        yAxisIndex: 1,
+        itemStyle: { color: '#f59e0b' },
+        lineStyle: { color: '#f59e0b' },
+      },
+    ].filter(Boolean),
+  }
+
   return (
-    <div className="p-4">
+    <div>
       <ReactECharts
         style={{ height: 400 }}
         onEvents={{
           dataZoom: handleDataZoom,
         }}
-        option={{
-          backgroundColor: 'transparent',
-          color: ['#3b82f6', '#10b981', '#8b5cf6', '#f59e0b'],
-          tooltip: {
-            trigger: 'axis',
-            backgroundColor: 'rgba(255, 255, 255, 0.95)',
-            borderColor: 'rgba(148, 163, 184, 0.35)',
-            textStyle: { color: '#0f172a' },
-            formatter: (params: any) => {
-              let result = `<div style="font-weight: 600; margin-bottom: 4px;">${params[0].axisValue}</div>`
-              params.forEach((param: any) => {
-                if (param.seriesName === t('cost')) {
-                  result += `<div style="margin: 2px 0;">${param.marker} ${param.seriesName}: $${param.value.toFixed(4)}</div>`
-                } else {
-                  result += `<div style="margin: 2px 0;">${param.marker} ${param.seriesName}: ${formatNumber(param.value)}</div>`
-                }
-              })
-              return result
-            },
-          },
-          legend: {
-            data: [
-              t('inputTokens'),
-              t('outputTokens'),
-              t('totalTokens'),
-              t('cost'),
-            ],
-            selected: {
-              [t('inputTokens')]: true,
-              [t('outputTokens')]: true,
-              [t('totalTokens')]: false,
-              [t('cost')]: true,
-            },
-            textStyle: { color: '#64748b' },
-            top: 10,
-            left: 'center',
-          },
-          grid: { left: 60, right: 60, top: 50, bottom: 80 },
-          dataZoom: [
-            {
-              type: 'inside',
-              xAxisIndex: 0,
-              start: zoom?.start,
-              end: zoom?.end,
-            },
-            {
-              type: 'slider',
-              xAxisIndex: 0,
-              height: 24,
-              bottom: 20,
-              borderColor: 'rgba(148, 163, 184, 0.35)',
-              fillerColor: 'rgba(59, 130, 246, 0.12)',
-              handleStyle: { color: 'rgba(59, 130, 246, 0.6)' },
-              start: zoom?.start,
-              end: zoom?.end,
-            },
-          ],
-          xAxis: {
-            type: 'category',
-            data: chartData.dates,
-            axisLabel: { hideOverlap: true, color: '#64748b' },
-            axisLine: { lineStyle: { color: 'rgba(148, 163, 184, 0.35)' } },
-          },
-          yAxis: [
-            {
-              type: 'value',
-              name: 'tokens',
-              position: 'left',
-              axisLabel: {
-                color: '#64748b',
-                formatter: (value: number) => formatNumber(value),
-              },
-              splitLine: { lineStyle: { color: 'rgba(148, 163, 184, 0.18)' } },
-            },
-            {
-              type: 'value',
-              name: 'cost ($)',
-              position: 'right',
-              axisLabel: {
-                color: '#64748b',
-                formatter: (value: number) => `$${value.toFixed(4)}`,
-              },
-              splitLine: { show: false },
-            },
-          ],
-          series: [
-            {
-              name: t('inputTokens'),
-              type: 'line',
-              smooth: true,
-              data: chartData.inputTokens,
-              yAxisIndex: 0,
-            },
-            {
-              name: t('outputTokens'),
-              type: 'line',
-              smooth: true,
-              data: chartData.outputTokens,
-              yAxisIndex: 0,
-            },
-            {
-              name: t('totalTokens'),
-              type: 'line',
-              smooth: true,
-              data: chartData.totalTokens,
-              yAxisIndex: 0,
-            },
-            {
-              name: t('cost'),
-              type: 'line',
-              smooth: true,
-              data: chartData.costs,
-              yAxisIndex: 1,
-            },
-          ],
-        }}
+        option={chartOption}
+        notMerge={true}
+        lazyUpdate={true}
       />
     </div>
   )

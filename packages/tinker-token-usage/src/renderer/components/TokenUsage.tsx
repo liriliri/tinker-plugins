@@ -42,7 +42,7 @@ const TokenUsage = observer(() => {
       <div className={className('min-h-screen p-4', tw.background.primary)}>
         <div className="mx-auto max-w-6xl">
           {/* Header */}
-          <header className="mb-4">
+          <header className="mb-2">
             <div className="flex items-center justify-between gap-3">
               {/* Date Range Display */}
               <div
@@ -62,26 +62,34 @@ const TokenUsage = observer(() => {
           {/* Stats Cards */}
           {usageData && !store.error && filteredStats && (
             <>
-              <div className="grid grid-cols-4 gap-3 mb-4">
+              <div className="grid grid-cols-4 gap-2 mb-2">
                 <StatCard
                   label={t('inputTokens')}
                   value={formatNumber(filteredStats.inputTokens)}
                   color="blue"
+                  isActive={store.seriesVisibility.inputTokens}
+                  onClick={() => store.toggleSeriesVisibility('inputTokens')}
                 />
                 <StatCard
                   label={t('outputTokens')}
                   value={formatNumber(filteredStats.outputTokens)}
                   color="green"
+                  isActive={store.seriesVisibility.outputTokens}
+                  onClick={() => store.toggleSeriesVisibility('outputTokens')}
                 />
                 <StatCard
                   label={t('totalTokens')}
                   value={formatNumber(filteredStats.totalTokens)}
                   color="purple"
+                  isActive={store.seriesVisibility.totalTokens}
+                  onClick={() => store.toggleSeriesVisibility('totalTokens')}
                 />
                 <StatCard
                   label={t('cost')}
                   value={formatCost(filteredStats.totalCost)}
                   color="orange"
+                  isActive={store.seriesVisibility.cost}
+                  onClick={() => store.toggleSeriesVisibility('cost')}
                 />
               </div>
 

@@ -33,9 +33,7 @@
     }
   },
   "dependencies": {
-    "ccusage": "^18.0.5",
-    "echarts": "^6.0.0",
-    "echarts-for-react": "^3.0.6"
+    "ccusage": "^18.0.5"
   },
   "devDependencies": {
     "@radix-ui/react-tooltip": "^1.2.8",
@@ -46,6 +44,8 @@
     "@vitejs/plugin-react": "^4.7.0",
     "autoprefixer": "^10.4.22",
     "concurrently": "^9.2.0",
+    "echarts": "^6.0.0",
+    "echarts-for-react": "^3.0.6",
     "electron": "^30.5.1",
     "i18next": "^25.8.4",
     "licia": "^1.48.0",

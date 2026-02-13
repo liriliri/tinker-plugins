@@ -11,6 +11,17 @@ class Store {
   loading: boolean = false
   error: string | null = null
   dateRange: { start: string; end: string } | null = null
+  seriesVisibility: {
+    inputTokens: boolean
+    outputTokens: boolean
+    totalTokens: boolean
+    cost: boolean
+  } = {
+    inputTokens: true,
+    outputTokens: true,
+    totalTokens: false,
+    cost: true,
+  }
 
   constructor() {
     makeAutoObservable(this)
@@ -58,6 +69,21 @@ class Store {
 
   setDateRange(start: string, end: string) {
     this.dateRange = { start, end }
+  }
+
+  toggleSeriesVisibility(
+    seriesKey: 'inputTokens' | 'outputTokens' | 'totalTokens' | 'cost',
+  ) {
+    const visibleCount = Object.values(this.seriesVisibility).filter(
+      (v) => v,
+    ).length
+
+    // Prevent hiding the last visible series
+    if (visibleCount === 1 && this.seriesVisibility[seriesKey]) {
+      return
+    }
+
+    this.seriesVisibility[seriesKey] = !this.seriesVisibility[seriesKey]
   }
 
   // Computed property: calculate stats for selected date range
