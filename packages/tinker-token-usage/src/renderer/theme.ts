@@ -36,7 +36,7 @@ export const tw = {
     title:
       'bg-gradient-to-br from-neutral-900 to-neutral-700 dark:from-neutral-50 dark:to-neutral-300 bg-clip-text text-transparent',
     divider: 'bg-gradient-to-r from-[#df754f]/50 to-transparent',
-    blue: 'from-[#df754f] to-[#d66638] dark:from-[#f08a65] dark:to-[#df754f]',
+    blue: 'from-blue-500 to-blue-600 dark:from-blue-400 dark:to-blue-500',
     green: 'from-green-500 to-green-600 dark:from-green-400 dark:to-green-500',
     purple:
       'from-purple-500 to-purple-600 dark:from-purple-400 dark:to-purple-500',

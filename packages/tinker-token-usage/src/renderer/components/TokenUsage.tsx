@@ -39,7 +39,9 @@ const TokenUsage = observer(() => {
 
   return (
     <Tooltip.Provider delayDuration={300}>
-      <div className={className('min-h-screen p-4', tw.background.primary)}>
+      <div
+        className={className('min-h-screen py-2 px-4', tw.background.primary)}
+      >
         <div className="mx-auto max-w-6xl">
           {/* Header */}
           <header className="mb-2">
@@ -62,7 +64,7 @@ const TokenUsage = observer(() => {
           {/* Stats Cards */}
           {usageData && !store.error && filteredStats && (
             <>
-              <div className="grid grid-cols-4 gap-2 mb-2">
+              <div className="grid grid-cols-4 gap-2 mb-4">
                 <StatCard
                   label={t('inputTokens')}
                   value={formatNumber(filteredStats.inputTokens)}
