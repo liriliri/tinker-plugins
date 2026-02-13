@@ -1,8 +1,5 @@
 import { contextBridge } from 'electron'
-import {
-  loadDailyUsageData,
-  type DailyUsage,
-} from 'ccusage/data-loader'
+import { loadDailyUsageData, type DailyUsage } from 'ccusage/data-loader'
 
 export interface TokenUsageData {
   total: {
@@ -43,7 +40,8 @@ const tokenUsageObj = {
         const outputTokens = day.outputTokens || 0
         const cacheCreationTokens = day.cacheCreationTokens || 0
         const cacheReadTokens = day.cacheReadTokens || 0
-        const dayTotalTokens = inputTokens + outputTokens + cacheCreationTokens + cacheReadTokens
+        const dayTotalTokens =
+          inputTokens + outputTokens + cacheCreationTokens + cacheReadTokens
         const dayTotalCost = day.totalCost || 0
 
         totalInputTokens += inputTokens
@@ -69,7 +67,11 @@ const tokenUsageObj = {
         outputTokens: totalOutputTokens,
         cacheCreationTokens: totalCacheCreationTokens,
         cacheReadTokens: totalCacheReadTokens,
-        totalTokens: totalInputTokens + totalOutputTokens + totalCacheCreationTokens + totalCacheReadTokens,
+        totalTokens:
+          totalInputTokens +
+          totalOutputTokens +
+          totalCacheCreationTokens +
+          totalCacheReadTokens,
         totalCost,
       }
 

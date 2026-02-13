@@ -36,11 +36,12 @@ const TokenUsage = observer(() => {
   const renderStatCard = (
     label: string,
     value: string | number,
-    color: string = 'blue'
+    color: string = 'blue',
   ) => {
     const colorClasses = {
       blue: 'from-blue-500 to-blue-600 dark:from-blue-400 dark:to-blue-500',
-      green: 'from-green-500 to-green-600 dark:from-green-400 dark:to-green-500',
+      green:
+        'from-green-500 to-green-600 dark:from-green-400 dark:to-green-500',
       purple:
         'from-purple-500 to-purple-600 dark:from-purple-400 dark:to-purple-500',
       orange:
@@ -55,7 +56,8 @@ const TokenUsage = observer(() => {
         <div
           className={className(
             'text-3xl font-bold bg-gradient-to-br bg-clip-text text-transparent',
-            colorClasses[color as keyof typeof colorClasses] || colorClasses.blue
+            colorClasses[color as keyof typeof colorClasses] ||
+              colorClasses.blue,
           )}
         >
           {value}
@@ -103,7 +105,7 @@ const TokenUsage = observer(() => {
                     key={day.date}
                     className={className(
                       'border-b border-slate-100 dark:border-slate-800',
-                      'hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors'
+                      'hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors',
                     )}
                   >
                     <td className="py-3 font-mono text-sm text-slate-700 dark:text-slate-300">
@@ -161,13 +163,13 @@ const TokenUsage = observer(() => {
                       'hover:scale-105 active:scale-95',
                       'disabled:from-slate-300 disabled:to-slate-400 dark:disabled:from-slate-700 dark:disabled:to-slate-800',
                       'disabled:shadow-none disabled:cursor-not-allowed disabled:scale-100',
-                      'transition-all duration-200'
+                      'transition-all duration-200',
                     )}
                   >
                     <svg
                       className={className(
                         'w-5 h-5',
-                        loading && 'animate-spin'
+                        loading && 'animate-spin',
                       )}
                       fill="none"
                       stroke="currentColor"
@@ -233,22 +235,22 @@ const TokenUsage = observer(() => {
                 {renderStatCard(
                   t('inputTokens'),
                   formatNumber(usageData.total.inputTokens),
-                  'blue'
+                  'blue',
                 )}
                 {renderStatCard(
                   t('outputTokens'),
                   formatNumber(usageData.total.outputTokens),
-                  'green'
+                  'green',
                 )}
                 {renderStatCard(
                   t('totalTokens'),
                   formatNumber(usageData.total.totalTokens),
-                  'purple'
+                  'purple',
                 )}
                 {renderStatCard(
                   'Total Cost',
                   formatCost(usageData.total.totalCost),
-                  'orange'
+                  'orange',
                 )}
               </div>
 

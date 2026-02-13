@@ -24,13 +24,16 @@
   "tinker": {
     "name": "Token Usage",
     "main": "dist/renderer/index.html",
-    "preload": "dist/preload/index.js",
+    "preload": "dist/preload/index.mjs",
     "icon": "icon.png",
     "locales": {
       "zh-CN": {
         "name": "Token 统计"
       }
     }
+  },
+  "dependencies": {
+    "ccusage": "^18.0.5"
   },
   "devDependencies": {
     "@radix-ui/react-scroll-area": "^1.2.10",
@@ -43,7 +46,6 @@
     "@types/react-dom": "^19.1.7",
     "@vitejs/plugin-react": "^4.7.0",
     "autoprefixer": "^10.4.22",
-    "ccusage": "^18.0.5",
     "concurrently": "^9.2.0",
     "electron": "^30.5.1",
     "i18next": "^25.8.4",

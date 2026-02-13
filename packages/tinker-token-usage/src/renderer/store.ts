@@ -1,4 +1,5 @@
 import { makeAutoObservable } from 'mobx'
+import waitUntil from 'licia/waitUntil'
 import { TokenUsageData } from '../preload'
 
 class Store {
@@ -12,6 +13,11 @@ class Store {
 
   constructor() {
     makeAutoObservable(this)
+    this.init()
+  }
+
+  private async init() {
+    await waitUntil(() => typeof tokenUsage !== 'undefined')
     this.initTheme()
     this.loadUsageData()
   }
