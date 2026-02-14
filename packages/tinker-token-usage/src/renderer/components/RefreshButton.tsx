@@ -12,7 +12,7 @@ const RefreshButton = observer(() => {
       onClick={() => store.refresh()}
       disabled={loading}
       className={className(
-        'p-1 rounded-lg',
+        'p-1 rounded-md',
         tw.button.primary.base,
         tw.text.white,
         tw.button.primary.hover,

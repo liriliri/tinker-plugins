@@ -3,12 +3,11 @@ import { observer } from 'mobx-react-lite'
 import { useMemo, useState, useEffect } from 'react'
 import ReactECharts from 'echarts-for-react'
 import className from 'licia/className'
-import { tw } from '../theme'
 import { formatNumber, formatDate } from '../lib/format'
 import store from '../store'
 
 const DailyChart = observer(() => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const { usageData } = store
   const [zoom, setZoom] = useState<{ start: number; end: number } | null>(null)
 
@@ -17,7 +16,9 @@ const DailyChart = observer(() => {
       return null
     }
 
-    const dates = usageData.byDay.map((day) => formatDate(day.date))
+    // Use the current i18n language for date formatting
+    const locale = i18n.language === 'zh-CN' ? 'zh-CN' : 'en-US'
+    const dates = usageData.byDay.map((day) => formatDate(day.date, locale))
     const rawDates = usageData.byDay.map((day) => day.date)
     const inputTokens = usageData.byDay.map((day) => day.inputTokens)
     const outputTokens = usageData.byDay.map((day) => day.outputTokens)
@@ -32,7 +33,7 @@ const DailyChart = observer(() => {
       totalTokens,
       sessionCounts,
     }
-  }, [usageData])
+  }, [usageData, i18n.language])
 
   // Reset zoom when data changes
   useEffect(() => {
@@ -64,8 +65,16 @@ const DailyChart = observer(() => {
 
   if (!chartData) {
     return (
-      <div className={className('p-8 text-center', tw.text.tertiary)}>
-        {t('loading')}
+      <div className={className('p-8 flex justify-center items-center')}>
+        <div
+          className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+          style={{ borderColor: '#df754f transparent #df754f transparent' }}
+          role="status"
+        >
+          <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+            Loading...
+          </span>
+        </div>
       </div>
     )
   }
