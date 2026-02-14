@@ -26,19 +26,6 @@ export const categoryKeyMap: Record<string, string> = {
   旗帜: 'flags',
 }
 
-export const emojisByCategory = {
-  笑脸和情感: smileys_emotion as EmojiData[],
-  other: other as EmojiData[],
-  人类和身体: people_body as EmojiData[],
-  动物和自然: animals_nature as EmojiData[],
-  食物和饮料: food_drink as EmojiData[],
-  旅行和地点: travel_places as EmojiData[],
-  活动: activities as EmojiData[],
-  物品: objects as EmojiData[],
-  符号: symbols as EmojiData[],
-  旗帜: flags as EmojiData[],
-}
-
 export const allEmojis: EmojiData[] = [
   ...smileys_emotion,
   ...other,
