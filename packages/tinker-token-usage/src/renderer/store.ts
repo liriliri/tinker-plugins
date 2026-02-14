@@ -1,10 +1,13 @@
 import { makeAutoObservable } from 'mobx'
 import waitUntil from 'licia/waitUntil'
-import { TokenUsageData } from '../preload'
+import { TokenUsageData, DataSource } from '../preload'
 
 class Store {
   // Theme management
   isDark: boolean = false
+
+  // Data source management
+  dataSource: DataSource = 'claude-code'
 
   // Token usage state
   usageData: TokenUsageData | null = {
@@ -65,6 +68,16 @@ class Store {
     } catch (err) {
       console.error('Failed to initialize theme:', err)
     }
+  }
+
+  // Data source methods
+  setDataSource(source: DataSource) {
+    this.dataSource = source
+  }
+
+  async switchDataSource(source: DataSource) {
+    this.setDataSource(source)
+    await this.loadUsageData()
   }
 
   // Token usage methods
@@ -135,7 +148,7 @@ class Store {
     this.setError(null)
 
     try {
-      const data = await tokenUsage.getUsage()
+      const data = await tokenUsage.getUsage(this.dataSource)
       this.setUsageData(data)
       // Update date range to actual data range
       if (data.byDay && data.byDay.length > 0) {

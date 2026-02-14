@@ -9,6 +9,7 @@ import StatCard from './StatCard'
 import ErrorMessage from './ErrorMessage'
 import RefreshButton from './RefreshButton'
 import DailyChart from './DailyChart'
+import DataSourceSelect from './DataSourceSelect'
 
 const TokenUsage = observer(() => {
   const { t } = useTranslation()
@@ -45,16 +46,26 @@ const TokenUsage = observer(() => {
         <div className="mx-auto max-w-6xl">
           {/* Header */}
           <header className="mb-2">
-            <div className="flex items-center justify-between gap-3">
-              {/* Date Range Display */}
+            <div className="grid grid-cols-3 items-center gap-3">
+              {/* Left: Data Source Select */}
+              <div className="flex justify-start">
+                <DataSourceSelect />
+              </div>
+
+              {/* Center: Date Range Display */}
               <div
-                className={className('text-sm font-medium', tw.text.secondary)}
+                className={className(
+                  'text-sm font-medium text-center',
+                  tw.text.secondary,
+                )}
               >
                 {dateRange && formatDateRange()}
               </div>
 
-              {/* Refresh Button */}
-              <RefreshButton />
+              {/* Right: Refresh Button */}
+              <div className="flex justify-end">
+                <RefreshButton />
+              </div>
             </div>
           </header>
 
