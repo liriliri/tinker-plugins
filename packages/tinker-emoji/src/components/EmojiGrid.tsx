@@ -12,12 +12,7 @@ const EmojiGrid = observer(() => {
 
   if (store.isLoading) {
     return (
-      <div
-        className={className(
-          'text-center py-12 text-sm',
-          'text-zinc-500 dark:text-zinc-400',
-        )}
-      >
+      <div className={className('text-center py-12 text-sm', tw.text.muted)}>
         {t('loading')}
       </div>
     )
@@ -25,7 +20,7 @@ const EmojiGrid = observer(() => {
 
   if (store.error) {
     return (
-      <div className="text-center py-12 text-sm text-red-600 dark:text-red-400">
+      <div className={className('text-center py-12 text-sm', tw.text.error)}>
         {store.error}
       </div>
     )
@@ -33,12 +28,7 @@ const EmojiGrid = observer(() => {
 
   if (emojis.length === 0) {
     return (
-      <div
-        className={className(
-          'text-center py-12 text-sm',
-          'text-zinc-500 dark:text-zinc-400',
-        )}
-      >
+      <div className={className('text-center py-12 text-sm', tw.text.muted)}>
         {t('noResults')}
       </div>
     )
@@ -56,13 +46,15 @@ const EmojiGrid = observer(() => {
       <ScrollArea.Scrollbar
         className={className(
           'flex select-none touch-none p-0.5 transition-colors',
-          'w-2 hover:bg-zinc-100/50 dark:hover:bg-zinc-800/50',
+          'w-2',
+          tw.background.scrollbarHover,
         )}
         orientation="vertical"
       >
         <ScrollArea.Thumb
           className={className(
-            'flex-1 bg-zinc-300 dark:bg-zinc-600 rounded-full',
+            'flex-1 rounded-full',
+            tw.scrollbar.thumb,
             'relative before:content-[""] before:absolute',
             'before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2',
             'before:w-full before:h-full before:min-w-[44px] before:min-h-[44px]',

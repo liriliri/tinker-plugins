@@ -14,7 +14,7 @@ const SearchBar = observer(() => {
         size={16}
         className={className(
           'absolute left-3 top-1/2 -translate-y-1/2',
-          'text-zinc-400 dark:text-zinc-500',
+          tw.text.icon,
         )}
       />
       <input
@@ -24,13 +24,13 @@ const SearchBar = observer(() => {
         onChange={(e) => store.setSearchQuery(e.target.value)}
         className={className(
           'w-full pl-9 pr-3 py-2 text-sm rounded-md',
-          'bg-zinc-50 dark:bg-zinc-800',
-          'text-zinc-900 dark:text-zinc-100',
-          'border border-zinc-200 dark:border-zinc-700',
-          'focus:outline-none focus:border-yellow-400 dark:focus:border-yellow-500',
-          'focus:ring-2 focus:ring-yellow-400/20 dark:focus:ring-yellow-500/20',
+          tw.background.secondary,
+          tw.text.primary,
+          tw.border.primary,
+          tw.border.focus,
+          tw.accent.ring,
           'transition-colors',
-          'placeholder:text-zinc-400 dark:placeholder:text-zinc-500',
+          tw.text.placeholder,
         )}
       />
     </div>

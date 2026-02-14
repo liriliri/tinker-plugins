@@ -9,10 +9,7 @@ import EmojiGrid from './components/EmojiGrid'
 const App = observer(() => {
   return (
     <div
-      className={className(
-        'h-screen flex flex-col p-3',
-        'bg-white dark:bg-zinc-900',
-      )}
+      className={className('h-screen flex flex-col p-3', tw.background.primary)}
     >
       <div className="mx-auto max-w-6xl w-full flex flex-col h-full gap-3">
         {/* Search Bar */}

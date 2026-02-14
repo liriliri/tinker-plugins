@@ -31,10 +31,11 @@ const EmojiCard = observer(({ emoji }: EmojiCardProps) => {
           <div
             className={className(
               'relative group cursor-pointer rounded-lg p-2.5 transition-all',
-              'bg-transparent',
-              'hover:bg-zinc-100 dark:hover:bg-zinc-800',
+              tw.background.transparent,
+              tw.background.hover,
               'active:scale-95',
-              'focus:outline-none focus:ring-2 focus:ring-yellow-400 dark:focus:ring-yellow-500',
+              'focus:outline-none',
+              tw.accent.focusRing,
             )}
             onClick={handleClick}
             role="button"
@@ -53,7 +54,7 @@ const EmojiCard = observer(({ emoji }: EmojiCardProps) => {
             <div
               className={className(
                 'text-[10px] text-center truncate leading-tight',
-                'text-zinc-500 dark:text-zinc-400',
+                tw.text.muted,
               )}
             >
               {description || emoji.name}
@@ -64,8 +65,8 @@ const EmojiCard = observer(({ emoji }: EmojiCardProps) => {
               <div
                 className={className(
                   'absolute inset-0 flex items-center justify-center rounded-lg',
-                  'bg-yellow-400 dark:bg-yellow-500',
-                  'text-zinc-900',
+                  tw.accent.bg,
+                  tw.accent.text,
                   'text-xs font-medium',
                 )}
               >
@@ -77,19 +78,16 @@ const EmojiCard = observer(({ emoji }: EmojiCardProps) => {
         <Tooltip.Portal>
           <Tooltip.Content
             className={className(
-              'px-2.5 py-2 rounded-md shadow-lg z-50',
-              'bg-zinc-800 dark:bg-zinc-700',
-              'text-white',
-              'text-xs max-w-xs',
+              'px-2.5 py-1.5 rounded-md shadow-lg z-50',
+              tw.tooltip.bg,
+              tw.text.white,
+              'text-xs',
               'animate-in fade-in-0 zoom-in-95',
             )}
             sideOffset={5}
           >
-            <div className="font-medium mb-0.5">
-              {emoji.emoji} {description}
-            </div>
-            <div className="opacity-60 text-[10px]">{emoji.shortcode}</div>
-            <Tooltip.Arrow className="fill-zinc-800 dark:fill-zinc-700" />
+            {emoji.shortcode}
+            <Tooltip.Arrow className={tw.tooltip.arrow} />
           </Tooltip.Content>
         </Tooltip.Portal>
       </Tooltip.Root>

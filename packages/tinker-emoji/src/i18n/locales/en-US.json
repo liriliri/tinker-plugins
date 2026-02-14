@@ -1,10 +1,17 @@
 {
   "search": "Search emojis...",
-  "copy": "Click to copy",
   "copied": "Copied!",
   "loading": "Loading...",
   "noResults": "No emojis found",
-  "categories": {
-    "all": "All"
-  }
+  "all": "All",
+  "smileysEmotion": "Smileys & Emotion",
+  "peopleBody": "People & Body",
+  "animalsNature": "Animals & Nature",
+  "foodDrink": "Food & Drink",
+  "travelPlaces": "Travel & Places",
+  "activities": "Activities",
+  "objects": "Objects",
+  "symbols": "Symbols",
+  "flags": "Flags",
+  "other": "Other"
 }
