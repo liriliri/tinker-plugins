@@ -4,7 +4,7 @@ import { useMemo, useState, useEffect } from 'react'
 import ReactECharts from 'echarts-for-react'
 import className from 'licia/className'
 import { tw } from '../theme'
-import { formatNumber, formatDate } from '../utils/format'
+import { formatNumber, formatDate } from '../lib/format'
 import store from '../store'
 
 const DailyChart = observer(() => {

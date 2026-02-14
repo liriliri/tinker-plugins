@@ -1,6 +1,10 @@
 import { makeAutoObservable } from 'mobx'
 import waitUntil from 'licia/waitUntil'
+import LocalStore from 'licia/LocalStore'
 import { TokenUsageData, DataSource } from '../preload'
+
+const storage = new LocalStore('tinker-token-usage')
+const STORAGE_KEY_DATA_SOURCE = 'dataSource'
 
 class Store {
   // Theme management
@@ -41,7 +45,15 @@ class Store {
 
   constructor() {
     makeAutoObservable(this)
+    this.loadFromStorage()
     this.init()
+  }
+
+  private loadFromStorage() {
+    const savedDataSource = storage.get(STORAGE_KEY_DATA_SOURCE)
+    if (savedDataSource === 'claude-code' || savedDataSource === 'codex') {
+      this.dataSource = savedDataSource
+    }
   }
 
   private async init() {
@@ -73,6 +85,7 @@ class Store {
   // Data source methods
   setDataSource(source: DataSource) {
     this.dataSource = source
+    storage.set(STORAGE_KEY_DATA_SOURCE, source)
   }
 
   async switchDataSource(source: DataSource) {

@@ -37,7 +37,6 @@
   },
   "devDependencies": {
     "@radix-ui/react-select": "^2.2.6",
-    "@radix-ui/react-tooltip": "^1.2.8",
     "@tailwindcss/postcss": "^4.1.17",
     "@types/node": "^24.0.0",
     "@types/react": "^19.1.9",

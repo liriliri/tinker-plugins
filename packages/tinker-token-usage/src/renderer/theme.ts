@@ -54,6 +54,17 @@ export const tw = {
     },
   },
 
+  select: {
+    trigger: {
+      focus:
+        'focus:outline-none focus:ring-2 focus:ring-[#df754f] dark:focus:ring-[#f08a65]',
+    },
+    item: {
+      highlighted:
+        'data-[highlighted]:bg-[#df754f] dark:data-[highlighted]:bg-[#f08a65] data-[highlighted]:text-white',
+    },
+  },
+
   card: {
     container: 'rounded-lg p-6',
     containerLarge: 'rounded-lg',

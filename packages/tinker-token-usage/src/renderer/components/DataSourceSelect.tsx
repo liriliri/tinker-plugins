@@ -24,7 +24,7 @@ const DataSourceSelect = observer(() => {
           tw.text.primary,
           'border-neutral-300 dark:border-neutral-700',
           'hover:bg-neutral-50 dark:hover:bg-neutral-700',
-          'focus:outline-none focus:ring-2 focus:ring-blue-500',
+          tw.select.trigger.focus,
           'data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed',
           'min-w-[140px] justify-between',
         )}
@@ -51,7 +51,7 @@ const DataSourceSelect = observer(() => {
               className={className(
                 'relative flex items-center gap-2 px-8 py-2 text-sm rounded cursor-pointer outline-none',
                 tw.text.primary,
-                'data-[highlighted]:bg-blue-500 data-[highlighted]:text-white',
+                tw.select.item.highlighted,
                 'data-[state=checked]:font-medium',
               )}
             >
@@ -66,7 +66,7 @@ const DataSourceSelect = observer(() => {
               className={className(
                 'relative flex items-center gap-2 px-8 py-2 text-sm rounded cursor-pointer outline-none',
                 tw.text.primary,
-                'data-[highlighted]:bg-blue-500 data-[highlighted]:text-white',
+                tw.select.item.highlighted,
                 'data-[state=checked]:font-medium',
               )}
             >
