@@ -11,8 +11,10 @@ class Store {
     total: {
       inputTokens: 0,
       outputTokens: 0,
+      cacheCreationTokens: 0,
+      cacheReadTokens: 0,
       totalTokens: 0,
-      totalCost: 0,
+      sessionCount: 0,
     },
     byDay: [],
   }
@@ -26,12 +28,12 @@ class Store {
     inputTokens: boolean
     outputTokens: boolean
     totalTokens: boolean
-    cost: boolean
+    sessionCount: boolean
   } = {
     inputTokens: true,
     outputTokens: true,
     totalTokens: false,
-    cost: true,
+    sessionCount: true,
   }
 
   constructor() {
@@ -83,7 +85,7 @@ class Store {
   }
 
   toggleSeriesVisibility(
-    seriesKey: 'inputTokens' | 'outputTokens' | 'totalTokens' | 'cost',
+    seriesKey: 'inputTokens' | 'outputTokens' | 'totalTokens' | 'sessionCount',
   ) {
     const visibleCount = Object.values(this.seriesVisibility).filter(
       (v) => v,
@@ -115,8 +117,16 @@ class Store {
     return {
       inputTokens: filtered.reduce((sum, day) => sum + day.inputTokens, 0),
       outputTokens: filtered.reduce((sum, day) => sum + day.outputTokens, 0),
+      cacheCreationTokens: filtered.reduce(
+        (sum, day) => sum + day.cacheCreationTokens,
+        0,
+      ),
+      cacheReadTokens: filtered.reduce(
+        (sum, day) => sum + day.cacheReadTokens,
+        0,
+      ),
       totalTokens: filtered.reduce((sum, day) => sum + day.totalTokens, 0),
-      totalCost: filtered.reduce((sum, day) => sum + day.totalCost, 0),
+      sessionCount: filtered.reduce((sum, day) => sum + day.sessionCount, 0),
     }
   }
 
@@ -141,8 +151,10 @@ class Store {
         total: {
           inputTokens: 0,
           outputTokens: 0,
+          cacheCreationTokens: 0,
+          cacheReadTokens: 0,
           totalTokens: 0,
-          totalCost: 0,
+          sessionCount: 0,
         },
         byDay: [],
       })

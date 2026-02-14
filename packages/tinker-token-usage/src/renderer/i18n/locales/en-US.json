@@ -4,5 +4,5 @@
   "inputTokens": "input tokens",
   "outputTokens": "output tokens",
   "totalTokens": "total tokens",
-  "cost": "cost"
+  "sessionCount": "sessions"
 }

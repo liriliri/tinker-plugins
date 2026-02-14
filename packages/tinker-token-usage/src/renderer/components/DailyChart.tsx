@@ -22,7 +22,7 @@ const DailyChart = observer(() => {
     const inputTokens = usageData.byDay.map((day) => day.inputTokens)
     const outputTokens = usageData.byDay.map((day) => day.outputTokens)
     const totalTokens = usageData.byDay.map((day) => day.totalTokens)
-    const costs = usageData.byDay.map((day) => day.totalCost)
+    const sessionCounts = usageData.byDay.map((day) => day.sessionCount)
 
     return {
       dates,
@@ -30,7 +30,7 @@ const DailyChart = observer(() => {
       inputTokens,
       outputTokens,
       totalTokens,
-      costs,
+      sessionCounts,
     }
   }, [usageData])
 
@@ -81,11 +81,7 @@ const DailyChart = observer(() => {
       formatter: (params: any) => {
         let result = `<div style="font-weight: 600; margin-bottom: 4px;">${params[0].axisValue}</div>`
         params.forEach((param: any) => {
-          if (param.seriesName === t('cost')) {
-            result += `<div style="margin: 2px 0;">${param.marker} ${param.seriesName}: $${param.value.toFixed(4)}</div>`
-          } else {
-            result += `<div style="margin: 2px 0;">${param.marker} ${param.seriesName}: ${formatNumber(param.value)}</div>`
-          }
+          result += `<div style="margin: 2px 0;">${param.marker} ${param.seriesName}: ${formatNumber(param.value)}</div>`
         })
         return result
       },
@@ -129,11 +125,11 @@ const DailyChart = observer(() => {
       },
       {
         type: 'value',
-        name: `${t('cost')} ($)`,
+        name: t('sessionCount'),
         position: 'right',
         axisLabel: {
           color: '#64748b',
-          formatter: (value: number) => `$${value.toFixed(4)}`,
+          formatter: (value: number) => formatNumber(value),
         },
         splitLine: { show: false },
       },
@@ -166,11 +162,11 @@ const DailyChart = observer(() => {
         itemStyle: { color: '#a855f7' },
         lineStyle: { color: '#a855f7' },
       },
-      store.seriesVisibility.cost && {
-        name: t('cost'),
+      store.seriesVisibility.sessionCount && {
+        name: t('sessionCount'),
         type: 'line',
         smooth: true,
-        data: chartData.costs,
+        data: chartData.sessionCounts,
         yAxisIndex: 1,
         itemStyle: { color: '#f59e0b' },
         lineStyle: { color: '#f59e0b' },

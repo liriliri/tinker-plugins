@@ -4,7 +4,7 @@ import * as Tooltip from '@radix-ui/react-tooltip'
 import className from 'licia/className'
 import store from '../store'
 import { tw } from '../theme'
-import { formatNumber, formatCost, formatDate } from '../utils/format'
+import { formatNumber, formatDate } from '../utils/format'
 import StatCard from './StatCard'
 import ErrorMessage from './ErrorMessage'
 import RefreshButton from './RefreshButton'
@@ -87,11 +87,11 @@ const TokenUsage = observer(() => {
                   onClick={() => store.toggleSeriesVisibility('totalTokens')}
                 />
                 <StatCard
-                  label={t('cost')}
-                  value={formatCost(filteredStats.totalCost)}
+                  label={t('sessionCount')}
+                  value={formatNumber(filteredStats.sessionCount)}
                   color="orange"
-                  isActive={store.seriesVisibility.cost}
-                  onClick={() => store.toggleSeriesVisibility('cost')}
+                  isActive={store.seriesVisibility.sessionCount}
+                  onClick={() => store.toggleSeriesVisibility('sessionCount')}
                 />
               </div>
 

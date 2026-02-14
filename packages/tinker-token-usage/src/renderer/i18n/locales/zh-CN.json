@@ -4,5 +4,5 @@
   "inputTokens": "输入 token",
   "outputTokens": "输出 token",
   "totalTokens": "总 token",
-  "cost": "费用"
+  "sessionCount": "会话数"
 }

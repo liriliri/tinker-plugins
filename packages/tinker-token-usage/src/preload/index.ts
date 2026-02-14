@@ -1,5 +1,10 @@
 import { contextBridge } from 'electron'
-import { loadDailyUsageData, type DailyUsage } from 'ccusage/data-loader'
+import {
+  loadDailyUsageData,
+  loadSessionData,
+  type DailyUsage,
+  type SessionUsage,
+} from 'ccusage/data-loader'
 
 export interface TokenUsageData {
   total: {
@@ -8,7 +13,7 @@ export interface TokenUsageData {
     cacheCreationTokens: number
     cacheReadTokens: number
     totalTokens: number
-    totalCost: number
+    sessionCount: number
   }
   byDay: Array<{
     date: string
@@ -17,7 +22,7 @@ export interface TokenUsageData {
     cacheCreationTokens: number
     cacheReadTokens: number
     totalTokens: number
-    totalCost: number
+    sessionCount: number
     modelsUsed: string[]
   }>
 }
@@ -25,15 +30,27 @@ export interface TokenUsageData {
 const tokenUsageObj = {
   getUsage: async (): Promise<TokenUsageData> => {
     try {
-      // Load daily usage data from Claude Code
+      // Load daily usage data and session data from Claude Code
       const dailyData: DailyUsage[] = await loadDailyUsageData({})
+      const sessionData: SessionUsage[] = await loadSessionData({})
 
-      // Calculate total tokens
+      // Build a map of date -> session count
+      const sessionCountByDate = new Map<string, Set<string>>()
+      for (const session of sessionData) {
+        // Extract date from lastActivity (YYYY-MM-DD format)
+        const date = session.lastActivity.split('T')[0]
+        if (!sessionCountByDate.has(date)) {
+          sessionCountByDate.set(date, new Set())
+        }
+        sessionCountByDate.get(date)!.add(session.sessionId)
+      }
+
+      // Calculate total tokens and session count
       let totalInputTokens = 0
       let totalOutputTokens = 0
       let totalCacheCreationTokens = 0
       let totalCacheReadTokens = 0
-      let totalCost = 0
+      const allSessionIds = new Set<string>()
 
       const byDay = dailyData.map((day) => {
         const inputTokens = day.inputTokens || 0
@@ -42,13 +59,20 @@ const tokenUsageObj = {
         const cacheReadTokens = day.cacheReadTokens || 0
         const dayTotalTokens =
           inputTokens + outputTokens + cacheCreationTokens + cacheReadTokens
-        const dayTotalCost = day.totalCost || 0
+
+        // Get session count for this day
+        const sessionsForDay = sessionCountByDate.get(day.date)
+        const sessionCount = sessionsForDay ? sessionsForDay.size : 0
 
         totalInputTokens += inputTokens
         totalOutputTokens += outputTokens
         totalCacheCreationTokens += cacheCreationTokens
         totalCacheReadTokens += cacheReadTokens
-        totalCost += dayTotalCost
+
+        // Collect all unique session IDs
+        if (sessionsForDay) {
+          sessionsForDay.forEach((id) => allSessionIds.add(id))
+        }
 
         return {
           date: day.date,
@@ -57,7 +81,7 @@ const tokenUsageObj = {
           cacheCreationTokens,
           cacheReadTokens,
           totalTokens: dayTotalTokens,
-          totalCost: dayTotalCost,
+          sessionCount,
           modelsUsed: day.modelsUsed || [],
         }
       })
@@ -72,7 +96,7 @@ const tokenUsageObj = {
           totalOutputTokens +
           totalCacheCreationTokens +
           totalCacheReadTokens,
-        totalCost,
+        sessionCount: allSessionIds.size,
       }
 
       return {
