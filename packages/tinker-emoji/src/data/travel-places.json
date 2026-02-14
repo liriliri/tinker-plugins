@@ -1,0 +1,3717 @@
+[
+  {
+    "emoji": "🌍",
+    "name": "earth_africa",
+    "shortcode": ":earth_africa:",
+    "category": "旅行和地点",
+    "subcategory": "地图",
+    "description": {
+      "zh": "地球上的欧洲非洲",
+      "en": "globe showing Europe-Africa"
+    },
+    "keywords": {
+      "zh": [
+        "世界",
+        "旅行和地点",
+        "地球上的欧洲非洲",
+        "地图"
+      ],
+      "en": [
+        "globe",
+        "showing",
+        "Europe-Africa"
+      ]
+    }
+  },
+  {
+    "emoji": "🌎",
+    "name": "earth_americas",
+    "shortcode": ":earth_americas:",
+    "category": "旅行和地点",
+    "subcategory": "地图",
+    "description": {
+      "zh": "地球上的美洲",
+      "en": "globe showing Americas"
+    },
+    "keywords": {
+      "zh": [
+        "世界",
+        "旅行和地点",
+        "地球上的美洲",
+        "地图"
+      ],
+      "en": [
+        "globe",
+        "showing",
+        "Americas"
+      ]
+    }
+  },
+  {
+    "emoji": "🌏",
+    "name": "earth_asia",
+    "shortcode": ":earth_asia:",
+    "category": "旅行和地点",
+    "subcategory": "地图",
+    "description": {
+      "zh": "地球上的亚洲澳洲",
+      "en": "globe showing Asia-Australia"
+    },
+    "keywords": {
+      "zh": [
+        "世界",
+        "旅行和地点",
+        "地球上的亚洲澳洲",
+        "地图"
+      ],
+      "en": [
+        "globe",
+        "showing",
+        "Asia-Australia"
+      ]
+    }
+  },
+  {
+    "emoji": "🌐",
+    "name": "globe_with_meridians",
+    "shortcode": ":globe_with_meridians:",
+    "category": "旅行和地点",
+    "subcategory": "地图",
+    "description": {
+      "zh": "带经纬线的地球",
+      "en": "globe with meridians"
+    },
+    "keywords": {
+      "zh": [
+        "世界",
+        "子午线",
+        "旅行和地点",
+        "带经纬线的地球",
+        "地图"
+      ],
+      "en": [
+        "globe",
+        "with",
+        "meridians"
+      ]
+    }
+  },
+  {
+    "emoji": "🗾",
+    "name": "japan",
+    "shortcode": ":japan:",
+    "category": "旅行和地点",
+    "subcategory": "地图",
+    "description": {
+      "zh": "日本地图",
+      "en": "map of Japan"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "日本地图",
+        "地图"
+      ],
+      "en": [
+        "map",
+        "of",
+        "Japan"
+      ]
+    }
+  },
+  {
+    "emoji": "🧭",
+    "name": "compass",
+    "shortcode": ":compass:",
+    "category": "旅行和地点",
+    "subcategory": "地图",
+    "description": {
+      "zh": "指南针",
+      "en": "compass"
+    },
+    "keywords": {
+      "zh": [
+        "定向",
+        "导航",
+        "磁性",
+        "旅行和地点",
+        "指南针",
+        "地图"
+      ],
+      "en": [
+        "compass"
+      ]
+    }
+  },
+  {
+    "emoji": "🌋",
+    "name": "volcano",
+    "shortcode": ":volcano:",
+    "category": "旅行和地点",
+    "subcategory": "地理",
+    "description": {
+      "zh": "火山",
+      "en": "volcano"
+    },
+    "keywords": {
+      "zh": [
+        "喷发",
+        "爆发",
+        "旅行和地点",
+        "火山",
+        "地理"
+      ],
+      "en": [
+        "volcano"
+      ]
+    }
+  },
+  {
+    "emoji": "🗻",
+    "name": "mount_fuji",
+    "shortcode": ":mount_fuji:",
+    "category": "旅行和地点",
+    "subcategory": "地理",
+    "description": {
+      "zh": "富士山",
+      "en": "mount fuji"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "富士山",
+        "地理"
+      ],
+      "en": [
+        "mount",
+        "fuji"
+      ]
+    }
+  },
+  {
+    "emoji": "🧱",
+    "name": "bricks",
+    "shortcode": ":bricks:",
+    "category": "旅行和地点",
+    "subcategory": "建筑",
+    "description": {
+      "zh": "砖",
+      "en": "brick"
+    },
+    "keywords": {
+      "zh": [
+        "墙",
+        "砂浆",
+        "黏土",
+        "旅行和地点",
+        "砖",
+        "建筑"
+      ],
+      "en": [
+        "brick"
+      ]
+    }
+  },
+  {
+    "emoji": "🏠",
+    "name": "house",
+    "shortcode": ":house:",
+    "category": "旅行和地点",
+    "subcategory": "建筑",
+    "description": {
+      "zh": "房子",
+      "en": "house"
+    },
+    "keywords": {
+      "zh": [
+        "家",
+        "旅行和地点",
+        "房子",
+        "建筑"
+      ],
+      "en": [
+        "house"
+      ]
+    }
+  },
+  {
+    "emoji": "🏡",
+    "name": "house_with_garden",
+    "shortcode": ":house_with_garden:",
+    "category": "旅行和地点",
+    "subcategory": "建筑",
+    "description": {
+      "zh": "别墅",
+      "en": "house with garden"
+    },
+    "keywords": {
+      "zh": [
+        "家",
+        "房子",
+        "花园",
+        "旅行和地点",
+        "别墅",
+        "建筑"
+      ],
+      "en": [
+        "house",
+        "with",
+        "garden"
+      ]
+    }
+  },
+  {
+    "emoji": "🏢",
+    "name": "office",
+    "shortcode": ":office:",
+    "category": "旅行和地点",
+    "subcategory": "建筑",
+    "description": {
+      "zh": "办公楼",
+      "en": "office building"
+    },
+    "keywords": {
+      "zh": [
+        "写字楼",
+        "旅行和地点",
+        "办公楼",
+        "建筑"
+      ],
+      "en": [
+        "office",
+        "building"
+      ]
+    }
+  },
+  {
+    "emoji": "🏣",
+    "name": "post_office",
+    "shortcode": ":post_office:",
+    "category": "旅行和地点",
+    "subcategory": "建筑",
+    "description": {
+      "zh": "日本邮局",
+      "en": "Japanese post office"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "日本邮局",
+        "建筑"
+      ],
+      "en": [
+        "Japanese",
+        "post",
+        "office"
+      ]
+    }
+  },
+  {
+    "emoji": "🏤",
+    "name": "european_post_office",
+    "shortcode": ":european_post_office:",
+    "category": "旅行和地点",
+    "subcategory": "建筑",
+    "description": {
+      "zh": "邮局",
+      "en": "post office"
+    },
+    "keywords": {
+      "zh": [
+        "欧洲",
+        "旅行和地点",
+        "邮局",
+        "建筑"
+      ],
+      "en": [
+        "post",
+        "office"
+      ]
+    }
+  },
+  {
+    "emoji": "🏥",
+    "name": "hospital",
+    "shortcode": ":hospital:",
+    "category": "旅行和地点",
+    "subcategory": "建筑",
+    "description": {
+      "zh": "医院",
+      "en": "hospital"
+    },
+    "keywords": {
+      "zh": [
+        "医生",
+        "看病",
+        "旅行和地点",
+        "医院",
+        "建筑"
+      ],
+      "en": [
+        "hospital"
+      ]
+    }
+  },
+  {
+    "emoji": "🏦",
+    "name": "bank",
+    "shortcode": ":bank:",
+    "category": "旅行和地点",
+    "subcategory": "建筑",
+    "description": {
+      "zh": "银行",
+      "en": "bank"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "银行",
+        "建筑"
+      ],
+      "en": [
+        "bank"
+      ]
+    }
+  },
+  {
+    "emoji": "🏨",
+    "name": "hotel",
+    "shortcode": ":hotel:",
+    "category": "旅行和地点",
+    "subcategory": "建筑",
+    "description": {
+      "zh": "酒店",
+      "en": "hotel"
+    },
+    "keywords": {
+      "zh": [
+        "旅馆",
+        "旅行和地点",
+        "酒店",
+        "建筑"
+      ],
+      "en": [
+        "hotel"
+      ]
+    }
+  },
+  {
+    "emoji": "🏩",
+    "name": "love_hotel",
+    "shortcode": ":love_hotel:",
+    "category": "旅行和地点",
+    "subcategory": "建筑",
+    "description": {
+      "zh": "情人酒店",
+      "en": "love hotel"
+    },
+    "keywords": {
+      "zh": [
+        "情人旅馆",
+        "情侣酒店",
+        "旅行和地点",
+        "情人酒店",
+        "建筑"
+      ],
+      "en": [
+        "love",
+        "hotel"
+      ]
+    }
+  },
+  {
+    "emoji": "🏪",
+    "name": "convenience_store",
+    "shortcode": ":convenience_store:",
+    "category": "旅行和地点",
+    "subcategory": "建筑",
+    "description": {
+      "zh": "便利店",
+      "en": "convenience store"
+    },
+    "keywords": {
+      "zh": [
+        "商店",
+        "旅行和地点",
+        "便利店",
+        "建筑"
+      ],
+      "en": [
+        "convenience",
+        "store"
+      ]
+    }
+  },
+  {
+    "emoji": "🏫",
+    "name": "school",
+    "shortcode": ":school:",
+    "category": "旅行和地点",
+    "subcategory": "建筑",
+    "description": {
+      "zh": "学校",
+      "en": "school"
+    },
+    "keywords": {
+      "zh": [
+        "教学楼",
+        "旅行和地点",
+        "学校",
+        "建筑"
+      ],
+      "en": [
+        "school"
+      ]
+    }
+  },
+  {
+    "emoji": "🏬",
+    "name": "department_store",
+    "shortcode": ":department_store:",
+    "category": "旅行和地点",
+    "subcategory": "建筑",
+    "description": {
+      "zh": "商场",
+      "en": "department store"
+    },
+    "keywords": {
+      "zh": [
+        "百货商店",
+        "旅行和地点",
+        "商场",
+        "建筑"
+      ],
+      "en": [
+        "department",
+        "store"
+      ]
+    }
+  },
+  {
+    "emoji": "🏭",
+    "name": "factory",
+    "shortcode": ":factory:",
+    "category": "旅行和地点",
+    "subcategory": "建筑",
+    "description": {
+      "zh": "工厂",
+      "en": "factory"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "工厂",
+        "建筑"
+      ],
+      "en": [
+        "factory"
+      ]
+    }
+  },
+  {
+    "emoji": "🏯",
+    "name": "japanese_castle",
+    "shortcode": ":japanese_castle:",
+    "category": "旅行和地点",
+    "subcategory": "建筑",
+    "description": {
+      "zh": "日本城堡",
+      "en": "Japanese castle"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "日本城堡",
+        "建筑"
+      ],
+      "en": [
+        "Japanese",
+        "castle"
+      ]
+    }
+  },
+  {
+    "emoji": "🏰",
+    "name": "european_castle",
+    "shortcode": ":european_castle:",
+    "category": "旅行和地点",
+    "subcategory": "建筑",
+    "description": {
+      "zh": "欧洲城堡",
+      "en": "castle"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "欧洲城堡",
+        "建筑"
+      ],
+      "en": [
+        "castle"
+      ]
+    }
+  },
+  {
+    "emoji": "💒",
+    "name": "wedding",
+    "shortcode": ":wedding:",
+    "category": "旅行和地点",
+    "subcategory": "建筑",
+    "description": {
+      "zh": "婚礼",
+      "en": "wedding"
+    },
+    "keywords": {
+      "zh": [
+        "教堂",
+        "浪漫",
+        "结婚",
+        "旅行和地点",
+        "婚礼",
+        "建筑"
+      ],
+      "en": [
+        "wedding"
+      ]
+    }
+  },
+  {
+    "emoji": "🗼",
+    "name": "tokyo_tower",
+    "shortcode": ":tokyo_tower:",
+    "category": "旅行和地点",
+    "subcategory": "建筑",
+    "description": {
+      "zh": "东京塔",
+      "en": "Tokyo tower"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "东京塔",
+        "建筑"
+      ],
+      "en": [
+        "Tokyo",
+        "tower"
+      ]
+    }
+  },
+  {
+    "emoji": "🗽",
+    "name": "statue_of_liberty",
+    "shortcode": ":statue_of_liberty:",
+    "category": "旅行和地点",
+    "subcategory": "建筑",
+    "description": {
+      "zh": "自由女神像",
+      "en": "Statue of Liberty"
+    },
+    "keywords": {
+      "zh": [
+        "雕塑",
+        "旅行和地点",
+        "自由女神像",
+        "建筑"
+      ],
+      "en": [
+        "Statue",
+        "of",
+        "Liberty"
+      ]
+    }
+  },
+  {
+    "emoji": "⛪",
+    "name": "church",
+    "shortcode": ":church:",
+    "category": "旅行和地点",
+    "subcategory": "宗教场所",
+    "description": {
+      "zh": "教堂",
+      "en": "church"
+    },
+    "keywords": {
+      "zh": [
+        "基督",
+        "旅行和地点",
+        "教堂",
+        "宗教场所"
+      ],
+      "en": [
+        "church"
+      ]
+    }
+  },
+  {
+    "emoji": "🕌",
+    "name": "mosque",
+    "shortcode": ":mosque:",
+    "category": "旅行和地点",
+    "subcategory": "宗教场所",
+    "description": {
+      "zh": "清真寺",
+      "en": "mosque"
+    },
+    "keywords": {
+      "zh": [
+        "伊斯兰",
+        "穆斯林",
+        "旅行和地点",
+        "清真寺",
+        "宗教场所"
+      ],
+      "en": [
+        "mosque"
+      ]
+    }
+  },
+  {
+    "emoji": "🛕",
+    "name": "hindu_temple",
+    "shortcode": ":hindu_temple:",
+    "category": "旅行和地点",
+    "subcategory": "宗教场所",
+    "description": {
+      "zh": "印度寺庙",
+      "en": "hindu temple"
+    },
+    "keywords": {
+      "zh": [
+        "佛寺",
+        "佛教",
+        "寺院",
+        "庙宇",
+        "旅行和地点",
+        "印度寺庙",
+        "宗教场所"
+      ],
+      "en": [
+        "hindu",
+        "temple"
+      ]
+    }
+  },
+  {
+    "emoji": "🕍",
+    "name": "synagogue",
+    "shortcode": ":synagogue:",
+    "category": "旅行和地点",
+    "subcategory": "宗教场所",
+    "description": {
+      "zh": "犹太教堂",
+      "en": "synagogue"
+    },
+    "keywords": {
+      "zh": [
+        "会堂",
+        "旅行和地点",
+        "犹太教堂",
+        "宗教场所"
+      ],
+      "en": [
+        "synagogue"
+      ]
+    }
+  },
+  {
+    "emoji": "🕋",
+    "name": "kaaba",
+    "shortcode": ":kaaba:",
+    "category": "旅行和地点",
+    "subcategory": "宗教场所",
+    "description": {
+      "zh": "克尔白",
+      "en": "kaaba"
+    },
+    "keywords": {
+      "zh": [
+        "伊斯兰",
+        "天房",
+        "穆斯林",
+        "旅行和地点",
+        "克尔白",
+        "宗教场所"
+      ],
+      "en": [
+        "kaaba"
+      ]
+    }
+  },
+  {
+    "emoji": "⛲",
+    "name": "fountain",
+    "shortcode": ":fountain:",
+    "category": "旅行和地点",
+    "subcategory": "其他场所",
+    "description": {
+      "zh": "喷泉",
+      "en": "fountain"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "喷泉",
+        "其他场所"
+      ],
+      "en": [
+        "fountain"
+      ]
+    }
+  },
+  {
+    "emoji": "⛺",
+    "name": "tent",
+    "shortcode": ":tent:",
+    "category": "旅行和地点",
+    "subcategory": "其他场所",
+    "description": {
+      "zh": "帐篷",
+      "en": "tent"
+    },
+    "keywords": {
+      "zh": [
+        "露营",
+        "旅行和地点",
+        "帐篷",
+        "其他场所"
+      ],
+      "en": [
+        "tent"
+      ]
+    }
+  },
+  {
+    "emoji": "🌁",
+    "name": "foggy",
+    "shortcode": ":foggy:",
+    "category": "旅行和地点",
+    "subcategory": "其他场所",
+    "description": {
+      "zh": "有雾",
+      "en": "foggy"
+    },
+    "keywords": {
+      "zh": [
+        "霾",
+        "旅行和地点",
+        "有雾",
+        "其他场所"
+      ],
+      "en": [
+        "foggy"
+      ]
+    }
+  },
+  {
+    "emoji": "🌃",
+    "name": "night_with_stars",
+    "shortcode": ":night_with_stars:",
+    "category": "旅行和地点",
+    "subcategory": "其他场所",
+    "description": {
+      "zh": "夜晚",
+      "en": "night with stars"
+    },
+    "keywords": {
+      "zh": [
+        "星空",
+        "晚上",
+        "旅行和地点",
+        "夜晚",
+        "其他场所"
+      ],
+      "en": [
+        "night",
+        "with",
+        "stars"
+      ]
+    }
+  },
+  {
+    "emoji": "🌄",
+    "name": "sunrise_over_mountains",
+    "shortcode": ":sunrise_over_mountains:",
+    "category": "旅行和地点",
+    "subcategory": "其他场所",
+    "description": {
+      "zh": "山顶日出",
+      "en": "sunrise over mountains"
+    },
+    "keywords": {
+      "zh": [
+        "太阳",
+        "清晨",
+        "旅行和地点",
+        "山顶日出",
+        "其他场所"
+      ],
+      "en": [
+        "sunrise",
+        "over",
+        "mountains"
+      ]
+    }
+  },
+  {
+    "emoji": "🌅",
+    "name": "sunrise",
+    "shortcode": ":sunrise:",
+    "category": "旅行和地点",
+    "subcategory": "其他场所",
+    "description": {
+      "zh": "日出",
+      "en": "sunrise"
+    },
+    "keywords": {
+      "zh": [
+        "太阳",
+        "清晨",
+        "旅行和地点",
+        "日出",
+        "其他场所"
+      ],
+      "en": [
+        "sunrise"
+      ]
+    }
+  },
+  {
+    "emoji": "🌆",
+    "name": "city_sunset",
+    "shortcode": ":city_sunset:",
+    "category": "旅行和地点",
+    "subcategory": "其他场所",
+    "description": {
+      "zh": "城市黄昏",
+      "en": "cityscape at dusk"
+    },
+    "keywords": {
+      "zh": [
+        "夜晚",
+        "日落",
+        "都市",
+        "旅行和地点",
+        "城市黄昏",
+        "其他场所"
+      ],
+      "en": [
+        "cityscape",
+        "at",
+        "dusk"
+      ]
+    }
+  },
+  {
+    "emoji": "🌇",
+    "name": "city_sunrise",
+    "shortcode": ":city_sunrise:",
+    "category": "旅行和地点",
+    "subcategory": "其他场所",
+    "description": {
+      "zh": "日落",
+      "en": "sunset"
+    },
+    "keywords": {
+      "zh": [
+        "夕阳",
+        "旅行和地点",
+        "日落",
+        "其他场所"
+      ],
+      "en": [
+        "sunset"
+      ]
+    }
+  },
+  {
+    "emoji": "🌉",
+    "name": "bridge_at_night",
+    "shortcode": ":bridge_at_night:",
+    "category": "旅行和地点",
+    "subcategory": "其他场所",
+    "description": {
+      "zh": "夜幕下的桥",
+      "en": "bridge at night"
+    },
+    "keywords": {
+      "zh": [
+        "晚上",
+        "旅行和地点",
+        "夜幕下的桥",
+        "其他场所"
+      ],
+      "en": [
+        "bridge",
+        "at",
+        "night"
+      ]
+    }
+  },
+  {
+    "emoji": "🎠",
+    "name": "carousel_horse",
+    "shortcode": ":carousel_horse:",
+    "category": "旅行和地点",
+    "subcategory": "其他场所",
+    "description": {
+      "zh": "旋转木马",
+      "en": "carousel horse"
+    },
+    "keywords": {
+      "zh": [
+        "游乐园",
+        "旅行和地点",
+        "旋转木马",
+        "其他场所"
+      ],
+      "en": [
+        "carousel",
+        "horse"
+      ]
+    }
+  },
+  {
+    "emoji": "🎡",
+    "name": "ferris_wheel",
+    "shortcode": ":ferris_wheel:",
+    "category": "旅行和地点",
+    "subcategory": "其他场所",
+    "description": {
+      "zh": "摩天轮",
+      "en": "ferris wheel"
+    },
+    "keywords": {
+      "zh": [
+        "游乐园",
+        "旅行和地点",
+        "摩天轮",
+        "其他场所"
+      ],
+      "en": [
+        "ferris",
+        "wheel"
+      ]
+    }
+  },
+  {
+    "emoji": "🎢",
+    "name": "roller_coaster",
+    "shortcode": ":roller_coaster:",
+    "category": "旅行和地点",
+    "subcategory": "其他场所",
+    "description": {
+      "zh": "过山车",
+      "en": "roller coaster"
+    },
+    "keywords": {
+      "zh": [
+        "游乐园",
+        "旅行和地点",
+        "过山车",
+        "其他场所"
+      ],
+      "en": [
+        "roller",
+        "coaster"
+      ]
+    }
+  },
+  {
+    "emoji": "💈",
+    "name": "barber",
+    "shortcode": ":barber:",
+    "category": "旅行和地点",
+    "subcategory": "其他场所",
+    "description": {
+      "zh": "理发店",
+      "en": "barber pole"
+    },
+    "keywords": {
+      "zh": [
+        "旋转",
+        "柱",
+        "旅行和地点",
+        "理发店",
+        "其他场所"
+      ],
+      "en": [
+        "barber",
+        "pole"
+      ]
+    }
+  },
+  {
+    "emoji": "🎪",
+    "name": "circus_tent",
+    "shortcode": ":circus_tent:",
+    "category": "旅行和地点",
+    "subcategory": "其他场所",
+    "description": {
+      "zh": "马戏团帐篷",
+      "en": "circus tent"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "马戏团帐篷",
+        "其他场所"
+      ],
+      "en": [
+        "circus",
+        "tent"
+      ]
+    }
+  },
+  {
+    "emoji": "🚂",
+    "name": "steam_locomotive",
+    "shortcode": ":steam_locomotive:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "蒸汽火车",
+      "en": "locomotive"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "蒸汽火车",
+        "陆路交通"
+      ],
+      "en": [
+        "locomotive"
+      ]
+    }
+  },
+  {
+    "emoji": "🚃",
+    "name": "railway_car",
+    "shortcode": ":railway_car:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "轨道车",
+      "en": "railway car"
+    },
+    "keywords": {
+      "zh": [
+        "电车",
+        "旅行和地点",
+        "轨道车",
+        "陆路交通"
+      ],
+      "en": [
+        "railway",
+        "car"
+      ]
+    }
+  },
+  {
+    "emoji": "🚄",
+    "name": "bullettrain_side",
+    "shortcode": ":bullettrain_side:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "高速列车",
+      "en": "high-speed train"
+    },
+    "keywords": {
+      "zh": [
+        "动车",
+        "新干线",
+        "火车",
+        "高铁",
+        "旅行和地点",
+        "高速列车",
+        "陆路交通"
+      ],
+      "en": [
+        "high-speed",
+        "train"
+      ]
+    }
+  },
+  {
+    "emoji": "🚅",
+    "name": "bullettrain_front",
+    "shortcode": ":bullettrain_front:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "子弹头高速列车",
+      "en": "bullet train"
+    },
+    "keywords": {
+      "zh": [
+        "动车",
+        "新干线",
+        "火车",
+        "高铁",
+        "旅行和地点",
+        "子弹头高速列车",
+        "陆路交通"
+      ],
+      "en": [
+        "bullet",
+        "train"
+      ]
+    }
+  },
+  {
+    "emoji": "🚆",
+    "name": "train2",
+    "shortcode": ":train2:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "火车",
+      "en": "train"
+    },
+    "keywords": {
+      "zh": [
+        "铁路",
+        "旅行和地点",
+        "火车",
+        "陆路交通"
+      ],
+      "en": [
+        "train"
+      ]
+    }
+  },
+  {
+    "emoji": "🚇",
+    "name": "metro",
+    "shortcode": ":metro:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "地铁",
+      "en": "metro"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "地铁",
+        "陆路交通"
+      ],
+      "en": [
+        "metro"
+      ]
+    }
+  },
+  {
+    "emoji": "🚈",
+    "name": "light_rail",
+    "shortcode": ":light_rail:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "轻轨",
+      "en": "light rail"
+    },
+    "keywords": {
+      "zh": [
+        "火车",
+        "旅行和地点",
+        "轻轨",
+        "陆路交通"
+      ],
+      "en": [
+        "light",
+        "rail"
+      ]
+    }
+  },
+  {
+    "emoji": "🚉",
+    "name": "station",
+    "shortcode": ":station:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "车站",
+      "en": "station"
+    },
+    "keywords": {
+      "zh": [
+        "火车",
+        "铁路",
+        "旅行和地点",
+        "车站",
+        "陆路交通"
+      ],
+      "en": [
+        "station"
+      ]
+    }
+  },
+  {
+    "emoji": "🚊",
+    "name": "tram",
+    "shortcode": ":tram:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "路面电车",
+      "en": "tram"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "路面电车",
+        "陆路交通"
+      ],
+      "en": [
+        "tram"
+      ]
+    }
+  },
+  {
+    "emoji": "🚝",
+    "name": "monorail",
+    "shortcode": ":monorail:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "单轨",
+      "en": "monorail"
+    },
+    "keywords": {
+      "zh": [
+        "火车",
+        "旅行和地点",
+        "单轨",
+        "陆路交通"
+      ],
+      "en": [
+        "monorail"
+      ]
+    }
+  },
+  {
+    "emoji": "🚞",
+    "name": "mountain_railway",
+    "shortcode": ":mountain_railway:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "山区铁路",
+      "en": "mountain railway"
+    },
+    "keywords": {
+      "zh": [
+        "火车",
+        "旅行和地点",
+        "山区铁路",
+        "陆路交通"
+      ],
+      "en": [
+        "mountain",
+        "railway"
+      ]
+    }
+  },
+  {
+    "emoji": "🚋",
+    "name": "train",
+    "shortcode": ":train:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "有轨电车",
+      "en": "tram car"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "有轨电车",
+        "陆路交通"
+      ],
+      "en": [
+        "tram",
+        "car"
+      ]
+    }
+  },
+  {
+    "emoji": "🚌",
+    "name": "bus",
+    "shortcode": ":bus:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "公交车",
+      "en": "bus"
+    },
+    "keywords": {
+      "zh": [
+        "公共汽车",
+        "大巴",
+        "旅行和地点",
+        "公交车",
+        "陆路交通"
+      ],
+      "en": [
+        "bus"
+      ]
+    }
+  },
+  {
+    "emoji": "🚍",
+    "name": "oncoming_bus",
+    "shortcode": ":oncoming_bus:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "迎面驶来的公交车",
+      "en": "oncoming bus"
+    },
+    "keywords": {
+      "zh": [
+        "公共汽车",
+        "大巴",
+        "旅行和地点",
+        "迎面驶来的公交车",
+        "陆路交通"
+      ],
+      "en": [
+        "oncoming",
+        "bus"
+      ]
+    }
+  },
+  {
+    "emoji": "🚎",
+    "name": "trolleybus",
+    "shortcode": ":trolleybus:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "无轨电车",
+      "en": "trolleybus"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "无轨电车",
+        "陆路交通"
+      ],
+      "en": [
+        "trolleybus"
+      ]
+    }
+  },
+  {
+    "emoji": "🚐",
+    "name": "minibus",
+    "shortcode": ":minibus:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "小巴",
+      "en": "minibus"
+    },
+    "keywords": {
+      "zh": [
+        "公共汽车",
+        "旅行和地点",
+        "小巴",
+        "陆路交通"
+      ],
+      "en": [
+        "minibus"
+      ]
+    }
+  },
+  {
+    "emoji": "🚑",
+    "name": "ambulance",
+    "shortcode": ":ambulance:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "救护车",
+      "en": "ambulance"
+    },
+    "keywords": {
+      "zh": [
+        "急救",
+        "旅行和地点",
+        "救护车",
+        "陆路交通"
+      ],
+      "en": [
+        "ambulance"
+      ]
+    }
+  },
+  {
+    "emoji": "🚒",
+    "name": "fire_engine",
+    "shortcode": ":fire_engine:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "消防车",
+      "en": "fire engine"
+    },
+    "keywords": {
+      "zh": [
+        "救火车",
+        "旅行和地点",
+        "消防车",
+        "陆路交通"
+      ],
+      "en": [
+        "fire",
+        "engine"
+      ]
+    }
+  },
+  {
+    "emoji": "🚓",
+    "name": "police_car",
+    "shortcode": ":police_car:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "警车",
+      "en": "police car"
+    },
+    "keywords": {
+      "zh": [
+        "警察",
+        "巡逻",
+        "旅行和地点",
+        "警车",
+        "陆路交通"
+      ],
+      "en": [
+        "police",
+        "car"
+      ]
+    }
+  },
+  {
+    "emoji": "🚔",
+    "name": "oncoming_police_car",
+    "shortcode": ":oncoming_police_car:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "迎面驶来的警车",
+      "en": "oncoming police car"
+    },
+    "keywords": {
+      "zh": [
+        "警察",
+        "旅行和地点",
+        "迎面驶来的警车",
+        "陆路交通"
+      ],
+      "en": [
+        "oncoming",
+        "police",
+        "car"
+      ]
+    }
+  },
+  {
+    "emoji": "🚕",
+    "name": "taxi",
+    "shortcode": ":taxi:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "出租车",
+      "en": "taxi"
+    },
+    "keywords": {
+      "zh": [
+        "的士",
+        "旅行和地点",
+        "出租车",
+        "陆路交通"
+      ],
+      "en": [
+        "taxi"
+      ]
+    }
+  },
+  {
+    "emoji": "🚖",
+    "name": "oncoming_taxi",
+    "shortcode": ":oncoming_taxi:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "迎面驶来的出租车",
+      "en": "oncoming taxi"
+    },
+    "keywords": {
+      "zh": [
+        "的士",
+        "旅行和地点",
+        "迎面驶来的出租车",
+        "陆路交通"
+      ],
+      "en": [
+        "oncoming",
+        "taxi"
+      ]
+    }
+  },
+  {
+    "emoji": "🚗",
+    "name": "red_car",
+    "shortcode": ":red_car:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "汽车",
+      "en": "automobile"
+    },
+    "keywords": {
+      "zh": [
+        "轿车",
+        "旅行和地点",
+        "汽车",
+        "陆路交通"
+      ],
+      "en": [
+        "automobile"
+      ]
+    }
+  },
+  {
+    "emoji": "🚘",
+    "name": "oncoming_automobile",
+    "shortcode": ":oncoming_automobile:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "迎面驶来的汽车",
+      "en": "oncoming automobile"
+    },
+    "keywords": {
+      "zh": [
+        "轿车",
+        "旅行和地点",
+        "迎面驶来的汽车",
+        "陆路交通"
+      ],
+      "en": [
+        "oncoming",
+        "automobile"
+      ]
+    }
+  },
+  {
+    "emoji": "🚙",
+    "name": "blue_car",
+    "shortcode": ":blue_car:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "运动型多用途车",
+      "en": "sport utility vehicle"
+    },
+    "keywords": {
+      "zh": [
+        "休闲车",
+        "旅行和地点",
+        "运动型多用途车",
+        "陆路交通"
+      ],
+      "en": [
+        "SUV",
+        "sport",
+        "utility",
+        "vehicle"
+      ]
+    }
+  },
+  {
+    "emoji": "🚚",
+    "name": "truck",
+    "shortcode": ":truck:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "货车",
+      "en": "delivery truck"
+    },
+    "keywords": {
+      "zh": [
+        "卡车",
+        "旅行和地点",
+        "货车",
+        "陆路交通"
+      ],
+      "en": [
+        "delivery",
+        "truck"
+      ]
+    }
+  },
+  {
+    "emoji": "🚛",
+    "name": "articulated_lorry",
+    "shortcode": ":articulated_lorry:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "铰接式货车",
+      "en": "articulated lorry"
+    },
+    "keywords": {
+      "zh": [
+        "卡车",
+        "拖车",
+        "旅行和地点",
+        "铰接式货车",
+        "陆路交通"
+      ],
+      "en": [
+        "articulated",
+        "lorry"
+      ]
+    }
+  },
+  {
+    "emoji": "🚜",
+    "name": "tractor",
+    "shortcode": ":tractor:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "拖拉机",
+      "en": "tractor"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "拖拉机",
+        "陆路交通"
+      ],
+      "en": [
+        "tractor"
+      ]
+    }
+  },
+  {
+    "emoji": "🛵",
+    "name": "motor_scooter",
+    "shortcode": ":motor_scooter:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "小型摩托车",
+      "en": "motor scooter"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "小型摩托车",
+        "陆路交通"
+      ],
+      "en": [
+        "motor",
+        "scooter"
+      ]
+    }
+  },
+  {
+    "emoji": "🦽",
+    "name": "manual_wheelchair",
+    "shortcode": ":manual_wheelchair:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "手动轮椅",
+      "en": "manual wheelchair"
+    },
+    "keywords": {
+      "zh": [
+        "无障碍",
+        "旅行和地点",
+        "手动轮椅",
+        "陆路交通"
+      ],
+      "en": [
+        "manual",
+        "wheelchair"
+      ]
+    }
+  },
+  {
+    "emoji": "🦼",
+    "name": "motorized_wheelchair",
+    "shortcode": ":motorized_wheelchair:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "电动轮椅",
+      "en": "motorized wheelchair"
+    },
+    "keywords": {
+      "zh": [
+        "无障碍",
+        "旅行和地点",
+        "电动轮椅",
+        "陆路交通"
+      ],
+      "en": [
+        "motorized",
+        "wheelchair"
+      ]
+    }
+  },
+  {
+    "emoji": "🛺",
+    "name": "auto_rickshaw",
+    "shortcode": ":auto_rickshaw:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "三轮摩托车",
+      "en": "auto rickshaw"
+    },
+    "keywords": {
+      "zh": [
+        "三脚鸡",
+        "三蹦子",
+        "嘟嘟车",
+        "自动人力车",
+        "旅行和地点",
+        "三轮摩托车",
+        "陆路交通"
+      ],
+      "en": [
+        "auto",
+        "rickshaw"
+      ]
+    }
+  },
+  {
+    "emoji": "🚲",
+    "name": "bike",
+    "shortcode": ":bike:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "自行车",
+      "en": "bicycle"
+    },
+    "keywords": {
+      "zh": [
+        "单车",
+        "脚踏车",
+        "旅行和地点",
+        "自行车",
+        "陆路交通"
+      ],
+      "en": [
+        "bicycle"
+      ]
+    }
+  },
+  {
+    "emoji": "🛴",
+    "name": "kick_scooter",
+    "shortcode": ":kick_scooter:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "滑板车",
+      "en": "kick scooter"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "滑板车",
+        "陆路交通"
+      ],
+      "en": [
+        "kick",
+        "scooter"
+      ]
+    }
+  },
+  {
+    "emoji": "🛹",
+    "name": "skateboard",
+    "shortcode": ":skateboard:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "滑板",
+      "en": "skateboard"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "滑板",
+        "陆路交通"
+      ],
+      "en": [
+        "skateboard"
+      ]
+    }
+  },
+  {
+    "emoji": "🚏",
+    "name": "busstop",
+    "shortcode": ":busstop:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "公交车站",
+      "en": "bus stop"
+    },
+    "keywords": {
+      "zh": [
+        "公交站",
+        "公共汽车站",
+        "旅行和地点",
+        "公交车站",
+        "陆路交通"
+      ],
+      "en": [
+        "bus",
+        "stop"
+      ]
+    }
+  },
+  {
+    "emoji": "⛽",
+    "name": "fuelpump",
+    "shortcode": ":fuelpump:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "油泵",
+      "en": "fuel pump"
+    },
+    "keywords": {
+      "zh": [
+        "加油站",
+        "柴油",
+        "燃油",
+        "旅行和地点",
+        "油泵",
+        "陆路交通"
+      ],
+      "en": [
+        "fuel",
+        "pump"
+      ]
+    }
+  },
+  {
+    "emoji": "🚨",
+    "name": "rotating_light",
+    "shortcode": ":rotating_light:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "警车灯",
+      "en": "police car light"
+    },
+    "keywords": {
+      "zh": [
+        "警报",
+        "警灯",
+        "警示",
+        "旅行和地点",
+        "警车灯",
+        "陆路交通"
+      ],
+      "en": [
+        "police",
+        "car",
+        "light"
+      ]
+    }
+  },
+  {
+    "emoji": "🚥",
+    "name": "traffic_light",
+    "shortcode": ":traffic_light:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "横向的红绿灯",
+      "en": "horizontal traffic light"
+    },
+    "keywords": {
+      "zh": [
+        "交通灯",
+        "信号灯",
+        "旅行和地点",
+        "横向的红绿灯",
+        "陆路交通"
+      ],
+      "en": [
+        "horizontal",
+        "traffic",
+        "light"
+      ]
+    }
+  },
+  {
+    "emoji": "🚦",
+    "name": "vertical_traffic_light",
+    "shortcode": ":vertical_traffic_light:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "纵向的红绿灯",
+      "en": "vertical traffic light"
+    },
+    "keywords": {
+      "zh": [
+        "交通灯",
+        "信号灯",
+        "旅行和地点",
+        "纵向的红绿灯",
+        "陆路交通"
+      ],
+      "en": [
+        "vertical",
+        "traffic",
+        "light"
+      ]
+    }
+  },
+  {
+    "emoji": "🛑",
+    "name": "stop_sign",
+    "shortcode": ":stop_sign:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "停止标志",
+      "en": "stop sign"
+    },
+    "keywords": {
+      "zh": [
+        "八边形",
+        "旅行和地点",
+        "停止标志",
+        "陆路交通"
+      ],
+      "en": [
+        "stop",
+        "sign"
+      ]
+    }
+  },
+  {
+    "emoji": "🚧",
+    "name": "construction",
+    "shortcode": ":construction:",
+    "category": "旅行和地点",
+    "subcategory": "陆路交通",
+    "description": {
+      "zh": "路障",
+      "en": "construction"
+    },
+    "keywords": {
+      "zh": [
+        "施工",
+        "旅行和地点",
+        "路障",
+        "陆路交通"
+      ],
+      "en": [
+        "construction"
+      ]
+    }
+  },
+  {
+    "emoji": "⚓",
+    "name": "anchor",
+    "shortcode": ":anchor:",
+    "category": "旅行和地点",
+    "subcategory": "水路交通",
+    "description": {
+      "zh": "锚",
+      "en": "anchor"
+    },
+    "keywords": {
+      "zh": [
+        "停泊",
+        "船",
+        "旅行和地点",
+        "锚",
+        "水路交通"
+      ],
+      "en": [
+        "anchor"
+      ]
+    }
+  },
+  {
+    "emoji": "⛵",
+    "name": "sailboat",
+    "shortcode": ":sailboat:",
+    "category": "旅行和地点",
+    "subcategory": "水路交通",
+    "description": {
+      "zh": "帆船",
+      "en": "sailboat"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "帆船",
+        "水路交通"
+      ],
+      "en": [
+        "sailboat"
+      ]
+    }
+  },
+  {
+    "emoji": "🛶",
+    "name": "canoe",
+    "shortcode": ":canoe:",
+    "category": "旅行和地点",
+    "subcategory": "水路交通",
+    "description": {
+      "zh": "独木舟",
+      "en": "canoe"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "独木舟",
+        "水路交通"
+      ],
+      "en": [
+        "canoe"
+      ]
+    }
+  },
+  {
+    "emoji": "🚤",
+    "name": "speedboat",
+    "shortcode": ":speedboat:",
+    "category": "旅行和地点",
+    "subcategory": "水路交通",
+    "description": {
+      "zh": "快艇",
+      "en": "speedboat"
+    },
+    "keywords": {
+      "zh": [
+        "船",
+        "旅行和地点",
+        "快艇",
+        "水路交通"
+      ],
+      "en": [
+        "speedboat"
+      ]
+    }
+  },
+  {
+    "emoji": "🚢",
+    "name": "ship",
+    "shortcode": ":ship:",
+    "category": "旅行和地点",
+    "subcategory": "水路交通",
+    "description": {
+      "zh": "船",
+      "en": "ship"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "船",
+        "水路交通"
+      ],
+      "en": [
+        "ship"
+      ]
+    }
+  },
+  {
+    "emoji": "🛫",
+    "name": "flight_departure",
+    "shortcode": ":flight_departure:",
+    "category": "旅行和地点",
+    "subcategory": "空中运输",
+    "description": {
+      "zh": "航班起飞",
+      "en": "airplane departure"
+    },
+    "keywords": {
+      "zh": [
+        "值机",
+        "登机",
+        "旅行和地点",
+        "航班起飞",
+        "空中运输"
+      ],
+      "en": [
+        "airplane",
+        "departure"
+      ]
+    }
+  },
+  {
+    "emoji": "🛬",
+    "name": "flight_arrival",
+    "shortcode": ":flight_arrival:",
+    "category": "旅行和地点",
+    "subcategory": "空中运输",
+    "description": {
+      "zh": "航班降落",
+      "en": "airplane arrival"
+    },
+    "keywords": {
+      "zh": [
+        "到达",
+        "旅行和地点",
+        "航班降落",
+        "空中运输"
+      ],
+      "en": [
+        "airplane",
+        "arrival"
+      ]
+    }
+  },
+  {
+    "emoji": "🪂",
+    "name": "parachute",
+    "shortcode": ":parachute:",
+    "category": "旅行和地点",
+    "subcategory": "空中运输",
+    "description": {
+      "zh": "降落伞",
+      "en": "parachute"
+    },
+    "keywords": {
+      "zh": [
+        "帆伞",
+        "悬挂滑翔",
+        "滑翔伞",
+        "跳伞",
+        "旅行和地点",
+        "降落伞",
+        "空中运输"
+      ],
+      "en": [
+        "parachute"
+      ]
+    }
+  },
+  {
+    "emoji": "💺",
+    "name": "seat",
+    "shortcode": ":seat:",
+    "category": "旅行和地点",
+    "subcategory": "空中运输",
+    "description": {
+      "zh": "座位",
+      "en": "seat"
+    },
+    "keywords": {
+      "zh": [
+        "椅子",
+        "旅行和地点",
+        "座位",
+        "空中运输"
+      ],
+      "en": [
+        "seat"
+      ]
+    }
+  },
+  {
+    "emoji": "🚁",
+    "name": "helicopter",
+    "shortcode": ":helicopter:",
+    "category": "旅行和地点",
+    "subcategory": "空中运输",
+    "description": {
+      "zh": "直升机",
+      "en": "helicopter"
+    },
+    "keywords": {
+      "zh": [
+        "直升飞机",
+        "旅行和地点",
+        "直升机",
+        "空中运输"
+      ],
+      "en": [
+        "helicopter"
+      ]
+    }
+  },
+  {
+    "emoji": "🚟",
+    "name": "suspension_railway",
+    "shortcode": ":suspension_railway:",
+    "category": "旅行和地点",
+    "subcategory": "空中运输",
+    "description": {
+      "zh": "空轨",
+      "en": "suspension railway"
+    },
+    "keywords": {
+      "zh": [
+        "悬挂",
+        "空中轨道列车",
+        "旅行和地点",
+        "空轨",
+        "空中运输"
+      ],
+      "en": [
+        "suspension",
+        "railway"
+      ]
+    }
+  },
+  {
+    "emoji": "🚠",
+    "name": "mountain_cableway",
+    "shortcode": ":mountain_cableway:",
+    "category": "旅行和地点",
+    "subcategory": "空中运输",
+    "description": {
+      "zh": "缆车",
+      "en": "mountain cableway"
+    },
+    "keywords": {
+      "zh": [
+        "索道",
+        "旅行和地点",
+        "缆车",
+        "空中运输"
+      ],
+      "en": [
+        "mountain",
+        "cableway"
+      ]
+    }
+  },
+  {
+    "emoji": "🚡",
+    "name": "aerial_tramway",
+    "shortcode": ":aerial_tramway:",
+    "category": "旅行和地点",
+    "subcategory": "空中运输",
+    "description": {
+      "zh": "索道",
+      "en": "aerial tramway"
+    },
+    "keywords": {
+      "zh": [
+        "缆车",
+        "旅行和地点",
+        "索道",
+        "空中运输"
+      ],
+      "en": [
+        "aerial",
+        "tramway"
+      ]
+    }
+  },
+  {
+    "emoji": "🚀",
+    "name": "rocket",
+    "shortcode": ":rocket:",
+    "category": "旅行和地点",
+    "subcategory": "空中运输",
+    "description": {
+      "zh": "火箭",
+      "en": "rocket"
+    },
+    "keywords": {
+      "zh": [
+        "太空",
+        "旅行和地点",
+        "火箭",
+        "空中运输"
+      ],
+      "en": [
+        "rocket"
+      ]
+    }
+  },
+  {
+    "emoji": "🛸",
+    "name": "flying_saucer",
+    "shortcode": ":flying_saucer:",
+    "category": "旅行和地点",
+    "subcategory": "空中运输",
+    "description": {
+      "zh": "飞碟",
+      "en": "flying saucer"
+    },
+    "keywords": {
+      "zh": [
+        "不明飞行物",
+        "旅行和地点",
+        "飞碟",
+        "空中运输"
+      ],
+      "en": [
+        "UFO",
+        "flying",
+        "saucer"
+      ]
+    }
+  },
+  {
+    "emoji": "🧳",
+    "name": "luggage",
+    "shortcode": ":luggage:",
+    "category": "旅行和地点",
+    "subcategory": "酒店",
+    "description": {
+      "zh": "行李箱",
+      "en": "luggage"
+    },
+    "keywords": {
+      "zh": [
+        "包装",
+        "旅行和地点",
+        "行李箱",
+        "酒店"
+      ],
+      "en": [
+        "luggage"
+      ]
+    }
+  },
+  {
+    "emoji": "⌛",
+    "name": "hourglass",
+    "shortcode": ":hourglass:",
+    "category": "旅行和地点",
+    "subcategory": "时间",
+    "description": {
+      "zh": "沙漏",
+      "en": "hourglass done"
+    },
+    "keywords": {
+      "zh": [
+        "计时器",
+        "旅行和地点",
+        "沙漏",
+        "时间"
+      ],
+      "en": [
+        "hourglass",
+        "done"
+      ]
+    }
+  },
+  {
+    "emoji": "⏳",
+    "name": "hourglass_flowing_sand",
+    "shortcode": ":hourglass_flowing_sand:",
+    "category": "旅行和地点",
+    "subcategory": "时间",
+    "description": {
+      "zh": "沙正往下流的沙漏",
+      "en": "hourglass not done"
+    },
+    "keywords": {
+      "zh": [
+        "计时器",
+        "旅行和地点",
+        "沙正往下流的沙漏",
+        "时间"
+      ],
+      "en": [
+        "hourglass",
+        "not",
+        "done"
+      ]
+    }
+  },
+  {
+    "emoji": "⌚",
+    "name": "watch",
+    "shortcode": ":watch:",
+    "category": "旅行和地点",
+    "subcategory": "时间",
+    "description": {
+      "zh": "手表",
+      "en": "watch"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "手表",
+        "时间"
+      ],
+      "en": [
+        "watch"
+      ]
+    }
+  },
+  {
+    "emoji": "⏰",
+    "name": "alarm_clock",
+    "shortcode": ":alarm_clock:",
+    "category": "旅行和地点",
+    "subcategory": "时间",
+    "description": {
+      "zh": "闹钟",
+      "en": "alarm clock"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "闹钟",
+        "时间"
+      ],
+      "en": [
+        "alarm",
+        "clock"
+      ]
+    }
+  },
+  {
+    "emoji": "🕛",
+    "name": "clock12",
+    "shortcode": ":clock12:",
+    "category": "旅行和地点",
+    "subcategory": "时间",
+    "description": {
+      "zh": "十二点",
+      "en": "twelve o’clock"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "十二点",
+        "时间"
+      ],
+      "en": [
+        "12:00",
+        "twelve",
+        "o’clock"
+      ]
+    }
+  },
+  {
+    "emoji": "🕧",
+    "name": "clock1230",
+    "shortcode": ":clock1230:",
+    "category": "旅行和地点",
+    "subcategory": "时间",
+    "description": {
+      "zh": "十二点半",
+      "en": "twelve-thirty"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "十二点半",
+        "时间"
+      ],
+      "en": [
+        "12:30",
+        "twelve-thirty"
+      ]
+    }
+  },
+  {
+    "emoji": "🕐",
+    "name": "clock1",
+    "shortcode": ":clock1:",
+    "category": "旅行和地点",
+    "subcategory": "时间",
+    "description": {
+      "zh": "一点",
+      "en": "one o’clock"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "一点",
+        "时间"
+      ],
+      "en": [
+        "1:00",
+        "one",
+        "o’clock"
+      ]
+    }
+  },
+  {
+    "emoji": "🕜",
+    "name": "clock130",
+    "shortcode": ":clock130:",
+    "category": "旅行和地点",
+    "subcategory": "时间",
+    "description": {
+      "zh": "一点半",
+      "en": "one-thirty"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "一点半",
+        "时间"
+      ],
+      "en": [
+        "1:30",
+        "one-thirty"
+      ]
+    }
+  },
+  {
+    "emoji": "🕑",
+    "name": "clock2",
+    "shortcode": ":clock2:",
+    "category": "旅行和地点",
+    "subcategory": "时间",
+    "description": {
+      "zh": "两点",
+      "en": "two o’clock"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "两点",
+        "时间"
+      ],
+      "en": [
+        "2:00",
+        "two",
+        "o’clock"
+      ]
+    }
+  },
+  {
+    "emoji": "🕝",
+    "name": "clock230",
+    "shortcode": ":clock230:",
+    "category": "旅行和地点",
+    "subcategory": "时间",
+    "description": {
+      "zh": "两点半",
+      "en": "two-thirty"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "两点半",
+        "时间"
+      ],
+      "en": [
+        "2:30",
+        "two-thirty"
+      ]
+    }
+  },
+  {
+    "emoji": "🕒",
+    "name": "clock3",
+    "shortcode": ":clock3:",
+    "category": "旅行和地点",
+    "subcategory": "时间",
+    "description": {
+      "zh": "三点",
+      "en": "three o’clock"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "三点",
+        "时间"
+      ],
+      "en": [
+        "3:00",
+        "three",
+        "o’clock"
+      ]
+    }
+  },
+  {
+    "emoji": "🕞",
+    "name": "clock330",
+    "shortcode": ":clock330:",
+    "category": "旅行和地点",
+    "subcategory": "时间",
+    "description": {
+      "zh": "三点半",
+      "en": "three-thirty"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "三点半",
+        "时间"
+      ],
+      "en": [
+        "3:30",
+        "three-thirty"
+      ]
+    }
+  },
+  {
+    "emoji": "🕓",
+    "name": "clock4",
+    "shortcode": ":clock4:",
+    "category": "旅行和地点",
+    "subcategory": "时间",
+    "description": {
+      "zh": "四点",
+      "en": "four o’clock"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "四点",
+        "时间"
+      ],
+      "en": [
+        "4:00",
+        "four",
+        "o’clock"
+      ]
+    }
+  },
+  {
+    "emoji": "🕟",
+    "name": "clock430",
+    "shortcode": ":clock430:",
+    "category": "旅行和地点",
+    "subcategory": "时间",
+    "description": {
+      "zh": "四点半",
+      "en": "four-thirty"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "四点半",
+        "时间"
+      ],
+      "en": [
+        "4:30",
+        "four-thirty"
+      ]
+    }
+  },
+  {
+    "emoji": "🕔",
+    "name": "clock5",
+    "shortcode": ":clock5:",
+    "category": "旅行和地点",
+    "subcategory": "时间",
+    "description": {
+      "zh": "五点",
+      "en": "five o’clock"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "五点",
+        "时间"
+      ],
+      "en": [
+        "5:00",
+        "five",
+        "o’clock"
+      ]
+    }
+  },
+  {
+    "emoji": "🕠",
+    "name": "clock530",
+    "shortcode": ":clock530:",
+    "category": "旅行和地点",
+    "subcategory": "时间",
+    "description": {
+      "zh": "五点半",
+      "en": "five-thirty"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "五点半",
+        "时间"
+      ],
+      "en": [
+        "5:30",
+        "five-thirty"
+      ]
+    }
+  },
+  {
+    "emoji": "🕕",
+    "name": "clock6",
+    "shortcode": ":clock6:",
+    "category": "旅行和地点",
+    "subcategory": "时间",
+    "description": {
+      "zh": "六点",
+      "en": "six o’clock"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "六点",
+        "时间"
+      ],
+      "en": [
+        "6:00",
+        "six",
+        "o’clock"
+      ]
+    }
+  },
+  {
+    "emoji": "🕡",
+    "name": "clock630",
+    "shortcode": ":clock630:",
+    "category": "旅行和地点",
+    "subcategory": "时间",
+    "description": {
+      "zh": "六点半",
+      "en": "six-thirty"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "六点半",
+        "时间"
+      ],
+      "en": [
+        "6:30",
+        "six-thirty"
+      ]
+    }
+  },
+  {
+    "emoji": "🕖",
+    "name": "clock7",
+    "shortcode": ":clock7:",
+    "category": "旅行和地点",
+    "subcategory": "时间",
+    "description": {
+      "zh": "七点",
+      "en": "seven o’clock"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "七点",
+        "时间"
+      ],
+      "en": [
+        "7:00",
+        "seven",
+        "o’clock"
+      ]
+    }
+  },
+  {
+    "emoji": "🕢",
+    "name": "clock730",
+    "shortcode": ":clock730:",
+    "category": "旅行和地点",
+    "subcategory": "时间",
+    "description": {
+      "zh": "七点半",
+      "en": "seven-thirty"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "七点半",
+        "时间"
+      ],
+      "en": [
+        "7:30",
+        "seven-thirty"
+      ]
+    }
+  },
+  {
+    "emoji": "🕗",
+    "name": "clock8",
+    "shortcode": ":clock8:",
+    "category": "旅行和地点",
+    "subcategory": "时间",
+    "description": {
+      "zh": "八点",
+      "en": "eight o’clock"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "八点",
+        "时间"
+      ],
+      "en": [
+        "8:00",
+        "eight",
+        "o’clock"
+      ]
+    }
+  },
+  {
+    "emoji": "🕣",
+    "name": "clock830",
+    "shortcode": ":clock830:",
+    "category": "旅行和地点",
+    "subcategory": "时间",
+    "description": {
+      "zh": "八点半",
+      "en": "eight-thirty"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "八点半",
+        "时间"
+      ],
+      "en": [
+        "8:30",
+        "eight-thirty"
+      ]
+    }
+  },
+  {
+    "emoji": "🕘",
+    "name": "clock9",
+    "shortcode": ":clock9:",
+    "category": "旅行和地点",
+    "subcategory": "时间",
+    "description": {
+      "zh": "九点",
+      "en": "nine o’clock"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "九点",
+        "时间"
+      ],
+      "en": [
+        "9:00",
+        "nine",
+        "o’clock"
+      ]
+    }
+  },
+  {
+    "emoji": "🕤",
+    "name": "clock930",
+    "shortcode": ":clock930:",
+    "category": "旅行和地点",
+    "subcategory": "时间",
+    "description": {
+      "zh": "九点半",
+      "en": "nine-thirty"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "九点半",
+        "时间"
+      ],
+      "en": [
+        "9:30",
+        "nine-thirty"
+      ]
+    }
+  },
+  {
+    "emoji": "🕙",
+    "name": "clock10",
+    "shortcode": ":clock10:",
+    "category": "旅行和地点",
+    "subcategory": "时间",
+    "description": {
+      "zh": "十点",
+      "en": "ten o’clock"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "十点",
+        "时间"
+      ],
+      "en": [
+        "10:00",
+        "ten",
+        "o’clock"
+      ]
+    }
+  },
+  {
+    "emoji": "🕥",
+    "name": "clock1030",
+    "shortcode": ":clock1030:",
+    "category": "旅行和地点",
+    "subcategory": "时间",
+    "description": {
+      "zh": "十点半",
+      "en": "ten-thirty"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "十点半",
+        "时间"
+      ],
+      "en": [
+        "10:30",
+        "ten-thirty"
+      ]
+    }
+  },
+  {
+    "emoji": "🕚",
+    "name": "clock11",
+    "shortcode": ":clock11:",
+    "category": "旅行和地点",
+    "subcategory": "时间",
+    "description": {
+      "zh": "十一点",
+      "en": "eleven o’clock"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "十一点",
+        "时间"
+      ],
+      "en": [
+        "11:00",
+        "eleven",
+        "o’clock"
+      ]
+    }
+  },
+  {
+    "emoji": "🕦",
+    "name": "clock1130",
+    "shortcode": ":clock1130:",
+    "category": "旅行和地点",
+    "subcategory": "时间",
+    "description": {
+      "zh": "十一点半",
+      "en": "eleven-thirty"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "十一点半",
+        "时间"
+      ],
+      "en": [
+        "11:30",
+        "eleven-thirty"
+      ]
+    }
+  },
+  {
+    "emoji": "🌑",
+    "name": "new_moon",
+    "shortcode": ":new_moon:",
+    "category": "旅行和地点",
+    "subcategory": "天空和天气",
+    "description": {
+      "zh": "朔月",
+      "en": "new moon"
+    },
+    "keywords": {
+      "zh": [
+        "新月",
+        "月亮",
+        "旅行和地点",
+        "朔月",
+        "天空和天气"
+      ],
+      "en": [
+        "new",
+        "moon"
+      ]
+    }
+  },
+  {
+    "emoji": "🌒",
+    "name": "waxing_crescent_moon",
+    "shortcode": ":waxing_crescent_moon:",
+    "category": "旅行和地点",
+    "subcategory": "天空和天气",
+    "description": {
+      "zh": "娥眉月",
+      "en": "waxing crescent moon"
+    },
+    "keywords": {
+      "zh": [
+        "三日月",
+        "弯月",
+        "月亮",
+        "旅行和地点",
+        "娥眉月",
+        "天空和天气"
+      ],
+      "en": [
+        "waxing",
+        "crescent",
+        "moon"
+      ]
+    }
+  },
+  {
+    "emoji": "🌓",
+    "name": "first_quarter_moon",
+    "shortcode": ":first_quarter_moon:",
+    "category": "旅行和地点",
+    "subcategory": "天空和天气",
+    "description": {
+      "zh": "上弦月",
+      "en": "first quarter moon"
+    },
+    "keywords": {
+      "zh": [
+        "月亮",
+        "旅行和地点",
+        "上弦月",
+        "天空和天气"
+      ],
+      "en": [
+        "first",
+        "quarter",
+        "moon"
+      ]
+    }
+  },
+  {
+    "emoji": "🌔",
+    "name": "waxing_gibbous_moon",
+    "shortcode": ":waxing_gibbous_moon:",
+    "category": "旅行和地点",
+    "subcategory": "天空和天气",
+    "description": {
+      "zh": "盈凸月",
+      "en": "waxing gibbous moon"
+    },
+    "keywords": {
+      "zh": [
+        "月亮",
+        "旅行和地点",
+        "盈凸月",
+        "天空和天气"
+      ],
+      "en": [
+        "waxing",
+        "gibbous",
+        "moon"
+      ]
+    }
+  },
+  {
+    "emoji": "🌕",
+    "name": "full_moon",
+    "shortcode": ":full_moon:",
+    "category": "旅行和地点",
+    "subcategory": "天空和天气",
+    "description": {
+      "zh": "满月",
+      "en": "full moon"
+    },
+    "keywords": {
+      "zh": [
+        "月亮",
+        "望月",
+        "旅行和地点",
+        "满月",
+        "天空和天气"
+      ],
+      "en": [
+        "full",
+        "moon"
+      ]
+    }
+  },
+  {
+    "emoji": "🌖",
+    "name": "waning_gibbous_moon",
+    "shortcode": ":waning_gibbous_moon:",
+    "category": "旅行和地点",
+    "subcategory": "天空和天气",
+    "description": {
+      "zh": "亏凸月",
+      "en": "waning gibbous moon"
+    },
+    "keywords": {
+      "zh": [
+        "月亮",
+        "旅行和地点",
+        "亏凸月",
+        "天空和天气"
+      ],
+      "en": [
+        "waning",
+        "gibbous",
+        "moon"
+      ]
+    }
+  },
+  {
+    "emoji": "🌗",
+    "name": "last_quarter_moon",
+    "shortcode": ":last_quarter_moon:",
+    "category": "旅行和地点",
+    "subcategory": "天空和天气",
+    "description": {
+      "zh": "下弦月",
+      "en": "last quarter moon"
+    },
+    "keywords": {
+      "zh": [
+        "月亮",
+        "旅行和地点",
+        "下弦月",
+        "天空和天气"
+      ],
+      "en": [
+        "last",
+        "quarter",
+        "moon"
+      ]
+    }
+  },
+  {
+    "emoji": "🌘",
+    "name": "waning_crescent_moon",
+    "shortcode": ":waning_crescent_moon:",
+    "category": "旅行和地点",
+    "subcategory": "天空和天气",
+    "description": {
+      "zh": "残月",
+      "en": "waning crescent moon"
+    },
+    "keywords": {
+      "zh": [
+        "亏眉月",
+        "弯月",
+        "月亮",
+        "旅行和地点",
+        "残月",
+        "天空和天气"
+      ],
+      "en": [
+        "waning",
+        "crescent",
+        "moon"
+      ]
+    }
+  },
+  {
+    "emoji": "🌙",
+    "name": "crescent_moon",
+    "shortcode": ":crescent_moon:",
+    "category": "旅行和地点",
+    "subcategory": "天空和天气",
+    "description": {
+      "zh": "弯月",
+      "en": "crescent moon"
+    },
+    "keywords": {
+      "zh": [
+        "娥眉月",
+        "月亮",
+        "旅行和地点",
+        "弯月",
+        "天空和天气"
+      ],
+      "en": [
+        "crescent",
+        "moon"
+      ]
+    }
+  },
+  {
+    "emoji": "🌚",
+    "name": "new_moon_with_face",
+    "shortcode": ":new_moon_with_face:",
+    "category": "旅行和地点",
+    "subcategory": "天空和天气",
+    "description": {
+      "zh": "微笑的朔月",
+      "en": "new moon face"
+    },
+    "keywords": {
+      "zh": [
+        "月亮",
+        "旅行和地点",
+        "微笑的朔月",
+        "天空和天气"
+      ],
+      "en": [
+        "new",
+        "moon",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🌛",
+    "name": "first_quarter_moon_with_face",
+    "shortcode": ":first_quarter_moon_with_face:",
+    "category": "旅行和地点",
+    "subcategory": "天空和天气",
+    "description": {
+      "zh": "微笑的上弦月",
+      "en": "first quarter moon face"
+    },
+    "keywords": {
+      "zh": [
+        "月亮",
+        "蛾眉月",
+        "旅行和地点",
+        "微笑的上弦月",
+        "天空和天气"
+      ],
+      "en": [
+        "first",
+        "quarter",
+        "moon",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🌜",
+    "name": "last_quarter_moon_with_face",
+    "shortcode": ":last_quarter_moon_with_face:",
+    "category": "旅行和地点",
+    "subcategory": "天空和天气",
+    "description": {
+      "zh": "微笑的下弦月",
+      "en": "last quarter moon face"
+    },
+    "keywords": {
+      "zh": [
+        "月亮",
+        "残月",
+        "旅行和地点",
+        "微笑的下弦月",
+        "天空和天气"
+      ],
+      "en": [
+        "last",
+        "quarter",
+        "moon",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🌝",
+    "name": "full_moon_with_face",
+    "shortcode": ":full_moon_with_face:",
+    "category": "旅行和地点",
+    "subcategory": "天空和天气",
+    "description": {
+      "zh": "微笑的月亮",
+      "en": "full moon face"
+    },
+    "keywords": {
+      "zh": [
+        "望月",
+        "满月",
+        "旅行和地点",
+        "微笑的月亮",
+        "天空和天气"
+      ],
+      "en": [
+        "full",
+        "moon",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🌞",
+    "name": "sun_with_face",
+    "shortcode": ":sun_with_face:",
+    "category": "旅行和地点",
+    "subcategory": "天空和天气",
+    "description": {
+      "zh": "微笑的太阳",
+      "en": "sun with face"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "微笑的太阳",
+        "天空和天气"
+      ],
+      "en": [
+        "sun",
+        "with",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🪐",
+    "name": "ringed_planet",
+    "shortcode": ":ringed_planet:",
+    "category": "旅行和地点",
+    "subcategory": "天空和天气",
+    "description": {
+      "zh": "有环行星",
+      "en": "ringed planet"
+    },
+    "keywords": {
+      "zh": [
+        "土星",
+        "旅行和地点",
+        "有环行星",
+        "天空和天气"
+      ],
+      "en": [
+        "ringed",
+        "planet"
+      ]
+    }
+  },
+  {
+    "emoji": "⭐",
+    "name": "star",
+    "shortcode": ":star:",
+    "category": "旅行和地点",
+    "subcategory": "天空和天气",
+    "description": {
+      "zh": "星星",
+      "en": "star"
+    },
+    "keywords": {
+      "zh": [
+        "五角星",
+        "旅行和地点",
+        "星星",
+        "天空和天气"
+      ],
+      "en": [
+        "star"
+      ]
+    }
+  },
+  {
+    "emoji": "🌟",
+    "name": "star2",
+    "shortcode": ":star2:",
+    "category": "旅行和地点",
+    "subcategory": "天空和天气",
+    "description": {
+      "zh": "闪亮的星星",
+      "en": "glowing star"
+    },
+    "keywords": {
+      "zh": [
+        "发光",
+        "旅行和地点",
+        "闪亮的星星",
+        "天空和天气"
+      ],
+      "en": [
+        "glowing",
+        "star"
+      ]
+    }
+  },
+  {
+    "emoji": "🌠",
+    "name": "stars",
+    "shortcode": ":stars:",
+    "category": "旅行和地点",
+    "subcategory": "天空和天气",
+    "description": {
+      "zh": "流星",
+      "en": "shooting star"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "流星",
+        "天空和天气"
+      ],
+      "en": [
+        "shooting",
+        "star"
+      ]
+    }
+  },
+  {
+    "emoji": "🌌",
+    "name": "milky_way",
+    "shortcode": ":milky_way:",
+    "category": "旅行和地点",
+    "subcategory": "天空和天气",
+    "description": {
+      "zh": "银河",
+      "en": "milky way"
+    },
+    "keywords": {
+      "zh": [
+        "星空",
+        "旅行和地点",
+        "银河",
+        "天空和天气"
+      ],
+      "en": [
+        "milky",
+        "way"
+      ]
+    }
+  },
+  {
+    "emoji": "⛅",
+    "name": "partly_sunny",
+    "shortcode": ":partly_sunny:",
+    "category": "旅行和地点",
+    "subcategory": "天空和天气",
+    "description": {
+      "zh": "阴",
+      "en": "sun behind cloud"
+    },
+    "keywords": {
+      "zh": [
+        "乌云蔽日",
+        "多云",
+        "旅行和地点",
+        "阴",
+        "天空和天气"
+      ],
+      "en": [
+        "sun",
+        "behind",
+        "cloud"
+      ]
+    }
+  },
+  {
+    "emoji": "🌀",
+    "name": "cyclone",
+    "shortcode": ":cyclone:",
+    "category": "旅行和地点",
+    "subcategory": "天空和天气",
+    "description": {
+      "zh": "台风",
+      "en": "cyclone"
+    },
+    "keywords": {
+      "zh": [
+        "旋风",
+        "飓风",
+        "旅行和地点",
+        "台风",
+        "天空和天气"
+      ],
+      "en": [
+        "cyclone"
+      ]
+    }
+  },
+  {
+    "emoji": "🌈",
+    "name": "rainbow",
+    "shortcode": ":rainbow:",
+    "category": "旅行和地点",
+    "subcategory": "天空和天气",
+    "description": {
+      "zh": "彩虹",
+      "en": "rainbow"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "彩虹",
+        "天空和天气"
+      ],
+      "en": [
+        "rainbow"
+      ]
+    }
+  },
+  {
+    "emoji": "🌂",
+    "name": "closed_umbrella",
+    "shortcode": ":closed_umbrella:",
+    "category": "旅行和地点",
+    "subcategory": "天空和天气",
+    "description": {
+      "zh": "收起的伞",
+      "en": "closed umbrella"
+    },
+    "keywords": {
+      "zh": [
+        "雨伞",
+        "旅行和地点",
+        "收起的伞",
+        "天空和天气"
+      ],
+      "en": [
+        "closed",
+        "umbrella"
+      ]
+    }
+  },
+  {
+    "emoji": "☔",
+    "name": "umbrella",
+    "shortcode": ":umbrella:",
+    "category": "旅行和地点",
+    "subcategory": "天空和天气",
+    "description": {
+      "zh": "雨伞",
+      "en": "umbrella with rain drops"
+    },
+    "keywords": {
+      "zh": [
+        "下雨",
+        "雨滴",
+        "旅行和地点",
+        "雨伞",
+        "天空和天气"
+      ],
+      "en": [
+        "umbrella",
+        "with",
+        "rain",
+        "drops"
+      ]
+    }
+  },
+  {
+    "emoji": "⚡",
+    "name": "zap",
+    "shortcode": ":zap:",
+    "category": "旅行和地点",
+    "subcategory": "天空和天气",
+    "description": {
+      "zh": "高压",
+      "en": "high voltage"
+    },
+    "keywords": {
+      "zh": [
+        "危险",
+        "有电",
+        "闪电",
+        "旅行和地点",
+        "高压",
+        "天空和天气"
+      ],
+      "en": [
+        "high",
+        "voltage"
+      ]
+    }
+  },
+  {
+    "emoji": "⛄",
+    "name": "snowman",
+    "shortcode": ":snowman:",
+    "category": "旅行和地点",
+    "subcategory": "天空和天气",
+    "description": {
+      "zh": "雪人",
+      "en": "snowman without snow"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "雪人",
+        "天空和天气"
+      ],
+      "en": [
+        "snowman",
+        "without",
+        "snow"
+      ]
+    }
+  },
+  {
+    "emoji": "🔥",
+    "name": "fire",
+    "shortcode": ":fire:",
+    "category": "旅行和地点",
+    "subcategory": "天空和天气",
+    "description": {
+      "zh": "火焰",
+      "en": "fire"
+    },
+    "keywords": {
+      "zh": [
+        "旅行和地点",
+        "火焰",
+        "天空和天气"
+      ],
+      "en": [
+        "fire"
+      ]
+    }
+  },
+  {
+    "emoji": "💧",
+    "name": "droplet",
+    "shortcode": ":droplet:",
+    "category": "旅行和地点",
+    "subcategory": "天空和天气",
+    "description": {
+      "zh": "水滴",
+      "en": "droplet"
+    },
+    "keywords": {
+      "zh": [
+        "冷",
+        "旅行和地点",
+        "水滴",
+        "天空和天气"
+      ],
+      "en": [
+        "droplet"
+      ]
+    }
+  },
+  {
+    "emoji": "🌊",
+    "name": "ocean",
+    "shortcode": ":ocean:",
+    "category": "旅行和地点",
+    "subcategory": "天空和天气",
+    "description": {
+      "zh": "浪花",
+      "en": "water wave"
+    },
+    "keywords": {
+      "zh": [
+        "波浪",
+        "海洋",
+        "旅行和地点",
+        "浪花",
+        "天空和天气"
+      ],
+      "en": [
+        "water",
+        "wave"
+      ]
+    }
+  }
+]

@@ -1,0 +1,2716 @@
+[
+  {
+    "emoji": "🐵",
+    "name": "monkey_face",
+    "shortcode": ":monkey_face:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "猴头",
+      "en": "monkey face"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "猴头",
+        "哺乳动物"
+      ],
+      "en": [
+        "monkey",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🐒",
+    "name": "monkey",
+    "shortcode": ":monkey:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "猴子",
+      "en": "monkey"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "猴子",
+        "哺乳动物"
+      ],
+      "en": [
+        "monkey"
+      ]
+    }
+  },
+  {
+    "emoji": "🦍",
+    "name": "gorilla",
+    "shortcode": ":gorilla:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "大猩猩",
+      "en": "gorilla"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "大猩猩",
+        "哺乳动物"
+      ],
+      "en": [
+        "gorilla"
+      ]
+    }
+  },
+  {
+    "emoji": "🦧",
+    "name": "orangutan",
+    "shortcode": ":orangutan:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "红毛猩猩",
+      "en": "orangutan"
+    },
+    "keywords": {
+      "zh": [
+        "猴",
+        "猿",
+        "动物和自然",
+        "红毛猩猩",
+        "哺乳动物"
+      ],
+      "en": [
+        "orangutan"
+      ]
+    }
+  },
+  {
+    "emoji": "🐶",
+    "name": "dog",
+    "shortcode": ":dog:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "狗脸",
+      "en": "dog face"
+    },
+    "keywords": {
+      "zh": [
+        "宠物",
+        "动物和自然",
+        "狗脸",
+        "哺乳动物"
+      ],
+      "en": [
+        "dog",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🐕",
+    "name": "dog2",
+    "shortcode": ":dog2:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "狗",
+      "en": "dog"
+    },
+    "keywords": {
+      "zh": [
+        "宠物",
+        "动物和自然",
+        "狗",
+        "哺乳动物"
+      ],
+      "en": [
+        "dog"
+      ]
+    }
+  },
+  {
+    "emoji": "🦮",
+    "name": "guide_dog",
+    "shortcode": ":guide_dog:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "导盲犬",
+      "en": "guide dog"
+    },
+    "keywords": {
+      "zh": [
+        "指引",
+        "无障碍",
+        "动物和自然",
+        "导盲犬",
+        "哺乳动物"
+      ],
+      "en": [
+        "guide",
+        "dog"
+      ]
+    }
+  },
+  {
+    "emoji": "🐩",
+    "name": "poodle",
+    "shortcode": ":poodle:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "贵宾犬",
+      "en": "poodle"
+    },
+    "keywords": {
+      "zh": [
+        "卷毛狗",
+        "狗",
+        "动物和自然",
+        "贵宾犬",
+        "哺乳动物"
+      ],
+      "en": [
+        "poodle"
+      ]
+    }
+  },
+  {
+    "emoji": "🐺",
+    "name": "wolf",
+    "shortcode": ":wolf:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "狼",
+      "en": "wolf"
+    },
+    "keywords": {
+      "zh": [
+        "头",
+        "脸",
+        "动物和自然",
+        "狼",
+        "哺乳动物"
+      ],
+      "en": [
+        "wolf"
+      ]
+    }
+  },
+  {
+    "emoji": "🦊",
+    "name": "fox_face",
+    "shortcode": ":fox_face:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "狐狸",
+      "en": "fox"
+    },
+    "keywords": {
+      "zh": [
+        "头",
+        "脸",
+        "动物和自然",
+        "狐狸",
+        "哺乳动物"
+      ],
+      "en": [
+        "fox"
+      ]
+    }
+  },
+  {
+    "emoji": "🦝",
+    "name": "raccoon",
+    "shortcode": ":raccoon:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "浣熊",
+      "en": "raccoon"
+    },
+    "keywords": {
+      "zh": [
+        "好奇",
+        "淘气",
+        "动物和自然",
+        "浣熊",
+        "哺乳动物"
+      ],
+      "en": [
+        "raccoon"
+      ]
+    }
+  },
+  {
+    "emoji": "🐱",
+    "name": "cat",
+    "shortcode": ":cat:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "猫脸",
+      "en": "cat face"
+    },
+    "keywords": {
+      "zh": [
+        "宠物",
+        "动物和自然",
+        "猫脸",
+        "哺乳动物"
+      ],
+      "en": [
+        "cat",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🐈",
+    "name": "cat2",
+    "shortcode": ":cat2:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "猫",
+      "en": "cat"
+    },
+    "keywords": {
+      "zh": [
+        "宠物",
+        "动物和自然",
+        "猫",
+        "哺乳动物"
+      ],
+      "en": [
+        "cat"
+      ]
+    }
+  },
+  {
+    "emoji": "🦁",
+    "name": "lion",
+    "shortcode": ":lion:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "狮子",
+      "en": "lion"
+    },
+    "keywords": {
+      "zh": [
+        "狮子座",
+        "脸",
+        "黄道十二宫",
+        "动物和自然",
+        "狮子",
+        "哺乳动物"
+      ],
+      "en": [
+        "lion"
+      ]
+    }
+  },
+  {
+    "emoji": "🐯",
+    "name": "tiger",
+    "shortcode": ":tiger:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "老虎头",
+      "en": "tiger face"
+    },
+    "keywords": {
+      "zh": [
+        "脸",
+        "动物和自然",
+        "老虎头",
+        "哺乳动物"
+      ],
+      "en": [
+        "tiger",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🐅",
+    "name": "tiger2",
+    "shortcode": ":tiger2:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "老虎",
+      "en": "tiger"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "老虎",
+        "哺乳动物"
+      ],
+      "en": [
+        "tiger"
+      ]
+    }
+  },
+  {
+    "emoji": "🐆",
+    "name": "leopard",
+    "shortcode": ":leopard:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "豹子",
+      "en": "leopard"
+    },
+    "keywords": {
+      "zh": [
+        "猎豹",
+        "动物和自然",
+        "豹子",
+        "哺乳动物"
+      ],
+      "en": [
+        "leopard"
+      ]
+    }
+  },
+  {
+    "emoji": "🐴",
+    "name": "horse",
+    "shortcode": ":horse:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "马头",
+      "en": "horse face"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "马头",
+        "哺乳动物"
+      ],
+      "en": [
+        "horse",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🐎",
+    "name": "racehorse",
+    "shortcode": ":racehorse:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "马",
+      "en": "horse"
+    },
+    "keywords": {
+      "zh": [
+        "比赛",
+        "赛马",
+        "骑马",
+        "动物和自然",
+        "马",
+        "哺乳动物"
+      ],
+      "en": [
+        "horse"
+      ]
+    }
+  },
+  {
+    "emoji": "🦄",
+    "name": "unicorn",
+    "shortcode": ":unicorn:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "独角兽",
+      "en": "unicorn"
+    },
+    "keywords": {
+      "zh": [
+        "头",
+        "脸",
+        "动物和自然",
+        "独角兽",
+        "哺乳动物"
+      ],
+      "en": [
+        "unicorn"
+      ]
+    }
+  },
+  {
+    "emoji": "🦓",
+    "name": "zebra",
+    "shortcode": ":zebra:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "斑马",
+      "en": "zebra"
+    },
+    "keywords": {
+      "zh": [
+        "条纹",
+        "动物和自然",
+        "斑马",
+        "哺乳动物"
+      ],
+      "en": [
+        "zebra"
+      ]
+    }
+  },
+  {
+    "emoji": "🦌",
+    "name": "deer",
+    "shortcode": ":deer:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "鹿",
+      "en": "deer"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "鹿",
+        "哺乳动物"
+      ],
+      "en": [
+        "deer"
+      ]
+    }
+  },
+  {
+    "emoji": "🐮",
+    "name": "cow",
+    "shortcode": ":cow:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "奶牛头",
+      "en": "cow face"
+    },
+    "keywords": {
+      "zh": [
+        "脸",
+        "动物和自然",
+        "奶牛头",
+        "哺乳动物"
+      ],
+      "en": [
+        "cow",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🐂",
+    "name": "ox",
+    "shortcode": ":ox:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "公牛",
+      "en": "ox"
+    },
+    "keywords": {
+      "zh": [
+        "金牛座",
+        "黄道十二宫",
+        "动物和自然",
+        "公牛",
+        "哺乳动物"
+      ],
+      "en": [
+        "ox"
+      ]
+    }
+  },
+  {
+    "emoji": "🐃",
+    "name": "water_buffalo",
+    "shortcode": ":water_buffalo:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "水牛",
+      "en": "water buffalo"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "水牛",
+        "哺乳动物"
+      ],
+      "en": [
+        "water",
+        "buffalo"
+      ]
+    }
+  },
+  {
+    "emoji": "🐄",
+    "name": "cow2",
+    "shortcode": ":cow2:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "奶牛",
+      "en": "cow"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "奶牛",
+        "哺乳动物"
+      ],
+      "en": [
+        "cow"
+      ]
+    }
+  },
+  {
+    "emoji": "🐷",
+    "name": "pig",
+    "shortcode": ":pig:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "猪头",
+      "en": "pig face"
+    },
+    "keywords": {
+      "zh": [
+        "脸",
+        "动物和自然",
+        "猪头",
+        "哺乳动物"
+      ],
+      "en": [
+        "pig",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🐖",
+    "name": "pig2",
+    "shortcode": ":pig2:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "猪",
+      "en": "pig"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "猪",
+        "哺乳动物"
+      ],
+      "en": [
+        "pig"
+      ]
+    }
+  },
+  {
+    "emoji": "🐗",
+    "name": "boar",
+    "shortcode": ":boar:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "野猪",
+      "en": "boar"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "野猪",
+        "哺乳动物"
+      ],
+      "en": [
+        "boar"
+      ]
+    }
+  },
+  {
+    "emoji": "🐽",
+    "name": "pig_nose",
+    "shortcode": ":pig_nose:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "猪鼻子",
+      "en": "pig nose"
+    },
+    "keywords": {
+      "zh": [
+        "脸",
+        "动物和自然",
+        "猪鼻子",
+        "哺乳动物"
+      ],
+      "en": [
+        "pig",
+        "nose"
+      ]
+    }
+  },
+  {
+    "emoji": "🐏",
+    "name": "ram",
+    "shortcode": ":ram:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "公羊",
+      "en": "ram"
+    },
+    "keywords": {
+      "zh": [
+        "白羊座",
+        "雄性",
+        "黄道十二宫",
+        "动物和自然",
+        "公羊",
+        "哺乳动物"
+      ],
+      "en": [
+        "ram"
+      ]
+    }
+  },
+  {
+    "emoji": "🐑",
+    "name": "sheep",
+    "shortcode": ":sheep:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "母羊",
+      "en": "ewe"
+    },
+    "keywords": {
+      "zh": [
+        "雌性",
+        "动物和自然",
+        "母羊",
+        "哺乳动物"
+      ],
+      "en": [
+        "ewe"
+      ]
+    }
+  },
+  {
+    "emoji": "🐐",
+    "name": "goat",
+    "shortcode": ":goat:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "山羊",
+      "en": "goat"
+    },
+    "keywords": {
+      "zh": [
+        "摩羯座",
+        "黄道十二宫",
+        "动物和自然",
+        "山羊",
+        "哺乳动物"
+      ],
+      "en": [
+        "goat"
+      ]
+    }
+  },
+  {
+    "emoji": "🐪",
+    "name": "dromedary_camel",
+    "shortcode": ":dromedary_camel:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "骆驼",
+      "en": "camel"
+    },
+    "keywords": {
+      "zh": [
+        "单峰",
+        "动物和自然",
+        "骆驼",
+        "哺乳动物"
+      ],
+      "en": [
+        "camel"
+      ]
+    }
+  },
+  {
+    "emoji": "🐫",
+    "name": "camel",
+    "shortcode": ":camel:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "双峰骆驼",
+      "en": "two-hump camel"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "双峰骆驼",
+        "哺乳动物"
+      ],
+      "en": [
+        "two-hump",
+        "camel"
+      ]
+    }
+  },
+  {
+    "emoji": "🦙",
+    "name": "llama",
+    "shortcode": ":llama:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "美洲鸵",
+      "en": "llama"
+    },
+    "keywords": {
+      "zh": [
+        "原驼",
+        "小羊驼",
+        "羊毛",
+        "羊驼",
+        "动物和自然",
+        "美洲鸵",
+        "哺乳动物"
+      ],
+      "en": [
+        "llama"
+      ]
+    }
+  },
+  {
+    "emoji": "🦒",
+    "name": "giraffe",
+    "shortcode": ":giraffe:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "长颈鹿",
+      "en": "giraffe"
+    },
+    "keywords": {
+      "zh": [
+        "斑点",
+        "动物和自然",
+        "长颈鹿",
+        "哺乳动物"
+      ],
+      "en": [
+        "giraffe"
+      ]
+    }
+  },
+  {
+    "emoji": "🐘",
+    "name": "elephant",
+    "shortcode": ":elephant:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "大象",
+      "en": "elephant"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "大象",
+        "哺乳动物"
+      ],
+      "en": [
+        "elephant"
+      ]
+    }
+  },
+  {
+    "emoji": "🦏",
+    "name": "rhinoceros",
+    "shortcode": ":rhinoceros:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "犀牛",
+      "en": "rhinoceros"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "犀牛",
+        "哺乳动物"
+      ],
+      "en": [
+        "rhinoceros"
+      ]
+    }
+  },
+  {
+    "emoji": "🦛",
+    "name": "hippopotamus",
+    "shortcode": ":hippopotamus:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "河马",
+      "en": "hippopotamus"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "河马",
+        "哺乳动物"
+      ],
+      "en": [
+        "hippopotamus"
+      ]
+    }
+  },
+  {
+    "emoji": "🐭",
+    "name": "mouse",
+    "shortcode": ":mouse:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "老鼠头",
+      "en": "mouse face"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "老鼠头",
+        "哺乳动物"
+      ],
+      "en": [
+        "mouse",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🐁",
+    "name": "mouse2",
+    "shortcode": ":mouse2:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "老鼠",
+      "en": "mouse"
+    },
+    "keywords": {
+      "zh": [
+        "耗子",
+        "动物和自然",
+        "老鼠",
+        "哺乳动物"
+      ],
+      "en": [
+        "mouse"
+      ]
+    }
+  },
+  {
+    "emoji": "🐀",
+    "name": "rat",
+    "shortcode": ":rat:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "耗子",
+      "en": "rat"
+    },
+    "keywords": {
+      "zh": [
+        "鼠",
+        "动物和自然",
+        "耗子",
+        "哺乳动物"
+      ],
+      "en": [
+        "rat"
+      ]
+    }
+  },
+  {
+    "emoji": "🐹",
+    "name": "hamster",
+    "shortcode": ":hamster:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "仓鼠",
+      "en": "hamster"
+    },
+    "keywords": {
+      "zh": [
+        "啮齿",
+        "头",
+        "脸",
+        "动物和自然",
+        "仓鼠",
+        "哺乳动物"
+      ],
+      "en": [
+        "hamster"
+      ]
+    }
+  },
+  {
+    "emoji": "🐰",
+    "name": "rabbit",
+    "shortcode": ":rabbit:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "兔子头",
+      "en": "rabbit face"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "兔子头",
+        "哺乳动物"
+      ],
+      "en": [
+        "rabbit",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🐇",
+    "name": "rabbit2",
+    "shortcode": ":rabbit2:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "兔子",
+      "en": "rabbit"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "兔子",
+        "哺乳动物"
+      ],
+      "en": [
+        "rabbit"
+      ]
+    }
+  },
+  {
+    "emoji": "🦔",
+    "name": "hedgehog",
+    "shortcode": ":hedgehog:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "刺猬",
+      "en": "hedgehog"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "刺猬",
+        "哺乳动物"
+      ],
+      "en": [
+        "hedgehog"
+      ]
+    }
+  },
+  {
+    "emoji": "🦇",
+    "name": "bat",
+    "shortcode": ":bat:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "蝙蝠",
+      "en": "bat"
+    },
+    "keywords": {
+      "zh": [
+        "吸血鬼",
+        "动物和自然",
+        "蝙蝠",
+        "哺乳动物"
+      ],
+      "en": [
+        "bat"
+      ]
+    }
+  },
+  {
+    "emoji": "🐻",
+    "name": "bear",
+    "shortcode": ":bear:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "熊",
+      "en": "bear"
+    },
+    "keywords": {
+      "zh": [
+        "头",
+        "脸",
+        "动物和自然",
+        "熊",
+        "哺乳动物"
+      ],
+      "en": [
+        "bear"
+      ]
+    }
+  },
+  {
+    "emoji": "🐨",
+    "name": "koala",
+    "shortcode": ":koala:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "考拉",
+      "en": "koala"
+    },
+    "keywords": {
+      "zh": [
+        "澳大利亚",
+        "动物和自然",
+        "考拉",
+        "哺乳动物"
+      ],
+      "en": [
+        "koala"
+      ]
+    }
+  },
+  {
+    "emoji": "🐼",
+    "name": "panda_face",
+    "shortcode": ":panda_face:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "熊猫",
+      "en": "panda"
+    },
+    "keywords": {
+      "zh": [
+        "头",
+        "胖达",
+        "脸",
+        "动物和自然",
+        "熊猫",
+        "哺乳动物"
+      ],
+      "en": [
+        "panda"
+      ]
+    }
+  },
+  {
+    "emoji": "🦥",
+    "name": "sloth",
+    "shortcode": ":sloth:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "树懒",
+      "en": "sloth"
+    },
+    "keywords": {
+      "zh": [
+        "慢",
+        "爬树",
+        "迟缓",
+        "动物和自然",
+        "树懒",
+        "哺乳动物"
+      ],
+      "en": [
+        "sloth"
+      ]
+    }
+  },
+  {
+    "emoji": "🦦",
+    "name": "otter",
+    "shortcode": ":otter:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "水獭",
+      "en": "otter"
+    },
+    "keywords": {
+      "zh": [
+        "捕鱼",
+        "鼬",
+        "动物和自然",
+        "水獭",
+        "哺乳动物"
+      ],
+      "en": [
+        "otter"
+      ]
+    }
+  },
+  {
+    "emoji": "🦨",
+    "name": "skunk",
+    "shortcode": ":skunk:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "臭鼬",
+      "en": "skunk"
+    },
+    "keywords": {
+      "zh": [
+        "熏",
+        "动物和自然",
+        "臭鼬",
+        "哺乳动物"
+      ],
+      "en": [
+        "skunk"
+      ]
+    }
+  },
+  {
+    "emoji": "🦘",
+    "name": "kangaroo",
+    "shortcode": ":kangaroo:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "袋鼠",
+      "en": "kangaroo"
+    },
+    "keywords": {
+      "zh": [
+        "小袋鼠",
+        "有袋类动物",
+        "澳大利亚",
+        "跳",
+        "动物和自然",
+        "袋鼠",
+        "哺乳动物"
+      ],
+      "en": [
+        "kangaroo"
+      ]
+    }
+  },
+  {
+    "emoji": "🦡",
+    "name": "badger",
+    "shortcode": ":badger:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "獾",
+      "en": "badger"
+    },
+    "keywords": {
+      "zh": [
+        "纠缠",
+        "蜜獾",
+        "动物和自然",
+        "獾",
+        "哺乳动物"
+      ],
+      "en": [
+        "badger"
+      ]
+    }
+  },
+  {
+    "emoji": "🐾",
+    "name": "paw_prints",
+    "shortcode": ":paw_prints:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "爪印",
+      "en": "paw prints"
+    },
+    "keywords": {
+      "zh": [
+        "爪子",
+        "足迹",
+        "动物和自然",
+        "爪印",
+        "哺乳动物"
+      ],
+      "en": [
+        "paw",
+        "prints"
+      ]
+    }
+  },
+  {
+    "emoji": "🦃",
+    "name": "turkey",
+    "shortcode": ":turkey:",
+    "category": "动物和自然",
+    "subcategory": "鸟类",
+    "description": {
+      "zh": "火鸡",
+      "en": "turkey"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "火鸡",
+        "鸟类"
+      ],
+      "en": [
+        "turkey"
+      ]
+    }
+  },
+  {
+    "emoji": "🐔",
+    "name": "chicken",
+    "shortcode": ":chicken:",
+    "category": "动物和自然",
+    "subcategory": "鸟类",
+    "description": {
+      "zh": "鸡",
+      "en": "chicken"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "鸡",
+        "鸟类"
+      ],
+      "en": [
+        "chicken"
+      ]
+    }
+  },
+  {
+    "emoji": "🐓",
+    "name": "rooster",
+    "shortcode": ":rooster:",
+    "category": "动物和自然",
+    "subcategory": "鸟类",
+    "description": {
+      "zh": "公鸡",
+      "en": "rooster"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "公鸡",
+        "鸟类"
+      ],
+      "en": [
+        "rooster"
+      ]
+    }
+  },
+  {
+    "emoji": "🐣",
+    "name": "hatching_chick",
+    "shortcode": ":hatching_chick:",
+    "category": "动物和自然",
+    "subcategory": "鸟类",
+    "description": {
+      "zh": "小鸡破壳",
+      "en": "hatching chick"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "小鸡破壳",
+        "鸟类"
+      ],
+      "en": [
+        "hatching",
+        "chick"
+      ]
+    }
+  },
+  {
+    "emoji": "🐤",
+    "name": "baby_chick",
+    "shortcode": ":baby_chick:",
+    "category": "动物和自然",
+    "subcategory": "鸟类",
+    "description": {
+      "zh": "小鸡",
+      "en": "baby chick"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "小鸡",
+        "鸟类"
+      ],
+      "en": [
+        "baby",
+        "chick"
+      ]
+    }
+  },
+  {
+    "emoji": "🐥",
+    "name": "hatched_chick",
+    "shortcode": ":hatched_chick:",
+    "category": "动物和自然",
+    "subcategory": "鸟类",
+    "description": {
+      "zh": "正面朝向的小鸡",
+      "en": "front-facing baby chick"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "正面朝向的小鸡",
+        "鸟类"
+      ],
+      "en": [
+        "front-facing",
+        "baby",
+        "chick"
+      ]
+    }
+  },
+  {
+    "emoji": "🐦",
+    "name": "bird",
+    "shortcode": ":bird:",
+    "category": "动物和自然",
+    "subcategory": "鸟类",
+    "description": {
+      "zh": "鸟",
+      "en": "bird"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "鸟类"
+      ],
+      "en": [
+        "bird"
+      ]
+    }
+  },
+  {
+    "emoji": "🐧",
+    "name": "penguin",
+    "shortcode": ":penguin:",
+    "category": "动物和自然",
+    "subcategory": "鸟类",
+    "description": {
+      "zh": "企鹅",
+      "en": "penguin"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "企鹅",
+        "鸟类"
+      ],
+      "en": [
+        "penguin"
+      ]
+    }
+  },
+  {
+    "emoji": "🦅",
+    "name": "eagle",
+    "shortcode": ":eagle:",
+    "category": "动物和自然",
+    "subcategory": "鸟类",
+    "description": {
+      "zh": "鹰",
+      "en": "eagle"
+    },
+    "keywords": {
+      "zh": [
+        "老鹰",
+        "动物和自然",
+        "鹰",
+        "鸟类"
+      ],
+      "en": [
+        "eagle"
+      ]
+    }
+  },
+  {
+    "emoji": "🦆",
+    "name": "duck",
+    "shortcode": ":duck:",
+    "category": "动物和自然",
+    "subcategory": "鸟类",
+    "description": {
+      "zh": "鸭子",
+      "en": "duck"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "鸭子",
+        "鸟类"
+      ],
+      "en": [
+        "duck"
+      ]
+    }
+  },
+  {
+    "emoji": "🦢",
+    "name": "swan",
+    "shortcode": ":swan:",
+    "category": "动物和自然",
+    "subcategory": "鸟类",
+    "description": {
+      "zh": "天鹅",
+      "en": "swan"
+    },
+    "keywords": {
+      "zh": [
+        "丑小鸭",
+        "小天鹅",
+        "动物和自然",
+        "天鹅",
+        "鸟类"
+      ],
+      "en": [
+        "swan"
+      ]
+    }
+  },
+  {
+    "emoji": "🦉",
+    "name": "owl",
+    "shortcode": ":owl:",
+    "category": "动物和自然",
+    "subcategory": "鸟类",
+    "description": {
+      "zh": "猫头鹰",
+      "en": "owl"
+    },
+    "keywords": {
+      "zh": [
+        "睿智",
+        "动物和自然",
+        "猫头鹰",
+        "鸟类"
+      ],
+      "en": [
+        "owl"
+      ]
+    }
+  },
+  {
+    "emoji": "🦩",
+    "name": "flamingo",
+    "shortcode": ":flamingo:",
+    "category": "动物和自然",
+    "subcategory": "鸟类",
+    "description": {
+      "zh": "火烈鸟",
+      "en": "flamingo"
+    },
+    "keywords": {
+      "zh": [
+        "热带",
+        "艳丽",
+        "动物和自然",
+        "火烈鸟",
+        "鸟类"
+      ],
+      "en": [
+        "flamingo"
+      ]
+    }
+  },
+  {
+    "emoji": "🦚",
+    "name": "peacock",
+    "shortcode": ":peacock:",
+    "category": "动物和自然",
+    "subcategory": "鸟类",
+    "description": {
+      "zh": "孔雀",
+      "en": "peacock"
+    },
+    "keywords": {
+      "zh": [
+        "招摇",
+        "雌孔雀",
+        "骄傲",
+        "动物和自然",
+        "孔雀",
+        "鸟类"
+      ],
+      "en": [
+        "peacock"
+      ]
+    }
+  },
+  {
+    "emoji": "🦜",
+    "name": "parrot",
+    "shortcode": ":parrot:",
+    "category": "动物和自然",
+    "subcategory": "鸟类",
+    "description": {
+      "zh": "鹦鹉",
+      "en": "parrot"
+    },
+    "keywords": {
+      "zh": [
+        "剽窃",
+        "模仿",
+        "说话",
+        "动物和自然",
+        "鹦鹉",
+        "鸟类"
+      ],
+      "en": [
+        "parrot"
+      ]
+    }
+  },
+  {
+    "emoji": "🐸",
+    "name": "frog",
+    "shortcode": ":frog:",
+    "category": "动物和自然",
+    "subcategory": "两栖动物",
+    "description": {
+      "zh": "青蛙",
+      "en": "frog"
+    },
+    "keywords": {
+      "zh": [
+        "头",
+        "脸",
+        "动物和自然",
+        "青蛙",
+        "两栖动物"
+      ],
+      "en": [
+        "frog"
+      ]
+    }
+  },
+  {
+    "emoji": "🐊",
+    "name": "crocodile",
+    "shortcode": ":crocodile:",
+    "category": "动物和自然",
+    "subcategory": "爬行动物",
+    "description": {
+      "zh": "鳄鱼",
+      "en": "crocodile"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "鳄鱼",
+        "爬行动物"
+      ],
+      "en": [
+        "crocodile"
+      ]
+    }
+  },
+  {
+    "emoji": "🐢",
+    "name": "turtle",
+    "shortcode": ":turtle:",
+    "category": "动物和自然",
+    "subcategory": "爬行动物",
+    "description": {
+      "zh": "龟",
+      "en": "turtle"
+    },
+    "keywords": {
+      "zh": [
+        "乌龟",
+        "海龟",
+        "动物和自然",
+        "龟",
+        "爬行动物"
+      ],
+      "en": [
+        "turtle"
+      ]
+    }
+  },
+  {
+    "emoji": "🦎",
+    "name": "lizard",
+    "shortcode": ":lizard:",
+    "category": "动物和自然",
+    "subcategory": "爬行动物",
+    "description": {
+      "zh": "蜥蜴",
+      "en": "lizard"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "蜥蜴",
+        "爬行动物"
+      ],
+      "en": [
+        "lizard"
+      ]
+    }
+  },
+  {
+    "emoji": "🐍",
+    "name": "snake",
+    "shortcode": ":snake:",
+    "category": "动物和自然",
+    "subcategory": "爬行动物",
+    "description": {
+      "zh": "蛇",
+      "en": "snake"
+    },
+    "keywords": {
+      "zh": [
+        "持票人",
+        "狡猾的人",
+        "蛇夫座",
+        "黄道十二宫",
+        "动物和自然",
+        "蛇",
+        "爬行动物"
+      ],
+      "en": [
+        "snake"
+      ]
+    }
+  },
+  {
+    "emoji": "🐲",
+    "name": "dragon_face",
+    "shortcode": ":dragon_face:",
+    "category": "动物和自然",
+    "subcategory": "爬行动物",
+    "description": {
+      "zh": "龙头",
+      "en": "dragon face"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "龙头",
+        "爬行动物"
+      ],
+      "en": [
+        "dragon",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🐉",
+    "name": "dragon",
+    "shortcode": ":dragon:",
+    "category": "动物和自然",
+    "subcategory": "爬行动物",
+    "description": {
+      "zh": "龙",
+      "en": "dragon"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "龙",
+        "爬行动物"
+      ],
+      "en": [
+        "dragon"
+      ]
+    }
+  },
+  {
+    "emoji": "🦕",
+    "name": "sauropod",
+    "shortcode": ":sauropod:",
+    "category": "动物和自然",
+    "subcategory": "爬行动物",
+    "description": {
+      "zh": "蜥蜴类",
+      "en": "sauropod"
+    },
+    "keywords": {
+      "zh": [
+        "梁龙",
+        "腕龙",
+        "雷龙",
+        "动物和自然",
+        "蜥蜴类",
+        "爬行动物"
+      ],
+      "en": [
+        "sauropod"
+      ]
+    }
+  },
+  {
+    "emoji": "🦖",
+    "name": "t-rex",
+    "shortcode": ":t-rex:",
+    "category": "动物和自然",
+    "subcategory": "爬行动物",
+    "description": {
+      "zh": "霸王龙",
+      "en": "T-Rex"
+    },
+    "keywords": {
+      "zh": [
+        "暴龙君主",
+        "动物和自然",
+        "霸王龙",
+        "爬行动物"
+      ],
+      "en": [
+        "T-Rex"
+      ]
+    }
+  },
+  {
+    "emoji": "🐳",
+    "name": "whale",
+    "shortcode": ":whale:",
+    "category": "动物和自然",
+    "subcategory": "海洋动物",
+    "description": {
+      "zh": "喷水的鲸",
+      "en": "spouting whale"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "喷水的鲸",
+        "海洋动物"
+      ],
+      "en": [
+        "spouting",
+        "whale"
+      ]
+    }
+  },
+  {
+    "emoji": "🐋",
+    "name": "whale2",
+    "shortcode": ":whale2:",
+    "category": "动物和自然",
+    "subcategory": "海洋动物",
+    "description": {
+      "zh": "鲸鱼",
+      "en": "whale"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "鲸鱼",
+        "海洋动物"
+      ],
+      "en": [
+        "whale"
+      ]
+    }
+  },
+  {
+    "emoji": "🐬",
+    "name": "flipper",
+    "shortcode": ":flipper:",
+    "category": "动物和自然",
+    "subcategory": "海洋动物",
+    "description": {
+      "zh": "海豚",
+      "en": "dolphin"
+    },
+    "keywords": {
+      "zh": [
+        "鸭脚板",
+        "动物和自然",
+        "海豚",
+        "海洋动物"
+      ],
+      "en": [
+        "dolphin"
+      ]
+    }
+  },
+  {
+    "emoji": "🐟",
+    "name": "fish",
+    "shortcode": ":fish:",
+    "category": "动物和自然",
+    "subcategory": "海洋动物",
+    "description": {
+      "zh": "鱼",
+      "en": "fish"
+    },
+    "keywords": {
+      "zh": [
+        "双鱼座",
+        "黄道十二宫",
+        "动物和自然",
+        "鱼",
+        "海洋动物"
+      ],
+      "en": [
+        "fish"
+      ]
+    }
+  },
+  {
+    "emoji": "🐠",
+    "name": "tropical_fish",
+    "shortcode": ":tropical_fish:",
+    "category": "动物和自然",
+    "subcategory": "海洋动物",
+    "description": {
+      "zh": "热带鱼",
+      "en": "tropical fish"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "热带鱼",
+        "海洋动物"
+      ],
+      "en": [
+        "tropical",
+        "fish"
+      ]
+    }
+  },
+  {
+    "emoji": "🐡",
+    "name": "blowfish",
+    "shortcode": ":blowfish:",
+    "category": "动物和自然",
+    "subcategory": "海洋动物",
+    "description": {
+      "zh": "河豚",
+      "en": "blowfish"
+    },
+    "keywords": {
+      "zh": [
+        "鱼",
+        "动物和自然",
+        "河豚",
+        "海洋动物"
+      ],
+      "en": [
+        "blowfish"
+      ]
+    }
+  },
+  {
+    "emoji": "🦈",
+    "name": "shark",
+    "shortcode": ":shark:",
+    "category": "动物和自然",
+    "subcategory": "海洋动物",
+    "description": {
+      "zh": "鲨鱼",
+      "en": "shark"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "鲨鱼",
+        "海洋动物"
+      ],
+      "en": [
+        "shark"
+      ]
+    }
+  },
+  {
+    "emoji": "🐙",
+    "name": "octopus",
+    "shortcode": ":octopus:",
+    "category": "动物和自然",
+    "subcategory": "海洋动物",
+    "description": {
+      "zh": "章鱼",
+      "en": "octopus"
+    },
+    "keywords": {
+      "zh": [
+        "八爪",
+        "动物和自然",
+        "章鱼",
+        "海洋动物"
+      ],
+      "en": [
+        "octopus"
+      ]
+    }
+  },
+  {
+    "emoji": "🐚",
+    "name": "shell",
+    "shortcode": ":shell:",
+    "category": "动物和自然",
+    "subcategory": "海洋动物",
+    "description": {
+      "zh": "海螺",
+      "en": "spiral shell"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "海螺",
+        "海洋动物"
+      ],
+      "en": [
+        "spiral",
+        "shell"
+      ]
+    }
+  },
+  {
+    "emoji": "🐌",
+    "name": "snail",
+    "shortcode": ":snail:",
+    "category": "动物和自然",
+    "subcategory": "昆虫",
+    "description": {
+      "zh": "蜗牛",
+      "en": "snail"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "蜗牛",
+        "昆虫"
+      ],
+      "en": [
+        "snail"
+      ]
+    }
+  },
+  {
+    "emoji": "🦋",
+    "name": "butterfly",
+    "shortcode": ":butterfly:",
+    "category": "动物和自然",
+    "subcategory": "昆虫",
+    "description": {
+      "zh": "蝴蝶",
+      "en": "butterfly"
+    },
+    "keywords": {
+      "zh": [
+        "漂亮",
+        "美丽",
+        "动物和自然",
+        "蝴蝶",
+        "昆虫"
+      ],
+      "en": [
+        "butterfly"
+      ]
+    }
+  },
+  {
+    "emoji": "🐛",
+    "name": "bug",
+    "shortcode": ":bug:",
+    "category": "动物和自然",
+    "subcategory": "昆虫",
+    "description": {
+      "zh": "毛毛虫",
+      "en": "bug"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "毛毛虫",
+        "昆虫"
+      ],
+      "en": [
+        "bug"
+      ]
+    }
+  },
+  {
+    "emoji": "🐜",
+    "name": "ant",
+    "shortcode": ":ant:",
+    "category": "动物和自然",
+    "subcategory": "昆虫",
+    "description": {
+      "zh": "蚂蚁",
+      "en": "ant"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "蚂蚁",
+        "昆虫"
+      ],
+      "en": [
+        "ant"
+      ]
+    }
+  },
+  {
+    "emoji": "🐝",
+    "name": "honeybee",
+    "shortcode": ":honeybee:",
+    "category": "动物和自然",
+    "subcategory": "昆虫",
+    "description": {
+      "zh": "蜜蜂",
+      "en": "honeybee"
+    },
+    "keywords": {
+      "zh": [
+        "勤劳",
+        "动物和自然",
+        "蜜蜂",
+        "昆虫"
+      ],
+      "en": [
+        "honeybee"
+      ]
+    }
+  },
+  {
+    "emoji": "🐞",
+    "name": "beetle",
+    "shortcode": ":beetle:",
+    "category": "动物和自然",
+    "subcategory": "昆虫",
+    "description": {
+      "zh": "瓢虫",
+      "en": "lady beetle"
+    },
+    "keywords": {
+      "zh": [
+        "母",
+        "动物和自然",
+        "瓢虫",
+        "昆虫"
+      ],
+      "en": [
+        "lady",
+        "beetle"
+      ]
+    }
+  },
+  {
+    "emoji": "🦗",
+    "name": "cricket",
+    "shortcode": ":cricket:",
+    "category": "动物和自然",
+    "subcategory": "昆虫",
+    "description": {
+      "zh": "蟋蟀",
+      "en": "cricket"
+    },
+    "keywords": {
+      "zh": [
+        "蛐蛐",
+        "动物和自然",
+        "蟋蟀",
+        "昆虫"
+      ],
+      "en": [
+        "cricket"
+      ]
+    }
+  },
+  {
+    "emoji": "🦂",
+    "name": "scorpion",
+    "shortcode": ":scorpion:",
+    "category": "动物和自然",
+    "subcategory": "昆虫",
+    "description": {
+      "zh": "蝎子",
+      "en": "scorpion"
+    },
+    "keywords": {
+      "zh": [
+        "天蝎宫",
+        "天蝎座",
+        "黄道十二宫",
+        "动物和自然",
+        "蝎子",
+        "昆虫"
+      ],
+      "en": [
+        "scorpion"
+      ]
+    }
+  },
+  {
+    "emoji": "🦟",
+    "name": "mosquito",
+    "shortcode": ":mosquito:",
+    "category": "动物和自然",
+    "subcategory": "昆虫",
+    "description": {
+      "zh": "蚊子",
+      "en": "mosquito"
+    },
+    "keywords": {
+      "zh": [
+        "发热",
+        "疟疾",
+        "疾病",
+        "病毒",
+        "动物和自然",
+        "蚊子",
+        "昆虫"
+      ],
+      "en": [
+        "mosquito"
+      ]
+    }
+  },
+  {
+    "emoji": "🦠",
+    "name": "microbe",
+    "shortcode": ":microbe:",
+    "category": "动物和自然",
+    "subcategory": "昆虫",
+    "description": {
+      "zh": "细菌",
+      "en": "microbe"
+    },
+    "keywords": {
+      "zh": [
+        "变形虫",
+        "病毒",
+        "动物和自然",
+        "细菌",
+        "昆虫"
+      ],
+      "en": [
+        "microbe"
+      ]
+    }
+  },
+  {
+    "emoji": "💐",
+    "name": "bouquet",
+    "shortcode": ":bouquet:",
+    "category": "动物和自然",
+    "subcategory": "花朵",
+    "description": {
+      "zh": "花束",
+      "en": "bouquet"
+    },
+    "keywords": {
+      "zh": [
+        "鲜花",
+        "动物和自然",
+        "花束",
+        "花朵"
+      ],
+      "en": [
+        "bouquet"
+      ]
+    }
+  },
+  {
+    "emoji": "🌸",
+    "name": "cherry_blossom",
+    "shortcode": ":cherry_blossom:",
+    "category": "动物和自然",
+    "subcategory": "花朵",
+    "description": {
+      "zh": "樱花",
+      "en": "cherry blossom"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "樱花",
+        "花朵"
+      ],
+      "en": [
+        "cherry",
+        "blossom"
+      ]
+    }
+  },
+  {
+    "emoji": "💮",
+    "name": "white_flower",
+    "shortcode": ":white_flower:",
+    "category": "动物和自然",
+    "subcategory": "花朵",
+    "description": {
+      "zh": "白花",
+      "en": "white flower"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "白花",
+        "花朵"
+      ],
+      "en": [
+        "white",
+        "flower"
+      ]
+    }
+  },
+  {
+    "emoji": "🌹",
+    "name": "rose",
+    "shortcode": ":rose:",
+    "category": "动物和自然",
+    "subcategory": "花朵",
+    "description": {
+      "zh": "玫瑰",
+      "en": "rose"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "玫瑰",
+        "花朵"
+      ],
+      "en": [
+        "rose"
+      ]
+    }
+  },
+  {
+    "emoji": "🥀",
+    "name": "wilted_flower",
+    "shortcode": ":wilted_flower:",
+    "category": "动物和自然",
+    "subcategory": "花朵",
+    "description": {
+      "zh": "枯萎的花",
+      "en": "wilted flower"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "枯萎的花",
+        "花朵"
+      ],
+      "en": [
+        "wilted",
+        "flower"
+      ]
+    }
+  },
+  {
+    "emoji": "🌺",
+    "name": "hibiscus",
+    "shortcode": ":hibiscus:",
+    "category": "动物和自然",
+    "subcategory": "花朵",
+    "description": {
+      "zh": "芙蓉",
+      "en": "hibiscus"
+    },
+    "keywords": {
+      "zh": [
+        "木槿",
+        "动物和自然",
+        "芙蓉",
+        "花朵"
+      ],
+      "en": [
+        "hibiscus"
+      ]
+    }
+  },
+  {
+    "emoji": "🌻",
+    "name": "sunflower",
+    "shortcode": ":sunflower:",
+    "category": "动物和自然",
+    "subcategory": "花朵",
+    "description": {
+      "zh": "向日葵",
+      "en": "sunflower"
+    },
+    "keywords": {
+      "zh": [
+        "太阳花",
+        "动物和自然",
+        "向日葵",
+        "花朵"
+      ],
+      "en": [
+        "sunflower"
+      ]
+    }
+  },
+  {
+    "emoji": "🌼",
+    "name": "blossom",
+    "shortcode": ":blossom:",
+    "category": "动物和自然",
+    "subcategory": "花朵",
+    "description": {
+      "zh": "开花",
+      "en": "blossom"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "开花",
+        "花朵"
+      ],
+      "en": [
+        "blossom"
+      ]
+    }
+  },
+  {
+    "emoji": "🌷",
+    "name": "tulip",
+    "shortcode": ":tulip:",
+    "category": "动物和自然",
+    "subcategory": "花朵",
+    "description": {
+      "zh": "郁金香",
+      "en": "tulip"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "郁金香",
+        "花朵"
+      ],
+      "en": [
+        "tulip"
+      ]
+    }
+  },
+  {
+    "emoji": "🌱",
+    "name": "seedling",
+    "shortcode": ":seedling:",
+    "category": "动物和自然",
+    "subcategory": "其他植物",
+    "description": {
+      "zh": "幼苗",
+      "en": "seedling"
+    },
+    "keywords": {
+      "zh": [
+        "发芽",
+        "芽",
+        "动物和自然",
+        "幼苗",
+        "其他植物"
+      ],
+      "en": [
+        "seedling"
+      ]
+    }
+  },
+  {
+    "emoji": "🌲",
+    "name": "evergreen_tree",
+    "shortcode": ":evergreen_tree:",
+    "category": "动物和自然",
+    "subcategory": "其他植物",
+    "description": {
+      "zh": "松树",
+      "en": "evergreen tree"
+    },
+    "keywords": {
+      "zh": [
+        "常青树",
+        "动物和自然",
+        "松树",
+        "其他植物"
+      ],
+      "en": [
+        "evergreen",
+        "tree"
+      ]
+    }
+  },
+  {
+    "emoji": "🌳",
+    "name": "deciduous_tree",
+    "shortcode": ":deciduous_tree:",
+    "category": "动物和自然",
+    "subcategory": "其他植物",
+    "description": {
+      "zh": "落叶树",
+      "en": "deciduous tree"
+    },
+    "keywords": {
+      "zh": [
+        "落叶植物",
+        "动物和自然",
+        "落叶树",
+        "其他植物"
+      ],
+      "en": [
+        "deciduous",
+        "tree"
+      ]
+    }
+  },
+  {
+    "emoji": "🌴",
+    "name": "palm_tree",
+    "shortcode": ":palm_tree:",
+    "category": "动物和自然",
+    "subcategory": "其他植物",
+    "description": {
+      "zh": "棕榈树",
+      "en": "palm tree"
+    },
+    "keywords": {
+      "zh": [
+        "动物和自然",
+        "棕榈树",
+        "其他植物"
+      ],
+      "en": [
+        "palm",
+        "tree"
+      ]
+    }
+  },
+  {
+    "emoji": "🌵",
+    "name": "cactus",
+    "shortcode": ":cactus:",
+    "category": "动物和自然",
+    "subcategory": "其他植物",
+    "description": {
+      "zh": "仙人掌",
+      "en": "cactus"
+    },
+    "keywords": {
+      "zh": [
+        "沙漠",
+        "动物和自然",
+        "仙人掌",
+        "其他植物"
+      ],
+      "en": [
+        "cactus"
+      ]
+    }
+  },
+  {
+    "emoji": "🌾",
+    "name": "ear_of_rice",
+    "shortcode": ":ear_of_rice:",
+    "category": "动物和自然",
+    "subcategory": "其他植物",
+    "description": {
+      "zh": "稻子",
+      "en": "sheaf of rice"
+    },
+    "keywords": {
+      "zh": [
+        "米",
+        "粮食",
+        "动物和自然",
+        "稻子",
+        "其他植物"
+      ],
+      "en": [
+        "sheaf",
+        "of",
+        "rice"
+      ]
+    }
+  },
+  {
+    "emoji": "🌿",
+    "name": "herb",
+    "shortcode": ":herb:",
+    "category": "动物和自然",
+    "subcategory": "其他植物",
+    "description": {
+      "zh": "药草",
+      "en": "herb"
+    },
+    "keywords": {
+      "zh": [
+        "草药",
+        "香草",
+        "动物和自然",
+        "药草",
+        "其他植物"
+      ],
+      "en": [
+        "herb"
+      ]
+    }
+  },
+  {
+    "emoji": "🍀",
+    "name": "four_leaf_clover",
+    "shortcode": ":four_leaf_clover:",
+    "category": "动物和自然",
+    "subcategory": "其他植物",
+    "description": {
+      "zh": "四叶草",
+      "en": "four leaf clover"
+    },
+    "keywords": {
+      "zh": [
+        "幸运",
+        "动物和自然",
+        "四叶草",
+        "其他植物"
+      ],
+      "en": [
+        "four",
+        "leaf",
+        "clover"
+      ]
+    }
+  },
+  {
+    "emoji": "🍁",
+    "name": "maple_leaf",
+    "shortcode": ":maple_leaf:",
+    "category": "动物和自然",
+    "subcategory": "其他植物",
+    "description": {
+      "zh": "枫叶",
+      "en": "maple leaf"
+    },
+    "keywords": {
+      "zh": [
+        "加拿大",
+        "秋",
+        "动物和自然",
+        "枫叶",
+        "其他植物"
+      ],
+      "en": [
+        "maple",
+        "leaf"
+      ]
+    }
+  },
+  {
+    "emoji": "🍂",
+    "name": "fallen_leaf",
+    "shortcode": ":fallen_leaf:",
+    "category": "动物和自然",
+    "subcategory": "其他植物",
+    "description": {
+      "zh": "落叶",
+      "en": "fallen leaf"
+    },
+    "keywords": {
+      "zh": [
+        "秋",
+        "动物和自然",
+        "落叶",
+        "其他植物"
+      ],
+      "en": [
+        "fallen",
+        "leaf"
+      ]
+    }
+  },
+  {
+    "emoji": "🍃",
+    "name": "leaves",
+    "shortcode": ":leaves:",
+    "category": "动物和自然",
+    "subcategory": "其他植物",
+    "description": {
+      "zh": "风吹叶落",
+      "en": "leaf fluttering in wind"
+    },
+    "keywords": {
+      "zh": [
+        "叶子",
+        "树叶",
+        "随风飘舞",
+        "动物和自然",
+        "风吹叶落",
+        "其他植物"
+      ],
+      "en": [
+        "leaf",
+        "fluttering",
+        "wind"
+      ]
+    }
+  },
+  {
+    "emoji": "🐕‍🦺",
+    "name": "service_dog",
+    "shortcode": ":service_dog:",
+    "category": "动物和自然",
+    "subcategory": "哺乳动物",
+    "description": {
+      "zh": "服务犬",
+      "en": "service dog"
+    },
+    "keywords": {
+      "zh": [
+        "工作犬",
+        "无障碍",
+        "狗",
+        "辅助",
+        "动物和自然",
+        "服务犬",
+        "哺乳动物"
+      ],
+      "en": [
+        "service",
+        "dog"
+      ]
+    }
+  }
+]

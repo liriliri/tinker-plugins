@@ -1,0 +1,1619 @@
+[
+  {
+    "emoji": "🎃",
+    "name": "jack_o_lantern",
+    "shortcode": ":jack_o_lantern:",
+    "category": "活动",
+    "subcategory": "事件",
+    "description": {
+      "zh": "南瓜灯",
+      "en": "jack-o-lantern"
+    },
+    "keywords": {
+      "zh": [
+        "万圣节",
+        "庆祝",
+        "灯笼",
+        "活动",
+        "南瓜灯",
+        "事件"
+      ],
+      "en": [
+        "jack-o-lantern"
+      ]
+    }
+  },
+  {
+    "emoji": "🎄",
+    "name": "christmas_tree",
+    "shortcode": ":christmas_tree:",
+    "category": "活动",
+    "subcategory": "事件",
+    "description": {
+      "zh": "圣诞树",
+      "en": "Christmas tree"
+    },
+    "keywords": {
+      "zh": [
+        "庆祝",
+        "活动",
+        "圣诞树",
+        "事件"
+      ],
+      "en": [
+        "Christmas",
+        "tree"
+      ]
+    }
+  },
+  {
+    "emoji": "🎆",
+    "name": "fireworks",
+    "shortcode": ":fireworks:",
+    "category": "活动",
+    "subcategory": "事件",
+    "description": {
+      "zh": "焰火",
+      "en": "fireworks"
+    },
+    "keywords": {
+      "zh": [
+        "庆祝",
+        "烟花",
+        "活动",
+        "焰火",
+        "事件"
+      ],
+      "en": [
+        "fireworks"
+      ]
+    }
+  },
+  {
+    "emoji": "🎇",
+    "name": "sparkler",
+    "shortcode": ":sparkler:",
+    "category": "活动",
+    "subcategory": "事件",
+    "description": {
+      "zh": "烟花",
+      "en": "sparkler"
+    },
+    "keywords": {
+      "zh": [
+        "庆祝",
+        "火花",
+        "烟火",
+        "焰火",
+        "活动",
+        "烟花",
+        "事件"
+      ],
+      "en": [
+        "sparkler"
+      ]
+    }
+  },
+  {
+    "emoji": "🧨",
+    "name": "firecracker",
+    "shortcode": ":firecracker:",
+    "category": "活动",
+    "subcategory": "事件",
+    "description": {
+      "zh": "爆竹",
+      "en": "firecracker"
+    },
+    "keywords": {
+      "zh": [
+        "炸药",
+        "烟花",
+        "爆炸",
+        "活动",
+        "爆竹",
+        "事件"
+      ],
+      "en": [
+        "firecracker"
+      ]
+    }
+  },
+  {
+    "emoji": "✨",
+    "name": "sparkles",
+    "shortcode": ":sparkles:",
+    "category": "活动",
+    "subcategory": "事件",
+    "description": {
+      "zh": "闪亮",
+      "en": "sparkles"
+    },
+    "keywords": {
+      "zh": [
+        "星星",
+        "火花",
+        "闪光",
+        "闪耀",
+        "活动",
+        "闪亮",
+        "事件"
+      ],
+      "en": [
+        "sparkles"
+      ]
+    }
+  },
+  {
+    "emoji": "🎈",
+    "name": "balloon",
+    "shortcode": ":balloon:",
+    "category": "活动",
+    "subcategory": "事件",
+    "description": {
+      "zh": "气球",
+      "en": "balloon"
+    },
+    "keywords": {
+      "zh": [
+        "庆祝",
+        "活动",
+        "气球",
+        "事件"
+      ],
+      "en": [
+        "balloon"
+      ]
+    }
+  },
+  {
+    "emoji": "🎉",
+    "name": "tada",
+    "shortcode": ":tada:",
+    "category": "活动",
+    "subcategory": "事件",
+    "description": {
+      "zh": "拉炮彩带",
+      "en": "party popper"
+    },
+    "keywords": {
+      "zh": [
+        "庆祝",
+        "派对礼宾花",
+        "活动",
+        "拉炮彩带",
+        "事件"
+      ],
+      "en": [
+        "party",
+        "popper"
+      ]
+    }
+  },
+  {
+    "emoji": "🎊",
+    "name": "confetti_ball",
+    "shortcode": ":confetti_ball:",
+    "category": "活动",
+    "subcategory": "事件",
+    "description": {
+      "zh": "五彩纸屑球",
+      "en": "confetti ball"
+    },
+    "keywords": {
+      "zh": [
+        "庆祝",
+        "活动",
+        "五彩纸屑球",
+        "事件"
+      ],
+      "en": [
+        "confetti",
+        "ball"
+      ]
+    }
+  },
+  {
+    "emoji": "🎋",
+    "name": "tanabata_tree",
+    "shortcode": ":tanabata_tree:",
+    "category": "活动",
+    "subcategory": "事件",
+    "description": {
+      "zh": "七夕树",
+      "en": "tanabata tree"
+    },
+    "keywords": {
+      "zh": [
+        "庆祝",
+        "日本",
+        "活动",
+        "七夕树",
+        "事件"
+      ],
+      "en": [
+        "tanabata",
+        "tree"
+      ]
+    }
+  },
+  {
+    "emoji": "🎍",
+    "name": "bamboo",
+    "shortcode": ":bamboo:",
+    "category": "活动",
+    "subcategory": "事件",
+    "description": {
+      "zh": "门松",
+      "en": "pine decoration"
+    },
+    "keywords": {
+      "zh": [
+        "庆祝",
+        "日本",
+        "松树",
+        "盆栽",
+        "竹",
+        "活动",
+        "门松",
+        "事件"
+      ],
+      "en": [
+        "pine",
+        "decoration"
+      ]
+    }
+  },
+  {
+    "emoji": "🎎",
+    "name": "dolls",
+    "shortcode": ":dolls:",
+    "category": "活动",
+    "subcategory": "事件",
+    "description": {
+      "zh": "日本人形",
+      "en": "Japanese dolls"
+    },
+    "keywords": {
+      "zh": [
+        "人偶",
+        "庆祝",
+        "节日",
+        "活动",
+        "日本人形",
+        "事件"
+      ],
+      "en": [
+        "Japanese",
+        "dolls"
+      ]
+    }
+  },
+  {
+    "emoji": "🎏",
+    "name": "flags",
+    "shortcode": ":flags:",
+    "category": "活动",
+    "subcategory": "事件",
+    "description": {
+      "zh": "鲤鱼旗",
+      "en": "carp streamer"
+    },
+    "keywords": {
+      "zh": [
+        "庆祝",
+        "日本",
+        "男孩节",
+        "长旗",
+        "活动",
+        "鲤鱼旗",
+        "事件"
+      ],
+      "en": [
+        "carp",
+        "streamer"
+      ]
+    }
+  },
+  {
+    "emoji": "🎐",
+    "name": "wind_chime",
+    "shortcode": ":wind_chime:",
+    "category": "活动",
+    "subcategory": "事件",
+    "description": {
+      "zh": "风铃",
+      "en": "wind chime"
+    },
+    "keywords": {
+      "zh": [
+        "庆祝",
+        "铃铛",
+        "活动",
+        "风铃",
+        "事件"
+      ],
+      "en": [
+        "wind",
+        "chime"
+      ]
+    }
+  },
+  {
+    "emoji": "🎑",
+    "name": "rice_scene",
+    "shortcode": ":rice_scene:",
+    "category": "活动",
+    "subcategory": "事件",
+    "description": {
+      "zh": "赏月",
+      "en": "moon viewing ceremony"
+    },
+    "keywords": {
+      "zh": [
+        "中秋",
+        "庆祝",
+        "月亮",
+        "活动",
+        "赏月",
+        "事件"
+      ],
+      "en": [
+        "moon",
+        "viewing",
+        "ceremony"
+      ]
+    }
+  },
+  {
+    "emoji": "🧧",
+    "name": "red_envelope",
+    "shortcode": ":red_envelope:",
+    "category": "活动",
+    "subcategory": "事件",
+    "description": {
+      "zh": "红包",
+      "en": "red envelope"
+    },
+    "keywords": {
+      "zh": [
+        "利是",
+        "礼物",
+        "运气",
+        "钱",
+        "活动",
+        "红包",
+        "事件"
+      ],
+      "en": [
+        "red",
+        "envelope"
+      ]
+    }
+  },
+  {
+    "emoji": "🎀",
+    "name": "ribbon",
+    "shortcode": ":ribbon:",
+    "category": "活动",
+    "subcategory": "事件",
+    "description": {
+      "zh": "蝴蝶结",
+      "en": "ribbon"
+    },
+    "keywords": {
+      "zh": [
+        "丝带",
+        "庆祝",
+        "缎带",
+        "活动",
+        "蝴蝶结",
+        "事件"
+      ],
+      "en": [
+        "ribbon"
+      ]
+    }
+  },
+  {
+    "emoji": "🎁",
+    "name": "gift",
+    "shortcode": ":gift:",
+    "category": "活动",
+    "subcategory": "事件",
+    "description": {
+      "zh": "礼物",
+      "en": "wrapped gift"
+    },
+    "keywords": {
+      "zh": [
+        "包装",
+        "庆祝",
+        "盒子",
+        "礼品",
+        "活动",
+        "礼物",
+        "事件"
+      ],
+      "en": [
+        "wrapped",
+        "gift"
+      ]
+    }
+  },
+  {
+    "emoji": "🎫",
+    "name": "ticket",
+    "shortcode": ":ticket:",
+    "category": "活动",
+    "subcategory": "事件",
+    "description": {
+      "zh": "票",
+      "en": "ticket"
+    },
+    "keywords": {
+      "zh": [
+        "入场券",
+        "电影票",
+        "车票",
+        "门票",
+        "活动",
+        "票",
+        "事件"
+      ],
+      "en": [
+        "ticket"
+      ]
+    }
+  },
+  {
+    "emoji": "🏆",
+    "name": "trophy",
+    "shortcode": ":trophy:",
+    "category": "活动",
+    "subcategory": "奖牌",
+    "description": {
+      "zh": "奖杯",
+      "en": "trophy"
+    },
+    "keywords": {
+      "zh": [
+        "奖励",
+        "奖品",
+        "奖赏",
+        "活动",
+        "奖杯",
+        "奖牌"
+      ],
+      "en": [
+        "trophy"
+      ]
+    }
+  },
+  {
+    "emoji": "🏅",
+    "name": "medal_sports",
+    "shortcode": ":medal_sports:",
+    "category": "活动",
+    "subcategory": "奖牌",
+    "description": {
+      "zh": "奖牌",
+      "en": "sports medal"
+    },
+    "keywords": {
+      "zh": [
+        "运动会奖牌",
+        "活动",
+        "奖牌"
+      ],
+      "en": [
+        "sports",
+        "medal"
+      ]
+    }
+  },
+  {
+    "emoji": "🥇",
+    "name": "1st_place_medal",
+    "shortcode": ":1st_place_medal:",
+    "category": "活动",
+    "subcategory": "奖牌",
+    "description": {
+      "zh": "金牌",
+      "en": "1st place medal"
+    },
+    "keywords": {
+      "zh": [
+        "第一",
+        "活动",
+        "金牌",
+        "奖牌"
+      ],
+      "en": [
+        "1st",
+        "place",
+        "medal"
+      ]
+    }
+  },
+  {
+    "emoji": "🥈",
+    "name": "2nd_place_medal",
+    "shortcode": ":2nd_place_medal:",
+    "category": "活动",
+    "subcategory": "奖牌",
+    "description": {
+      "zh": "银牌",
+      "en": "2nd place medal"
+    },
+    "keywords": {
+      "zh": [
+        "第二",
+        "活动",
+        "银牌",
+        "奖牌"
+      ],
+      "en": [
+        "2nd",
+        "place",
+        "medal"
+      ]
+    }
+  },
+  {
+    "emoji": "🥉",
+    "name": "3rd_place_medal",
+    "shortcode": ":3rd_place_medal:",
+    "category": "活动",
+    "subcategory": "奖牌",
+    "description": {
+      "zh": "铜牌",
+      "en": "3rd place medal"
+    },
+    "keywords": {
+      "zh": [
+        "第三",
+        "活动",
+        "铜牌",
+        "奖牌"
+      ],
+      "en": [
+        "3rd",
+        "place",
+        "medal"
+      ]
+    }
+  },
+  {
+    "emoji": "⚽",
+    "name": "soccer",
+    "shortcode": ":soccer:",
+    "category": "活动",
+    "subcategory": "运动",
+    "description": {
+      "zh": "足球",
+      "en": "soccer ball"
+    },
+    "keywords": {
+      "zh": [
+        "英式足球",
+        "活动",
+        "足球",
+        "运动"
+      ],
+      "en": [
+        "soccer",
+        "ball"
+      ]
+    }
+  },
+  {
+    "emoji": "⚾",
+    "name": "baseball",
+    "shortcode": ":baseball:",
+    "category": "活动",
+    "subcategory": "运动",
+    "description": {
+      "zh": "棒球",
+      "en": "baseball"
+    },
+    "keywords": {
+      "zh": [
+        "活动",
+        "棒球",
+        "运动"
+      ],
+      "en": [
+        "baseball"
+      ]
+    }
+  },
+  {
+    "emoji": "🥎",
+    "name": "softball",
+    "shortcode": ":softball:",
+    "category": "活动",
+    "subcategory": "运动",
+    "description": {
+      "zh": "垒球",
+      "en": "softball"
+    },
+    "keywords": {
+      "zh": [
+        "手套",
+        "腋下",
+        "活动",
+        "垒球",
+        "运动"
+      ],
+      "en": [
+        "softball"
+      ]
+    }
+  },
+  {
+    "emoji": "🏀",
+    "name": "basketball",
+    "shortcode": ":basketball:",
+    "category": "活动",
+    "subcategory": "运动",
+    "description": {
+      "zh": "篮球",
+      "en": "basketball"
+    },
+    "keywords": {
+      "zh": [
+        "篮筐",
+        "活动",
+        "篮球",
+        "运动"
+      ],
+      "en": [
+        "basketball"
+      ]
+    }
+  },
+  {
+    "emoji": "🏐",
+    "name": "volleyball",
+    "shortcode": ":volleyball:",
+    "category": "活动",
+    "subcategory": "运动",
+    "description": {
+      "zh": "排球",
+      "en": "volleyball"
+    },
+    "keywords": {
+      "zh": [
+        "活动",
+        "排球",
+        "运动"
+      ],
+      "en": [
+        "volleyball"
+      ]
+    }
+  },
+  {
+    "emoji": "🏈",
+    "name": "football",
+    "shortcode": ":football:",
+    "category": "活动",
+    "subcategory": "运动",
+    "description": {
+      "zh": "美式橄榄球",
+      "en": "american football"
+    },
+    "keywords": {
+      "zh": [
+        "活动",
+        "美式橄榄球",
+        "运动"
+      ],
+      "en": [
+        "american",
+        "football"
+      ]
+    }
+  },
+  {
+    "emoji": "🏉",
+    "name": "rugby_football",
+    "shortcode": ":rugby_football:",
+    "category": "活动",
+    "subcategory": "运动",
+    "description": {
+      "zh": "英式橄榄球",
+      "en": "rugby football"
+    },
+    "keywords": {
+      "zh": [
+        "活动",
+        "英式橄榄球",
+        "运动"
+      ],
+      "en": [
+        "rugby",
+        "football"
+      ]
+    }
+  },
+  {
+    "emoji": "🎾",
+    "name": "tennis",
+    "shortcode": ":tennis:",
+    "category": "活动",
+    "subcategory": "运动",
+    "description": {
+      "zh": "网球",
+      "en": "tennis"
+    },
+    "keywords": {
+      "zh": [
+        "球拍",
+        "活动",
+        "网球",
+        "运动"
+      ],
+      "en": [
+        "tennis"
+      ]
+    }
+  },
+  {
+    "emoji": "🥏",
+    "name": "flying_disc",
+    "shortcode": ":flying_disc:",
+    "category": "活动",
+    "subcategory": "运动",
+    "description": {
+      "zh": "飞盘",
+      "en": "flying disc"
+    },
+    "keywords": {
+      "zh": [
+        "极限运动",
+        "终极",
+        "活动",
+        "飞盘",
+        "运动"
+      ],
+      "en": [
+        "flying",
+        "disc"
+      ]
+    }
+  },
+  {
+    "emoji": "🎳",
+    "name": "bowling",
+    "shortcode": ":bowling:",
+    "category": "活动",
+    "subcategory": "运动",
+    "description": {
+      "zh": "保龄球",
+      "en": "bowling"
+    },
+    "keywords": {
+      "zh": [
+        "活动",
+        "保龄球",
+        "运动"
+      ],
+      "en": [
+        "bowling"
+      ]
+    }
+  },
+  {
+    "emoji": "🏏",
+    "name": "cricket_game",
+    "shortcode": ":cricket_game:",
+    "category": "活动",
+    "subcategory": "运动",
+    "description": {
+      "zh": "板球",
+      "en": "cricket game"
+    },
+    "keywords": {
+      "zh": [
+        "球拍",
+        "活动",
+        "板球",
+        "运动"
+      ],
+      "en": [
+        "cricket",
+        "game"
+      ]
+    }
+  },
+  {
+    "emoji": "🏑",
+    "name": "field_hockey",
+    "shortcode": ":field_hockey:",
+    "category": "活动",
+    "subcategory": "运动",
+    "description": {
+      "zh": "曲棍球",
+      "en": "field hockey"
+    },
+    "keywords": {
+      "zh": [
+        "球棍",
+        "活动",
+        "曲棍球",
+        "运动"
+      ],
+      "en": [
+        "field",
+        "hockey"
+      ]
+    }
+  },
+  {
+    "emoji": "🏒",
+    "name": "ice_hockey",
+    "shortcode": ":ice_hockey:",
+    "category": "活动",
+    "subcategory": "运动",
+    "description": {
+      "zh": "冰球",
+      "en": "ice hockey"
+    },
+    "keywords": {
+      "zh": [
+        "球棍",
+        "活动",
+        "冰球",
+        "运动"
+      ],
+      "en": [
+        "ice",
+        "hockey"
+      ]
+    }
+  },
+  {
+    "emoji": "🥍",
+    "name": "lacrosse",
+    "shortcode": ":lacrosse:",
+    "category": "活动",
+    "subcategory": "运动",
+    "description": {
+      "zh": "袋棍球",
+      "en": "lacrosse"
+    },
+    "keywords": {
+      "zh": [
+        "球棍",
+        "球门",
+        "活动",
+        "袋棍球",
+        "运动"
+      ],
+      "en": [
+        "lacrosse"
+      ]
+    }
+  },
+  {
+    "emoji": "🏓",
+    "name": "ping_pong",
+    "shortcode": ":ping_pong:",
+    "category": "活动",
+    "subcategory": "运动",
+    "description": {
+      "zh": "乒乓球",
+      "en": "ping pong"
+    },
+    "keywords": {
+      "zh": [
+        "比赛",
+        "球拍",
+        "活动",
+        "乒乓球",
+        "运动"
+      ],
+      "en": [
+        "ping",
+        "pong"
+      ]
+    }
+  },
+  {
+    "emoji": "🏸",
+    "name": "badminton",
+    "shortcode": ":badminton:",
+    "category": "活动",
+    "subcategory": "运动",
+    "description": {
+      "zh": "羽毛球",
+      "en": "badminton"
+    },
+    "keywords": {
+      "zh": [
+        "球拍",
+        "活动",
+        "羽毛球",
+        "运动"
+      ],
+      "en": [
+        "badminton"
+      ]
+    }
+  },
+  {
+    "emoji": "🥊",
+    "name": "boxing_glove",
+    "shortcode": ":boxing_glove:",
+    "category": "活动",
+    "subcategory": "运动",
+    "description": {
+      "zh": "拳击手套",
+      "en": "boxing glove"
+    },
+    "keywords": {
+      "zh": [
+        "活动",
+        "拳击手套",
+        "运动"
+      ],
+      "en": [
+        "boxing",
+        "glove"
+      ]
+    }
+  },
+  {
+    "emoji": "🥋",
+    "name": "martial_arts_uniform",
+    "shortcode": ":martial_arts_uniform:",
+    "category": "活动",
+    "subcategory": "运动",
+    "description": {
+      "zh": "练武服",
+      "en": "martial arts uniform"
+    },
+    "keywords": {
+      "zh": [
+        "制服",
+        "柔道",
+        "武术",
+        "空手道",
+        "跆拳道",
+        "活动",
+        "练武服",
+        "运动"
+      ],
+      "en": [
+        "martial",
+        "arts",
+        "uniform"
+      ]
+    }
+  },
+  {
+    "emoji": "🥅",
+    "name": "goal_net",
+    "shortcode": ":goal_net:",
+    "category": "活动",
+    "subcategory": "运动",
+    "description": {
+      "zh": "球门",
+      "en": "goal net"
+    },
+    "keywords": {
+      "zh": [
+        "球网",
+        "活动",
+        "球门",
+        "运动"
+      ],
+      "en": [
+        "goal",
+        "net"
+      ]
+    }
+  },
+  {
+    "emoji": "⛳",
+    "name": "golf",
+    "shortcode": ":golf:",
+    "category": "活动",
+    "subcategory": "运动",
+    "description": {
+      "zh": "高尔夫球洞",
+      "en": "flag in hole"
+    },
+    "keywords": {
+      "zh": [
+        "活动",
+        "高尔夫球洞",
+        "运动"
+      ],
+      "en": [
+        "flag",
+        "in",
+        "hole"
+      ]
+    }
+  },
+  {
+    "emoji": "🎣",
+    "name": "fishing_pole_and_fish",
+    "shortcode": ":fishing_pole_and_fish:",
+    "category": "活动",
+    "subcategory": "运动",
+    "description": {
+      "zh": "钓鱼竿",
+      "en": "fishing pole"
+    },
+    "keywords": {
+      "zh": [
+        "鱼杆",
+        "活动",
+        "钓鱼竿",
+        "运动"
+      ],
+      "en": [
+        "fishing",
+        "pole"
+      ]
+    }
+  },
+  {
+    "emoji": "🤿",
+    "name": "diving_mask",
+    "shortcode": ":diving_mask:",
+    "category": "活动",
+    "subcategory": "运动",
+    "description": {
+      "zh": "潜水面罩",
+      "en": "diving mask"
+    },
+    "keywords": {
+      "zh": [
+        "浮潜",
+        "深潜",
+        "活动",
+        "潜水面罩",
+        "运动"
+      ],
+      "en": [
+        "diving",
+        "mask"
+      ]
+    }
+  },
+  {
+    "emoji": "🎽",
+    "name": "running_shirt_with_sash",
+    "shortcode": ":running_shirt_with_sash:",
+    "category": "活动",
+    "subcategory": "运动",
+    "description": {
+      "zh": "运动背心",
+      "en": "running shirt"
+    },
+    "keywords": {
+      "zh": [
+        "上衣",
+        "跑步",
+        "活动",
+        "运动背心",
+        "运动"
+      ],
+      "en": [
+        "running",
+        "shirt"
+      ]
+    }
+  },
+  {
+    "emoji": "🎿",
+    "name": "ski",
+    "shortcode": ":ski:",
+    "category": "活动",
+    "subcategory": "运动",
+    "description": {
+      "zh": "滑雪",
+      "en": "skis"
+    },
+    "keywords": {
+      "zh": [
+        "活动",
+        "滑雪",
+        "运动"
+      ],
+      "en": [
+        "skis"
+      ]
+    }
+  },
+  {
+    "emoji": "🛷",
+    "name": "sled",
+    "shortcode": ":sled:",
+    "category": "活动",
+    "subcategory": "运动",
+    "description": {
+      "zh": "雪橇",
+      "en": "sled"
+    },
+    "keywords": {
+      "zh": [
+        "乘雪橇",
+        "驾雪橇",
+        "活动",
+        "雪橇",
+        "运动"
+      ],
+      "en": [
+        "sled"
+      ]
+    }
+  },
+  {
+    "emoji": "🥌",
+    "name": "curling_stone",
+    "shortcode": ":curling_stone:",
+    "category": "活动",
+    "subcategory": "运动",
+    "description": {
+      "zh": "冰壶",
+      "en": "curling stone"
+    },
+    "keywords": {
+      "zh": [
+        "冰上溜石",
+        "比赛",
+        "游戏",
+        "活动",
+        "冰壶",
+        "运动"
+      ],
+      "en": [
+        "curling",
+        "stone"
+      ]
+    }
+  },
+  {
+    "emoji": "🎯",
+    "name": "dart",
+    "shortcode": ":dart:",
+    "category": "活动",
+    "subcategory": "游戏",
+    "description": {
+      "zh": "正中靶心的飞镖",
+      "en": "direct hit"
+    },
+    "keywords": {
+      "zh": [
+        "命中",
+        "活动",
+        "正中靶心的飞镖",
+        "游戏"
+      ],
+      "en": [
+        "direct",
+        "hit"
+      ]
+    }
+  },
+  {
+    "emoji": "🪀",
+    "name": "yo_yo",
+    "shortcode": ":yo_yo:",
+    "category": "活动",
+    "subcategory": "游戏",
+    "description": {
+      "zh": "悠悠球",
+      "en": "yo-yo"
+    },
+    "keywords": {
+      "zh": [
+        "上下起落",
+        "玩具",
+        "活动",
+        "悠悠球",
+        "游戏"
+      ],
+      "en": [
+        "yo-yo"
+      ]
+    }
+  },
+  {
+    "emoji": "🪁",
+    "name": "kite",
+    "shortcode": ":kite:",
+    "category": "活动",
+    "subcategory": "游戏",
+    "description": {
+      "zh": "风筝",
+      "en": "kite"
+    },
+    "keywords": {
+      "zh": [
+        "翱翔",
+        "飞翔",
+        "活动",
+        "风筝",
+        "游戏"
+      ],
+      "en": [
+        "kite"
+      ]
+    }
+  },
+  {
+    "emoji": "🎱",
+    "name": "8ball",
+    "shortcode": ":8ball:",
+    "category": "活动",
+    "subcategory": "游戏",
+    "description": {
+      "zh": "台球",
+      "en": "pool 8 ball"
+    },
+    "keywords": {
+      "zh": [
+        "8 球制桌球",
+        "霹雳八球",
+        "活动",
+        "台球",
+        "游戏"
+      ],
+      "en": [
+        "pool",
+        "8",
+        "ball"
+      ]
+    }
+  },
+  {
+    "emoji": "🔮",
+    "name": "crystal_ball",
+    "shortcode": ":crystal_ball:",
+    "category": "活动",
+    "subcategory": "游戏",
+    "description": {
+      "zh": "水晶球",
+      "en": "crystal ball"
+    },
+    "keywords": {
+      "zh": [
+        "命运",
+        "工具",
+        "财富",
+        "活动",
+        "水晶球",
+        "游戏"
+      ],
+      "en": [
+        "crystal",
+        "ball"
+      ]
+    }
+  },
+  {
+    "emoji": "🧿",
+    "name": "nazar_amulet",
+    "shortcode": ":nazar_amulet:",
+    "category": "活动",
+    "subcategory": "游戏",
+    "description": {
+      "zh": "纳扎尔护身符",
+      "en": "nazar amulet"
+    },
+    "keywords": {
+      "zh": [
+        "小装饰品",
+        "恶魔之眼",
+        "珠子",
+        "活动",
+        "纳扎尔护身符",
+        "游戏"
+      ],
+      "en": [
+        "nazar",
+        "amulet"
+      ]
+    }
+  },
+  {
+    "emoji": "🎮",
+    "name": "video_game",
+    "shortcode": ":video_game:",
+    "category": "活动",
+    "subcategory": "游戏",
+    "description": {
+      "zh": "游戏手柄",
+      "en": "video game"
+    },
+    "keywords": {
+      "zh": [
+        "电子游戏",
+        "活动",
+        "游戏手柄",
+        "游戏"
+      ],
+      "en": [
+        "video",
+        "game"
+      ]
+    }
+  },
+  {
+    "emoji": "🎰",
+    "name": "slot_machine",
+    "shortcode": ":slot_machine:",
+    "category": "活动",
+    "subcategory": "游戏",
+    "description": {
+      "zh": "老虎机",
+      "en": "slot machine"
+    },
+    "keywords": {
+      "zh": [
+        "角子机",
+        "赌博",
+        "活动",
+        "老虎机",
+        "游戏"
+      ],
+      "en": [
+        "slot",
+        "machine"
+      ]
+    }
+  },
+  {
+    "emoji": "🎲",
+    "name": "game_die",
+    "shortcode": ":game_die:",
+    "category": "活动",
+    "subcategory": "游戏",
+    "description": {
+      "zh": "骰子",
+      "en": "game die"
+    },
+    "keywords": {
+      "zh": [
+        "色子",
+        "活动",
+        "骰子",
+        "游戏"
+      ],
+      "en": [
+        "game",
+        "die"
+      ]
+    }
+  },
+  {
+    "emoji": "🧩",
+    "name": "jigsaw",
+    "shortcode": ":jigsaw:",
+    "category": "活动",
+    "subcategory": "游戏",
+    "description": {
+      "zh": "拼图",
+      "en": "puzzle piece"
+    },
+    "keywords": {
+      "zh": [
+        "图片",
+        "智力游戏",
+        "线索",
+        "联锁",
+        "活动",
+        "拼图",
+        "游戏"
+      ],
+      "en": [
+        "puzzle",
+        "piece"
+      ]
+    }
+  },
+  {
+    "emoji": "🧸",
+    "name": "teddy_bear",
+    "shortcode": ":teddy_bear:",
+    "category": "活动",
+    "subcategory": "游戏",
+    "description": {
+      "zh": "泰迪熊",
+      "en": "teddy bear"
+    },
+    "keywords": {
+      "zh": [
+        "填充",
+        "毛绒玩具",
+        "玩偶",
+        "玩具",
+        "活动",
+        "泰迪熊",
+        "游戏"
+      ],
+      "en": [
+        "teddy",
+        "bear"
+      ]
+    }
+  },
+  {
+    "emoji": "🃏",
+    "name": "black_joker",
+    "shortcode": ":black_joker:",
+    "category": "活动",
+    "subcategory": "游戏",
+    "description": {
+      "zh": "大小王",
+      "en": "joker"
+    },
+    "keywords": {
+      "zh": [
+        "大王",
+        "扑克",
+        "鬼牌",
+        "活动",
+        "大小王",
+        "游戏"
+      ],
+      "en": [
+        "joker"
+      ]
+    }
+  },
+  {
+    "emoji": "🀄",
+    "name": "mahjong",
+    "shortcode": ":mahjong:",
+    "category": "活动",
+    "subcategory": "游戏",
+    "description": {
+      "zh": "红中",
+      "en": "mahjong red dragon"
+    },
+    "keywords": {
+      "zh": [
+        "麻将",
+        "活动",
+        "红中",
+        "游戏"
+      ],
+      "en": [
+        "mahjong",
+        "red",
+        "dragon"
+      ]
+    }
+  },
+  {
+    "emoji": "🎴",
+    "name": "flower_playing_cards",
+    "shortcode": ":flower_playing_cards:",
+    "category": "活动",
+    "subcategory": "游戏",
+    "description": {
+      "zh": "花札",
+      "en": "flower playing cards"
+    },
+    "keywords": {
+      "zh": [
+        "卡牌",
+        "日本",
+        "花牌",
+        "活动",
+        "花札",
+        "游戏"
+      ],
+      "en": [
+        "flower",
+        "playing",
+        "cards"
+      ]
+    }
+  },
+  {
+    "emoji": "🎭",
+    "name": "performing_arts",
+    "shortcode": ":performing_arts:",
+    "category": "活动",
+    "subcategory": "艺术和工艺",
+    "description": {
+      "zh": "表演艺术",
+      "en": "performing arts"
+    },
+    "keywords": {
+      "zh": [
+        "剧院",
+        "戏剧",
+        "面具",
+        "活动",
+        "表演艺术",
+        "艺术和工艺"
+      ],
+      "en": [
+        "performing",
+        "arts"
+      ]
+    }
+  },
+  {
+    "emoji": "🎨",
+    "name": "art",
+    "shortcode": ":art:",
+    "category": "活动",
+    "subcategory": "艺术和工艺",
+    "description": {
+      "zh": "调色盘",
+      "en": "artist palette"
+    },
+    "keywords": {
+      "zh": [
+        "博物馆",
+        "画画",
+        "调色板",
+        "活动",
+        "调色盘",
+        "艺术和工艺"
+      ],
+      "en": [
+        "artist",
+        "palette"
+      ]
+    }
+  },
+  {
+    "emoji": "🧵",
+    "name": "thread",
+    "shortcode": ":thread:",
+    "category": "活动",
+    "subcategory": "艺术和工艺",
+    "description": {
+      "zh": "线",
+      "en": "thread"
+    },
+    "keywords": {
+      "zh": [
+        "线轴",
+        "绳子",
+        "缝纫",
+        "针",
+        "活动",
+        "线",
+        "艺术和工艺"
+      ],
+      "en": [
+        "thread"
+      ]
+    }
+  },
+  {
+    "emoji": "🧶",
+    "name": "yarn",
+    "shortcode": ":yarn:",
+    "category": "活动",
+    "subcategory": "艺术和工艺",
+    "description": {
+      "zh": "毛线",
+      "en": "yarn"
+    },
+    "keywords": {
+      "zh": [
+        "毛线球",
+        "钩针编织物",
+        "活动",
+        "毛线",
+        "艺术和工艺"
+      ],
+      "en": [
+        "yarn"
+      ]
+    }
+  }
+]

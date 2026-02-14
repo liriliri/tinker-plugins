@@ -1,0 +1,3644 @@
+[
+  {
+    "emoji": "🏧",
+    "name": "atm",
+    "shortcode": ":atm:",
+    "category": "符号",
+    "subcategory": "功能标识",
+    "description": {
+      "zh": "取款机",
+      "en": "ATM sign"
+    },
+    "keywords": {
+      "zh": [
+        "柜员机",
+        "银行",
+        "符号",
+        "取款机",
+        "功能标识"
+      ],
+      "en": [
+        "ATM",
+        "sign"
+      ]
+    }
+  },
+  {
+    "emoji": "🚮",
+    "name": "put_litter_in_its_place",
+    "shortcode": ":put_litter_in_its_place:",
+    "category": "符号",
+    "subcategory": "功能标识",
+    "description": {
+      "zh": "倒垃圾",
+      "en": "litter in bin sign"
+    },
+    "keywords": {
+      "zh": [
+        "垃圾丢弃处",
+        "垃圾入篓",
+        "符号",
+        "倒垃圾",
+        "功能标识"
+      ],
+      "en": [
+        "litter",
+        "bin",
+        "sign"
+      ]
+    }
+  },
+  {
+    "emoji": "🚰",
+    "name": "potable_water",
+    "shortcode": ":potable_water:",
+    "category": "符号",
+    "subcategory": "功能标识",
+    "description": {
+      "zh": "饮用水",
+      "en": "potable water"
+    },
+    "keywords": {
+      "zh": [
+        "喝水",
+        "接水",
+        "水龙头",
+        "符号",
+        "饮用水",
+        "功能标识"
+      ],
+      "en": [
+        "potable",
+        "water"
+      ]
+    }
+  },
+  {
+    "emoji": "♿",
+    "name": "wheelchair",
+    "shortcode": ":wheelchair:",
+    "category": "符号",
+    "subcategory": "功能标识",
+    "description": {
+      "zh": "轮椅标识",
+      "en": "wheelchair symbol"
+    },
+    "keywords": {
+      "zh": [
+        "无障碍",
+        "残疾",
+        "残障",
+        "轮椅符号",
+        "符号",
+        "轮椅标识",
+        "功能标识"
+      ],
+      "en": [
+        "wheelchair",
+        "symbol"
+      ]
+    }
+  },
+  {
+    "emoji": "🚹",
+    "name": "mens",
+    "shortcode": ":mens:",
+    "category": "符号",
+    "subcategory": "功能标识",
+    "description": {
+      "zh": "男厕",
+      "en": "men’s room"
+    },
+    "keywords": {
+      "zh": [
+        "卫生间",
+        "厕所",
+        "洗手间",
+        "男士",
+        "符号",
+        "男厕",
+        "功能标识"
+      ],
+      "en": [
+        "men’s",
+        "room"
+      ]
+    }
+  },
+  {
+    "emoji": "🚺",
+    "name": "womens",
+    "shortcode": ":womens:",
+    "category": "符号",
+    "subcategory": "功能标识",
+    "description": {
+      "zh": "女厕",
+      "en": "women’s room"
+    },
+    "keywords": {
+      "zh": [
+        "卫生间",
+        "厕所",
+        "女士",
+        "洗手间",
+        "符号",
+        "女厕",
+        "功能标识"
+      ],
+      "en": [
+        "women’s",
+        "room"
+      ]
+    }
+  },
+  {
+    "emoji": "🚻",
+    "name": "restroom",
+    "shortcode": ":restroom:",
+    "category": "符号",
+    "subcategory": "功能标识",
+    "description": {
+      "zh": "卫生间",
+      "en": "restroom"
+    },
+    "keywords": {
+      "zh": [
+        "厕所",
+        "洗手间",
+        "符号",
+        "卫生间",
+        "功能标识"
+      ],
+      "en": [
+        "restroom"
+      ]
+    }
+  },
+  {
+    "emoji": "🚼",
+    "name": "baby_symbol",
+    "shortcode": ":baby_symbol:",
+    "category": "符号",
+    "subcategory": "功能标识",
+    "description": {
+      "zh": "宝宝",
+      "en": "baby symbol"
+    },
+    "keywords": {
+      "zh": [
+        "婴儿",
+        "母婴室",
+        "符号",
+        "宝宝",
+        "功能标识"
+      ],
+      "en": [
+        "baby",
+        "symbol"
+      ]
+    }
+  },
+  {
+    "emoji": "🚾",
+    "name": "wc",
+    "shortcode": ":wc:",
+    "category": "符号",
+    "subcategory": "功能标识",
+    "description": {
+      "zh": "厕所",
+      "en": "water closet"
+    },
+    "keywords": {
+      "zh": [
+        "卫生间",
+        "洗手间",
+        "盥洗室",
+        "符号",
+        "厕所",
+        "功能标识"
+      ],
+      "en": [
+        "water",
+        "closet"
+      ]
+    }
+  },
+  {
+    "emoji": "🛂",
+    "name": "passport_control",
+    "shortcode": ":passport_control:",
+    "category": "符号",
+    "subcategory": "功能标识",
+    "description": {
+      "zh": "护照检查",
+      "en": "passport control"
+    },
+    "keywords": {
+      "zh": [
+        "安检",
+        "通行证",
+        "符号",
+        "护照检查",
+        "功能标识"
+      ],
+      "en": [
+        "passport",
+        "control"
+      ]
+    }
+  },
+  {
+    "emoji": "🛃",
+    "name": "customs",
+    "shortcode": ":customs:",
+    "category": "符号",
+    "subcategory": "功能标识",
+    "description": {
+      "zh": "海关",
+      "en": "customs"
+    },
+    "keywords": {
+      "zh": [
+        "符号",
+        "海关",
+        "功能标识"
+      ],
+      "en": [
+        "customs"
+      ]
+    }
+  },
+  {
+    "emoji": "🛄",
+    "name": "baggage_claim",
+    "shortcode": ":baggage_claim:",
+    "category": "符号",
+    "subcategory": "功能标识",
+    "description": {
+      "zh": "提取行李",
+      "en": "baggage claim"
+    },
+    "keywords": {
+      "zh": [
+        "符号",
+        "提取行李",
+        "功能标识"
+      ],
+      "en": [
+        "baggage",
+        "claim"
+      ]
+    }
+  },
+  {
+    "emoji": "🛅",
+    "name": "left_luggage",
+    "shortcode": ":left_luggage:",
+    "category": "符号",
+    "subcategory": "功能标识",
+    "description": {
+      "zh": "寄存行李",
+      "en": "left luggage"
+    },
+    "keywords": {
+      "zh": [
+        "符号",
+        "寄存行李",
+        "功能标识"
+      ],
+      "en": [
+        "left",
+        "luggage"
+      ]
+    }
+  },
+  {
+    "emoji": "🚸",
+    "name": "children_crossing",
+    "shortcode": ":children_crossing:",
+    "category": "符号",
+    "subcategory": "警告",
+    "description": {
+      "zh": "儿童过街",
+      "en": "children crossing"
+    },
+    "keywords": {
+      "zh": [
+        "交通",
+        "安全",
+        "指示牌",
+        "行人",
+        "符号",
+        "儿童过街",
+        "警告"
+      ],
+      "en": [
+        "children",
+        "crossing"
+      ]
+    }
+  },
+  {
+    "emoji": "⛔",
+    "name": "no_entry",
+    "shortcode": ":no_entry:",
+    "category": "符号",
+    "subcategory": "警告",
+    "description": {
+      "zh": "禁止通行",
+      "en": "no entry"
+    },
+    "keywords": {
+      "zh": [
+        "交通",
+        "请勿入内",
+        "请勿驶入",
+        "符号",
+        "禁止通行",
+        "警告"
+      ],
+      "en": [
+        "no",
+        "entry"
+      ]
+    }
+  },
+  {
+    "emoji": "🚫",
+    "name": "no_entry_sign",
+    "shortcode": ":no_entry_sign:",
+    "category": "符号",
+    "subcategory": "警告",
+    "description": {
+      "zh": "禁止",
+      "en": "prohibited"
+    },
+    "keywords": {
+      "zh": [
+        "不准",
+        "不许",
+        "严禁",
+        "阻止",
+        "符号",
+        "禁止",
+        "警告"
+      ],
+      "en": [
+        "prohibited"
+      ]
+    }
+  },
+  {
+    "emoji": "🚳",
+    "name": "no_bicycles",
+    "shortcode": ":no_bicycles:",
+    "category": "符号",
+    "subcategory": "警告",
+    "description": {
+      "zh": "禁止自行车",
+      "en": "no bicycles"
+    },
+    "keywords": {
+      "zh": [
+        "严禁",
+        "交通",
+        "非机动车",
+        "符号",
+        "禁止自行车",
+        "警告"
+      ],
+      "en": [
+        "no",
+        "bicycles"
+      ]
+    }
+  },
+  {
+    "emoji": "🚭",
+    "name": "no_smoking",
+    "shortcode": ":no_smoking:",
+    "category": "符号",
+    "subcategory": "警告",
+    "description": {
+      "zh": "禁止吸烟",
+      "en": "no smoking"
+    },
+    "keywords": {
+      "zh": [
+        "严禁",
+        "抽烟",
+        "符号",
+        "禁止吸烟",
+        "警告"
+      ],
+      "en": [
+        "no",
+        "smoking"
+      ]
+    }
+  },
+  {
+    "emoji": "🚯",
+    "name": "do_not_litter",
+    "shortcode": ":do_not_litter:",
+    "category": "符号",
+    "subcategory": "警告",
+    "description": {
+      "zh": "禁止乱扔垃圾",
+      "en": "no littering"
+    },
+    "keywords": {
+      "zh": [
+        "严禁",
+        "符号",
+        "禁止乱扔垃圾",
+        "警告"
+      ],
+      "en": [
+        "no",
+        "littering"
+      ]
+    }
+  },
+  {
+    "emoji": "🚱",
+    "name": "non-potable_water",
+    "shortcode": ":non-potable_water:",
+    "category": "符号",
+    "subcategory": "警告",
+    "description": {
+      "zh": "非饮用水",
+      "en": "non-potable water"
+    },
+    "keywords": {
+      "zh": [
+        "非直饮水",
+        "符号",
+        "非饮用水",
+        "警告"
+      ],
+      "en": [
+        "non-potable",
+        "water"
+      ]
+    }
+  },
+  {
+    "emoji": "🚷",
+    "name": "no_pedestrians",
+    "shortcode": ":no_pedestrians:",
+    "category": "符号",
+    "subcategory": "警告",
+    "description": {
+      "zh": "禁止行人通行",
+      "en": "no pedestrians"
+    },
+    "keywords": {
+      "zh": [
+        "严禁",
+        "符号",
+        "禁止行人通行",
+        "警告"
+      ],
+      "en": [
+        "no",
+        "pedestrians"
+      ]
+    }
+  },
+  {
+    "emoji": "📵",
+    "name": "no_mobile_phones",
+    "shortcode": ":no_mobile_phones:",
+    "category": "符号",
+    "subcategory": "警告",
+    "description": {
+      "zh": "禁止使用手机",
+      "en": "no mobile phones"
+    },
+    "keywords": {
+      "zh": [
+        "严禁",
+        "电话",
+        "符号",
+        "禁止使用手机",
+        "警告"
+      ],
+      "en": [
+        "no",
+        "mobile",
+        "phones"
+      ]
+    }
+  },
+  {
+    "emoji": "🔞",
+    "name": "underage",
+    "shortcode": ":underage:",
+    "category": "符号",
+    "subcategory": "警告",
+    "description": {
+      "zh": "18禁",
+      "en": "no one under eighteen"
+    },
+    "keywords": {
+      "zh": [
+        "未成年人不宜",
+        "禁止",
+        "符号",
+        "18禁",
+        "警告"
+      ],
+      "en": [
+        "no",
+        "one",
+        "under",
+        "eighteen"
+      ]
+    }
+  },
+  {
+    "emoji": "🔃",
+    "name": "arrows_clockwise",
+    "shortcode": ":arrows_clockwise:",
+    "category": "符号",
+    "subcategory": "箭头",
+    "description": {
+      "zh": "顺时针垂直箭头",
+      "en": "clockwise vertical arrows"
+    },
+    "keywords": {
+      "zh": [
+        "方向",
+        "标识",
+        "重新载入",
+        "符号",
+        "顺时针垂直箭头",
+        "箭头"
+      ],
+      "en": [
+        "clockwise",
+        "vertical",
+        "arrows"
+      ]
+    }
+  },
+  {
+    "emoji": "🔄",
+    "name": "arrows_counterclockwise",
+    "shortcode": ":arrows_counterclockwise:",
+    "category": "符号",
+    "subcategory": "箭头",
+    "description": {
+      "zh": "逆时针箭头按钮",
+      "en": "counterclockwise arrows button"
+    },
+    "keywords": {
+      "zh": [
+        "符号",
+        "逆时针箭头按钮",
+        "箭头"
+      ],
+      "en": [
+        "counterclockwise",
+        "arrows",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🔙",
+    "name": "back",
+    "shortcode": ":back:",
+    "category": "符号",
+    "subcategory": "箭头",
+    "description": {
+      "zh": "返回箭头",
+      "en": "BACK arrow"
+    },
+    "keywords": {
+      "zh": [
+        "回退",
+        "符号",
+        "返回箭头",
+        "箭头"
+      ],
+      "en": [
+        "BACK",
+        "arrow"
+      ]
+    }
+  },
+  {
+    "emoji": "🔚",
+    "name": "end",
+    "shortcode": ":end:",
+    "category": "符号",
+    "subcategory": "箭头",
+    "description": {
+      "zh": "结束箭头",
+      "en": "END arrow"
+    },
+    "keywords": {
+      "zh": [
+        "符号",
+        "结束箭头",
+        "箭头"
+      ],
+      "en": [
+        "END",
+        "arrow"
+      ]
+    }
+  },
+  {
+    "emoji": "🔛",
+    "name": "on",
+    "shortcode": ":on:",
+    "category": "符号",
+    "subcategory": "箭头",
+    "description": {
+      "zh": "ON! 箭头",
+      "en": "ON! arrow"
+    },
+    "keywords": {
+      "zh": [
+        "开始",
+        "标识",
+        "符号",
+        "ON! 箭头",
+        "箭头"
+      ],
+      "en": [
+        "ON!",
+        "arrow"
+      ]
+    }
+  },
+  {
+    "emoji": "🔜",
+    "name": "soon",
+    "shortcode": ":soon:",
+    "category": "符号",
+    "subcategory": "箭头",
+    "description": {
+      "zh": "SOON 箭头",
+      "en": "SOON arrow"
+    },
+    "keywords": {
+      "zh": [
+        "马上",
+        "符号",
+        "SOON 箭头",
+        "箭头"
+      ],
+      "en": [
+        "SOON",
+        "arrow"
+      ]
+    }
+  },
+  {
+    "emoji": "🔝",
+    "name": "top",
+    "shortcode": ":top:",
+    "category": "符号",
+    "subcategory": "箭头",
+    "description": {
+      "zh": "置顶",
+      "en": "TOP arrow"
+    },
+    "keywords": {
+      "zh": [
+        "向上",
+        "标识",
+        "符号",
+        "置顶",
+        "箭头"
+      ],
+      "en": [
+        "TOP",
+        "arrow"
+      ]
+    }
+  },
+  {
+    "emoji": "🛐",
+    "name": "place_of_worship",
+    "shortcode": ":place_of_worship:",
+    "category": "符号",
+    "subcategory": "宗教",
+    "description": {
+      "zh": "宗教场所",
+      "en": "place of worship"
+    },
+    "keywords": {
+      "zh": [
+        "地点",
+        "礼拜",
+        "祈祷",
+        "符号",
+        "宗教场所",
+        "宗教"
+      ],
+      "en": [
+        "place",
+        "of",
+        "worship"
+      ]
+    }
+  },
+  {
+    "emoji": "🕎",
+    "name": "menorah",
+    "shortcode": ":menorah:",
+    "category": "符号",
+    "subcategory": "宗教",
+    "description": {
+      "zh": "烛台",
+      "en": "menorah"
+    },
+    "keywords": {
+      "zh": [
+        "光明节",
+        "灯台",
+        "符号",
+        "烛台",
+        "宗教"
+      ],
+      "en": [
+        "menorah"
+      ]
+    }
+  },
+  {
+    "emoji": "🔯",
+    "name": "six_pointed_star",
+    "shortcode": ":six_pointed_star:",
+    "category": "符号",
+    "subcategory": "宗教",
+    "description": {
+      "zh": "带中间点的六芒星",
+      "en": "dotted six-pointed star"
+    },
+    "keywords": {
+      "zh": [
+        "六角星",
+        "命运",
+        "符号",
+        "带中间点的六芒星",
+        "宗教"
+      ],
+      "en": [
+        "dotted",
+        "six-pointed",
+        "star"
+      ]
+    }
+  },
+  {
+    "emoji": "♈",
+    "name": "aries",
+    "shortcode": ":aries:",
+    "category": "符号",
+    "subcategory": "星座",
+    "description": {
+      "zh": "白羊座",
+      "en": "Aries"
+    },
+    "keywords": {
+      "zh": [
+        "公羊",
+        "符号",
+        "白羊座",
+        "星座"
+      ],
+      "en": [
+        "Aries"
+      ]
+    }
+  },
+  {
+    "emoji": "♉",
+    "name": "taurus",
+    "shortcode": ":taurus:",
+    "category": "符号",
+    "subcategory": "星座",
+    "description": {
+      "zh": "金牛座",
+      "en": "Taurus"
+    },
+    "keywords": {
+      "zh": [
+        "公牛",
+        "符号",
+        "金牛座",
+        "星座"
+      ],
+      "en": [
+        "Taurus"
+      ]
+    }
+  },
+  {
+    "emoji": "♊",
+    "name": "gemini",
+    "shortcode": ":gemini:",
+    "category": "符号",
+    "subcategory": "星座",
+    "description": {
+      "zh": "双子座",
+      "en": "Gemini"
+    },
+    "keywords": {
+      "zh": [
+        "孪生子",
+        "符号",
+        "双子座",
+        "星座"
+      ],
+      "en": [
+        "Gemini"
+      ]
+    }
+  },
+  {
+    "emoji": "♋",
+    "name": "cancer",
+    "shortcode": ":cancer:",
+    "category": "符号",
+    "subcategory": "星座",
+    "description": {
+      "zh": "巨蟹座",
+      "en": "Cancer"
+    },
+    "keywords": {
+      "zh": [
+        "螃蟹",
+        "符号",
+        "巨蟹座",
+        "星座"
+      ],
+      "en": [
+        "Cancer"
+      ]
+    }
+  },
+  {
+    "emoji": "♌",
+    "name": "leo",
+    "shortcode": ":leo:",
+    "category": "符号",
+    "subcategory": "星座",
+    "description": {
+      "zh": "狮子座",
+      "en": "Leo"
+    },
+    "keywords": {
+      "zh": [
+        "雄狮",
+        "符号",
+        "狮子座",
+        "星座"
+      ],
+      "en": [
+        "Leo"
+      ]
+    }
+  },
+  {
+    "emoji": "♍",
+    "name": "virgo",
+    "shortcode": ":virgo:",
+    "category": "符号",
+    "subcategory": "星座",
+    "description": {
+      "zh": "处女座",
+      "en": "Virgo"
+    },
+    "keywords": {
+      "zh": [
+        "黄道十二宫",
+        "符号",
+        "处女座",
+        "星座"
+      ],
+      "en": [
+        "Virgo"
+      ]
+    }
+  },
+  {
+    "emoji": "♎",
+    "name": "libra",
+    "shortcode": ":libra:",
+    "category": "符号",
+    "subcategory": "星座",
+    "description": {
+      "zh": "天秤座",
+      "en": "Libra"
+    },
+    "keywords": {
+      "zh": [
+        "平衡",
+        "正义",
+        "符号",
+        "天秤座",
+        "星座"
+      ],
+      "en": [
+        "Libra"
+      ]
+    }
+  },
+  {
+    "emoji": "♏",
+    "name": "scorpius",
+    "shortcode": ":scorpius:",
+    "category": "符号",
+    "subcategory": "星座",
+    "description": {
+      "zh": "天蝎座",
+      "en": "Scorpio"
+    },
+    "keywords": {
+      "zh": [
+        "蝎子",
+        "符号",
+        "天蝎座",
+        "星座"
+      ],
+      "en": [
+        "Scorpio"
+      ]
+    }
+  },
+  {
+    "emoji": "♐",
+    "name": "sagittarius",
+    "shortcode": ":sagittarius:",
+    "category": "符号",
+    "subcategory": "星座",
+    "description": {
+      "zh": "射手座",
+      "en": "Sagittarius"
+    },
+    "keywords": {
+      "zh": [
+        "弓箭手",
+        "符号",
+        "射手座",
+        "星座"
+      ],
+      "en": [
+        "Sagittarius"
+      ]
+    }
+  },
+  {
+    "emoji": "♑",
+    "name": "capricorn",
+    "shortcode": ":capricorn:",
+    "category": "符号",
+    "subcategory": "星座",
+    "description": {
+      "zh": "摩羯座",
+      "en": "Capricorn"
+    },
+    "keywords": {
+      "zh": [
+        "山羊",
+        "符号",
+        "摩羯座",
+        "星座"
+      ],
+      "en": [
+        "Capricorn"
+      ]
+    }
+  },
+  {
+    "emoji": "♒",
+    "name": "aquarius",
+    "shortcode": ":aquarius:",
+    "category": "符号",
+    "subcategory": "星座",
+    "description": {
+      "zh": "水瓶座",
+      "en": "Aquarius"
+    },
+    "keywords": {
+      "zh": [
+        "符号",
+        "水瓶座",
+        "星座"
+      ],
+      "en": [
+        "Aquarius"
+      ]
+    }
+  },
+  {
+    "emoji": "♓",
+    "name": "pisces",
+    "shortcode": ":pisces:",
+    "category": "符号",
+    "subcategory": "星座",
+    "description": {
+      "zh": "双鱼座",
+      "en": "Pisces"
+    },
+    "keywords": {
+      "zh": [
+        "符号",
+        "双鱼座",
+        "星座"
+      ],
+      "en": [
+        "Pisces"
+      ]
+    }
+  },
+  {
+    "emoji": "⛎",
+    "name": "ophiuchus",
+    "shortcode": ":ophiuchus:",
+    "category": "符号",
+    "subcategory": "星座",
+    "description": {
+      "zh": "蛇夫座",
+      "en": "Ophiuchus"
+    },
+    "keywords": {
+      "zh": [
+        "符号",
+        "蛇夫座",
+        "星座"
+      ],
+      "en": [
+        "Ophiuchus"
+      ]
+    }
+  },
+  {
+    "emoji": "🔀",
+    "name": "twisted_rightwards_arrows",
+    "shortcode": ":twisted_rightwards_arrows:",
+    "category": "符号",
+    "subcategory": "视频标志",
+    "description": {
+      "zh": "随机播放音轨按钮",
+      "en": "shuffle tracks button"
+    },
+    "keywords": {
+      "zh": [
+        "交叉",
+        "打乱",
+        "符号",
+        "随机播放音轨按钮",
+        "视频标志"
+      ],
+      "en": [
+        "shuffle",
+        "tracks",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🔁",
+    "name": "repeat",
+    "shortcode": ":repeat:",
+    "category": "符号",
+    "subcategory": "视频标志",
+    "description": {
+      "zh": "重复按钮",
+      "en": "repeat button"
+    },
+    "keywords": {
+      "zh": [
+        "循环播放",
+        "箭头",
+        "顺时针",
+        "符号",
+        "重复按钮",
+        "视频标志"
+      ],
+      "en": [
+        "repeat",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🔂",
+    "name": "repeat_one",
+    "shortcode": ":repeat_one:",
+    "category": "符号",
+    "subcategory": "视频标志",
+    "description": {
+      "zh": "重复一次按钮",
+      "en": "repeat single button"
+    },
+    "keywords": {
+      "zh": [
+        "单曲循环",
+        "循环",
+        "箭头",
+        "顺时针",
+        "符号",
+        "重复一次按钮",
+        "视频标志"
+      ],
+      "en": [
+        "repeat",
+        "single",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "⏩",
+    "name": "fast_forward",
+    "shortcode": ":fast_forward:",
+    "category": "符号",
+    "subcategory": "视频标志",
+    "description": {
+      "zh": "快进按钮",
+      "en": "fast-forward button"
+    },
+    "keywords": {
+      "zh": [
+        "双箭头",
+        "向前",
+        "快速",
+        "符号",
+        "快进按钮",
+        "视频标志"
+      ],
+      "en": [
+        "fast-forward",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "⏪",
+    "name": "rewind",
+    "shortcode": ":rewind:",
+    "category": "符号",
+    "subcategory": "视频标志",
+    "description": {
+      "zh": "快退按钮",
+      "en": "fast reverse button"
+    },
+    "keywords": {
+      "zh": [
+        "倒回",
+        "双箭头",
+        "符号",
+        "快退按钮",
+        "视频标志"
+      ],
+      "en": [
+        "fast",
+        "reverse",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🔼",
+    "name": "arrow_up_small",
+    "shortcode": ":arrow_up_small:",
+    "category": "符号",
+    "subcategory": "视频标志",
+    "description": {
+      "zh": "向上三角形按钮",
+      "en": "upwards button"
+    },
+    "keywords": {
+      "zh": [
+        "往上",
+        "箭头",
+        "符号",
+        "向上三角形按钮",
+        "视频标志"
+      ],
+      "en": [
+        "upwards",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "⏫",
+    "name": "arrow_double_up",
+    "shortcode": ":arrow_double_up:",
+    "category": "符号",
+    "subcategory": "视频标志",
+    "description": {
+      "zh": "快速上升按钮",
+      "en": "fast up button"
+    },
+    "keywords": {
+      "zh": [
+        "双箭头",
+        "向上",
+        "符号",
+        "快速上升按钮",
+        "视频标志"
+      ],
+      "en": [
+        "fast",
+        "up",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🔽",
+    "name": "arrow_down_small",
+    "shortcode": ":arrow_down_small:",
+    "category": "符号",
+    "subcategory": "视频标志",
+    "description": {
+      "zh": "向下三角形按钮",
+      "en": "downwards button"
+    },
+    "keywords": {
+      "zh": [
+        "往下",
+        "箭头",
+        "符号",
+        "向下三角形按钮",
+        "视频标志"
+      ],
+      "en": [
+        "downwards",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "⏬",
+    "name": "arrow_double_down",
+    "shortcode": ":arrow_double_down:",
+    "category": "符号",
+    "subcategory": "视频标志",
+    "description": {
+      "zh": "快速下降按钮",
+      "en": "fast down button"
+    },
+    "keywords": {
+      "zh": [
+        "双箭头",
+        "向下",
+        "符号",
+        "快速下降按钮",
+        "视频标志"
+      ],
+      "en": [
+        "fast",
+        "down",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🎦",
+    "name": "cinema",
+    "shortcode": ":cinema:",
+    "category": "符号",
+    "subcategory": "视频标志",
+    "description": {
+      "zh": "电影院",
+      "en": "cinema"
+    },
+    "keywords": {
+      "zh": [
+        "场所",
+        "影片",
+        "符号",
+        "电影院",
+        "视频标志"
+      ],
+      "en": [
+        "cinema"
+      ]
+    }
+  },
+  {
+    "emoji": "🔅",
+    "name": "low_brightness",
+    "shortcode": ":low_brightness:",
+    "category": "符号",
+    "subcategory": "视频标志",
+    "description": {
+      "zh": "低亮度按钮",
+      "en": "dim button"
+    },
+    "keywords": {
+      "zh": [
+        "昏暗",
+        "符号",
+        "低亮度按钮",
+        "视频标志"
+      ],
+      "en": [
+        "dim",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🔆",
+    "name": "high_brightness",
+    "shortcode": ":high_brightness:",
+    "category": "符号",
+    "subcategory": "视频标志",
+    "description": {
+      "zh": "高亮度按钮",
+      "en": "bright button"
+    },
+    "keywords": {
+      "zh": [
+        "太阳",
+        "明亮",
+        "符号",
+        "高亮度按钮",
+        "视频标志"
+      ],
+      "en": [
+        "bright",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "📶",
+    "name": "signal_strength",
+    "shortcode": ":signal_strength:",
+    "category": "符号",
+    "subcategory": "视频标志",
+    "description": {
+      "zh": "信号强度条",
+      "en": "antenna bars"
+    },
+    "keywords": {
+      "zh": [
+        "天线",
+        "手机",
+        "符号",
+        "信号强度条",
+        "视频标志"
+      ],
+      "en": [
+        "antenna",
+        "bars"
+      ]
+    }
+  },
+  {
+    "emoji": "📳",
+    "name": "vibration_mode",
+    "shortcode": ":vibration_mode:",
+    "category": "符号",
+    "subcategory": "视频标志",
+    "description": {
+      "zh": "振动模式",
+      "en": "vibration mode"
+    },
+    "keywords": {
+      "zh": [
+        "手机",
+        "震动",
+        "符号",
+        "振动模式",
+        "视频标志"
+      ],
+      "en": [
+        "vibration",
+        "mode"
+      ]
+    }
+  },
+  {
+    "emoji": "📴",
+    "name": "mobile_phone_off",
+    "shortcode": ":mobile_phone_off:",
+    "category": "符号",
+    "subcategory": "视频标志",
+    "description": {
+      "zh": "手机关机",
+      "en": "mobile phone off"
+    },
+    "keywords": {
+      "zh": [
+        "关闭",
+        "符号",
+        "手机关机",
+        "视频标志"
+      ],
+      "en": [
+        "mobile",
+        "phone",
+        "off"
+      ]
+    }
+  },
+  {
+    "emoji": "➕",
+    "name": "heavy_plus_sign",
+    "shortcode": ":heavy_plus_sign:",
+    "category": "符号",
+    "subcategory": "其他符号",
+    "description": {
+      "zh": "加",
+      "en": "plus"
+    },
+    "keywords": {
+      "zh": [
+        "加号",
+        "十字",
+        "数学",
+        "相加",
+        "加",
+        "其他符号"
+      ],
+      "en": [
+        "plus"
+      ]
+    }
+  },
+  {
+    "emoji": "➖",
+    "name": "heavy_minus_sign",
+    "shortcode": ":heavy_minus_sign:",
+    "category": "符号",
+    "subcategory": "其他符号",
+    "description": {
+      "zh": "减",
+      "en": "minus"
+    },
+    "keywords": {
+      "zh": [
+        "减号",
+        "数学",
+        "横线",
+        "减",
+        "其他符号"
+      ],
+      "en": [
+        "minus"
+      ]
+    }
+  },
+  {
+    "emoji": "➗",
+    "name": "heavy_division_sign",
+    "shortcode": ":heavy_division_sign:",
+    "category": "符号",
+    "subcategory": "其他符号",
+    "description": {
+      "zh": "除",
+      "en": "divide"
+    },
+    "keywords": {
+      "zh": [
+        "数学",
+        "相除",
+        "除号",
+        "除",
+        "其他符号"
+      ],
+      "en": [
+        "divide"
+      ]
+    }
+  },
+  {
+    "emoji": "❓",
+    "name": "question",
+    "shortcode": ":question:",
+    "category": "符号",
+    "subcategory": "其他符号",
+    "description": {
+      "zh": "红色问号",
+      "en": "red question mark"
+    },
+    "keywords": {
+      "zh": [
+        "为什么",
+        "标点符号",
+        "红色问号",
+        "其他符号"
+      ],
+      "en": [
+        "red",
+        "question",
+        "mark"
+      ]
+    }
+  },
+  {
+    "emoji": "❔",
+    "name": "grey_question",
+    "shortcode": ":grey_question:",
+    "category": "符号",
+    "subcategory": "其他符号",
+    "description": {
+      "zh": "白色问号",
+      "en": "white question mark"
+    },
+    "keywords": {
+      "zh": [
+        "为什么",
+        "标点符号",
+        "空心",
+        "白色问号",
+        "其他符号"
+      ],
+      "en": [
+        "？",
+        "white",
+        "question",
+        "mark"
+      ]
+    }
+  },
+  {
+    "emoji": "❕",
+    "name": "grey_exclamation",
+    "shortcode": ":grey_exclamation:",
+    "category": "符号",
+    "subcategory": "其他符号",
+    "description": {
+      "zh": "白色感叹号",
+      "en": "white exclamation mark"
+    },
+    "keywords": {
+      "zh": [
+        "吃惊",
+        "标点符号",
+        "空心",
+        "白色感叹号",
+        "其他符号"
+      ],
+      "en": [
+        "！",
+        "white",
+        "exclamation",
+        "mark"
+      ]
+    }
+  },
+  {
+    "emoji": "❗",
+    "name": "heavy_exclamation_mark",
+    "shortcode": ":heavy_exclamation_mark:",
+    "category": "符号",
+    "subcategory": "其他符号",
+    "description": {
+      "zh": "红色感叹号",
+      "en": "red exclamation mark"
+    },
+    "keywords": {
+      "zh": [
+        "吃惊",
+        "标点符号",
+        "红色感叹号",
+        "其他符号"
+      ],
+      "en": [
+        "！",
+        "red",
+        "exclamation",
+        "mark"
+      ]
+    }
+  },
+  {
+    "emoji": "💱",
+    "name": "currency_exchange",
+    "shortcode": ":currency_exchange:",
+    "category": "符号",
+    "subcategory": "其他符号",
+    "description": {
+      "zh": "货币兑换",
+      "en": "currency exchange"
+    },
+    "keywords": {
+      "zh": [
+        "外汇",
+        "换汇",
+        "汇率",
+        "流通",
+        "货币兑换",
+        "其他符号"
+      ],
+      "en": [
+        "currency",
+        "exchange"
+      ]
+    }
+  },
+  {
+    "emoji": "💲",
+    "name": "heavy_dollar_sign",
+    "shortcode": ":heavy_dollar_sign:",
+    "category": "符号",
+    "subcategory": "其他符号",
+    "description": {
+      "zh": "粗美元符号",
+      "en": "heavy dollar sign"
+    },
+    "keywords": {
+      "zh": [
+        "货币",
+        "金钱",
+        "粗美元符号",
+        "其他符号"
+      ],
+      "en": [
+        "heavy",
+        "dollar",
+        "sign"
+      ]
+    }
+  },
+  {
+    "emoji": "🔱",
+    "name": "trident",
+    "shortcode": ":trident:",
+    "category": "符号",
+    "subcategory": "其他符号",
+    "description": {
+      "zh": "三叉戟徽章",
+      "en": "trident emblem"
+    },
+    "keywords": {
+      "zh": [
+        "工具",
+        "船",
+        "锚",
+        "三叉戟徽章",
+        "其他符号"
+      ],
+      "en": [
+        "trident",
+        "emblem"
+      ]
+    }
+  },
+  {
+    "emoji": "📛",
+    "name": "name_badge",
+    "shortcode": ":name_badge:",
+    "category": "符号",
+    "subcategory": "其他符号",
+    "description": {
+      "zh": "姓名牌",
+      "en": "name badge"
+    },
+    "keywords": {
+      "zh": [
+        "胸牌",
+        "证章",
+        "姓名牌",
+        "其他符号"
+      ],
+      "en": [
+        "name",
+        "badge"
+      ]
+    }
+  },
+  {
+    "emoji": "🔰",
+    "name": "beginner",
+    "shortcode": ":beginner:",
+    "category": "符号",
+    "subcategory": "其他符号",
+    "description": {
+      "zh": "日本新手驾驶标志",
+      "en": "Japanese symbol for beginner"
+    },
+    "keywords": {
+      "zh": [
+        "V形图案",
+        "叶状",
+        "实习",
+        "箭尾",
+        "日本新手驾驶标志",
+        "其他符号"
+      ],
+      "en": [
+        "Japanese",
+        "symbol",
+        "for",
+        "beginner"
+      ]
+    }
+  },
+  {
+    "emoji": "⭕",
+    "name": "o",
+    "shortcode": ":o:",
+    "category": "符号",
+    "subcategory": "其他符号",
+    "description": {
+      "zh": "红色空心圆圈",
+      "en": "hollow red circle"
+    },
+    "keywords": {
+      "zh": [
+        "O形",
+        "大",
+        "红色空心圆圈",
+        "其他符号"
+      ],
+      "en": [
+        "hollow",
+        "red",
+        "circle"
+      ]
+    }
+  },
+  {
+    "emoji": "✅",
+    "name": "white_check_mark",
+    "shortcode": ":white_check_mark:",
+    "category": "符号",
+    "subcategory": "其他符号",
+    "description": {
+      "zh": "勾号按钮",
+      "en": "check mark button"
+    },
+    "keywords": {
+      "zh": [
+        "打勾",
+        "勾号按钮",
+        "其他符号"
+      ],
+      "en": [
+        "check",
+        "mark",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "❌",
+    "name": "x",
+    "shortcode": ":x:",
+    "category": "符号",
+    "subcategory": "其他符号",
+    "description": {
+      "zh": "叉号",
+      "en": "cross mark"
+    },
+    "keywords": {
+      "zh": [
+        "交叉",
+        "取消",
+        "相乘",
+        "叉号",
+        "其他符号"
+      ],
+      "en": [
+        "cross",
+        "mark"
+      ]
+    }
+  },
+  {
+    "emoji": "❎",
+    "name": "negative_squared_cross_mark",
+    "shortcode": ":negative_squared_cross_mark:",
+    "category": "符号",
+    "subcategory": "其他符号",
+    "description": {
+      "zh": "叉号按钮",
+      "en": "cross mark button"
+    },
+    "keywords": {
+      "zh": [
+        "取消",
+        "方形",
+        "叉号按钮",
+        "其他符号"
+      ],
+      "en": [
+        "cross",
+        "mark",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "➰",
+    "name": "curly_loop",
+    "shortcode": ":curly_loop:",
+    "category": "符号",
+    "subcategory": "其他符号",
+    "description": {
+      "zh": "卷曲环",
+      "en": "curly loop"
+    },
+    "keywords": {
+      "zh": [
+        "单环",
+        "标志",
+        "卷曲环",
+        "其他符号"
+      ],
+      "en": [
+        "curly",
+        "loop"
+      ]
+    }
+  },
+  {
+    "emoji": "➿",
+    "name": "loop",
+    "shortcode": ":loop:",
+    "category": "符号",
+    "subcategory": "其他符号",
+    "description": {
+      "zh": "双卷曲环",
+      "en": "double curly loop"
+    },
+    "keywords": {
+      "zh": [
+        "双环",
+        "标志",
+        "双卷曲环",
+        "其他符号"
+      ],
+      "en": [
+        "double",
+        "curly",
+        "loop"
+      ]
+    }
+  },
+  {
+    "emoji": "#️⃣",
+    "name": "hash",
+    "shortcode": ":hash:",
+    "category": "符号",
+    "subcategory": "键帽",
+    "description": {
+      "zh": "按键: #",
+      "en": "keycap: #"
+    },
+    "keywords": {
+      "zh": [
+        "符号",
+        "按键: #",
+        "键帽"
+      ],
+      "en": [
+        "keycap:",
+        "#"
+      ]
+    }
+  },
+  {
+    "emoji": "*️⃣",
+    "name": "asterisk",
+    "shortcode": ":asterisk:",
+    "category": "符号",
+    "subcategory": "键帽",
+    "description": {
+      "zh": "键帽：*",
+      "en": "keycap: *"
+    },
+    "keywords": {
+      "zh": [
+        "按键",
+        "符号",
+        "键帽：*",
+        "键帽"
+      ],
+      "en": [
+        "keycap:",
+        "*"
+      ]
+    }
+  },
+  {
+    "emoji": "0️⃣",
+    "name": "zero",
+    "shortcode": ":zero:",
+    "category": "符号",
+    "subcategory": "键帽",
+    "description": {
+      "zh": "键帽：0",
+      "en": "keycap: 0"
+    },
+    "keywords": {
+      "zh": [
+        "按键",
+        "符号",
+        "键帽：0",
+        "键帽"
+      ],
+      "en": [
+        "keycap:",
+        "0"
+      ]
+    }
+  },
+  {
+    "emoji": "1️⃣",
+    "name": "one",
+    "shortcode": ":one:",
+    "category": "符号",
+    "subcategory": "键帽",
+    "description": {
+      "zh": "键帽：1",
+      "en": "keycap: 1"
+    },
+    "keywords": {
+      "zh": [
+        "按键",
+        "符号",
+        "键帽：1",
+        "键帽"
+      ],
+      "en": [
+        "keycap:",
+        "1"
+      ]
+    }
+  },
+  {
+    "emoji": "2️⃣",
+    "name": "two",
+    "shortcode": ":two:",
+    "category": "符号",
+    "subcategory": "键帽",
+    "description": {
+      "zh": "键帽：2",
+      "en": "keycap: 2"
+    },
+    "keywords": {
+      "zh": [
+        "按键",
+        "符号",
+        "键帽：2",
+        "键帽"
+      ],
+      "en": [
+        "keycap:",
+        "2"
+      ]
+    }
+  },
+  {
+    "emoji": "3️⃣",
+    "name": "three",
+    "shortcode": ":three:",
+    "category": "符号",
+    "subcategory": "键帽",
+    "description": {
+      "zh": "键帽：3",
+      "en": "keycap: 3"
+    },
+    "keywords": {
+      "zh": [
+        "按键",
+        "符号",
+        "键帽：3",
+        "键帽"
+      ],
+      "en": [
+        "keycap:",
+        "3"
+      ]
+    }
+  },
+  {
+    "emoji": "4️⃣",
+    "name": "four",
+    "shortcode": ":four:",
+    "category": "符号",
+    "subcategory": "键帽",
+    "description": {
+      "zh": "键帽：4",
+      "en": "keycap: 4"
+    },
+    "keywords": {
+      "zh": [
+        "按键",
+        "符号",
+        "键帽：4",
+        "键帽"
+      ],
+      "en": [
+        "keycap:",
+        "4"
+      ]
+    }
+  },
+  {
+    "emoji": "5️⃣",
+    "name": "five",
+    "shortcode": ":five:",
+    "category": "符号",
+    "subcategory": "键帽",
+    "description": {
+      "zh": "键帽：5",
+      "en": "keycap: 5"
+    },
+    "keywords": {
+      "zh": [
+        "按键",
+        "符号",
+        "键帽：5",
+        "键帽"
+      ],
+      "en": [
+        "keycap:",
+        "5"
+      ]
+    }
+  },
+  {
+    "emoji": "6️⃣",
+    "name": "six",
+    "shortcode": ":six:",
+    "category": "符号",
+    "subcategory": "键帽",
+    "description": {
+      "zh": "键帽：6",
+      "en": "keycap: 6"
+    },
+    "keywords": {
+      "zh": [
+        "按键",
+        "符号",
+        "键帽：6",
+        "键帽"
+      ],
+      "en": [
+        "keycap:",
+        "6"
+      ]
+    }
+  },
+  {
+    "emoji": "7️⃣",
+    "name": "seven",
+    "shortcode": ":seven:",
+    "category": "符号",
+    "subcategory": "键帽",
+    "description": {
+      "zh": "键帽：7",
+      "en": "keycap: 7"
+    },
+    "keywords": {
+      "zh": [
+        "按键",
+        "符号",
+        "键帽：7",
+        "键帽"
+      ],
+      "en": [
+        "keycap:",
+        "7"
+      ]
+    }
+  },
+  {
+    "emoji": "8️⃣",
+    "name": "eight",
+    "shortcode": ":eight:",
+    "category": "符号",
+    "subcategory": "键帽",
+    "description": {
+      "zh": "键帽：8",
+      "en": "keycap: 8"
+    },
+    "keywords": {
+      "zh": [
+        "按键",
+        "符号",
+        "键帽：8",
+        "键帽"
+      ],
+      "en": [
+        "keycap:",
+        "8"
+      ]
+    }
+  },
+  {
+    "emoji": "9️⃣",
+    "name": "nine",
+    "shortcode": ":nine:",
+    "category": "符号",
+    "subcategory": "键帽",
+    "description": {
+      "zh": "键帽：9",
+      "en": "keycap: 9"
+    },
+    "keywords": {
+      "zh": [
+        "按键",
+        "符号",
+        "键帽：9",
+        "键帽"
+      ],
+      "en": [
+        "keycap:",
+        "9"
+      ]
+    }
+  },
+  {
+    "emoji": "🔟",
+    "name": "keycap_ten",
+    "shortcode": ":keycap_ten:",
+    "category": "符号",
+    "subcategory": "键帽",
+    "description": {
+      "zh": "按键: 10",
+      "en": "keycap: 10"
+    },
+    "keywords": {
+      "zh": [
+        "符号",
+        "按键: 10",
+        "键帽"
+      ],
+      "en": [
+        "keycap:",
+        "10"
+      ]
+    }
+  },
+  {
+    "emoji": "🔠",
+    "name": "capital_abcd",
+    "shortcode": ":capital_abcd:",
+    "category": "符号",
+    "subcategory": "字符",
+    "description": {
+      "zh": "输入大写拉丁字母",
+      "en": "input latin uppercase"
+    },
+    "keywords": {
+      "zh": [
+        "打字",
+        "拉丁文",
+        "输入法",
+        "符号",
+        "输入大写拉丁字母",
+        "字符"
+      ],
+      "en": [
+        "ABCD",
+        "input",
+        "latin",
+        "uppercase"
+      ]
+    }
+  },
+  {
+    "emoji": "🔡",
+    "name": "abcd",
+    "shortcode": ":abcd:",
+    "category": "符号",
+    "subcategory": "字符",
+    "description": {
+      "zh": "输入小写拉丁字母",
+      "en": "input latin lowercase"
+    },
+    "keywords": {
+      "zh": [
+        "打字",
+        "拉丁文",
+        "输入法",
+        "符号",
+        "输入小写拉丁字母",
+        "字符"
+      ],
+      "en": [
+        "abcd",
+        "input",
+        "latin",
+        "lowercase"
+      ]
+    }
+  },
+  {
+    "emoji": "🔢",
+    "name": "1234",
+    "shortcode": ":1234:",
+    "category": "符号",
+    "subcategory": "字符",
+    "description": {
+      "zh": "输入数字",
+      "en": "input numbers"
+    },
+    "keywords": {
+      "zh": [
+        "打字",
+        "符号",
+        "输入数字",
+        "字符"
+      ],
+      "en": [
+        "1234",
+        "input",
+        "numbers"
+      ]
+    }
+  },
+  {
+    "emoji": "🔣",
+    "name": "symbols",
+    "shortcode": ":symbols:",
+    "category": "符号",
+    "subcategory": "字符",
+    "description": {
+      "zh": "输入符号",
+      "en": "input symbols"
+    },
+    "keywords": {
+      "zh": [
+        "打字",
+        "输入符号",
+        "字符"
+      ],
+      "en": [
+        "input",
+        "symbols"
+      ]
+    }
+  },
+  {
+    "emoji": "🔤",
+    "name": "abc",
+    "shortcode": ":abc:",
+    "category": "符号",
+    "subcategory": "字符",
+    "description": {
+      "zh": "输入拉丁字母",
+      "en": "input latin letters"
+    },
+    "keywords": {
+      "zh": [
+        "打字",
+        "拉丁文",
+        "符号",
+        "输入拉丁字母",
+        "字符"
+      ],
+      "en": [
+        "abc",
+        "input",
+        "latin",
+        "letters"
+      ]
+    }
+  },
+  {
+    "emoji": "🆎",
+    "name": "ab",
+    "shortcode": ":ab:",
+    "category": "符号",
+    "subcategory": "字符",
+    "description": {
+      "zh": "AB型血",
+      "en": "AB button (blood type)"
+    },
+    "keywords": {
+      "zh": [
+        "按钮",
+        "血液",
+        "符号",
+        "AB型血",
+        "字符"
+      ],
+      "en": [
+        "ab",
+        "AB",
+        "button",
+        "(blood",
+        "type)"
+      ]
+    }
+  },
+  {
+    "emoji": "🆑",
+    "name": "cl",
+    "shortcode": ":cl:",
+    "category": "符号",
+    "subcategory": "字符",
+    "description": {
+      "zh": "CL按钮",
+      "en": "CL button"
+    },
+    "keywords": {
+      "zh": [
+        "手机",
+        "清理",
+        "符号",
+        "CL按钮",
+        "字符"
+      ],
+      "en": [
+        "cl",
+        "CL",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🆒",
+    "name": "cool",
+    "shortcode": ":cool:",
+    "category": "符号",
+    "subcategory": "字符",
+    "description": {
+      "zh": "cool按钮",
+      "en": "COOL button"
+    },
+    "keywords": {
+      "zh": [
+        "按键",
+        "酷",
+        "符号",
+        "cool按钮",
+        "字符"
+      ],
+      "en": [
+        "COOL",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🆓",
+    "name": "free",
+    "shortcode": ":free:",
+    "category": "符号",
+    "subcategory": "字符",
+    "description": {
+      "zh": "免费按钮",
+      "en": "FREE button"
+    },
+    "keywords": {
+      "zh": [
+        "不收费",
+        "符号",
+        "免费按钮",
+        "字符"
+      ],
+      "en": [
+        "FREE",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🆔",
+    "name": "id",
+    "shortcode": ":id:",
+    "category": "符号",
+    "subcategory": "字符",
+    "description": {
+      "zh": "ID按钮",
+      "en": "ID button"
+    },
+    "keywords": {
+      "zh": [
+        "按键",
+        "识别",
+        "身份",
+        "符号",
+        "ID按钮",
+        "字符"
+      ],
+      "en": [
+        "ID",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🆕",
+    "name": "new",
+    "shortcode": ":new:",
+    "category": "符号",
+    "subcategory": "字符",
+    "description": {
+      "zh": "new按钮",
+      "en": "NEW button"
+    },
+    "keywords": {
+      "zh": [
+        "按键",
+        "新的",
+        "符号",
+        "new按钮",
+        "字符"
+      ],
+      "en": [
+        "NEW",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🆖",
+    "name": "ng",
+    "shortcode": ":ng:",
+    "category": "符号",
+    "subcategory": "字符",
+    "description": {
+      "zh": "NG按钮",
+      "en": "NG button"
+    },
+    "keywords": {
+      "zh": [
+        "按键",
+        "花絮",
+        "符号",
+        "NG按钮",
+        "字符"
+      ],
+      "en": [
+        "NG",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🆗",
+    "name": "ok",
+    "shortcode": ":ok:",
+    "category": "符号",
+    "subcategory": "字符",
+    "description": {
+      "zh": "OK按钮",
+      "en": "OK button"
+    },
+    "keywords": {
+      "zh": [
+        "同意",
+        "按键",
+        "符号",
+        "OK按钮",
+        "字符"
+      ],
+      "en": [
+        "OK",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🆘",
+    "name": "sos",
+    "shortcode": ":sos:",
+    "category": "符号",
+    "subcategory": "字符",
+    "description": {
+      "zh": "SOS按钮",
+      "en": "SOS button"
+    },
+    "keywords": {
+      "zh": [
+        "按键",
+        "求救",
+        "符号",
+        "SOS按钮",
+        "字符"
+      ],
+      "en": [
+        "SOS",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🆙",
+    "name": "up",
+    "shortcode": ":up:",
+    "category": "符号",
+    "subcategory": "字符",
+    "description": {
+      "zh": "up按钮",
+      "en": "UP! button"
+    },
+    "keywords": {
+      "zh": [
+        "向上",
+        "按键",
+        "符号",
+        "up按钮",
+        "字符"
+      ],
+      "en": [
+        "UP!",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🆚",
+    "name": "vs",
+    "shortcode": ":vs:",
+    "category": "符号",
+    "subcategory": "字符",
+    "description": {
+      "zh": "VS按钮",
+      "en": "VS button"
+    },
+    "keywords": {
+      "zh": [
+        "对决",
+        "按键",
+        "符号",
+        "VS按钮",
+        "字符"
+      ],
+      "en": [
+        "VS",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🈁",
+    "name": "koko",
+    "shortcode": ":koko:",
+    "category": "符号",
+    "subcategory": "字符",
+    "description": {
+      "zh": "日文的“这里”按钮",
+      "en": "Japanese “here” button"
+    },
+    "keywords": {
+      "zh": [
+        "按键",
+        "此处",
+        "符号",
+        "日文的“这里”按钮",
+        "字符"
+      ],
+      "en": [
+        "Japanese",
+        "“here”",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🈶",
+    "name": "u6709",
+    "shortcode": ":u6709:",
+    "category": "符号",
+    "subcategory": "字符",
+    "description": {
+      "zh": "日文的“收费”按钮",
+      "en": "Japanese “not free of charge” button"
+    },
+    "keywords": {
+      "zh": [
+        "按键",
+        "费用",
+        "符号",
+        "日文的“收费”按钮",
+        "字符"
+      ],
+      "en": [
+        "Japanese",
+        "“not",
+        "free",
+        "of",
+        "charge”",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🈯",
+    "name": "u6307",
+    "shortcode": ":u6307:",
+    "category": "符号",
+    "subcategory": "字符",
+    "description": {
+      "zh": "日文的“预留”按钮",
+      "en": "Japanese “reserved” button"
+    },
+    "keywords": {
+      "zh": [
+        "按键",
+        "预订",
+        "符号",
+        "日文的“预留”按钮",
+        "字符"
+      ],
+      "en": [
+        "Japanese",
+        "“reserved”",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🉐",
+    "name": "ideograph_advantage",
+    "shortcode": ":ideograph_advantage:",
+    "category": "符号",
+    "subcategory": "字符",
+    "description": {
+      "zh": "日文的“议价”按钮",
+      "en": "Japanese “bargain” button"
+    },
+    "keywords": {
+      "zh": [
+        "按键",
+        "讨价还价",
+        "符号",
+        "日文的“议价”按钮",
+        "字符"
+      ],
+      "en": [
+        "Japanese",
+        "“bargain”",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🈹",
+    "name": "u5272",
+    "shortcode": ":u5272:",
+    "category": "符号",
+    "subcategory": "字符",
+    "description": {
+      "zh": "日文的“打折”按钮",
+      "en": "Japanese “discount” button"
+    },
+    "keywords": {
+      "zh": [
+        "折扣",
+        "按键",
+        "符号",
+        "日文的“打折”按钮",
+        "字符"
+      ],
+      "en": [
+        "Japanese",
+        "“discount”",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🈚",
+    "name": "u7121",
+    "shortcode": ":u7121:",
+    "category": "符号",
+    "subcategory": "字符",
+    "description": {
+      "zh": "日文的“免费”按钮",
+      "en": "Japanese “free of charge” button"
+    },
+    "keywords": {
+      "zh": [
+        "按键",
+        "符号",
+        "日文的“免费”按钮",
+        "字符"
+      ],
+      "en": [
+        "Japanese",
+        "“free",
+        "of",
+        "charge”",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🈲",
+    "name": "u7981",
+    "shortcode": ":u7981:",
+    "category": "符号",
+    "subcategory": "字符",
+    "description": {
+      "zh": "日文的“禁止”按钮",
+      "en": "Japanese “prohibited” button"
+    },
+    "keywords": {
+      "zh": [
+        "严禁",
+        "按键",
+        "符号",
+        "日文的“禁止”按钮",
+        "字符"
+      ],
+      "en": [
+        "Japanese",
+        "“prohibited”",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🉑",
+    "name": "accept",
+    "shortcode": ":accept:",
+    "category": "符号",
+    "subcategory": "字符",
+    "description": {
+      "zh": "日文的“可接受”按钮",
+      "en": "Japanese “acceptable” button"
+    },
+    "keywords": {
+      "zh": [
+        "按键",
+        "许可",
+        "符号",
+        "日文的“可接受”按钮",
+        "字符"
+      ],
+      "en": [
+        "Japanese",
+        "“acceptable”",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🈸",
+    "name": "u7533",
+    "shortcode": ":u7533:",
+    "category": "符号",
+    "subcategory": "字符",
+    "description": {
+      "zh": "日文的“申请”按钮",
+      "en": "Japanese “application” button"
+    },
+    "keywords": {
+      "zh": [
+        "日语",
+        "申请书",
+        "申请表",
+        "符号",
+        "日文的“申请”按钮",
+        "字符"
+      ],
+      "en": [
+        "Japanese",
+        "“application”",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🈴",
+    "name": "u5408",
+    "shortcode": ":u5408:",
+    "category": "符号",
+    "subcategory": "字符",
+    "description": {
+      "zh": "日文的“合格”按钮",
+      "en": "Japanese “passing grade” button"
+    },
+    "keywords": {
+      "zh": [
+        "按键",
+        "通过",
+        "符号",
+        "日文的“合格”按钮",
+        "字符"
+      ],
+      "en": [
+        "Japanese",
+        "“passing",
+        "grade”",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🈳",
+    "name": "u7a7a",
+    "shortcode": ":u7a7a:",
+    "category": "符号",
+    "subcategory": "字符",
+    "description": {
+      "zh": "日文的“有空位”按钮",
+      "en": "Japanese “vacancy” button"
+    },
+    "keywords": {
+      "zh": [
+        "日语",
+        "空闲",
+        "符号",
+        "日文的“有空位”按钮",
+        "字符"
+      ],
+      "en": [
+        "Japanese",
+        "“vacancy”",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🈺",
+    "name": "u55b6",
+    "shortcode": ":u55b6:",
+    "category": "符号",
+    "subcategory": "字符",
+    "description": {
+      "zh": "日文的“开始营业”按钮",
+      "en": "Japanese “open for business” button"
+    },
+    "keywords": {
+      "zh": [
+        "开门",
+        "按键",
+        "符号",
+        "日文的“开始营业”按钮",
+        "字符"
+      ],
+      "en": [
+        "Japanese",
+        "“open",
+        "for",
+        "business”",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🈵",
+    "name": "u6e80",
+    "shortcode": ":u6e80:",
+    "category": "符号",
+    "subcategory": "字符",
+    "description": {
+      "zh": "日文的“没有空位”按钮",
+      "en": "Japanese “no vacancy” button"
+    },
+    "keywords": {
+      "zh": [
+        "座位",
+        "按键",
+        "满",
+        "符号",
+        "日文的“没有空位”按钮",
+        "字符"
+      ],
+      "en": [
+        "Japanese",
+        "“no",
+        "vacancy”",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🔴",
+    "name": "red_circle",
+    "shortcode": ":red_circle:",
+    "category": "符号",
+    "subcategory": "几何",
+    "description": {
+      "zh": "红色圆",
+      "en": "red circle"
+    },
+    "keywords": {
+      "zh": [
+        "圈",
+        "符号",
+        "红色圆",
+        "几何"
+      ],
+      "en": [
+        "red",
+        "circle"
+      ]
+    }
+  },
+  {
+    "emoji": "🟠",
+    "name": "orange_circle",
+    "shortcode": ":orange_circle:",
+    "category": "符号",
+    "subcategory": "几何",
+    "description": {
+      "zh": "橙色圆",
+      "en": "orange circle"
+    },
+    "keywords": {
+      "zh": [
+        "圈",
+        "符号",
+        "橙色圆",
+        "几何"
+      ],
+      "en": [
+        "orange",
+        "circle"
+      ]
+    }
+  },
+  {
+    "emoji": "🟡",
+    "name": "yellow_circle",
+    "shortcode": ":yellow_circle:",
+    "category": "符号",
+    "subcategory": "几何",
+    "description": {
+      "zh": "黄色圆",
+      "en": "yellow circle"
+    },
+    "keywords": {
+      "zh": [
+        "圈",
+        "符号",
+        "黄色圆",
+        "几何"
+      ],
+      "en": [
+        "yellow",
+        "circle"
+      ]
+    }
+  },
+  {
+    "emoji": "🟢",
+    "name": "green_circle",
+    "shortcode": ":green_circle:",
+    "category": "符号",
+    "subcategory": "几何",
+    "description": {
+      "zh": "绿色圆",
+      "en": "green circle"
+    },
+    "keywords": {
+      "zh": [
+        "圈",
+        "符号",
+        "绿色圆",
+        "几何"
+      ],
+      "en": [
+        "green",
+        "circle"
+      ]
+    }
+  },
+  {
+    "emoji": "🔵",
+    "name": "large_blue_circle",
+    "shortcode": ":large_blue_circle:",
+    "category": "符号",
+    "subcategory": "几何",
+    "description": {
+      "zh": "蓝色圆",
+      "en": "blue circle"
+    },
+    "keywords": {
+      "zh": [
+        "圈",
+        "符号",
+        "蓝色圆",
+        "几何"
+      ],
+      "en": [
+        "blue",
+        "circle"
+      ]
+    }
+  },
+  {
+    "emoji": "🟣",
+    "name": "purple_circle",
+    "shortcode": ":purple_circle:",
+    "category": "符号",
+    "subcategory": "几何",
+    "description": {
+      "zh": "紫色圆",
+      "en": "purple circle"
+    },
+    "keywords": {
+      "zh": [
+        "圈",
+        "符号",
+        "紫色圆",
+        "几何"
+      ],
+      "en": [
+        "purple",
+        "circle"
+      ]
+    }
+  },
+  {
+    "emoji": "🟤",
+    "name": "brown_circle",
+    "shortcode": ":brown_circle:",
+    "category": "符号",
+    "subcategory": "几何",
+    "description": {
+      "zh": "棕色圆",
+      "en": "brown circle"
+    },
+    "keywords": {
+      "zh": [
+        "圈",
+        "符号",
+        "棕色圆",
+        "几何"
+      ],
+      "en": [
+        "brown",
+        "circle"
+      ]
+    }
+  },
+  {
+    "emoji": "⚫",
+    "name": "black_circle",
+    "shortcode": ":black_circle:",
+    "category": "符号",
+    "subcategory": "几何",
+    "description": {
+      "zh": "黑色圆",
+      "en": "black circle"
+    },
+    "keywords": {
+      "zh": [
+        "圈",
+        "符号",
+        "黑色圆",
+        "几何"
+      ],
+      "en": [
+        "black",
+        "circle"
+      ]
+    }
+  },
+  {
+    "emoji": "⚪",
+    "name": "white_circle",
+    "shortcode": ":white_circle:",
+    "category": "符号",
+    "subcategory": "几何",
+    "description": {
+      "zh": "白色圆",
+      "en": "white circle"
+    },
+    "keywords": {
+      "zh": [
+        "圈",
+        "符号",
+        "白色圆",
+        "几何"
+      ],
+      "en": [
+        "white",
+        "circle"
+      ]
+    }
+  },
+  {
+    "emoji": "🟥",
+    "name": "red_square",
+    "shortcode": ":red_square:",
+    "category": "符号",
+    "subcategory": "几何",
+    "description": {
+      "zh": "红色方块",
+      "en": "red square"
+    },
+    "keywords": {
+      "zh": [
+        "方框",
+        "正方形",
+        "符号",
+        "红色方块",
+        "几何"
+      ],
+      "en": [
+        "red",
+        "square"
+      ]
+    }
+  },
+  {
+    "emoji": "🟧",
+    "name": "orange_square",
+    "shortcode": ":orange_square:",
+    "category": "符号",
+    "subcategory": "几何",
+    "description": {
+      "zh": "橙色方块",
+      "en": "orange square"
+    },
+    "keywords": {
+      "zh": [
+        "方框",
+        "正方形",
+        "符号",
+        "橙色方块",
+        "几何"
+      ],
+      "en": [
+        "orange",
+        "square"
+      ]
+    }
+  },
+  {
+    "emoji": "🟨",
+    "name": "yellow_square",
+    "shortcode": ":yellow_square:",
+    "category": "符号",
+    "subcategory": "几何",
+    "description": {
+      "zh": "黄色方块",
+      "en": "yellow square"
+    },
+    "keywords": {
+      "zh": [
+        "方框",
+        "正方形",
+        "符号",
+        "黄色方块",
+        "几何"
+      ],
+      "en": [
+        "yellow",
+        "square"
+      ]
+    }
+  },
+  {
+    "emoji": "🟩",
+    "name": "green_square",
+    "shortcode": ":green_square:",
+    "category": "符号",
+    "subcategory": "几何",
+    "description": {
+      "zh": "绿色方块",
+      "en": "green square"
+    },
+    "keywords": {
+      "zh": [
+        "方框",
+        "正方形",
+        "符号",
+        "绿色方块",
+        "几何"
+      ],
+      "en": [
+        "green",
+        "square"
+      ]
+    }
+  },
+  {
+    "emoji": "🟦",
+    "name": "blue_square",
+    "shortcode": ":blue_square:",
+    "category": "符号",
+    "subcategory": "几何",
+    "description": {
+      "zh": "蓝色方块",
+      "en": "blue square"
+    },
+    "keywords": {
+      "zh": [
+        "方框",
+        "正方形",
+        "符号",
+        "蓝色方块",
+        "几何"
+      ],
+      "en": [
+        "blue",
+        "square"
+      ]
+    }
+  },
+  {
+    "emoji": "🟪",
+    "name": "purple_square",
+    "shortcode": ":purple_square:",
+    "category": "符号",
+    "subcategory": "几何",
+    "description": {
+      "zh": "紫色方块",
+      "en": "purple square"
+    },
+    "keywords": {
+      "zh": [
+        "方框",
+        "正方形",
+        "符号",
+        "紫色方块",
+        "几何"
+      ],
+      "en": [
+        "purple",
+        "square"
+      ]
+    }
+  },
+  {
+    "emoji": "🟫",
+    "name": "brown_square",
+    "shortcode": ":brown_square:",
+    "category": "符号",
+    "subcategory": "几何",
+    "description": {
+      "zh": "棕色方块",
+      "en": "brown square"
+    },
+    "keywords": {
+      "zh": [
+        "方框",
+        "正方形",
+        "符号",
+        "棕色方块",
+        "几何"
+      ],
+      "en": [
+        "brown",
+        "square"
+      ]
+    }
+  },
+  {
+    "emoji": "⬛",
+    "name": "black_large_square",
+    "shortcode": ":black_large_square:",
+    "category": "符号",
+    "subcategory": "几何",
+    "description": {
+      "zh": "黑线大方框",
+      "en": "black large square"
+    },
+    "keywords": {
+      "zh": [
+        "正方形",
+        "黑色",
+        "符号",
+        "黑线大方框",
+        "几何"
+      ],
+      "en": [
+        "black",
+        "large",
+        "square"
+      ]
+    }
+  },
+  {
+    "emoji": "⬜",
+    "name": "white_large_square",
+    "shortcode": ":white_large_square:",
+    "category": "符号",
+    "subcategory": "几何",
+    "description": {
+      "zh": "白线大方框",
+      "en": "white large square"
+    },
+    "keywords": {
+      "zh": [
+        "正方形",
+        "白色",
+        "符号",
+        "白线大方框",
+        "几何"
+      ],
+      "en": [
+        "white",
+        "large",
+        "square"
+      ]
+    }
+  },
+  {
+    "emoji": "◾",
+    "name": "black_medium_small_square",
+    "shortcode": ":black_medium_small_square:",
+    "category": "符号",
+    "subcategory": "几何",
+    "description": {
+      "zh": "黑色中小方块",
+      "en": "black medium-small square"
+    },
+    "keywords": {
+      "zh": [
+        "正方形",
+        "符号",
+        "黑色中小方块",
+        "几何"
+      ],
+      "en": [
+        "black",
+        "medium-small",
+        "square"
+      ]
+    }
+  },
+  {
+    "emoji": "◽",
+    "name": "white_medium_small_square",
+    "shortcode": ":white_medium_small_square:",
+    "category": "符号",
+    "subcategory": "几何",
+    "description": {
+      "zh": "白色中小方块",
+      "en": "white medium-small square"
+    },
+    "keywords": {
+      "zh": [
+        "中小 正方形",
+        "符号",
+        "白色中小方块",
+        "几何"
+      ],
+      "en": [
+        "white",
+        "medium-small",
+        "square"
+      ]
+    }
+  },
+  {
+    "emoji": "🔶",
+    "name": "large_orange_diamond",
+    "shortcode": ":large_orange_diamond:",
+    "category": "符号",
+    "subcategory": "几何",
+    "description": {
+      "zh": "橙色大菱形",
+      "en": "large orange diamond"
+    },
+    "keywords": {
+      "zh": [
+        "方片",
+        "橘黄色",
+        "符号",
+        "橙色大菱形",
+        "几何"
+      ],
+      "en": [
+        "large",
+        "orange",
+        "diamond"
+      ]
+    }
+  },
+  {
+    "emoji": "🔷",
+    "name": "large_blue_diamond",
+    "shortcode": ":large_blue_diamond:",
+    "category": "符号",
+    "subcategory": "几何",
+    "description": {
+      "zh": "蓝色大菱形",
+      "en": "large blue diamond"
+    },
+    "keywords": {
+      "zh": [
+        "方片",
+        "符号",
+        "蓝色大菱形",
+        "几何"
+      ],
+      "en": [
+        "large",
+        "blue",
+        "diamond"
+      ]
+    }
+  },
+  {
+    "emoji": "🔸",
+    "name": "small_orange_diamond",
+    "shortcode": ":small_orange_diamond:",
+    "category": "符号",
+    "subcategory": "几何",
+    "description": {
+      "zh": "橙色小菱形",
+      "en": "small orange diamond"
+    },
+    "keywords": {
+      "zh": [
+        "方片",
+        "橘黄色",
+        "符号",
+        "橙色小菱形",
+        "几何"
+      ],
+      "en": [
+        "small",
+        "orange",
+        "diamond"
+      ]
+    }
+  },
+  {
+    "emoji": "🔹",
+    "name": "small_blue_diamond",
+    "shortcode": ":small_blue_diamond:",
+    "category": "符号",
+    "subcategory": "几何",
+    "description": {
+      "zh": "蓝色小菱形",
+      "en": "small blue diamond"
+    },
+    "keywords": {
+      "zh": [
+        "方片",
+        "符号",
+        "蓝色小菱形",
+        "几何"
+      ],
+      "en": [
+        "small",
+        "blue",
+        "diamond"
+      ]
+    }
+  },
+  {
+    "emoji": "🔺",
+    "name": "small_red_triangle",
+    "shortcode": ":small_red_triangle:",
+    "category": "符号",
+    "subcategory": "几何",
+    "description": {
+      "zh": "红色正三角",
+      "en": "red triangle pointed up"
+    },
+    "keywords": {
+      "zh": [
+        "三角形",
+        "向上",
+        "符号",
+        "红色正三角",
+        "几何"
+      ],
+      "en": [
+        "red",
+        "triangle",
+        "pointed",
+        "up"
+      ]
+    }
+  },
+  {
+    "emoji": "🔻",
+    "name": "small_red_triangle_down",
+    "shortcode": ":small_red_triangle_down:",
+    "category": "符号",
+    "subcategory": "几何",
+    "description": {
+      "zh": "红色倒三角",
+      "en": "red triangle pointed down"
+    },
+    "keywords": {
+      "zh": [
+        "三角形",
+        "向下",
+        "符号",
+        "红色倒三角",
+        "几何"
+      ],
+      "en": [
+        "red",
+        "triangle",
+        "pointed",
+        "down"
+      ]
+    }
+  },
+  {
+    "emoji": "💠",
+    "name": "diamond_shape_with_a_dot_inside",
+    "shortcode": ":diamond_shape_with_a_dot_inside:",
+    "category": "符号",
+    "subcategory": "几何",
+    "description": {
+      "zh": "带圆点的菱形",
+      "en": "diamond with a dot"
+    },
+    "keywords": {
+      "zh": [
+        "中心",
+        "内部",
+        "梅花形",
+        "符号",
+        "带圆点的菱形",
+        "几何"
+      ],
+      "en": [
+        "diamond",
+        "with",
+        "a",
+        "dot"
+      ]
+    }
+  },
+  {
+    "emoji": "🔘",
+    "name": "radio_button",
+    "shortcode": ":radio_button:",
+    "category": "符号",
+    "subcategory": "几何",
+    "description": {
+      "zh": "单选按钮",
+      "en": "radio button"
+    },
+    "keywords": {
+      "zh": [
+        "单独",
+        "圆心",
+        "按键",
+        "选中",
+        "符号",
+        "单选按钮",
+        "几何"
+      ],
+      "en": [
+        "radio",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🔳",
+    "name": "white_square_button",
+    "shortcode": ":white_square_button:",
+    "category": "符号",
+    "subcategory": "几何",
+    "description": {
+      "zh": "白色方形按钮",
+      "en": "white square button"
+    },
+    "keywords": {
+      "zh": [
+        "白线方形按钮",
+        "白线正方形按钮",
+        "白色正方形按钮",
+        "白边线方形按钮",
+        "白边线正方形按钮",
+        "符号",
+        "白色方形按钮",
+        "几何"
+      ],
+      "en": [
+        "white",
+        "square",
+        "button"
+      ]
+    }
+  },
+  {
+    "emoji": "🔲",
+    "name": "black_square_button",
+    "shortcode": ":black_square_button:",
+    "category": "符号",
+    "subcategory": "几何",
+    "description": {
+      "zh": "黑色方形按钮",
+      "en": "black square button"
+    },
+    "keywords": {
+      "zh": [
+        "黑线方形按钮",
+        "黑线正方形按钮",
+        "黑色正方形按钮",
+        "黑边线方形按钮",
+        "黑边线正方形按钮",
+        "符号",
+        "黑色方形按钮",
+        "几何"
+      ],
+      "en": [
+        "black",
+        "square",
+        "button"
+      ]
+    }
+  }
+]

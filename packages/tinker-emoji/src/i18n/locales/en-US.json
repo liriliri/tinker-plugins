@@ -1,0 +1,10 @@
+{
+  "search": "Search emojis...",
+  "copy": "Click to copy",
+  "copied": "Copied!",
+  "loading": "Loading...",
+  "noResults": "No emojis found",
+  "categories": {
+    "all": "All"
+  }
+}

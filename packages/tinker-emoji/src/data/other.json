@@ -1,0 +1,3504 @@
+[
+  {
+    "emoji": "☺️",
+    "name": "relaxed",
+    "shortcode": ":relaxed:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "relaxed"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "relaxed"
+      ]
+    }
+  },
+  {
+    "emoji": "☹️",
+    "name": "frowning_face",
+    "shortcode": ":frowning_face:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "frowning_face"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "frowning_face"
+      ]
+    }
+  },
+  {
+    "emoji": "☠️",
+    "name": "skull_and_crossbones",
+    "shortcode": ":skull_and_crossbones:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "skull_and_crossbones"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "skull_and_crossbones"
+      ]
+    }
+  },
+  {
+    "emoji": "❣️",
+    "name": "heavy_heart_exclamation",
+    "shortcode": ":heavy_heart_exclamation:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "heavy_heart_exclamation"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "heavy_heart_exclamation"
+      ]
+    }
+  },
+  {
+    "emoji": "❤️",
+    "name": "heart",
+    "shortcode": ":heart:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "heart"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "heart"
+      ]
+    }
+  },
+  {
+    "emoji": "🕳️",
+    "name": "hole",
+    "shortcode": ":hole:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "hole"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "hole"
+      ]
+    }
+  },
+  {
+    "emoji": "🗨️",
+    "name": "left_speech_bubble",
+    "shortcode": ":left_speech_bubble:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "left_speech_bubble"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "left_speech_bubble"
+      ]
+    }
+  },
+  {
+    "emoji": "🗯️",
+    "name": "right_anger_bubble",
+    "shortcode": ":right_anger_bubble:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "right_anger_bubble"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "right_anger_bubble"
+      ]
+    }
+  },
+  {
+    "emoji": "🖐️",
+    "name": "raised_hand_with_fingers_splayed",
+    "shortcode": ":raised_hand_with_fingers_splayed:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "raised_hand_with_fingers_splayed"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "raised_hand_with_fingers_splayed"
+      ]
+    }
+  },
+  {
+    "emoji": "✌️",
+    "name": "v",
+    "shortcode": ":v:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "v"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "v"
+      ]
+    }
+  },
+  {
+    "emoji": "☝️",
+    "name": "point_up",
+    "shortcode": ":point_up:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "point_up"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "point_up"
+      ]
+    }
+  },
+  {
+    "emoji": "✍️",
+    "name": "writing_hand",
+    "shortcode": ":writing_hand:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "writing_hand"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "writing_hand"
+      ]
+    }
+  },
+  {
+    "emoji": "👁️",
+    "name": "eye",
+    "shortcode": ":eye:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "eye"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "eye"
+      ]
+    }
+  },
+  {
+    "emoji": "🕵️",
+    "name": "detective",
+    "shortcode": ":detective:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "detective"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "detective"
+      ]
+    }
+  },
+  {
+    "emoji": "🕴️",
+    "name": "business_suit_levitating",
+    "shortcode": ":business_suit_levitating:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "business_suit_levitating"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "business_suit_levitating"
+      ]
+    }
+  },
+  {
+    "emoji": "⛷️",
+    "name": "skier",
+    "shortcode": ":skier:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "skier"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "skier"
+      ]
+    }
+  },
+  {
+    "emoji": "🏌️",
+    "name": "golfing",
+    "shortcode": ":golfing:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "golfing"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "golfing"
+      ]
+    }
+  },
+  {
+    "emoji": "⛹️",
+    "name": "bouncing_ball_person",
+    "shortcode": ":bouncing_ball_person:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "bouncing_ball_person"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "bouncing_ball_person"
+      ]
+    }
+  },
+  {
+    "emoji": "🏋️",
+    "name": "weight_lifting",
+    "shortcode": ":weight_lifting:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "weight_lifting"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "weight_lifting"
+      ]
+    }
+  },
+  {
+    "emoji": "🗣️",
+    "name": "speaking_head",
+    "shortcode": ":speaking_head:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "speaking_head"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "speaking_head"
+      ]
+    }
+  },
+  {
+    "emoji": "🐿️",
+    "name": "chipmunk",
+    "shortcode": ":chipmunk:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "chipmunk"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "chipmunk"
+      ]
+    }
+  },
+  {
+    "emoji": "🕊️",
+    "name": "dove",
+    "shortcode": ":dove:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "dove"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "dove"
+      ]
+    }
+  },
+  {
+    "emoji": "🕷️",
+    "name": "spider",
+    "shortcode": ":spider:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "spider"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "spider"
+      ]
+    }
+  },
+  {
+    "emoji": "🕸️",
+    "name": "spider_web",
+    "shortcode": ":spider_web:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "spider_web"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "spider_web"
+      ]
+    }
+  },
+  {
+    "emoji": "🏵️",
+    "name": "rosette",
+    "shortcode": ":rosette:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "rosette"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "rosette"
+      ]
+    }
+  },
+  {
+    "emoji": "☘️",
+    "name": "shamrock",
+    "shortcode": ":shamrock:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "shamrock"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "shamrock"
+      ]
+    }
+  },
+  {
+    "emoji": "🌶️",
+    "name": "hot_pepper",
+    "shortcode": ":hot_pepper:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "hot_pepper"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "hot_pepper"
+      ]
+    }
+  },
+  {
+    "emoji": "🍽️",
+    "name": "plate_with_cutlery",
+    "shortcode": ":plate_with_cutlery:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "plate_with_cutlery"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "plate_with_cutlery"
+      ]
+    }
+  },
+  {
+    "emoji": "🗺️",
+    "name": "world_map",
+    "shortcode": ":world_map:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "world_map"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "world_map"
+      ]
+    }
+  },
+  {
+    "emoji": "🏔️",
+    "name": "mountain_snow",
+    "shortcode": ":mountain_snow:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "mountain_snow"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "mountain_snow"
+      ]
+    }
+  },
+  {
+    "emoji": "⛰️",
+    "name": "mountain",
+    "shortcode": ":mountain:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "mountain"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "mountain"
+      ]
+    }
+  },
+  {
+    "emoji": "🏕️",
+    "name": "camping",
+    "shortcode": ":camping:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "camping"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "camping"
+      ]
+    }
+  },
+  {
+    "emoji": "🏖️",
+    "name": "beach_umbrella",
+    "shortcode": ":beach_umbrella:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "beach_umbrella"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "beach_umbrella"
+      ]
+    }
+  },
+  {
+    "emoji": "🏜️",
+    "name": "desert",
+    "shortcode": ":desert:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "desert"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "desert"
+      ]
+    }
+  },
+  {
+    "emoji": "🏝️",
+    "name": "desert_island",
+    "shortcode": ":desert_island:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "desert_island"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "desert_island"
+      ]
+    }
+  },
+  {
+    "emoji": "🏞️",
+    "name": "national_park",
+    "shortcode": ":national_park:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "national_park"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "national_park"
+      ]
+    }
+  },
+  {
+    "emoji": "🏟️",
+    "name": "stadium",
+    "shortcode": ":stadium:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "stadium"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "stadium"
+      ]
+    }
+  },
+  {
+    "emoji": "🏛️",
+    "name": "classical_building",
+    "shortcode": ":classical_building:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "classical_building"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "classical_building"
+      ]
+    }
+  },
+  {
+    "emoji": "🏗️",
+    "name": "building_construction",
+    "shortcode": ":building_construction:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "building_construction"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "building_construction"
+      ]
+    }
+  },
+  {
+    "emoji": "🏘️",
+    "name": "houses",
+    "shortcode": ":houses:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "houses"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "houses"
+      ]
+    }
+  },
+  {
+    "emoji": "🏚️",
+    "name": "derelict_house",
+    "shortcode": ":derelict_house:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "derelict_house"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "derelict_house"
+      ]
+    }
+  },
+  {
+    "emoji": "⛩️",
+    "name": "shinto_shrine",
+    "shortcode": ":shinto_shrine:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "shinto_shrine"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "shinto_shrine"
+      ]
+    }
+  },
+  {
+    "emoji": "🏙️",
+    "name": "cityscape",
+    "shortcode": ":cityscape:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "cityscape"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "cityscape"
+      ]
+    }
+  },
+  {
+    "emoji": "♨️",
+    "name": "hotsprings",
+    "shortcode": ":hotsprings:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "hotsprings"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "hotsprings"
+      ]
+    }
+  },
+  {
+    "emoji": "🏎️",
+    "name": "racing_car",
+    "shortcode": ":racing_car:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "racing_car"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "racing_car"
+      ]
+    }
+  },
+  {
+    "emoji": "🏍️",
+    "name": "motorcycle",
+    "shortcode": ":motorcycle:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "motorcycle"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "motorcycle"
+      ]
+    }
+  },
+  {
+    "emoji": "🛣️",
+    "name": "motorway",
+    "shortcode": ":motorway:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "motorway"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "motorway"
+      ]
+    }
+  },
+  {
+    "emoji": "🛤️",
+    "name": "railway_track",
+    "shortcode": ":railway_track:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "railway_track"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "railway_track"
+      ]
+    }
+  },
+  {
+    "emoji": "🛢️",
+    "name": "oil_drum",
+    "shortcode": ":oil_drum:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "oil_drum"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "oil_drum"
+      ]
+    }
+  },
+  {
+    "emoji": "🛳️",
+    "name": "passenger_ship",
+    "shortcode": ":passenger_ship:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "passenger_ship"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "passenger_ship"
+      ]
+    }
+  },
+  {
+    "emoji": "⛴️",
+    "name": "ferry",
+    "shortcode": ":ferry:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "ferry"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "ferry"
+      ]
+    }
+  },
+  {
+    "emoji": "🛥️",
+    "name": "motor_boat",
+    "shortcode": ":motor_boat:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "motor_boat"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "motor_boat"
+      ]
+    }
+  },
+  {
+    "emoji": "✈️",
+    "name": "airplane",
+    "shortcode": ":airplane:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "airplane"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "airplane"
+      ]
+    }
+  },
+  {
+    "emoji": "🛩️",
+    "name": "small_airplane",
+    "shortcode": ":small_airplane:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "small_airplane"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "small_airplane"
+      ]
+    }
+  },
+  {
+    "emoji": "🛰️",
+    "name": "artificial_satellite",
+    "shortcode": ":artificial_satellite:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "artificial_satellite"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "artificial_satellite"
+      ]
+    }
+  },
+  {
+    "emoji": "🛎️",
+    "name": "bellhop_bell",
+    "shortcode": ":bellhop_bell:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "bellhop_bell"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "bellhop_bell"
+      ]
+    }
+  },
+  {
+    "emoji": "⏱️",
+    "name": "stopwatch",
+    "shortcode": ":stopwatch:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "stopwatch"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "stopwatch"
+      ]
+    }
+  },
+  {
+    "emoji": "⏲️",
+    "name": "timer_clock",
+    "shortcode": ":timer_clock:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "timer_clock"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "timer_clock"
+      ]
+    }
+  },
+  {
+    "emoji": "🕰️",
+    "name": "mantelpiece_clock",
+    "shortcode": ":mantelpiece_clock:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "mantelpiece_clock"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "mantelpiece_clock"
+      ]
+    }
+  },
+  {
+    "emoji": "🌡️",
+    "name": "thermometer",
+    "shortcode": ":thermometer:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "thermometer"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "thermometer"
+      ]
+    }
+  },
+  {
+    "emoji": "☀️",
+    "name": "sunny",
+    "shortcode": ":sunny:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "sunny"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "sunny"
+      ]
+    }
+  },
+  {
+    "emoji": "☁️",
+    "name": "cloud",
+    "shortcode": ":cloud:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "cloud"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "cloud"
+      ]
+    }
+  },
+  {
+    "emoji": "⛈️",
+    "name": "cloud_with_lightning_and_rain",
+    "shortcode": ":cloud_with_lightning_and_rain:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "cloud_with_lightning_and_rain"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "cloud_with_lightning_and_rain"
+      ]
+    }
+  },
+  {
+    "emoji": "🌤️",
+    "name": "sun_behind_small_cloud",
+    "shortcode": ":sun_behind_small_cloud:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "sun_behind_small_cloud"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "sun_behind_small_cloud"
+      ]
+    }
+  },
+  {
+    "emoji": "🌥️",
+    "name": "sun_behind_large_cloud",
+    "shortcode": ":sun_behind_large_cloud:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "sun_behind_large_cloud"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "sun_behind_large_cloud"
+      ]
+    }
+  },
+  {
+    "emoji": "🌦️",
+    "name": "sun_behind_rain_cloud",
+    "shortcode": ":sun_behind_rain_cloud:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "sun_behind_rain_cloud"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "sun_behind_rain_cloud"
+      ]
+    }
+  },
+  {
+    "emoji": "🌧️",
+    "name": "cloud_with_rain",
+    "shortcode": ":cloud_with_rain:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "cloud_with_rain"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "cloud_with_rain"
+      ]
+    }
+  },
+  {
+    "emoji": "🌨️",
+    "name": "cloud_with_snow",
+    "shortcode": ":cloud_with_snow:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "cloud_with_snow"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "cloud_with_snow"
+      ]
+    }
+  },
+  {
+    "emoji": "🌩️",
+    "name": "cloud_with_lightning",
+    "shortcode": ":cloud_with_lightning:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "cloud_with_lightning"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "cloud_with_lightning"
+      ]
+    }
+  },
+  {
+    "emoji": "🌪️",
+    "name": "tornado",
+    "shortcode": ":tornado:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "tornado"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "tornado"
+      ]
+    }
+  },
+  {
+    "emoji": "🌫️",
+    "name": "fog",
+    "shortcode": ":fog:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "fog"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "fog"
+      ]
+    }
+  },
+  {
+    "emoji": "🌬️",
+    "name": "wind_face",
+    "shortcode": ":wind_face:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "wind_face"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "wind_face"
+      ]
+    }
+  },
+  {
+    "emoji": "☂️",
+    "name": "open_umbrella",
+    "shortcode": ":open_umbrella:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "open_umbrella"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "open_umbrella"
+      ]
+    }
+  },
+  {
+    "emoji": "⛱️",
+    "name": "parasol_on_ground",
+    "shortcode": ":parasol_on_ground:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "parasol_on_ground"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "parasol_on_ground"
+      ]
+    }
+  },
+  {
+    "emoji": "❄️",
+    "name": "snowflake",
+    "shortcode": ":snowflake:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "snowflake"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "snowflake"
+      ]
+    }
+  },
+  {
+    "emoji": "☃️",
+    "name": "snowman_with_snow",
+    "shortcode": ":snowman_with_snow:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "snowman_with_snow"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "snowman_with_snow"
+      ]
+    }
+  },
+  {
+    "emoji": "☄️",
+    "name": "comet",
+    "shortcode": ":comet:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "comet"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "comet"
+      ]
+    }
+  },
+  {
+    "emoji": "🎗️",
+    "name": "reminder_ribbon",
+    "shortcode": ":reminder_ribbon:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "reminder_ribbon"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "reminder_ribbon"
+      ]
+    }
+  },
+  {
+    "emoji": "🎟️",
+    "name": "tickets",
+    "shortcode": ":tickets:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "tickets"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "tickets"
+      ]
+    }
+  },
+  {
+    "emoji": "🎖️",
+    "name": "medal_military",
+    "shortcode": ":medal_military:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "medal_military"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "medal_military"
+      ]
+    }
+  },
+  {
+    "emoji": "⛸️",
+    "name": "ice_skate",
+    "shortcode": ":ice_skate:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "ice_skate"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "ice_skate"
+      ]
+    }
+  },
+  {
+    "emoji": "🕹️",
+    "name": "joystick",
+    "shortcode": ":joystick:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "joystick"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "joystick"
+      ]
+    }
+  },
+  {
+    "emoji": "♠️",
+    "name": "spades",
+    "shortcode": ":spades:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "spades"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "spades"
+      ]
+    }
+  },
+  {
+    "emoji": "♥️",
+    "name": "hearts",
+    "shortcode": ":hearts:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "hearts"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "hearts"
+      ]
+    }
+  },
+  {
+    "emoji": "♦️",
+    "name": "diamonds",
+    "shortcode": ":diamonds:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "diamonds"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "diamonds"
+      ]
+    }
+  },
+  {
+    "emoji": "♣️",
+    "name": "clubs",
+    "shortcode": ":clubs:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "clubs"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "clubs"
+      ]
+    }
+  },
+  {
+    "emoji": "♟️",
+    "name": "chess_pawn",
+    "shortcode": ":chess_pawn:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "chess_pawn"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "chess_pawn"
+      ]
+    }
+  },
+  {
+    "emoji": "🖼️",
+    "name": "framed_picture",
+    "shortcode": ":framed_picture:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "framed_picture"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "framed_picture"
+      ]
+    }
+  },
+  {
+    "emoji": "🕶️",
+    "name": "dark_sunglasses",
+    "shortcode": ":dark_sunglasses:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "dark_sunglasses"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "dark_sunglasses"
+      ]
+    }
+  },
+  {
+    "emoji": "🛍️",
+    "name": "shopping",
+    "shortcode": ":shopping:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "shopping"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "shopping"
+      ]
+    }
+  },
+  {
+    "emoji": "⛑️",
+    "name": "rescue_worker_helmet",
+    "shortcode": ":rescue_worker_helmet:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "rescue_worker_helmet"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "rescue_worker_helmet"
+      ]
+    }
+  },
+  {
+    "emoji": "🎙️",
+    "name": "studio_microphone",
+    "shortcode": ":studio_microphone:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "studio_microphone"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "studio_microphone"
+      ]
+    }
+  },
+  {
+    "emoji": "🎚️",
+    "name": "level_slider",
+    "shortcode": ":level_slider:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "level_slider"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "level_slider"
+      ]
+    }
+  },
+  {
+    "emoji": "🎛️",
+    "name": "control_knobs",
+    "shortcode": ":control_knobs:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "control_knobs"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "control_knobs"
+      ]
+    }
+  },
+  {
+    "emoji": "☎️",
+    "name": "telephone",
+    "shortcode": ":telephone:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "telephone"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "telephone"
+      ]
+    }
+  },
+  {
+    "emoji": "🖥️",
+    "name": "desktop_computer",
+    "shortcode": ":desktop_computer:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "desktop_computer"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "desktop_computer"
+      ]
+    }
+  },
+  {
+    "emoji": "🖨️",
+    "name": "printer",
+    "shortcode": ":printer:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "printer"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "printer"
+      ]
+    }
+  },
+  {
+    "emoji": "⌨️",
+    "name": "keyboard",
+    "shortcode": ":keyboard:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "keyboard"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "keyboard"
+      ]
+    }
+  },
+  {
+    "emoji": "🖱️",
+    "name": "computer_mouse",
+    "shortcode": ":computer_mouse:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "computer_mouse"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "computer_mouse"
+      ]
+    }
+  },
+  {
+    "emoji": "🖲️",
+    "name": "trackball",
+    "shortcode": ":trackball:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "trackball"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "trackball"
+      ]
+    }
+  },
+  {
+    "emoji": "🎞️",
+    "name": "film_strip",
+    "shortcode": ":film_strip:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "film_strip"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "film_strip"
+      ]
+    }
+  },
+  {
+    "emoji": "📽️",
+    "name": "film_projector",
+    "shortcode": ":film_projector:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "film_projector"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "film_projector"
+      ]
+    }
+  },
+  {
+    "emoji": "🕯️",
+    "name": "candle",
+    "shortcode": ":candle:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "candle"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "candle"
+      ]
+    }
+  },
+  {
+    "emoji": "🗞️",
+    "name": "newspaper_roll",
+    "shortcode": ":newspaper_roll:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "newspaper_roll"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "newspaper_roll"
+      ]
+    }
+  },
+  {
+    "emoji": "🏷️",
+    "name": "label",
+    "shortcode": ":label:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "label"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "label"
+      ]
+    }
+  },
+  {
+    "emoji": "✉️",
+    "name": "envelope",
+    "shortcode": ":envelope:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "envelope"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "envelope"
+      ]
+    }
+  },
+  {
+    "emoji": "🗳️",
+    "name": "ballot_box",
+    "shortcode": ":ballot_box:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "ballot_box"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "ballot_box"
+      ]
+    }
+  },
+  {
+    "emoji": "✏️",
+    "name": "pencil2",
+    "shortcode": ":pencil2:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "pencil2"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "pencil2"
+      ]
+    }
+  },
+  {
+    "emoji": "✒️",
+    "name": "black_nib",
+    "shortcode": ":black_nib:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "black_nib"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "black_nib"
+      ]
+    }
+  },
+  {
+    "emoji": "🖋️",
+    "name": "fountain_pen",
+    "shortcode": ":fountain_pen:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "fountain_pen"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "fountain_pen"
+      ]
+    }
+  },
+  {
+    "emoji": "🖊️",
+    "name": "pen",
+    "shortcode": ":pen:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "pen"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "pen"
+      ]
+    }
+  },
+  {
+    "emoji": "🖌️",
+    "name": "paintbrush",
+    "shortcode": ":paintbrush:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "paintbrush"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "paintbrush"
+      ]
+    }
+  },
+  {
+    "emoji": "🖍️",
+    "name": "crayon",
+    "shortcode": ":crayon:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "crayon"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "crayon"
+      ]
+    }
+  },
+  {
+    "emoji": "🗂️",
+    "name": "card_index_dividers",
+    "shortcode": ":card_index_dividers:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "card_index_dividers"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "card_index_dividers"
+      ]
+    }
+  },
+  {
+    "emoji": "🗒️",
+    "name": "spiral_notepad",
+    "shortcode": ":spiral_notepad:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "spiral_notepad"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "spiral_notepad"
+      ]
+    }
+  },
+  {
+    "emoji": "🗓️",
+    "name": "spiral_calendar",
+    "shortcode": ":spiral_calendar:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "spiral_calendar"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "spiral_calendar"
+      ]
+    }
+  },
+  {
+    "emoji": "🖇️",
+    "name": "paperclips",
+    "shortcode": ":paperclips:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "paperclips"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "paperclips"
+      ]
+    }
+  },
+  {
+    "emoji": "✂️",
+    "name": "scissors",
+    "shortcode": ":scissors:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "scissors"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "scissors"
+      ]
+    }
+  },
+  {
+    "emoji": "🗃️",
+    "name": "card_file_box",
+    "shortcode": ":card_file_box:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "card_file_box"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "card_file_box"
+      ]
+    }
+  },
+  {
+    "emoji": "🗄️",
+    "name": "file_cabinet",
+    "shortcode": ":file_cabinet:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "file_cabinet"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "file_cabinet"
+      ]
+    }
+  },
+  {
+    "emoji": "🗑️",
+    "name": "wastebasket",
+    "shortcode": ":wastebasket:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "wastebasket"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "wastebasket"
+      ]
+    }
+  },
+  {
+    "emoji": "🗝️",
+    "name": "old_key",
+    "shortcode": ":old_key:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "old_key"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "old_key"
+      ]
+    }
+  },
+  {
+    "emoji": "⛏️",
+    "name": "pick",
+    "shortcode": ":pick:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "pick"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "pick"
+      ]
+    }
+  },
+  {
+    "emoji": "⚒️",
+    "name": "hammer_and_pick",
+    "shortcode": ":hammer_and_pick:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "hammer_and_pick"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "hammer_and_pick"
+      ]
+    }
+  },
+  {
+    "emoji": "🛠️",
+    "name": "hammer_and_wrench",
+    "shortcode": ":hammer_and_wrench:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "hammer_and_wrench"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "hammer_and_wrench"
+      ]
+    }
+  },
+  {
+    "emoji": "🗡️",
+    "name": "dagger",
+    "shortcode": ":dagger:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "dagger"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "dagger"
+      ]
+    }
+  },
+  {
+    "emoji": "⚔️",
+    "name": "crossed_swords",
+    "shortcode": ":crossed_swords:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "crossed_swords"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "crossed_swords"
+      ]
+    }
+  },
+  {
+    "emoji": "🛡️",
+    "name": "shield",
+    "shortcode": ":shield:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "shield"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "shield"
+      ]
+    }
+  },
+  {
+    "emoji": "⚙️",
+    "name": "gear",
+    "shortcode": ":gear:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "gear"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "gear"
+      ]
+    }
+  },
+  {
+    "emoji": "🗜️",
+    "name": "clamp",
+    "shortcode": ":clamp:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "clamp"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "clamp"
+      ]
+    }
+  },
+  {
+    "emoji": "⚖️",
+    "name": "balance_scale",
+    "shortcode": ":balance_scale:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "balance_scale"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "balance_scale"
+      ]
+    }
+  },
+  {
+    "emoji": "⛓️",
+    "name": "chains",
+    "shortcode": ":chains:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "chains"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "chains"
+      ]
+    }
+  },
+  {
+    "emoji": "⚗️",
+    "name": "alembic",
+    "shortcode": ":alembic:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "alembic"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "alembic"
+      ]
+    }
+  },
+  {
+    "emoji": "🛏️",
+    "name": "bed",
+    "shortcode": ":bed:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "bed"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "bed"
+      ]
+    }
+  },
+  {
+    "emoji": "🛋️",
+    "name": "couch_and_lamp",
+    "shortcode": ":couch_and_lamp:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "couch_and_lamp"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "couch_and_lamp"
+      ]
+    }
+  },
+  {
+    "emoji": "⚰️",
+    "name": "coffin",
+    "shortcode": ":coffin:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "coffin"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "coffin"
+      ]
+    }
+  },
+  {
+    "emoji": "⚱️",
+    "name": "funeral_urn",
+    "shortcode": ":funeral_urn:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "funeral_urn"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "funeral_urn"
+      ]
+    }
+  },
+  {
+    "emoji": "⚠️",
+    "name": "warning",
+    "shortcode": ":warning:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "warning"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "warning"
+      ]
+    }
+  },
+  {
+    "emoji": "☢️",
+    "name": "radioactive",
+    "shortcode": ":radioactive:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "radioactive"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "radioactive"
+      ]
+    }
+  },
+  {
+    "emoji": "☣️",
+    "name": "biohazard",
+    "shortcode": ":biohazard:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "biohazard"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "biohazard"
+      ]
+    }
+  },
+  {
+    "emoji": "⬆️",
+    "name": "arrow_up",
+    "shortcode": ":arrow_up:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "arrow_up"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "arrow_up"
+      ]
+    }
+  },
+  {
+    "emoji": "↗️",
+    "name": "arrow_upper_right",
+    "shortcode": ":arrow_upper_right:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "arrow_upper_right"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "arrow_upper_right"
+      ]
+    }
+  },
+  {
+    "emoji": "➡️",
+    "name": "arrow_right",
+    "shortcode": ":arrow_right:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "arrow_right"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "arrow_right"
+      ]
+    }
+  },
+  {
+    "emoji": "↘️",
+    "name": "arrow_lower_right",
+    "shortcode": ":arrow_lower_right:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "arrow_lower_right"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "arrow_lower_right"
+      ]
+    }
+  },
+  {
+    "emoji": "⬇️",
+    "name": "arrow_down",
+    "shortcode": ":arrow_down:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "arrow_down"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "arrow_down"
+      ]
+    }
+  },
+  {
+    "emoji": "↙️",
+    "name": "arrow_lower_left",
+    "shortcode": ":arrow_lower_left:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "arrow_lower_left"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "arrow_lower_left"
+      ]
+    }
+  },
+  {
+    "emoji": "⬅️",
+    "name": "arrow_left",
+    "shortcode": ":arrow_left:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "arrow_left"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "arrow_left"
+      ]
+    }
+  },
+  {
+    "emoji": "↖️",
+    "name": "arrow_upper_left",
+    "shortcode": ":arrow_upper_left:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "arrow_upper_left"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "arrow_upper_left"
+      ]
+    }
+  },
+  {
+    "emoji": "↕️",
+    "name": "arrow_up_down",
+    "shortcode": ":arrow_up_down:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "arrow_up_down"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "arrow_up_down"
+      ]
+    }
+  },
+  {
+    "emoji": "↔️",
+    "name": "left_right_arrow",
+    "shortcode": ":left_right_arrow:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "left_right_arrow"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "left_right_arrow"
+      ]
+    }
+  },
+  {
+    "emoji": "↩️",
+    "name": "leftwards_arrow_with_hook",
+    "shortcode": ":leftwards_arrow_with_hook:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "leftwards_arrow_with_hook"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "leftwards_arrow_with_hook"
+      ]
+    }
+  },
+  {
+    "emoji": "↪️",
+    "name": "arrow_right_hook",
+    "shortcode": ":arrow_right_hook:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "arrow_right_hook"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "arrow_right_hook"
+      ]
+    }
+  },
+  {
+    "emoji": "⤴️",
+    "name": "arrow_heading_up",
+    "shortcode": ":arrow_heading_up:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "arrow_heading_up"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "arrow_heading_up"
+      ]
+    }
+  },
+  {
+    "emoji": "⤵️",
+    "name": "arrow_heading_down",
+    "shortcode": ":arrow_heading_down:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "arrow_heading_down"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "arrow_heading_down"
+      ]
+    }
+  },
+  {
+    "emoji": "⚛️",
+    "name": "atom_symbol",
+    "shortcode": ":atom_symbol:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "atom_symbol"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "atom_symbol"
+      ]
+    }
+  },
+  {
+    "emoji": "🕉️",
+    "name": "om",
+    "shortcode": ":om:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "om"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "om"
+      ]
+    }
+  },
+  {
+    "emoji": "✡️",
+    "name": "star_of_david",
+    "shortcode": ":star_of_david:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "star_of_david"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "star_of_david"
+      ]
+    }
+  },
+  {
+    "emoji": "☸️",
+    "name": "wheel_of_dharma",
+    "shortcode": ":wheel_of_dharma:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "wheel_of_dharma"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "wheel_of_dharma"
+      ]
+    }
+  },
+  {
+    "emoji": "☯️",
+    "name": "yin_yang",
+    "shortcode": ":yin_yang:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "yin_yang"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "yin_yang"
+      ]
+    }
+  },
+  {
+    "emoji": "✝️",
+    "name": "latin_cross",
+    "shortcode": ":latin_cross:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "latin_cross"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "latin_cross"
+      ]
+    }
+  },
+  {
+    "emoji": "☦️",
+    "name": "orthodox_cross",
+    "shortcode": ":orthodox_cross:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "orthodox_cross"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "orthodox_cross"
+      ]
+    }
+  },
+  {
+    "emoji": "☪️",
+    "name": "star_and_crescent",
+    "shortcode": ":star_and_crescent:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "star_and_crescent"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "star_and_crescent"
+      ]
+    }
+  },
+  {
+    "emoji": "☮️",
+    "name": "peace_symbol",
+    "shortcode": ":peace_symbol:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "peace_symbol"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "peace_symbol"
+      ]
+    }
+  },
+  {
+    "emoji": "▶️",
+    "name": "arrow_forward",
+    "shortcode": ":arrow_forward:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "arrow_forward"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "arrow_forward"
+      ]
+    }
+  },
+  {
+    "emoji": "⏭️",
+    "name": "next_track_button",
+    "shortcode": ":next_track_button:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "next_track_button"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "next_track_button"
+      ]
+    }
+  },
+  {
+    "emoji": "⏯️",
+    "name": "play_or_pause_button",
+    "shortcode": ":play_or_pause_button:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "play_or_pause_button"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "play_or_pause_button"
+      ]
+    }
+  },
+  {
+    "emoji": "◀️",
+    "name": "arrow_backward",
+    "shortcode": ":arrow_backward:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "arrow_backward"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "arrow_backward"
+      ]
+    }
+  },
+  {
+    "emoji": "⏮️",
+    "name": "previous_track_button",
+    "shortcode": ":previous_track_button:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "previous_track_button"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "previous_track_button"
+      ]
+    }
+  },
+  {
+    "emoji": "⏸️",
+    "name": "pause_button",
+    "shortcode": ":pause_button:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "pause_button"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "pause_button"
+      ]
+    }
+  },
+  {
+    "emoji": "⏹️",
+    "name": "stop_button",
+    "shortcode": ":stop_button:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "stop_button"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "stop_button"
+      ]
+    }
+  },
+  {
+    "emoji": "⏺️",
+    "name": "record_button",
+    "shortcode": ":record_button:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "record_button"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "record_button"
+      ]
+    }
+  },
+  {
+    "emoji": "⏏️",
+    "name": "eject_button",
+    "shortcode": ":eject_button:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "eject_button"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "eject_button"
+      ]
+    }
+  },
+  {
+    "emoji": "♀️",
+    "name": "female_sign",
+    "shortcode": ":female_sign:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "female_sign"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "female_sign"
+      ]
+    }
+  },
+  {
+    "emoji": "♂️",
+    "name": "male_sign",
+    "shortcode": ":male_sign:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "male_sign"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "male_sign"
+      ]
+    }
+  },
+  {
+    "emoji": "✖️",
+    "name": "heavy_multiplication_x",
+    "shortcode": ":heavy_multiplication_x:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "heavy_multiplication_x"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "heavy_multiplication_x"
+      ]
+    }
+  },
+  {
+    "emoji": "♾️",
+    "name": "infinity",
+    "shortcode": ":infinity:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "infinity"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "infinity"
+      ]
+    }
+  },
+  {
+    "emoji": "‼️",
+    "name": "bangbang",
+    "shortcode": ":bangbang:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "bangbang"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "bangbang"
+      ]
+    }
+  },
+  {
+    "emoji": "⁉️",
+    "name": "interrobang",
+    "shortcode": ":interrobang:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "interrobang"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "interrobang"
+      ]
+    }
+  },
+  {
+    "emoji": "〰️",
+    "name": "wavy_dash",
+    "shortcode": ":wavy_dash:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "wavy_dash"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "wavy_dash"
+      ]
+    }
+  },
+  {
+    "emoji": "⚕️",
+    "name": "medical_symbol",
+    "shortcode": ":medical_symbol:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "medical_symbol"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "medical_symbol"
+      ]
+    }
+  },
+  {
+    "emoji": "♻️",
+    "name": "recycle",
+    "shortcode": ":recycle:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "recycle"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "recycle"
+      ]
+    }
+  },
+  {
+    "emoji": "⚜️",
+    "name": "fleur_de_lis",
+    "shortcode": ":fleur_de_lis:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "fleur_de_lis"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "fleur_de_lis"
+      ]
+    }
+  },
+  {
+    "emoji": "☑️",
+    "name": "ballot_box_with_check",
+    "shortcode": ":ballot_box_with_check:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "ballot_box_with_check"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "ballot_box_with_check"
+      ]
+    }
+  },
+  {
+    "emoji": "✔️",
+    "name": "heavy_check_mark",
+    "shortcode": ":heavy_check_mark:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "heavy_check_mark"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "heavy_check_mark"
+      ]
+    }
+  },
+  {
+    "emoji": "〽️",
+    "name": "part_alternation_mark",
+    "shortcode": ":part_alternation_mark:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "part_alternation_mark"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "part_alternation_mark"
+      ]
+    }
+  },
+  {
+    "emoji": "✳️",
+    "name": "eight_spoked_asterisk",
+    "shortcode": ":eight_spoked_asterisk:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "eight_spoked_asterisk"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "eight_spoked_asterisk"
+      ]
+    }
+  },
+  {
+    "emoji": "✴️",
+    "name": "eight_pointed_black_star",
+    "shortcode": ":eight_pointed_black_star:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "eight_pointed_black_star"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "eight_pointed_black_star"
+      ]
+    }
+  },
+  {
+    "emoji": "❇️",
+    "name": "sparkle",
+    "shortcode": ":sparkle:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "sparkle"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "sparkle"
+      ]
+    }
+  },
+  {
+    "emoji": "©️",
+    "name": "copyright",
+    "shortcode": ":copyright:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "copyright"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "copyright"
+      ]
+    }
+  },
+  {
+    "emoji": "®️",
+    "name": "registered",
+    "shortcode": ":registered:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "registered"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "registered"
+      ]
+    }
+  },
+  {
+    "emoji": "™️",
+    "name": "tm",
+    "shortcode": ":tm:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "tm"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "tm"
+      ]
+    }
+  },
+  {
+    "emoji": "🅰️",
+    "name": "a",
+    "shortcode": ":a:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "a"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "a"
+      ]
+    }
+  },
+  {
+    "emoji": "🅱️",
+    "name": "b",
+    "shortcode": ":b:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "b"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "b"
+      ]
+    }
+  },
+  {
+    "emoji": "ℹ️",
+    "name": "information_source",
+    "shortcode": ":information_source:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "information_source"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "information_source"
+      ]
+    }
+  },
+  {
+    "emoji": "Ⓜ️",
+    "name": "m",
+    "shortcode": ":m:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "m"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "m"
+      ]
+    }
+  },
+  {
+    "emoji": "🅾️",
+    "name": "o2",
+    "shortcode": ":o2:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "o2"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "o2"
+      ]
+    }
+  },
+  {
+    "emoji": "🅿️",
+    "name": "parking",
+    "shortcode": ":parking:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "parking"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "parking"
+      ]
+    }
+  },
+  {
+    "emoji": "🈂️",
+    "name": "sa",
+    "shortcode": ":sa:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "sa"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "sa"
+      ]
+    }
+  },
+  {
+    "emoji": "🈷️",
+    "name": "u6708",
+    "shortcode": ":u6708:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "u6708"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "u6708"
+      ]
+    }
+  },
+  {
+    "emoji": "㊗️",
+    "name": "congratulations",
+    "shortcode": ":congratulations:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "congratulations"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "congratulations"
+      ]
+    }
+  },
+  {
+    "emoji": "㊙️",
+    "name": "secret",
+    "shortcode": ":secret:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "secret"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "secret"
+      ]
+    }
+  },
+  {
+    "emoji": "◼️",
+    "name": "black_medium_square",
+    "shortcode": ":black_medium_square:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "black_medium_square"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "black_medium_square"
+      ]
+    }
+  },
+  {
+    "emoji": "◻️",
+    "name": "white_medium_square",
+    "shortcode": ":white_medium_square:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "white_medium_square"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "white_medium_square"
+      ]
+    }
+  },
+  {
+    "emoji": "▪️",
+    "name": "black_small_square",
+    "shortcode": ":black_small_square:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "black_small_square"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "black_small_square"
+      ]
+    }
+  },
+  {
+    "emoji": "▫️",
+    "name": "white_small_square",
+    "shortcode": ":white_small_square:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "white_small_square"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "white_small_square"
+      ]
+    }
+  },
+  {
+    "emoji": "🏳️",
+    "name": "white_flag",
+    "shortcode": ":white_flag:",
+    "category": "other",
+    "subcategory": "",
+    "description": {
+      "zh": "",
+      "en": "white_flag"
+    },
+    "keywords": {
+      "zh": [],
+      "en": [
+        "white_flag"
+      ]
+    }
+  }
+]

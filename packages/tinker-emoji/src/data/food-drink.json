@@ -1,0 +1,2726 @@
+[
+  {
+    "emoji": "🍇",
+    "name": "grapes",
+    "shortcode": ":grapes:",
+    "category": "食物和饮料",
+    "subcategory": "水果",
+    "description": {
+      "zh": "葡萄",
+      "en": "grapes"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "葡萄",
+        "水果"
+      ],
+      "en": [
+        "grapes"
+      ]
+    }
+  },
+  {
+    "emoji": "🍈",
+    "name": "melon",
+    "shortcode": ":melon:",
+    "category": "食物和饮料",
+    "subcategory": "水果",
+    "description": {
+      "zh": "甜瓜",
+      "en": "melon"
+    },
+    "keywords": {
+      "zh": [
+        "蜜瓜",
+        "香瓜",
+        "食物和饮料",
+        "甜瓜",
+        "水果"
+      ],
+      "en": [
+        "melon"
+      ]
+    }
+  },
+  {
+    "emoji": "🍉",
+    "name": "watermelon",
+    "shortcode": ":watermelon:",
+    "category": "食物和饮料",
+    "subcategory": "水果",
+    "description": {
+      "zh": "西瓜",
+      "en": "watermelon"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "西瓜",
+        "水果"
+      ],
+      "en": [
+        "watermelon"
+      ]
+    }
+  },
+  {
+    "emoji": "🍊",
+    "name": "tangerine",
+    "shortcode": ":tangerine:",
+    "category": "食物和饮料",
+    "subcategory": "水果",
+    "description": {
+      "zh": "橘子",
+      "en": "tangerine"
+    },
+    "keywords": {
+      "zh": [
+        "柑桔",
+        "桔子",
+        "食物和饮料",
+        "橘子",
+        "水果"
+      ],
+      "en": [
+        "tangerine"
+      ]
+    }
+  },
+  {
+    "emoji": "🍋",
+    "name": "lemon",
+    "shortcode": ":lemon:",
+    "category": "食物和饮料",
+    "subcategory": "水果",
+    "description": {
+      "zh": "柠檬",
+      "en": "lemon"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "柠檬",
+        "水果"
+      ],
+      "en": [
+        "lemon"
+      ]
+    }
+  },
+  {
+    "emoji": "🍌",
+    "name": "banana",
+    "shortcode": ":banana:",
+    "category": "食物和饮料",
+    "subcategory": "水果",
+    "description": {
+      "zh": "香蕉",
+      "en": "banana"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "香蕉",
+        "水果"
+      ],
+      "en": [
+        "banana"
+      ]
+    }
+  },
+  {
+    "emoji": "🍍",
+    "name": "pineapple",
+    "shortcode": ":pineapple:",
+    "category": "食物和饮料",
+    "subcategory": "水果",
+    "description": {
+      "zh": "菠萝",
+      "en": "pineapple"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "菠萝",
+        "水果"
+      ],
+      "en": [
+        "pineapple"
+      ]
+    }
+  },
+  {
+    "emoji": "🥭",
+    "name": "mango",
+    "shortcode": ":mango:",
+    "category": "食物和饮料",
+    "subcategory": "水果",
+    "description": {
+      "zh": "芒果",
+      "en": "mango"
+    },
+    "keywords": {
+      "zh": [
+        "热带",
+        "食物和饮料",
+        "芒果",
+        "水果"
+      ],
+      "en": [
+        "mango"
+      ]
+    }
+  },
+  {
+    "emoji": "🍎",
+    "name": "apple",
+    "shortcode": ":apple:",
+    "category": "食物和饮料",
+    "subcategory": "水果",
+    "description": {
+      "zh": "红苹果",
+      "en": "red apple"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "红苹果",
+        "水果"
+      ],
+      "en": [
+        "red",
+        "apple"
+      ]
+    }
+  },
+  {
+    "emoji": "🍏",
+    "name": "green_apple",
+    "shortcode": ":green_apple:",
+    "category": "食物和饮料",
+    "subcategory": "水果",
+    "description": {
+      "zh": "青苹果",
+      "en": "green apple"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "青苹果",
+        "水果"
+      ],
+      "en": [
+        "green",
+        "apple"
+      ]
+    }
+  },
+  {
+    "emoji": "🍐",
+    "name": "pear",
+    "shortcode": ":pear:",
+    "category": "食物和饮料",
+    "subcategory": "水果",
+    "description": {
+      "zh": "梨",
+      "en": "pear"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "梨",
+        "水果"
+      ],
+      "en": [
+        "pear"
+      ]
+    }
+  },
+  {
+    "emoji": "🍑",
+    "name": "peach",
+    "shortcode": ":peach:",
+    "category": "食物和饮料",
+    "subcategory": "水果",
+    "description": {
+      "zh": "桃",
+      "en": "peach"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "桃",
+        "水果"
+      ],
+      "en": [
+        "peach"
+      ]
+    }
+  },
+  {
+    "emoji": "🍒",
+    "name": "cherries",
+    "shortcode": ":cherries:",
+    "category": "食物和饮料",
+    "subcategory": "水果",
+    "description": {
+      "zh": "樱桃",
+      "en": "cherries"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "樱桃",
+        "水果"
+      ],
+      "en": [
+        "cherries"
+      ]
+    }
+  },
+  {
+    "emoji": "🍓",
+    "name": "strawberry",
+    "shortcode": ":strawberry:",
+    "category": "食物和饮料",
+    "subcategory": "水果",
+    "description": {
+      "zh": "草莓",
+      "en": "strawberry"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "草莓",
+        "水果"
+      ],
+      "en": [
+        "strawberry"
+      ]
+    }
+  },
+  {
+    "emoji": "🥝",
+    "name": "kiwi_fruit",
+    "shortcode": ":kiwi_fruit:",
+    "category": "食物和饮料",
+    "subcategory": "水果",
+    "description": {
+      "zh": "猕猴桃",
+      "en": "kiwi fruit"
+    },
+    "keywords": {
+      "zh": [
+        "奇异果",
+        "食物和饮料",
+        "猕猴桃",
+        "水果"
+      ],
+      "en": [
+        "kiwi",
+        "fruit"
+      ]
+    }
+  },
+  {
+    "emoji": "🍅",
+    "name": "tomato",
+    "shortcode": ":tomato:",
+    "category": "食物和饮料",
+    "subcategory": "水果",
+    "description": {
+      "zh": "西红柿",
+      "en": "tomato"
+    },
+    "keywords": {
+      "zh": [
+        "番茄",
+        "蔬菜",
+        "食物和饮料",
+        "西红柿",
+        "水果"
+      ],
+      "en": [
+        "tomato"
+      ]
+    }
+  },
+  {
+    "emoji": "🥥",
+    "name": "coconut",
+    "shortcode": ":coconut:",
+    "category": "食物和饮料",
+    "subcategory": "水果",
+    "description": {
+      "zh": "椰子",
+      "en": "coconut"
+    },
+    "keywords": {
+      "zh": [
+        "棕榈",
+        "食物和饮料",
+        "椰子",
+        "水果"
+      ],
+      "en": [
+        "coconut"
+      ]
+    }
+  },
+  {
+    "emoji": "🥑",
+    "name": "avocado",
+    "shortcode": ":avocado:",
+    "category": "食物和饮料",
+    "subcategory": "蔬菜",
+    "description": {
+      "zh": "鳄梨",
+      "en": "avocado"
+    },
+    "keywords": {
+      "zh": [
+        "水果",
+        "牛油果",
+        "食物和饮料",
+        "鳄梨",
+        "蔬菜"
+      ],
+      "en": [
+        "avocado"
+      ]
+    }
+  },
+  {
+    "emoji": "🍆",
+    "name": "eggplant",
+    "shortcode": ":eggplant:",
+    "category": "食物和饮料",
+    "subcategory": "蔬菜",
+    "description": {
+      "zh": "茄子",
+      "en": "eggplant"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "茄子",
+        "蔬菜"
+      ],
+      "en": [
+        "eggplant"
+      ]
+    }
+  },
+  {
+    "emoji": "🥔",
+    "name": "potato",
+    "shortcode": ":potato:",
+    "category": "食物和饮料",
+    "subcategory": "蔬菜",
+    "description": {
+      "zh": "土豆",
+      "en": "potato"
+    },
+    "keywords": {
+      "zh": [
+        "马铃薯",
+        "食物和饮料",
+        "土豆",
+        "蔬菜"
+      ],
+      "en": [
+        "potato"
+      ]
+    }
+  },
+  {
+    "emoji": "🥕",
+    "name": "carrot",
+    "shortcode": ":carrot:",
+    "category": "食物和饮料",
+    "subcategory": "蔬菜",
+    "description": {
+      "zh": "胡萝卜",
+      "en": "carrot"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "胡萝卜",
+        "蔬菜"
+      ],
+      "en": [
+        "carrot"
+      ]
+    }
+  },
+  {
+    "emoji": "🌽",
+    "name": "corn",
+    "shortcode": ":corn:",
+    "category": "食物和饮料",
+    "subcategory": "蔬菜",
+    "description": {
+      "zh": "玉米",
+      "en": "ear of corn"
+    },
+    "keywords": {
+      "zh": [
+        "苞米",
+        "食物和饮料",
+        "玉米",
+        "蔬菜"
+      ],
+      "en": [
+        "ear",
+        "of",
+        "corn"
+      ]
+    }
+  },
+  {
+    "emoji": "🥒",
+    "name": "cucumber",
+    "shortcode": ":cucumber:",
+    "category": "食物和饮料",
+    "subcategory": "蔬菜",
+    "description": {
+      "zh": "黄瓜",
+      "en": "cucumber"
+    },
+    "keywords": {
+      "zh": [
+        "泡菜",
+        "食物和饮料",
+        "黄瓜",
+        "蔬菜"
+      ],
+      "en": [
+        "cucumber"
+      ]
+    }
+  },
+  {
+    "emoji": "🥬",
+    "name": "leafy_green",
+    "shortcode": ":leafy_green:",
+    "category": "食物和饮料",
+    "subcategory": "蔬菜",
+    "description": {
+      "zh": "绿叶蔬菜",
+      "en": "leafy green"
+    },
+    "keywords": {
+      "zh": [
+        "圆白菜",
+        "小白菜",
+        "甘蓝",
+        "莴苣",
+        "食物和饮料",
+        "绿叶蔬菜",
+        "蔬菜"
+      ],
+      "en": [
+        "leafy",
+        "green"
+      ]
+    }
+  },
+  {
+    "emoji": "🥦",
+    "name": "broccoli",
+    "shortcode": ":broccoli:",
+    "category": "食物和饮料",
+    "subcategory": "蔬菜",
+    "description": {
+      "zh": "西兰花",
+      "en": "broccoli"
+    },
+    "keywords": {
+      "zh": [
+        "甘蓝",
+        "食物和饮料",
+        "西兰花",
+        "蔬菜"
+      ],
+      "en": [
+        "broccoli"
+      ]
+    }
+  },
+  {
+    "emoji": "🧄",
+    "name": "garlic",
+    "shortcode": ":garlic:",
+    "category": "食物和饮料",
+    "subcategory": "蔬菜",
+    "description": {
+      "zh": "蒜",
+      "en": "garlic"
+    },
+    "keywords": {
+      "zh": [
+        "佐料",
+        "大蒜",
+        "蒜头",
+        "调味",
+        "食物和饮料",
+        "蒜",
+        "蔬菜"
+      ],
+      "en": [
+        "garlic"
+      ]
+    }
+  },
+  {
+    "emoji": "🧅",
+    "name": "onion",
+    "shortcode": ":onion:",
+    "category": "食物和饮料",
+    "subcategory": "蔬菜",
+    "description": {
+      "zh": "洋葱",
+      "en": "onion"
+    },
+    "keywords": {
+      "zh": [
+        "佐料",
+        "调味",
+        "食物和饮料",
+        "洋葱",
+        "蔬菜"
+      ],
+      "en": [
+        "onion"
+      ]
+    }
+  },
+  {
+    "emoji": "🍄",
+    "name": "mushroom",
+    "shortcode": ":mushroom:",
+    "category": "食物和饮料",
+    "subcategory": "蔬菜",
+    "description": {
+      "zh": "蘑菇",
+      "en": "mushroom"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "蘑菇",
+        "蔬菜"
+      ],
+      "en": [
+        "mushroom"
+      ]
+    }
+  },
+  {
+    "emoji": "🥜",
+    "name": "peanuts",
+    "shortcode": ":peanuts:",
+    "category": "食物和饮料",
+    "subcategory": "蔬菜",
+    "description": {
+      "zh": "花生",
+      "en": "peanuts"
+    },
+    "keywords": {
+      "zh": [
+        "坚果",
+        "食物和饮料",
+        "花生",
+        "蔬菜"
+      ],
+      "en": [
+        "peanuts"
+      ]
+    }
+  },
+  {
+    "emoji": "🌰",
+    "name": "chestnut",
+    "shortcode": ":chestnut:",
+    "category": "食物和饮料",
+    "subcategory": "蔬菜",
+    "description": {
+      "zh": "栗子",
+      "en": "chestnut"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "栗子",
+        "蔬菜"
+      ],
+      "en": [
+        "chestnut"
+      ]
+    }
+  },
+  {
+    "emoji": "🍞",
+    "name": "bread",
+    "shortcode": ":bread:",
+    "category": "食物和饮料",
+    "subcategory": "熟食",
+    "description": {
+      "zh": "面包",
+      "en": "bread"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "面包",
+        "熟食"
+      ],
+      "en": [
+        "bread"
+      ]
+    }
+  },
+  {
+    "emoji": "🥐",
+    "name": "croissant",
+    "shortcode": ":croissant:",
+    "category": "食物和饮料",
+    "subcategory": "熟食",
+    "description": {
+      "zh": "羊角面包",
+      "en": "croissant"
+    },
+    "keywords": {
+      "zh": [
+        "新月形面包",
+        "法式",
+        "食物和饮料",
+        "羊角面包",
+        "熟食"
+      ],
+      "en": [
+        "croissant"
+      ]
+    }
+  },
+  {
+    "emoji": "🥖",
+    "name": "baguette_bread",
+    "shortcode": ":baguette_bread:",
+    "category": "食物和饮料",
+    "subcategory": "熟食",
+    "description": {
+      "zh": "法式长棍面包",
+      "en": "baguette bread"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "法式长棍面包",
+        "熟食"
+      ],
+      "en": [
+        "baguette",
+        "bread"
+      ]
+    }
+  },
+  {
+    "emoji": "🥨",
+    "name": "pretzel",
+    "shortcode": ":pretzel:",
+    "category": "食物和饮料",
+    "subcategory": "熟食",
+    "description": {
+      "zh": "椒盐卷饼",
+      "en": "pretzel"
+    },
+    "keywords": {
+      "zh": [
+        "扭曲食品",
+        "食物和饮料",
+        "椒盐卷饼",
+        "熟食"
+      ],
+      "en": [
+        "pretzel"
+      ]
+    }
+  },
+  {
+    "emoji": "🥯",
+    "name": "bagel",
+    "shortcode": ":bagel:",
+    "category": "食物和饮料",
+    "subcategory": "熟食",
+    "description": {
+      "zh": "面包圈",
+      "en": "bagel"
+    },
+    "keywords": {
+      "zh": [
+        "奶酪酱",
+        "烘烤食品",
+        "食物和饮料",
+        "面包圈",
+        "熟食"
+      ],
+      "en": [
+        "bagel"
+      ]
+    }
+  },
+  {
+    "emoji": "🥞",
+    "name": "pancakes",
+    "shortcode": ":pancakes:",
+    "category": "食物和饮料",
+    "subcategory": "熟食",
+    "description": {
+      "zh": "烙饼",
+      "en": "pancakes"
+    },
+    "keywords": {
+      "zh": [
+        "煎饼",
+        "食物和饮料",
+        "烙饼",
+        "熟食"
+      ],
+      "en": [
+        "pancakes"
+      ]
+    }
+  },
+  {
+    "emoji": "🧇",
+    "name": "waffle",
+    "shortcode": ":waffle:",
+    "category": "食物和饮料",
+    "subcategory": "熟食",
+    "description": {
+      "zh": "华夫饼",
+      "en": "waffle"
+    },
+    "keywords": {
+      "zh": [
+        "格子饼",
+        "点心",
+        "烤",
+        "窝夫饼",
+        "食物和饮料",
+        "华夫饼",
+        "熟食"
+      ],
+      "en": [
+        "waffle"
+      ]
+    }
+  },
+  {
+    "emoji": "🧀",
+    "name": "cheese",
+    "shortcode": ":cheese:",
+    "category": "食物和饮料",
+    "subcategory": "熟食",
+    "description": {
+      "zh": "芝士",
+      "en": "cheese wedge"
+    },
+    "keywords": {
+      "zh": [
+        "奶酪",
+        "起司",
+        "食物和饮料",
+        "芝士",
+        "熟食"
+      ],
+      "en": [
+        "cheese",
+        "wedge"
+      ]
+    }
+  },
+  {
+    "emoji": "🍖",
+    "name": "meat_on_bone",
+    "shortcode": ":meat_on_bone:",
+    "category": "食物和饮料",
+    "subcategory": "熟食",
+    "description": {
+      "zh": "排骨",
+      "en": "meat on bone"
+    },
+    "keywords": {
+      "zh": [
+        "肉",
+        "食物和饮料",
+        "排骨",
+        "熟食"
+      ],
+      "en": [
+        "meat",
+        "bone"
+      ]
+    }
+  },
+  {
+    "emoji": "🍗",
+    "name": "poultry_leg",
+    "shortcode": ":poultry_leg:",
+    "category": "食物和饮料",
+    "subcategory": "熟食",
+    "description": {
+      "zh": "家禽的腿",
+      "en": "poultry leg"
+    },
+    "keywords": {
+      "zh": [
+        "鸡肉",
+        "鸡腿",
+        "食物和饮料",
+        "家禽的腿",
+        "熟食"
+      ],
+      "en": [
+        "poultry",
+        "leg"
+      ]
+    }
+  },
+  {
+    "emoji": "🥩",
+    "name": "cut_of_meat",
+    "shortcode": ":cut_of_meat:",
+    "category": "食物和饮料",
+    "subcategory": "熟食",
+    "description": {
+      "zh": "肉块",
+      "en": "cut of meat"
+    },
+    "keywords": {
+      "zh": [
+        "排骨",
+        "牛排",
+        "猪排",
+        "羊排",
+        "食物和饮料",
+        "肉块",
+        "熟食"
+      ],
+      "en": [
+        "cut",
+        "of",
+        "meat"
+      ]
+    }
+  },
+  {
+    "emoji": "🥓",
+    "name": "bacon",
+    "shortcode": ":bacon:",
+    "category": "食物和饮料",
+    "subcategory": "熟食",
+    "description": {
+      "zh": "培根",
+      "en": "bacon"
+    },
+    "keywords": {
+      "zh": [
+        "熏肉",
+        "肉",
+        "食物和饮料",
+        "培根",
+        "熟食"
+      ],
+      "en": [
+        "bacon"
+      ]
+    }
+  },
+  {
+    "emoji": "🍔",
+    "name": "hamburger",
+    "shortcode": ":hamburger:",
+    "category": "食物和饮料",
+    "subcategory": "熟食",
+    "description": {
+      "zh": "汉堡",
+      "en": "hamburger"
+    },
+    "keywords": {
+      "zh": [
+        "汉堡包",
+        "食物和饮料",
+        "汉堡",
+        "熟食"
+      ],
+      "en": [
+        "hamburger"
+      ]
+    }
+  },
+  {
+    "emoji": "🍟",
+    "name": "fries",
+    "shortcode": ":fries:",
+    "category": "食物和饮料",
+    "subcategory": "熟食",
+    "description": {
+      "zh": "薯条",
+      "en": "french fries"
+    },
+    "keywords": {
+      "zh": [
+        "油炸",
+        "食物和饮料",
+        "薯条",
+        "熟食"
+      ],
+      "en": [
+        "french",
+        "fries"
+      ]
+    }
+  },
+  {
+    "emoji": "🍕",
+    "name": "pizza",
+    "shortcode": ":pizza:",
+    "category": "食物和饮料",
+    "subcategory": "熟食",
+    "description": {
+      "zh": "披萨",
+      "en": "pizza"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "披萨",
+        "熟食"
+      ],
+      "en": [
+        "pizza"
+      ]
+    }
+  },
+  {
+    "emoji": "🌭",
+    "name": "hotdog",
+    "shortcode": ":hotdog:",
+    "category": "食物和饮料",
+    "subcategory": "熟食",
+    "description": {
+      "zh": "热狗",
+      "en": "hot dog"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "热狗",
+        "熟食"
+      ],
+      "en": [
+        "hot",
+        "dog"
+      ]
+    }
+  },
+  {
+    "emoji": "🥪",
+    "name": "sandwich",
+    "shortcode": ":sandwich:",
+    "category": "食物和饮料",
+    "subcategory": "熟食",
+    "description": {
+      "zh": "三明治",
+      "en": "sandwich"
+    },
+    "keywords": {
+      "zh": [
+        "面包",
+        "食物和饮料",
+        "三明治",
+        "熟食"
+      ],
+      "en": [
+        "sandwich"
+      ]
+    }
+  },
+  {
+    "emoji": "🌮",
+    "name": "taco",
+    "shortcode": ":taco:",
+    "category": "食物和饮料",
+    "subcategory": "熟食",
+    "description": {
+      "zh": "墨西哥卷饼",
+      "en": "taco"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "墨西哥卷饼",
+        "熟食"
+      ],
+      "en": [
+        "taco"
+      ]
+    }
+  },
+  {
+    "emoji": "🌯",
+    "name": "burrito",
+    "shortcode": ":burrito:",
+    "category": "食物和饮料",
+    "subcategory": "熟食",
+    "description": {
+      "zh": "墨西哥玉米煎饼",
+      "en": "burrito"
+    },
+    "keywords": {
+      "zh": [
+        "卷饼",
+        "食物和饮料",
+        "墨西哥玉米煎饼",
+        "熟食"
+      ],
+      "en": [
+        "burrito"
+      ]
+    }
+  },
+  {
+    "emoji": "🥙",
+    "name": "stuffed_flatbread",
+    "shortcode": ":stuffed_flatbread:",
+    "category": "食物和饮料",
+    "subcategory": "熟食",
+    "description": {
+      "zh": "夹心饼",
+      "en": "stuffed flatbread"
+    },
+    "keywords": {
+      "zh": [
+        "沙拉三明治",
+        "肉夹馍",
+        "食物和饮料",
+        "夹心饼",
+        "熟食"
+      ],
+      "en": [
+        "stuffed",
+        "flatbread"
+      ]
+    }
+  },
+  {
+    "emoji": "🧆",
+    "name": "falafel",
+    "shortcode": ":falafel:",
+    "category": "食物和饮料",
+    "subcategory": "熟食",
+    "description": {
+      "zh": "炸豆丸子",
+      "en": "falafel"
+    },
+    "keywords": {
+      "zh": [
+        "中东蔬菜球",
+        "油炸鹰嘴豆饼",
+        "肉丸",
+        "鹰嘴豆",
+        "食物和饮料",
+        "炸豆丸子",
+        "熟食"
+      ],
+      "en": [
+        "falafel"
+      ]
+    }
+  },
+  {
+    "emoji": "🥚",
+    "name": "egg",
+    "shortcode": ":egg:",
+    "category": "食物和饮料",
+    "subcategory": "熟食",
+    "description": {
+      "zh": "蛋",
+      "en": "egg"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "蛋",
+        "熟食"
+      ],
+      "en": [
+        "egg"
+      ]
+    }
+  },
+  {
+    "emoji": "🍳",
+    "name": "fried_egg",
+    "shortcode": ":fried_egg:",
+    "category": "食物和饮料",
+    "subcategory": "熟食",
+    "description": {
+      "zh": "煎蛋",
+      "en": "cooking"
+    },
+    "keywords": {
+      "zh": [
+        "平底锅",
+        "食物和饮料",
+        "煎蛋",
+        "熟食"
+      ],
+      "en": [
+        "cooking"
+      ]
+    }
+  },
+  {
+    "emoji": "🥘",
+    "name": "shallow_pan_of_food",
+    "shortcode": ":shallow_pan_of_food:",
+    "category": "食物和饮料",
+    "subcategory": "熟食",
+    "description": {
+      "zh": "装有食物的浅底锅",
+      "en": "shallow pan of food"
+    },
+    "keywords": {
+      "zh": [
+        "煎锅",
+        "食物和饮料",
+        "装有食物的浅底锅",
+        "熟食"
+      ],
+      "en": [
+        "shallow",
+        "pan",
+        "of",
+        "food"
+      ]
+    }
+  },
+  {
+    "emoji": "🍲",
+    "name": "stew",
+    "shortcode": ":stew:",
+    "category": "食物和饮料",
+    "subcategory": "熟食",
+    "description": {
+      "zh": "一锅食物",
+      "en": "pot of food"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "一锅食物",
+        "熟食"
+      ],
+      "en": [
+        "pot",
+        "of",
+        "food"
+      ]
+    }
+  },
+  {
+    "emoji": "🥣",
+    "name": "bowl_with_spoon",
+    "shortcode": ":bowl_with_spoon:",
+    "category": "食物和饮料",
+    "subcategory": "熟食",
+    "description": {
+      "zh": "碗勺",
+      "en": "bowl with spoon"
+    },
+    "keywords": {
+      "zh": [
+        "早餐",
+        "粥",
+        "谷物",
+        "食物和饮料",
+        "碗勺",
+        "熟食"
+      ],
+      "en": [
+        "bowl",
+        "with",
+        "spoon"
+      ]
+    }
+  },
+  {
+    "emoji": "🥗",
+    "name": "green_salad",
+    "shortcode": ":green_salad:",
+    "category": "食物和饮料",
+    "subcategory": "熟食",
+    "description": {
+      "zh": "绿色沙拉",
+      "en": "green salad"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "绿色沙拉",
+        "熟食"
+      ],
+      "en": [
+        "green",
+        "salad"
+      ]
+    }
+  },
+  {
+    "emoji": "🍿",
+    "name": "popcorn",
+    "shortcode": ":popcorn:",
+    "category": "食物和饮料",
+    "subcategory": "熟食",
+    "description": {
+      "zh": "爆米花",
+      "en": "popcorn"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "爆米花",
+        "熟食"
+      ],
+      "en": [
+        "popcorn"
+      ]
+    }
+  },
+  {
+    "emoji": "🧈",
+    "name": "butter",
+    "shortcode": ":butter:",
+    "category": "食物和饮料",
+    "subcategory": "熟食",
+    "description": {
+      "zh": "黄油",
+      "en": "butter"
+    },
+    "keywords": {
+      "zh": [
+        "乳制品",
+        "牛奶",
+        "食物和饮料",
+        "黄油",
+        "熟食"
+      ],
+      "en": [
+        "butter"
+      ]
+    }
+  },
+  {
+    "emoji": "🧂",
+    "name": "salt",
+    "shortcode": ":salt:",
+    "category": "食物和饮料",
+    "subcategory": "熟食",
+    "description": {
+      "zh": "盐",
+      "en": "salt"
+    },
+    "keywords": {
+      "zh": [
+        "佐料瓶",
+        "调味品",
+        "食物和饮料",
+        "盐",
+        "熟食"
+      ],
+      "en": [
+        "salt"
+      ]
+    }
+  },
+  {
+    "emoji": "🥫",
+    "name": "canned_food",
+    "shortcode": ":canned_food:",
+    "category": "食物和饮料",
+    "subcategory": "熟食",
+    "description": {
+      "zh": "罐头食品",
+      "en": "canned food"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "罐头食品",
+        "熟食"
+      ],
+      "en": [
+        "canned",
+        "food"
+      ]
+    }
+  },
+  {
+    "emoji": "🍱",
+    "name": "bento",
+    "shortcode": ":bento:",
+    "category": "食物和饮料",
+    "subcategory": "亚洲食物",
+    "description": {
+      "zh": "盒饭",
+      "en": "bento box"
+    },
+    "keywords": {
+      "zh": [
+        "便当",
+        "食物和饮料",
+        "盒饭",
+        "亚洲食物"
+      ],
+      "en": [
+        "bento",
+        "box"
+      ]
+    }
+  },
+  {
+    "emoji": "🍘",
+    "name": "rice_cracker",
+    "shortcode": ":rice_cracker:",
+    "category": "食物和饮料",
+    "subcategory": "亚洲食物",
+    "description": {
+      "zh": "米饼",
+      "en": "rice cracker"
+    },
+    "keywords": {
+      "zh": [
+        "米果",
+        "食物和饮料",
+        "米饼",
+        "亚洲食物"
+      ],
+      "en": [
+        "rice",
+        "cracker"
+      ]
+    }
+  },
+  {
+    "emoji": "🍙",
+    "name": "rice_ball",
+    "shortcode": ":rice_ball:",
+    "category": "食物和饮料",
+    "subcategory": "亚洲食物",
+    "description": {
+      "zh": "饭团",
+      "en": "rice ball"
+    },
+    "keywords": {
+      "zh": [
+        "日本",
+        "食物和饮料",
+        "饭团",
+        "亚洲食物"
+      ],
+      "en": [
+        "rice",
+        "ball"
+      ]
+    }
+  },
+  {
+    "emoji": "🍚",
+    "name": "rice",
+    "shortcode": ":rice:",
+    "category": "食物和饮料",
+    "subcategory": "亚洲食物",
+    "description": {
+      "zh": "米饭",
+      "en": "cooked rice"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "米饭",
+        "亚洲食物"
+      ],
+      "en": [
+        "cooked",
+        "rice"
+      ]
+    }
+  },
+  {
+    "emoji": "🍛",
+    "name": "curry",
+    "shortcode": ":curry:",
+    "category": "食物和饮料",
+    "subcategory": "亚洲食物",
+    "description": {
+      "zh": "咖喱饭",
+      "en": "curry rice"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "咖喱饭",
+        "亚洲食物"
+      ],
+      "en": [
+        "curry",
+        "rice"
+      ]
+    }
+  },
+  {
+    "emoji": "🍜",
+    "name": "ramen",
+    "shortcode": ":ramen:",
+    "category": "食物和饮料",
+    "subcategory": "亚洲食物",
+    "description": {
+      "zh": "面条",
+      "en": "steaming bowl"
+    },
+    "keywords": {
+      "zh": [
+        "拉面",
+        "热气腾腾",
+        "碗",
+        "食物和饮料",
+        "面条",
+        "亚洲食物"
+      ],
+      "en": [
+        "steaming",
+        "bowl"
+      ]
+    }
+  },
+  {
+    "emoji": "🍝",
+    "name": "spaghetti",
+    "shortcode": ":spaghetti:",
+    "category": "食物和饮料",
+    "subcategory": "亚洲食物",
+    "description": {
+      "zh": "意粉",
+      "en": "spaghetti"
+    },
+    "keywords": {
+      "zh": [
+        "意大利面",
+        "意面",
+        "食物和饮料",
+        "意粉",
+        "亚洲食物"
+      ],
+      "en": [
+        "spaghetti"
+      ]
+    }
+  },
+  {
+    "emoji": "🍠",
+    "name": "sweet_potato",
+    "shortcode": ":sweet_potato:",
+    "category": "食物和饮料",
+    "subcategory": "亚洲食物",
+    "description": {
+      "zh": "烤红薯",
+      "en": "roasted sweet potato"
+    },
+    "keywords": {
+      "zh": [
+        "烤地瓜",
+        "食物和饮料",
+        "烤红薯",
+        "亚洲食物"
+      ],
+      "en": [
+        "roasted",
+        "sweet",
+        "potato"
+      ]
+    }
+  },
+  {
+    "emoji": "🍢",
+    "name": "oden",
+    "shortcode": ":oden:",
+    "category": "食物和饮料",
+    "subcategory": "亚洲食物",
+    "description": {
+      "zh": "关东煮",
+      "en": "oden"
+    },
+    "keywords": {
+      "zh": [
+        "串",
+        "海鲜",
+        "食物和饮料",
+        "关东煮",
+        "亚洲食物"
+      ],
+      "en": [
+        "oden"
+      ]
+    }
+  },
+  {
+    "emoji": "🍣",
+    "name": "sushi",
+    "shortcode": ":sushi:",
+    "category": "食物和饮料",
+    "subcategory": "亚洲食物",
+    "description": {
+      "zh": "寿司",
+      "en": "sushi"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "寿司",
+        "亚洲食物"
+      ],
+      "en": [
+        "sushi"
+      ]
+    }
+  },
+  {
+    "emoji": "🍤",
+    "name": "fried_shrimp",
+    "shortcode": ":fried_shrimp:",
+    "category": "食物和饮料",
+    "subcategory": "亚洲食物",
+    "description": {
+      "zh": "天妇罗",
+      "en": "fried shrimp"
+    },
+    "keywords": {
+      "zh": [
+        "炸虾",
+        "食物和饮料",
+        "天妇罗",
+        "亚洲食物"
+      ],
+      "en": [
+        "fried",
+        "shrimp"
+      ]
+    }
+  },
+  {
+    "emoji": "🍥",
+    "name": "fish_cake",
+    "shortcode": ":fish_cake:",
+    "category": "食物和饮料",
+    "subcategory": "亚洲食物",
+    "description": {
+      "zh": "鱼板",
+      "en": "fish cake with swirl"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "鱼板",
+        "亚洲食物"
+      ],
+      "en": [
+        "fish",
+        "cake",
+        "with",
+        "swirl"
+      ]
+    }
+  },
+  {
+    "emoji": "🥮",
+    "name": "moon_cake",
+    "shortcode": ":moon_cake:",
+    "category": "食物和饮料",
+    "subcategory": "亚洲食物",
+    "description": {
+      "zh": "月饼",
+      "en": "moon cake"
+    },
+    "keywords": {
+      "zh": [
+        "秋天",
+        "节日",
+        "食物和饮料",
+        "月饼",
+        "亚洲食物"
+      ],
+      "en": [
+        "moon",
+        "cake"
+      ]
+    }
+  },
+  {
+    "emoji": "🍡",
+    "name": "dango",
+    "shortcode": ":dango:",
+    "category": "食物和饮料",
+    "subcategory": "亚洲食物",
+    "description": {
+      "zh": "团子",
+      "en": "dango"
+    },
+    "keywords": {
+      "zh": [
+        "串",
+        "日本",
+        "甜点",
+        "食物和饮料",
+        "团子",
+        "亚洲食物"
+      ],
+      "en": [
+        "dango"
+      ]
+    }
+  },
+  {
+    "emoji": "🥟",
+    "name": "dumpling",
+    "shortcode": ":dumpling:",
+    "category": "食物和饮料",
+    "subcategory": "亚洲食物",
+    "description": {
+      "zh": "饺子",
+      "en": "dumpling"
+    },
+    "keywords": {
+      "zh": [
+        "水饺",
+        "煎饺",
+        "食物和饮料",
+        "饺子",
+        "亚洲食物"
+      ],
+      "en": [
+        "dumpling"
+      ]
+    }
+  },
+  {
+    "emoji": "🥠",
+    "name": "fortune_cookie",
+    "shortcode": ":fortune_cookie:",
+    "category": "食物和饮料",
+    "subcategory": "亚洲食物",
+    "description": {
+      "zh": "幸运饼干",
+      "en": "fortune cookie"
+    },
+    "keywords": {
+      "zh": [
+        "预言",
+        "食物和饮料",
+        "幸运饼干",
+        "亚洲食物"
+      ],
+      "en": [
+        "fortune",
+        "cookie"
+      ]
+    }
+  },
+  {
+    "emoji": "🥡",
+    "name": "takeout_box",
+    "shortcode": ":takeout_box:",
+    "category": "食物和饮料",
+    "subcategory": "亚洲食物",
+    "description": {
+      "zh": "外卖盒",
+      "en": "takeout box"
+    },
+    "keywords": {
+      "zh": [
+        "外卖包装",
+        "外卖桶",
+        "牡蛎桶",
+        "食物和饮料",
+        "外卖盒",
+        "亚洲食物"
+      ],
+      "en": [
+        "takeout",
+        "box"
+      ]
+    }
+  },
+  {
+    "emoji": "🦀",
+    "name": "crab",
+    "shortcode": ":crab:",
+    "category": "食物和饮料",
+    "subcategory": "海产",
+    "description": {
+      "zh": "蟹",
+      "en": "crab"
+    },
+    "keywords": {
+      "zh": [
+        "巨蟹座",
+        "螃蟹",
+        "黄道十二宫",
+        "食物和饮料",
+        "蟹",
+        "海产"
+      ],
+      "en": [
+        "crab"
+      ]
+    }
+  },
+  {
+    "emoji": "🦞",
+    "name": "lobster",
+    "shortcode": ":lobster:",
+    "category": "食物和饮料",
+    "subcategory": "海产",
+    "description": {
+      "zh": "龙虾",
+      "en": "lobster"
+    },
+    "keywords": {
+      "zh": [
+        "浓汤",
+        "海鲜",
+        "钳",
+        "食物和饮料",
+        "龙虾",
+        "海产"
+      ],
+      "en": [
+        "lobster"
+      ]
+    }
+  },
+  {
+    "emoji": "🦐",
+    "name": "shrimp",
+    "shortcode": ":shrimp:",
+    "category": "食物和饮料",
+    "subcategory": "海产",
+    "description": {
+      "zh": "虾",
+      "en": "shrimp"
+    },
+    "keywords": {
+      "zh": [
+        "甲壳",
+        "食物和饮料",
+        "虾",
+        "海产"
+      ],
+      "en": [
+        "shrimp"
+      ]
+    }
+  },
+  {
+    "emoji": "🦑",
+    "name": "squid",
+    "shortcode": ":squid:",
+    "category": "食物和饮料",
+    "subcategory": "海产",
+    "description": {
+      "zh": "乌贼",
+      "en": "squid"
+    },
+    "keywords": {
+      "zh": [
+        "软体动物",
+        "鱿鱼",
+        "墨鱼",
+        "食物和饮料",
+        "乌贼",
+        "海产"
+      ],
+      "en": [
+        "squid"
+      ]
+    }
+  },
+  {
+    "emoji": "🦪",
+    "name": "oyster",
+    "shortcode": ":oyster:",
+    "category": "食物和饮料",
+    "subcategory": "海产",
+    "description": {
+      "zh": "牡蛎",
+      "en": "oyster"
+    },
+    "keywords": {
+      "zh": [
+        "海鲜",
+        "珍珠",
+        "生蚝",
+        "食物和饮料",
+        "牡蛎",
+        "海产"
+      ],
+      "en": [
+        "oyster"
+      ]
+    }
+  },
+  {
+    "emoji": "🍦",
+    "name": "icecream",
+    "shortcode": ":icecream:",
+    "category": "食物和饮料",
+    "subcategory": "甜食",
+    "description": {
+      "zh": "圆筒冰激凌",
+      "en": "soft ice cream"
+    },
+    "keywords": {
+      "zh": [
+        "圆筒冰淇淋",
+        "食物和饮料",
+        "圆筒冰激凌",
+        "甜食"
+      ],
+      "en": [
+        "soft",
+        "ice",
+        "cream"
+      ]
+    }
+  },
+  {
+    "emoji": "🍧",
+    "name": "shaved_ice",
+    "shortcode": ":shaved_ice:",
+    "category": "食物和饮料",
+    "subcategory": "甜食",
+    "description": {
+      "zh": "刨冰",
+      "en": "shaved ice"
+    },
+    "keywords": {
+      "zh": [
+        "冰沙",
+        "甜点",
+        "食物和饮料",
+        "刨冰",
+        "甜食"
+      ],
+      "en": [
+        "shaved",
+        "ice"
+      ]
+    }
+  },
+  {
+    "emoji": "🍨",
+    "name": "ice_cream",
+    "shortcode": ":ice_cream:",
+    "category": "食物和饮料",
+    "subcategory": "甜食",
+    "description": {
+      "zh": "冰淇淋",
+      "en": "ice cream"
+    },
+    "keywords": {
+      "zh": [
+        "冰激凌",
+        "甜点",
+        "食物和饮料",
+        "冰淇淋",
+        "甜食"
+      ],
+      "en": [
+        "ice",
+        "cream"
+      ]
+    }
+  },
+  {
+    "emoji": "🍩",
+    "name": "doughnut",
+    "shortcode": ":doughnut:",
+    "category": "食物和饮料",
+    "subcategory": "甜食",
+    "description": {
+      "zh": "甜甜圈",
+      "en": "doughnut"
+    },
+    "keywords": {
+      "zh": [
+        "甜点",
+        "食物和饮料",
+        "甜甜圈",
+        "甜食"
+      ],
+      "en": [
+        "doughnut"
+      ]
+    }
+  },
+  {
+    "emoji": "🍪",
+    "name": "cookie",
+    "shortcode": ":cookie:",
+    "category": "食物和饮料",
+    "subcategory": "甜食",
+    "description": {
+      "zh": "饼干",
+      "en": "cookie"
+    },
+    "keywords": {
+      "zh": [
+        "曲奇",
+        "食物和饮料",
+        "饼干",
+        "甜食"
+      ],
+      "en": [
+        "cookie"
+      ]
+    }
+  },
+  {
+    "emoji": "🎂",
+    "name": "birthday",
+    "shortcode": ":birthday:",
+    "category": "食物和饮料",
+    "subcategory": "甜食",
+    "description": {
+      "zh": "生日蛋糕",
+      "en": "birthday cake"
+    },
+    "keywords": {
+      "zh": [
+        "庆祝",
+        "食物和饮料",
+        "生日蛋糕",
+        "甜食"
+      ],
+      "en": [
+        "birthday",
+        "cake"
+      ]
+    }
+  },
+  {
+    "emoji": "🍰",
+    "name": "cake",
+    "shortcode": ":cake:",
+    "category": "食物和饮料",
+    "subcategory": "甜食",
+    "description": {
+      "zh": "水果蛋糕",
+      "en": "shortcake"
+    },
+    "keywords": {
+      "zh": [
+        "甜点",
+        "食物和饮料",
+        "水果蛋糕",
+        "甜食"
+      ],
+      "en": [
+        "shortcake"
+      ]
+    }
+  },
+  {
+    "emoji": "🧁",
+    "name": "cupcake",
+    "shortcode": ":cupcake:",
+    "category": "食物和饮料",
+    "subcategory": "甜食",
+    "description": {
+      "zh": "纸杯蛋糕",
+      "en": "cupcake"
+    },
+    "keywords": {
+      "zh": [
+        "烘焙食品",
+        "甜点",
+        "食物和饮料",
+        "纸杯蛋糕",
+        "甜食"
+      ],
+      "en": [
+        "cupcake"
+      ]
+    }
+  },
+  {
+    "emoji": "🥧",
+    "name": "pie",
+    "shortcode": ":pie:",
+    "category": "食物和饮料",
+    "subcategory": "甜食",
+    "description": {
+      "zh": "派",
+      "en": "pie"
+    },
+    "keywords": {
+      "zh": [
+        "油酥点心",
+        "糕点",
+        "食物和饮料",
+        "派",
+        "甜食"
+      ],
+      "en": [
+        "pie"
+      ]
+    }
+  },
+  {
+    "emoji": "🍫",
+    "name": "chocolate_bar",
+    "shortcode": ":chocolate_bar:",
+    "category": "食物和饮料",
+    "subcategory": "甜食",
+    "description": {
+      "zh": "巧克力",
+      "en": "chocolate bar"
+    },
+    "keywords": {
+      "zh": [
+        "甜品",
+        "甜点",
+        "食物和饮料",
+        "巧克力",
+        "甜食"
+      ],
+      "en": [
+        "chocolate",
+        "bar"
+      ]
+    }
+  },
+  {
+    "emoji": "🍬",
+    "name": "candy",
+    "shortcode": ":candy:",
+    "category": "食物和饮料",
+    "subcategory": "甜食",
+    "description": {
+      "zh": "糖",
+      "en": "candy"
+    },
+    "keywords": {
+      "zh": [
+        "糖果",
+        "食物和饮料",
+        "糖",
+        "甜食"
+      ],
+      "en": [
+        "candy"
+      ]
+    }
+  },
+  {
+    "emoji": "🍭",
+    "name": "lollipop",
+    "shortcode": ":lollipop:",
+    "category": "食物和饮料",
+    "subcategory": "甜食",
+    "description": {
+      "zh": "棒棒糖",
+      "en": "lollipop"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "棒棒糖",
+        "甜食"
+      ],
+      "en": [
+        "lollipop"
+      ]
+    }
+  },
+  {
+    "emoji": "🍮",
+    "name": "custard",
+    "shortcode": ":custard:",
+    "category": "食物和饮料",
+    "subcategory": "甜食",
+    "description": {
+      "zh": "奶黄",
+      "en": "custard"
+    },
+    "keywords": {
+      "zh": [
+        "蛋奶冻",
+        "蛋奶沙司",
+        "食物和饮料",
+        "奶黄",
+        "甜食"
+      ],
+      "en": [
+        "custard"
+      ]
+    }
+  },
+  {
+    "emoji": "🍯",
+    "name": "honey_pot",
+    "shortcode": ":honey_pot:",
+    "category": "食物和饮料",
+    "subcategory": "甜食",
+    "description": {
+      "zh": "蜂蜜",
+      "en": "honey pot"
+    },
+    "keywords": {
+      "zh": [
+        "蜜罐",
+        "食物和饮料",
+        "蜂蜜",
+        "甜食"
+      ],
+      "en": [
+        "honey",
+        "pot"
+      ]
+    }
+  },
+  {
+    "emoji": "🍼",
+    "name": "baby_bottle",
+    "shortcode": ":baby_bottle:",
+    "category": "食物和饮料",
+    "subcategory": "饮料",
+    "description": {
+      "zh": "奶瓶",
+      "en": "baby bottle"
+    },
+    "keywords": {
+      "zh": [
+        "婴儿",
+        "食物和饮料",
+        "奶瓶",
+        "饮料"
+      ],
+      "en": [
+        "baby",
+        "bottle"
+      ]
+    }
+  },
+  {
+    "emoji": "🥛",
+    "name": "milk_glass",
+    "shortcode": ":milk_glass:",
+    "category": "食物和饮料",
+    "subcategory": "饮料",
+    "description": {
+      "zh": "一杯奶",
+      "en": "glass of milk"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "一杯奶",
+        "饮料"
+      ],
+      "en": [
+        "glass",
+        "of",
+        "milk"
+      ]
+    }
+  },
+  {
+    "emoji": "☕",
+    "name": "coffee",
+    "shortcode": ":coffee:",
+    "category": "食物和饮料",
+    "subcategory": "饮料",
+    "description": {
+      "zh": "热饮",
+      "en": "hot beverage"
+    },
+    "keywords": {
+      "zh": [
+        "咖啡",
+        "茶",
+        "食物和饮料",
+        "热饮",
+        "饮料"
+      ],
+      "en": [
+        "hot",
+        "beverage"
+      ]
+    }
+  },
+  {
+    "emoji": "🍵",
+    "name": "tea",
+    "shortcode": ":tea:",
+    "category": "食物和饮料",
+    "subcategory": "饮料",
+    "description": {
+      "zh": "热茶",
+      "en": "teacup without handle"
+    },
+    "keywords": {
+      "zh": [
+        "没有把手的茶杯",
+        "食物和饮料",
+        "热茶",
+        "饮料"
+      ],
+      "en": [
+        "teacup",
+        "without",
+        "handle"
+      ]
+    }
+  },
+  {
+    "emoji": "🍶",
+    "name": "sake",
+    "shortcode": ":sake:",
+    "category": "食物和饮料",
+    "subcategory": "饮料",
+    "description": {
+      "zh": "清酒",
+      "en": "sake"
+    },
+    "keywords": {
+      "zh": [
+        "瓶",
+        "酒杯",
+        "食物和饮料",
+        "清酒",
+        "饮料"
+      ],
+      "en": [
+        "sake"
+      ]
+    }
+  },
+  {
+    "emoji": "🍾",
+    "name": "champagne",
+    "shortcode": ":champagne:",
+    "category": "食物和饮料",
+    "subcategory": "饮料",
+    "description": {
+      "zh": "开香槟",
+      "en": "bottle with popping cork"
+    },
+    "keywords": {
+      "zh": [
+        "庆祝",
+        "木塞",
+        "瓶子",
+        "食物和饮料",
+        "开香槟",
+        "饮料"
+      ],
+      "en": [
+        "bottle",
+        "with",
+        "popping",
+        "cork"
+      ]
+    }
+  },
+  {
+    "emoji": "🍷",
+    "name": "wine_glass",
+    "shortcode": ":wine_glass:",
+    "category": "食物和饮料",
+    "subcategory": "饮料",
+    "description": {
+      "zh": "葡萄酒",
+      "en": "wine glass"
+    },
+    "keywords": {
+      "zh": [
+        "酒杯",
+        "食物和饮料",
+        "葡萄酒",
+        "饮料"
+      ],
+      "en": [
+        "wine",
+        "glass"
+      ]
+    }
+  },
+  {
+    "emoji": "🍸",
+    "name": "cocktail",
+    "shortcode": ":cocktail:",
+    "category": "食物和饮料",
+    "subcategory": "饮料",
+    "description": {
+      "zh": "鸡尾酒",
+      "en": "cocktail glass"
+    },
+    "keywords": {
+      "zh": [
+        "杯",
+        "食物和饮料",
+        "鸡尾酒",
+        "饮料"
+      ],
+      "en": [
+        "cocktail",
+        "glass"
+      ]
+    }
+  },
+  {
+    "emoji": "🍹",
+    "name": "tropical_drink",
+    "shortcode": ":tropical_drink:",
+    "category": "食物和饮料",
+    "subcategory": "饮料",
+    "description": {
+      "zh": "热带水果饮料",
+      "en": "tropical drink"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "热带水果饮料",
+        "饮料"
+      ],
+      "en": [
+        "tropical",
+        "drink"
+      ]
+    }
+  },
+  {
+    "emoji": "🍺",
+    "name": "beer",
+    "shortcode": ":beer:",
+    "category": "食物和饮料",
+    "subcategory": "饮料",
+    "description": {
+      "zh": "啤酒",
+      "en": "beer mug"
+    },
+    "keywords": {
+      "zh": [
+        "杯",
+        "食物和饮料",
+        "啤酒",
+        "饮料"
+      ],
+      "en": [
+        "beer",
+        "mug"
+      ]
+    }
+  },
+  {
+    "emoji": "🍻",
+    "name": "beers",
+    "shortcode": ":beers:",
+    "category": "食物和饮料",
+    "subcategory": "饮料",
+    "description": {
+      "zh": "干杯",
+      "en": "clinking beer mugs"
+    },
+    "keywords": {
+      "zh": [
+        "啤酒",
+        "碰杯",
+        "酒",
+        "食物和饮料",
+        "干杯",
+        "饮料"
+      ],
+      "en": [
+        "clinking",
+        "beer",
+        "mugs"
+      ]
+    }
+  },
+  {
+    "emoji": "🥂",
+    "name": "clinking_glasses",
+    "shortcode": ":clinking_glasses:",
+    "category": "食物和饮料",
+    "subcategory": "饮料",
+    "description": {
+      "zh": "碰杯",
+      "en": "clinking glasses"
+    },
+    "keywords": {
+      "zh": [
+        "喝",
+        "庆祝",
+        "食物和饮料",
+        "碰杯",
+        "饮料"
+      ],
+      "en": [
+        "clinking",
+        "glasses"
+      ]
+    }
+  },
+  {
+    "emoji": "🥃",
+    "name": "tumbler_glass",
+    "shortcode": ":tumbler_glass:",
+    "category": "食物和饮料",
+    "subcategory": "饮料",
+    "description": {
+      "zh": "平底杯",
+      "en": "tumbler glass"
+    },
+    "keywords": {
+      "zh": [
+        "威士忌",
+        "酒",
+        "食物和饮料",
+        "平底杯",
+        "饮料"
+      ],
+      "en": [
+        "tumbler",
+        "glass"
+      ]
+    }
+  },
+  {
+    "emoji": "🥤",
+    "name": "cup_with_straw",
+    "shortcode": ":cup_with_straw:",
+    "category": "食物和饮料",
+    "subcategory": "饮料",
+    "description": {
+      "zh": "带吸管杯",
+      "en": "cup with straw"
+    },
+    "keywords": {
+      "zh": [
+        "果汁",
+        "苏打",
+        "食物和饮料",
+        "带吸管杯",
+        "饮料"
+      ],
+      "en": [
+        "cup",
+        "with",
+        "straw"
+      ]
+    }
+  },
+  {
+    "emoji": "🧃",
+    "name": "beverage_box",
+    "shortcode": ":beverage_box:",
+    "category": "食物和饮料",
+    "subcategory": "饮料",
+    "description": {
+      "zh": "饮料盒",
+      "en": "beverage box"
+    },
+    "keywords": {
+      "zh": [
+        "吸管",
+        "果汁盒",
+        "盒装",
+        "食物和饮料",
+        "饮料盒",
+        "饮料"
+      ],
+      "en": [
+        "beverage",
+        "box"
+      ]
+    }
+  },
+  {
+    "emoji": "🧉",
+    "name": "mate",
+    "shortcode": ":mate:",
+    "category": "食物和饮料",
+    "subcategory": "饮料",
+    "description": {
+      "zh": "马黛茶",
+      "en": "mate"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "马黛茶",
+        "饮料"
+      ],
+      "en": [
+        "mate"
+      ]
+    }
+  },
+  {
+    "emoji": "🧊",
+    "name": "ice_cube",
+    "shortcode": ":ice_cube:",
+    "category": "食物和饮料",
+    "subcategory": "饮料",
+    "description": {
+      "zh": "冰块",
+      "en": "ice"
+    },
+    "keywords": {
+      "zh": [
+        "冰山",
+        "冷却",
+        "冷饮",
+        "食物和饮料",
+        "冰块",
+        "饮料"
+      ],
+      "en": [
+        "ice"
+      ]
+    }
+  },
+  {
+    "emoji": "🥢",
+    "name": "chopsticks",
+    "shortcode": ":chopsticks:",
+    "category": "食物和饮料",
+    "subcategory": "餐具",
+    "description": {
+      "zh": "筷子",
+      "en": "chopsticks"
+    },
+    "keywords": {
+      "zh": [
+        "箸",
+        "食物和饮料",
+        "筷子",
+        "餐具"
+      ],
+      "en": [
+        "chopsticks"
+      ]
+    }
+  },
+  {
+    "emoji": "🍴",
+    "name": "fork_and_knife",
+    "shortcode": ":fork_and_knife:",
+    "category": "食物和饮料",
+    "subcategory": "餐具",
+    "description": {
+      "zh": "刀叉",
+      "en": "fork and knife"
+    },
+    "keywords": {
+      "zh": [
+        "食物和饮料",
+        "刀叉",
+        "餐具"
+      ],
+      "en": [
+        "fork",
+        "and",
+        "knife"
+      ]
+    }
+  },
+  {
+    "emoji": "🥄",
+    "name": "spoon",
+    "shortcode": ":spoon:",
+    "category": "食物和饮料",
+    "subcategory": "餐具",
+    "description": {
+      "zh": "匙",
+      "en": "spoon"
+    },
+    "keywords": {
+      "zh": [
+        "匙子",
+        "汤匙",
+        "调羹",
+        "食物和饮料",
+        "匙",
+        "餐具"
+      ],
+      "en": [
+        "spoon"
+      ]
+    }
+  },
+  {
+    "emoji": "🔪",
+    "name": "knife",
+    "shortcode": ":knife:",
+    "category": "食物和饮料",
+    "subcategory": "餐具",
+    "description": {
+      "zh": "菜刀",
+      "en": "kitchen knife"
+    },
+    "keywords": {
+      "zh": [
+        "武器",
+        "烹饪",
+        "食物和饮料",
+        "菜刀",
+        "餐具"
+      ],
+      "en": [
+        "kitchen",
+        "knife"
+      ]
+    }
+  },
+  {
+    "emoji": "🏺",
+    "name": "amphora",
+    "shortcode": ":amphora:",
+    "category": "食物和饮料",
+    "subcategory": "餐具",
+    "description": {
+      "zh": "双耳瓶",
+      "en": "amphora"
+    },
+    "keywords": {
+      "zh": [
+        "壶",
+        "罐",
+        "食物和饮料",
+        "双耳瓶",
+        "餐具"
+      ],
+      "en": [
+        "amphora"
+      ]
+    }
+  }
+]

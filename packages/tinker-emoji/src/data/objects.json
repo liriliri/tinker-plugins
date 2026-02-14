@@ -1,0 +1,4439 @@
+[
+  {
+    "emoji": "👓",
+    "name": "eyeglasses",
+    "shortcode": ":eyeglasses:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "眼镜",
+      "en": "glasses"
+    },
+    "keywords": {
+      "zh": [
+        "眼睛",
+        "物品",
+        "眼镜",
+        "服饰"
+      ],
+      "en": [
+        "glasses"
+      ]
+    }
+  },
+  {
+    "emoji": "🥽",
+    "name": "goggles",
+    "shortcode": ":goggles:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "护目镜",
+      "en": "goggles"
+    },
+    "keywords": {
+      "zh": [
+        "护眼",
+        "游泳",
+        "焊接",
+        "物品",
+        "护目镜",
+        "服饰"
+      ],
+      "en": [
+        "goggles"
+      ]
+    }
+  },
+  {
+    "emoji": "🥼",
+    "name": "lab_coat",
+    "shortcode": ":lab_coat:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "白大褂",
+      "en": "lab coat"
+    },
+    "keywords": {
+      "zh": [
+        "医生",
+        "实验人员",
+        "科学家",
+        "物品",
+        "白大褂",
+        "服饰"
+      ],
+      "en": [
+        "lab",
+        "coat"
+      ]
+    }
+  },
+  {
+    "emoji": "🦺",
+    "name": "safety_vest",
+    "shortcode": ":safety_vest:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "救生衣",
+      "en": "safety vest"
+    },
+    "keywords": {
+      "zh": [
+        "安全",
+        "紧急",
+        "背心",
+        "逃生",
+        "物品",
+        "救生衣",
+        "服饰"
+      ],
+      "en": [
+        "safety",
+        "vest"
+      ]
+    }
+  },
+  {
+    "emoji": "👔",
+    "name": "necktie",
+    "shortcode": ":necktie:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "领带",
+      "en": "necktie"
+    },
+    "keywords": {
+      "zh": [
+        "衬衫领带",
+        "物品",
+        "领带",
+        "服饰"
+      ],
+      "en": [
+        "necktie"
+      ]
+    }
+  },
+  {
+    "emoji": "👕",
+    "name": "tshirt",
+    "shortcode": ":tshirt:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "T恤",
+      "en": "t-shirt"
+    },
+    "keywords": {
+      "zh": [
+        "恤衫",
+        "物品",
+        "T恤",
+        "服饰"
+      ],
+      "en": [
+        "t-shirt"
+      ]
+    }
+  },
+  {
+    "emoji": "👖",
+    "name": "jeans",
+    "shortcode": ":jeans:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "牛仔裤",
+      "en": "jeans"
+    },
+    "keywords": {
+      "zh": [
+        "裤子",
+        "物品",
+        "牛仔裤",
+        "服饰"
+      ],
+      "en": [
+        "jeans"
+      ]
+    }
+  },
+  {
+    "emoji": "🧣",
+    "name": "scarf",
+    "shortcode": ":scarf:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "围巾",
+      "en": "scarf"
+    },
+    "keywords": {
+      "zh": [
+        "物品",
+        "围巾",
+        "服饰"
+      ],
+      "en": [
+        "scarf"
+      ]
+    }
+  },
+  {
+    "emoji": "🧤",
+    "name": "gloves",
+    "shortcode": ":gloves:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "手套",
+      "en": "gloves"
+    },
+    "keywords": {
+      "zh": [
+        "物品",
+        "手套",
+        "服饰"
+      ],
+      "en": [
+        "gloves"
+      ]
+    }
+  },
+  {
+    "emoji": "🧥",
+    "name": "coat",
+    "shortcode": ":coat:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "外套",
+      "en": "coat"
+    },
+    "keywords": {
+      "zh": [
+        "夹克",
+        "物品",
+        "外套",
+        "服饰"
+      ],
+      "en": [
+        "coat"
+      ]
+    }
+  },
+  {
+    "emoji": "🧦",
+    "name": "socks",
+    "shortcode": ":socks:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "袜子",
+      "en": "socks"
+    },
+    "keywords": {
+      "zh": [
+        "短袜",
+        "长袜",
+        "物品",
+        "袜子",
+        "服饰"
+      ],
+      "en": [
+        "socks"
+      ]
+    }
+  },
+  {
+    "emoji": "👗",
+    "name": "dress",
+    "shortcode": ":dress:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "连衣裙",
+      "en": "dress"
+    },
+    "keywords": {
+      "zh": [
+        "衣服",
+        "物品",
+        "连衣裙",
+        "服饰"
+      ],
+      "en": [
+        "dress"
+      ]
+    }
+  },
+  {
+    "emoji": "👘",
+    "name": "kimono",
+    "shortcode": ":kimono:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "和服",
+      "en": "kimono"
+    },
+    "keywords": {
+      "zh": [
+        "日本",
+        "物品",
+        "和服",
+        "服饰"
+      ],
+      "en": [
+        "kimono"
+      ]
+    }
+  },
+  {
+    "emoji": "🥻",
+    "name": "sari",
+    "shortcode": ":sari:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "纱丽",
+      "en": "sari"
+    },
+    "keywords": {
+      "zh": [
+        "印度",
+        "披肩",
+        "衣服",
+        "物品",
+        "纱丽",
+        "服饰"
+      ],
+      "en": [
+        "sari"
+      ]
+    }
+  },
+  {
+    "emoji": "🩱",
+    "name": "one_piece_swimsuit",
+    "shortcode": ":one_piece_swimsuit:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "连体泳衣",
+      "en": "one-piece swimsuit"
+    },
+    "keywords": {
+      "zh": [
+        "一片式",
+        "泳装",
+        "游泳",
+        "物品",
+        "连体泳衣",
+        "服饰"
+      ],
+      "en": [
+        "one-piece",
+        "swimsuit"
+      ]
+    }
+  },
+  {
+    "emoji": "🩲",
+    "name": "swim_brief",
+    "shortcode": ":swim_brief:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "三角裤",
+      "en": "briefs"
+    },
+    "keywords": {
+      "zh": [
+        "一片式",
+        "内裤",
+        "泳衣",
+        "泳装",
+        "短裤",
+        "物品",
+        "三角裤",
+        "服饰"
+      ],
+      "en": [
+        "briefs"
+      ]
+    }
+  },
+  {
+    "emoji": "🩳",
+    "name": "shorts",
+    "shortcode": ":shorts:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "短裤",
+      "en": "shorts"
+    },
+    "keywords": {
+      "zh": [
+        "内裤",
+        "四角裤",
+        "泳衣",
+        "泳装",
+        "裤子",
+        "物品",
+        "短裤",
+        "服饰"
+      ],
+      "en": [
+        "shorts"
+      ]
+    }
+  },
+  {
+    "emoji": "👙",
+    "name": "bikini",
+    "shortcode": ":bikini:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "比基尼",
+      "en": "bikini"
+    },
+    "keywords": {
+      "zh": [
+        "三点式",
+        "泳装",
+        "物品",
+        "比基尼",
+        "服饰"
+      ],
+      "en": [
+        "bikini"
+      ]
+    }
+  },
+  {
+    "emoji": "👚",
+    "name": "womans_clothes",
+    "shortcode": ":womans_clothes:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "女装",
+      "en": "woman’s clothes"
+    },
+    "keywords": {
+      "zh": [
+        "衣服",
+        "物品",
+        "女装",
+        "服饰"
+      ],
+      "en": [
+        "woman’s",
+        "clothes"
+      ]
+    }
+  },
+  {
+    "emoji": "👛",
+    "name": "purse",
+    "shortcode": ":purse:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "钱包",
+      "en": "purse"
+    },
+    "keywords": {
+      "zh": [
+        "物品",
+        "钱包",
+        "服饰"
+      ],
+      "en": [
+        "purse"
+      ]
+    }
+  },
+  {
+    "emoji": "👜",
+    "name": "handbag",
+    "shortcode": ":handbag:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "手提包",
+      "en": "handbag"
+    },
+    "keywords": {
+      "zh": [
+        "挎包",
+        "物品",
+        "手提包",
+        "服饰"
+      ],
+      "en": [
+        "handbag"
+      ]
+    }
+  },
+  {
+    "emoji": "👝",
+    "name": "pouch",
+    "shortcode": ":pouch:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "手袋",
+      "en": "clutch bag"
+    },
+    "keywords": {
+      "zh": [
+        "手拿包",
+        "物品",
+        "手袋",
+        "服饰"
+      ],
+      "en": [
+        "clutch",
+        "bag"
+      ]
+    }
+  },
+  {
+    "emoji": "🎒",
+    "name": "school_satchel",
+    "shortcode": ":school_satchel:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "书包",
+      "en": "backpack"
+    },
+    "keywords": {
+      "zh": [
+        "物品",
+        "书包",
+        "服饰"
+      ],
+      "en": [
+        "backpack"
+      ]
+    }
+  },
+  {
+    "emoji": "👞",
+    "name": "shoe",
+    "shortcode": ":shoe:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "男鞋",
+      "en": "man’s shoe"
+    },
+    "keywords": {
+      "zh": [
+        "物品",
+        "男鞋",
+        "服饰"
+      ],
+      "en": [
+        "man’s",
+        "shoe"
+      ]
+    }
+  },
+  {
+    "emoji": "👟",
+    "name": "athletic_shoe",
+    "shortcode": ":athletic_shoe:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "跑鞋",
+      "en": "running shoe"
+    },
+    "keywords": {
+      "zh": [
+        "运动鞋",
+        "物品",
+        "跑鞋",
+        "服饰"
+      ],
+      "en": [
+        "running",
+        "shoe"
+      ]
+    }
+  },
+  {
+    "emoji": "🥾",
+    "name": "hiking_boot",
+    "shortcode": ":hiking_boot:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "登山鞋",
+      "en": "hiking boot"
+    },
+    "keywords": {
+      "zh": [
+        "徒步",
+        "远足野营",
+        "露营",
+        "物品",
+        "登山鞋",
+        "服饰"
+      ],
+      "en": [
+        "hiking",
+        "boot"
+      ]
+    }
+  },
+  {
+    "emoji": "🥿",
+    "name": "flat_shoe",
+    "shortcode": ":flat_shoe:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "平底鞋",
+      "en": "flat shoe"
+    },
+    "keywords": {
+      "zh": [
+        "一脚蹬",
+        "便鞋",
+        "平底芭蕾舞鞋",
+        "物品",
+        "平底鞋",
+        "服饰"
+      ],
+      "en": [
+        "flat",
+        "shoe"
+      ]
+    }
+  },
+  {
+    "emoji": "👠",
+    "name": "high_heel",
+    "shortcode": ":high_heel:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "高跟鞋",
+      "en": "high-heeled shoe"
+    },
+    "keywords": {
+      "zh": [
+        "女",
+        "物品",
+        "高跟鞋",
+        "服饰"
+      ],
+      "en": [
+        "high-heeled",
+        "shoe"
+      ]
+    }
+  },
+  {
+    "emoji": "👡",
+    "name": "sandal",
+    "shortcode": ":sandal:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "女式凉鞋",
+      "en": "woman’s sandal"
+    },
+    "keywords": {
+      "zh": [
+        "物品",
+        "女式凉鞋",
+        "服饰"
+      ],
+      "en": [
+        "woman’s",
+        "sandal"
+      ]
+    }
+  },
+  {
+    "emoji": "🩰",
+    "name": "ballet_shoes",
+    "shortcode": ":ballet_shoes:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "芭蕾舞鞋",
+      "en": "ballet shoes"
+    },
+    "keywords": {
+      "zh": [
+        "舞蹈",
+        "足尖鞋",
+        "跳舞",
+        "物品",
+        "芭蕾舞鞋",
+        "服饰"
+      ],
+      "en": [
+        "ballet",
+        "shoes"
+      ]
+    }
+  },
+  {
+    "emoji": "👢",
+    "name": "boot",
+    "shortcode": ":boot:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "女靴",
+      "en": "woman’s boot"
+    },
+    "keywords": {
+      "zh": [
+        "靴子",
+        "物品",
+        "女靴",
+        "服饰"
+      ],
+      "en": [
+        "woman’s",
+        "boot"
+      ]
+    }
+  },
+  {
+    "emoji": "👑",
+    "name": "crown",
+    "shortcode": ":crown:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "皇冠",
+      "en": "crown"
+    },
+    "keywords": {
+      "zh": [
+        "王冠",
+        "物品",
+        "皇冠",
+        "服饰"
+      ],
+      "en": [
+        "crown"
+      ]
+    }
+  },
+  {
+    "emoji": "👒",
+    "name": "womans_hat",
+    "shortcode": ":womans_hat:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "女帽",
+      "en": "woman’s hat"
+    },
+    "keywords": {
+      "zh": [
+        "帽子",
+        "物品",
+        "女帽",
+        "服饰"
+      ],
+      "en": [
+        "woman’s",
+        "hat"
+      ]
+    }
+  },
+  {
+    "emoji": "🎩",
+    "name": "tophat",
+    "shortcode": ":tophat:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "礼帽",
+      "en": "top hat"
+    },
+    "keywords": {
+      "zh": [
+        "帽子",
+        "高帽",
+        "物品",
+        "礼帽",
+        "服饰"
+      ],
+      "en": [
+        "top",
+        "hat"
+      ]
+    }
+  },
+  {
+    "emoji": "🎓",
+    "name": "mortar_board",
+    "shortcode": ":mortar_board:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "毕业帽",
+      "en": "graduation cap"
+    },
+    "keywords": {
+      "zh": [
+        "四方帽",
+        "物品",
+        "毕业帽",
+        "服饰"
+      ],
+      "en": [
+        "graduation",
+        "cap"
+      ]
+    }
+  },
+  {
+    "emoji": "🧢",
+    "name": "billed_cap",
+    "shortcode": ":billed_cap:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "鸭舌帽",
+      "en": "billed cap"
+    },
+    "keywords": {
+      "zh": [
+        "棒球帽",
+        "物品",
+        "鸭舌帽",
+        "服饰"
+      ],
+      "en": [
+        "billed",
+        "cap"
+      ]
+    }
+  },
+  {
+    "emoji": "📿",
+    "name": "prayer_beads",
+    "shortcode": ":prayer_beads:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "念珠",
+      "en": "prayer beads"
+    },
+    "keywords": {
+      "zh": [
+        "宗教",
+        "珠子",
+        "祈祷",
+        "项链",
+        "物品",
+        "念珠",
+        "服饰"
+      ],
+      "en": [
+        "prayer",
+        "beads"
+      ]
+    }
+  },
+  {
+    "emoji": "💄",
+    "name": "lipstick",
+    "shortcode": ":lipstick:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "唇膏",
+      "en": "lipstick"
+    },
+    "keywords": {
+      "zh": [
+        "化妆品",
+        "口红",
+        "物品",
+        "唇膏",
+        "服饰"
+      ],
+      "en": [
+        "lipstick"
+      ]
+    }
+  },
+  {
+    "emoji": "💍",
+    "name": "ring",
+    "shortcode": ":ring:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "戒指",
+      "en": "ring"
+    },
+    "keywords": {
+      "zh": [
+        "钻戒",
+        "物品",
+        "戒指",
+        "服饰"
+      ],
+      "en": [
+        "ring"
+      ]
+    }
+  },
+  {
+    "emoji": "💎",
+    "name": "gem",
+    "shortcode": ":gem:",
+    "category": "物品",
+    "subcategory": "服饰",
+    "description": {
+      "zh": "宝石",
+      "en": "gem stone"
+    },
+    "keywords": {
+      "zh": [
+        "钻石",
+        "物品",
+        "宝石",
+        "服饰"
+      ],
+      "en": [
+        "gem",
+        "stone"
+      ]
+    }
+  },
+  {
+    "emoji": "🔇",
+    "name": "mute",
+    "shortcode": ":mute:",
+    "category": "物品",
+    "subcategory": "声音",
+    "description": {
+      "zh": "已静音的扬声器",
+      "en": "muted speaker"
+    },
+    "keywords": {
+      "zh": [
+        "安静",
+        "扬声器关闭",
+        "无声",
+        "物品",
+        "已静音的扬声器",
+        "声音"
+      ],
+      "en": [
+        "muted",
+        "speaker"
+      ]
+    }
+  },
+  {
+    "emoji": "🔈",
+    "name": "speaker",
+    "shortcode": ":speaker:",
+    "category": "物品",
+    "subcategory": "声音",
+    "description": {
+      "zh": "低音量的扬声器",
+      "en": "speaker low volume"
+    },
+    "keywords": {
+      "zh": [
+        "小声",
+        "小音量",
+        "轻声",
+        "物品",
+        "低音量的扬声器",
+        "声音"
+      ],
+      "en": [
+        "speaker",
+        "low",
+        "volume"
+      ]
+    }
+  },
+  {
+    "emoji": "🔉",
+    "name": "sound",
+    "shortcode": ":sound:",
+    "category": "物品",
+    "subcategory": "声音",
+    "description": {
+      "zh": "中等音量的扬声器",
+      "en": "speaker medium volume"
+    },
+    "keywords": {
+      "zh": [
+        "物品",
+        "中等音量的扬声器",
+        "声音"
+      ],
+      "en": [
+        "speaker",
+        "medium",
+        "volume"
+      ]
+    }
+  },
+  {
+    "emoji": "🔊",
+    "name": "loud_sound",
+    "shortcode": ":loud_sound:",
+    "category": "物品",
+    "subcategory": "声音",
+    "description": {
+      "zh": "高音量的扬声器",
+      "en": "speaker high volume"
+    },
+    "keywords": {
+      "zh": [
+        "大声",
+        "大音量",
+        "物品",
+        "高音量的扬声器",
+        "声音"
+      ],
+      "en": [
+        "speaker",
+        "high",
+        "volume"
+      ]
+    }
+  },
+  {
+    "emoji": "📢",
+    "name": "loudspeaker",
+    "shortcode": ":loudspeaker:",
+    "category": "物品",
+    "subcategory": "声音",
+    "description": {
+      "zh": "喇叭",
+      "en": "loudspeaker"
+    },
+    "keywords": {
+      "zh": [
+        "公共广播",
+        "大声",
+        "广播",
+        "通知",
+        "物品",
+        "喇叭",
+        "声音"
+      ],
+      "en": [
+        "loudspeaker"
+      ]
+    }
+  },
+  {
+    "emoji": "📣",
+    "name": "mega",
+    "shortcode": ":mega:",
+    "category": "物品",
+    "subcategory": "声音",
+    "description": {
+      "zh": "扩音器",
+      "en": "megaphone"
+    },
+    "keywords": {
+      "zh": [
+        "呼喊",
+        "喇叭筒",
+        "大声",
+        "通知",
+        "物品",
+        "扩音器",
+        "声音"
+      ],
+      "en": [
+        "megaphone"
+      ]
+    }
+  },
+  {
+    "emoji": "📯",
+    "name": "postal_horn",
+    "shortcode": ":postal_horn:",
+    "category": "物品",
+    "subcategory": "声音",
+    "description": {
+      "zh": "邮号",
+      "en": "postal horn"
+    },
+    "keywords": {
+      "zh": [
+        "号角",
+        "喇叭",
+        "邮政",
+        "物品",
+        "邮号",
+        "声音"
+      ],
+      "en": [
+        "postal",
+        "horn"
+      ]
+    }
+  },
+  {
+    "emoji": "🔔",
+    "name": "bell",
+    "shortcode": ":bell:",
+    "category": "物品",
+    "subcategory": "声音",
+    "description": {
+      "zh": "铃铛",
+      "en": "bell"
+    },
+    "keywords": {
+      "zh": [
+        "叮当",
+        "响铃",
+        "物品",
+        "铃铛",
+        "声音"
+      ],
+      "en": [
+        "bell"
+      ]
+    }
+  },
+  {
+    "emoji": "🔕",
+    "name": "no_bell",
+    "shortcode": ":no_bell:",
+    "category": "物品",
+    "subcategory": "声音",
+    "description": {
+      "zh": "禁止响铃",
+      "en": "bell with slash"
+    },
+    "keywords": {
+      "zh": [
+        "响铃关闭",
+        "安静",
+        "无声",
+        "静音",
+        "物品",
+        "禁止响铃",
+        "声音"
+      ],
+      "en": [
+        "bell",
+        "with",
+        "slash"
+      ]
+    }
+  },
+  {
+    "emoji": "🎼",
+    "name": "musical_score",
+    "shortcode": ":musical_score:",
+    "category": "物品",
+    "subcategory": "音乐",
+    "description": {
+      "zh": "乐谱",
+      "en": "musical score"
+    },
+    "keywords": {
+      "zh": [
+        "五线谱",
+        "音符",
+        "物品",
+        "乐谱",
+        "音乐"
+      ],
+      "en": [
+        "musical",
+        "score"
+      ]
+    }
+  },
+  {
+    "emoji": "🎵",
+    "name": "musical_note",
+    "shortcode": ":musical_note:",
+    "category": "物品",
+    "subcategory": "音乐",
+    "description": {
+      "zh": "音符",
+      "en": "musical note"
+    },
+    "keywords": {
+      "zh": [
+        "乐谱",
+        "五线谱",
+        "八分音符",
+        "物品",
+        "音符",
+        "音乐"
+      ],
+      "en": [
+        "musical",
+        "note"
+      ]
+    }
+  },
+  {
+    "emoji": "🎶",
+    "name": "notes",
+    "shortcode": ":notes:",
+    "category": "物品",
+    "subcategory": "音乐",
+    "description": {
+      "zh": "多个音符",
+      "en": "musical notes"
+    },
+    "keywords": {
+      "zh": [
+        "乐谱",
+        "五线谱",
+        "八分音符",
+        "物品",
+        "多个音符",
+        "音乐"
+      ],
+      "en": [
+        "musical",
+        "notes"
+      ]
+    }
+  },
+  {
+    "emoji": "🎤",
+    "name": "microphone",
+    "shortcode": ":microphone:",
+    "category": "物品",
+    "subcategory": "音乐",
+    "description": {
+      "zh": "麦克风",
+      "en": "microphone"
+    },
+    "keywords": {
+      "zh": [
+        "卡拉OK",
+        "唱K",
+        "唱歌",
+        "物品",
+        "麦克风",
+        "音乐"
+      ],
+      "en": [
+        "microphone"
+      ]
+    }
+  },
+  {
+    "emoji": "🎧",
+    "name": "headphones",
+    "shortcode": ":headphones:",
+    "category": "物品",
+    "subcategory": "音乐",
+    "description": {
+      "zh": "耳机",
+      "en": "headphone"
+    },
+    "keywords": {
+      "zh": [
+        "头戴式耳机",
+        "物品",
+        "耳机",
+        "音乐"
+      ],
+      "en": [
+        "headphone"
+      ]
+    }
+  },
+  {
+    "emoji": "📻",
+    "name": "radio",
+    "shortcode": ":radio:",
+    "category": "物品",
+    "subcategory": "音乐",
+    "description": {
+      "zh": "收音机",
+      "en": "radio"
+    },
+    "keywords": {
+      "zh": [
+        "广播电台",
+        "无线电",
+        "电台",
+        "物品",
+        "收音机",
+        "音乐"
+      ],
+      "en": [
+        "radio"
+      ]
+    }
+  },
+  {
+    "emoji": "🎷",
+    "name": "saxophone",
+    "shortcode": ":saxophone:",
+    "category": "物品",
+    "subcategory": "乐器",
+    "description": {
+      "zh": "萨克斯管",
+      "en": "saxophone"
+    },
+    "keywords": {
+      "zh": [
+        "吹奏",
+        "演奏",
+        "音乐",
+        "物品",
+        "萨克斯管",
+        "乐器"
+      ],
+      "en": [
+        "saxophone"
+      ]
+    }
+  },
+  {
+    "emoji": "🎸",
+    "name": "guitar",
+    "shortcode": ":guitar:",
+    "category": "物品",
+    "subcategory": "乐器",
+    "description": {
+      "zh": "吉他",
+      "en": "guitar"
+    },
+    "keywords": {
+      "zh": [
+        "弹奏",
+        "演奏",
+        "音乐",
+        "物品",
+        "吉他",
+        "乐器"
+      ],
+      "en": [
+        "guitar"
+      ]
+    }
+  },
+  {
+    "emoji": "🎹",
+    "name": "musical_keyboard",
+    "shortcode": ":musical_keyboard:",
+    "category": "物品",
+    "subcategory": "乐器",
+    "description": {
+      "zh": "音乐键盘",
+      "en": "musical keyboard"
+    },
+    "keywords": {
+      "zh": [
+        "弹奏",
+        "演奏",
+        "钢琴",
+        "物品",
+        "音乐键盘",
+        "乐器"
+      ],
+      "en": [
+        "musical",
+        "keyboard"
+      ]
+    }
+  },
+  {
+    "emoji": "🎺",
+    "name": "trumpet",
+    "shortcode": ":trumpet:",
+    "category": "物品",
+    "subcategory": "乐器",
+    "description": {
+      "zh": "小号",
+      "en": "trumpet"
+    },
+    "keywords": {
+      "zh": [
+        "吹奏",
+        "喇叭",
+        "音乐",
+        "物品",
+        "小号",
+        "乐器"
+      ],
+      "en": [
+        "trumpet"
+      ]
+    }
+  },
+  {
+    "emoji": "🎻",
+    "name": "violin",
+    "shortcode": ":violin:",
+    "category": "物品",
+    "subcategory": "乐器",
+    "description": {
+      "zh": "小提琴",
+      "en": "violin"
+    },
+    "keywords": {
+      "zh": [
+        "演奏",
+        "音乐",
+        "物品",
+        "小提琴",
+        "乐器"
+      ],
+      "en": [
+        "violin"
+      ]
+    }
+  },
+  {
+    "emoji": "🪕",
+    "name": "banjo",
+    "shortcode": ":banjo:",
+    "category": "物品",
+    "subcategory": "乐器",
+    "description": {
+      "zh": "班卓琴",
+      "en": "banjo"
+    },
+    "keywords": {
+      "zh": [
+        "弦乐器",
+        "弹奏",
+        "音乐",
+        "物品",
+        "班卓琴",
+        "乐器"
+      ],
+      "en": [
+        "banjo"
+      ]
+    }
+  },
+  {
+    "emoji": "🥁",
+    "name": "drum",
+    "shortcode": ":drum:",
+    "category": "物品",
+    "subcategory": "乐器",
+    "description": {
+      "zh": "鼓",
+      "en": "drum"
+    },
+    "keywords": {
+      "zh": [
+        "音乐",
+        "鼓声",
+        "鼓槌",
+        "物品",
+        "鼓",
+        "乐器"
+      ],
+      "en": [
+        "drum"
+      ]
+    }
+  },
+  {
+    "emoji": "📱",
+    "name": "iphone",
+    "shortcode": ":iphone:",
+    "category": "物品",
+    "subcategory": "电话",
+    "description": {
+      "zh": "手机",
+      "en": "mobile phone"
+    },
+    "keywords": {
+      "zh": [
+        "手提电话",
+        "智能手机",
+        "移动",
+        "物品",
+        "手机",
+        "电话"
+      ],
+      "en": [
+        "mobile",
+        "phone"
+      ]
+    }
+  },
+  {
+    "emoji": "📲",
+    "name": "calling",
+    "shortcode": ":calling:",
+    "category": "物品",
+    "subcategory": "电话",
+    "description": {
+      "zh": "带有箭头的手机",
+      "en": "mobile phone with arrow"
+    },
+    "keywords": {
+      "zh": [
+        "接收",
+        "智能手机",
+        "来电",
+        "物品",
+        "带有箭头的手机",
+        "电话"
+      ],
+      "en": [
+        "mobile",
+        "phone",
+        "with",
+        "arrow"
+      ]
+    }
+  },
+  {
+    "emoji": "📞",
+    "name": "telephone_receiver",
+    "shortcode": ":telephone_receiver:",
+    "category": "物品",
+    "subcategory": "电话",
+    "description": {
+      "zh": "电话听筒",
+      "en": "telephone receiver"
+    },
+    "keywords": {
+      "zh": [
+        "固定电话",
+        "固话",
+        "座机",
+        "物品",
+        "电话听筒",
+        "电话"
+      ],
+      "en": [
+        "telephone",
+        "receiver"
+      ]
+    }
+  },
+  {
+    "emoji": "📟",
+    "name": "pager",
+    "shortcode": ":pager:",
+    "category": "物品",
+    "subcategory": "电话",
+    "description": {
+      "zh": "寻呼机",
+      "en": "pager"
+    },
+    "keywords": {
+      "zh": [
+        "BB 机",
+        "传呼机",
+        "物品",
+        "寻呼机",
+        "电话"
+      ],
+      "en": [
+        "pager"
+      ]
+    }
+  },
+  {
+    "emoji": "📠",
+    "name": "fax",
+    "shortcode": ":fax:",
+    "category": "物品",
+    "subcategory": "电话",
+    "description": {
+      "zh": "传真机",
+      "en": "fax machine"
+    },
+    "keywords": {
+      "zh": [
+        "传真号",
+        "发传真",
+        "物品",
+        "传真机",
+        "电话"
+      ],
+      "en": [
+        "fax",
+        "machine"
+      ]
+    }
+  },
+  {
+    "emoji": "🔋",
+    "name": "battery",
+    "shortcode": ":battery:",
+    "category": "物品",
+    "subcategory": "电脑",
+    "description": {
+      "zh": "电池",
+      "en": "battery"
+    },
+    "keywords": {
+      "zh": [
+        "正极",
+        "电极",
+        "电源",
+        "蓄电池",
+        "负极",
+        "物品",
+        "电池",
+        "电脑"
+      ],
+      "en": [
+        "battery"
+      ]
+    }
+  },
+  {
+    "emoji": "🔌",
+    "name": "electric_plug",
+    "shortcode": ":electric_plug:",
+    "category": "物品",
+    "subcategory": "电脑",
+    "description": {
+      "zh": "电源插头",
+      "en": "electric plug"
+    },
+    "keywords": {
+      "zh": [
+        "电插头",
+        "电线",
+        "物品",
+        "电源插头",
+        "电脑"
+      ],
+      "en": [
+        "electric",
+        "plug"
+      ]
+    }
+  },
+  {
+    "emoji": "💻",
+    "name": "computer",
+    "shortcode": ":computer:",
+    "category": "物品",
+    "subcategory": "电脑",
+    "description": {
+      "zh": "笔记本电脑",
+      "en": "laptop"
+    },
+    "keywords": {
+      "zh": [
+        "个人电脑",
+        "手提电脑",
+        "物品",
+        "笔记本电脑",
+        "电脑"
+      ],
+      "en": [
+        "PC",
+        "laptop"
+      ]
+    }
+  },
+  {
+    "emoji": "💽",
+    "name": "minidisc",
+    "shortcode": ":minidisc:",
+    "category": "物品",
+    "subcategory": "电脑",
+    "description": {
+      "zh": "电脑光盘",
+      "en": "computer disk"
+    },
+    "keywords": {
+      "zh": [
+        "mini光盘",
+        "迷你光碟",
+        "迷你唱片",
+        "物品",
+        "电脑光盘",
+        "电脑"
+      ],
+      "en": [
+        "minidisk",
+        "computer",
+        "disk"
+      ]
+    }
+  },
+  {
+    "emoji": "💾",
+    "name": "floppy_disk",
+    "shortcode": ":floppy_disk:",
+    "category": "物品",
+    "subcategory": "电脑",
+    "description": {
+      "zh": "软盘",
+      "en": "floppy disk"
+    },
+    "keywords": {
+      "zh": [
+        "3.5英寸",
+        "便携",
+        "存储",
+        "磁盘",
+        "物品",
+        "软盘",
+        "电脑"
+      ],
+      "en": [
+        "floppy",
+        "disk"
+      ]
+    }
+  },
+  {
+    "emoji": "💿",
+    "name": "cd",
+    "shortcode": ":cd:",
+    "category": "物品",
+    "subcategory": "电脑",
+    "description": {
+      "zh": "光盘",
+      "en": "optical disk"
+    },
+    "keywords": {
+      "zh": [
+        "专辑",
+        "存储",
+        "影片",
+        "音乐",
+        "物品",
+        "光盘",
+        "电脑"
+      ],
+      "en": [
+        "cd",
+        "optical",
+        "disk"
+      ]
+    }
+  },
+  {
+    "emoji": "📀",
+    "name": "dvd",
+    "shortcode": ":dvd:",
+    "category": "物品",
+    "subcategory": "电脑",
+    "description": {
+      "zh": "DVD",
+      "en": "dvd"
+    },
+    "keywords": {
+      "zh": [
+        "光盘",
+        "光碟",
+        "影片",
+        "音乐",
+        "物品",
+        "电脑"
+      ],
+      "en": [
+        "DVD",
+        "dvd"
+      ]
+    }
+  },
+  {
+    "emoji": "🧮",
+    "name": "abacus",
+    "shortcode": ":abacus:",
+    "category": "物品",
+    "subcategory": "电脑",
+    "description": {
+      "zh": "算盘",
+      "en": "abacus"
+    },
+    "keywords": {
+      "zh": [
+        "计算",
+        "物品",
+        "算盘",
+        "电脑"
+      ],
+      "en": [
+        "abacus"
+      ]
+    }
+  },
+  {
+    "emoji": "🎥",
+    "name": "movie_camera",
+    "shortcode": ":movie_camera:",
+    "category": "物品",
+    "subcategory": "光线和视频",
+    "description": {
+      "zh": "电影摄影机",
+      "en": "movie camera"
+    },
+    "keywords": {
+      "zh": [
+        "摄像机",
+        "摄录机",
+        "物品",
+        "电影摄影机",
+        "光线和视频"
+      ],
+      "en": [
+        "movie",
+        "camera"
+      ]
+    }
+  },
+  {
+    "emoji": "🎬",
+    "name": "clapper",
+    "shortcode": ":clapper:",
+    "category": "物品",
+    "subcategory": "光线和视频",
+    "description": {
+      "zh": "场记板",
+      "en": "clapper board"
+    },
+    "keywords": {
+      "zh": [
+        "打板",
+        "拍电影",
+        "物品",
+        "场记板",
+        "光线和视频"
+      ],
+      "en": [
+        "clapper",
+        "board"
+      ]
+    }
+  },
+  {
+    "emoji": "📺",
+    "name": "tv",
+    "shortcode": ":tv:",
+    "category": "物品",
+    "subcategory": "光线和视频",
+    "description": {
+      "zh": "电视机",
+      "en": "television"
+    },
+    "keywords": {
+      "zh": [
+        "看电视",
+        "节目",
+        "物品",
+        "电视机",
+        "光线和视频"
+      ],
+      "en": [
+        "television"
+      ]
+    }
+  },
+  {
+    "emoji": "📷",
+    "name": "camera",
+    "shortcode": ":camera:",
+    "category": "物品",
+    "subcategory": "光线和视频",
+    "description": {
+      "zh": "相机",
+      "en": "camera"
+    },
+    "keywords": {
+      "zh": [
+        "卡片相机",
+        "拍照",
+        "摄影",
+        "照片",
+        "照相机",
+        "物品",
+        "相机",
+        "光线和视频"
+      ],
+      "en": [
+        "camera"
+      ]
+    }
+  },
+  {
+    "emoji": "📸",
+    "name": "camera_flash",
+    "shortcode": ":camera_flash:",
+    "category": "物品",
+    "subcategory": "光线和视频",
+    "description": {
+      "zh": "开闪光灯的相机",
+      "en": "camera with flash"
+    },
+    "keywords": {
+      "zh": [
+        "拍照",
+        "闪光灯打开",
+        "物品",
+        "开闪光灯的相机",
+        "光线和视频"
+      ],
+      "en": [
+        "camera",
+        "with",
+        "flash"
+      ]
+    }
+  },
+  {
+    "emoji": "📹",
+    "name": "video_camera",
+    "shortcode": ":video_camera:",
+    "category": "物品",
+    "subcategory": "光线和视频",
+    "description": {
+      "zh": "摄像机",
+      "en": "video camera"
+    },
+    "keywords": {
+      "zh": [
+        "录像",
+        "录影",
+        "拍摄",
+        "摄影机",
+        "物品",
+        "摄像机",
+        "光线和视频"
+      ],
+      "en": [
+        "video",
+        "camera"
+      ]
+    }
+  },
+  {
+    "emoji": "📼",
+    "name": "vhs",
+    "shortcode": ":vhs:",
+    "category": "物品",
+    "subcategory": "光线和视频",
+    "description": {
+      "zh": "录像带",
+      "en": "videocassette"
+    },
+    "keywords": {
+      "zh": [
+        "录影带",
+        "磁带",
+        "物品",
+        "录像带",
+        "光线和视频"
+      ],
+      "en": [
+        "VHS",
+        "videocassette"
+      ]
+    }
+  },
+  {
+    "emoji": "🔍",
+    "name": "mag",
+    "shortcode": ":mag:",
+    "category": "物品",
+    "subcategory": "光线和视频",
+    "description": {
+      "zh": "左斜的放大镜",
+      "en": "magnifying glass tilted left"
+    },
+    "keywords": {
+      "zh": [
+        "工具",
+        "搜索",
+        "查找",
+        "物品",
+        "左斜的放大镜",
+        "光线和视频"
+      ],
+      "en": [
+        "magnifying",
+        "glass",
+        "tilted",
+        "left"
+      ]
+    }
+  },
+  {
+    "emoji": "🔎",
+    "name": "mag_right",
+    "shortcode": ":mag_right:",
+    "category": "物品",
+    "subcategory": "光线和视频",
+    "description": {
+      "zh": "右斜的放大镜",
+      "en": "magnifying glass tilted right"
+    },
+    "keywords": {
+      "zh": [
+        "工具",
+        "搜索",
+        "查找",
+        "物品",
+        "右斜的放大镜",
+        "光线和视频"
+      ],
+      "en": [
+        "magnifying",
+        "glass",
+        "tilted",
+        "right"
+      ]
+    }
+  },
+  {
+    "emoji": "💡",
+    "name": "bulb",
+    "shortcode": ":bulb:",
+    "category": "物品",
+    "subcategory": "光线和视频",
+    "description": {
+      "zh": "灯泡",
+      "en": "light bulb"
+    },
+    "keywords": {
+      "zh": [
+        "主意",
+        "想法",
+        "电灯泡",
+        "白炽灯",
+        "物品",
+        "灯泡",
+        "光线和视频"
+      ],
+      "en": [
+        "light",
+        "bulb"
+      ]
+    }
+  },
+  {
+    "emoji": "🔦",
+    "name": "flashlight",
+    "shortcode": ":flashlight:",
+    "category": "物品",
+    "subcategory": "光线和视频",
+    "description": {
+      "zh": "手电筒",
+      "en": "flashlight"
+    },
+    "keywords": {
+      "zh": [
+        "工具",
+        "照明",
+        "物品",
+        "手电筒",
+        "光线和视频"
+      ],
+      "en": [
+        "flashlight"
+      ]
+    }
+  },
+  {
+    "emoji": "🏮",
+    "name": "lantern",
+    "shortcode": ":lantern:",
+    "category": "物品",
+    "subcategory": "光线和视频",
+    "description": {
+      "zh": "红灯笼",
+      "en": "red paper lantern"
+    },
+    "keywords": {
+      "zh": [
+        "喜庆",
+        "节日",
+        "物品",
+        "红灯笼",
+        "光线和视频"
+      ],
+      "en": [
+        "red",
+        "paper",
+        "lantern"
+      ]
+    }
+  },
+  {
+    "emoji": "🪔",
+    "name": "diya_lamp",
+    "shortcode": ":diya_lamp:",
+    "category": "物品",
+    "subcategory": "光线和视频",
+    "description": {
+      "zh": "印度油灯",
+      "en": "diya lamp"
+    },
+    "keywords": {
+      "zh": [
+        "排灯节",
+        "迪亚",
+        "物品",
+        "印度油灯",
+        "光线和视频"
+      ],
+      "en": [
+        "diya",
+        "lamp"
+      ]
+    }
+  },
+  {
+    "emoji": "📔",
+    "name": "notebook_with_decorative_cover",
+    "shortcode": ":notebook_with_decorative_cover:",
+    "category": "物品",
+    "subcategory": "图书与纸张",
+    "description": {
+      "zh": "精装笔记本",
+      "en": "notebook with decorative cover"
+    },
+    "keywords": {
+      "zh": [
+        "封面",
+        "本子",
+        "记录",
+        "物品",
+        "精装笔记本",
+        "图书与纸张"
+      ],
+      "en": [
+        "notebook",
+        "with",
+        "decorative",
+        "cover"
+      ]
+    }
+  },
+  {
+    "emoji": "📕",
+    "name": "closed_book",
+    "shortcode": ":closed_book:",
+    "category": "物品",
+    "subcategory": "图书与纸张",
+    "description": {
+      "zh": "合上的书本",
+      "en": "closed book"
+    },
+    "keywords": {
+      "zh": [
+        "物品",
+        "合上的书本",
+        "图书与纸张"
+      ],
+      "en": [
+        "closed",
+        "book"
+      ]
+    }
+  },
+  {
+    "emoji": "📖",
+    "name": "open_book",
+    "shortcode": ":open_book:",
+    "category": "物品",
+    "subcategory": "图书与纸张",
+    "description": {
+      "zh": "打开的书本",
+      "en": "open book"
+    },
+    "keywords": {
+      "zh": [
+        "读书",
+        "阅读",
+        "物品",
+        "打开的书本",
+        "图书与纸张"
+      ],
+      "en": [
+        "open",
+        "book"
+      ]
+    }
+  },
+  {
+    "emoji": "📗",
+    "name": "green_book",
+    "shortcode": ":green_book:",
+    "category": "物品",
+    "subcategory": "图书与纸张",
+    "description": {
+      "zh": "绿色书本",
+      "en": "green book"
+    },
+    "keywords": {
+      "zh": [
+        "物品",
+        "绿色书本",
+        "图书与纸张"
+      ],
+      "en": [
+        "green",
+        "book"
+      ]
+    }
+  },
+  {
+    "emoji": "📘",
+    "name": "blue_book",
+    "shortcode": ":blue_book:",
+    "category": "物品",
+    "subcategory": "图书与纸张",
+    "description": {
+      "zh": "蓝色书本",
+      "en": "blue book"
+    },
+    "keywords": {
+      "zh": [
+        "篮",
+        "物品",
+        "蓝色书本",
+        "图书与纸张"
+      ],
+      "en": [
+        "blue",
+        "book"
+      ]
+    }
+  },
+  {
+    "emoji": "📙",
+    "name": "orange_book",
+    "shortcode": ":orange_book:",
+    "category": "物品",
+    "subcategory": "图书与纸张",
+    "description": {
+      "zh": "橙色书本",
+      "en": "orange book"
+    },
+    "keywords": {
+      "zh": [
+        "物品",
+        "橙色书本",
+        "图书与纸张"
+      ],
+      "en": [
+        "orange",
+        "book"
+      ]
+    }
+  },
+  {
+    "emoji": "📚",
+    "name": "books",
+    "shortcode": ":books:",
+    "category": "物品",
+    "subcategory": "图书与纸张",
+    "description": {
+      "zh": "书",
+      "en": "books"
+    },
+    "keywords": {
+      "zh": [
+        "书本",
+        "书籍",
+        "学习",
+        "物品",
+        "图书与纸张"
+      ],
+      "en": [
+        "books"
+      ]
+    }
+  },
+  {
+    "emoji": "📓",
+    "name": "notebook",
+    "shortcode": ":notebook:",
+    "category": "物品",
+    "subcategory": "图书与纸张",
+    "description": {
+      "zh": "笔记本",
+      "en": "notebook"
+    },
+    "keywords": {
+      "zh": [
+        "日记本",
+        "本子",
+        "记事本",
+        "记录",
+        "物品",
+        "笔记本",
+        "图书与纸张"
+      ],
+      "en": [
+        "notebook"
+      ]
+    }
+  },
+  {
+    "emoji": "📒",
+    "name": "ledger",
+    "shortcode": ":ledger:",
+    "category": "物品",
+    "subcategory": "图书与纸张",
+    "description": {
+      "zh": "账本",
+      "en": "ledger"
+    },
+    "keywords": {
+      "zh": [
+        "笔记本",
+        "记事本",
+        "记账",
+        "账簿",
+        "物品",
+        "账本",
+        "图书与纸张"
+      ],
+      "en": [
+        "ledger"
+      ]
+    }
+  },
+  {
+    "emoji": "📃",
+    "name": "page_with_curl",
+    "shortcode": ":page_with_curl:",
+    "category": "物品",
+    "subcategory": "图书与纸张",
+    "description": {
+      "zh": "带卷边的页面",
+      "en": "page with curl"
+    },
+    "keywords": {
+      "zh": [
+        "文书",
+        "文件",
+        "文档",
+        "物品",
+        "带卷边的页面",
+        "图书与纸张"
+      ],
+      "en": [
+        "page",
+        "with",
+        "curl"
+      ]
+    }
+  },
+  {
+    "emoji": "📜",
+    "name": "scroll",
+    "shortcode": ":scroll:",
+    "category": "物品",
+    "subcategory": "图书与纸张",
+    "description": {
+      "zh": "卷轴",
+      "en": "scroll"
+    },
+    "keywords": {
+      "zh": [
+        "画卷",
+        "纸卷",
+        "羊皮纸",
+        "物品",
+        "卷轴",
+        "图书与纸张"
+      ],
+      "en": [
+        "scroll"
+      ]
+    }
+  },
+  {
+    "emoji": "📄",
+    "name": "page_facing_up",
+    "shortcode": ":page_facing_up:",
+    "category": "物品",
+    "subcategory": "图书与纸张",
+    "description": {
+      "zh": "文件",
+      "en": "page facing up"
+    },
+    "keywords": {
+      "zh": [
+        "文书",
+        "文档",
+        "物品",
+        "文件",
+        "图书与纸张"
+      ],
+      "en": [
+        "page",
+        "facing",
+        "up"
+      ]
+    }
+  },
+  {
+    "emoji": "📰",
+    "name": "newspaper",
+    "shortcode": ":newspaper:",
+    "category": "物品",
+    "subcategory": "图书与纸张",
+    "description": {
+      "zh": "报纸",
+      "en": "newspaper"
+    },
+    "keywords": {
+      "zh": [
+        "报道",
+        "新闻",
+        "看报",
+        "读报",
+        "物品",
+        "报纸",
+        "图书与纸张"
+      ],
+      "en": [
+        "newspaper"
+      ]
+    }
+  },
+  {
+    "emoji": "📑",
+    "name": "bookmark_tabs",
+    "shortcode": ":bookmark_tabs:",
+    "category": "物品",
+    "subcategory": "图书与纸张",
+    "description": {
+      "zh": "标签页",
+      "en": "bookmark tabs"
+    },
+    "keywords": {
+      "zh": [
+        "有书签的页面",
+        "物品",
+        "标签页",
+        "图书与纸张"
+      ],
+      "en": [
+        "bookmark",
+        "tabs"
+      ]
+    }
+  },
+  {
+    "emoji": "🔖",
+    "name": "bookmark",
+    "shortcode": ":bookmark:",
+    "category": "物品",
+    "subcategory": "图书与纸张",
+    "description": {
+      "zh": "书签",
+      "en": "bookmark"
+    },
+    "keywords": {
+      "zh": [
+        "标签",
+        "读书",
+        "阅读",
+        "物品",
+        "书签",
+        "图书与纸张"
+      ],
+      "en": [
+        "bookmark"
+      ]
+    }
+  },
+  {
+    "emoji": "💰",
+    "name": "moneybag",
+    "shortcode": ":moneybag:",
+    "category": "物品",
+    "subcategory": "金钱",
+    "description": {
+      "zh": "钱袋",
+      "en": "money bag"
+    },
+    "keywords": {
+      "zh": [
+        "美元",
+        "钱包",
+        "物品",
+        "钱袋",
+        "金钱"
+      ],
+      "en": [
+        "money",
+        "bag"
+      ]
+    }
+  },
+  {
+    "emoji": "💴",
+    "name": "yen",
+    "shortcode": ":yen:",
+    "category": "物品",
+    "subcategory": "金钱",
+    "description": {
+      "zh": "日元",
+      "en": "yen banknote"
+    },
+    "keywords": {
+      "zh": [
+        "现金",
+        "货币",
+        "钞票",
+        "物品",
+        "日元",
+        "金钱"
+      ],
+      "en": [
+        "yen",
+        "banknote"
+      ]
+    }
+  },
+  {
+    "emoji": "💵",
+    "name": "dollar",
+    "shortcode": ":dollar:",
+    "category": "物品",
+    "subcategory": "金钱",
+    "description": {
+      "zh": "美元",
+      "en": "dollar banknote"
+    },
+    "keywords": {
+      "zh": [
+        "现金",
+        "纸币",
+        "货币",
+        "物品",
+        "美元",
+        "金钱"
+      ],
+      "en": [
+        "dollar",
+        "banknote"
+      ]
+    }
+  },
+  {
+    "emoji": "💶",
+    "name": "euro",
+    "shortcode": ":euro:",
+    "category": "物品",
+    "subcategory": "金钱",
+    "description": {
+      "zh": "欧元",
+      "en": "euro banknote"
+    },
+    "keywords": {
+      "zh": [
+        "现金",
+        "货币",
+        "钞票",
+        "物品",
+        "欧元",
+        "金钱"
+      ],
+      "en": [
+        "euro",
+        "banknote"
+      ]
+    }
+  },
+  {
+    "emoji": "💷",
+    "name": "pound",
+    "shortcode": ":pound:",
+    "category": "物品",
+    "subcategory": "金钱",
+    "description": {
+      "zh": "英镑",
+      "en": "pound banknote"
+    },
+    "keywords": {
+      "zh": [
+        "现金",
+        "货币",
+        "钞票",
+        "物品",
+        "英镑",
+        "金钱"
+      ],
+      "en": [
+        "pound",
+        "banknote"
+      ]
+    }
+  },
+  {
+    "emoji": "💸",
+    "name": "money_with_wings",
+    "shortcode": ":money_with_wings:",
+    "category": "物品",
+    "subcategory": "金钱",
+    "description": {
+      "zh": "长翅膀的钱",
+      "en": "money with wings"
+    },
+    "keywords": {
+      "zh": [
+        "纸币",
+        "花钱",
+        "物品",
+        "长翅膀的钱",
+        "金钱"
+      ],
+      "en": [
+        "money",
+        "with",
+        "wings"
+      ]
+    }
+  },
+  {
+    "emoji": "💳",
+    "name": "credit_card",
+    "shortcode": ":credit_card:",
+    "category": "物品",
+    "subcategory": "金钱",
+    "description": {
+      "zh": "信用卡",
+      "en": "credit card"
+    },
+    "keywords": {
+      "zh": [
+        "借记卡",
+        "刷卡",
+        "贷记卡",
+        "银行卡",
+        "物品",
+        "信用卡",
+        "金钱"
+      ],
+      "en": [
+        "credit",
+        "card"
+      ]
+    }
+  },
+  {
+    "emoji": "🧾",
+    "name": "receipt",
+    "shortcode": ":receipt:",
+    "category": "物品",
+    "subcategory": "金钱",
+    "description": {
+      "zh": "收据",
+      "en": "receipt"
+    },
+    "keywords": {
+      "zh": [
+        "凭据",
+        "发票",
+        "记账",
+        "证明",
+        "账单",
+        "物品",
+        "收据",
+        "金钱"
+      ],
+      "en": [
+        "receipt"
+      ]
+    }
+  },
+  {
+    "emoji": "💹",
+    "name": "chart",
+    "shortcode": ":chart:",
+    "category": "物品",
+    "subcategory": "金钱",
+    "description": {
+      "zh": "趋势向上且带有日元符号的图表",
+      "en": "chart increasing with yen"
+    },
+    "keywords": {
+      "zh": [
+        "上扬",
+        "上涨",
+        "日元汇率",
+        "货币升值图表",
+        "走势",
+        "物品",
+        "趋势向上且带有日元符号的图表",
+        "金钱"
+      ],
+      "en": [
+        "chart",
+        "increasing",
+        "with",
+        "yen"
+      ]
+    }
+  },
+  {
+    "emoji": "📧",
+    "name": "e-mail",
+    "shortcode": ":e-mail:",
+    "category": "物品",
+    "subcategory": "邮件",
+    "description": {
+      "zh": "电子邮件",
+      "en": "e-mail"
+    },
+    "keywords": {
+      "zh": [
+        "信封",
+        "物品",
+        "电子邮件",
+        "邮件"
+      ],
+      "en": [
+        "e-mail"
+      ]
+    }
+  },
+  {
+    "emoji": "📨",
+    "name": "incoming_envelope",
+    "shortcode": ":incoming_envelope:",
+    "category": "物品",
+    "subcategory": "邮件",
+    "description": {
+      "zh": "来信",
+      "en": "incoming envelope"
+    },
+    "keywords": {
+      "zh": [
+        "接收",
+        "收信",
+        "收到来信",
+        "收到邮件",
+        "电子邮件",
+        "物品",
+        "来信",
+        "邮件"
+      ],
+      "en": [
+        "incoming",
+        "envelope"
+      ]
+    }
+  },
+  {
+    "emoji": "📩",
+    "name": "envelope_with_arrow",
+    "shortcode": ":envelope_with_arrow:",
+    "category": "物品",
+    "subcategory": "邮件",
+    "description": {
+      "zh": "收邮件",
+      "en": "envelope with arrow"
+    },
+    "keywords": {
+      "zh": [
+        "信件",
+        "信封",
+        "发信",
+        "发出",
+        "发送",
+        "发邮件",
+        "物品",
+        "收邮件",
+        "邮件"
+      ],
+      "en": [
+        "envelope",
+        "with",
+        "arrow"
+      ]
+    }
+  },
+  {
+    "emoji": "📤",
+    "name": "outbox_tray",
+    "shortcode": ":outbox_tray:",
+    "category": "物品",
+    "subcategory": "邮件",
+    "description": {
+      "zh": "发件箱",
+      "en": "outbox tray"
+    },
+    "keywords": {
+      "zh": [
+        "信件",
+        "发信",
+        "发送",
+        "发邮件",
+        "物品",
+        "发件箱",
+        "邮件"
+      ],
+      "en": [
+        "outbox",
+        "tray"
+      ]
+    }
+  },
+  {
+    "emoji": "📥",
+    "name": "inbox_tray",
+    "shortcode": ":inbox_tray:",
+    "category": "物品",
+    "subcategory": "邮件",
+    "description": {
+      "zh": "收件箱",
+      "en": "inbox tray"
+    },
+    "keywords": {
+      "zh": [
+        "信件",
+        "接收",
+        "收信",
+        "收到邮件",
+        "物品",
+        "收件箱",
+        "邮件"
+      ],
+      "en": [
+        "inbox",
+        "tray"
+      ]
+    }
+  },
+  {
+    "emoji": "📦",
+    "name": "package",
+    "shortcode": ":package:",
+    "category": "物品",
+    "subcategory": "邮件",
+    "description": {
+      "zh": "包裹",
+      "en": "package"
+    },
+    "keywords": {
+      "zh": [
+        "快递",
+        "盒子",
+        "箱子",
+        "装货",
+        "运送",
+        "物品",
+        "包裹",
+        "邮件"
+      ],
+      "en": [
+        "package"
+      ]
+    }
+  },
+  {
+    "emoji": "📫",
+    "name": "mailbox",
+    "shortcode": ":mailbox:",
+    "category": "物品",
+    "subcategory": "邮件",
+    "description": {
+      "zh": "有待收信件",
+      "en": "closed mailbox with raised flag"
+    },
+    "keywords": {
+      "zh": [
+        "信箱",
+        "旗标",
+        "有新信件",
+        "物品",
+        "有待收信件",
+        "邮件"
+      ],
+      "en": [
+        "closed",
+        "mailbox",
+        "with",
+        "raised",
+        "flag"
+      ]
+    }
+  },
+  {
+    "emoji": "📪",
+    "name": "mailbox_closed",
+    "shortcode": ":mailbox_closed:",
+    "category": "物品",
+    "subcategory": "邮件",
+    "description": {
+      "zh": "无待收信件",
+      "en": "closed mailbox with lowered flag"
+    },
+    "keywords": {
+      "zh": [
+        "信箱",
+        "旗标",
+        "无新信件",
+        "物品",
+        "无待收信件",
+        "邮件"
+      ],
+      "en": [
+        "closed",
+        "mailbox",
+        "with",
+        "lowered",
+        "flag"
+      ]
+    }
+  },
+  {
+    "emoji": "📬",
+    "name": "mailbox_with_mail",
+    "shortcode": ":mailbox_with_mail:",
+    "category": "物品",
+    "subcategory": "邮件",
+    "description": {
+      "zh": "有新信件",
+      "en": "open mailbox with raised flag"
+    },
+    "keywords": {
+      "zh": [
+        "信箱",
+        "打开",
+        "旗标",
+        "有待收信件",
+        "物品",
+        "有新信件",
+        "邮件"
+      ],
+      "en": [
+        "open",
+        "mailbox",
+        "with",
+        "raised",
+        "flag"
+      ]
+    }
+  },
+  {
+    "emoji": "📭",
+    "name": "mailbox_with_no_mail",
+    "shortcode": ":mailbox_with_no_mail:",
+    "category": "物品",
+    "subcategory": "邮件",
+    "description": {
+      "zh": "无新信件",
+      "en": "open mailbox with lowered flag"
+    },
+    "keywords": {
+      "zh": [
+        "信箱",
+        "旗标",
+        "无待收信件",
+        "物品",
+        "无新信件",
+        "邮件"
+      ],
+      "en": [
+        "open",
+        "mailbox",
+        "with",
+        "lowered",
+        "flag"
+      ]
+    }
+  },
+  {
+    "emoji": "📮",
+    "name": "postbox",
+    "shortcode": ":postbox:",
+    "category": "物品",
+    "subcategory": "邮件",
+    "description": {
+      "zh": "邮筒",
+      "en": "postbox"
+    },
+    "keywords": {
+      "zh": [
+        "寄信",
+        "邮箱",
+        "物品",
+        "邮筒",
+        "邮件"
+      ],
+      "en": [
+        "postbox"
+      ]
+    }
+  },
+  {
+    "emoji": "📝",
+    "name": "pencil",
+    "shortcode": ":pencil:",
+    "category": "物品",
+    "subcategory": "书写",
+    "description": {
+      "zh": "备忘录",
+      "en": "memo"
+    },
+    "keywords": {
+      "zh": [
+        "便条簿",
+        "便笺",
+        "物品",
+        "备忘录",
+        "书写"
+      ],
+      "en": [
+        "memo"
+      ]
+    }
+  },
+  {
+    "emoji": "💼",
+    "name": "briefcase",
+    "shortcode": ":briefcase:",
+    "category": "物品",
+    "subcategory": "办公",
+    "description": {
+      "zh": "公文包",
+      "en": "briefcase"
+    },
+    "keywords": {
+      "zh": [
+        "公事包",
+        "手提包",
+        "物品",
+        "公文包",
+        "办公"
+      ],
+      "en": [
+        "briefcase"
+      ]
+    }
+  },
+  {
+    "emoji": "📁",
+    "name": "file_folder",
+    "shortcode": ":file_folder:",
+    "category": "物品",
+    "subcategory": "办公",
+    "description": {
+      "zh": "文件夹",
+      "en": "file folder"
+    },
+    "keywords": {
+      "zh": [
+        "文具",
+        "硬纸夹",
+        "物品",
+        "文件夹",
+        "办公"
+      ],
+      "en": [
+        "file",
+        "folder"
+      ]
+    }
+  },
+  {
+    "emoji": "📂",
+    "name": "open_file_folder",
+    "shortcode": ":open_file_folder:",
+    "category": "物品",
+    "subcategory": "办公",
+    "description": {
+      "zh": "打开的文件夹",
+      "en": "open file folder"
+    },
+    "keywords": {
+      "zh": [
+        "文具",
+        "物品",
+        "打开的文件夹",
+        "办公"
+      ],
+      "en": [
+        "open",
+        "file",
+        "folder"
+      ]
+    }
+  },
+  {
+    "emoji": "📅",
+    "name": "date",
+    "shortcode": ":date:",
+    "category": "物品",
+    "subcategory": "办公",
+    "description": {
+      "zh": "日历",
+      "en": "calendar"
+    },
+    "keywords": {
+      "zh": [
+        "日期",
+        "物品",
+        "日历",
+        "办公"
+      ],
+      "en": [
+        "calendar"
+      ]
+    }
+  },
+  {
+    "emoji": "📆",
+    "name": "calendar",
+    "shortcode": ":calendar:",
+    "category": "物品",
+    "subcategory": "办公",
+    "description": {
+      "zh": "手撕日历",
+      "en": "tear-off calendar"
+    },
+    "keywords": {
+      "zh": [
+        "日期",
+        "物品",
+        "手撕日历",
+        "办公"
+      ],
+      "en": [
+        "tear-off",
+        "calendar"
+      ]
+    }
+  },
+  {
+    "emoji": "📇",
+    "name": "card_index",
+    "shortcode": ":card_index:",
+    "category": "物品",
+    "subcategory": "办公",
+    "description": {
+      "zh": "卡片索引",
+      "en": "card index"
+    },
+    "keywords": {
+      "zh": [
+        "卡牌索引",
+        "目录",
+        "物品",
+        "卡片索引",
+        "办公"
+      ],
+      "en": [
+        "card",
+        "index"
+      ]
+    }
+  },
+  {
+    "emoji": "📈",
+    "name": "chart_with_upwards_trend",
+    "shortcode": ":chart_with_upwards_trend:",
+    "category": "物品",
+    "subcategory": "办公",
+    "description": {
+      "zh": "趋势向上的图表",
+      "en": "chart increasing"
+    },
+    "keywords": {
+      "zh": [
+        "上升",
+        "上涨图表",
+        "物品",
+        "趋势向上的图表",
+        "办公"
+      ],
+      "en": [
+        "chart",
+        "increasing"
+      ]
+    }
+  },
+  {
+    "emoji": "📉",
+    "name": "chart_with_downwards_trend",
+    "shortcode": ":chart_with_downwards_trend:",
+    "category": "物品",
+    "subcategory": "办公",
+    "description": {
+      "zh": "趋势向下的图表",
+      "en": "chart decreasing"
+    },
+    "keywords": {
+      "zh": [
+        "下跌图表",
+        "下降",
+        "物品",
+        "趋势向下的图表",
+        "办公"
+      ],
+      "en": [
+        "chart",
+        "decreasing"
+      ]
+    }
+  },
+  {
+    "emoji": "📊",
+    "name": "bar_chart",
+    "shortcode": ":bar_chart:",
+    "category": "物品",
+    "subcategory": "办公",
+    "description": {
+      "zh": "条形图",
+      "en": "bar chart"
+    },
+    "keywords": {
+      "zh": [
+        "图表",
+        "柱形图",
+        "直方图",
+        "物品",
+        "条形图",
+        "办公"
+      ],
+      "en": [
+        "bar",
+        "chart"
+      ]
+    }
+  },
+  {
+    "emoji": "📋",
+    "name": "clipboard",
+    "shortcode": ":clipboard:",
+    "category": "物品",
+    "subcategory": "办公",
+    "description": {
+      "zh": "剪贴板",
+      "en": "clipboard"
+    },
+    "keywords": {
+      "zh": [
+        "写字板",
+        "剪贴簿",
+        "夹子",
+        "纸张",
+        "物品",
+        "剪贴板",
+        "办公"
+      ],
+      "en": [
+        "clipboard"
+      ]
+    }
+  },
+  {
+    "emoji": "📌",
+    "name": "pushpin",
+    "shortcode": ":pushpin:",
+    "category": "物品",
+    "subcategory": "办公",
+    "description": {
+      "zh": "图钉",
+      "en": "pushpin"
+    },
+    "keywords": {
+      "zh": [
+        "固定",
+        "按钉",
+        "物品",
+        "图钉",
+        "办公"
+      ],
+      "en": [
+        "pushpin"
+      ]
+    }
+  },
+  {
+    "emoji": "📍",
+    "name": "round_pushpin",
+    "shortcode": ":round_pushpin:",
+    "category": "物品",
+    "subcategory": "办公",
+    "description": {
+      "zh": "圆图钉",
+      "en": "round pushpin"
+    },
+    "keywords": {
+      "zh": [
+        "固定",
+        "物品",
+        "圆图钉",
+        "办公"
+      ],
+      "en": [
+        "round",
+        "pushpin"
+      ]
+    }
+  },
+  {
+    "emoji": "📎",
+    "name": "paperclip",
+    "shortcode": ":paperclip:",
+    "category": "物品",
+    "subcategory": "办公",
+    "description": {
+      "zh": "回形针",
+      "en": "paperclip"
+    },
+    "keywords": {
+      "zh": [
+        "万字夹",
+        "回纹针",
+        "曲别针",
+        "纸夹",
+        "物品",
+        "回形针",
+        "办公"
+      ],
+      "en": [
+        "paperclip"
+      ]
+    }
+  },
+  {
+    "emoji": "📏",
+    "name": "straight_ruler",
+    "shortcode": ":straight_ruler:",
+    "category": "物品",
+    "subcategory": "办公",
+    "description": {
+      "zh": "直尺",
+      "en": "straight ruler"
+    },
+    "keywords": {
+      "zh": [
+        "尺子",
+        "文具",
+        "测量",
+        "长度",
+        "物品",
+        "直尺",
+        "办公"
+      ],
+      "en": [
+        "straight",
+        "ruler"
+      ]
+    }
+  },
+  {
+    "emoji": "📐",
+    "name": "triangular_ruler",
+    "shortcode": ":triangular_ruler:",
+    "category": "物品",
+    "subcategory": "办公",
+    "description": {
+      "zh": "三角尺",
+      "en": "triangular ruler"
+    },
+    "keywords": {
+      "zh": [
+        "文具",
+        "测量",
+        "角度",
+        "物品",
+        "三角尺",
+        "办公"
+      ],
+      "en": [
+        "triangular",
+        "ruler"
+      ]
+    }
+  },
+  {
+    "emoji": "🔒",
+    "name": "lock",
+    "shortcode": ":lock:",
+    "category": "物品",
+    "subcategory": "锁",
+    "description": {
+      "zh": "合上的锁",
+      "en": "locked"
+    },
+    "keywords": {
+      "zh": [
+        "上锁",
+        "锁住",
+        "锁定",
+        "物品",
+        "合上的锁",
+        "锁"
+      ],
+      "en": [
+        "locked"
+      ]
+    }
+  },
+  {
+    "emoji": "🔓",
+    "name": "unlock",
+    "shortcode": ":unlock:",
+    "category": "物品",
+    "subcategory": "锁",
+    "description": {
+      "zh": "打开的锁",
+      "en": "unlocked"
+    },
+    "keywords": {
+      "zh": [
+        "取消锁定",
+        "开锁",
+        "解锁",
+        "物品",
+        "打开的锁",
+        "锁"
+      ],
+      "en": [
+        "unlocked"
+      ]
+    }
+  },
+  {
+    "emoji": "🔏",
+    "name": "lock_with_ink_pen",
+    "shortcode": ":lock_with_ink_pen:",
+    "category": "物品",
+    "subcategory": "锁",
+    "description": {
+      "zh": "墨水笔和锁",
+      "en": "locked with pen"
+    },
+    "keywords": {
+      "zh": [
+        "笔尖",
+        "钢笔",
+        "隐私",
+        "物品",
+        "墨水笔和锁",
+        "锁"
+      ],
+      "en": [
+        "locked",
+        "with",
+        "pen"
+      ]
+    }
+  },
+  {
+    "emoji": "🔐",
+    "name": "closed_lock_with_key",
+    "shortcode": ":closed_lock_with_key:",
+    "category": "物品",
+    "subcategory": "锁",
+    "description": {
+      "zh": "钥匙和锁",
+      "en": "locked with key"
+    },
+    "keywords": {
+      "zh": [
+        "安全",
+        "锁上",
+        "物品",
+        "钥匙和锁",
+        "锁"
+      ],
+      "en": [
+        "locked",
+        "with",
+        "key"
+      ]
+    }
+  },
+  {
+    "emoji": "🔑",
+    "name": "key",
+    "shortcode": ":key:",
+    "category": "物品",
+    "subcategory": "锁",
+    "description": {
+      "zh": "钥匙",
+      "en": "key"
+    },
+    "keywords": {
+      "zh": [
+        "密码",
+        "密钥",
+        "开锁",
+        "解锁",
+        "物品",
+        "钥匙",
+        "锁"
+      ],
+      "en": [
+        "key"
+      ]
+    }
+  },
+  {
+    "emoji": "🔨",
+    "name": "hammer",
+    "shortcode": ":hammer:",
+    "category": "物品",
+    "subcategory": "工具",
+    "description": {
+      "zh": "锤子",
+      "en": "hammer"
+    },
+    "keywords": {
+      "zh": [
+        "敲",
+        "施工",
+        "砸",
+        "铁锤",
+        "物品",
+        "锤子",
+        "工具"
+      ],
+      "en": [
+        "hammer"
+      ]
+    }
+  },
+  {
+    "emoji": "🪓",
+    "name": "axe",
+    "shortcode": ":axe:",
+    "category": "物品",
+    "subcategory": "工具",
+    "description": {
+      "zh": "斧头",
+      "en": "axe"
+    },
+    "keywords": {
+      "zh": [
+        "切",
+        "劈",
+        "木头",
+        "砍",
+        "物品",
+        "斧头",
+        "工具"
+      ],
+      "en": [
+        "axe"
+      ]
+    }
+  },
+  {
+    "emoji": "🔫",
+    "name": "gun",
+    "shortcode": ":gun:",
+    "category": "物品",
+    "subcategory": "工具",
+    "description": {
+      "zh": "水枪",
+      "en": "water pistol"
+    },
+    "keywords": {
+      "zh": [
+        "左轮",
+        "手枪",
+        "武器",
+        "物品",
+        "水枪",
+        "工具"
+      ],
+      "en": [
+        "water",
+        "pistol"
+      ]
+    }
+  },
+  {
+    "emoji": "🏹",
+    "name": "bow_and_arrow",
+    "shortcode": ":bow_and_arrow:",
+    "category": "物品",
+    "subcategory": "工具",
+    "description": {
+      "zh": "弓和箭",
+      "en": "bow and arrow"
+    },
+    "keywords": {
+      "zh": [
+        "射手",
+        "射箭",
+        "物品",
+        "弓和箭",
+        "工具"
+      ],
+      "en": [
+        "bow",
+        "and",
+        "arrow"
+      ]
+    }
+  },
+  {
+    "emoji": "🔧",
+    "name": "wrench",
+    "shortcode": ":wrench:",
+    "category": "物品",
+    "subcategory": "工具",
+    "description": {
+      "zh": "扳手",
+      "en": "wrench"
+    },
+    "keywords": {
+      "zh": [
+        "螺丝扳手",
+        "物品",
+        "扳手",
+        "工具"
+      ],
+      "en": [
+        "wrench"
+      ]
+    }
+  },
+  {
+    "emoji": "🔩",
+    "name": "nut_and_bolt",
+    "shortcode": ":nut_and_bolt:",
+    "category": "物品",
+    "subcategory": "工具",
+    "description": {
+      "zh": "螺母与螺栓",
+      "en": "nut and bolt"
+    },
+    "keywords": {
+      "zh": [
+        "螺丝",
+        "螺帽",
+        "物品",
+        "螺母与螺栓",
+        "工具"
+      ],
+      "en": [
+        "nut",
+        "and",
+        "bolt"
+      ]
+    }
+  },
+  {
+    "emoji": "🦯",
+    "name": "probing_cane",
+    "shortcode": ":probing_cane:",
+    "category": "物品",
+    "subcategory": "工具",
+    "description": {
+      "zh": "盲杖",
+      "en": "white cane"
+    },
+    "keywords": {
+      "zh": [
+        "拐杖",
+        "无障碍",
+        "物品",
+        "盲杖",
+        "工具"
+      ],
+      "en": [
+        "white",
+        "cane"
+      ]
+    }
+  },
+  {
+    "emoji": "🔗",
+    "name": "link",
+    "shortcode": ":link:",
+    "category": "物品",
+    "subcategory": "工具",
+    "description": {
+      "zh": "链接",
+      "en": "link"
+    },
+    "keywords": {
+      "zh": [
+        "网址",
+        "链条",
+        "锁链",
+        "物品",
+        "链接",
+        "工具"
+      ],
+      "en": [
+        "link"
+      ]
+    }
+  },
+  {
+    "emoji": "🧰",
+    "name": "toolbox",
+    "shortcode": ":toolbox:",
+    "category": "物品",
+    "subcategory": "工具",
+    "description": {
+      "zh": "工具箱",
+      "en": "toolbox"
+    },
+    "keywords": {
+      "zh": [
+        "机修",
+        "箱子",
+        "物品",
+        "工具箱",
+        "工具"
+      ],
+      "en": [
+        "toolbox"
+      ]
+    }
+  },
+  {
+    "emoji": "🧲",
+    "name": "magnet",
+    "shortcode": ":magnet:",
+    "category": "物品",
+    "subcategory": "工具",
+    "description": {
+      "zh": "磁铁",
+      "en": "magnet"
+    },
+    "keywords": {
+      "zh": [
+        "吸引力",
+        "磁性",
+        "马蹄铁",
+        "物品",
+        "磁铁",
+        "工具"
+      ],
+      "en": [
+        "magnet"
+      ]
+    }
+  },
+  {
+    "emoji": "🧪",
+    "name": "test_tube",
+    "shortcode": ":test_tube:",
+    "category": "物品",
+    "subcategory": "科技",
+    "description": {
+      "zh": "试管",
+      "en": "test tube"
+    },
+    "keywords": {
+      "zh": [
+        "化学家",
+        "实验室",
+        "科学",
+        "物品",
+        "试管",
+        "科技"
+      ],
+      "en": [
+        "test",
+        "tube"
+      ]
+    }
+  },
+  {
+    "emoji": "🧫",
+    "name": "petri_dish",
+    "shortcode": ":petri_dish:",
+    "category": "物品",
+    "subcategory": "科技",
+    "description": {
+      "zh": "培养皿",
+      "en": "petri dish"
+    },
+    "keywords": {
+      "zh": [
+        "实验室",
+        "生物学家",
+        "细菌",
+        "物品",
+        "培养皿",
+        "科技"
+      ],
+      "en": [
+        "petri",
+        "dish"
+      ]
+    }
+  },
+  {
+    "emoji": "🧬",
+    "name": "dna",
+    "shortcode": ":dna:",
+    "category": "物品",
+    "subcategory": "科技",
+    "description": {
+      "zh": "DNA",
+      "en": "dna"
+    },
+    "keywords": {
+      "zh": [
+        "基因",
+        "生命",
+        "生物学家",
+        "进化",
+        "遗传学",
+        "物品",
+        "科技"
+      ],
+      "en": [
+        "DNA",
+        "dna"
+      ]
+    }
+  },
+  {
+    "emoji": "🔬",
+    "name": "microscope",
+    "shortcode": ":microscope:",
+    "category": "物品",
+    "subcategory": "科技",
+    "description": {
+      "zh": "显微镜",
+      "en": "microscope"
+    },
+    "keywords": {
+      "zh": [
+        "实验",
+        "工具",
+        "生物",
+        "科学",
+        "细胞",
+        "物品",
+        "显微镜",
+        "科技"
+      ],
+      "en": [
+        "microscope"
+      ]
+    }
+  },
+  {
+    "emoji": "🔭",
+    "name": "telescope",
+    "shortcode": ":telescope:",
+    "category": "物品",
+    "subcategory": "科技",
+    "description": {
+      "zh": "望远镜",
+      "en": "telescope"
+    },
+    "keywords": {
+      "zh": [
+        "天体",
+        "天文学",
+        "工具",
+        "观星",
+        "物品",
+        "望远镜",
+        "科技"
+      ],
+      "en": [
+        "telescope"
+      ]
+    }
+  },
+  {
+    "emoji": "📡",
+    "name": "satellite",
+    "shortcode": ":satellite:",
+    "category": "物品",
+    "subcategory": "科技",
+    "description": {
+      "zh": "卫星天线",
+      "en": "satellite antenna"
+    },
+    "keywords": {
+      "zh": [
+        "信号接收",
+        "卫星接收天线",
+        "卫星碟形天线",
+        "物品",
+        "卫星天线",
+        "科技"
+      ],
+      "en": [
+        "satellite",
+        "antenna"
+      ]
+    }
+  },
+  {
+    "emoji": "💉",
+    "name": "syringe",
+    "shortcode": ":syringe:",
+    "category": "物品",
+    "subcategory": "医疗",
+    "description": {
+      "zh": "注射器",
+      "en": "syringe"
+    },
+    "keywords": {
+      "zh": [
+        "医学",
+        "打针",
+        "治疗",
+        "针头",
+        "针筒",
+        "物品",
+        "注射器",
+        "医疗"
+      ],
+      "en": [
+        "syringe"
+      ]
+    }
+  },
+  {
+    "emoji": "🩸",
+    "name": "drop_of_blood",
+    "shortcode": ":drop_of_blood:",
+    "category": "物品",
+    "subcategory": "医疗",
+    "description": {
+      "zh": "血滴",
+      "en": "drop of blood"
+    },
+    "keywords": {
+      "zh": [
+        "月经",
+        "献血",
+        "经血",
+        "输血",
+        "物品",
+        "血滴",
+        "医疗"
+      ],
+      "en": [
+        "drop",
+        "of",
+        "blood"
+      ]
+    }
+  },
+  {
+    "emoji": "💊",
+    "name": "pill",
+    "shortcode": ":pill:",
+    "category": "物品",
+    "subcategory": "医疗",
+    "description": {
+      "zh": "药丸",
+      "en": "pill"
+    },
+    "keywords": {
+      "zh": [
+        "吃药",
+        "治疗",
+        "药物",
+        "物品",
+        "药丸",
+        "医疗"
+      ],
+      "en": [
+        "pill"
+      ]
+    }
+  },
+  {
+    "emoji": "🩹",
+    "name": "adhesive_bandage",
+    "shortcode": ":adhesive_bandage:",
+    "category": "物品",
+    "subcategory": "医疗",
+    "description": {
+      "zh": "创可贴",
+      "en": "adhesive bandage"
+    },
+    "keywords": {
+      "zh": [
+        "OK绷",
+        "伤口",
+        "绷带",
+        "胶布",
+        "物品",
+        "创可贴",
+        "医疗"
+      ],
+      "en": [
+        "adhesive",
+        "bandage"
+      ]
+    }
+  },
+  {
+    "emoji": "🩺",
+    "name": "stethoscope",
+    "shortcode": ":stethoscope:",
+    "category": "物品",
+    "subcategory": "医疗",
+    "description": {
+      "zh": "听诊器",
+      "en": "stethoscope"
+    },
+    "keywords": {
+      "zh": [
+        "医生",
+        "心脏",
+        "心跳",
+        "诊断",
+        "物品",
+        "听诊器",
+        "医疗"
+      ],
+      "en": [
+        "stethoscope"
+      ]
+    }
+  },
+  {
+    "emoji": "🚪",
+    "name": "door",
+    "shortcode": ":door:",
+    "category": "物品",
+    "subcategory": "居家",
+    "description": {
+      "zh": "门",
+      "en": "door"
+    },
+    "keywords": {
+      "zh": [
+        "出入口",
+        "大门",
+        "屋门",
+        "房门",
+        "房间",
+        "物品",
+        "门",
+        "居家"
+      ],
+      "en": [
+        "door"
+      ]
+    }
+  },
+  {
+    "emoji": "🪑",
+    "name": "chair",
+    "shortcode": ":chair:",
+    "category": "物品",
+    "subcategory": "居家",
+    "description": {
+      "zh": "椅子",
+      "en": "chair"
+    },
+    "keywords": {
+      "zh": [
+        "坐",
+        "座位",
+        "椅背",
+        "物品",
+        "椅子",
+        "居家"
+      ],
+      "en": [
+        "chair"
+      ]
+    }
+  },
+  {
+    "emoji": "🚽",
+    "name": "toilet",
+    "shortcode": ":toilet:",
+    "category": "物品",
+    "subcategory": "居家",
+    "description": {
+      "zh": "马桶",
+      "en": "toilet"
+    },
+    "keywords": {
+      "zh": [
+        "卫生间",
+        "厕所",
+        "洗手间",
+        "物品",
+        "马桶",
+        "居家"
+      ],
+      "en": [
+        "WC",
+        "toilet"
+      ]
+    }
+  },
+  {
+    "emoji": "🚿",
+    "name": "shower",
+    "shortcode": ":shower:",
+    "category": "物品",
+    "subcategory": "居家",
+    "description": {
+      "zh": "淋浴",
+      "en": "shower"
+    },
+    "keywords": {
+      "zh": [
+        "喷头",
+        "喷水",
+        "水",
+        "洗澡 花洒",
+        "物品",
+        "淋浴",
+        "居家"
+      ],
+      "en": [
+        "shower"
+      ]
+    }
+  },
+  {
+    "emoji": "🛁",
+    "name": "bathtub",
+    "shortcode": ":bathtub:",
+    "category": "物品",
+    "subcategory": "居家",
+    "description": {
+      "zh": "浴缸",
+      "en": "bathtub"
+    },
+    "keywords": {
+      "zh": [
+        "沐浴",
+        "泡沫浴",
+        "泡澡",
+        "洗澡",
+        "澡盆",
+        "物品",
+        "浴缸",
+        "居家"
+      ],
+      "en": [
+        "bathtub"
+      ]
+    }
+  },
+  {
+    "emoji": "🪒",
+    "name": "razor",
+    "shortcode": ":razor:",
+    "category": "物品",
+    "subcategory": "居家",
+    "description": {
+      "zh": "剃须刀",
+      "en": "razor"
+    },
+    "keywords": {
+      "zh": [
+        "刮",
+        "毛",
+        "胡子",
+        "锋利",
+        "物品",
+        "剃须刀",
+        "居家"
+      ],
+      "en": [
+        "razor"
+      ]
+    }
+  },
+  {
+    "emoji": "🧴",
+    "name": "lotion_bottle",
+    "shortcode": ":lotion_bottle:",
+    "category": "物品",
+    "subcategory": "居家",
+    "description": {
+      "zh": "乳液瓶",
+      "en": "lotion bottle"
+    },
+    "keywords": {
+      "zh": [
+        "护肤霜",
+        "洗发水",
+        "防晒霜",
+        "物品",
+        "乳液瓶",
+        "居家"
+      ],
+      "en": [
+        "lotion",
+        "bottle"
+      ]
+    }
+  },
+  {
+    "emoji": "🧷",
+    "name": "safety_pin",
+    "shortcode": ":safety_pin:",
+    "category": "物品",
+    "subcategory": "居家",
+    "description": {
+      "zh": "安全别针",
+      "en": "safety pin"
+    },
+    "keywords": {
+      "zh": [
+        "扣针",
+        "物品",
+        "安全别针",
+        "居家"
+      ],
+      "en": [
+        "safety",
+        "pin"
+      ]
+    }
+  },
+  {
+    "emoji": "🧹",
+    "name": "broom",
+    "shortcode": ":broom:",
+    "category": "物品",
+    "subcategory": "居家",
+    "description": {
+      "zh": "扫帚",
+      "en": "broom"
+    },
+    "keywords": {
+      "zh": [
+        "女巫",
+        "打扫",
+        "扫地",
+        "物品",
+        "扫帚",
+        "居家"
+      ],
+      "en": [
+        "broom"
+      ]
+    }
+  },
+  {
+    "emoji": "🧺",
+    "name": "basket",
+    "shortcode": ":basket:",
+    "category": "物品",
+    "subcategory": "居家",
+    "description": {
+      "zh": "筐",
+      "en": "basket"
+    },
+    "keywords": {
+      "zh": [
+        "农作",
+        "脏衣篮",
+        "野餐",
+        "物品",
+        "筐",
+        "居家"
+      ],
+      "en": [
+        "basket"
+      ]
+    }
+  },
+  {
+    "emoji": "🧻",
+    "name": "roll_of_paper",
+    "shortcode": ":roll_of_paper:",
+    "category": "物品",
+    "subcategory": "居家",
+    "description": {
+      "zh": "卷纸",
+      "en": "roll of paper"
+    },
+    "keywords": {
+      "zh": [
+        "卫生纸",
+        "纸巾",
+        "物品",
+        "卷纸",
+        "居家"
+      ],
+      "en": [
+        "roll",
+        "of",
+        "paper"
+      ]
+    }
+  },
+  {
+    "emoji": "🧼",
+    "name": "soap",
+    "shortcode": ":soap:",
+    "category": "物品",
+    "subcategory": "居家",
+    "description": {
+      "zh": "皂",
+      "en": "soap"
+    },
+    "keywords": {
+      "zh": [
+        "杀菌",
+        "洗手",
+        "清洁",
+        "肥皂泡",
+        "肥皂盒",
+        "物品",
+        "皂",
+        "居家"
+      ],
+      "en": [
+        "soap"
+      ]
+    }
+  },
+  {
+    "emoji": "🧽",
+    "name": "sponge",
+    "shortcode": ":sponge:",
+    "category": "物品",
+    "subcategory": "居家",
+    "description": {
+      "zh": "海绵",
+      "en": "sponge"
+    },
+    "keywords": {
+      "zh": [
+        "吸水",
+        "清洁",
+        "渗透",
+        "物品",
+        "海绵",
+        "居家"
+      ],
+      "en": [
+        "sponge"
+      ]
+    }
+  },
+  {
+    "emoji": "🧯",
+    "name": "fire_extinguisher",
+    "shortcode": ":fire_extinguisher:",
+    "category": "物品",
+    "subcategory": "居家",
+    "description": {
+      "zh": "灭火器",
+      "en": "fire extinguisher"
+    },
+    "keywords": {
+      "zh": [
+        "火灾",
+        "物品",
+        "灭火器",
+        "居家"
+      ],
+      "en": [
+        "fire",
+        "extinguisher"
+      ]
+    }
+  },
+  {
+    "emoji": "🛒",
+    "name": "shopping_cart",
+    "shortcode": ":shopping_cart:",
+    "category": "物品",
+    "subcategory": "居家",
+    "description": {
+      "zh": "购物车",
+      "en": "shopping cart"
+    },
+    "keywords": {
+      "zh": [
+        "手推车",
+        "采购",
+        "物品",
+        "购物车",
+        "居家"
+      ],
+      "en": [
+        "shopping",
+        "cart"
+      ]
+    }
+  },
+  {
+    "emoji": "🚬",
+    "name": "smoking",
+    "shortcode": ":smoking:",
+    "category": "物品",
+    "subcategory": "其他物品",
+    "description": {
+      "zh": "香烟",
+      "en": "cigarette"
+    },
+    "keywords": {
+      "zh": [
+        "卷烟",
+        "吸烟",
+        "抽烟",
+        "烟草",
+        "香烟",
+        "其他物品"
+      ],
+      "en": [
+        "cigarette"
+      ]
+    }
+  },
+  {
+    "emoji": "🗿",
+    "name": "moyai",
+    "shortcode": ":moyai:",
+    "category": "物品",
+    "subcategory": "其他物品",
+    "description": {
+      "zh": "摩埃",
+      "en": "moai"
+    },
+    "keywords": {
+      "zh": [
+        "复活岛",
+        "复活节岛石像",
+        "摩艾石像",
+        "毛埃",
+        "摩埃",
+        "其他物品"
+      ],
+      "en": [
+        "moai"
+      ]
+    }
+  }
+]

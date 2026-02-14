@@ -1,0 +1,3462 @@
+[
+  {
+    "emoji": "😀",
+    "name": "grinning",
+    "shortcode": ":grinning:",
+    "category": "笑脸和情感",
+    "subcategory": "笑脸",
+    "description": {
+      "zh": "嘿嘿",
+      "en": "grinning face"
+    },
+    "keywords": {
+      "zh": [
+        "笑脸和情感",
+        "嘿嘿",
+        "笑脸"
+      ],
+      "en": [
+        "grinning",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😃",
+    "name": "smiley",
+    "shortcode": ":smiley:",
+    "category": "笑脸和情感",
+    "subcategory": "笑脸",
+    "description": {
+      "zh": "哈哈",
+      "en": "grinning face with big eyes"
+    },
+    "keywords": {
+      "zh": [
+        "开口笑",
+        "笑脸和情感",
+        "哈哈",
+        "笑脸"
+      ],
+      "en": [
+        "grinning",
+        "face",
+        "with",
+        "big",
+        "eyes"
+      ]
+    }
+  },
+  {
+    "emoji": "😄",
+    "name": "smile",
+    "shortcode": ":smile:",
+    "category": "笑脸和情感",
+    "subcategory": "笑脸",
+    "description": {
+      "zh": "大笑",
+      "en": "grinning face with smiling eyes"
+    },
+    "keywords": {
+      "zh": [
+        "哈哈",
+        "开心",
+        "高兴",
+        "笑脸和情感",
+        "大笑",
+        "笑脸"
+      ],
+      "en": [
+        "grinning",
+        "face",
+        "with",
+        "smiling",
+        "eyes"
+      ]
+    }
+  },
+  {
+    "emoji": "😁",
+    "name": "grin",
+    "shortcode": ":grin:",
+    "category": "笑脸和情感",
+    "subcategory": "笑脸",
+    "description": {
+      "zh": "嘻嘻",
+      "en": "beaming face with smiling eyes"
+    },
+    "keywords": {
+      "zh": [
+        "笑脸和情感",
+        "嘻嘻",
+        "笑脸"
+      ],
+      "en": [
+        "beaming",
+        "face",
+        "with",
+        "smiling",
+        "eyes"
+      ]
+    }
+  },
+  {
+    "emoji": "😆",
+    "name": "satisfied",
+    "shortcode": ":satisfied:",
+    "category": "笑脸和情感",
+    "subcategory": "笑脸",
+    "description": {
+      "zh": "斜眼笑",
+      "en": "grinning squinting face"
+    },
+    "keywords": {
+      "zh": [
+        "开心",
+        "眯眼",
+        "高兴",
+        "笑脸和情感",
+        "斜眼笑",
+        "笑脸"
+      ],
+      "en": [
+        "grinning",
+        "squinting",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😅",
+    "name": "sweat_smile",
+    "shortcode": ":sweat_smile:",
+    "category": "笑脸和情感",
+    "subcategory": "笑脸",
+    "description": {
+      "zh": "苦笑",
+      "en": "grinning face with sweat"
+    },
+    "keywords": {
+      "zh": [
+        "冷汗",
+        "汗",
+        "笑脸和情感",
+        "苦笑",
+        "笑脸"
+      ],
+      "en": [
+        "grinning",
+        "face",
+        "with",
+        "sweat"
+      ]
+    }
+  },
+  {
+    "emoji": "🤣",
+    "name": "rofl",
+    "shortcode": ":rofl:",
+    "category": "笑脸和情感",
+    "subcategory": "笑脸",
+    "description": {
+      "zh": "笑得满地打滚",
+      "en": "rolling on the floor laughing"
+    },
+    "keywords": {
+      "zh": [
+        "地板",
+        "笑脸和情感",
+        "笑得满地打滚",
+        "笑脸"
+      ],
+      "en": [
+        "rolling",
+        "on",
+        "the",
+        "floor",
+        "laughing"
+      ]
+    }
+  },
+  {
+    "emoji": "😂",
+    "name": "joy",
+    "shortcode": ":joy:",
+    "category": "笑脸和情感",
+    "subcategory": "笑脸",
+    "description": {
+      "zh": "笑哭了",
+      "en": "face with tears of joy"
+    },
+    "keywords": {
+      "zh": [
+        "眼泪",
+        "笑脸和情感",
+        "笑哭了",
+        "笑脸"
+      ],
+      "en": [
+        "face",
+        "with",
+        "tears",
+        "of",
+        "joy"
+      ]
+    }
+  },
+  {
+    "emoji": "🙂",
+    "name": "slightly_smiling_face",
+    "shortcode": ":slightly_smiling_face:",
+    "category": "笑脸和情感",
+    "subcategory": "笑脸",
+    "description": {
+      "zh": "呵呵",
+      "en": "slightly smiling face"
+    },
+    "keywords": {
+      "zh": [
+        "开心",
+        "笑脸和情感",
+        "呵呵",
+        "笑脸"
+      ],
+      "en": [
+        "slightly",
+        "smiling",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🙃",
+    "name": "upside_down_face",
+    "shortcode": ":upside_down_face:",
+    "category": "笑脸和情感",
+    "subcategory": "笑脸",
+    "description": {
+      "zh": "倒脸",
+      "en": "upside-down face"
+    },
+    "keywords": {
+      "zh": [
+        "颠倒的脸",
+        "笑脸和情感",
+        "倒脸",
+        "笑脸"
+      ],
+      "en": [
+        "upside-down",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😉",
+    "name": "wink",
+    "shortcode": ":wink:",
+    "category": "笑脸和情感",
+    "subcategory": "笑脸",
+    "description": {
+      "zh": "眨眼",
+      "en": "winking face"
+    },
+    "keywords": {
+      "zh": [
+        "媚眼",
+        "笑脸和情感",
+        "眨眼",
+        "笑脸"
+      ],
+      "en": [
+        "winking",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😊",
+    "name": "blush",
+    "shortcode": ":blush:",
+    "category": "笑脸和情感",
+    "subcategory": "笑脸",
+    "description": {
+      "zh": "羞涩微笑",
+      "en": "smiling face with smiling eyes"
+    },
+    "keywords": {
+      "zh": [
+        "害羞",
+        "脸红",
+        "笑脸和情感",
+        "羞涩微笑",
+        "笑脸"
+      ],
+      "en": [
+        "face",
+        "with",
+        "smiling",
+        "eyes"
+      ]
+    }
+  },
+  {
+    "emoji": "😇",
+    "name": "innocent",
+    "shortcode": ":innocent:",
+    "category": "笑脸和情感",
+    "subcategory": "笑脸",
+    "description": {
+      "zh": "微笑天使",
+      "en": "smiling face with halo"
+    },
+    "keywords": {
+      "zh": [
+        "光环",
+        "天真",
+        "幻想",
+        "笑脸和情感",
+        "微笑天使",
+        "笑脸"
+      ],
+      "en": [
+        "smiling",
+        "face",
+        "with",
+        "halo"
+      ]
+    }
+  },
+  {
+    "emoji": "🥰",
+    "name": "smiling_face_with_three_hearts",
+    "shortcode": ":smiling_face_with_three_hearts:",
+    "category": "笑脸和情感",
+    "subcategory": "表情脸",
+    "description": {
+      "zh": "喜笑颜开",
+      "en": "smiling face with hearts"
+    },
+    "keywords": {
+      "zh": [
+        "心",
+        "爱慕",
+        "迷恋",
+        "陷入爱河",
+        "笑脸和情感",
+        "喜笑颜开",
+        "表情脸"
+      ],
+      "en": [
+        "smiling",
+        "face",
+        "with",
+        "hearts"
+      ]
+    }
+  },
+  {
+    "emoji": "😍",
+    "name": "heart_eyes",
+    "shortcode": ":heart_eyes:",
+    "category": "笑脸和情感",
+    "subcategory": "表情脸",
+    "description": {
+      "zh": "花痴",
+      "en": "smiling face with heart-eyes"
+    },
+    "keywords": {
+      "zh": [
+        "爱",
+        "红心",
+        "笑脸和情感",
+        "花痴",
+        "表情脸"
+      ],
+      "en": [
+        "smiling",
+        "face",
+        "with",
+        "heart-eyes"
+      ]
+    }
+  },
+  {
+    "emoji": "🤩",
+    "name": "star_struck",
+    "shortcode": ":star_struck:",
+    "category": "笑脸和情感",
+    "subcategory": "表情脸",
+    "description": {
+      "zh": "好崇拜哦",
+      "en": "star-struck"
+    },
+    "keywords": {
+      "zh": [
+        "咧嘴笑",
+        "露齿笑",
+        "笑脸和情感",
+        "好崇拜哦",
+        "表情脸"
+      ],
+      "en": [
+        "star-struck"
+      ]
+    }
+  },
+  {
+    "emoji": "😘",
+    "name": "kissing_heart",
+    "shortcode": ":kissing_heart:",
+    "category": "笑脸和情感",
+    "subcategory": "表情脸",
+    "description": {
+      "zh": "飞吻",
+      "en": "face blowing a kiss"
+    },
+    "keywords": {
+      "zh": [
+        "亲亲",
+        "眨眼",
+        "笑脸和情感",
+        "飞吻",
+        "表情脸"
+      ],
+      "en": [
+        "face",
+        "blowing",
+        "a",
+        "kiss"
+      ]
+    }
+  },
+  {
+    "emoji": "😗",
+    "name": "kissing",
+    "shortcode": ":kissing:",
+    "category": "笑脸和情感",
+    "subcategory": "表情脸",
+    "description": {
+      "zh": "亲亲",
+      "en": "kissing face"
+    },
+    "keywords": {
+      "zh": [
+        "吻",
+        "笑脸和情感",
+        "亲亲",
+        "表情脸"
+      ],
+      "en": [
+        "kissing",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😚",
+    "name": "kissing_closed_eyes",
+    "shortcode": ":kissing_closed_eyes:",
+    "category": "笑脸和情感",
+    "subcategory": "表情脸",
+    "description": {
+      "zh": "羞涩亲亲",
+      "en": "kissing face with closed eyes"
+    },
+    "keywords": {
+      "zh": [
+        "吻",
+        "闭眼",
+        "笑脸和情感",
+        "羞涩亲亲",
+        "表情脸"
+      ],
+      "en": [
+        "kissing",
+        "face",
+        "with",
+        "closed",
+        "eyes"
+      ]
+    }
+  },
+  {
+    "emoji": "😙",
+    "name": "kissing_smiling_eyes",
+    "shortcode": ":kissing_smiling_eyes:",
+    "category": "笑脸和情感",
+    "subcategory": "表情脸",
+    "description": {
+      "zh": "微笑亲亲",
+      "en": "kissing face with smiling eyes"
+    },
+    "keywords": {
+      "zh": [
+        "吻",
+        "笑脸和情感",
+        "微笑亲亲",
+        "表情脸"
+      ],
+      "en": [
+        "kissing",
+        "face",
+        "with",
+        "smiling",
+        "eyes"
+      ]
+    }
+  },
+  {
+    "emoji": "😋",
+    "name": "yum",
+    "shortcode": ":yum:",
+    "category": "笑脸和情感",
+    "subcategory": "吐舌脸",
+    "description": {
+      "zh": "好吃",
+      "en": "face savoring food"
+    },
+    "keywords": {
+      "zh": [
+        "津津有味",
+        "美味",
+        "笑脸和情感",
+        "好吃",
+        "吐舌脸"
+      ],
+      "en": [
+        "face",
+        "savoring",
+        "food"
+      ]
+    }
+  },
+  {
+    "emoji": "😛",
+    "name": "stuck_out_tongue",
+    "shortcode": ":stuck_out_tongue:",
+    "category": "笑脸和情感",
+    "subcategory": "吐舌脸",
+    "description": {
+      "zh": "吐舌",
+      "en": "face with tongue"
+    },
+    "keywords": {
+      "zh": [
+        "舌头",
+        "调皮",
+        "笑脸和情感",
+        "吐舌脸"
+      ],
+      "en": [
+        "face",
+        "with",
+        "tongue"
+      ]
+    }
+  },
+  {
+    "emoji": "😜",
+    "name": "stuck_out_tongue_winking_eye",
+    "shortcode": ":stuck_out_tongue_winking_eye:",
+    "category": "笑脸和情感",
+    "subcategory": "吐舌脸",
+    "description": {
+      "zh": "单眼吐舌",
+      "en": "winking face with tongue"
+    },
+    "keywords": {
+      "zh": [
+        "开玩笑",
+        "笑脸和情感",
+        "单眼吐舌",
+        "吐舌脸"
+      ],
+      "en": [
+        "winking",
+        "face",
+        "with",
+        "tongue"
+      ]
+    }
+  },
+  {
+    "emoji": "🤪",
+    "name": "zany_face",
+    "shortcode": ":zany_face:",
+    "category": "笑脸和情感",
+    "subcategory": "吐舌脸",
+    "description": {
+      "zh": "滑稽",
+      "en": "zany face"
+    },
+    "keywords": {
+      "zh": [
+        "大眼",
+        "小眼",
+        "滑稽的脸",
+        "疯狂的脸",
+        "笑脸和情感",
+        "滑稽",
+        "吐舌脸"
+      ],
+      "en": [
+        "zany",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😝",
+    "name": "stuck_out_tongue_closed_eyes",
+    "shortcode": ":stuck_out_tongue_closed_eyes:",
+    "category": "笑脸和情感",
+    "subcategory": "吐舌脸",
+    "description": {
+      "zh": "眯眼吐舌",
+      "en": "squinting face with tongue"
+    },
+    "keywords": {
+      "zh": [
+        "可怕",
+        "眼睛",
+        "笑脸和情感",
+        "眯眼吐舌",
+        "吐舌脸"
+      ],
+      "en": [
+        "squinting",
+        "face",
+        "with",
+        "tongue"
+      ]
+    }
+  },
+  {
+    "emoji": "🤑",
+    "name": "money_mouth_face",
+    "shortcode": ":money_mouth_face:",
+    "category": "笑脸和情感",
+    "subcategory": "吐舌脸",
+    "description": {
+      "zh": "发财",
+      "en": "money-mouth face"
+    },
+    "keywords": {
+      "zh": [
+        "拜金",
+        "见钱眼开",
+        "钱",
+        "笑脸和情感",
+        "发财",
+        "吐舌脸"
+      ],
+      "en": [
+        "money-mouth",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🤗",
+    "name": "hugs",
+    "shortcode": ":hugs:",
+    "category": "笑脸和情感",
+    "subcategory": "帯手脸",
+    "description": {
+      "zh": "抱抱",
+      "en": "hugging face"
+    },
+    "keywords": {
+      "zh": [
+        "拥抱",
+        "笑脸和情感",
+        "抱抱",
+        "帯手脸"
+      ],
+      "en": [
+        "hugging",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🤭",
+    "name": "hand_over_mouth",
+    "shortcode": ":hand_over_mouth:",
+    "category": "笑脸和情感",
+    "subcategory": "帯手脸",
+    "description": {
+      "zh": "不说",
+      "en": "face with hand over mouth"
+    },
+    "keywords": {
+      "zh": [
+        "哎呀",
+        "笑脸和情感",
+        "不说",
+        "帯手脸"
+      ],
+      "en": [
+        "face",
+        "with",
+        "hand",
+        "over",
+        "mouth"
+      ]
+    }
+  },
+  {
+    "emoji": "🤫",
+    "name": "shushing_face",
+    "shortcode": ":shushing_face:",
+    "category": "笑脸和情感",
+    "subcategory": "帯手脸",
+    "description": {
+      "zh": "安静的脸",
+      "en": "shushing face"
+    },
+    "keywords": {
+      "zh": [
+        "嘘",
+        "笑脸和情感",
+        "安静的脸",
+        "帯手脸"
+      ],
+      "en": [
+        "shushing",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🤔",
+    "name": "thinking",
+    "shortcode": ":thinking:",
+    "category": "笑脸和情感",
+    "subcategory": "帯手脸",
+    "description": {
+      "zh": "想一想",
+      "en": "thinking face"
+    },
+    "keywords": {
+      "zh": [
+        "思考",
+        "笑脸和情感",
+        "想一想",
+        "帯手脸"
+      ],
+      "en": [
+        "thinking",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🤐",
+    "name": "zipper_mouth_face",
+    "shortcode": ":zipper_mouth_face:",
+    "category": "笑脸和情感",
+    "subcategory": "中性脸-怀疑脸",
+    "description": {
+      "zh": "闭嘴",
+      "en": "zipper-mouth face"
+    },
+    "keywords": {
+      "zh": [
+        "笑脸和情感",
+        "闭嘴",
+        "中性脸-怀疑脸"
+      ],
+      "en": [
+        "zipper-mouth",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🤨",
+    "name": "raised_eyebrow",
+    "shortcode": ":raised_eyebrow:",
+    "category": "笑脸和情感",
+    "subcategory": "中性脸-怀疑脸",
+    "description": {
+      "zh": "挑眉",
+      "en": "face with raised eyebrow"
+    },
+    "keywords": {
+      "zh": [
+        "不信任",
+        "眉毛上挑的脸",
+        "笑脸和情感",
+        "挑眉",
+        "中性脸-怀疑脸"
+      ],
+      "en": [
+        "face",
+        "with",
+        "raised",
+        "eyebrow"
+      ]
+    }
+  },
+  {
+    "emoji": "😐",
+    "name": "neutral_face",
+    "shortcode": ":neutral_face:",
+    "category": "笑脸和情感",
+    "subcategory": "中性脸-怀疑脸",
+    "description": {
+      "zh": "冷漠",
+      "en": "neutral face"
+    },
+    "keywords": {
+      "zh": [
+        "面无表情",
+        "笑脸和情感",
+        "冷漠",
+        "中性脸-怀疑脸"
+      ],
+      "en": [
+        "neutral",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😑",
+    "name": "expressionless",
+    "shortcode": ":expressionless:",
+    "category": "笑脸和情感",
+    "subcategory": "中性脸-怀疑脸",
+    "description": {
+      "zh": "无语",
+      "en": "expressionless face"
+    },
+    "keywords": {
+      "zh": [
+        "茫然",
+        "面无表情",
+        "笑脸和情感",
+        "无语",
+        "中性脸-怀疑脸"
+      ],
+      "en": [
+        "expressionless",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😶",
+    "name": "no_mouth",
+    "shortcode": ":no_mouth:",
+    "category": "笑脸和情感",
+    "subcategory": "中性脸-怀疑脸",
+    "description": {
+      "zh": "沉默",
+      "en": "face without mouth"
+    },
+    "keywords": {
+      "zh": [
+        "嘴",
+        "安静",
+        "笑脸和情感",
+        "沉默",
+        "中性脸-怀疑脸"
+      ],
+      "en": [
+        "face",
+        "without",
+        "mouth"
+      ]
+    }
+  },
+  {
+    "emoji": "😏",
+    "name": "smirk",
+    "shortcode": ":smirk:",
+    "category": "笑脸和情感",
+    "subcategory": "中性脸-怀疑脸",
+    "description": {
+      "zh": "得意",
+      "en": "smirking face"
+    },
+    "keywords": {
+      "zh": [
+        "假笑",
+        "笑脸和情感",
+        "得意",
+        "中性脸-怀疑脸"
+      ],
+      "en": [
+        "smirking",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😒",
+    "name": "unamused",
+    "shortcode": ":unamused:",
+    "category": "笑脸和情感",
+    "subcategory": "中性脸-怀疑脸",
+    "description": {
+      "zh": "不高兴",
+      "en": "unamused face"
+    },
+    "keywords": {
+      "zh": [
+        "不屑",
+        "不服",
+        "郁闷",
+        "鄙视",
+        "笑脸和情感",
+        "不高兴",
+        "中性脸-怀疑脸"
+      ],
+      "en": [
+        "unamused",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🙄",
+    "name": "roll_eyes",
+    "shortcode": ":roll_eyes:",
+    "category": "笑脸和情感",
+    "subcategory": "中性脸-怀疑脸",
+    "description": {
+      "zh": "翻白眼",
+      "en": "face with rolling eyes"
+    },
+    "keywords": {
+      "zh": [
+        "无语",
+        "笑脸和情感",
+        "翻白眼",
+        "中性脸-怀疑脸"
+      ],
+      "en": [
+        "face",
+        "with",
+        "rolling",
+        "eyes"
+      ]
+    }
+  },
+  {
+    "emoji": "😬",
+    "name": "grimacing",
+    "shortcode": ":grimacing:",
+    "category": "笑脸和情感",
+    "subcategory": "中性脸-怀疑脸",
+    "description": {
+      "zh": "龇牙咧嘴",
+      "en": "grimacing face"
+    },
+    "keywords": {
+      "zh": [
+        "咬牙切齿",
+        "露齿",
+        "鬼脸",
+        "笑脸和情感",
+        "龇牙咧嘴",
+        "中性脸-怀疑脸"
+      ],
+      "en": [
+        "grimacing",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🤥",
+    "name": "lying_face",
+    "shortcode": ":lying_face:",
+    "category": "笑脸和情感",
+    "subcategory": "中性脸-怀疑脸",
+    "description": {
+      "zh": "说谎",
+      "en": "lying face"
+    },
+    "keywords": {
+      "zh": [
+        "匹诺曹",
+        "长鼻子",
+        "笑脸和情感",
+        "说谎",
+        "中性脸-怀疑脸"
+      ],
+      "en": [
+        "lying",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😌",
+    "name": "relieved",
+    "shortcode": ":relieved:",
+    "category": "笑脸和情感",
+    "subcategory": "睡脸",
+    "description": {
+      "zh": "松了口气",
+      "en": "relieved face"
+    },
+    "keywords": {
+      "zh": [
+        "如释重负",
+        "松口气",
+        "笑脸和情感",
+        "松了口气",
+        "睡脸"
+      ],
+      "en": [
+        "relieved",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😔",
+    "name": "pensive",
+    "shortcode": ":pensive:",
+    "category": "笑脸和情感",
+    "subcategory": "睡脸",
+    "description": {
+      "zh": "沉思",
+      "en": "pensive face"
+    },
+    "keywords": {
+      "zh": [
+        "心事重重",
+        "笑脸和情感",
+        "沉思",
+        "睡脸"
+      ],
+      "en": [
+        "pensive",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😪",
+    "name": "sleepy",
+    "shortcode": ":sleepy:",
+    "category": "笑脸和情感",
+    "subcategory": "睡脸",
+    "description": {
+      "zh": "困",
+      "en": "sleepy face"
+    },
+    "keywords": {
+      "zh": [
+        "睡觉",
+        "瞌睡",
+        "笑脸和情感",
+        "困",
+        "睡脸"
+      ],
+      "en": [
+        "sleepy",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🤤",
+    "name": "drooling_face",
+    "shortcode": ":drooling_face:",
+    "category": "笑脸和情感",
+    "subcategory": "睡脸",
+    "description": {
+      "zh": "流口水",
+      "en": "drooling face"
+    },
+    "keywords": {
+      "zh": [
+        "垂涎三尺",
+        "笑脸和情感",
+        "流口水",
+        "睡脸"
+      ],
+      "en": [
+        "drooling",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😴",
+    "name": "sleeping",
+    "shortcode": ":sleeping:",
+    "category": "笑脸和情感",
+    "subcategory": "睡脸",
+    "description": {
+      "zh": "睡着了",
+      "en": "sleeping face"
+    },
+    "keywords": {
+      "zh": [
+        "呼噜",
+        "打呼",
+        "笑脸和情感",
+        "睡着了",
+        "睡脸"
+      ],
+      "en": [
+        "sleeping",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😷",
+    "name": "mask",
+    "shortcode": ":mask:",
+    "category": "笑脸和情感",
+    "subcategory": "病脸",
+    "description": {
+      "zh": "感冒",
+      "en": "face with medical mask"
+    },
+    "keywords": {
+      "zh": [
+        "医生",
+        "口罩",
+        "生病",
+        "笑脸和情感",
+        "感冒",
+        "病脸"
+      ],
+      "en": [
+        "face",
+        "with",
+        "medical",
+        "mask"
+      ]
+    }
+  },
+  {
+    "emoji": "🤒",
+    "name": "face_with_thermometer",
+    "shortcode": ":face_with_thermometer:",
+    "category": "笑脸和情感",
+    "subcategory": "病脸",
+    "description": {
+      "zh": "发烧",
+      "en": "face with thermometer"
+    },
+    "keywords": {
+      "zh": [
+        "体温计",
+        "温度计",
+        "生病",
+        "笑脸和情感",
+        "发烧",
+        "病脸"
+      ],
+      "en": [
+        "face",
+        "with",
+        "thermometer"
+      ]
+    }
+  },
+  {
+    "emoji": "🤕",
+    "name": "face_with_head_bandage",
+    "shortcode": ":face_with_head_bandage:",
+    "category": "笑脸和情感",
+    "subcategory": "病脸",
+    "description": {
+      "zh": "受伤",
+      "en": "face with head-bandage"
+    },
+    "keywords": {
+      "zh": [
+        "打绷带",
+        "笑脸和情感",
+        "受伤",
+        "病脸"
+      ],
+      "en": [
+        "face",
+        "with",
+        "head-bandage"
+      ]
+    }
+  },
+  {
+    "emoji": "🤢",
+    "name": "nauseated_face",
+    "shortcode": ":nauseated_face:",
+    "category": "笑脸和情感",
+    "subcategory": "病脸",
+    "description": {
+      "zh": "恶心",
+      "en": "nauseated face"
+    },
+    "keywords": {
+      "zh": [
+        "吐",
+        "呕",
+        "笑脸和情感",
+        "恶心",
+        "病脸"
+      ],
+      "en": [
+        "nauseated",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🤮",
+    "name": "vomiting_face",
+    "shortcode": ":vomiting_face:",
+    "category": "笑脸和情感",
+    "subcategory": "病脸",
+    "description": {
+      "zh": "呕吐",
+      "en": "face vomiting"
+    },
+    "keywords": {
+      "zh": [
+        "不舒服",
+        "笑脸和情感",
+        "呕吐",
+        "病脸"
+      ],
+      "en": [
+        "face",
+        "vomiting"
+      ]
+    }
+  },
+  {
+    "emoji": "🤧",
+    "name": "sneezing_face",
+    "shortcode": ":sneezing_face:",
+    "category": "笑脸和情感",
+    "subcategory": "病脸",
+    "description": {
+      "zh": "打喷嚏",
+      "en": "sneezing face"
+    },
+    "keywords": {
+      "zh": [
+        "鼻涕",
+        "笑脸和情感",
+        "打喷嚏",
+        "病脸"
+      ],
+      "en": [
+        "sneezing",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🥵",
+    "name": "hot_face",
+    "shortcode": ":hot_face:",
+    "category": "笑脸和情感",
+    "subcategory": "病脸",
+    "description": {
+      "zh": "脸发烧",
+      "en": "hot face"
+    },
+    "keywords": {
+      "zh": [
+        "出汗",
+        "发热",
+        "心狂跳",
+        "脸红",
+        "笑脸和情感",
+        "脸发烧",
+        "病脸"
+      ],
+      "en": [
+        "hot",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🥶",
+    "name": "cold_face",
+    "shortcode": ":cold_face:",
+    "category": "笑脸和情感",
+    "subcategory": "病脸",
+    "description": {
+      "zh": "冷脸",
+      "en": "cold face"
+    },
+    "keywords": {
+      "zh": [
+        "冷冰冰",
+        "冻僵",
+        "满面寒霜",
+        "笑脸和情感",
+        "冷脸",
+        "病脸"
+      ],
+      "en": [
+        "cold",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🥴",
+    "name": "woozy_face",
+    "shortcode": ":woozy_face:",
+    "category": "笑脸和情感",
+    "subcategory": "病脸",
+    "description": {
+      "zh": "头昏眼花",
+      "en": "woozy face"
+    },
+    "keywords": {
+      "zh": [
+        "嘴唇颤抖",
+        "头晕眼花",
+        "微醺",
+        "醉醺醺",
+        "笑脸和情感",
+        "头昏眼花",
+        "病脸"
+      ],
+      "en": [
+        "woozy",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😵",
+    "name": "dizzy_face",
+    "shortcode": ":dizzy_face:",
+    "category": "笑脸和情感",
+    "subcategory": "病脸",
+    "description": {
+      "zh": "晕头转向",
+      "en": "knocked-out face"
+    },
+    "keywords": {
+      "zh": [
+        "头晕眼花",
+        "笑脸和情感",
+        "晕头转向",
+        "病脸"
+      ],
+      "en": [
+        "knocked-out",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🤯",
+    "name": "exploding_head",
+    "shortcode": ":exploding_head:",
+    "category": "笑脸和情感",
+    "subcategory": "病脸",
+    "description": {
+      "zh": "爆炸头",
+      "en": "exploding head"
+    },
+    "keywords": {
+      "zh": [
+        "震惊",
+        "笑脸和情感",
+        "爆炸头",
+        "病脸"
+      ],
+      "en": [
+        "exploding",
+        "head"
+      ]
+    }
+  },
+  {
+    "emoji": "🤠",
+    "name": "cowboy_hat_face",
+    "shortcode": ":cowboy_hat_face:",
+    "category": "笑脸和情感",
+    "subcategory": "带帽脸",
+    "description": {
+      "zh": "牛仔帽脸",
+      "en": "cowboy hat face"
+    },
+    "keywords": {
+      "zh": [
+        "笑脸和情感",
+        "牛仔帽脸",
+        "带帽脸"
+      ],
+      "en": [
+        "cowboy",
+        "hat",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🥳",
+    "name": "partying_face",
+    "shortcode": ":partying_face:",
+    "category": "笑脸和情感",
+    "subcategory": "带帽脸",
+    "description": {
+      "zh": "聚会笑脸",
+      "en": "partying face"
+    },
+    "keywords": {
+      "zh": [
+        "号角",
+        "帽子",
+        "庆祝",
+        "笑脸和情感",
+        "聚会笑脸",
+        "带帽脸"
+      ],
+      "en": [
+        "partying",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😎",
+    "name": "sunglasses",
+    "shortcode": ":sunglasses:",
+    "category": "笑脸和情感",
+    "subcategory": "眼镜脸",
+    "description": {
+      "zh": "墨镜笑脸",
+      "en": "smiling face with sunglasses"
+    },
+    "keywords": {
+      "zh": [
+        "太阳镜",
+        "酷",
+        "笑脸和情感",
+        "墨镜笑脸",
+        "眼镜脸"
+      ],
+      "en": [
+        "smiling",
+        "face",
+        "with",
+        "sunglasses"
+      ]
+    }
+  },
+  {
+    "emoji": "🤓",
+    "name": "nerd_face",
+    "shortcode": ":nerd_face:",
+    "category": "笑脸和情感",
+    "subcategory": "眼镜脸",
+    "description": {
+      "zh": "书呆子脸",
+      "en": "nerd face"
+    },
+    "keywords": {
+      "zh": [
+        "奇葩",
+        "笑脸和情感",
+        "书呆子脸",
+        "眼镜脸"
+      ],
+      "en": [
+        "nerd",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🧐",
+    "name": "monocle_face",
+    "shortcode": ":monocle_face:",
+    "category": "笑脸和情感",
+    "subcategory": "眼镜脸",
+    "description": {
+      "zh": "带单片眼镜的脸",
+      "en": "face with monocle"
+    },
+    "keywords": {
+      "zh": [
+        "古板",
+        "笑脸和情感",
+        "带单片眼镜的脸",
+        "眼镜脸"
+      ],
+      "en": [
+        "face",
+        "with",
+        "monocle"
+      ]
+    }
+  },
+  {
+    "emoji": "😕",
+    "name": "confused",
+    "shortcode": ":confused:",
+    "category": "笑脸和情感",
+    "subcategory": "担忧脸",
+    "description": {
+      "zh": "困扰",
+      "en": "confused face"
+    },
+    "keywords": {
+      "zh": [
+        "不懂",
+        "困惑",
+        "疑惑",
+        "笑脸和情感",
+        "困扰",
+        "担忧脸"
+      ],
+      "en": [
+        "confused",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😟",
+    "name": "worried",
+    "shortcode": ":worried:",
+    "category": "笑脸和情感",
+    "subcategory": "担忧脸",
+    "description": {
+      "zh": "担心",
+      "en": "worried face"
+    },
+    "keywords": {
+      "zh": [
+        "不高兴",
+        "伤心",
+        "焦虑",
+        "笑脸和情感",
+        "担心",
+        "担忧脸"
+      ],
+      "en": [
+        "worried",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🙁",
+    "name": "slightly_frowning_face",
+    "shortcode": ":slightly_frowning_face:",
+    "category": "笑脸和情感",
+    "subcategory": "担忧脸",
+    "description": {
+      "zh": "微微不满",
+      "en": "slightly frowning face"
+    },
+    "keywords": {
+      "zh": [
+        "不开心",
+        "不高兴",
+        "委屈",
+        "心情不好",
+        "笑脸和情感",
+        "微微不满",
+        "担忧脸"
+      ],
+      "en": [
+        "slightly",
+        "frowning",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😮",
+    "name": "open_mouth",
+    "shortcode": ":open_mouth:",
+    "category": "笑脸和情感",
+    "subcategory": "担忧脸",
+    "description": {
+      "zh": "吃惊",
+      "en": "face with open mouth"
+    },
+    "keywords": {
+      "zh": [
+        "同情",
+        "啊",
+        "笑脸和情感",
+        "吃惊",
+        "担忧脸"
+      ],
+      "en": [
+        "face",
+        "with",
+        "open",
+        "mouth"
+      ]
+    }
+  },
+  {
+    "emoji": "😯",
+    "name": "hushed",
+    "shortcode": ":hushed:",
+    "category": "笑脸和情感",
+    "subcategory": "担忧脸",
+    "description": {
+      "zh": "缄默",
+      "en": "hushed face"
+    },
+    "keywords": {
+      "zh": [
+        "吃惊",
+        "笑脸和情感",
+        "缄默",
+        "担忧脸"
+      ],
+      "en": [
+        "hushed",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😲",
+    "name": "astonished",
+    "shortcode": ":astonished:",
+    "category": "笑脸和情感",
+    "subcategory": "担忧脸",
+    "description": {
+      "zh": "震惊",
+      "en": "astonished face"
+    },
+    "keywords": {
+      "zh": [
+        "惊讶",
+        "笑脸和情感",
+        "震惊",
+        "担忧脸"
+      ],
+      "en": [
+        "astonished",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😳",
+    "name": "flushed",
+    "shortcode": ":flushed:",
+    "category": "笑脸和情感",
+    "subcategory": "担忧脸",
+    "description": {
+      "zh": "脸红",
+      "en": "flushed face"
+    },
+    "keywords": {
+      "zh": [
+        "困惑",
+        "害羞",
+        "羞涩",
+        "茫然",
+        "迷茫",
+        "笑脸和情感",
+        "脸红",
+        "担忧脸"
+      ],
+      "en": [
+        "flushed",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🥺",
+    "name": "pleading_face",
+    "shortcode": ":pleading_face:",
+    "category": "笑脸和情感",
+    "subcategory": "担忧脸",
+    "description": {
+      "zh": "恳求的脸",
+      "en": "pleading face"
+    },
+    "keywords": {
+      "zh": [
+        "可怜兮兮的眼神",
+        "怜悯",
+        "祈求",
+        "笑脸和情感",
+        "恳求的脸",
+        "担忧脸"
+      ],
+      "en": [
+        "pleading",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😦",
+    "name": "frowning",
+    "shortcode": ":frowning:",
+    "category": "笑脸和情感",
+    "subcategory": "担忧脸",
+    "description": {
+      "zh": "啊",
+      "en": "frowning face with open mouth"
+    },
+    "keywords": {
+      "zh": [
+        "惊讶",
+        "目瞪口呆",
+        "笑脸和情感",
+        "啊",
+        "担忧脸"
+      ],
+      "en": [
+        "frowning",
+        "face",
+        "with",
+        "open",
+        "mouth"
+      ]
+    }
+  },
+  {
+    "emoji": "😧",
+    "name": "anguished",
+    "shortcode": ":anguished:",
+    "category": "笑脸和情感",
+    "subcategory": "担忧脸",
+    "description": {
+      "zh": "极度痛苦",
+      "en": "anguished face"
+    },
+    "keywords": {
+      "zh": [
+        "难受",
+        "笑脸和情感",
+        "极度痛苦",
+        "担忧脸"
+      ],
+      "en": [
+        "anguished",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😨",
+    "name": "fearful",
+    "shortcode": ":fearful:",
+    "category": "笑脸和情感",
+    "subcategory": "担忧脸",
+    "description": {
+      "zh": "害怕",
+      "en": "fearful face"
+    },
+    "keywords": {
+      "zh": [
+        "恐怖",
+        "恐惧",
+        "笑脸和情感",
+        "害怕",
+        "担忧脸"
+      ],
+      "en": [
+        "fearful",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😰",
+    "name": "cold_sweat",
+    "shortcode": ":cold_sweat:",
+    "category": "笑脸和情感",
+    "subcategory": "担忧脸",
+    "description": {
+      "zh": "冷汗",
+      "en": "anxious face with sweat"
+    },
+    "keywords": {
+      "zh": [
+        "无语",
+        "焦虑",
+        "紧张",
+        "笑脸和情感",
+        "冷汗",
+        "担忧脸"
+      ],
+      "en": [
+        "anxious",
+        "face",
+        "with",
+        "sweat"
+      ]
+    }
+  },
+  {
+    "emoji": "😥",
+    "name": "disappointed_relieved",
+    "shortcode": ":disappointed_relieved:",
+    "category": "笑脸和情感",
+    "subcategory": "担忧脸",
+    "description": {
+      "zh": "失望但如释重负",
+      "en": "sad but relieved face"
+    },
+    "keywords": {
+      "zh": [
+        "笑脸和情感",
+        "失望但如释重负",
+        "担忧脸"
+      ],
+      "en": [
+        "sad",
+        "but",
+        "relieved",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😢",
+    "name": "cry",
+    "shortcode": ":cry:",
+    "category": "笑脸和情感",
+    "subcategory": "担忧脸",
+    "description": {
+      "zh": "哭",
+      "en": "crying face"
+    },
+    "keywords": {
+      "zh": [
+        "伤心",
+        "泪",
+        "笑脸和情感",
+        "哭",
+        "担忧脸"
+      ],
+      "en": [
+        "crying",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😭",
+    "name": "sob",
+    "shortcode": ":sob:",
+    "category": "笑脸和情感",
+    "subcategory": "担忧脸",
+    "description": {
+      "zh": "放声大哭",
+      "en": "loudly crying face"
+    },
+    "keywords": {
+      "zh": [
+        "泪",
+        "痛哭",
+        "笑脸和情感",
+        "放声大哭",
+        "担忧脸"
+      ],
+      "en": [
+        "loudly",
+        "crying",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😱",
+    "name": "scream",
+    "shortcode": ":scream:",
+    "category": "笑脸和情感",
+    "subcategory": "担忧脸",
+    "description": {
+      "zh": "吓死了",
+      "en": "face screaming in fear"
+    },
+    "keywords": {
+      "zh": [
+        "害怕",
+        "尖叫",
+        "恐怖",
+        "笑脸和情感",
+        "吓死了",
+        "担忧脸"
+      ],
+      "en": [
+        "face",
+        "screaming",
+        "in",
+        "fear"
+      ]
+    }
+  },
+  {
+    "emoji": "😖",
+    "name": "confounded",
+    "shortcode": ":confounded:",
+    "category": "笑脸和情感",
+    "subcategory": "担忧脸",
+    "description": {
+      "zh": "困惑",
+      "en": "confounded face"
+    },
+    "keywords": {
+      "zh": [
+        "焦头烂额",
+        "纠结",
+        "笑脸和情感",
+        "困惑",
+        "担忧脸"
+      ],
+      "en": [
+        "confounded",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😣",
+    "name": "persevere",
+    "shortcode": ":persevere:",
+    "category": "笑脸和情感",
+    "subcategory": "担忧脸",
+    "description": {
+      "zh": "痛苦",
+      "en": "persevering face"
+    },
+    "keywords": {
+      "zh": [
+        "忍耐",
+        "难受",
+        "笑脸和情感",
+        "痛苦",
+        "担忧脸"
+      ],
+      "en": [
+        "persevering",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😞",
+    "name": "disappointed",
+    "shortcode": ":disappointed:",
+    "category": "笑脸和情感",
+    "subcategory": "担忧脸",
+    "description": {
+      "zh": "失望",
+      "en": "disappointed face"
+    },
+    "keywords": {
+      "zh": [
+        "不高兴",
+        "难过",
+        "笑脸和情感",
+        "失望",
+        "担忧脸"
+      ],
+      "en": [
+        "disappointed",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😓",
+    "name": "sweat",
+    "shortcode": ":sweat:",
+    "category": "笑脸和情感",
+    "subcategory": "担忧脸",
+    "description": {
+      "zh": "汗",
+      "en": "downcast face with sweat"
+    },
+    "keywords": {
+      "zh": [
+        "冷",
+        "尴尬",
+        "笑脸和情感",
+        "汗",
+        "担忧脸"
+      ],
+      "en": [
+        "downcast",
+        "face",
+        "with",
+        "sweat"
+      ]
+    }
+  },
+  {
+    "emoji": "😩",
+    "name": "weary",
+    "shortcode": ":weary:",
+    "category": "笑脸和情感",
+    "subcategory": "担忧脸",
+    "description": {
+      "zh": "累死了",
+      "en": "weary face"
+    },
+    "keywords": {
+      "zh": [
+        "疲倦",
+        "疲劳",
+        "疲惫",
+        "笑脸和情感",
+        "累死了",
+        "担忧脸"
+      ],
+      "en": [
+        "weary",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😫",
+    "name": "tired_face",
+    "shortcode": ":tired_face:",
+    "category": "笑脸和情感",
+    "subcategory": "担忧脸",
+    "description": {
+      "zh": "累",
+      "en": "tired face"
+    },
+    "keywords": {
+      "zh": [
+        "疲倦",
+        "疲劳",
+        "疲惫",
+        "笑脸和情感",
+        "累",
+        "担忧脸"
+      ],
+      "en": [
+        "tired",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🥱",
+    "name": "yawning_face",
+    "shortcode": ":yawning_face:",
+    "category": "笑脸和情感",
+    "subcategory": "担忧脸",
+    "description": {
+      "zh": "打呵欠",
+      "en": "yawning face"
+    },
+    "keywords": {
+      "zh": [
+        "哈欠",
+        "困",
+        "无聊",
+        "累",
+        "笑脸和情感",
+        "打呵欠",
+        "担忧脸"
+      ],
+      "en": [
+        "yawning",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😤",
+    "name": "triumph",
+    "shortcode": ":triumph:",
+    "category": "笑脸和情感",
+    "subcategory": "消极脸",
+    "description": {
+      "zh": "傲慢",
+      "en": "face with steam from nose"
+    },
+    "keywords": {
+      "zh": [
+        "胜利",
+        "自负",
+        "赢",
+        "趾高气昂",
+        "笑脸和情感",
+        "傲慢",
+        "消极脸"
+      ],
+      "en": [
+        "face",
+        "with",
+        "steam",
+        "from",
+        "nose"
+      ]
+    }
+  },
+  {
+    "emoji": "😡",
+    "name": "rage",
+    "shortcode": ":rage:",
+    "category": "笑脸和情感",
+    "subcategory": "消极脸",
+    "description": {
+      "zh": "怒火中烧",
+      "en": "pouting face"
+    },
+    "keywords": {
+      "zh": [
+        "发火",
+        "发飙",
+        "生气",
+        "笑脸和情感",
+        "怒火中烧",
+        "消极脸"
+      ],
+      "en": [
+        "pouting",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "😠",
+    "name": "angry",
+    "shortcode": ":angry:",
+    "category": "笑脸和情感",
+    "subcategory": "消极脸",
+    "description": {
+      "zh": "生气",
+      "en": "angry face"
+    },
+    "keywords": {
+      "zh": [
+        "愤怒",
+        "笑脸和情感",
+        "生气",
+        "消极脸"
+      ],
+      "en": [
+        "angry",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "🤬",
+    "name": "cursing_face",
+    "shortcode": ":cursing_face:",
+    "category": "笑脸和情感",
+    "subcategory": "消极脸",
+    "description": {
+      "zh": "嘴上有符号的脸",
+      "en": "face with symbols on mouth"
+    },
+    "keywords": {
+      "zh": [
+        "发誓",
+        "咒骂",
+        "笑脸和情感",
+        "嘴上有符号的脸",
+        "消极脸"
+      ],
+      "en": [
+        "face",
+        "with",
+        "symbols",
+        "on",
+        "mouth"
+      ]
+    }
+  },
+  {
+    "emoji": "😈",
+    "name": "smiling_imp",
+    "shortcode": ":smiling_imp:",
+    "category": "笑脸和情感",
+    "subcategory": "消极脸",
+    "description": {
+      "zh": "恶魔微笑",
+      "en": "smiling face with horns"
+    },
+    "keywords": {
+      "zh": [
+        "幻想",
+        "犄角",
+        "神话故事",
+        "笑脸和情感",
+        "恶魔微笑",
+        "消极脸"
+      ],
+      "en": [
+        "smiling",
+        "face",
+        "with",
+        "horns"
+      ]
+    }
+  },
+  {
+    "emoji": "👿",
+    "name": "imp",
+    "shortcode": ":imp:",
+    "category": "笑脸和情感",
+    "subcategory": "消极脸",
+    "description": {
+      "zh": "生气的恶魔",
+      "en": "angry face with horns"
+    },
+    "keywords": {
+      "zh": [
+        "幻想",
+        "顽童",
+        "笑脸和情感",
+        "生气的恶魔",
+        "消极脸"
+      ],
+      "en": [
+        "angry",
+        "face",
+        "with",
+        "horns"
+      ]
+    }
+  },
+  {
+    "emoji": "💀",
+    "name": "skull",
+    "shortcode": ":skull:",
+    "category": "笑脸和情感",
+    "subcategory": "消极脸",
+    "description": {
+      "zh": "头骨",
+      "en": "skull"
+    },
+    "keywords": {
+      "zh": [
+        "妖怪",
+        "死亡",
+        "神话故事",
+        "笑脸和情感",
+        "头骨",
+        "消极脸"
+      ],
+      "en": [
+        "skull"
+      ]
+    }
+  },
+  {
+    "emoji": "💩",
+    "name": "shit",
+    "shortcode": ":shit:",
+    "category": "笑脸和情感",
+    "subcategory": "装扮脸",
+    "description": {
+      "zh": "大便",
+      "en": "pile of poo"
+    },
+    "keywords": {
+      "zh": [
+        "屎",
+        "怪物",
+        "粑粑",
+        "笑脸和情感",
+        "大便",
+        "装扮脸"
+      ],
+      "en": [
+        "pile",
+        "of",
+        "poo"
+      ]
+    }
+  },
+  {
+    "emoji": "🤡",
+    "name": "clown_face",
+    "shortcode": ":clown_face:",
+    "category": "笑脸和情感",
+    "subcategory": "装扮脸",
+    "description": {
+      "zh": "小丑脸",
+      "en": "clown face"
+    },
+    "keywords": {
+      "zh": [
+        "笑脸和情感",
+        "小丑脸",
+        "装扮脸"
+      ],
+      "en": [
+        "clown",
+        "face"
+      ]
+    }
+  },
+  {
+    "emoji": "👹",
+    "name": "japanese_ogre",
+    "shortcode": ":japanese_ogre:",
+    "category": "笑脸和情感",
+    "subcategory": "装扮脸",
+    "description": {
+      "zh": "食人魔",
+      "en": "ogre"
+    },
+    "keywords": {
+      "zh": [
+        "妖怪",
+        "幻想",
+        "神话故事",
+        "鬼",
+        "笑脸和情感",
+        "食人魔",
+        "装扮脸"
+      ],
+      "en": [
+        "ogre"
+      ]
+    }
+  },
+  {
+    "emoji": "👺",
+    "name": "japanese_goblin",
+    "shortcode": ":japanese_goblin:",
+    "category": "笑脸和情感",
+    "subcategory": "装扮脸",
+    "description": {
+      "zh": "小妖精",
+      "en": "goblin"
+    },
+    "keywords": {
+      "zh": [
+        "妖怪",
+        "幻想",
+        "神话故事",
+        "笑脸和情感",
+        "小妖精",
+        "装扮脸"
+      ],
+      "en": [
+        "goblin"
+      ]
+    }
+  },
+  {
+    "emoji": "👻",
+    "name": "ghost",
+    "shortcode": ":ghost:",
+    "category": "笑脸和情感",
+    "subcategory": "装扮脸",
+    "description": {
+      "zh": "鬼",
+      "en": "ghost"
+    },
+    "keywords": {
+      "zh": [
+        "妖怪",
+        "幻想",
+        "幽灵",
+        "神话故事",
+        "笑脸和情感",
+        "鬼",
+        "装扮脸"
+      ],
+      "en": [
+        "ghost"
+      ]
+    }
+  },
+  {
+    "emoji": "👽",
+    "name": "alien",
+    "shortcode": ":alien:",
+    "category": "笑脸和情感",
+    "subcategory": "装扮脸",
+    "description": {
+      "zh": "外星人",
+      "en": "alien"
+    },
+    "keywords": {
+      "zh": [
+        "太空",
+        "幻想",
+        "星际",
+        "笑脸和情感",
+        "外星人",
+        "装扮脸"
+      ],
+      "en": [
+        "ufo",
+        "alien"
+      ]
+    }
+  },
+  {
+    "emoji": "👾",
+    "name": "space_invader",
+    "shortcode": ":space_invader:",
+    "category": "笑脸和情感",
+    "subcategory": "装扮脸",
+    "description": {
+      "zh": "外星怪物",
+      "en": "alien monster"
+    },
+    "keywords": {
+      "zh": [
+        "太空",
+        "星际",
+        "飞碟",
+        "笑脸和情感",
+        "外星怪物",
+        "装扮脸"
+      ],
+      "en": [
+        "ufo",
+        "alien",
+        "monster"
+      ]
+    }
+  },
+  {
+    "emoji": "🤖",
+    "name": "robot",
+    "shortcode": ":robot:",
+    "category": "笑脸和情感",
+    "subcategory": "装扮脸",
+    "description": {
+      "zh": "机器人",
+      "en": "robot"
+    },
+    "keywords": {
+      "zh": [
+        "怪物",
+        "笑脸和情感",
+        "机器人",
+        "装扮脸"
+      ],
+      "en": [
+        "robot"
+      ]
+    }
+  },
+  {
+    "emoji": "😺",
+    "name": "smiley_cat",
+    "shortcode": ":smiley_cat:",
+    "category": "笑脸和情感",
+    "subcategory": "猫咪脸",
+    "description": {
+      "zh": "大笑的猫",
+      "en": "grinning cat"
+    },
+    "keywords": {
+      "zh": [
+        "哈哈",
+        "猫脸",
+        "笑脸和情感",
+        "大笑的猫",
+        "猫咪脸"
+      ],
+      "en": [
+        "grinning",
+        "cat"
+      ]
+    }
+  },
+  {
+    "emoji": "😸",
+    "name": "smile_cat",
+    "shortcode": ":smile_cat:",
+    "category": "笑脸和情感",
+    "subcategory": "猫咪脸",
+    "description": {
+      "zh": "微笑的猫",
+      "en": "grinning cat with smiling eyes"
+    },
+    "keywords": {
+      "zh": [
+        "呵呵",
+        "猫脸",
+        "笑脸和情感",
+        "微笑的猫",
+        "猫咪脸"
+      ],
+      "en": [
+        "grinning",
+        "cat",
+        "with",
+        "smiling",
+        "eyes"
+      ]
+    }
+  },
+  {
+    "emoji": "😹",
+    "name": "joy_cat",
+    "shortcode": ":joy_cat:",
+    "category": "笑脸和情感",
+    "subcategory": "猫咪脸",
+    "description": {
+      "zh": "笑出眼泪的猫",
+      "en": "cat with tears of joy"
+    },
+    "keywords": {
+      "zh": [
+        "喜极而泣",
+        "快乐",
+        "猫脸",
+        "笑脸和情感",
+        "笑出眼泪的猫",
+        "猫咪脸"
+      ],
+      "en": [
+        "cat",
+        "with",
+        "tears",
+        "of",
+        "joy"
+      ]
+    }
+  },
+  {
+    "emoji": "😻",
+    "name": "heart_eyes_cat",
+    "shortcode": ":heart_eyes_cat:",
+    "category": "笑脸和情感",
+    "subcategory": "猫咪脸",
+    "description": {
+      "zh": "花痴的猫",
+      "en": "smiling cat with heart-eyes"
+    },
+    "keywords": {
+      "zh": [
+        "喜欢",
+        "心",
+        "猫脸",
+        "笑脸和情感",
+        "花痴的猫",
+        "猫咪脸"
+      ],
+      "en": [
+        "smiling",
+        "cat",
+        "with",
+        "heart-eyes"
+      ]
+    }
+  },
+  {
+    "emoji": "😼",
+    "name": "smirk_cat",
+    "shortcode": ":smirk_cat:",
+    "category": "笑脸和情感",
+    "subcategory": "猫咪脸",
+    "description": {
+      "zh": "奸笑的猫",
+      "en": "cat with wry smile"
+    },
+    "keywords": {
+      "zh": [
+        "猫脸",
+        "讽刺",
+        "笑脸和情感",
+        "奸笑的猫",
+        "猫咪脸"
+      ],
+      "en": [
+        "cat",
+        "with",
+        "wry",
+        "smile"
+      ]
+    }
+  },
+  {
+    "emoji": "😽",
+    "name": "kissing_cat",
+    "shortcode": ":kissing_cat:",
+    "category": "笑脸和情感",
+    "subcategory": "猫咪脸",
+    "description": {
+      "zh": "亲亲猫",
+      "en": "kissing cat"
+    },
+    "keywords": {
+      "zh": [
+        "吻",
+        "猫脸",
+        "笑脸和情感",
+        "亲亲猫",
+        "猫咪脸"
+      ],
+      "en": [
+        "kissing",
+        "cat"
+      ]
+    }
+  },
+  {
+    "emoji": "🙀",
+    "name": "scream_cat",
+    "shortcode": ":scream_cat:",
+    "category": "笑脸和情感",
+    "subcategory": "猫咪脸",
+    "description": {
+      "zh": "疲倦的猫",
+      "en": "weary cat"
+    },
+    "keywords": {
+      "zh": [
+        "惊讶",
+        "猫脸",
+        "累",
+        "笑脸和情感",
+        "疲倦的猫",
+        "猫咪脸"
+      ],
+      "en": [
+        "weary",
+        "cat"
+      ]
+    }
+  },
+  {
+    "emoji": "😿",
+    "name": "crying_cat_face",
+    "shortcode": ":crying_cat_face:",
+    "category": "笑脸和情感",
+    "subcategory": "猫咪脸",
+    "description": {
+      "zh": "哭泣的猫",
+      "en": "crying cat"
+    },
+    "keywords": {
+      "zh": [
+        "猫脸",
+        "眼泪",
+        "难过",
+        "笑脸和情感",
+        "哭泣的猫",
+        "猫咪脸"
+      ],
+      "en": [
+        "crying",
+        "cat"
+      ]
+    }
+  },
+  {
+    "emoji": "😾",
+    "name": "pouting_cat",
+    "shortcode": ":pouting_cat:",
+    "category": "笑脸和情感",
+    "subcategory": "猫咪脸",
+    "description": {
+      "zh": "生气的猫",
+      "en": "pouting cat"
+    },
+    "keywords": {
+      "zh": [
+        "猫脸",
+        "笑脸和情感",
+        "生气的猫",
+        "猫咪脸"
+      ],
+      "en": [
+        "pouting",
+        "cat"
+      ]
+    }
+  },
+  {
+    "emoji": "🙈",
+    "name": "see_no_evil",
+    "shortcode": ":see_no_evil:",
+    "category": "笑脸和情感",
+    "subcategory": "猴子脸",
+    "description": {
+      "zh": "非礼勿视",
+      "en": "see-no-evil monkey"
+    },
+    "keywords": {
+      "zh": [
+        "蒙住眼睛",
+        "蒙眼",
+        "笑脸和情感",
+        "非礼勿视",
+        "猴子脸"
+      ],
+      "en": [
+        "see-no-evil",
+        "monkey"
+      ]
+    }
+  },
+  {
+    "emoji": "🙉",
+    "name": "hear_no_evil",
+    "shortcode": ":hear_no_evil:",
+    "category": "笑脸和情感",
+    "subcategory": "猴子脸",
+    "description": {
+      "zh": "非礼勿听",
+      "en": "hear-no-evil monkey"
+    },
+    "keywords": {
+      "zh": [
+        "堵上耳朵",
+        "堵耳",
+        "笑脸和情感",
+        "非礼勿听",
+        "猴子脸"
+      ],
+      "en": [
+        "hear-no-evil",
+        "monkey"
+      ]
+    }
+  },
+  {
+    "emoji": "🙊",
+    "name": "speak_no_evil",
+    "shortcode": ":speak_no_evil:",
+    "category": "笑脸和情感",
+    "subcategory": "猴子脸",
+    "description": {
+      "zh": "非礼勿言",
+      "en": "speak-no-evil monkey"
+    },
+    "keywords": {
+      "zh": [
+        "捂上嘴巴",
+        "捂嘴",
+        "笑脸和情感",
+        "非礼勿言",
+        "猴子脸"
+      ],
+      "en": [
+        "speak-no-evil",
+        "monkey"
+      ]
+    }
+  },
+  {
+    "emoji": "💋",
+    "name": "kiss",
+    "shortcode": ":kiss:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "唇印",
+      "en": "kiss mark"
+    },
+    "keywords": {
+      "zh": [
+        "吻",
+        "浪漫",
+        "笑脸和情感",
+        "唇印",
+        "情感"
+      ],
+      "en": [
+        "kiss",
+        "mark"
+      ]
+    }
+  },
+  {
+    "emoji": "💌",
+    "name": "love_letter",
+    "shortcode": ":love_letter:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "情书",
+      "en": "love letter"
+    },
+    "keywords": {
+      "zh": [
+        "信",
+        "邮件",
+        "笑脸和情感",
+        "情书",
+        "情感"
+      ],
+      "en": [
+        "love",
+        "letter"
+      ]
+    }
+  },
+  {
+    "emoji": "💘",
+    "name": "cupid",
+    "shortcode": ":cupid:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "心中箭了",
+      "en": "heart with arrow"
+    },
+    "keywords": {
+      "zh": [
+        "丘比特",
+        "浪漫",
+        "爱情",
+        "红心",
+        "笑脸和情感",
+        "心中箭了",
+        "情感"
+      ],
+      "en": [
+        "heart",
+        "with",
+        "arrow"
+      ]
+    }
+  },
+  {
+    "emoji": "💝",
+    "name": "gift_heart",
+    "shortcode": ":gift_heart:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "系有缎带的心",
+      "en": "heart with ribbon"
+    },
+    "keywords": {
+      "zh": [
+        "爱的礼物",
+        "送你一颗心",
+        "笑脸和情感",
+        "系有缎带的心",
+        "情感"
+      ],
+      "en": [
+        "heart",
+        "with",
+        "ribbon"
+      ]
+    }
+  },
+  {
+    "emoji": "💖",
+    "name": "sparkling_heart",
+    "shortcode": ":sparkling_heart:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "闪亮的心",
+      "en": "sparkling heart"
+    },
+    "keywords": {
+      "zh": [
+        "激动",
+        "红心",
+        "笑脸和情感",
+        "闪亮的心",
+        "情感"
+      ],
+      "en": [
+        "sparkling",
+        "heart"
+      ]
+    }
+  },
+  {
+    "emoji": "💗",
+    "name": "heartpulse",
+    "shortcode": ":heartpulse:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "搏动的心",
+      "en": "growing heart"
+    },
+    "keywords": {
+      "zh": [
+        "激动",
+        "紧张",
+        "红心",
+        "笑脸和情感",
+        "搏动的心",
+        "情感"
+      ],
+      "en": [
+        "growing",
+        "heart"
+      ]
+    }
+  },
+  {
+    "emoji": "💓",
+    "name": "heartbeat",
+    "shortcode": ":heartbeat:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "心跳",
+      "en": "beating heart"
+    },
+    "keywords": {
+      "zh": [
+        "心动",
+        "爱",
+        "笑脸和情感",
+        "心跳",
+        "情感"
+      ],
+      "en": [
+        "beating",
+        "heart"
+      ]
+    }
+  },
+  {
+    "emoji": "💞",
+    "name": "revolving_hearts",
+    "shortcode": ":revolving_hearts:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "舞动的心",
+      "en": "revolving hearts"
+    },
+    "keywords": {
+      "zh": [
+        "旋转",
+        "涌动",
+        "跃动",
+        "笑脸和情感",
+        "舞动的心",
+        "情感"
+      ],
+      "en": [
+        "revolving",
+        "hearts"
+      ]
+    }
+  },
+  {
+    "emoji": "💕",
+    "name": "two_hearts",
+    "shortcode": ":two_hearts:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "两颗心",
+      "en": "two hearts"
+    },
+    "keywords": {
+      "zh": [
+        "爱情",
+        "笑脸和情感",
+        "两颗心",
+        "情感"
+      ],
+      "en": [
+        "two",
+        "hearts"
+      ]
+    }
+  },
+  {
+    "emoji": "💟",
+    "name": "heart_decoration",
+    "shortcode": ":heart_decoration:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "心型装饰",
+      "en": "heart decoration"
+    },
+    "keywords": {
+      "zh": [
+        "笑脸和情感",
+        "心型装饰",
+        "情感"
+      ],
+      "en": [
+        "heart",
+        "decoration"
+      ]
+    }
+  },
+  {
+    "emoji": "💔",
+    "name": "broken_heart",
+    "shortcode": ":broken_heart:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "心碎",
+      "en": "broken heart"
+    },
+    "keywords": {
+      "zh": [
+        "伤心",
+        "笑脸和情感",
+        "心碎",
+        "情感"
+      ],
+      "en": [
+        "broken",
+        "heart"
+      ]
+    }
+  },
+  {
+    "emoji": "🧡",
+    "name": "orange_heart",
+    "shortcode": ":orange_heart:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "橙心",
+      "en": "orange heart"
+    },
+    "keywords": {
+      "zh": [
+        "笑脸和情感",
+        "橙心",
+        "情感"
+      ],
+      "en": [
+        "orange",
+        "heart"
+      ]
+    }
+  },
+  {
+    "emoji": "💛",
+    "name": "yellow_heart",
+    "shortcode": ":yellow_heart:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "黄心",
+      "en": "yellow heart"
+    },
+    "keywords": {
+      "zh": [
+        "笑脸和情感",
+        "黄心",
+        "情感"
+      ],
+      "en": [
+        "yellow",
+        "heart"
+      ]
+    }
+  },
+  {
+    "emoji": "💚",
+    "name": "green_heart",
+    "shortcode": ":green_heart:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "绿心",
+      "en": "green heart"
+    },
+    "keywords": {
+      "zh": [
+        "笑脸和情感",
+        "绿心",
+        "情感"
+      ],
+      "en": [
+        "green",
+        "heart"
+      ]
+    }
+  },
+  {
+    "emoji": "💙",
+    "name": "blue_heart",
+    "shortcode": ":blue_heart:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "蓝心",
+      "en": "blue heart"
+    },
+    "keywords": {
+      "zh": [
+        "笑脸和情感",
+        "蓝心",
+        "情感"
+      ],
+      "en": [
+        "blue",
+        "heart"
+      ]
+    }
+  },
+  {
+    "emoji": "💜",
+    "name": "purple_heart",
+    "shortcode": ":purple_heart:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "紫心",
+      "en": "purple heart"
+    },
+    "keywords": {
+      "zh": [
+        "笑脸和情感",
+        "紫心",
+        "情感"
+      ],
+      "en": [
+        "purple",
+        "heart"
+      ]
+    }
+  },
+  {
+    "emoji": "🤎",
+    "name": "brown_heart",
+    "shortcode": ":brown_heart:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "棕心",
+      "en": "brown heart"
+    },
+    "keywords": {
+      "zh": [
+        "心形",
+        "笑脸和情感",
+        "棕心",
+        "情感"
+      ],
+      "en": [
+        "brown",
+        "heart"
+      ]
+    }
+  },
+  {
+    "emoji": "🖤",
+    "name": "black_heart",
+    "shortcode": ":black_heart:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "黑心",
+      "en": "black heart"
+    },
+    "keywords": {
+      "zh": [
+        "邪恶",
+        "黑色",
+        "笑脸和情感",
+        "黑心",
+        "情感"
+      ],
+      "en": [
+        "black",
+        "heart"
+      ]
+    }
+  },
+  {
+    "emoji": "🤍",
+    "name": "white_heart",
+    "shortcode": ":white_heart:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "白心",
+      "en": "white heart"
+    },
+    "keywords": {
+      "zh": [
+        "心形",
+        "笑脸和情感",
+        "白心",
+        "情感"
+      ],
+      "en": [
+        "white",
+        "heart"
+      ]
+    }
+  },
+  {
+    "emoji": "💯",
+    "name": "100",
+    "shortcode": ":100:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "一百分",
+      "en": "hundred points"
+    },
+    "keywords": {
+      "zh": [
+        "满分",
+        "考试",
+        "笑脸和情感",
+        "一百分",
+        "情感"
+      ],
+      "en": [
+        "hundred",
+        "points"
+      ]
+    }
+  },
+  {
+    "emoji": "💢",
+    "name": "anger",
+    "shortcode": ":anger:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "怒",
+      "en": "anger symbol"
+    },
+    "keywords": {
+      "zh": [
+        "火大",
+        "生气",
+        "青筋",
+        "笑脸和情感",
+        "怒",
+        "情感"
+      ],
+      "en": [
+        "anger",
+        "symbol"
+      ]
+    }
+  },
+  {
+    "emoji": "💥",
+    "name": "collision",
+    "shortcode": ":collision:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "爆炸",
+      "en": "collision"
+    },
+    "keywords": {
+      "zh": [
+        "笑脸和情感",
+        "爆炸",
+        "情感"
+      ],
+      "en": [
+        "collision"
+      ]
+    }
+  },
+  {
+    "emoji": "💫",
+    "name": "dizzy",
+    "shortcode": ":dizzy:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "头晕",
+      "en": "dizzy"
+    },
+    "keywords": {
+      "zh": [
+        "头晕目眩",
+        "笑脸和情感",
+        "头晕",
+        "情感"
+      ],
+      "en": [
+        "dizzy"
+      ]
+    }
+  },
+  {
+    "emoji": "💦",
+    "name": "sweat_drops",
+    "shortcode": ":sweat_drops:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "汗滴",
+      "en": "sweat droplets"
+    },
+    "keywords": {
+      "zh": [
+        "笑脸和情感",
+        "汗滴",
+        "情感"
+      ],
+      "en": [
+        "sweat",
+        "droplets"
+      ]
+    }
+  },
+  {
+    "emoji": "💨",
+    "name": "dash",
+    "shortcode": ":dash:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "尾气",
+      "en": "dashing away"
+    },
+    "keywords": {
+      "zh": [
+        "疾驰而去",
+        "飞奔而去",
+        "笑脸和情感",
+        "尾气",
+        "情感"
+      ],
+      "en": [
+        "dashing",
+        "away"
+      ]
+    }
+  },
+  {
+    "emoji": "💣",
+    "name": "bomb",
+    "shortcode": ":bomb:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "炸弹",
+      "en": "bomb"
+    },
+    "keywords": {
+      "zh": [
+        "爆炸",
+        "笑脸和情感",
+        "炸弹",
+        "情感"
+      ],
+      "en": [
+        "bomb"
+      ]
+    }
+  },
+  {
+    "emoji": "💬",
+    "name": "speech_balloon",
+    "shortcode": ":speech_balloon:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "话语气泡",
+      "en": "speech balloon"
+    },
+    "keywords": {
+      "zh": [
+        "发言",
+        "对话框",
+        "笑脸和情感",
+        "话语气泡",
+        "情感"
+      ],
+      "en": [
+        "speech",
+        "balloon"
+      ]
+    }
+  },
+  {
+    "emoji": "💭",
+    "name": "thought_balloon",
+    "shortcode": ":thought_balloon:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "内心活动气泡",
+      "en": "thought balloon"
+    },
+    "keywords": {
+      "zh": [
+        "对话框",
+        "思想活动",
+        "笑脸和情感",
+        "内心活动气泡",
+        "情感"
+      ],
+      "en": [
+        "thought",
+        "balloon"
+      ]
+    }
+  },
+  {
+    "emoji": "💤",
+    "name": "zzz",
+    "shortcode": ":zzz:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "睡着",
+      "en": "zzz"
+    },
+    "keywords": {
+      "zh": [
+        "呼噜",
+        "打呼",
+        "笑脸和情感",
+        "睡着",
+        "情感"
+      ],
+      "en": [
+        "zzz"
+      ]
+    }
+  },
+  {
+    "emoji": "👁️‍🗨️",
+    "name": "eye_speech_bubble",
+    "shortcode": ":eye_speech_bubble:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "讲话泡泡中的眼睛",
+      "en": "eye in speech bubble"
+    },
+    "keywords": {
+      "zh": [
+        "眼睛对话框",
+        "笑脸和情感",
+        "讲话泡泡中的眼睛",
+        "情感"
+      ],
+      "en": [
+        "eye",
+        "in",
+        "speech",
+        "bubble"
+      ]
+    }
+  }
+]
