@@ -1,6 +1,6 @@
 {
   "name": "tinker-token-usage",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Token Usage Statistics Plugin for Tinker",
   "files": [
     "dist/",

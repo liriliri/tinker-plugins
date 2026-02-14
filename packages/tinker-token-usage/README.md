@@ -2,7 +2,7 @@
 
 A token usage statistics plugin for [TINKER](https://github.com/liriliri/tinker), supporting Claude Code and Codex token usage tracking.
 
-![Screenshot](https://raw.githubusercontent.com/liriliri/tinker-token-usage/master/screenshot.png)
+![Screenshot](https://raw.githubusercontent.com/liriliri/tinker-plugins/master/packages/tinker-token-usage/screenshot.png)
 
 ## Features
 
