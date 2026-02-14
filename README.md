@@ -18,7 +18,7 @@ All plugins in the list can be installed to TINKER by running `npm i -g tinker-x
     </tr>
     <tr>
       <th><img src="./packages/tinker-token-usage/screenshot.png"/></th>
-      <th><img src="./packages/tinker-whois/screenshot.png"/></th>
+      <th><img src="https://raw.githubusercontent.com/liriliri/tinker-whois/master/screenshot.png"/></th>
     </tr>
   </tbody>
 </table>
