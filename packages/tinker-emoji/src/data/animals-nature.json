@@ -2,9 +2,6 @@
   {
     "emoji": "🐵",
     "name": "monkey_face",
-    "shortcode": ":monkey_face:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "猴头",
       "en": "monkey face"
@@ -24,9 +21,6 @@
   {
     "emoji": "🐒",
     "name": "monkey",
-    "shortcode": ":monkey:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "猴子",
       "en": "monkey"
@@ -45,9 +39,6 @@
   {
     "emoji": "🦍",
     "name": "gorilla",
-    "shortcode": ":gorilla:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "大猩猩",
       "en": "gorilla"
@@ -66,9 +57,6 @@
   {
     "emoji": "🦧",
     "name": "orangutan",
-    "shortcode": ":orangutan:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "红毛猩猩",
       "en": "orangutan"
@@ -89,9 +77,6 @@
   {
     "emoji": "🐶",
     "name": "dog",
-    "shortcode": ":dog:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "狗脸",
       "en": "dog face"
@@ -112,9 +97,6 @@
   {
     "emoji": "🐕",
     "name": "dog2",
-    "shortcode": ":dog2:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "狗",
       "en": "dog"
@@ -134,9 +116,6 @@
   {
     "emoji": "🦮",
     "name": "guide_dog",
-    "shortcode": ":guide_dog:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "导盲犬",
       "en": "guide dog"
@@ -158,9 +137,6 @@
   {
     "emoji": "🐩",
     "name": "poodle",
-    "shortcode": ":poodle:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "贵宾犬",
       "en": "poodle"
@@ -181,9 +157,6 @@
   {
     "emoji": "🐺",
     "name": "wolf",
-    "shortcode": ":wolf:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "狼",
       "en": "wolf"
@@ -204,9 +177,6 @@
   {
     "emoji": "🦊",
     "name": "fox_face",
-    "shortcode": ":fox_face:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "狐狸",
       "en": "fox"
@@ -227,9 +197,6 @@
   {
     "emoji": "🦝",
     "name": "raccoon",
-    "shortcode": ":raccoon:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "浣熊",
       "en": "raccoon"
@@ -250,9 +217,6 @@
   {
     "emoji": "🐱",
     "name": "cat",
-    "shortcode": ":cat:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "猫脸",
       "en": "cat face"
@@ -273,9 +237,6 @@
   {
     "emoji": "🐈",
     "name": "cat2",
-    "shortcode": ":cat2:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "猫",
       "en": "cat"
@@ -295,9 +256,6 @@
   {
     "emoji": "🦁",
     "name": "lion",
-    "shortcode": ":lion:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "狮子",
       "en": "lion"
@@ -319,9 +277,6 @@
   {
     "emoji": "🐯",
     "name": "tiger",
-    "shortcode": ":tiger:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "老虎头",
       "en": "tiger face"
@@ -342,9 +297,6 @@
   {
     "emoji": "🐅",
     "name": "tiger2",
-    "shortcode": ":tiger2:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "老虎",
       "en": "tiger"
@@ -363,9 +315,6 @@
   {
     "emoji": "🐆",
     "name": "leopard",
-    "shortcode": ":leopard:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "豹子",
       "en": "leopard"
@@ -385,9 +334,6 @@
   {
     "emoji": "🐴",
     "name": "horse",
-    "shortcode": ":horse:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "马头",
       "en": "horse face"
@@ -407,9 +353,6 @@
   {
     "emoji": "🐎",
     "name": "racehorse",
-    "shortcode": ":racehorse:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "马",
       "en": "horse"
@@ -431,9 +374,6 @@
   {
     "emoji": "🦄",
     "name": "unicorn",
-    "shortcode": ":unicorn:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "独角兽",
       "en": "unicorn"
@@ -454,9 +394,6 @@
   {
     "emoji": "🦓",
     "name": "zebra",
-    "shortcode": ":zebra:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "斑马",
       "en": "zebra"
@@ -476,9 +413,6 @@
   {
     "emoji": "🦌",
     "name": "deer",
-    "shortcode": ":deer:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "鹿",
       "en": "deer"
@@ -497,9 +431,6 @@
   {
     "emoji": "🐮",
     "name": "cow",
-    "shortcode": ":cow:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "奶牛头",
       "en": "cow face"
@@ -520,9 +451,6 @@
   {
     "emoji": "🐂",
     "name": "ox",
-    "shortcode": ":ox:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "公牛",
       "en": "ox"
@@ -543,9 +471,6 @@
   {
     "emoji": "🐃",
     "name": "water_buffalo",
-    "shortcode": ":water_buffalo:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "水牛",
       "en": "water buffalo"
@@ -565,9 +490,6 @@
   {
     "emoji": "🐄",
     "name": "cow2",
-    "shortcode": ":cow2:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "奶牛",
       "en": "cow"
@@ -586,9 +508,6 @@
   {
     "emoji": "🐷",
     "name": "pig",
-    "shortcode": ":pig:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "猪头",
       "en": "pig face"
@@ -609,9 +528,6 @@
   {
     "emoji": "🐖",
     "name": "pig2",
-    "shortcode": ":pig2:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "猪",
       "en": "pig"
@@ -630,9 +546,6 @@
   {
     "emoji": "🐗",
     "name": "boar",
-    "shortcode": ":boar:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "野猪",
       "en": "boar"
@@ -651,9 +564,6 @@
   {
     "emoji": "🐽",
     "name": "pig_nose",
-    "shortcode": ":pig_nose:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "猪鼻子",
       "en": "pig nose"
@@ -674,9 +584,6 @@
   {
     "emoji": "🐏",
     "name": "ram",
-    "shortcode": ":ram:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "公羊",
       "en": "ram"
@@ -698,9 +605,6 @@
   {
     "emoji": "🐑",
     "name": "sheep",
-    "shortcode": ":sheep:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "母羊",
       "en": "ewe"
@@ -720,9 +624,6 @@
   {
     "emoji": "🐐",
     "name": "goat",
-    "shortcode": ":goat:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "山羊",
       "en": "goat"
@@ -743,9 +644,6 @@
   {
     "emoji": "🐪",
     "name": "dromedary_camel",
-    "shortcode": ":dromedary_camel:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "骆驼",
       "en": "camel"
@@ -765,9 +663,6 @@
   {
     "emoji": "🐫",
     "name": "camel",
-    "shortcode": ":camel:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "双峰骆驼",
       "en": "two-hump camel"
@@ -787,9 +682,6 @@
   {
     "emoji": "🦙",
     "name": "llama",
-    "shortcode": ":llama:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "美洲鸵",
       "en": "llama"
@@ -812,9 +704,6 @@
   {
     "emoji": "🦒",
     "name": "giraffe",
-    "shortcode": ":giraffe:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "长颈鹿",
       "en": "giraffe"
@@ -834,9 +723,6 @@
   {
     "emoji": "🐘",
     "name": "elephant",
-    "shortcode": ":elephant:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "大象",
       "en": "elephant"
@@ -855,9 +741,6 @@
   {
     "emoji": "🦏",
     "name": "rhinoceros",
-    "shortcode": ":rhinoceros:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "犀牛",
       "en": "rhinoceros"
@@ -876,9 +759,6 @@
   {
     "emoji": "🦛",
     "name": "hippopotamus",
-    "shortcode": ":hippopotamus:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "河马",
       "en": "hippopotamus"
@@ -897,9 +777,6 @@
   {
     "emoji": "🐭",
     "name": "mouse",
-    "shortcode": ":mouse:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "老鼠头",
       "en": "mouse face"
@@ -919,9 +796,6 @@
   {
     "emoji": "🐁",
     "name": "mouse2",
-    "shortcode": ":mouse2:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "老鼠",
       "en": "mouse"
@@ -941,9 +815,6 @@
   {
     "emoji": "🐀",
     "name": "rat",
-    "shortcode": ":rat:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "耗子",
       "en": "rat"
@@ -963,9 +834,6 @@
   {
     "emoji": "🐹",
     "name": "hamster",
-    "shortcode": ":hamster:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "仓鼠",
       "en": "hamster"
@@ -987,9 +855,6 @@
   {
     "emoji": "🐰",
     "name": "rabbit",
-    "shortcode": ":rabbit:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "兔子头",
       "en": "rabbit face"
@@ -1009,9 +874,6 @@
   {
     "emoji": "🐇",
     "name": "rabbit2",
-    "shortcode": ":rabbit2:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "兔子",
       "en": "rabbit"
@@ -1030,9 +892,6 @@
   {
     "emoji": "🦔",
     "name": "hedgehog",
-    "shortcode": ":hedgehog:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "刺猬",
       "en": "hedgehog"
@@ -1051,9 +910,6 @@
   {
     "emoji": "🦇",
     "name": "bat",
-    "shortcode": ":bat:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "蝙蝠",
       "en": "bat"
@@ -1073,9 +929,6 @@
   {
     "emoji": "🐻",
     "name": "bear",
-    "shortcode": ":bear:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "熊",
       "en": "bear"
@@ -1096,9 +949,6 @@
   {
     "emoji": "🐨",
     "name": "koala",
-    "shortcode": ":koala:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "考拉",
       "en": "koala"
@@ -1118,9 +968,6 @@
   {
     "emoji": "🐼",
     "name": "panda_face",
-    "shortcode": ":panda_face:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "熊猫",
       "en": "panda"
@@ -1142,9 +989,6 @@
   {
     "emoji": "🦥",
     "name": "sloth",
-    "shortcode": ":sloth:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "树懒",
       "en": "sloth"
@@ -1166,9 +1010,6 @@
   {
     "emoji": "🦦",
     "name": "otter",
-    "shortcode": ":otter:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "水獭",
       "en": "otter"
@@ -1189,9 +1030,6 @@
   {
     "emoji": "🦨",
     "name": "skunk",
-    "shortcode": ":skunk:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "臭鼬",
       "en": "skunk"
@@ -1211,9 +1049,6 @@
   {
     "emoji": "🦘",
     "name": "kangaroo",
-    "shortcode": ":kangaroo:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "袋鼠",
       "en": "kangaroo"
@@ -1236,9 +1071,6 @@
   {
     "emoji": "🦡",
     "name": "badger",
-    "shortcode": ":badger:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "獾",
       "en": "badger"
@@ -1259,9 +1091,6 @@
   {
     "emoji": "🐾",
     "name": "paw_prints",
-    "shortcode": ":paw_prints:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "爪印",
       "en": "paw prints"
@@ -1283,9 +1112,6 @@
   {
     "emoji": "🦃",
     "name": "turkey",
-    "shortcode": ":turkey:",
-    "category": "动物和自然",
-    "subcategory": "鸟类",
     "description": {
       "zh": "火鸡",
       "en": "turkey"
@@ -1304,9 +1130,6 @@
   {
     "emoji": "🐔",
     "name": "chicken",
-    "shortcode": ":chicken:",
-    "category": "动物和自然",
-    "subcategory": "鸟类",
     "description": {
       "zh": "鸡",
       "en": "chicken"
@@ -1325,9 +1148,6 @@
   {
     "emoji": "🐓",
     "name": "rooster",
-    "shortcode": ":rooster:",
-    "category": "动物和自然",
-    "subcategory": "鸟类",
     "description": {
       "zh": "公鸡",
       "en": "rooster"
@@ -1346,9 +1166,6 @@
   {
     "emoji": "🐣",
     "name": "hatching_chick",
-    "shortcode": ":hatching_chick:",
-    "category": "动物和自然",
-    "subcategory": "鸟类",
     "description": {
       "zh": "小鸡破壳",
       "en": "hatching chick"
@@ -1368,9 +1185,6 @@
   {
     "emoji": "🐤",
     "name": "baby_chick",
-    "shortcode": ":baby_chick:",
-    "category": "动物和自然",
-    "subcategory": "鸟类",
     "description": {
       "zh": "小鸡",
       "en": "baby chick"
@@ -1390,9 +1204,6 @@
   {
     "emoji": "🐥",
     "name": "hatched_chick",
-    "shortcode": ":hatched_chick:",
-    "category": "动物和自然",
-    "subcategory": "鸟类",
     "description": {
       "zh": "正面朝向的小鸡",
       "en": "front-facing baby chick"
@@ -1413,9 +1224,6 @@
   {
     "emoji": "🐦",
     "name": "bird",
-    "shortcode": ":bird:",
-    "category": "动物和自然",
-    "subcategory": "鸟类",
     "description": {
       "zh": "鸟",
       "en": "bird"
@@ -1433,9 +1241,6 @@
   {
     "emoji": "🐧",
     "name": "penguin",
-    "shortcode": ":penguin:",
-    "category": "动物和自然",
-    "subcategory": "鸟类",
     "description": {
       "zh": "企鹅",
       "en": "penguin"
@@ -1454,9 +1259,6 @@
   {
     "emoji": "🦅",
     "name": "eagle",
-    "shortcode": ":eagle:",
-    "category": "动物和自然",
-    "subcategory": "鸟类",
     "description": {
       "zh": "鹰",
       "en": "eagle"
@@ -1476,9 +1278,6 @@
   {
     "emoji": "🦆",
     "name": "duck",
-    "shortcode": ":duck:",
-    "category": "动物和自然",
-    "subcategory": "鸟类",
     "description": {
       "zh": "鸭子",
       "en": "duck"
@@ -1497,9 +1296,6 @@
   {
     "emoji": "🦢",
     "name": "swan",
-    "shortcode": ":swan:",
-    "category": "动物和自然",
-    "subcategory": "鸟类",
     "description": {
       "zh": "天鹅",
       "en": "swan"
@@ -1520,9 +1316,6 @@
   {
     "emoji": "🦉",
     "name": "owl",
-    "shortcode": ":owl:",
-    "category": "动物和自然",
-    "subcategory": "鸟类",
     "description": {
       "zh": "猫头鹰",
       "en": "owl"
@@ -1542,9 +1335,6 @@
   {
     "emoji": "🦩",
     "name": "flamingo",
-    "shortcode": ":flamingo:",
-    "category": "动物和自然",
-    "subcategory": "鸟类",
     "description": {
       "zh": "火烈鸟",
       "en": "flamingo"
@@ -1565,9 +1355,6 @@
   {
     "emoji": "🦚",
     "name": "peacock",
-    "shortcode": ":peacock:",
-    "category": "动物和自然",
-    "subcategory": "鸟类",
     "description": {
       "zh": "孔雀",
       "en": "peacock"
@@ -1589,9 +1376,6 @@
   {
     "emoji": "🦜",
     "name": "parrot",
-    "shortcode": ":parrot:",
-    "category": "动物和自然",
-    "subcategory": "鸟类",
     "description": {
       "zh": "鹦鹉",
       "en": "parrot"
@@ -1613,9 +1397,6 @@
   {
     "emoji": "🐸",
     "name": "frog",
-    "shortcode": ":frog:",
-    "category": "动物和自然",
-    "subcategory": "两栖动物",
     "description": {
       "zh": "青蛙",
       "en": "frog"
@@ -1636,9 +1417,6 @@
   {
     "emoji": "🐊",
     "name": "crocodile",
-    "shortcode": ":crocodile:",
-    "category": "动物和自然",
-    "subcategory": "爬行动物",
     "description": {
       "zh": "鳄鱼",
       "en": "crocodile"
@@ -1657,9 +1435,6 @@
   {
     "emoji": "🐢",
     "name": "turtle",
-    "shortcode": ":turtle:",
-    "category": "动物和自然",
-    "subcategory": "爬行动物",
     "description": {
       "zh": "龟",
       "en": "turtle"
@@ -1680,9 +1455,6 @@
   {
     "emoji": "🦎",
     "name": "lizard",
-    "shortcode": ":lizard:",
-    "category": "动物和自然",
-    "subcategory": "爬行动物",
     "description": {
       "zh": "蜥蜴",
       "en": "lizard"
@@ -1701,9 +1473,6 @@
   {
     "emoji": "🐍",
     "name": "snake",
-    "shortcode": ":snake:",
-    "category": "动物和自然",
-    "subcategory": "爬行动物",
     "description": {
       "zh": "蛇",
       "en": "snake"
@@ -1726,9 +1495,6 @@
   {
     "emoji": "🐲",
     "name": "dragon_face",
-    "shortcode": ":dragon_face:",
-    "category": "动物和自然",
-    "subcategory": "爬行动物",
     "description": {
       "zh": "龙头",
       "en": "dragon face"
@@ -1748,9 +1514,6 @@
   {
     "emoji": "🐉",
     "name": "dragon",
-    "shortcode": ":dragon:",
-    "category": "动物和自然",
-    "subcategory": "爬行动物",
     "description": {
       "zh": "龙",
       "en": "dragon"
@@ -1769,9 +1532,6 @@
   {
     "emoji": "🦕",
     "name": "sauropod",
-    "shortcode": ":sauropod:",
-    "category": "动物和自然",
-    "subcategory": "爬行动物",
     "description": {
       "zh": "蜥蜴类",
       "en": "sauropod"
@@ -1793,9 +1553,6 @@
   {
     "emoji": "🦖",
     "name": "t-rex",
-    "shortcode": ":t-rex:",
-    "category": "动物和自然",
-    "subcategory": "爬行动物",
     "description": {
       "zh": "霸王龙",
       "en": "T-Rex"
@@ -1815,9 +1572,6 @@
   {
     "emoji": "🐳",
     "name": "whale",
-    "shortcode": ":whale:",
-    "category": "动物和自然",
-    "subcategory": "海洋动物",
     "description": {
       "zh": "喷水的鲸",
       "en": "spouting whale"
@@ -1837,9 +1591,6 @@
   {
     "emoji": "🐋",
     "name": "whale2",
-    "shortcode": ":whale2:",
-    "category": "动物和自然",
-    "subcategory": "海洋动物",
     "description": {
       "zh": "鲸鱼",
       "en": "whale"
@@ -1858,9 +1609,6 @@
   {
     "emoji": "🐬",
     "name": "flipper",
-    "shortcode": ":flipper:",
-    "category": "动物和自然",
-    "subcategory": "海洋动物",
     "description": {
       "zh": "海豚",
       "en": "dolphin"
@@ -1880,9 +1628,6 @@
   {
     "emoji": "🐟",
     "name": "fish",
-    "shortcode": ":fish:",
-    "category": "动物和自然",
-    "subcategory": "海洋动物",
     "description": {
       "zh": "鱼",
       "en": "fish"
@@ -1903,9 +1648,6 @@
   {
     "emoji": "🐠",
     "name": "tropical_fish",
-    "shortcode": ":tropical_fish:",
-    "category": "动物和自然",
-    "subcategory": "海洋动物",
     "description": {
       "zh": "热带鱼",
       "en": "tropical fish"
@@ -1925,9 +1667,6 @@
   {
     "emoji": "🐡",
     "name": "blowfish",
-    "shortcode": ":blowfish:",
-    "category": "动物和自然",
-    "subcategory": "海洋动物",
     "description": {
       "zh": "河豚",
       "en": "blowfish"
@@ -1947,9 +1686,6 @@
   {
     "emoji": "🦈",
     "name": "shark",
-    "shortcode": ":shark:",
-    "category": "动物和自然",
-    "subcategory": "海洋动物",
     "description": {
       "zh": "鲨鱼",
       "en": "shark"
@@ -1968,9 +1704,6 @@
   {
     "emoji": "🐙",
     "name": "octopus",
-    "shortcode": ":octopus:",
-    "category": "动物和自然",
-    "subcategory": "海洋动物",
     "description": {
       "zh": "章鱼",
       "en": "octopus"
@@ -1990,9 +1723,6 @@
   {
     "emoji": "🐚",
     "name": "shell",
-    "shortcode": ":shell:",
-    "category": "动物和自然",
-    "subcategory": "海洋动物",
     "description": {
       "zh": "海螺",
       "en": "spiral shell"
@@ -2012,9 +1742,6 @@
   {
     "emoji": "🐌",
     "name": "snail",
-    "shortcode": ":snail:",
-    "category": "动物和自然",
-    "subcategory": "昆虫",
     "description": {
       "zh": "蜗牛",
       "en": "snail"
@@ -2033,9 +1760,6 @@
   {
     "emoji": "🦋",
     "name": "butterfly",
-    "shortcode": ":butterfly:",
-    "category": "动物和自然",
-    "subcategory": "昆虫",
     "description": {
       "zh": "蝴蝶",
       "en": "butterfly"
@@ -2056,9 +1780,6 @@
   {
     "emoji": "🐛",
     "name": "bug",
-    "shortcode": ":bug:",
-    "category": "动物和自然",
-    "subcategory": "昆虫",
     "description": {
       "zh": "毛毛虫",
       "en": "bug"
@@ -2077,9 +1798,6 @@
   {
     "emoji": "🐜",
     "name": "ant",
-    "shortcode": ":ant:",
-    "category": "动物和自然",
-    "subcategory": "昆虫",
     "description": {
       "zh": "蚂蚁",
       "en": "ant"
@@ -2098,9 +1816,6 @@
   {
     "emoji": "🐝",
     "name": "honeybee",
-    "shortcode": ":honeybee:",
-    "category": "动物和自然",
-    "subcategory": "昆虫",
     "description": {
       "zh": "蜜蜂",
       "en": "honeybee"
@@ -2120,9 +1835,6 @@
   {
     "emoji": "🐞",
     "name": "beetle",
-    "shortcode": ":beetle:",
-    "category": "动物和自然",
-    "subcategory": "昆虫",
     "description": {
       "zh": "瓢虫",
       "en": "lady beetle"
@@ -2143,9 +1855,6 @@
   {
     "emoji": "🦗",
     "name": "cricket",
-    "shortcode": ":cricket:",
-    "category": "动物和自然",
-    "subcategory": "昆虫",
     "description": {
       "zh": "蟋蟀",
       "en": "cricket"
@@ -2165,9 +1874,6 @@
   {
     "emoji": "🦂",
     "name": "scorpion",
-    "shortcode": ":scorpion:",
-    "category": "动物和自然",
-    "subcategory": "昆虫",
     "description": {
       "zh": "蝎子",
       "en": "scorpion"
@@ -2189,9 +1895,6 @@
   {
     "emoji": "🦟",
     "name": "mosquito",
-    "shortcode": ":mosquito:",
-    "category": "动物和自然",
-    "subcategory": "昆虫",
     "description": {
       "zh": "蚊子",
       "en": "mosquito"
@@ -2214,9 +1917,6 @@
   {
     "emoji": "🦠",
     "name": "microbe",
-    "shortcode": ":microbe:",
-    "category": "动物和自然",
-    "subcategory": "昆虫",
     "description": {
       "zh": "细菌",
       "en": "microbe"
@@ -2237,9 +1937,6 @@
   {
     "emoji": "💐",
     "name": "bouquet",
-    "shortcode": ":bouquet:",
-    "category": "动物和自然",
-    "subcategory": "花朵",
     "description": {
       "zh": "花束",
       "en": "bouquet"
@@ -2259,9 +1956,6 @@
   {
     "emoji": "🌸",
     "name": "cherry_blossom",
-    "shortcode": ":cherry_blossom:",
-    "category": "动物和自然",
-    "subcategory": "花朵",
     "description": {
       "zh": "樱花",
       "en": "cherry blossom"
@@ -2281,9 +1975,6 @@
   {
     "emoji": "💮",
     "name": "white_flower",
-    "shortcode": ":white_flower:",
-    "category": "动物和自然",
-    "subcategory": "花朵",
     "description": {
       "zh": "白花",
       "en": "white flower"
@@ -2303,9 +1994,6 @@
   {
     "emoji": "🌹",
     "name": "rose",
-    "shortcode": ":rose:",
-    "category": "动物和自然",
-    "subcategory": "花朵",
     "description": {
       "zh": "玫瑰",
       "en": "rose"
@@ -2324,9 +2012,6 @@
   {
     "emoji": "🥀",
     "name": "wilted_flower",
-    "shortcode": ":wilted_flower:",
-    "category": "动物和自然",
-    "subcategory": "花朵",
     "description": {
       "zh": "枯萎的花",
       "en": "wilted flower"
@@ -2346,9 +2031,6 @@
   {
     "emoji": "🌺",
     "name": "hibiscus",
-    "shortcode": ":hibiscus:",
-    "category": "动物和自然",
-    "subcategory": "花朵",
     "description": {
       "zh": "芙蓉",
       "en": "hibiscus"
@@ -2368,9 +2050,6 @@
   {
     "emoji": "🌻",
     "name": "sunflower",
-    "shortcode": ":sunflower:",
-    "category": "动物和自然",
-    "subcategory": "花朵",
     "description": {
       "zh": "向日葵",
       "en": "sunflower"
@@ -2390,9 +2069,6 @@
   {
     "emoji": "🌼",
     "name": "blossom",
-    "shortcode": ":blossom:",
-    "category": "动物和自然",
-    "subcategory": "花朵",
     "description": {
       "zh": "开花",
       "en": "blossom"
@@ -2411,9 +2087,6 @@
   {
     "emoji": "🌷",
     "name": "tulip",
-    "shortcode": ":tulip:",
-    "category": "动物和自然",
-    "subcategory": "花朵",
     "description": {
       "zh": "郁金香",
       "en": "tulip"
@@ -2432,9 +2105,6 @@
   {
     "emoji": "🌱",
     "name": "seedling",
-    "shortcode": ":seedling:",
-    "category": "动物和自然",
-    "subcategory": "其他植物",
     "description": {
       "zh": "幼苗",
       "en": "seedling"
@@ -2455,9 +2125,6 @@
   {
     "emoji": "🌲",
     "name": "evergreen_tree",
-    "shortcode": ":evergreen_tree:",
-    "category": "动物和自然",
-    "subcategory": "其他植物",
     "description": {
       "zh": "松树",
       "en": "evergreen tree"
@@ -2478,9 +2145,6 @@
   {
     "emoji": "🌳",
     "name": "deciduous_tree",
-    "shortcode": ":deciduous_tree:",
-    "category": "动物和自然",
-    "subcategory": "其他植物",
     "description": {
       "zh": "落叶树",
       "en": "deciduous tree"
@@ -2501,9 +2165,6 @@
   {
     "emoji": "🌴",
     "name": "palm_tree",
-    "shortcode": ":palm_tree:",
-    "category": "动物和自然",
-    "subcategory": "其他植物",
     "description": {
       "zh": "棕榈树",
       "en": "palm tree"
@@ -2523,9 +2184,6 @@
   {
     "emoji": "🌵",
     "name": "cactus",
-    "shortcode": ":cactus:",
-    "category": "动物和自然",
-    "subcategory": "其他植物",
     "description": {
       "zh": "仙人掌",
       "en": "cactus"
@@ -2545,9 +2203,6 @@
   {
     "emoji": "🌾",
     "name": "ear_of_rice",
-    "shortcode": ":ear_of_rice:",
-    "category": "动物和自然",
-    "subcategory": "其他植物",
     "description": {
       "zh": "稻子",
       "en": "sheaf of rice"
@@ -2570,9 +2225,6 @@
   {
     "emoji": "🌿",
     "name": "herb",
-    "shortcode": ":herb:",
-    "category": "动物和自然",
-    "subcategory": "其他植物",
     "description": {
       "zh": "药草",
       "en": "herb"
@@ -2593,9 +2245,6 @@
   {
     "emoji": "🍀",
     "name": "four_leaf_clover",
-    "shortcode": ":four_leaf_clover:",
-    "category": "动物和自然",
-    "subcategory": "其他植物",
     "description": {
       "zh": "四叶草",
       "en": "four leaf clover"
@@ -2617,9 +2266,6 @@
   {
     "emoji": "🍁",
     "name": "maple_leaf",
-    "shortcode": ":maple_leaf:",
-    "category": "动物和自然",
-    "subcategory": "其他植物",
     "description": {
       "zh": "枫叶",
       "en": "maple leaf"
@@ -2641,9 +2287,6 @@
   {
     "emoji": "🍂",
     "name": "fallen_leaf",
-    "shortcode": ":fallen_leaf:",
-    "category": "动物和自然",
-    "subcategory": "其他植物",
     "description": {
       "zh": "落叶",
       "en": "fallen leaf"
@@ -2664,9 +2307,6 @@
   {
     "emoji": "🍃",
     "name": "leaves",
-    "shortcode": ":leaves:",
-    "category": "动物和自然",
-    "subcategory": "其他植物",
     "description": {
       "zh": "风吹叶落",
       "en": "leaf fluttering in wind"
@@ -2690,9 +2330,6 @@
   {
     "emoji": "🐕‍🦺",
     "name": "service_dog",
-    "shortcode": ":service_dog:",
-    "category": "动物和自然",
-    "subcategory": "哺乳动物",
     "description": {
       "zh": "服务犬",
       "en": "service dog"
@@ -2716,9 +2353,6 @@
   {
     "emoji": "🐿️",
     "name": "chipmunk",
-    "shortcode": ":chipmunk:",
-    "category": "动物和自然",
-    "subcategory": "动物",
     "description": {
       "zh": "花栗鼠",
       "en": "chipmunk"
@@ -2737,9 +2371,6 @@
   {
     "emoji": "🕊️",
     "name": "dove",
-    "shortcode": ":dove:",
-    "category": "动物和自然",
-    "subcategory": "动物",
     "description": {
       "zh": "鸽子",
       "en": "dove"
@@ -2758,9 +2389,6 @@
   {
     "emoji": "🕷️",
     "name": "spider",
-    "shortcode": ":spider:",
-    "category": "动物和自然",
-    "subcategory": "动物",
     "description": {
       "zh": "蜘蛛",
       "en": "spider"
@@ -2779,9 +2407,6 @@
   {
     "emoji": "🕸️",
     "name": "spider_web",
-    "shortcode": ":spider_web:",
-    "category": "动物和自然",
-    "subcategory": "动物",
     "description": {
       "zh": "蜘蛛网",
       "en": "spider_web"
@@ -2800,9 +2425,6 @@
   {
     "emoji": "🏵️",
     "name": "rosette",
-    "shortcode": ":rosette:",
-    "category": "动物和自然",
-    "subcategory": "动物",
     "description": {
       "zh": "玫瑰花饰",
       "en": "rosette"
@@ -2821,9 +2443,6 @@
   {
     "emoji": "☘️",
     "name": "shamrock",
-    "shortcode": ":shamrock:",
-    "category": "动物和自然",
-    "subcategory": "动物",
     "description": {
       "zh": "三叶草",
       "en": "shamrock"

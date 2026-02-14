@@ -28,6 +28,7 @@ class Store {
         const categoriesMap: CategoryData = {}
         this.emojis.forEach((emoji) => {
           const category = emoji.category
+          if (!category) return
           if (!categoriesMap[category]) {
             categoriesMap[category] = []
           }
@@ -67,10 +68,9 @@ class Store {
     if (this.searchQuery.trim()) {
       const query = this.searchQuery.toLowerCase().trim()
       result = result.filter((emoji) => {
-        // Search in name, shortcode, descriptions, and keywords
+        // Search in name, descriptions, and keywords
         return (
           emoji.name.toLowerCase().includes(query) ||
-          emoji.shortcode.toLowerCase().includes(query) ||
           emoji.description.zh.toLowerCase().includes(query) ||
           emoji.description.en.toLowerCase().includes(query) ||
           emoji.keywords.zh.some((k) => k.toLowerCase().includes(query)) ||

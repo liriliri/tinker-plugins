@@ -2,9 +2,6 @@
   {
     "emoji": "🎖️",
     "name": "medal_military",
-    "shortcode": ":medal_military:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "军功章",
       "en": "medal_military"
@@ -23,9 +20,6 @@
   {
     "emoji": "⛸️",
     "name": "ice_skate",
-    "shortcode": ":ice_skate:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "溜冰鞋",
       "en": "ice_skate"
@@ -44,9 +38,6 @@
   {
     "emoji": "🕹️",
     "name": "joystick",
-    "shortcode": ":joystick:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "游戏手柄",
       "en": "joystick"
@@ -65,9 +56,6 @@
   {
     "emoji": "♠️",
     "name": "spades",
-    "shortcode": ":spades:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "黑桃",
       "en": "spades"
@@ -86,9 +74,6 @@
   {
     "emoji": "♥️",
     "name": "hearts",
-    "shortcode": ":hearts:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "红心",
       "en": "hearts"
@@ -107,9 +92,6 @@
   {
     "emoji": "♦️",
     "name": "diamonds",
-    "shortcode": ":diamonds:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "方块",
       "en": "diamonds"
@@ -128,9 +110,6 @@
   {
     "emoji": "♣️",
     "name": "clubs",
-    "shortcode": ":clubs:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "梅花",
       "en": "clubs"
@@ -149,9 +128,6 @@
   {
     "emoji": "♟️",
     "name": "chess_pawn",
-    "shortcode": ":chess_pawn:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "国际象棋兵",
       "en": "chess_pawn"
@@ -170,9 +146,6 @@
   {
     "emoji": "🖼️",
     "name": "framed_picture",
-    "shortcode": ":framed_picture:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "画框",
       "en": "framed_picture"
@@ -191,9 +164,6 @@
   {
     "emoji": "🕶️",
     "name": "dark_sunglasses",
-    "shortcode": ":dark_sunglasses:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "墨镜",
       "en": "dark_sunglasses"
@@ -212,9 +182,6 @@
   {
     "emoji": "🛍️",
     "name": "shopping",
-    "shortcode": ":shopping:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "购物袋",
       "en": "shopping"
@@ -233,9 +200,6 @@
   {
     "emoji": "⛑️",
     "name": "rescue_worker_helmet",
-    "shortcode": ":rescue_worker_helmet:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "救援头盔",
       "en": "rescue_worker_helmet"
@@ -254,9 +218,6 @@
   {
     "emoji": "🎙️",
     "name": "studio_microphone",
-    "shortcode": ":studio_microphone:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "录音麦克风",
       "en": "studio_microphone"
@@ -275,9 +236,6 @@
   {
     "emoji": "🎚️",
     "name": "level_slider",
-    "shortcode": ":level_slider:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "调节滑块",
       "en": "level_slider"
@@ -296,9 +254,6 @@
   {
     "emoji": "🎛️",
     "name": "control_knobs",
-    "shortcode": ":control_knobs:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "控制旋钮",
       "en": "control_knobs"
@@ -317,9 +272,6 @@
   {
     "emoji": "🖥️",
     "name": "desktop_computer",
-    "shortcode": ":desktop_computer:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "台式电脑",
       "en": "desktop_computer"
@@ -338,9 +290,6 @@
   {
     "emoji": "🖨️",
     "name": "printer",
-    "shortcode": ":printer:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "打印机",
       "en": "printer"
@@ -359,9 +308,6 @@
   {
     "emoji": "⌨️",
     "name": "keyboard",
-    "shortcode": ":keyboard:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "键盘",
       "en": "keyboard"
@@ -380,9 +326,6 @@
   {
     "emoji": "🖱️",
     "name": "computer_mouse",
-    "shortcode": ":computer_mouse:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "鼠标",
       "en": "computer_mouse"
@@ -401,9 +344,6 @@
   {
     "emoji": "🖲️",
     "name": "trackball",
-    "shortcode": ":trackball:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "轨迹球",
       "en": "trackball"
@@ -422,9 +362,6 @@
   {
     "emoji": "🎞️",
     "name": "film_strip",
-    "shortcode": ":film_strip:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "胶卷",
       "en": "film_strip"
@@ -443,9 +380,6 @@
   {
     "emoji": "📽️",
     "name": "film_projector",
-    "shortcode": ":film_projector:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "电影放映机",
       "en": "film_projector"
@@ -464,9 +398,6 @@
   {
     "emoji": "🕯️",
     "name": "candle",
-    "shortcode": ":candle:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "蜡烛",
       "en": "candle"
@@ -485,9 +416,6 @@
   {
     "emoji": "🗞️",
     "name": "newspaper_roll",
-    "shortcode": ":newspaper_roll:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "卷起的报纸",
       "en": "newspaper_roll"
@@ -506,9 +434,6 @@
   {
     "emoji": "🏷️",
     "name": "label",
-    "shortcode": ":label:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "标签",
       "en": "label"
@@ -527,9 +452,6 @@
   {
     "emoji": "✉️",
     "name": "envelope",
-    "shortcode": ":envelope:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "信封",
       "en": "envelope"
@@ -548,9 +470,6 @@
   {
     "emoji": "🗳️",
     "name": "ballot_box",
-    "shortcode": ":ballot_box:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "投票箱",
       "en": "ballot_box"
@@ -569,9 +488,6 @@
   {
     "emoji": "✏️",
     "name": "pencil2",
-    "shortcode": ":pencil2:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "铅笔",
       "en": "pencil2"
@@ -590,9 +506,6 @@
   {
     "emoji": "✒️",
     "name": "black_nib",
-    "shortcode": ":black_nib:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "钢笔尖",
       "en": "black_nib"
@@ -611,9 +524,6 @@
   {
     "emoji": "🖋️",
     "name": "fountain_pen",
-    "shortcode": ":fountain_pen:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "钢笔",
       "en": "fountain_pen"
@@ -632,9 +542,6 @@
   {
     "emoji": "🖊️",
     "name": "pen",
-    "shortcode": ":pen:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "圆珠笔",
       "en": "pen"
@@ -653,9 +560,6 @@
   {
     "emoji": "🖌️",
     "name": "paintbrush",
-    "shortcode": ":paintbrush:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "画笔",
       "en": "paintbrush"
@@ -674,9 +578,6 @@
   {
     "emoji": "🖍️",
     "name": "crayon",
-    "shortcode": ":crayon:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "蜡笔",
       "en": "crayon"
@@ -695,9 +596,6 @@
   {
     "emoji": "🗂️",
     "name": "card_index_dividers",
-    "shortcode": ":card_index_dividers:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "卡片索引分隔",
       "en": "card_index_dividers"
@@ -716,9 +614,6 @@
   {
     "emoji": "🗒️",
     "name": "spiral_notepad",
-    "shortcode": ":spiral_notepad:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "螺旋记事本",
       "en": "spiral_notepad"
@@ -737,9 +632,6 @@
   {
     "emoji": "🗓️",
     "name": "spiral_calendar",
-    "shortcode": ":spiral_calendar:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "螺旋日历",
       "en": "spiral_calendar"
@@ -758,9 +650,6 @@
   {
     "emoji": "🖇️",
     "name": "paperclips",
-    "shortcode": ":paperclips:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "回形针",
       "en": "paperclips"
@@ -779,9 +668,6 @@
   {
     "emoji": "✂️",
     "name": "scissors",
-    "shortcode": ":scissors:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "剪刀",
       "en": "scissors"
@@ -800,9 +686,6 @@
   {
     "emoji": "🗃️",
     "name": "card_file_box",
-    "shortcode": ":card_file_box:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "卡片盒",
       "en": "card_file_box"
@@ -821,9 +704,6 @@
   {
     "emoji": "🗄️",
     "name": "file_cabinet",
-    "shortcode": ":file_cabinet:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "文件柜",
       "en": "file_cabinet"
@@ -842,9 +722,6 @@
   {
     "emoji": "🗑️",
     "name": "wastebasket",
-    "shortcode": ":wastebasket:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "废纸篓",
       "en": "wastebasket"
@@ -863,9 +740,6 @@
   {
     "emoji": "🗝️",
     "name": "old_key",
-    "shortcode": ":old_key:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "老式钥匙",
       "en": "old_key"
@@ -884,9 +758,6 @@
   {
     "emoji": "⛏️",
     "name": "pick",
-    "shortcode": ":pick:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "镐",
       "en": "pick"
@@ -905,9 +776,6 @@
   {
     "emoji": "⚒️",
     "name": "hammer_and_pick",
-    "shortcode": ":hammer_and_pick:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "锤和镐",
       "en": "hammer_and_pick"
@@ -926,9 +794,6 @@
   {
     "emoji": "🛠️",
     "name": "hammer_and_wrench",
-    "shortcode": ":hammer_and_wrench:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "锤和扳手",
       "en": "hammer_and_wrench"
@@ -947,9 +812,6 @@
   {
     "emoji": "🗡️",
     "name": "dagger",
-    "shortcode": ":dagger:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "匕首",
       "en": "dagger"
@@ -968,9 +830,6 @@
   {
     "emoji": "⚔️",
     "name": "crossed_swords",
-    "shortcode": ":crossed_swords:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "交叉的剑",
       "en": "crossed_swords"
@@ -989,9 +848,6 @@
   {
     "emoji": "🛡️",
     "name": "shield",
-    "shortcode": ":shield:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "盾牌",
       "en": "shield"
@@ -1010,9 +866,6 @@
   {
     "emoji": "⚙️",
     "name": "gear",
-    "shortcode": ":gear:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "齿轮",
       "en": "gear"
@@ -1031,9 +884,6 @@
   {
     "emoji": "🗜️",
     "name": "clamp",
-    "shortcode": ":clamp:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "夹钳",
       "en": "clamp"
@@ -1052,9 +902,6 @@
   {
     "emoji": "⚖️",
     "name": "balance_scale",
-    "shortcode": ":balance_scale:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "天平",
       "en": "balance_scale"
@@ -1073,9 +920,6 @@
   {
     "emoji": "⛓️",
     "name": "chains",
-    "shortcode": ":chains:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "锁链",
       "en": "chains"
@@ -1094,9 +938,6 @@
   {
     "emoji": "⚗️",
     "name": "alembic",
-    "shortcode": ":alembic:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "蒸馏器",
       "en": "alembic"
@@ -1115,9 +956,6 @@
   {
     "emoji": "🛏️",
     "name": "bed",
-    "shortcode": ":bed:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "床",
       "en": "bed"
@@ -1136,9 +974,6 @@
   {
     "emoji": "🛋️",
     "name": "couch_and_lamp",
-    "shortcode": ":couch_and_lamp:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "沙发和灯",
       "en": "couch_and_lamp"
@@ -1157,9 +992,6 @@
   {
     "emoji": "⚰️",
     "name": "coffin",
-    "shortcode": ":coffin:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "棺材",
       "en": "coffin"
@@ -1178,9 +1010,6 @@
   {
     "emoji": "⚱️",
     "name": "funeral_urn",
-    "shortcode": ":funeral_urn:",
-    "category": "other",
-    "subcategory": "",
     "description": {
       "zh": "骨灰盒",
       "en": "funeral_urn"

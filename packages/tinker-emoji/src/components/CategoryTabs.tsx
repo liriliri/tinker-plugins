@@ -4,7 +4,6 @@ import className from 'licia/className'
 import { useTranslation } from 'react-i18next'
 import { tw } from '../theme'
 import store from '../store'
-import { categoryKeyMap } from '../data'
 
 const CATEGORY_ICONS: Record<string, string> = {
   all: '🌟',
@@ -26,11 +25,10 @@ const CategoryTabs = observer(() => {
   const categories = [
     { id: 'all', key: 'all', label: t('all') },
     ...store.categoryList.map((cat) => {
-      const key = categoryKeyMap[cat] || 'other'
       return {
         id: cat,
-        key,
-        label: t(key),
+        key: cat,
+        label: t(cat),
       }
     }),
   ]

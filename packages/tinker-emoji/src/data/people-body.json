@@ -2,9 +2,6 @@
   {
     "emoji": "👋",
     "name": "wave",
-    "shortcode": ":wave:",
-    "category": "人类和身体",
-    "subcategory": "手掌张开",
     "description": {
       "zh": "挥手",
       "en": "waving hand"
@@ -26,9 +23,6 @@
   {
     "emoji": "🤚",
     "name": "raised_back_of_hand",
-    "shortcode": ":raised_back_of_hand:",
-    "category": "人类和身体",
-    "subcategory": "手掌张开",
     "description": {
       "zh": "立起的手背",
       "en": "raised back of hand"
@@ -50,9 +44,6 @@
   {
     "emoji": "✋",
     "name": "raised_hand",
-    "shortcode": ":raised_hand:",
-    "category": "人类和身体",
-    "subcategory": "手掌张开",
     "description": {
       "zh": "举起手",
       "en": "raised hand"
@@ -73,9 +64,6 @@
   {
     "emoji": "🖖",
     "name": "vulcan_salute",
-    "shortcode": ":vulcan_salute:",
-    "category": "人类和身体",
-    "subcategory": "手掌张开",
     "description": {
       "zh": "瓦肯举手礼",
       "en": "vulcan salute"
@@ -98,9 +86,6 @@
   {
     "emoji": "👌",
     "name": "ok_hand",
-    "shortcode": ":ok_hand:",
-    "category": "人类和身体",
-    "subcategory": "几根手指",
     "description": {
       "zh": "OK",
       "en": "OK hand"
@@ -119,9 +104,6 @@
   {
     "emoji": "🤏",
     "name": "pinching_hand",
-    "shortcode": ":pinching_hand:",
-    "category": "人类和身体",
-    "subcategory": "几根手指",
     "description": {
       "zh": "捏合的手势",
       "en": "pinching hand"
@@ -144,9 +126,6 @@
   {
     "emoji": "🤞",
     "name": "crossed_fingers",
-    "shortcode": ":crossed_fingers:",
-    "category": "人类和身体",
-    "subcategory": "几根手指",
     "description": {
       "zh": "交叉的手指",
       "en": "crossed fingers"
@@ -167,9 +146,6 @@
   {
     "emoji": "🤟",
     "name": "love_you_gesture",
-    "shortcode": ":love_you_gesture:",
-    "category": "人类和身体",
-    "subcategory": "几根手指",
     "description": {
       "zh": "爱你的手势",
       "en": "love-you gesture"
@@ -190,9 +166,6 @@
   {
     "emoji": "🤘",
     "name": "metal",
-    "shortcode": ":metal:",
-    "category": "人类和身体",
-    "subcategory": "几根手指",
     "description": {
       "zh": "摇滚",
       "en": "sign of the horns"
@@ -216,9 +189,6 @@
   {
     "emoji": "🤙",
     "name": "call_me_hand",
-    "shortcode": ":call_me_hand:",
-    "category": "人类和身体",
-    "subcategory": "几根手指",
     "description": {
       "zh": "给我打电话",
       "en": "call me hand"
@@ -239,9 +209,6 @@
   {
     "emoji": "👈",
     "name": "point_left",
-    "shortcode": ":point_left:",
-    "category": "人类和身体",
-    "subcategory": "一根手指",
     "description": {
       "zh": "反手食指向左指",
       "en": "backhand index pointing left"
@@ -264,9 +231,6 @@
   {
     "emoji": "👉",
     "name": "point_right",
-    "shortcode": ":point_right:",
-    "category": "人类和身体",
-    "subcategory": "一根手指",
     "description": {
       "zh": "反手食指向右指",
       "en": "backhand index pointing right"
@@ -289,9 +253,6 @@
   {
     "emoji": "👆",
     "name": "point_up_2",
-    "shortcode": ":point_up_2:",
-    "category": "人类和身体",
-    "subcategory": "一根手指",
     "description": {
       "zh": "反手食指向上指",
       "en": "backhand index pointing up"
@@ -314,9 +275,6 @@
   {
     "emoji": "🖕",
     "name": "middle_finger",
-    "shortcode": ":middle_finger:",
-    "category": "人类和身体",
-    "subcategory": "一根手指",
     "description": {
       "zh": "竖中指",
       "en": "middle finger"
@@ -337,9 +295,6 @@
   {
     "emoji": "👇",
     "name": "point_down",
-    "shortcode": ":point_down:",
-    "category": "人类和身体",
-    "subcategory": "一根手指",
     "description": {
       "zh": "反手食指向下指",
       "en": "backhand index pointing down"
@@ -362,9 +317,6 @@
   {
     "emoji": "👍",
     "name": "thumbsup",
-    "shortcode": ":thumbsup:",
-    "category": "人类和身体",
-    "subcategory": "合上手掌",
     "description": {
       "zh": "拇指向上",
       "en": "thumbs up"
@@ -388,9 +340,6 @@
   {
     "emoji": "👎",
     "name": "thumbsdown",
-    "shortcode": ":thumbsdown:",
-    "category": "人类和身体",
-    "subcategory": "合上手掌",
     "description": {
       "zh": "拇指向下",
       "en": "thumbs down"
@@ -413,9 +362,6 @@
   {
     "emoji": "✊",
     "name": "fist_raised",
-    "shortcode": ":fist_raised:",
-    "category": "人类和身体",
-    "subcategory": "合上手掌",
     "description": {
       "zh": "举起拳头",
       "en": "raised fist"
@@ -436,9 +382,6 @@
   {
     "emoji": "👊",
     "name": "punch",
-    "shortcode": ":punch:",
-    "category": "人类和身体",
-    "subcategory": "合上手掌",
     "description": {
       "zh": "出拳",
       "en": "oncoming fist"
@@ -459,9 +402,6 @@
   {
     "emoji": "🤛",
     "name": "fist_left",
-    "shortcode": ":fist_left:",
-    "category": "人类和身体",
-    "subcategory": "合上手掌",
     "description": {
       "zh": "朝左的拳头",
       "en": "left-facing fist"
@@ -481,9 +421,6 @@
   {
     "emoji": "🤜",
     "name": "fist_right",
-    "shortcode": ":fist_right:",
-    "category": "人类和身体",
-    "subcategory": "合上手掌",
     "description": {
       "zh": "朝右的拳头",
       "en": "right-facing fist"
@@ -503,9 +440,6 @@
   {
     "emoji": "👏",
     "name": "clap",
-    "shortcode": ":clap:",
-    "category": "人类和身体",
-    "subcategory": "双手",
     "description": {
       "zh": "鼓掌",
       "en": "clapping hands"
@@ -526,9 +460,6 @@
   {
     "emoji": "🙌",
     "name": "raised_hands",
-    "shortcode": ":raised_hands:",
-    "category": "人类和身体",
-    "subcategory": "双手",
     "description": {
       "zh": "举双手",
       "en": "raising hands"
@@ -550,9 +481,6 @@
   {
     "emoji": "👐",
     "name": "open_hands",
-    "shortcode": ":open_hands:",
-    "category": "人类和身体",
-    "subcategory": "双手",
     "description": {
       "zh": "张开双手",
       "en": "open hands"
@@ -573,9 +501,6 @@
   {
     "emoji": "🤲",
     "name": "palms_up_together",
-    "shortcode": ":palms_up_together:",
-    "category": "人类和身体",
-    "subcategory": "双手",
     "description": {
       "zh": "掌心向上托起",
       "en": "palms up together"
@@ -597,9 +522,6 @@
   {
     "emoji": "🤝",
     "name": "handshake",
-    "shortcode": ":handshake:",
-    "category": "人类和身体",
-    "subcategory": "双手",
     "description": {
       "zh": "握手",
       "en": "handshake"
@@ -620,9 +542,6 @@
   {
     "emoji": "🙏",
     "name": "pray",
-    "shortcode": ":pray:",
-    "category": "人类和身体",
-    "subcategory": "双手",
     "description": {
       "zh": "双手合十",
       "en": "folded hands"
@@ -646,9 +565,6 @@
   {
     "emoji": "💅",
     "name": "nail_care",
-    "shortcode": ":nail_care:",
-    "category": "人类和身体",
-    "subcategory": "动作手",
     "description": {
       "zh": "涂指甲油",
       "en": "nail polish"
@@ -669,9 +585,6 @@
   {
     "emoji": "🤳",
     "name": "selfie",
-    "shortcode": ":selfie:",
-    "category": "人类和身体",
-    "subcategory": "动作手",
     "description": {
       "zh": "自拍",
       "en": "selfie"
@@ -692,9 +605,6 @@
   {
     "emoji": "💪",
     "name": "muscle",
-    "shortcode": ":muscle:",
-    "category": "人类和身体",
-    "subcategory": "部分身体",
     "description": {
       "zh": "肌肉",
       "en": "flexed biceps"
@@ -716,9 +626,6 @@
   {
     "emoji": "🦾",
     "name": "mechanical_arm",
-    "shortcode": ":mechanical_arm:",
-    "category": "人类和身体",
-    "subcategory": "部分身体",
     "description": {
       "zh": "机械手臂",
       "en": "mechanical arm"
@@ -740,9 +647,6 @@
   {
     "emoji": "🦿",
     "name": "mechanical_leg",
-    "shortcode": ":mechanical_leg:",
-    "category": "人类和身体",
-    "subcategory": "部分身体",
     "description": {
       "zh": "机械腿",
       "en": "mechanical leg"
@@ -764,9 +668,6 @@
   {
     "emoji": "🦵",
     "name": "leg",
-    "shortcode": ":leg:",
-    "category": "人类和身体",
-    "subcategory": "部分身体",
     "description": {
       "zh": "腿",
       "en": "leg"
@@ -787,9 +688,6 @@
   {
     "emoji": "🦶",
     "name": "foot",
-    "shortcode": ":foot:",
-    "category": "人类和身体",
-    "subcategory": "部分身体",
     "description": {
       "zh": "脚",
       "en": "foot"
@@ -810,9 +708,6 @@
   {
     "emoji": "👂",
     "name": "ear",
-    "shortcode": ":ear:",
-    "category": "人类和身体",
-    "subcategory": "部分身体",
     "description": {
       "zh": "耳朵",
       "en": "ear"
@@ -832,9 +727,6 @@
   {
     "emoji": "🦻",
     "name": "ear_with_hearing_aid",
-    "shortcode": ":ear_with_hearing_aid:",
-    "category": "人类和身体",
-    "subcategory": "部分身体",
     "description": {
       "zh": "戴助听器的耳朵",
       "en": "ear with hearing aid"
@@ -859,9 +751,6 @@
   {
     "emoji": "👃",
     "name": "nose",
-    "shortcode": ":nose:",
-    "category": "人类和身体",
-    "subcategory": "部分身体",
     "description": {
       "zh": "鼻子",
       "en": "nose"
@@ -882,9 +771,6 @@
   {
     "emoji": "🧠",
     "name": "brain",
-    "shortcode": ":brain:",
-    "category": "人类和身体",
-    "subcategory": "部分身体",
     "description": {
       "zh": "脑",
       "en": "brain"
@@ -907,9 +793,6 @@
   {
     "emoji": "🦷",
     "name": "tooth",
-    "shortcode": ":tooth:",
-    "category": "人类和身体",
-    "subcategory": "部分身体",
     "description": {
       "zh": "牙齿",
       "en": "tooth"
@@ -929,9 +812,6 @@
   {
     "emoji": "🦴",
     "name": "bone",
-    "shortcode": ":bone:",
-    "category": "人类和身体",
-    "subcategory": "部分身体",
     "description": {
       "zh": "骨头",
       "en": "bone"
@@ -951,9 +831,6 @@
   {
     "emoji": "👀",
     "name": "eyes",
-    "shortcode": ":eyes:",
-    "category": "人类和身体",
-    "subcategory": "部分身体",
     "description": {
       "zh": "双眼",
       "en": "eyes"
@@ -972,9 +849,6 @@
   {
     "emoji": "👅",
     "name": "tongue",
-    "shortcode": ":tongue:",
-    "category": "人类和身体",
-    "subcategory": "部分身体",
     "description": {
       "zh": "舌头",
       "en": "tongue"
@@ -994,9 +868,6 @@
   {
     "emoji": "👄",
     "name": "lips",
-    "shortcode": ":lips:",
-    "category": "人类和身体",
-    "subcategory": "部分身体",
     "description": {
       "zh": "嘴",
       "en": "mouth"
@@ -1017,9 +888,6 @@
   {
     "emoji": "👶",
     "name": "baby",
-    "shortcode": ":baby:",
-    "category": "人类和身体",
-    "subcategory": "人物",
     "description": {
       "zh": "小宝贝",
       "en": "baby"
@@ -1039,9 +907,6 @@
   {
     "emoji": "🧒",
     "name": "child",
-    "shortcode": ":child:",
-    "category": "人类和身体",
-    "subcategory": "人物",
     "description": {
       "zh": "儿童",
       "en": "child"
@@ -1063,9 +928,6 @@
   {
     "emoji": "👦",
     "name": "boy",
-    "shortcode": ":boy:",
-    "category": "人类和身体",
-    "subcategory": "人物",
     "description": {
       "zh": "男孩",
       "en": "boy"
@@ -1085,9 +947,6 @@
   {
     "emoji": "👧",
     "name": "girl",
-    "shortcode": ":girl:",
-    "category": "人类和身体",
-    "subcategory": "人物",
     "description": {
       "zh": "女孩",
       "en": "girl"
@@ -1107,9 +966,6 @@
   {
     "emoji": "🧑",
     "name": "adult",
-    "shortcode": ":adult:",
-    "category": "人类和身体",
-    "subcategory": "人物",
     "description": {
       "zh": "成人",
       "en": "person"
@@ -1130,9 +986,6 @@
   {
     "emoji": "👱",
     "name": "blond_haired_person",
-    "shortcode": ":blond_haired_person:",
-    "category": "人类和身体",
-    "subcategory": "人物",
     "description": {
       "zh": "金色头发的人",
       "en": "person: blond hair"
@@ -1154,9 +1007,6 @@
   {
     "emoji": "👨",
     "name": "man",
-    "shortcode": ":man:",
-    "category": "人类和身体",
-    "subcategory": "人物",
     "description": {
       "zh": "男人",
       "en": "man"
@@ -1176,9 +1026,6 @@
   {
     "emoji": "🧔",
     "name": "bearded_person",
-    "shortcode": ":bearded_person:",
-    "category": "人类和身体",
-    "subcategory": "人物",
     "description": {
       "zh": "有胡子的人",
       "en": "person: beard"
@@ -1201,9 +1048,6 @@
   {
     "emoji": "👩",
     "name": "woman",
-    "shortcode": ":woman:",
-    "category": "人类和身体",
-    "subcategory": "人物",
     "description": {
       "zh": "女人",
       "en": "woman"
@@ -1222,9 +1066,6 @@
   {
     "emoji": "🧓",
     "name": "older_adult",
-    "shortcode": ":older_adult:",
-    "category": "人类和身体",
-    "subcategory": "人物",
     "description": {
       "zh": "老年人",
       "en": "older person"
@@ -1248,9 +1089,6 @@
   {
     "emoji": "👴",
     "name": "older_man",
-    "shortcode": ":older_man:",
-    "category": "人类和身体",
-    "subcategory": "人物",
     "description": {
       "zh": "老爷爷",
       "en": "old man"
@@ -1272,9 +1110,6 @@
   {
     "emoji": "👵",
     "name": "older_woman",
-    "shortcode": ":older_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物",
     "description": {
       "zh": "老奶奶",
       "en": "old woman"
@@ -1296,9 +1131,6 @@
   {
     "emoji": "🙍",
     "name": "frowning_person",
-    "shortcode": ":frowning_person:",
-    "category": "人类和身体",
-    "subcategory": "人物手势",
     "description": {
       "zh": "皱眉",
       "en": "person frowning"
@@ -1319,9 +1151,6 @@
   {
     "emoji": "🙎",
     "name": "pouting_face",
-    "shortcode": ":pouting_face:",
-    "category": "人类和身体",
-    "subcategory": "人物手势",
     "description": {
       "zh": "撅嘴",
       "en": "person pouting"
@@ -1343,9 +1172,6 @@
   {
     "emoji": "🙅",
     "name": "no_good",
-    "shortcode": ":no_good:",
-    "category": "人类和身体",
-    "subcategory": "人物手势",
     "description": {
       "zh": "禁止手势",
       "en": "person gesturing NO"
@@ -1368,9 +1194,6 @@
   {
     "emoji": "🙆",
     "name": "ok_person",
-    "shortcode": ":ok_person:",
-    "category": "人类和身体",
-    "subcategory": "人物手势",
     "description": {
       "zh": "OK手势",
       "en": "person gesturing OK"
@@ -1393,9 +1216,6 @@
   {
     "emoji": "💁",
     "name": "tipping_hand_person",
-    "shortcode": ":tipping_hand_person:",
-    "category": "人类和身体",
-    "subcategory": "人物手势",
     "description": {
       "zh": "前台",
       "en": "person tipping hand"
@@ -1418,9 +1238,6 @@
   {
     "emoji": "🙋",
     "name": "raising_hand",
-    "shortcode": ":raising_hand:",
-    "category": "人类和身体",
-    "subcategory": "人物手势",
     "description": {
       "zh": "举手",
       "en": "person raising hand"
@@ -1442,9 +1259,6 @@
   {
     "emoji": "🧏",
     "name": "deaf_person",
-    "shortcode": ":deaf_person:",
-    "category": "人类和身体",
-    "subcategory": "人物手势",
     "description": {
       "zh": "失聪者",
       "en": "deaf person"
@@ -1468,9 +1282,6 @@
   {
     "emoji": "🙇",
     "name": "bow",
-    "shortcode": ":bow:",
-    "category": "人类和身体",
-    "subcategory": "人物手势",
     "description": {
       "zh": "鞠躬",
       "en": "person bowing"
@@ -1493,9 +1304,6 @@
   {
     "emoji": "🤦",
     "name": "facepalm",
-    "shortcode": ":facepalm:",
-    "category": "人类和身体",
-    "subcategory": "人物手势",
     "description": {
       "zh": "捂脸",
       "en": "person facepalming"
@@ -1517,9 +1325,6 @@
   {
     "emoji": "🤷",
     "name": "shrug",
-    "shortcode": ":shrug:",
-    "category": "人类和身体",
-    "subcategory": "人物手势",
     "description": {
       "zh": "耸肩",
       "en": "person shrugging"
@@ -1542,9 +1347,6 @@
   {
     "emoji": "👮",
     "name": "police_officer",
-    "shortcode": ":police_officer:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "警察",
       "en": "police officer"
@@ -1565,9 +1367,6 @@
   {
     "emoji": "💂",
     "name": "guard",
-    "shortcode": ":guard:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "卫兵",
       "en": "guard"
@@ -1588,9 +1387,6 @@
   {
     "emoji": "👷",
     "name": "construction_worker",
-    "shortcode": ":construction_worker:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "建筑工人",
       "en": "construction worker"
@@ -1610,9 +1406,6 @@
   {
     "emoji": "🤴",
     "name": "prince",
-    "shortcode": ":prince:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "王子",
       "en": "prince"
@@ -1631,9 +1424,6 @@
   {
     "emoji": "👸",
     "name": "princess",
-    "shortcode": ":princess:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "公主",
       "en": "princess"
@@ -1654,9 +1444,6 @@
   {
     "emoji": "👳",
     "name": "person_with_turban",
-    "shortcode": ":person_with_turban:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "戴头巾的人",
       "en": "person wearing turban"
@@ -1677,9 +1464,6 @@
   {
     "emoji": "👲",
     "name": "man_with_gua_pi_mao",
-    "shortcode": ":man_with_gua_pi_mao:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "戴瓜皮帽的人",
       "en": "person with skullcap"
@@ -1701,9 +1485,6 @@
   {
     "emoji": "🧕",
     "name": "woman_with_headscarf",
-    "shortcode": ":woman_with_headscarf:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "带头饰的女人",
       "en": "woman with headscarf"
@@ -1726,9 +1507,6 @@
   {
     "emoji": "🤵",
     "name": "man_in_tuxedo",
-    "shortcode": ":man_in_tuxedo:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "穿燕尾服的人",
       "en": "person in tuxedo"
@@ -1750,9 +1528,6 @@
   {
     "emoji": "👰",
     "name": "bride_with_veil",
-    "shortcode": ":bride_with_veil:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "戴头纱的人",
       "en": "person with veil"
@@ -1775,9 +1550,6 @@
   {
     "emoji": "🤰",
     "name": "pregnant_woman",
-    "shortcode": ":pregnant_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "孕妇",
       "en": "pregnant woman"
@@ -1799,9 +1571,6 @@
   {
     "emoji": "🤱",
     "name": "breast_feeding",
-    "shortcode": ":breast_feeding:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "母乳喂养",
       "en": "breast-feeding"
@@ -1823,9 +1592,6 @@
   {
     "emoji": "👼",
     "name": "angel",
-    "shortcode": ":angel:",
-    "category": "人类和身体",
-    "subcategory": "虚构人物",
     "description": {
       "zh": "小天使",
       "en": "baby angel"
@@ -1847,9 +1613,6 @@
   {
     "emoji": "🎅",
     "name": "santa",
-    "shortcode": ":santa:",
-    "category": "人类和身体",
-    "subcategory": "虚构人物",
     "description": {
       "zh": "圣诞老人",
       "en": "Santa Claus"
@@ -1870,9 +1633,6 @@
   {
     "emoji": "🤶",
     "name": "mrs_claus",
-    "shortcode": ":mrs_claus:",
-    "category": "人类和身体",
-    "subcategory": "虚构人物",
     "description": {
       "zh": "圣诞奶奶",
       "en": "Mrs. Claus"
@@ -1893,9 +1653,6 @@
   {
     "emoji": "🦸",
     "name": "superhero",
-    "shortcode": ":superhero:",
-    "category": "人类和身体",
-    "subcategory": "虚构人物",
     "description": {
       "zh": "超级英雄",
       "en": "superhero"
@@ -1917,9 +1674,6 @@
   {
     "emoji": "🦹",
     "name": "supervillain",
-    "shortcode": ":supervillain:",
-    "category": "人类和身体",
-    "subcategory": "虚构人物",
     "description": {
       "zh": "超级大坏蛋",
       "en": "supervillain"
@@ -1941,9 +1695,6 @@
   {
     "emoji": "🧙",
     "name": "mage",
-    "shortcode": ":mage:",
-    "category": "人类和身体",
-    "subcategory": "虚构人物",
     "description": {
       "zh": "法师",
       "en": "mage"
@@ -1966,9 +1717,6 @@
   {
     "emoji": "🧚",
     "name": "fairy",
-    "shortcode": ":fairy:",
-    "category": "人类和身体",
-    "subcategory": "虚构人物",
     "description": {
       "zh": "精灵",
       "en": "fairy"
@@ -1990,9 +1738,6 @@
   {
     "emoji": "🧛",
     "name": "vampire",
-    "shortcode": ":vampire:",
-    "category": "人类和身体",
-    "subcategory": "虚构人物",
     "description": {
       "zh": "吸血鬼",
       "en": "vampire"
@@ -2012,9 +1757,6 @@
   {
     "emoji": "🧜",
     "name": "merperson",
-    "shortcode": ":merperson:",
-    "category": "人类和身体",
-    "subcategory": "虚构人物",
     "description": {
       "zh": "人鱼",
       "en": "merperson"
@@ -2036,9 +1778,6 @@
   {
     "emoji": "🧝",
     "name": "elf",
-    "shortcode": ":elf:",
-    "category": "人类和身体",
-    "subcategory": "虚构人物",
     "description": {
       "zh": "小精灵",
       "en": "elf"
@@ -2058,9 +1797,6 @@
   {
     "emoji": "🧞",
     "name": "genie",
-    "shortcode": ":genie:",
-    "category": "人类和身体",
-    "subcategory": "虚构人物",
     "description": {
       "zh": "妖怪",
       "en": "genie"
@@ -2080,9 +1816,6 @@
   {
     "emoji": "🧟",
     "name": "zombie",
-    "shortcode": ":zombie:",
-    "category": "人类和身体",
-    "subcategory": "虚构人物",
     "description": {
       "zh": "僵尸",
       "en": "zombie"
@@ -2103,9 +1836,6 @@
   {
     "emoji": "💆",
     "name": "massage",
-    "shortcode": ":massage:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "按摩",
       "en": "person getting massage"
@@ -2127,9 +1857,6 @@
   {
     "emoji": "💇",
     "name": "haircut",
-    "shortcode": ":haircut:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "理发",
       "en": "person getting haircut"
@@ -2151,9 +1878,6 @@
   {
     "emoji": "🚶",
     "name": "walking",
-    "shortcode": ":walking:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "行人",
       "en": "person walking"
@@ -2175,9 +1899,6 @@
   {
     "emoji": "🧍",
     "name": "standing_person",
-    "shortcode": ":standing_person:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "站立者",
       "en": "person standing"
@@ -2198,9 +1919,6 @@
   {
     "emoji": "🧎",
     "name": "kneeling_person",
-    "shortcode": ":kneeling_person:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "下跪者",
       "en": "person kneeling"
@@ -2222,9 +1940,6 @@
   {
     "emoji": "🏃",
     "name": "running",
-    "shortcode": ":running:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "跑步者",
       "en": "person running"
@@ -2245,9 +1960,6 @@
   {
     "emoji": "💃",
     "name": "woman_dancing",
-    "shortcode": ":woman_dancing:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "跳舞的女人",
       "en": "woman dancing"
@@ -2267,9 +1979,6 @@
   {
     "emoji": "🕺",
     "name": "man_dancing",
-    "shortcode": ":man_dancing:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "跳舞的男人",
       "en": "man dancing"
@@ -2289,9 +1998,6 @@
   {
     "emoji": "👯",
     "name": "dancers",
-    "shortcode": ":dancers:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "戴兔耳朵的人",
       "en": "people with bunny ears"
@@ -2316,9 +2022,6 @@
   {
     "emoji": "🧖",
     "name": "sauna_person",
-    "shortcode": ":sauna_person:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "蒸房里的人",
       "en": "person in steamy room"
@@ -2341,9 +2044,6 @@
   {
     "emoji": "🧗",
     "name": "climbing",
-    "shortcode": ":climbing:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "攀爬的人",
       "en": "person climbing"
@@ -2364,9 +2064,6 @@
   {
     "emoji": "🤺",
     "name": "person_fencing",
-    "shortcode": ":person_fencing:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "击剑选手",
       "en": "person fencing"
@@ -2387,9 +2084,6 @@
   {
     "emoji": "🏇",
     "name": "horse_racing",
-    "shortcode": ":horse_racing:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "赛马",
       "en": "horse racing"
@@ -2409,9 +2103,6 @@
   {
     "emoji": "🏂",
     "name": "snowboarder",
-    "shortcode": ":snowboarder:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "滑雪板",
       "en": "snowboarder"
@@ -2430,9 +2121,6 @@
   {
     "emoji": "🏄",
     "name": "surfer",
-    "shortcode": ":surfer:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "冲浪",
       "en": "person surfing"
@@ -2452,9 +2140,6 @@
   {
     "emoji": "🚣",
     "name": "rowboat",
-    "shortcode": ":rowboat:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "划艇",
       "en": "person rowing boat"
@@ -2476,9 +2161,6 @@
   {
     "emoji": "🏊",
     "name": "swimmer",
-    "shortcode": ":swimmer:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "游泳",
       "en": "person swimming"
@@ -2498,9 +2180,6 @@
   {
     "emoji": "🚴",
     "name": "bicyclist",
-    "shortcode": ":bicyclist:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "骑自行车",
       "en": "person biking"
@@ -2521,9 +2200,6 @@
   {
     "emoji": "🚵",
     "name": "mountain_bicyclist",
-    "shortcode": ":mountain_bicyclist:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "骑山地车",
       "en": "person mountain biking"
@@ -2547,9 +2223,6 @@
   {
     "emoji": "🤸",
     "name": "cartwheeling",
-    "shortcode": ":cartwheeling:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "侧手翻",
       "en": "person cartwheeling"
@@ -2572,9 +2245,6 @@
   {
     "emoji": "🤼",
     "name": "wrestling",
-    "shortcode": ":wrestling:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "摔跤选手",
       "en": "people wrestling"
@@ -2595,9 +2265,6 @@
   {
     "emoji": "🤽",
     "name": "water_polo",
-    "shortcode": ":water_polo:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "水球",
       "en": "person playing water polo"
@@ -2620,9 +2287,6 @@
   {
     "emoji": "🤾",
     "name": "handball_person",
-    "shortcode": ":handball_person:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "手球",
       "en": "person playing handball"
@@ -2644,9 +2308,6 @@
   {
     "emoji": "🤹",
     "name": "juggling_person",
-    "shortcode": ":juggling_person:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "抛接杂耍",
       "en": "person juggling"
@@ -2668,9 +2329,6 @@
   {
     "emoji": "🧘",
     "name": "lotus_position",
-    "shortcode": ":lotus_position:",
-    "category": "人类和身体",
-    "subcategory": "人物休息",
     "description": {
       "zh": "盘腿的人",
       "en": "person in lotus position"
@@ -2694,9 +2352,6 @@
   {
     "emoji": "🛀",
     "name": "bath",
-    "shortcode": ":bath:",
-    "category": "人类和身体",
-    "subcategory": "人物休息",
     "description": {
       "zh": "洗澡的人",
       "en": "person taking bath"
@@ -2718,9 +2373,6 @@
   {
     "emoji": "🛌",
     "name": "sleeping_bed",
-    "shortcode": ":sleeping_bed:",
-    "category": "人类和身体",
-    "subcategory": "人物休息",
     "description": {
       "zh": "躺在床上的人",
       "en": "person in bed"
@@ -2744,9 +2396,6 @@
   {
     "emoji": "👭",
     "name": "two_women_holding_hands",
-    "shortcode": ":two_women_holding_hands:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "手拉手的两个女人",
       "en": "women holding hands"
@@ -2768,9 +2417,6 @@
   {
     "emoji": "👫",
     "name": "couple",
-    "shortcode": ":couple:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "手拉手的一男一女",
       "en": "woman and man holding hands"
@@ -2793,9 +2439,6 @@
   {
     "emoji": "👬",
     "name": "two_men_holding_hands",
-    "shortcode": ":two_men_holding_hands:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "手拉手的两个男人",
       "en": "men holding hands"
@@ -2819,9 +2462,6 @@
   {
     "emoji": "💏",
     "name": "couplekiss",
-    "shortcode": ":couplekiss:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "亲吻",
       "en": "kiss"
@@ -2843,9 +2483,6 @@
   {
     "emoji": "💑",
     "name": "couple_with_heart",
-    "shortcode": ":couple_with_heart:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "情侣",
       "en": "couple with heart"
@@ -2869,9 +2506,6 @@
   {
     "emoji": "👪",
     "name": "family",
-    "shortcode": ":family:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "家庭",
       "en": "family"
@@ -2889,9 +2523,6 @@
   {
     "emoji": "👤",
     "name": "bust_in_silhouette",
-    "shortcode": ":bust_in_silhouette:",
-    "category": "人类和身体",
-    "subcategory": "人物标记",
     "description": {
       "zh": "人像",
       "en": "bust in silhouette"
@@ -2914,9 +2545,6 @@
   {
     "emoji": "👥",
     "name": "busts_in_silhouette",
-    "shortcode": ":busts_in_silhouette:",
-    "category": "人类和身体",
-    "subcategory": "人物标记",
     "description": {
       "zh": "双人像",
       "en": "busts in silhouette"
@@ -2939,9 +2567,6 @@
   {
     "emoji": "👣",
     "name": "footprints",
-    "shortcode": ":footprints:",
-    "category": "人类和身体",
-    "subcategory": "人物标记",
     "description": {
       "zh": "脚印",
       "en": "footprints"
@@ -2961,9 +2586,6 @@
   {
     "emoji": "🧑‍🎨",
     "name": "artist",
-    "shortcode": ":artist:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "艺术家",
       "en": "artist"
@@ -2983,9 +2605,6 @@
   {
     "emoji": "🧑‍🚀",
     "name": "astronaut",
-    "shortcode": ":astronaut:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "宇航员",
       "en": "astronaut"
@@ -3005,9 +2624,6 @@
   {
     "emoji": "👨‍🦲",
     "name": "bald_man",
-    "shortcode": ":bald_man:",
-    "category": "人类和身体",
-    "subcategory": "人物",
     "description": {
       "zh": "男人: 秃顶",
       "en": "man: bald"
@@ -3028,9 +2644,6 @@
   {
     "emoji": "👩‍🦲",
     "name": "bald_woman",
-    "shortcode": ":bald_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物",
     "description": {
       "zh": "女人: 秃顶",
       "en": "woman: bald"
@@ -3050,9 +2663,6 @@
   {
     "emoji": "⛹️‍♂️",
     "name": "bouncing_ball_man",
-    "shortcode": ":bouncing_ball_man:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "拍球的男人",
       "en": "man bouncing ball"
@@ -3074,9 +2684,6 @@
   {
     "emoji": "⛹️‍♀️",
     "name": "bouncing_ball_woman",
-    "shortcode": ":bouncing_ball_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "拍球的女人",
       "en": "woman bouncing ball"
@@ -3100,9 +2707,6 @@
   {
     "emoji": "🚴‍♂️",
     "name": "biking_man",
-    "shortcode": ":biking_man:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "骑自行车的男人",
       "en": "man biking"
@@ -3125,9 +2729,6 @@
   {
     "emoji": "🚴‍♀️",
     "name": "biking_woman",
-    "shortcode": ":biking_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "骑自行车的女人",
       "en": "woman biking"
@@ -3150,9 +2751,6 @@
   {
     "emoji": "👱‍♂️",
     "name": "blond_haired_man",
-    "shortcode": ":blond_haired_man:",
-    "category": "人类和身体",
-    "subcategory": "人物",
     "description": {
       "zh": "男人：金色的头发",
       "en": "man: blond hair"
@@ -3174,9 +2772,6 @@
   {
     "emoji": "👱‍♀️",
     "name": "blonde_woman",
-    "shortcode": ":blonde_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物",
     "description": {
       "zh": "女人：金色的头发",
       "en": "woman: blond hair"
@@ -3198,9 +2793,6 @@
   {
     "emoji": "🙇‍♂️",
     "name": "bowing_man",
-    "shortcode": ":bowing_man:",
-    "category": "人类和身体",
-    "subcategory": "人物手势",
     "description": {
       "zh": "男人鞠躬",
       "en": "man bowing"
@@ -3224,9 +2816,6 @@
   {
     "emoji": "🙇‍♀️",
     "name": "bowing_woman",
-    "shortcode": ":bowing_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物手势",
     "description": {
       "zh": "女人鞠躬",
       "en": "woman bowing"
@@ -3250,9 +2839,6 @@
   {
     "emoji": "🧗‍♂️",
     "name": "climbing_man",
-    "shortcode": ":climbing_man:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "男子攀爬",
       "en": "man climbing"
@@ -3274,9 +2860,6 @@
   {
     "emoji": "🧗‍♀️",
     "name": "climbing_woman",
-    "shortcode": ":climbing_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "女人攀爬",
       "en": "woman climbing"
@@ -3298,9 +2881,6 @@
   {
     "emoji": "👷‍♂️",
     "name": "construction_worker_man",
-    "shortcode": ":construction_worker_man:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "男子建筑工人",
       "en": "man construction worker"
@@ -3322,9 +2902,6 @@
   {
     "emoji": "👷‍♀️",
     "name": "construction_worker_woman",
-    "shortcode": ":construction_worker_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "女建筑工人",
       "en": "woman construction worker"
@@ -3345,9 +2922,6 @@
   {
     "emoji": "🧑‍🍳",
     "name": "cook",
-    "shortcode": ":cook:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "厨师",
       "en": "cook"
@@ -3368,9 +2942,6 @@
   {
     "emoji": "👨‍❤️‍👨",
     "name": "couple_with_heart_man_man",
-    "shortcode": ":couple_with_heart_man_man:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "带心的夫妇：男人和男人",
       "en": "couple with heart: man, man"
@@ -3398,9 +2969,6 @@
   {
     "emoji": "👩‍❤️‍👨",
     "name": "couple_with_heart_woman_man",
-    "shortcode": ":couple_with_heart_woman_man:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "带心的夫妇：女人和男人",
       "en": "couple with heart: woman, man"
@@ -3428,9 +2996,6 @@
   {
     "emoji": "👩‍❤️‍👩",
     "name": "couple_with_heart_woman_woman",
-    "shortcode": ":couple_with_heart_woman_woman:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "情侣: 女人女人",
       "en": "couple with heart: woman, woman"
@@ -3457,9 +3022,6 @@
   {
     "emoji": "👨‍❤️‍💋‍👨",
     "name": "couplekiss_man_man",
-    "shortcode": ":couplekiss_man_man:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "亲吻：男人和男人",
       "en": "kiss: man, man"
@@ -3484,9 +3046,6 @@
   {
     "emoji": "👩‍❤️‍💋‍👨",
     "name": "couplekiss_man_woman",
-    "shortcode": ":couplekiss_man_woman:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "吻：女人和男人",
       "en": "kiss: woman, man"
@@ -3512,9 +3071,6 @@
   {
     "emoji": "👩‍❤️‍💋‍👩",
     "name": "couplekiss_woman_woman",
-    "shortcode": ":couplekiss_woman_woman:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "亲吻: 女人女人",
       "en": "kiss: woman, woman"
@@ -3539,9 +3095,6 @@
   {
     "emoji": "👨‍🦱",
     "name": "curly_haired_man",
-    "shortcode": ":curly_haired_man:",
-    "category": "人类和身体",
-    "subcategory": "人物",
     "description": {
       "zh": "男人: 卷发",
       "en": "man: curly hair"
@@ -3563,9 +3116,6 @@
   {
     "emoji": "👩‍🦱",
     "name": "curly_haired_woman",
-    "shortcode": ":curly_haired_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物",
     "description": {
       "zh": "女人: 卷发",
       "en": "woman: curly hair"
@@ -3586,9 +3136,6 @@
   {
     "emoji": "👯‍♂️",
     "name": "dancing_men",
-    "shortcode": ":dancing_men:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "戴兔子耳朵的男人们",
       "en": "men with bunny ears"
@@ -3615,9 +3162,6 @@
   {
     "emoji": "👯‍♀️",
     "name": "dancing_women",
-    "shortcode": ":dancing_women:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "戴兔子耳朵的女人们",
       "en": "women with bunny ears"
@@ -3645,9 +3189,6 @@
   {
     "emoji": "🧏‍♂️",
     "name": "deaf_man",
-    "shortcode": ":deaf_man:",
-    "category": "人类和身体",
-    "subcategory": "人物手势",
     "description": {
       "zh": "聋哑男人",
       "en": "deaf man"
@@ -3670,9 +3211,6 @@
   {
     "emoji": "🧏‍♀️",
     "name": "deaf_woman",
-    "shortcode": ":deaf_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物手势",
     "description": {
       "zh": "聋哑女人",
       "en": "deaf woman"
@@ -3695,9 +3233,6 @@
   {
     "emoji": "🧝‍♂️",
     "name": "elf_man",
-    "shortcode": ":elf_man:",
-    "category": "人类和身体",
-    "subcategory": "虚构人物",
     "description": {
       "zh": "男精灵",
       "en": "man elf"
@@ -3719,9 +3254,6 @@
   {
     "emoji": "🧝‍♀️",
     "name": "elf_woman",
-    "shortcode": ":elf_woman:",
-    "category": "人类和身体",
-    "subcategory": "虚构人物",
     "description": {
       "zh": "女精灵",
       "en": "woman elf"
@@ -3743,9 +3275,6 @@
   {
     "emoji": "🧑‍🏭",
     "name": "factory_worker",
-    "shortcode": ":factory_worker:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "工人",
       "en": "factory worker"
@@ -3768,9 +3297,6 @@
   {
     "emoji": "🧚‍♂️",
     "name": "fairy_man",
-    "shortcode": ":fairy_man:",
-    "category": "人类和身体",
-    "subcategory": "虚构人物",
     "description": {
       "zh": "男仙子",
       "en": "man fairy"
@@ -3795,9 +3321,6 @@
   {
     "emoji": "🧚‍♀️",
     "name": "fairy_woman",
-    "shortcode": ":fairy_woman:",
-    "category": "人类和身体",
-    "subcategory": "虚构人物",
     "description": {
       "zh": "女仙子",
       "en": "woman fairy"
@@ -3820,9 +3343,6 @@
   {
     "emoji": "👨‍👦",
     "name": "family_man_boy",
-    "shortcode": ":family_man_boy:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "家庭: 男人男孩",
       "en": "family: man, boy"
@@ -3844,9 +3364,6 @@
   {
     "emoji": "👨‍👦‍👦",
     "name": "family_man_boy_boy",
-    "shortcode": ":family_man_boy_boy:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "家庭: 男人男孩男孩",
       "en": "family: man, boy, boy"
@@ -3870,9 +3387,6 @@
   {
     "emoji": "👨‍👧",
     "name": "family_man_girl",
-    "shortcode": ":family_man_girl:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "家庭: 男人女孩",
       "en": "family: man, girl"
@@ -3894,9 +3408,6 @@
   {
     "emoji": "👨‍👧‍👦",
     "name": "family_man_girl_boy",
-    "shortcode": ":family_man_girl_boy:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "家庭: 男人女孩男孩",
       "en": "family: man, girl, boy"
@@ -3920,9 +3431,6 @@
   {
     "emoji": "👨‍👧‍👧",
     "name": "family_man_girl_girl",
-    "shortcode": ":family_man_girl_girl:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "家庭: 男人女孩女孩",
       "en": "family: man, girl, girl"
@@ -3946,9 +3454,6 @@
   {
     "emoji": "👨‍👨‍👦",
     "name": "family_man_man_boy",
-    "shortcode": ":family_man_man_boy:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "家庭: 男人男人男孩",
       "en": "family: man, man, boy"
@@ -3970,9 +3475,6 @@
   {
     "emoji": "👨‍👨‍👦‍👦",
     "name": "family_man_man_boy_boy",
-    "shortcode": ":family_man_man_boy_boy:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "家庭: 男人男人男孩男孩",
       "en": "family: man, man, boy, boy"
@@ -3996,9 +3498,6 @@
   {
     "emoji": "👨‍👨‍👧",
     "name": "family_man_man_girl",
-    "shortcode": ":family_man_man_girl:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "家庭: 男人男人女孩",
       "en": "family: man, man, girl"
@@ -4020,9 +3519,6 @@
   {
     "emoji": "👨‍👨‍👧‍👦",
     "name": "family_man_man_girl_boy",
-    "shortcode": ":family_man_man_girl_boy:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "家庭: 男人男人女孩男孩",
       "en": "family: man, man, girl, boy"
@@ -4046,9 +3542,6 @@
   {
     "emoji": "👨‍👨‍👧‍👧",
     "name": "family_man_man_girl_girl",
-    "shortcode": ":family_man_man_girl_girl:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "家庭: 男人男人女孩女孩",
       "en": "family: man, man, girl, girl"
@@ -4072,9 +3565,6 @@
   {
     "emoji": "👨‍👩‍👦",
     "name": "family_man_woman_boy",
-    "shortcode": ":family_man_woman_boy:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "家庭: 男人女人男孩",
       "en": "family: man, woman, boy"
@@ -4096,9 +3586,6 @@
   {
     "emoji": "👨‍👩‍👦‍👦",
     "name": "family_man_woman_boy_boy",
-    "shortcode": ":family_man_woman_boy_boy:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "家庭: 男人女人男孩男孩",
       "en": "family: man, woman, boy, boy"
@@ -4122,9 +3609,6 @@
   {
     "emoji": "👨‍👩‍👧",
     "name": "family_man_woman_girl",
-    "shortcode": ":family_man_woman_girl:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "家庭: 男人女人女孩",
       "en": "family: man, woman, girl"
@@ -4146,9 +3630,6 @@
   {
     "emoji": "👨‍👩‍👧‍👦",
     "name": "family_man_woman_girl_boy",
-    "shortcode": ":family_man_woman_girl_boy:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "家庭: 男人女人女孩男孩",
       "en": "family: man, woman, girl, boy"
@@ -4172,9 +3653,6 @@
   {
     "emoji": "👨‍👩‍👧‍👧",
     "name": "family_man_woman_girl_girl",
-    "shortcode": ":family_man_woman_girl_girl:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "家庭: 男人女人女孩女孩",
       "en": "family: man, woman, girl, girl"
@@ -4198,9 +3676,6 @@
   {
     "emoji": "👩‍👦",
     "name": "family_woman_boy",
-    "shortcode": ":family_woman_boy:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "家庭: 女人男孩",
       "en": "family: woman, boy"
@@ -4222,9 +3697,6 @@
   {
     "emoji": "👩‍👦‍👦",
     "name": "family_woman_boy_boy",
-    "shortcode": ":family_woman_boy_boy:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "家庭: 女人男孩男孩",
       "en": "family: woman, boy, boy"
@@ -4248,9 +3720,6 @@
   {
     "emoji": "👩‍👧",
     "name": "family_woman_girl",
-    "shortcode": ":family_woman_girl:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "家庭: 女人女孩",
       "en": "family: woman, girl"
@@ -4272,9 +3741,6 @@
   {
     "emoji": "👩‍👧‍👦",
     "name": "family_woman_girl_boy",
-    "shortcode": ":family_woman_girl_boy:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "家庭: 女人女孩男孩",
       "en": "family: woman, girl, boy"
@@ -4298,9 +3764,6 @@
   {
     "emoji": "👩‍👧‍👧",
     "name": "family_woman_girl_girl",
-    "shortcode": ":family_woman_girl_girl:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "家庭: 女人女孩女孩",
       "en": "family: woman, girl, girl"
@@ -4324,9 +3787,6 @@
   {
     "emoji": "👩‍👩‍👦",
     "name": "family_woman_woman_boy",
-    "shortcode": ":family_woman_woman_boy:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "家庭: 女人女人男孩",
       "en": "family: woman, woman, boy"
@@ -4348,9 +3808,6 @@
   {
     "emoji": "👩‍👩‍👦‍👦",
     "name": "family_woman_woman_boy_boy",
-    "shortcode": ":family_woman_woman_boy_boy:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "家庭: 女人女人男孩男孩",
       "en": "family: woman, woman, boy, boy"
@@ -4374,9 +3831,6 @@
   {
     "emoji": "👩‍👩‍👧",
     "name": "family_woman_woman_girl",
-    "shortcode": ":family_woman_woman_girl:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "家庭: 女人女人女孩",
       "en": "family: woman, woman, girl"
@@ -4398,9 +3852,6 @@
   {
     "emoji": "👩‍👩‍👧‍👦",
     "name": "family_woman_woman_girl_boy",
-    "shortcode": ":family_woman_woman_girl_boy:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "家庭: 女人女人女孩男孩",
       "en": "family: woman, woman, girl, boy"
@@ -4424,9 +3875,6 @@
   {
     "emoji": "👩‍👩‍👧‍👧",
     "name": "family_woman_woman_girl_girl",
-    "shortcode": ":family_woman_woman_girl_girl:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "家庭: 女人女人女孩女孩",
       "en": "family: woman, woman, girl, girl"
@@ -4450,9 +3898,6 @@
   {
     "emoji": "🧑‍🌾",
     "name": "farmer",
-    "shortcode": ":farmer:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "农民",
       "en": "farmer"
@@ -4472,9 +3917,6 @@
   {
     "emoji": "🕵️‍♀️",
     "name": "female_detective",
-    "shortcode": ":female_detective:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "女侦探",
       "en": "woman detective"
@@ -4495,9 +3937,6 @@
   {
     "emoji": "🧑‍🚒",
     "name": "firefighter",
-    "shortcode": ":firefighter:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "消防员",
       "en": "firefighter"
@@ -4517,9 +3956,6 @@
   {
     "emoji": "🙍‍♂️",
     "name": "frowning_man",
-    "shortcode": ":frowning_man:",
-    "category": "人类和身体",
-    "subcategory": "人物手势",
     "description": {
       "zh": "皱眉的男人",
       "en": "man frowning"
@@ -4541,9 +3977,6 @@
   {
     "emoji": "🙍‍♀️",
     "name": "frowning_woman",
-    "shortcode": ":frowning_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物手势",
     "description": {
       "zh": "女人皱着眉头",
       "en": "woman frowning"
@@ -4565,9 +3998,6 @@
   {
     "emoji": "🧞‍♂️",
     "name": "genie_man",
-    "shortcode": ":genie_man:",
-    "category": "人类和身体",
-    "subcategory": "虚构人物",
     "description": {
       "zh": "男人精灵",
       "en": "man genie"
@@ -4589,9 +4019,6 @@
   {
     "emoji": "🧞‍♀️",
     "name": "genie_woman",
-    "shortcode": ":genie_woman:",
-    "category": "人类和身体",
-    "subcategory": "虚构人物",
     "description": {
       "zh": "女人精灵",
       "en": "woman genie"
@@ -4613,9 +4040,6 @@
   {
     "emoji": "🏌️‍♂️",
     "name": "golfing_man",
-    "shortcode": ":golfing_man:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "男子高尔夫球",
       "en": "man golfing"
@@ -4636,9 +4060,6 @@
   {
     "emoji": "🏌️‍♀️",
     "name": "golfing_woman",
-    "shortcode": ":golfing_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "女子高尔夫球",
       "en": "woman golfing"
@@ -4659,9 +4080,6 @@
   {
     "emoji": "💂‍♂️",
     "name": "guardsman",
-    "shortcode": ":guardsman:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "男警卫",
       "en": "man guard"
@@ -4684,9 +4102,6 @@
   {
     "emoji": "💂‍♀️",
     "name": "guardswoman",
-    "shortcode": ":guardswoman:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "女警卫",
       "en": "woman guard"
@@ -4709,9 +4124,6 @@
   {
     "emoji": "💇‍♂️",
     "name": "haircut_man",
-    "shortcode": ":haircut_man:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "男人理发",
       "en": "man getting haircut"
@@ -4734,9 +4146,6 @@
   {
     "emoji": "💇‍♀️",
     "name": "haircut_woman",
-    "shortcode": ":haircut_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "女人理发",
       "en": "woman getting haircut"
@@ -4759,9 +4168,6 @@
   {
     "emoji": "🧑‍⚕️",
     "name": "health_worker",
-    "shortcode": ":health_worker:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "卫生工作者",
       "en": "health worker"
@@ -4784,9 +4190,6 @@
   {
     "emoji": "🧑‍⚖️",
     "name": "judge",
-    "shortcode": ":judge:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "法官",
       "en": "judge"
@@ -4806,9 +4209,6 @@
   {
     "emoji": "🧎‍♂️",
     "name": "kneeling_man",
-    "shortcode": ":kneeling_man:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "男人跪着",
       "en": "man kneeling"
@@ -4831,9 +4231,6 @@
   {
     "emoji": "🧎‍♀️",
     "name": "kneeling_woman",
-    "shortcode": ":kneeling_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "女人跪着",
       "en": "woman kneeling"
@@ -4856,9 +4253,6 @@
   {
     "emoji": "🧘‍♂️",
     "name": "lotus_position_man",
-    "shortcode": ":lotus_position_man:",
-    "category": "人类和身体",
-    "subcategory": "人物休息",
     "description": {
       "zh": "打坐的男人",
       "en": "man in lotus position"
@@ -4883,9 +4277,6 @@
   {
     "emoji": "🧘‍♀️",
     "name": "lotus_position_woman",
-    "shortcode": ":lotus_position_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物休息",
     "description": {
       "zh": "打坐的女人",
       "en": "woman in lotus position"
@@ -4911,9 +4302,6 @@
   {
     "emoji": "🧙‍♂️",
     "name": "mage_man",
-    "shortcode": ":mage_man:",
-    "category": "人类和身体",
-    "subcategory": "虚构人物",
     "description": {
       "zh": "男法师",
       "en": "man mage"
@@ -4935,9 +4323,6 @@
   {
     "emoji": "🧙‍♀️",
     "name": "mage_woman",
-    "shortcode": ":mage_woman:",
-    "category": "人类和身体",
-    "subcategory": "虚构人物",
     "description": {
       "zh": "女法师",
       "en": "woman mage"
@@ -4959,9 +4344,6 @@
   {
     "emoji": "🕵️‍♂️",
     "name": "male_detective",
-    "shortcode": ":male_detective:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "男侦探",
       "en": "man detective"
@@ -4982,9 +4364,6 @@
   {
     "emoji": "👨‍🎨",
     "name": "man_artist",
-    "shortcode": ":man_artist:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "男艺术家",
       "en": "man artist"
@@ -5005,9 +4384,6 @@
   {
     "emoji": "👨‍🚀",
     "name": "man_astronaut",
-    "shortcode": ":man_astronaut:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "男宇航员",
       "en": "man astronaut"
@@ -5028,9 +4404,6 @@
   {
     "emoji": "🤸‍♂️",
     "name": "man_cartwheeling",
-    "shortcode": ":man_cartwheeling:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "男人翻筋斗",
       "en": "man cartwheeling"
@@ -5052,9 +4425,6 @@
   {
     "emoji": "👨‍🍳",
     "name": "man_cook",
-    "shortcode": ":man_cook:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "男厨师",
       "en": "man cook"
@@ -5076,9 +4446,6 @@
   {
     "emoji": "🤦‍♂️",
     "name": "man_facepalming",
-    "shortcode": ":man_facepalming:",
-    "category": "人类和身体",
-    "subcategory": "人物手势",
     "description": {
       "zh": "男人捂脸",
       "en": "man facepalming"
@@ -5101,9 +4468,6 @@
   {
     "emoji": "👨‍🏭",
     "name": "man_factory_worker",
-    "shortcode": ":man_factory_worker:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "男工人",
       "en": "man factory worker"
@@ -5127,9 +4491,6 @@
   {
     "emoji": "👨‍🌾",
     "name": "man_farmer",
-    "shortcode": ":man_farmer:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "农夫",
       "en": "man farmer"
@@ -5152,9 +4513,6 @@
   {
     "emoji": "👨‍🚒",
     "name": "man_firefighter",
-    "shortcode": ":man_firefighter:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "男消防员",
       "en": "man firefighter"
@@ -5175,9 +4533,6 @@
   {
     "emoji": "👨‍⚕️",
     "name": "man_health_worker",
-    "shortcode": ":man_health_worker:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "男子健康工作者",
       "en": "man health worker"
@@ -5203,9 +4558,6 @@
   {
     "emoji": "👨‍🦽",
     "name": "man_in_manual_wheelchair",
-    "shortcode": ":man_in_manual_wheelchair:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "坐手动轮椅的男人",
       "en": "man in manual wheelchair"
@@ -5227,9 +4579,6 @@
   {
     "emoji": "👨‍🦼",
     "name": "man_in_motorized_wheelchair",
-    "shortcode": ":man_in_motorized_wheelchair:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "坐电动轮椅的男人",
       "en": "man in motorized wheelchair"
@@ -5252,9 +4601,6 @@
   {
     "emoji": "👨‍⚖️",
     "name": "man_judge",
-    "shortcode": ":man_judge:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "男子法官",
       "en": "man judge"
@@ -5277,9 +4623,6 @@
   {
     "emoji": "🤹‍♂️",
     "name": "man_juggling",
-    "shortcode": ":man_juggling:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "男人玩杂耍",
       "en": "man juggling"
@@ -5302,9 +4645,6 @@
   {
     "emoji": "👨‍🔧",
     "name": "man_mechanic",
-    "shortcode": ":man_mechanic:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "男技工",
       "en": "man mechanic"
@@ -5326,9 +4666,6 @@
   {
     "emoji": "👨‍💼",
     "name": "man_office_worker",
-    "shortcode": ":man_office_worker:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "男白领",
       "en": "man office worker"
@@ -5352,9 +4689,6 @@
   {
     "emoji": "👨‍✈️",
     "name": "man_pilot",
-    "shortcode": ":man_pilot:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "男子飞行员",
       "en": "man pilot"
@@ -5376,9 +4710,6 @@
   {
     "emoji": "🤾‍♂️",
     "name": "man_playing_handball",
-    "shortcode": ":man_playing_handball:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "男子玩手球",
       "en": "man playing handball"
@@ -5400,9 +4731,6 @@
   {
     "emoji": "🤽‍♂️",
     "name": "man_playing_water_polo",
-    "shortcode": ":man_playing_water_polo:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "男子玩水球",
       "en": "man playing water polo"
@@ -5425,9 +4753,6 @@
   {
     "emoji": "👨‍🔬",
     "name": "man_scientist",
-    "shortcode": ":man_scientist:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "男科学家",
       "en": "man scientist"
@@ -5451,9 +4776,6 @@
   {
     "emoji": "🤷‍♂️",
     "name": "man_shrugging",
-    "shortcode": ":man_shrugging:",
-    "category": "人类和身体",
-    "subcategory": "人物手势",
     "description": {
       "zh": "男人耸肩",
       "en": "man shrugging"
@@ -5477,9 +4799,6 @@
   {
     "emoji": "👨‍🎤",
     "name": "man_singer",
-    "shortcode": ":man_singer:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "男歌手",
       "en": "man singer"
@@ -5503,9 +4822,6 @@
   {
     "emoji": "👨‍🎓",
     "name": "man_student",
-    "shortcode": ":man_student:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "男学生",
       "en": "man student"
@@ -5526,9 +4842,6 @@
   {
     "emoji": "👨‍🏫",
     "name": "man_teacher",
-    "shortcode": ":man_teacher:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "男老师",
       "en": "man teacher"
@@ -5550,9 +4863,6 @@
   {
     "emoji": "👨‍💻",
     "name": "man_technologist",
-    "shortcode": ":man_technologist:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "男程序员",
       "en": "man technologist"
@@ -5576,9 +4886,6 @@
   {
     "emoji": "👨‍🦯",
     "name": "man_with_probing_cane",
-    "shortcode": ":man_with_probing_cane:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "拄盲杖的男人",
       "en": "man with white cane"
@@ -5602,9 +4909,6 @@
   {
     "emoji": "👳‍♂️",
     "name": "man_with_turban",
-    "shortcode": ":man_with_turban:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "男子戴着头巾",
       "en": "man wearing turban"
@@ -5626,9 +4930,6 @@
   {
     "emoji": "💆‍♂️",
     "name": "massage_man",
-    "shortcode": ":massage_man:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "男人接受按摩",
       "en": "man getting massage"
@@ -5650,9 +4951,6 @@
   {
     "emoji": "💆‍♀️",
     "name": "massage_woman",
-    "shortcode": ":massage_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "女人接受按摩",
       "en": "woman getting massage"
@@ -5674,9 +4972,6 @@
   {
     "emoji": "🧑‍🔧",
     "name": "mechanic",
-    "shortcode": ":mechanic:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "技工",
       "en": "mechanic"
@@ -5697,9 +4992,6 @@
   {
     "emoji": "🤼‍♂️",
     "name": "men_wrestling",
-    "shortcode": ":men_wrestling:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "男子摔跤",
       "en": "men wrestling"
@@ -5721,9 +5013,6 @@
   {
     "emoji": "🧜‍♀️",
     "name": "mermaid",
-    "shortcode": ":mermaid:",
-    "category": "人类和身体",
-    "subcategory": "虚构人物",
     "description": {
       "zh": "美人鱼",
       "en": "mermaid"
@@ -5743,9 +5032,6 @@
   {
     "emoji": "🧜‍♂️",
     "name": "merman",
-    "shortcode": ":merman:",
-    "category": "人类和身体",
-    "subcategory": "虚构人物",
     "description": {
       "zh": "男人鱼",
       "en": "merman"
@@ -5765,9 +5051,6 @@
   {
     "emoji": "🚵‍♂️",
     "name": "mountain_biking_man",
-    "shortcode": ":mountain_biking_man:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "男子山地自行车",
       "en": "man mountain biking"
@@ -5791,9 +5074,6 @@
   {
     "emoji": "🚵‍♀️",
     "name": "mountain_biking_woman",
-    "shortcode": ":mountain_biking_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "女子山地自行车",
       "en": "woman mountain biking"
@@ -5818,9 +5098,6 @@
   {
     "emoji": "🙅‍♂️",
     "name": "no_good_man",
-    "shortcode": ":no_good_man:",
-    "category": "人类和身体",
-    "subcategory": "人物手势",
     "description": {
       "zh": "男人打手势不同意",
       "en": "man gesturing NO"
@@ -5844,9 +5121,6 @@
   {
     "emoji": "🙅‍♀️",
     "name": "no_good_woman",
-    "shortcode": ":no_good_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物手势",
     "description": {
       "zh": "女人打手势不同意",
       "en": "woman gesturing NO"
@@ -5870,9 +5144,6 @@
   {
     "emoji": "🧑‍💼",
     "name": "office_worker",
-    "shortcode": ":office_worker:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "白领",
       "en": "office worker"
@@ -5895,9 +5166,6 @@
   {
     "emoji": "🙆‍♂️",
     "name": "ok_man",
-    "shortcode": ":ok_man:",
-    "category": "人类和身体",
-    "subcategory": "人物手势",
     "description": {
       "zh": "男人打手势同意",
       "en": "man gesturing OK"
@@ -5921,9 +5189,6 @@
   {
     "emoji": "🙆‍♀️",
     "name": "ok_woman",
-    "shortcode": ":ok_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物手势",
     "description": {
       "zh": "女人打手势同意",
       "en": "woman gesturing OK"
@@ -5947,9 +5212,6 @@
   {
     "emoji": "🧑‍🤝‍🧑",
     "name": "people_holding_hands",
-    "shortcode": ":people_holding_hands:",
-    "category": "人类和身体",
-    "subcategory": "家庭",
     "description": {
       "zh": "手拉手的两个人",
       "en": "people holding hands"
@@ -5972,9 +5234,6 @@
   {
     "emoji": "🧑‍🦲",
     "name": "person_bald",
-    "shortcode": ":person_bald:",
-    "category": "人类和身体",
-    "subcategory": "人物",
     "description": {
       "zh": "成人: 秃顶",
       "en": "person: bald"
@@ -5996,9 +5255,6 @@
   {
     "emoji": "🧑‍🦱",
     "name": "person_curly_hair",
-    "shortcode": ":person_curly_hair:",
-    "category": "人类和身体",
-    "subcategory": "人物",
     "description": {
       "zh": "成人: 卷发",
       "en": "person: curly hair"
@@ -6021,9 +5277,6 @@
   {
     "emoji": "🧑‍🦽",
     "name": "person_in_manual_wheelchair",
-    "shortcode": ":person_in_manual_wheelchair:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "坐手动轮椅的人",
       "en": "person in manual wheelchair"
@@ -6046,9 +5299,6 @@
   {
     "emoji": "🧑‍🦼",
     "name": "person_in_motorized_wheelchair",
-    "shortcode": ":person_in_motorized_wheelchair:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "坐电动轮椅的人",
       "en": "person in motorized wheelchair"
@@ -6071,9 +5321,6 @@
   {
     "emoji": "🧑‍🦰",
     "name": "person_red_hair",
-    "shortcode": ":person_red_hair:",
-    "category": "人类和身体",
-    "subcategory": "人物",
     "description": {
       "zh": "成人: 红发",
       "en": "person: red hair"
@@ -6096,9 +5343,6 @@
   {
     "emoji": "🧑‍🦳",
     "name": "person_white_hair",
-    "shortcode": ":person_white_hair:",
-    "category": "人类和身体",
-    "subcategory": "人物",
     "description": {
       "zh": "成人: 白发",
       "en": "person: white hair"
@@ -6121,9 +5365,6 @@
   {
     "emoji": "🧑‍🦯",
     "name": "person_with_probing_cane",
-    "shortcode": ":person_with_probing_cane:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "拄盲杖的人",
       "en": "person with white cane"
@@ -6146,9 +5387,6 @@
   {
     "emoji": "🧑‍✈️",
     "name": "pilot",
-    "shortcode": ":pilot:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "飞行员",
       "en": "pilot"
@@ -6168,9 +5406,6 @@
   {
     "emoji": "👮‍♂️",
     "name": "policeman",
-    "shortcode": ":policeman:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "男警官",
       "en": "man police officer"
@@ -6193,9 +5428,6 @@
   {
     "emoji": "👮‍♀️",
     "name": "policewoman",
-    "shortcode": ":policewoman:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "女警官",
       "en": "woman police officer"
@@ -6218,9 +5450,6 @@
   {
     "emoji": "🙎‍♂️",
     "name": "pouting_man",
-    "shortcode": ":pouting_man:",
-    "category": "人类和身体",
-    "subcategory": "人物手势",
     "description": {
       "zh": "噘嘴的男人",
       "en": "man pouting"
@@ -6242,9 +5471,6 @@
   {
     "emoji": "🙎‍♀️",
     "name": "pouting_woman",
-    "shortcode": ":pouting_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物手势",
     "description": {
       "zh": "噘嘴的女人",
       "en": "woman pouting"
@@ -6266,9 +5492,6 @@
   {
     "emoji": "🙋‍♂️",
     "name": "raising_hand_man",
-    "shortcode": ":raising_hand_man:",
-    "category": "人类和身体",
-    "subcategory": "人物手势",
     "description": {
       "zh": "举手的男人",
       "en": "man raising hand"
@@ -6290,9 +5513,6 @@
   {
     "emoji": "🙋‍♀️",
     "name": "raising_hand_woman",
-    "shortcode": ":raising_hand_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物手势",
     "description": {
       "zh": "举手的女人",
       "en": "woman raising hand"
@@ -6314,9 +5534,6 @@
   {
     "emoji": "👨‍🦰",
     "name": "red_haired_man",
-    "shortcode": ":red_haired_man:",
-    "category": "人类和身体",
-    "subcategory": "人物",
     "description": {
       "zh": "男人: 红发",
       "en": "man: red hair"
@@ -6338,9 +5555,6 @@
   {
     "emoji": "👩‍🦰",
     "name": "red_haired_woman",
-    "shortcode": ":red_haired_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物",
     "description": {
       "zh": "女人: 红发",
       "en": "woman: red hair"
@@ -6361,9 +5575,6 @@
   {
     "emoji": "🚣‍♂️",
     "name": "rowing_man",
-    "shortcode": ":rowing_man:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "男子划艇",
       "en": "man rowing boat"
@@ -6386,9 +5597,6 @@
   {
     "emoji": "🚣‍♀️",
     "name": "rowing_woman",
-    "shortcode": ":rowing_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "女子划艇",
       "en": "woman rowing boat"
@@ -6411,9 +5619,6 @@
   {
     "emoji": "🏃‍♂️",
     "name": "running_man",
-    "shortcode": ":running_man:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "跑步的男人",
       "en": "man running"
@@ -6435,9 +5640,6 @@
   {
     "emoji": "🏃‍♀️",
     "name": "running_woman",
-    "shortcode": ":running_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "跑步的女人",
       "en": "woman running"
@@ -6460,9 +5662,6 @@
   {
     "emoji": "💁‍♂️",
     "name": "tipping_hand_man",
-    "shortcode": ":tipping_hand_man:",
-    "category": "人类和身体",
-    "subcategory": "人物手势",
     "description": {
       "zh": "男子举起的手",
       "en": "man tipping hand"
@@ -6484,9 +5683,6 @@
   {
     "emoji": "💁‍♀️",
     "name": "tipping_hand_woman",
-    "shortcode": ":tipping_hand_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物手势",
     "description": {
       "zh": "女人举起的手",
       "en": "woman tipping hand"
@@ -6508,9 +5704,6 @@
   {
     "emoji": "🧖‍♂️",
     "name": "sauna_man",
-    "shortcode": ":sauna_man:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "蒸汽房间里的男人",
       "en": "man in steamy room"
@@ -6534,9 +5727,6 @@
   {
     "emoji": "🧖‍♀️",
     "name": "sauna_woman",
-    "shortcode": ":sauna_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "蒸汽房间里的女人",
       "en": "woman in steamy room"
@@ -6561,9 +5751,6 @@
   {
     "emoji": "🧑‍🔬",
     "name": "scientist",
-    "shortcode": ":scientist:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "科学家",
       "en": "scientist"
@@ -6586,9 +5773,6 @@
   {
     "emoji": "🧑‍🎤",
     "name": "singer",
-    "shortcode": ":singer:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "歌手",
       "en": "singer"
@@ -6611,9 +5795,6 @@
   {
     "emoji": "🧍‍♂️",
     "name": "standing_man",
-    "shortcode": ":standing_man:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "男人站立",
       "en": "man standing"
@@ -6635,9 +5816,6 @@
   {
     "emoji": "🧍‍♀️",
     "name": "standing_woman",
-    "shortcode": ":standing_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "女人站立",
       "en": "woman standing"
@@ -6659,9 +5837,6 @@
   {
     "emoji": "🧑‍🎓",
     "name": "student",
-    "shortcode": ":student:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "学生",
       "en": "student"
@@ -6681,9 +5856,6 @@
   {
     "emoji": "🦸‍♂️",
     "name": "superhero_man",
-    "shortcode": ":superhero_man:",
-    "category": "人类和身体",
-    "subcategory": "虚构人物",
     "description": {
       "zh": "男超级英雄",
       "en": "man superhero"
@@ -6706,9 +5878,6 @@
   {
     "emoji": "🦸‍♀️",
     "name": "superhero_woman",
-    "shortcode": ":superhero_woman:",
-    "category": "人类和身体",
-    "subcategory": "虚构人物",
     "description": {
       "zh": "女超级英雄",
       "en": "woman superhero"
@@ -6731,9 +5900,6 @@
   {
     "emoji": "🦹‍♂️",
     "name": "supervillain_man",
-    "shortcode": ":supervillain_man:",
-    "category": "人类和身体",
-    "subcategory": "虚构人物",
     "description": {
       "zh": "男超级反派",
       "en": "man supervillain"
@@ -6757,9 +5923,6 @@
   {
     "emoji": "🦹‍♀️",
     "name": "supervillain_woman",
-    "shortcode": ":supervillain_woman:",
-    "category": "人类和身体",
-    "subcategory": "虚构人物",
     "description": {
       "zh": "女超级反派",
       "en": "woman supervillain"
@@ -6783,9 +5946,6 @@
   {
     "emoji": "🏄‍♂️",
     "name": "surfing_man",
-    "shortcode": ":surfing_man:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "冲浪的男人",
       "en": "man surfing"
@@ -6806,9 +5966,6 @@
   {
     "emoji": "🏄‍♀️",
     "name": "surfing_woman",
-    "shortcode": ":surfing_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "冲浪的女人",
       "en": "woman surfing"
@@ -6829,9 +5986,6 @@
   {
     "emoji": "🏊‍♂️",
     "name": "swimming_man",
-    "shortcode": ":swimming_man:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "游泳的男人",
       "en": "man swimming"
@@ -6852,9 +6006,6 @@
   {
     "emoji": "🏊‍♀️",
     "name": "swimming_woman",
-    "shortcode": ":swimming_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "游泳的女人",
       "en": "woman swimming"
@@ -6875,9 +6026,6 @@
   {
     "emoji": "🧑‍🏫",
     "name": "teacher",
-    "shortcode": ":teacher:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "老师",
       "en": "teacher"
@@ -6898,9 +6046,6 @@
   {
     "emoji": "🧑‍💻",
     "name": "technologist",
-    "shortcode": ":technologist:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "程序员",
       "en": "technologist"
@@ -6923,9 +6068,6 @@
   {
     "emoji": "🧛‍♂️",
     "name": "vampire_man",
-    "shortcode": ":vampire_man:",
-    "category": "人类和身体",
-    "subcategory": "虚构人物",
     "description": {
       "zh": "男吸血鬼",
       "en": "man vampire"
@@ -6946,9 +6088,6 @@
   {
     "emoji": "🧛‍♀️",
     "name": "vampire_woman",
-    "shortcode": ":vampire_woman:",
-    "category": "人类和身体",
-    "subcategory": "虚构人物",
     "description": {
       "zh": "女吸血鬼",
       "en": "woman vampire"
@@ -6969,9 +6108,6 @@
   {
     "emoji": "🚶‍♂️",
     "name": "walking_man",
-    "shortcode": ":walking_man:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "男人走路",
       "en": "man walking"
@@ -6993,9 +6129,6 @@
   {
     "emoji": "🚶‍♀️",
     "name": "walking_woman",
-    "shortcode": ":walking_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "女人走路",
       "en": "woman walking"
@@ -7017,9 +6150,6 @@
   {
     "emoji": "🏋️‍♂️",
     "name": "weight_lifting_man",
-    "shortcode": ":weight_lifting_man:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "男子举重",
       "en": "man lifting weights"
@@ -7041,9 +6171,6 @@
   {
     "emoji": "🏋️‍♀️",
     "name": "weight_lifting_woman",
-    "shortcode": ":weight_lifting_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "女子举重",
       "en": "woman lifting weights"
@@ -7065,9 +6192,6 @@
   {
     "emoji": "👨‍🦳",
     "name": "white_haired_man",
-    "shortcode": ":white_haired_man:",
-    "category": "人类和身体",
-    "subcategory": "人物",
     "description": {
       "zh": "男人: 白发",
       "en": "man: white hair"
@@ -7089,9 +6213,6 @@
   {
     "emoji": "👩‍🦳",
     "name": "white_haired_woman",
-    "shortcode": ":white_haired_woman:",
-    "category": "人类和身体",
-    "subcategory": "人物",
     "description": {
       "zh": "女人: 白发",
       "en": "woman: white hair"
@@ -7112,9 +6233,6 @@
   {
     "emoji": "👩‍🎨",
     "name": "woman_artist",
-    "shortcode": ":woman_artist:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "女艺术家",
       "en": "woman artist"
@@ -7135,9 +6253,6 @@
   {
     "emoji": "👩‍🚀",
     "name": "woman_astronaut",
-    "shortcode": ":woman_astronaut:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "女宇航员",
       "en": "woman astronaut"
@@ -7158,9 +6273,6 @@
   {
     "emoji": "🤸‍♀️",
     "name": "woman_cartwheeling",
-    "shortcode": ":woman_cartwheeling:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "女人翻筋斗",
       "en": "woman cartwheeling"
@@ -7182,9 +6294,6 @@
   {
     "emoji": "👩‍🍳",
     "name": "woman_cook",
-    "shortcode": ":woman_cook:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "女厨师",
       "en": "woman cook"
@@ -7206,9 +6315,6 @@
   {
     "emoji": "🤦‍♀️",
     "name": "woman_facepalming",
-    "shortcode": ":woman_facepalming:",
-    "category": "人类和身体",
-    "subcategory": "人物手势",
     "description": {
       "zh": "女人捂脸",
       "en": "woman facepalming"
@@ -7231,9 +6337,6 @@
   {
     "emoji": "👩‍🏭",
     "name": "woman_factory_worker",
-    "shortcode": ":woman_factory_worker:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "女工人",
       "en": "woman factory worker"
@@ -7257,9 +6360,6 @@
   {
     "emoji": "👩‍🌾",
     "name": "woman_farmer",
-    "shortcode": ":woman_farmer:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "农妇",
       "en": "woman farmer"
@@ -7282,9 +6382,6 @@
   {
     "emoji": "👩‍🚒",
     "name": "woman_firefighter",
-    "shortcode": ":woman_firefighter:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "女消防员",
       "en": "woman firefighter"
@@ -7305,9 +6402,6 @@
   {
     "emoji": "👩‍⚕️",
     "name": "woman_health_worker",
-    "shortcode": ":woman_health_worker:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "女卫生工作者",
       "en": "woman health worker"
@@ -7333,9 +6427,6 @@
   {
     "emoji": "👩‍🦽",
     "name": "woman_in_manual_wheelchair",
-    "shortcode": ":woman_in_manual_wheelchair:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "坐手动轮椅的女人",
       "en": "woman in manual wheelchair"
@@ -7358,9 +6449,6 @@
   {
     "emoji": "👩‍🦼",
     "name": "woman_in_motorized_wheelchair",
-    "shortcode": ":woman_in_motorized_wheelchair:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "坐电动轮椅的女人",
       "en": "woman in motorized wheelchair"
@@ -7383,9 +6471,6 @@
   {
     "emoji": "👩‍⚖️",
     "name": "woman_judge",
-    "shortcode": ":woman_judge:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "女法官",
       "en": "woman judge"
@@ -7407,9 +6492,6 @@
   {
     "emoji": "🤹‍♀️",
     "name": "woman_juggling",
-    "shortcode": ":woman_juggling:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "女人玩杂耍",
       "en": "woman juggling"
@@ -7432,9 +6514,6 @@
   {
     "emoji": "👩‍🔧",
     "name": "woman_mechanic",
-    "shortcode": ":woman_mechanic:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "女技工",
       "en": "woman mechanic"
@@ -7456,9 +6535,6 @@
   {
     "emoji": "👩‍💼",
     "name": "woman_office_worker",
-    "shortcode": ":woman_office_worker:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "女白领",
       "en": "woman office worker"
@@ -7482,9 +6558,6 @@
   {
     "emoji": "👩‍✈️",
     "name": "woman_pilot",
-    "shortcode": ":woman_pilot:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "女飞行员",
       "en": "woman pilot"
@@ -7505,9 +6578,6 @@
   {
     "emoji": "🤾‍♀️",
     "name": "woman_playing_handball",
-    "shortcode": ":woman_playing_handball:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "女人玩手球",
       "en": "woman playing handball"
@@ -7529,9 +6599,6 @@
   {
     "emoji": "🤽‍♀️",
     "name": "woman_playing_water_polo",
-    "shortcode": ":woman_playing_water_polo:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "女人玩水球",
       "en": "woman playing water polo"
@@ -7554,9 +6621,6 @@
   {
     "emoji": "👩‍🔬",
     "name": "woman_scientist",
-    "shortcode": ":woman_scientist:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "女科学家",
       "en": "woman scientist"
@@ -7580,9 +6644,6 @@
   {
     "emoji": "🤷‍♀️",
     "name": "woman_shrugging",
-    "shortcode": ":woman_shrugging:",
-    "category": "人类和身体",
-    "subcategory": "人物手势",
     "description": {
       "zh": "女人耸肩",
       "en": "woman shrugging"
@@ -7606,9 +6667,6 @@
   {
     "emoji": "👩‍🎤",
     "name": "woman_singer",
-    "shortcode": ":woman_singer:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "女歌手",
       "en": "woman singer"
@@ -7632,9 +6690,6 @@
   {
     "emoji": "👩‍🎓",
     "name": "woman_student",
-    "shortcode": ":woman_student:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "女学生",
       "en": "woman student"
@@ -7655,9 +6710,6 @@
   {
     "emoji": "👩‍🏫",
     "name": "woman_teacher",
-    "shortcode": ":woman_teacher:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "女老师",
       "en": "woman teacher"
@@ -7679,9 +6731,6 @@
   {
     "emoji": "👩‍💻",
     "name": "woman_technologist",
-    "shortcode": ":woman_technologist:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "女程序员",
       "en": "woman technologist"
@@ -7705,9 +6754,6 @@
   {
     "emoji": "👩‍🦯",
     "name": "woman_with_probing_cane",
-    "shortcode": ":woman_with_probing_cane:",
-    "category": "人类和身体",
-    "subcategory": "人物活动",
     "description": {
       "zh": "拄盲杖的女人",
       "en": "woman with white cane"
@@ -7731,9 +6777,6 @@
   {
     "emoji": "👳‍♀️",
     "name": "woman_with_turban",
-    "shortcode": ":woman_with_turban:",
-    "category": "人类和身体",
-    "subcategory": "人物角色",
     "description": {
       "zh": "女人戴着头巾",
       "en": "woman wearing turban"
@@ -7755,9 +6798,6 @@
   {
     "emoji": "🤼‍♀️",
     "name": "women_wrestling",
-    "shortcode": ":women_wrestling:",
-    "category": "人类和身体",
-    "subcategory": "人物运动",
     "description": {
       "zh": "女子摔跤",
       "en": "women wrestling"
@@ -7779,9 +6819,6 @@
   {
     "emoji": "🧟‍♂️",
     "name": "zombie_man",
-    "shortcode": ":zombie_man:",
-    "category": "人类和身体",
-    "subcategory": "虚构人物",
     "description": {
       "zh": "男人僵尸",
       "en": "man zombie"
@@ -7803,9 +6840,6 @@
   {
     "emoji": "🧟‍♀️",
     "name": "zombie_woman",
-    "shortcode": ":zombie_woman:",
-    "category": "人类和身体",
-    "subcategory": "虚构人物",
     "description": {
       "zh": "女人僵尸",
       "en": "woman zombie"
@@ -7827,9 +6861,6 @@
   {
     "emoji": "🖐️",
     "name": "raised_hand_with_fingers_splayed",
-    "shortcode": ":raised_hand_with_fingers_splayed:",
-    "category": "人类和身体",
-    "subcategory": "手势",
     "description": {
       "zh": "张开的手",
       "en": "raised_hand_with_fingers_splayed"
@@ -7848,9 +6879,6 @@
   {
     "emoji": "✌️",
     "name": "v",
-    "shortcode": ":v:",
-    "category": "人类和身体",
-    "subcategory": "手势",
     "description": {
       "zh": "胜利手势",
       "en": "v"
@@ -7869,9 +6897,6 @@
   {
     "emoji": "☝️",
     "name": "point_up",
-    "shortcode": ":point_up:",
-    "category": "人类和身体",
-    "subcategory": "手势",
     "description": {
       "zh": "向上指",
       "en": "point_up"
@@ -7890,9 +6915,6 @@
   {
     "emoji": "✍️",
     "name": "writing_hand",
-    "shortcode": ":writing_hand:",
-    "category": "人类和身体",
-    "subcategory": "手势",
     "description": {
       "zh": "写字的手",
       "en": "writing_hand"
@@ -7911,9 +6933,6 @@
   {
     "emoji": "👁️",
     "name": "eye",
-    "shortcode": ":eye:",
-    "category": "人类和身体",
-    "subcategory": "手势",
     "description": {
       "zh": "眼睛",
       "en": "eye"
@@ -7932,9 +6951,6 @@
   {
     "emoji": "🕵️",
     "name": "detective",
-    "shortcode": ":detective:",
-    "category": "人类和身体",
-    "subcategory": "手势",
     "description": {
       "zh": "侦探",
       "en": "detective"
@@ -7953,9 +6969,6 @@
   {
     "emoji": "🕴️",
     "name": "business_suit_levitating",
-    "shortcode": ":business_suit_levitating:",
-    "category": "人类和身体",
-    "subcategory": "手势",
     "description": {
       "zh": "西装悬浮",
       "en": "business_suit_levitating"
@@ -7974,9 +6987,6 @@
   {
     "emoji": "🗣️",
     "name": "speaking_head",
-    "shortcode": ":speaking_head:",
-    "category": "人类和身体",
-    "subcategory": "手势",
     "description": {
       "zh": "说话的头",
       "en": "speaking_head"

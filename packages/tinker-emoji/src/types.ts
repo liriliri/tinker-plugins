@@ -1,9 +1,6 @@
 export interface EmojiData {
   emoji: string
   name: string
-  shortcode: string
-  category: string
-  subcategory: string
   description: {
     zh: string
     en: string
@@ -12,6 +9,7 @@ export interface EmojiData {
     zh: string[]
     en: string[]
   }
+  category?: string // 动态添加
 }
 
 export interface CategoryData {

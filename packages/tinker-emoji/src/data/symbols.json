@@ -2,9 +2,6 @@
   {
     "emoji": "🏧",
     "name": "atm",
-    "shortcode": ":atm:",
-    "category": "符号",
-    "subcategory": "功能标识",
     "description": {
       "zh": "取款机",
       "en": "ATM sign"
@@ -26,9 +23,6 @@
   {
     "emoji": "🚮",
     "name": "put_litter_in_its_place",
-    "shortcode": ":put_litter_in_its_place:",
-    "category": "符号",
-    "subcategory": "功能标识",
     "description": {
       "zh": "倒垃圾",
       "en": "litter in bin sign"
@@ -51,9 +45,6 @@
   {
     "emoji": "🚰",
     "name": "potable_water",
-    "shortcode": ":potable_water:",
-    "category": "符号",
-    "subcategory": "功能标识",
     "description": {
       "zh": "饮用水",
       "en": "potable water"
@@ -76,9 +67,6 @@
   {
     "emoji": "♿",
     "name": "wheelchair",
-    "shortcode": ":wheelchair:",
-    "category": "符号",
-    "subcategory": "功能标识",
     "description": {
       "zh": "轮椅标识",
       "en": "wheelchair symbol"
@@ -102,9 +90,6 @@
   {
     "emoji": "🚹",
     "name": "mens",
-    "shortcode": ":mens:",
-    "category": "符号",
-    "subcategory": "功能标识",
     "description": {
       "zh": "男厕",
       "en": "men’s room"
@@ -128,9 +113,6 @@
   {
     "emoji": "🚺",
     "name": "womens",
-    "shortcode": ":womens:",
-    "category": "符号",
-    "subcategory": "功能标识",
     "description": {
       "zh": "女厕",
       "en": "women’s room"
@@ -154,9 +136,6 @@
   {
     "emoji": "🚻",
     "name": "restroom",
-    "shortcode": ":restroom:",
-    "category": "符号",
-    "subcategory": "功能标识",
     "description": {
       "zh": "卫生间",
       "en": "restroom"
@@ -177,9 +156,6 @@
   {
     "emoji": "🚼",
     "name": "baby_symbol",
-    "shortcode": ":baby_symbol:",
-    "category": "符号",
-    "subcategory": "功能标识",
     "description": {
       "zh": "宝宝",
       "en": "baby symbol"
@@ -201,9 +177,6 @@
   {
     "emoji": "🚾",
     "name": "wc",
-    "shortcode": ":wc:",
-    "category": "符号",
-    "subcategory": "功能标识",
     "description": {
       "zh": "厕所",
       "en": "water closet"
@@ -226,9 +199,6 @@
   {
     "emoji": "🛂",
     "name": "passport_control",
-    "shortcode": ":passport_control:",
-    "category": "符号",
-    "subcategory": "功能标识",
     "description": {
       "zh": "护照检查",
       "en": "passport control"
@@ -250,9 +220,6 @@
   {
     "emoji": "🛃",
     "name": "customs",
-    "shortcode": ":customs:",
-    "category": "符号",
-    "subcategory": "功能标识",
     "description": {
       "zh": "海关",
       "en": "customs"
@@ -271,9 +238,6 @@
   {
     "emoji": "🛄",
     "name": "baggage_claim",
-    "shortcode": ":baggage_claim:",
-    "category": "符号",
-    "subcategory": "功能标识",
     "description": {
       "zh": "提取行李",
       "en": "baggage claim"
@@ -293,9 +257,6 @@
   {
     "emoji": "🛅",
     "name": "left_luggage",
-    "shortcode": ":left_luggage:",
-    "category": "符号",
-    "subcategory": "功能标识",
     "description": {
       "zh": "寄存行李",
       "en": "left luggage"
@@ -315,9 +276,6 @@
   {
     "emoji": "🚸",
     "name": "children_crossing",
-    "shortcode": ":children_crossing:",
-    "category": "符号",
-    "subcategory": "警告",
     "description": {
       "zh": "儿童过街",
       "en": "children crossing"
@@ -341,9 +299,6 @@
   {
     "emoji": "⛔",
     "name": "no_entry",
-    "shortcode": ":no_entry:",
-    "category": "符号",
-    "subcategory": "警告",
     "description": {
       "zh": "禁止通行",
       "en": "no entry"
@@ -366,9 +321,6 @@
   {
     "emoji": "🚫",
     "name": "no_entry_sign",
-    "shortcode": ":no_entry_sign:",
-    "category": "符号",
-    "subcategory": "警告",
     "description": {
       "zh": "禁止",
       "en": "prohibited"
@@ -391,9 +343,6 @@
   {
     "emoji": "🚳",
     "name": "no_bicycles",
-    "shortcode": ":no_bicycles:",
-    "category": "符号",
-    "subcategory": "警告",
     "description": {
       "zh": "禁止自行车",
       "en": "no bicycles"
@@ -416,9 +365,6 @@
   {
     "emoji": "🚭",
     "name": "no_smoking",
-    "shortcode": ":no_smoking:",
-    "category": "符号",
-    "subcategory": "警告",
     "description": {
       "zh": "禁止吸烟",
       "en": "no smoking"
@@ -440,9 +386,6 @@
   {
     "emoji": "🚯",
     "name": "do_not_litter",
-    "shortcode": ":do_not_litter:",
-    "category": "符号",
-    "subcategory": "警告",
     "description": {
       "zh": "禁止乱扔垃圾",
       "en": "no littering"
@@ -463,9 +406,6 @@
   {
     "emoji": "🚱",
     "name": "non-potable_water",
-    "shortcode": ":non-potable_water:",
-    "category": "符号",
-    "subcategory": "警告",
     "description": {
       "zh": "非饮用水",
       "en": "non-potable water"
@@ -486,9 +426,6 @@
   {
     "emoji": "🚷",
     "name": "no_pedestrians",
-    "shortcode": ":no_pedestrians:",
-    "category": "符号",
-    "subcategory": "警告",
     "description": {
       "zh": "禁止行人通行",
       "en": "no pedestrians"
@@ -509,9 +446,6 @@
   {
     "emoji": "📵",
     "name": "no_mobile_phones",
-    "shortcode": ":no_mobile_phones:",
-    "category": "符号",
-    "subcategory": "警告",
     "description": {
       "zh": "禁止使用手机",
       "en": "no mobile phones"
@@ -534,9 +468,6 @@
   {
     "emoji": "🔞",
     "name": "underage",
-    "shortcode": ":underage:",
-    "category": "符号",
-    "subcategory": "警告",
     "description": {
       "zh": "18禁",
       "en": "no one under eighteen"
@@ -560,9 +491,6 @@
   {
     "emoji": "🔃",
     "name": "arrows_clockwise",
-    "shortcode": ":arrows_clockwise:",
-    "category": "符号",
-    "subcategory": "箭头",
     "description": {
       "zh": "顺时针垂直箭头",
       "en": "clockwise vertical arrows"
@@ -586,9 +514,6 @@
   {
     "emoji": "🔄",
     "name": "arrows_counterclockwise",
-    "shortcode": ":arrows_counterclockwise:",
-    "category": "符号",
-    "subcategory": "箭头",
     "description": {
       "zh": "逆时针箭头按钮",
       "en": "counterclockwise arrows button"
@@ -609,9 +534,6 @@
   {
     "emoji": "🔙",
     "name": "back",
-    "shortcode": ":back:",
-    "category": "符号",
-    "subcategory": "箭头",
     "description": {
       "zh": "返回箭头",
       "en": "BACK arrow"
@@ -632,9 +554,6 @@
   {
     "emoji": "🔚",
     "name": "end",
-    "shortcode": ":end:",
-    "category": "符号",
-    "subcategory": "箭头",
     "description": {
       "zh": "结束箭头",
       "en": "END arrow"
@@ -654,9 +573,6 @@
   {
     "emoji": "🔛",
     "name": "on",
-    "shortcode": ":on:",
-    "category": "符号",
-    "subcategory": "箭头",
     "description": {
       "zh": "ON! 箭头",
       "en": "ON! arrow"
@@ -678,9 +594,6 @@
   {
     "emoji": "🔜",
     "name": "soon",
-    "shortcode": ":soon:",
-    "category": "符号",
-    "subcategory": "箭头",
     "description": {
       "zh": "SOON 箭头",
       "en": "SOON arrow"
@@ -701,9 +614,6 @@
   {
     "emoji": "🔝",
     "name": "top",
-    "shortcode": ":top:",
-    "category": "符号",
-    "subcategory": "箭头",
     "description": {
       "zh": "置顶",
       "en": "TOP arrow"
@@ -725,9 +635,6 @@
   {
     "emoji": "🛐",
     "name": "place_of_worship",
-    "shortcode": ":place_of_worship:",
-    "category": "符号",
-    "subcategory": "宗教",
     "description": {
       "zh": "宗教场所",
       "en": "place of worship"
@@ -751,9 +658,6 @@
   {
     "emoji": "🕎",
     "name": "menorah",
-    "shortcode": ":menorah:",
-    "category": "符号",
-    "subcategory": "宗教",
     "description": {
       "zh": "烛台",
       "en": "menorah"
@@ -774,9 +678,6 @@
   {
     "emoji": "🔯",
     "name": "six_pointed_star",
-    "shortcode": ":six_pointed_star:",
-    "category": "符号",
-    "subcategory": "宗教",
     "description": {
       "zh": "带中间点的六芒星",
       "en": "dotted six-pointed star"
@@ -799,9 +700,6 @@
   {
     "emoji": "♈",
     "name": "aries",
-    "shortcode": ":aries:",
-    "category": "符号",
-    "subcategory": "星座",
     "description": {
       "zh": "白羊座",
       "en": "Aries"
@@ -821,9 +719,6 @@
   {
     "emoji": "♉",
     "name": "taurus",
-    "shortcode": ":taurus:",
-    "category": "符号",
-    "subcategory": "星座",
     "description": {
       "zh": "金牛座",
       "en": "Taurus"
@@ -843,9 +738,6 @@
   {
     "emoji": "♊",
     "name": "gemini",
-    "shortcode": ":gemini:",
-    "category": "符号",
-    "subcategory": "星座",
     "description": {
       "zh": "双子座",
       "en": "Gemini"
@@ -865,9 +757,6 @@
   {
     "emoji": "♋",
     "name": "cancer",
-    "shortcode": ":cancer:",
-    "category": "符号",
-    "subcategory": "星座",
     "description": {
       "zh": "巨蟹座",
       "en": "Cancer"
@@ -887,9 +776,6 @@
   {
     "emoji": "♌",
     "name": "leo",
-    "shortcode": ":leo:",
-    "category": "符号",
-    "subcategory": "星座",
     "description": {
       "zh": "狮子座",
       "en": "Leo"
@@ -909,9 +795,6 @@
   {
     "emoji": "♍",
     "name": "virgo",
-    "shortcode": ":virgo:",
-    "category": "符号",
-    "subcategory": "星座",
     "description": {
       "zh": "处女座",
       "en": "Virgo"
@@ -931,9 +814,6 @@
   {
     "emoji": "♎",
     "name": "libra",
-    "shortcode": ":libra:",
-    "category": "符号",
-    "subcategory": "星座",
     "description": {
       "zh": "天秤座",
       "en": "Libra"
@@ -954,9 +834,6 @@
   {
     "emoji": "♏",
     "name": "scorpius",
-    "shortcode": ":scorpius:",
-    "category": "符号",
-    "subcategory": "星座",
     "description": {
       "zh": "天蝎座",
       "en": "Scorpio"
@@ -976,9 +853,6 @@
   {
     "emoji": "♐",
     "name": "sagittarius",
-    "shortcode": ":sagittarius:",
-    "category": "符号",
-    "subcategory": "星座",
     "description": {
       "zh": "射手座",
       "en": "Sagittarius"
@@ -998,9 +872,6 @@
   {
     "emoji": "♑",
     "name": "capricorn",
-    "shortcode": ":capricorn:",
-    "category": "符号",
-    "subcategory": "星座",
     "description": {
       "zh": "摩羯座",
       "en": "Capricorn"
@@ -1020,9 +891,6 @@
   {
     "emoji": "♒",
     "name": "aquarius",
-    "shortcode": ":aquarius:",
-    "category": "符号",
-    "subcategory": "星座",
     "description": {
       "zh": "水瓶座",
       "en": "Aquarius"
@@ -1041,9 +909,6 @@
   {
     "emoji": "♓",
     "name": "pisces",
-    "shortcode": ":pisces:",
-    "category": "符号",
-    "subcategory": "星座",
     "description": {
       "zh": "双鱼座",
       "en": "Pisces"
@@ -1062,9 +927,6 @@
   {
     "emoji": "⛎",
     "name": "ophiuchus",
-    "shortcode": ":ophiuchus:",
-    "category": "符号",
-    "subcategory": "星座",
     "description": {
       "zh": "蛇夫座",
       "en": "Ophiuchus"
@@ -1083,9 +945,6 @@
   {
     "emoji": "🔀",
     "name": "twisted_rightwards_arrows",
-    "shortcode": ":twisted_rightwards_arrows:",
-    "category": "符号",
-    "subcategory": "视频标志",
     "description": {
       "zh": "随机播放音轨按钮",
       "en": "shuffle tracks button"
@@ -1108,9 +967,6 @@
   {
     "emoji": "🔁",
     "name": "repeat",
-    "shortcode": ":repeat:",
-    "category": "符号",
-    "subcategory": "视频标志",
     "description": {
       "zh": "重复按钮",
       "en": "repeat button"
@@ -1133,9 +989,6 @@
   {
     "emoji": "🔂",
     "name": "repeat_one",
-    "shortcode": ":repeat_one:",
-    "category": "符号",
-    "subcategory": "视频标志",
     "description": {
       "zh": "重复一次按钮",
       "en": "repeat single button"
@@ -1160,9 +1013,6 @@
   {
     "emoji": "⏩",
     "name": "fast_forward",
-    "shortcode": ":fast_forward:",
-    "category": "符号",
-    "subcategory": "视频标志",
     "description": {
       "zh": "快进按钮",
       "en": "fast-forward button"
@@ -1185,9 +1035,6 @@
   {
     "emoji": "⏪",
     "name": "rewind",
-    "shortcode": ":rewind:",
-    "category": "符号",
-    "subcategory": "视频标志",
     "description": {
       "zh": "快退按钮",
       "en": "fast reverse button"
@@ -1210,9 +1057,6 @@
   {
     "emoji": "🔼",
     "name": "arrow_up_small",
-    "shortcode": ":arrow_up_small:",
-    "category": "符号",
-    "subcategory": "视频标志",
     "description": {
       "zh": "向上三角形按钮",
       "en": "upwards button"
@@ -1234,9 +1078,6 @@
   {
     "emoji": "⏫",
     "name": "arrow_double_up",
-    "shortcode": ":arrow_double_up:",
-    "category": "符号",
-    "subcategory": "视频标志",
     "description": {
       "zh": "快速上升按钮",
       "en": "fast up button"
@@ -1259,9 +1100,6 @@
   {
     "emoji": "🔽",
     "name": "arrow_down_small",
-    "shortcode": ":arrow_down_small:",
-    "category": "符号",
-    "subcategory": "视频标志",
     "description": {
       "zh": "向下三角形按钮",
       "en": "downwards button"
@@ -1283,9 +1121,6 @@
   {
     "emoji": "⏬",
     "name": "arrow_double_down",
-    "shortcode": ":arrow_double_down:",
-    "category": "符号",
-    "subcategory": "视频标志",
     "description": {
       "zh": "快速下降按钮",
       "en": "fast down button"
@@ -1308,9 +1143,6 @@
   {
     "emoji": "🎦",
     "name": "cinema",
-    "shortcode": ":cinema:",
-    "category": "符号",
-    "subcategory": "视频标志",
     "description": {
       "zh": "电影院",
       "en": "cinema"
@@ -1331,9 +1163,6 @@
   {
     "emoji": "🔅",
     "name": "low_brightness",
-    "shortcode": ":low_brightness:",
-    "category": "符号",
-    "subcategory": "视频标志",
     "description": {
       "zh": "低亮度按钮",
       "en": "dim button"
@@ -1354,9 +1183,6 @@
   {
     "emoji": "🔆",
     "name": "high_brightness",
-    "shortcode": ":high_brightness:",
-    "category": "符号",
-    "subcategory": "视频标志",
     "description": {
       "zh": "高亮度按钮",
       "en": "bright button"
@@ -1378,9 +1204,6 @@
   {
     "emoji": "📶",
     "name": "signal_strength",
-    "shortcode": ":signal_strength:",
-    "category": "符号",
-    "subcategory": "视频标志",
     "description": {
       "zh": "信号强度条",
       "en": "antenna bars"
@@ -1402,9 +1225,6 @@
   {
     "emoji": "📳",
     "name": "vibration_mode",
-    "shortcode": ":vibration_mode:",
-    "category": "符号",
-    "subcategory": "视频标志",
     "description": {
       "zh": "振动模式",
       "en": "vibration mode"
@@ -1426,9 +1246,6 @@
   {
     "emoji": "📴",
     "name": "mobile_phone_off",
-    "shortcode": ":mobile_phone_off:",
-    "category": "符号",
-    "subcategory": "视频标志",
     "description": {
       "zh": "手机关机",
       "en": "mobile phone off"
@@ -1450,9 +1267,6 @@
   {
     "emoji": "➕",
     "name": "heavy_plus_sign",
-    "shortcode": ":heavy_plus_sign:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "加",
       "en": "plus"
@@ -1474,9 +1288,6 @@
   {
     "emoji": "➖",
     "name": "heavy_minus_sign",
-    "shortcode": ":heavy_minus_sign:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "减",
       "en": "minus"
@@ -1497,9 +1308,6 @@
   {
     "emoji": "➗",
     "name": "heavy_division_sign",
-    "shortcode": ":heavy_division_sign:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "除",
       "en": "divide"
@@ -1520,9 +1328,6 @@
   {
     "emoji": "❓",
     "name": "question",
-    "shortcode": ":question:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "红色问号",
       "en": "red question mark"
@@ -1544,9 +1349,6 @@
   {
     "emoji": "❔",
     "name": "grey_question",
-    "shortcode": ":grey_question:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "白色问号",
       "en": "white question mark"
@@ -1570,9 +1372,6 @@
   {
     "emoji": "❕",
     "name": "grey_exclamation",
-    "shortcode": ":grey_exclamation:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "白色感叹号",
       "en": "white exclamation mark"
@@ -1596,9 +1395,6 @@
   {
     "emoji": "❗",
     "name": "heavy_exclamation_mark",
-    "shortcode": ":heavy_exclamation_mark:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "红色感叹号",
       "en": "red exclamation mark"
@@ -1621,9 +1417,6 @@
   {
     "emoji": "💱",
     "name": "currency_exchange",
-    "shortcode": ":currency_exchange:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "货币兑换",
       "en": "currency exchange"
@@ -1646,9 +1439,6 @@
   {
     "emoji": "💲",
     "name": "heavy_dollar_sign",
-    "shortcode": ":heavy_dollar_sign:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "粗美元符号",
       "en": "heavy dollar sign"
@@ -1670,9 +1460,6 @@
   {
     "emoji": "🔱",
     "name": "trident",
-    "shortcode": ":trident:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "三叉戟徽章",
       "en": "trident emblem"
@@ -1694,9 +1481,6 @@
   {
     "emoji": "📛",
     "name": "name_badge",
-    "shortcode": ":name_badge:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "姓名牌",
       "en": "name badge"
@@ -1717,9 +1501,6 @@
   {
     "emoji": "🔰",
     "name": "beginner",
-    "shortcode": ":beginner:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "日本新手驾驶标志",
       "en": "Japanese symbol for beginner"
@@ -1744,9 +1525,6 @@
   {
     "emoji": "⭕",
     "name": "o",
-    "shortcode": ":o:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "红色空心圆圈",
       "en": "hollow red circle"
@@ -1768,9 +1546,6 @@
   {
     "emoji": "✅",
     "name": "white_check_mark",
-    "shortcode": ":white_check_mark:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "勾号按钮",
       "en": "check mark button"
@@ -1791,9 +1566,6 @@
   {
     "emoji": "❌",
     "name": "x",
-    "shortcode": ":x:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "叉号",
       "en": "cross mark"
@@ -1815,9 +1587,6 @@
   {
     "emoji": "❎",
     "name": "negative_squared_cross_mark",
-    "shortcode": ":negative_squared_cross_mark:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "叉号按钮",
       "en": "cross mark button"
@@ -1839,9 +1608,6 @@
   {
     "emoji": "➰",
     "name": "curly_loop",
-    "shortcode": ":curly_loop:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "卷曲环",
       "en": "curly loop"
@@ -1862,9 +1628,6 @@
   {
     "emoji": "➿",
     "name": "loop",
-    "shortcode": ":loop:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "双卷曲环",
       "en": "double curly loop"
@@ -1886,9 +1649,6 @@
   {
     "emoji": "#️⃣",
     "name": "hash",
-    "shortcode": ":hash:",
-    "category": "符号",
-    "subcategory": "键帽",
     "description": {
       "zh": "按键: #",
       "en": "keycap: #"
@@ -1908,9 +1668,6 @@
   {
     "emoji": "*️⃣",
     "name": "asterisk",
-    "shortcode": ":asterisk:",
-    "category": "符号",
-    "subcategory": "键帽",
     "description": {
       "zh": "键帽：*",
       "en": "keycap: *"
@@ -1931,9 +1688,6 @@
   {
     "emoji": "0️⃣",
     "name": "zero",
-    "shortcode": ":zero:",
-    "category": "符号",
-    "subcategory": "键帽",
     "description": {
       "zh": "键帽：0",
       "en": "keycap: 0"
@@ -1954,9 +1708,6 @@
   {
     "emoji": "1️⃣",
     "name": "one",
-    "shortcode": ":one:",
-    "category": "符号",
-    "subcategory": "键帽",
     "description": {
       "zh": "键帽：1",
       "en": "keycap: 1"
@@ -1977,9 +1728,6 @@
   {
     "emoji": "2️⃣",
     "name": "two",
-    "shortcode": ":two:",
-    "category": "符号",
-    "subcategory": "键帽",
     "description": {
       "zh": "键帽：2",
       "en": "keycap: 2"
@@ -2000,9 +1748,6 @@
   {
     "emoji": "3️⃣",
     "name": "three",
-    "shortcode": ":three:",
-    "category": "符号",
-    "subcategory": "键帽",
     "description": {
       "zh": "键帽：3",
       "en": "keycap: 3"
@@ -2023,9 +1768,6 @@
   {
     "emoji": "4️⃣",
     "name": "four",
-    "shortcode": ":four:",
-    "category": "符号",
-    "subcategory": "键帽",
     "description": {
       "zh": "键帽：4",
       "en": "keycap: 4"
@@ -2046,9 +1788,6 @@
   {
     "emoji": "5️⃣",
     "name": "five",
-    "shortcode": ":five:",
-    "category": "符号",
-    "subcategory": "键帽",
     "description": {
       "zh": "键帽：5",
       "en": "keycap: 5"
@@ -2069,9 +1808,6 @@
   {
     "emoji": "6️⃣",
     "name": "six",
-    "shortcode": ":six:",
-    "category": "符号",
-    "subcategory": "键帽",
     "description": {
       "zh": "键帽：6",
       "en": "keycap: 6"
@@ -2092,9 +1828,6 @@
   {
     "emoji": "7️⃣",
     "name": "seven",
-    "shortcode": ":seven:",
-    "category": "符号",
-    "subcategory": "键帽",
     "description": {
       "zh": "键帽：7",
       "en": "keycap: 7"
@@ -2115,9 +1848,6 @@
   {
     "emoji": "8️⃣",
     "name": "eight",
-    "shortcode": ":eight:",
-    "category": "符号",
-    "subcategory": "键帽",
     "description": {
       "zh": "键帽：8",
       "en": "keycap: 8"
@@ -2138,9 +1868,6 @@
   {
     "emoji": "9️⃣",
     "name": "nine",
-    "shortcode": ":nine:",
-    "category": "符号",
-    "subcategory": "键帽",
     "description": {
       "zh": "键帽：9",
       "en": "keycap: 9"
@@ -2161,9 +1888,6 @@
   {
     "emoji": "🔟",
     "name": "keycap_ten",
-    "shortcode": ":keycap_ten:",
-    "category": "符号",
-    "subcategory": "键帽",
     "description": {
       "zh": "按键: 10",
       "en": "keycap: 10"
@@ -2183,9 +1907,6 @@
   {
     "emoji": "🔠",
     "name": "capital_abcd",
-    "shortcode": ":capital_abcd:",
-    "category": "符号",
-    "subcategory": "字符",
     "description": {
       "zh": "输入大写拉丁字母",
       "en": "input latin uppercase"
@@ -2210,9 +1931,6 @@
   {
     "emoji": "🔡",
     "name": "abcd",
-    "shortcode": ":abcd:",
-    "category": "符号",
-    "subcategory": "字符",
     "description": {
       "zh": "输入小写拉丁字母",
       "en": "input latin lowercase"
@@ -2237,9 +1955,6 @@
   {
     "emoji": "🔢",
     "name": "1234",
-    "shortcode": ":1234:",
-    "category": "符号",
-    "subcategory": "字符",
     "description": {
       "zh": "输入数字",
       "en": "input numbers"
@@ -2261,9 +1976,6 @@
   {
     "emoji": "🔣",
     "name": "symbols",
-    "shortcode": ":symbols:",
-    "category": "符号",
-    "subcategory": "字符",
     "description": {
       "zh": "输入符号",
       "en": "input symbols"
@@ -2283,9 +1995,6 @@
   {
     "emoji": "🔤",
     "name": "abc",
-    "shortcode": ":abc:",
-    "category": "符号",
-    "subcategory": "字符",
     "description": {
       "zh": "输入拉丁字母",
       "en": "input latin letters"
@@ -2309,9 +2018,6 @@
   {
     "emoji": "🆎",
     "name": "ab",
-    "shortcode": ":ab:",
-    "category": "符号",
-    "subcategory": "字符",
     "description": {
       "zh": "AB型血",
       "en": "AB button (blood type)"
@@ -2336,9 +2042,6 @@
   {
     "emoji": "🆑",
     "name": "cl",
-    "shortcode": ":cl:",
-    "category": "符号",
-    "subcategory": "字符",
     "description": {
       "zh": "CL按钮",
       "en": "CL button"
@@ -2361,9 +2064,6 @@
   {
     "emoji": "🆒",
     "name": "cool",
-    "shortcode": ":cool:",
-    "category": "符号",
-    "subcategory": "字符",
     "description": {
       "zh": "cool按钮",
       "en": "COOL button"
@@ -2385,9 +2085,6 @@
   {
     "emoji": "🆓",
     "name": "free",
-    "shortcode": ":free:",
-    "category": "符号",
-    "subcategory": "字符",
     "description": {
       "zh": "免费按钮",
       "en": "FREE button"
@@ -2408,9 +2105,6 @@
   {
     "emoji": "🆔",
     "name": "id",
-    "shortcode": ":id:",
-    "category": "符号",
-    "subcategory": "字符",
     "description": {
       "zh": "ID按钮",
       "en": "ID button"
@@ -2433,9 +2127,6 @@
   {
     "emoji": "🆕",
     "name": "new",
-    "shortcode": ":new:",
-    "category": "符号",
-    "subcategory": "字符",
     "description": {
       "zh": "new按钮",
       "en": "NEW button"
@@ -2457,9 +2148,6 @@
   {
     "emoji": "🆖",
     "name": "ng",
-    "shortcode": ":ng:",
-    "category": "符号",
-    "subcategory": "字符",
     "description": {
       "zh": "NG按钮",
       "en": "NG button"
@@ -2481,9 +2169,6 @@
   {
     "emoji": "🆗",
     "name": "ok",
-    "shortcode": ":ok:",
-    "category": "符号",
-    "subcategory": "字符",
     "description": {
       "zh": "OK按钮",
       "en": "OK button"
@@ -2505,9 +2190,6 @@
   {
     "emoji": "🆘",
     "name": "sos",
-    "shortcode": ":sos:",
-    "category": "符号",
-    "subcategory": "字符",
     "description": {
       "zh": "SOS按钮",
       "en": "SOS button"
@@ -2529,9 +2211,6 @@
   {
     "emoji": "🆙",
     "name": "up",
-    "shortcode": ":up:",
-    "category": "符号",
-    "subcategory": "字符",
     "description": {
       "zh": "up按钮",
       "en": "UP! button"
@@ -2553,9 +2232,6 @@
   {
     "emoji": "🆚",
     "name": "vs",
-    "shortcode": ":vs:",
-    "category": "符号",
-    "subcategory": "字符",
     "description": {
       "zh": "VS按钮",
       "en": "VS button"
@@ -2577,9 +2253,6 @@
   {
     "emoji": "🈁",
     "name": "koko",
-    "shortcode": ":koko:",
-    "category": "符号",
-    "subcategory": "字符",
     "description": {
       "zh": "日文的“这里”按钮",
       "en": "Japanese “here” button"
@@ -2602,9 +2275,6 @@
   {
     "emoji": "🈶",
     "name": "u6709",
-    "shortcode": ":u6709:",
-    "category": "符号",
-    "subcategory": "字符",
     "description": {
       "zh": "日文的“收费”按钮",
       "en": "Japanese “not free of charge” button"
@@ -2630,9 +2300,6 @@
   {
     "emoji": "🈯",
     "name": "u6307",
-    "shortcode": ":u6307:",
-    "category": "符号",
-    "subcategory": "字符",
     "description": {
       "zh": "日文的“预留”按钮",
       "en": "Japanese “reserved” button"
@@ -2655,9 +2322,6 @@
   {
     "emoji": "🉐",
     "name": "ideograph_advantage",
-    "shortcode": ":ideograph_advantage:",
-    "category": "符号",
-    "subcategory": "字符",
     "description": {
       "zh": "日文的“议价”按钮",
       "en": "Japanese “bargain” button"
@@ -2680,9 +2344,6 @@
   {
     "emoji": "🈹",
     "name": "u5272",
-    "shortcode": ":u5272:",
-    "category": "符号",
-    "subcategory": "字符",
     "description": {
       "zh": "日文的“打折”按钮",
       "en": "Japanese “discount” button"
@@ -2705,9 +2366,6 @@
   {
     "emoji": "🈚",
     "name": "u7121",
-    "shortcode": ":u7121:",
-    "category": "符号",
-    "subcategory": "字符",
     "description": {
       "zh": "日文的“免费”按钮",
       "en": "Japanese “free of charge” button"
@@ -2731,9 +2389,6 @@
   {
     "emoji": "🈲",
     "name": "u7981",
-    "shortcode": ":u7981:",
-    "category": "符号",
-    "subcategory": "字符",
     "description": {
       "zh": "日文的“禁止”按钮",
       "en": "Japanese “prohibited” button"
@@ -2756,9 +2411,6 @@
   {
     "emoji": "🉑",
     "name": "accept",
-    "shortcode": ":accept:",
-    "category": "符号",
-    "subcategory": "字符",
     "description": {
       "zh": "日文的“可接受”按钮",
       "en": "Japanese “acceptable” button"
@@ -2781,9 +2433,6 @@
   {
     "emoji": "🈸",
     "name": "u7533",
-    "shortcode": ":u7533:",
-    "category": "符号",
-    "subcategory": "字符",
     "description": {
       "zh": "日文的“申请”按钮",
       "en": "Japanese “application” button"
@@ -2807,9 +2456,6 @@
   {
     "emoji": "🈴",
     "name": "u5408",
-    "shortcode": ":u5408:",
-    "category": "符号",
-    "subcategory": "字符",
     "description": {
       "zh": "日文的“合格”按钮",
       "en": "Japanese “passing grade” button"
@@ -2833,9 +2479,6 @@
   {
     "emoji": "🈳",
     "name": "u7a7a",
-    "shortcode": ":u7a7a:",
-    "category": "符号",
-    "subcategory": "字符",
     "description": {
       "zh": "日文的“有空位”按钮",
       "en": "Japanese “vacancy” button"
@@ -2858,9 +2501,6 @@
   {
     "emoji": "🈺",
     "name": "u55b6",
-    "shortcode": ":u55b6:",
-    "category": "符号",
-    "subcategory": "字符",
     "description": {
       "zh": "日文的“开始营业”按钮",
       "en": "Japanese “open for business” button"
@@ -2885,9 +2525,6 @@
   {
     "emoji": "🈵",
     "name": "u6e80",
-    "shortcode": ":u6e80:",
-    "category": "符号",
-    "subcategory": "字符",
     "description": {
       "zh": "日文的“没有空位”按钮",
       "en": "Japanese “no vacancy” button"
@@ -2912,9 +2549,6 @@
   {
     "emoji": "🔴",
     "name": "red_circle",
-    "shortcode": ":red_circle:",
-    "category": "符号",
-    "subcategory": "几何",
     "description": {
       "zh": "红色圆",
       "en": "red circle"
@@ -2935,9 +2569,6 @@
   {
     "emoji": "🟠",
     "name": "orange_circle",
-    "shortcode": ":orange_circle:",
-    "category": "符号",
-    "subcategory": "几何",
     "description": {
       "zh": "橙色圆",
       "en": "orange circle"
@@ -2958,9 +2589,6 @@
   {
     "emoji": "🟡",
     "name": "yellow_circle",
-    "shortcode": ":yellow_circle:",
-    "category": "符号",
-    "subcategory": "几何",
     "description": {
       "zh": "黄色圆",
       "en": "yellow circle"
@@ -2981,9 +2609,6 @@
   {
     "emoji": "🟢",
     "name": "green_circle",
-    "shortcode": ":green_circle:",
-    "category": "符号",
-    "subcategory": "几何",
     "description": {
       "zh": "绿色圆",
       "en": "green circle"
@@ -3004,9 +2629,6 @@
   {
     "emoji": "🔵",
     "name": "large_blue_circle",
-    "shortcode": ":large_blue_circle:",
-    "category": "符号",
-    "subcategory": "几何",
     "description": {
       "zh": "蓝色圆",
       "en": "blue circle"
@@ -3027,9 +2649,6 @@
   {
     "emoji": "🟣",
     "name": "purple_circle",
-    "shortcode": ":purple_circle:",
-    "category": "符号",
-    "subcategory": "几何",
     "description": {
       "zh": "紫色圆",
       "en": "purple circle"
@@ -3050,9 +2669,6 @@
   {
     "emoji": "🟤",
     "name": "brown_circle",
-    "shortcode": ":brown_circle:",
-    "category": "符号",
-    "subcategory": "几何",
     "description": {
       "zh": "棕色圆",
       "en": "brown circle"
@@ -3073,9 +2689,6 @@
   {
     "emoji": "⚫",
     "name": "black_circle",
-    "shortcode": ":black_circle:",
-    "category": "符号",
-    "subcategory": "几何",
     "description": {
       "zh": "黑色圆",
       "en": "black circle"
@@ -3096,9 +2709,6 @@
   {
     "emoji": "⚪",
     "name": "white_circle",
-    "shortcode": ":white_circle:",
-    "category": "符号",
-    "subcategory": "几何",
     "description": {
       "zh": "白色圆",
       "en": "white circle"
@@ -3119,9 +2729,6 @@
   {
     "emoji": "🟥",
     "name": "red_square",
-    "shortcode": ":red_square:",
-    "category": "符号",
-    "subcategory": "几何",
     "description": {
       "zh": "红色方块",
       "en": "red square"
@@ -3143,9 +2750,6 @@
   {
     "emoji": "🟧",
     "name": "orange_square",
-    "shortcode": ":orange_square:",
-    "category": "符号",
-    "subcategory": "几何",
     "description": {
       "zh": "橙色方块",
       "en": "orange square"
@@ -3167,9 +2771,6 @@
   {
     "emoji": "🟨",
     "name": "yellow_square",
-    "shortcode": ":yellow_square:",
-    "category": "符号",
-    "subcategory": "几何",
     "description": {
       "zh": "黄色方块",
       "en": "yellow square"
@@ -3191,9 +2792,6 @@
   {
     "emoji": "🟩",
     "name": "green_square",
-    "shortcode": ":green_square:",
-    "category": "符号",
-    "subcategory": "几何",
     "description": {
       "zh": "绿色方块",
       "en": "green square"
@@ -3215,9 +2813,6 @@
   {
     "emoji": "🟦",
     "name": "blue_square",
-    "shortcode": ":blue_square:",
-    "category": "符号",
-    "subcategory": "几何",
     "description": {
       "zh": "蓝色方块",
       "en": "blue square"
@@ -3239,9 +2834,6 @@
   {
     "emoji": "🟪",
     "name": "purple_square",
-    "shortcode": ":purple_square:",
-    "category": "符号",
-    "subcategory": "几何",
     "description": {
       "zh": "紫色方块",
       "en": "purple square"
@@ -3263,9 +2855,6 @@
   {
     "emoji": "🟫",
     "name": "brown_square",
-    "shortcode": ":brown_square:",
-    "category": "符号",
-    "subcategory": "几何",
     "description": {
       "zh": "棕色方块",
       "en": "brown square"
@@ -3287,9 +2876,6 @@
   {
     "emoji": "⬛",
     "name": "black_large_square",
-    "shortcode": ":black_large_square:",
-    "category": "符号",
-    "subcategory": "几何",
     "description": {
       "zh": "黑线大方框",
       "en": "black large square"
@@ -3312,9 +2898,6 @@
   {
     "emoji": "⬜",
     "name": "white_large_square",
-    "shortcode": ":white_large_square:",
-    "category": "符号",
-    "subcategory": "几何",
     "description": {
       "zh": "白线大方框",
       "en": "white large square"
@@ -3337,9 +2920,6 @@
   {
     "emoji": "◾",
     "name": "black_medium_small_square",
-    "shortcode": ":black_medium_small_square:",
-    "category": "符号",
-    "subcategory": "几何",
     "description": {
       "zh": "黑色中小方块",
       "en": "black medium-small square"
@@ -3361,9 +2941,6 @@
   {
     "emoji": "◽",
     "name": "white_medium_small_square",
-    "shortcode": ":white_medium_small_square:",
-    "category": "符号",
-    "subcategory": "几何",
     "description": {
       "zh": "白色中小方块",
       "en": "white medium-small square"
@@ -3385,9 +2962,6 @@
   {
     "emoji": "🔶",
     "name": "large_orange_diamond",
-    "shortcode": ":large_orange_diamond:",
-    "category": "符号",
-    "subcategory": "几何",
     "description": {
       "zh": "橙色大菱形",
       "en": "large orange diamond"
@@ -3410,9 +2984,6 @@
   {
     "emoji": "🔷",
     "name": "large_blue_diamond",
-    "shortcode": ":large_blue_diamond:",
-    "category": "符号",
-    "subcategory": "几何",
     "description": {
       "zh": "蓝色大菱形",
       "en": "large blue diamond"
@@ -3434,9 +3005,6 @@
   {
     "emoji": "🔸",
     "name": "small_orange_diamond",
-    "shortcode": ":small_orange_diamond:",
-    "category": "符号",
-    "subcategory": "几何",
     "description": {
       "zh": "橙色小菱形",
       "en": "small orange diamond"
@@ -3459,9 +3027,6 @@
   {
     "emoji": "🔹",
     "name": "small_blue_diamond",
-    "shortcode": ":small_blue_diamond:",
-    "category": "符号",
-    "subcategory": "几何",
     "description": {
       "zh": "蓝色小菱形",
       "en": "small blue diamond"
@@ -3483,9 +3048,6 @@
   {
     "emoji": "🔺",
     "name": "small_red_triangle",
-    "shortcode": ":small_red_triangle:",
-    "category": "符号",
-    "subcategory": "几何",
     "description": {
       "zh": "红色正三角",
       "en": "red triangle pointed up"
@@ -3509,9 +3071,6 @@
   {
     "emoji": "🔻",
     "name": "small_red_triangle_down",
-    "shortcode": ":small_red_triangle_down:",
-    "category": "符号",
-    "subcategory": "几何",
     "description": {
       "zh": "红色倒三角",
       "en": "red triangle pointed down"
@@ -3535,9 +3094,6 @@
   {
     "emoji": "💠",
     "name": "diamond_shape_with_a_dot_inside",
-    "shortcode": ":diamond_shape_with_a_dot_inside:",
-    "category": "符号",
-    "subcategory": "几何",
     "description": {
       "zh": "带圆点的菱形",
       "en": "diamond with a dot"
@@ -3562,9 +3118,6 @@
   {
     "emoji": "🔘",
     "name": "radio_button",
-    "shortcode": ":radio_button:",
-    "category": "符号",
-    "subcategory": "几何",
     "description": {
       "zh": "单选按钮",
       "en": "radio button"
@@ -3588,9 +3141,6 @@
   {
     "emoji": "🔳",
     "name": "white_square_button",
-    "shortcode": ":white_square_button:",
-    "category": "符号",
-    "subcategory": "几何",
     "description": {
       "zh": "白色方形按钮",
       "en": "white square button"
@@ -3616,9 +3166,6 @@
   {
     "emoji": "🔲",
     "name": "black_square_button",
-    "shortcode": ":black_square_button:",
-    "category": "符号",
-    "subcategory": "几何",
     "description": {
       "zh": "黑色方形按钮",
       "en": "black square button"
@@ -3644,9 +3191,6 @@
   {
     "emoji": "☠️",
     "name": "skull_and_crossbones",
-    "shortcode": ":skull_and_crossbones:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "骷髅",
       "en": "skull_and_crossbones"
@@ -3665,9 +3209,6 @@
   {
     "emoji": "🗨️",
     "name": "left_speech_bubble",
-    "shortcode": ":left_speech_bubble:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "左侧对话框",
       "en": "left_speech_bubble"
@@ -3686,9 +3227,6 @@
   {
     "emoji": "🗯️",
     "name": "right_anger_bubble",
-    "shortcode": ":right_anger_bubble:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "愤怒对话框",
       "en": "right_anger_bubble"
@@ -3707,9 +3245,6 @@
   {
     "emoji": "☀️",
     "name": "sunny",
-    "shortcode": ":sunny:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "晴天",
       "en": "sunny"
@@ -3728,9 +3263,6 @@
   {
     "emoji": "☁️",
     "name": "cloud",
-    "shortcode": ":cloud:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "云",
       "en": "cloud"
@@ -3749,9 +3281,6 @@
   {
     "emoji": "⛈️",
     "name": "cloud_with_lightning_and_rain",
-    "shortcode": ":cloud_with_lightning_and_rain:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "雷雨云",
       "en": "cloud_with_lightning_and_rain"
@@ -3770,9 +3299,6 @@
   {
     "emoji": "🌤️",
     "name": "sun_behind_small_cloud",
-    "shortcode": ":sun_behind_small_cloud:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "太阳在小云后",
       "en": "sun_behind_small_cloud"
@@ -3791,9 +3317,6 @@
   {
     "emoji": "🌥️",
     "name": "sun_behind_large_cloud",
-    "shortcode": ":sun_behind_large_cloud:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "太阳在大云后",
       "en": "sun_behind_large_cloud"
@@ -3812,9 +3335,6 @@
   {
     "emoji": "🌦️",
     "name": "sun_behind_rain_cloud",
-    "shortcode": ":sun_behind_rain_cloud:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "太阳在雨云后",
       "en": "sun_behind_rain_cloud"
@@ -3833,9 +3353,6 @@
   {
     "emoji": "🌧️",
     "name": "cloud_with_rain",
-    "shortcode": ":cloud_with_rain:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "雨云",
       "en": "cloud_with_rain"
@@ -3854,9 +3371,6 @@
   {
     "emoji": "🌨️",
     "name": "cloud_with_snow",
-    "shortcode": ":cloud_with_snow:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "雪云",
       "en": "cloud_with_snow"
@@ -3875,9 +3389,6 @@
   {
     "emoji": "🌩️",
     "name": "cloud_with_lightning",
-    "shortcode": ":cloud_with_lightning:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "雷云",
       "en": "cloud_with_lightning"
@@ -3896,9 +3407,6 @@
   {
     "emoji": "🌪️",
     "name": "tornado",
-    "shortcode": ":tornado:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "龙卷风",
       "en": "tornado"
@@ -3917,9 +3425,6 @@
   {
     "emoji": "🌫️",
     "name": "fog",
-    "shortcode": ":fog:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "雾",
       "en": "fog"
@@ -3938,9 +3443,6 @@
   {
     "emoji": "🌬️",
     "name": "wind_face",
-    "shortcode": ":wind_face:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "风",
       "en": "wind_face"
@@ -3959,9 +3461,6 @@
   {
     "emoji": "❄️",
     "name": "snowflake",
-    "shortcode": ":snowflake:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "雪花",
       "en": "snowflake"
@@ -3980,9 +3479,6 @@
   {
     "emoji": "☃️",
     "name": "snowman_with_snow",
-    "shortcode": ":snowman_with_snow:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "雪人",
       "en": "snowman_with_snow"
@@ -4001,9 +3497,6 @@
   {
     "emoji": "☄️",
     "name": "comet",
-    "shortcode": ":comet:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "彗星",
       "en": "comet"
@@ -4022,9 +3515,6 @@
   {
     "emoji": "🎗️",
     "name": "reminder_ribbon",
-    "shortcode": ":reminder_ribbon:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "提醒丝带",
       "en": "reminder_ribbon"
@@ -4043,9 +3533,6 @@
   {
     "emoji": "⚠️",
     "name": "warning",
-    "shortcode": ":warning:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "警告",
       "en": "warning"
@@ -4064,9 +3551,6 @@
   {
     "emoji": "☢️",
     "name": "radioactive",
-    "shortcode": ":radioactive:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "放射性",
       "en": "radioactive"
@@ -4085,9 +3569,6 @@
   {
     "emoji": "☣️",
     "name": "biohazard",
-    "shortcode": ":biohazard:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "生物危害",
       "en": "biohazard"
@@ -4106,9 +3587,6 @@
   {
     "emoji": "⬆️",
     "name": "arrow_up",
-    "shortcode": ":arrow_up:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "向上箭头",
       "en": "arrow_up"
@@ -4127,9 +3605,6 @@
   {
     "emoji": "↗️",
     "name": "arrow_upper_right",
-    "shortcode": ":arrow_upper_right:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "右上箭头",
       "en": "arrow_upper_right"
@@ -4148,9 +3623,6 @@
   {
     "emoji": "➡️",
     "name": "arrow_right",
-    "shortcode": ":arrow_right:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "向右箭头",
       "en": "arrow_right"
@@ -4169,9 +3641,6 @@
   {
     "emoji": "↘️",
     "name": "arrow_lower_right",
-    "shortcode": ":arrow_lower_right:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "右下箭头",
       "en": "arrow_lower_right"
@@ -4190,9 +3659,6 @@
   {
     "emoji": "⬇️",
     "name": "arrow_down",
-    "shortcode": ":arrow_down:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "向下箭头",
       "en": "arrow_down"
@@ -4211,9 +3677,6 @@
   {
     "emoji": "↙️",
     "name": "arrow_lower_left",
-    "shortcode": ":arrow_lower_left:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "左下箭头",
       "en": "arrow_lower_left"
@@ -4232,9 +3695,6 @@
   {
     "emoji": "⬅️",
     "name": "arrow_left",
-    "shortcode": ":arrow_left:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "向左箭头",
       "en": "arrow_left"
@@ -4253,9 +3713,6 @@
   {
     "emoji": "↖️",
     "name": "arrow_upper_left",
-    "shortcode": ":arrow_upper_left:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "左上箭头",
       "en": "arrow_upper_left"
@@ -4274,9 +3731,6 @@
   {
     "emoji": "↕️",
     "name": "arrow_up_down",
-    "shortcode": ":arrow_up_down:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "上下箭头",
       "en": "arrow_up_down"
@@ -4295,9 +3749,6 @@
   {
     "emoji": "↔️",
     "name": "left_right_arrow",
-    "shortcode": ":left_right_arrow:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "左右箭头",
       "en": "left_right_arrow"
@@ -4316,9 +3767,6 @@
   {
     "emoji": "↩️",
     "name": "leftwards_arrow_with_hook",
-    "shortcode": ":leftwards_arrow_with_hook:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "左弯箭头",
       "en": "leftwards_arrow_with_hook"
@@ -4337,9 +3785,6 @@
   {
     "emoji": "↪️",
     "name": "arrow_right_hook",
-    "shortcode": ":arrow_right_hook:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "右弯箭头",
       "en": "arrow_right_hook"
@@ -4358,9 +3803,6 @@
   {
     "emoji": "⤴️",
     "name": "arrow_heading_up",
-    "shortcode": ":arrow_heading_up:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "向上斜箭头",
       "en": "arrow_heading_up"
@@ -4379,9 +3821,6 @@
   {
     "emoji": "⤵️",
     "name": "arrow_heading_down",
-    "shortcode": ":arrow_heading_down:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "向下斜箭头",
       "en": "arrow_heading_down"
@@ -4400,9 +3839,6 @@
   {
     "emoji": "⚛️",
     "name": "atom_symbol",
-    "shortcode": ":atom_symbol:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "原子符号",
       "en": "atom_symbol"
@@ -4421,9 +3857,6 @@
   {
     "emoji": "🕉️",
     "name": "om",
-    "shortcode": ":om:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "唵",
       "en": "om"
@@ -4442,9 +3875,6 @@
   {
     "emoji": "✡️",
     "name": "star_of_david",
-    "shortcode": ":star_of_david:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "大卫之星",
       "en": "star_of_david"
@@ -4463,9 +3893,6 @@
   {
     "emoji": "☸️",
     "name": "wheel_of_dharma",
-    "shortcode": ":wheel_of_dharma:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "法轮",
       "en": "wheel_of_dharma"
@@ -4484,9 +3911,6 @@
   {
     "emoji": "☯️",
     "name": "yin_yang",
-    "shortcode": ":yin_yang:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "阴阳",
       "en": "yin_yang"
@@ -4505,9 +3929,6 @@
   {
     "emoji": "✝️",
     "name": "latin_cross",
-    "shortcode": ":latin_cross:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "十字架",
       "en": "latin_cross"
@@ -4526,9 +3947,6 @@
   {
     "emoji": "☦️",
     "name": "orthodox_cross",
-    "shortcode": ":orthodox_cross:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "东正教十字",
       "en": "orthodox_cross"
@@ -4547,9 +3965,6 @@
   {
     "emoji": "☪️",
     "name": "star_and_crescent",
-    "shortcode": ":star_and_crescent:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "星月",
       "en": "star_and_crescent"
@@ -4568,9 +3983,6 @@
   {
     "emoji": "☮️",
     "name": "peace_symbol",
-    "shortcode": ":peace_symbol:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "和平符号",
       "en": "peace_symbol"
@@ -4589,9 +4001,6 @@
   {
     "emoji": "▶️",
     "name": "arrow_forward",
-    "shortcode": ":arrow_forward:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "播放",
       "en": "arrow_forward"
@@ -4610,9 +4019,6 @@
   {
     "emoji": "⏭️",
     "name": "next_track_button",
-    "shortcode": ":next_track_button:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "下一曲",
       "en": "next_track_button"
@@ -4631,9 +4037,6 @@
   {
     "emoji": "⏯️",
     "name": "play_or_pause_button",
-    "shortcode": ":play_or_pause_button:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "播放暂停",
       "en": "play_or_pause_button"
@@ -4652,9 +4055,6 @@
   {
     "emoji": "◀️",
     "name": "arrow_backward",
-    "shortcode": ":arrow_backward:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "后退",
       "en": "arrow_backward"
@@ -4673,9 +4073,6 @@
   {
     "emoji": "⏮️",
     "name": "previous_track_button",
-    "shortcode": ":previous_track_button:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "上一曲",
       "en": "previous_track_button"
@@ -4694,9 +4091,6 @@
   {
     "emoji": "⏸️",
     "name": "pause_button",
-    "shortcode": ":pause_button:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "暂停",
       "en": "pause_button"
@@ -4715,9 +4109,6 @@
   {
     "emoji": "⏹️",
     "name": "stop_button",
-    "shortcode": ":stop_button:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "停止",
       "en": "stop_button"
@@ -4736,9 +4127,6 @@
   {
     "emoji": "⏺️",
     "name": "record_button",
-    "shortcode": ":record_button:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "录制",
       "en": "record_button"
@@ -4757,9 +4145,6 @@
   {
     "emoji": "⏏️",
     "name": "eject_button",
-    "shortcode": ":eject_button:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "弹出",
       "en": "eject_button"
@@ -4778,9 +4163,6 @@
   {
     "emoji": "♀️",
     "name": "female_sign",
-    "shortcode": ":female_sign:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "女性符号",
       "en": "female_sign"
@@ -4799,9 +4181,6 @@
   {
     "emoji": "♂️",
     "name": "male_sign",
-    "shortcode": ":male_sign:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "男性符号",
       "en": "male_sign"
@@ -4820,9 +4199,6 @@
   {
     "emoji": "✖️",
     "name": "heavy_multiplication_x",
-    "shortcode": ":heavy_multiplication_x:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "叉号",
       "en": "heavy_multiplication_x"
@@ -4841,9 +4217,6 @@
   {
     "emoji": "♾️",
     "name": "infinity",
-    "shortcode": ":infinity:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "无穷",
       "en": "infinity"
@@ -4862,9 +4235,6 @@
   {
     "emoji": "‼️",
     "name": "bangbang",
-    "shortcode": ":bangbang:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "双感叹号",
       "en": "bangbang"
@@ -4883,9 +4253,6 @@
   {
     "emoji": "⁉️",
     "name": "interrobang",
-    "shortcode": ":interrobang:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "疑问感叹号",
       "en": "interrobang"
@@ -4904,9 +4271,6 @@
   {
     "emoji": "〰️",
     "name": "wavy_dash",
-    "shortcode": ":wavy_dash:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "波浪线",
       "en": "wavy_dash"
@@ -4925,9 +4289,6 @@
   {
     "emoji": "⚕️",
     "name": "medical_symbol",
-    "shortcode": ":medical_symbol:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "医疗标志",
       "en": "medical_symbol"
@@ -4946,9 +4307,6 @@
   {
     "emoji": "♻️",
     "name": "recycle",
-    "shortcode": ":recycle:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "回收",
       "en": "recycle"
@@ -4967,9 +4325,6 @@
   {
     "emoji": "⚜️",
     "name": "fleur_de_lis",
-    "shortcode": ":fleur_de_lis:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "百合花饰",
       "en": "fleur_de_lis"
@@ -4988,9 +4343,6 @@
   {
     "emoji": "☑️",
     "name": "ballot_box_with_check",
-    "shortcode": ":ballot_box_with_check:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "勾选框",
       "en": "ballot_box_with_check"
@@ -5009,9 +4361,6 @@
   {
     "emoji": "✔️",
     "name": "heavy_check_mark",
-    "shortcode": ":heavy_check_mark:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "对号",
       "en": "heavy_check_mark"
@@ -5030,9 +4379,6 @@
   {
     "emoji": "〽️",
     "name": "part_alternation_mark",
-    "shortcode": ":part_alternation_mark:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "部分交替符",
       "en": "part_alternation_mark"
@@ -5051,9 +4397,6 @@
   {
     "emoji": "✳️",
     "name": "eight_spoked_asterisk",
-    "shortcode": ":eight_spoked_asterisk:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "八角星",
       "en": "eight_spoked_asterisk"
@@ -5072,9 +4415,6 @@
   {
     "emoji": "✴️",
     "name": "eight_pointed_black_star",
-    "shortcode": ":eight_pointed_black_star:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "八角黑星",
       "en": "eight_pointed_black_star"
@@ -5093,9 +4433,6 @@
   {
     "emoji": "❇️",
     "name": "sparkle",
-    "shortcode": ":sparkle:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "闪烁",
       "en": "sparkle"
@@ -5114,9 +4451,6 @@
   {
     "emoji": "©️",
     "name": "copyright",
-    "shortcode": ":copyright:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "版权",
       "en": "copyright"
@@ -5135,9 +4469,6 @@
   {
     "emoji": "®️",
     "name": "registered",
-    "shortcode": ":registered:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "注册商标",
       "en": "registered"
@@ -5156,9 +4487,6 @@
   {
     "emoji": "™️",
     "name": "tm",
-    "shortcode": ":tm:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "商标",
       "en": "tm"
@@ -5177,9 +4505,6 @@
   {
     "emoji": "🅰️",
     "name": "a",
-    "shortcode": ":a:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "A型血",
       "en": "a"
@@ -5198,9 +4523,6 @@
   {
     "emoji": "🅱️",
     "name": "b",
-    "shortcode": ":b:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "B型血",
       "en": "b"
@@ -5219,9 +4541,6 @@
   {
     "emoji": "ℹ️",
     "name": "information_source",
-    "shortcode": ":information_source:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "信息",
       "en": "information_source"
@@ -5240,9 +4559,6 @@
   {
     "emoji": "Ⓜ️",
     "name": "m",
-    "shortcode": ":m:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "M",
       "en": "m"
@@ -5261,9 +4577,6 @@
   {
     "emoji": "🅾️",
     "name": "o2",
-    "shortcode": ":o2:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "O2",
       "en": "o2"
@@ -5282,9 +4595,6 @@
   {
     "emoji": "🅿️",
     "name": "parking",
-    "shortcode": ":parking:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "停车",
       "en": "parking"
@@ -5303,9 +4613,6 @@
   {
     "emoji": "🈂️",
     "name": "sa",
-    "shortcode": ":sa:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "SA",
       "en": "sa"
@@ -5324,9 +4631,6 @@
   {
     "emoji": "🈷️",
     "name": "u6708",
-    "shortcode": ":u6708:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "月",
       "en": "u6708"
@@ -5345,9 +4649,6 @@
   {
     "emoji": "㊗️",
     "name": "congratulations",
-    "shortcode": ":congratulations:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "祝贺",
       "en": "congratulations"
@@ -5366,9 +4667,6 @@
   {
     "emoji": "㊙️",
     "name": "secret",
-    "shortcode": ":secret:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "秘密",
       "en": "secret"
@@ -5387,9 +4685,6 @@
   {
     "emoji": "◼️",
     "name": "black_medium_square",
-    "shortcode": ":black_medium_square:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "黑色方块",
       "en": "black_medium_square"
@@ -5408,9 +4703,6 @@
   {
     "emoji": "◻️",
     "name": "white_medium_square",
-    "shortcode": ":white_medium_square:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "白色方块",
       "en": "white_medium_square"
@@ -5429,9 +4721,6 @@
   {
     "emoji": "▪️",
     "name": "black_small_square",
-    "shortcode": ":black_small_square:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "黑色小方块",
       "en": "black_small_square"
@@ -5450,9 +4739,6 @@
   {
     "emoji": "▫️",
     "name": "white_small_square",
-    "shortcode": ":white_small_square:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "白色小方块",
       "en": "white_small_square"
@@ -5471,9 +4757,6 @@
   {
     "emoji": "🏳️",
     "name": "white_flag",
-    "shortcode": ":white_flag:",
-    "category": "符号",
-    "subcategory": "其他符号",
     "description": {
       "zh": "白旗",
       "en": "white_flag"

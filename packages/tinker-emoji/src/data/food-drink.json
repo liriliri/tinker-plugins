@@ -2,9 +2,6 @@
   {
     "emoji": "🍇",
     "name": "grapes",
-    "shortcode": ":grapes:",
-    "category": "食物和饮料",
-    "subcategory": "水果",
     "description": {
       "zh": "葡萄",
       "en": "grapes"
@@ -23,9 +20,6 @@
   {
     "emoji": "🍈",
     "name": "melon",
-    "shortcode": ":melon:",
-    "category": "食物和饮料",
-    "subcategory": "水果",
     "description": {
       "zh": "甜瓜",
       "en": "melon"
@@ -46,9 +40,6 @@
   {
     "emoji": "🍉",
     "name": "watermelon",
-    "shortcode": ":watermelon:",
-    "category": "食物和饮料",
-    "subcategory": "水果",
     "description": {
       "zh": "西瓜",
       "en": "watermelon"
@@ -67,9 +58,6 @@
   {
     "emoji": "🍊",
     "name": "tangerine",
-    "shortcode": ":tangerine:",
-    "category": "食物和饮料",
-    "subcategory": "水果",
     "description": {
       "zh": "橘子",
       "en": "tangerine"
@@ -90,9 +78,6 @@
   {
     "emoji": "🍋",
     "name": "lemon",
-    "shortcode": ":lemon:",
-    "category": "食物和饮料",
-    "subcategory": "水果",
     "description": {
       "zh": "柠檬",
       "en": "lemon"
@@ -111,9 +96,6 @@
   {
     "emoji": "🍌",
     "name": "banana",
-    "shortcode": ":banana:",
-    "category": "食物和饮料",
-    "subcategory": "水果",
     "description": {
       "zh": "香蕉",
       "en": "banana"
@@ -132,9 +114,6 @@
   {
     "emoji": "🍍",
     "name": "pineapple",
-    "shortcode": ":pineapple:",
-    "category": "食物和饮料",
-    "subcategory": "水果",
     "description": {
       "zh": "菠萝",
       "en": "pineapple"
@@ -153,9 +132,6 @@
   {
     "emoji": "🥭",
     "name": "mango",
-    "shortcode": ":mango:",
-    "category": "食物和饮料",
-    "subcategory": "水果",
     "description": {
       "zh": "芒果",
       "en": "mango"
@@ -175,9 +151,6 @@
   {
     "emoji": "🍎",
     "name": "apple",
-    "shortcode": ":apple:",
-    "category": "食物和饮料",
-    "subcategory": "水果",
     "description": {
       "zh": "红苹果",
       "en": "red apple"
@@ -197,9 +170,6 @@
   {
     "emoji": "🍏",
     "name": "green_apple",
-    "shortcode": ":green_apple:",
-    "category": "食物和饮料",
-    "subcategory": "水果",
     "description": {
       "zh": "青苹果",
       "en": "green apple"
@@ -219,9 +189,6 @@
   {
     "emoji": "🍐",
     "name": "pear",
-    "shortcode": ":pear:",
-    "category": "食物和饮料",
-    "subcategory": "水果",
     "description": {
       "zh": "梨",
       "en": "pear"
@@ -240,9 +207,6 @@
   {
     "emoji": "🍑",
     "name": "peach",
-    "shortcode": ":peach:",
-    "category": "食物和饮料",
-    "subcategory": "水果",
     "description": {
       "zh": "桃",
       "en": "peach"
@@ -261,9 +225,6 @@
   {
     "emoji": "🍒",
     "name": "cherries",
-    "shortcode": ":cherries:",
-    "category": "食物和饮料",
-    "subcategory": "水果",
     "description": {
       "zh": "樱桃",
       "en": "cherries"
@@ -282,9 +243,6 @@
   {
     "emoji": "🍓",
     "name": "strawberry",
-    "shortcode": ":strawberry:",
-    "category": "食物和饮料",
-    "subcategory": "水果",
     "description": {
       "zh": "草莓",
       "en": "strawberry"
@@ -303,9 +261,6 @@
   {
     "emoji": "🥝",
     "name": "kiwi_fruit",
-    "shortcode": ":kiwi_fruit:",
-    "category": "食物和饮料",
-    "subcategory": "水果",
     "description": {
       "zh": "猕猴桃",
       "en": "kiwi fruit"
@@ -326,9 +281,6 @@
   {
     "emoji": "🍅",
     "name": "tomato",
-    "shortcode": ":tomato:",
-    "category": "食物和饮料",
-    "subcategory": "水果",
     "description": {
       "zh": "西红柿",
       "en": "tomato"
@@ -349,9 +301,6 @@
   {
     "emoji": "🥥",
     "name": "coconut",
-    "shortcode": ":coconut:",
-    "category": "食物和饮料",
-    "subcategory": "水果",
     "description": {
       "zh": "椰子",
       "en": "coconut"
@@ -371,9 +320,6 @@
   {
     "emoji": "🥑",
     "name": "avocado",
-    "shortcode": ":avocado:",
-    "category": "食物和饮料",
-    "subcategory": "蔬菜",
     "description": {
       "zh": "鳄梨",
       "en": "avocado"
@@ -394,9 +340,6 @@
   {
     "emoji": "🍆",
     "name": "eggplant",
-    "shortcode": ":eggplant:",
-    "category": "食物和饮料",
-    "subcategory": "蔬菜",
     "description": {
       "zh": "茄子",
       "en": "eggplant"
@@ -415,9 +358,6 @@
   {
     "emoji": "🥔",
     "name": "potato",
-    "shortcode": ":potato:",
-    "category": "食物和饮料",
-    "subcategory": "蔬菜",
     "description": {
       "zh": "土豆",
       "en": "potato"
@@ -437,9 +377,6 @@
   {
     "emoji": "🥕",
     "name": "carrot",
-    "shortcode": ":carrot:",
-    "category": "食物和饮料",
-    "subcategory": "蔬菜",
     "description": {
       "zh": "胡萝卜",
       "en": "carrot"
@@ -458,9 +395,6 @@
   {
     "emoji": "🌽",
     "name": "corn",
-    "shortcode": ":corn:",
-    "category": "食物和饮料",
-    "subcategory": "蔬菜",
     "description": {
       "zh": "玉米",
       "en": "ear of corn"
@@ -482,9 +416,6 @@
   {
     "emoji": "🥒",
     "name": "cucumber",
-    "shortcode": ":cucumber:",
-    "category": "食物和饮料",
-    "subcategory": "蔬菜",
     "description": {
       "zh": "黄瓜",
       "en": "cucumber"
@@ -504,9 +435,6 @@
   {
     "emoji": "🥬",
     "name": "leafy_green",
-    "shortcode": ":leafy_green:",
-    "category": "食物和饮料",
-    "subcategory": "蔬菜",
     "description": {
       "zh": "绿叶蔬菜",
       "en": "leafy green"
@@ -530,9 +458,6 @@
   {
     "emoji": "🥦",
     "name": "broccoli",
-    "shortcode": ":broccoli:",
-    "category": "食物和饮料",
-    "subcategory": "蔬菜",
     "description": {
       "zh": "西兰花",
       "en": "broccoli"
@@ -552,9 +477,6 @@
   {
     "emoji": "🧄",
     "name": "garlic",
-    "shortcode": ":garlic:",
-    "category": "食物和饮料",
-    "subcategory": "蔬菜",
     "description": {
       "zh": "蒜",
       "en": "garlic"
@@ -577,9 +499,6 @@
   {
     "emoji": "🧅",
     "name": "onion",
-    "shortcode": ":onion:",
-    "category": "食物和饮料",
-    "subcategory": "蔬菜",
     "description": {
       "zh": "洋葱",
       "en": "onion"
@@ -600,9 +519,6 @@
   {
     "emoji": "🍄",
     "name": "mushroom",
-    "shortcode": ":mushroom:",
-    "category": "食物和饮料",
-    "subcategory": "蔬菜",
     "description": {
       "zh": "蘑菇",
       "en": "mushroom"
@@ -621,9 +537,6 @@
   {
     "emoji": "🥜",
     "name": "peanuts",
-    "shortcode": ":peanuts:",
-    "category": "食物和饮料",
-    "subcategory": "蔬菜",
     "description": {
       "zh": "花生",
       "en": "peanuts"
@@ -643,9 +556,6 @@
   {
     "emoji": "🌰",
     "name": "chestnut",
-    "shortcode": ":chestnut:",
-    "category": "食物和饮料",
-    "subcategory": "蔬菜",
     "description": {
       "zh": "栗子",
       "en": "chestnut"
@@ -664,9 +574,6 @@
   {
     "emoji": "🍞",
     "name": "bread",
-    "shortcode": ":bread:",
-    "category": "食物和饮料",
-    "subcategory": "熟食",
     "description": {
       "zh": "面包",
       "en": "bread"
@@ -685,9 +592,6 @@
   {
     "emoji": "🥐",
     "name": "croissant",
-    "shortcode": ":croissant:",
-    "category": "食物和饮料",
-    "subcategory": "熟食",
     "description": {
       "zh": "羊角面包",
       "en": "croissant"
@@ -708,9 +612,6 @@
   {
     "emoji": "🥖",
     "name": "baguette_bread",
-    "shortcode": ":baguette_bread:",
-    "category": "食物和饮料",
-    "subcategory": "熟食",
     "description": {
       "zh": "法式长棍面包",
       "en": "baguette bread"
@@ -730,9 +631,6 @@
   {
     "emoji": "🥨",
     "name": "pretzel",
-    "shortcode": ":pretzel:",
-    "category": "食物和饮料",
-    "subcategory": "熟食",
     "description": {
       "zh": "椒盐卷饼",
       "en": "pretzel"
@@ -752,9 +650,6 @@
   {
     "emoji": "🥯",
     "name": "bagel",
-    "shortcode": ":bagel:",
-    "category": "食物和饮料",
-    "subcategory": "熟食",
     "description": {
       "zh": "面包圈",
       "en": "bagel"
@@ -775,9 +670,6 @@
   {
     "emoji": "🥞",
     "name": "pancakes",
-    "shortcode": ":pancakes:",
-    "category": "食物和饮料",
-    "subcategory": "熟食",
     "description": {
       "zh": "烙饼",
       "en": "pancakes"
@@ -797,9 +689,6 @@
   {
     "emoji": "🧇",
     "name": "waffle",
-    "shortcode": ":waffle:",
-    "category": "食物和饮料",
-    "subcategory": "熟食",
     "description": {
       "zh": "华夫饼",
       "en": "waffle"
@@ -822,9 +711,6 @@
   {
     "emoji": "🧀",
     "name": "cheese",
-    "shortcode": ":cheese:",
-    "category": "食物和饮料",
-    "subcategory": "熟食",
     "description": {
       "zh": "芝士",
       "en": "cheese wedge"
@@ -846,9 +732,6 @@
   {
     "emoji": "🍖",
     "name": "meat_on_bone",
-    "shortcode": ":meat_on_bone:",
-    "category": "食物和饮料",
-    "subcategory": "熟食",
     "description": {
       "zh": "排骨",
       "en": "meat on bone"
@@ -869,9 +752,6 @@
   {
     "emoji": "🍗",
     "name": "poultry_leg",
-    "shortcode": ":poultry_leg:",
-    "category": "食物和饮料",
-    "subcategory": "熟食",
     "description": {
       "zh": "家禽的腿",
       "en": "poultry leg"
@@ -893,9 +773,6 @@
   {
     "emoji": "🥩",
     "name": "cut_of_meat",
-    "shortcode": ":cut_of_meat:",
-    "category": "食物和饮料",
-    "subcategory": "熟食",
     "description": {
       "zh": "肉块",
       "en": "cut of meat"
@@ -920,9 +797,6 @@
   {
     "emoji": "🥓",
     "name": "bacon",
-    "shortcode": ":bacon:",
-    "category": "食物和饮料",
-    "subcategory": "熟食",
     "description": {
       "zh": "培根",
       "en": "bacon"
@@ -943,9 +817,6 @@
   {
     "emoji": "🍔",
     "name": "hamburger",
-    "shortcode": ":hamburger:",
-    "category": "食物和饮料",
-    "subcategory": "熟食",
     "description": {
       "zh": "汉堡",
       "en": "hamburger"
@@ -965,9 +836,6 @@
   {
     "emoji": "🍟",
     "name": "fries",
-    "shortcode": ":fries:",
-    "category": "食物和饮料",
-    "subcategory": "熟食",
     "description": {
       "zh": "薯条",
       "en": "french fries"
@@ -988,9 +856,6 @@
   {
     "emoji": "🍕",
     "name": "pizza",
-    "shortcode": ":pizza:",
-    "category": "食物和饮料",
-    "subcategory": "熟食",
     "description": {
       "zh": "披萨",
       "en": "pizza"
@@ -1009,9 +874,6 @@
   {
     "emoji": "🌭",
     "name": "hotdog",
-    "shortcode": ":hotdog:",
-    "category": "食物和饮料",
-    "subcategory": "熟食",
     "description": {
       "zh": "热狗",
       "en": "hot dog"
@@ -1031,9 +893,6 @@
   {
     "emoji": "🥪",
     "name": "sandwich",
-    "shortcode": ":sandwich:",
-    "category": "食物和饮料",
-    "subcategory": "熟食",
     "description": {
       "zh": "三明治",
       "en": "sandwich"
@@ -1053,9 +912,6 @@
   {
     "emoji": "🌮",
     "name": "taco",
-    "shortcode": ":taco:",
-    "category": "食物和饮料",
-    "subcategory": "熟食",
     "description": {
       "zh": "墨西哥卷饼",
       "en": "taco"
@@ -1074,9 +930,6 @@
   {
     "emoji": "🌯",
     "name": "burrito",
-    "shortcode": ":burrito:",
-    "category": "食物和饮料",
-    "subcategory": "熟食",
     "description": {
       "zh": "墨西哥玉米煎饼",
       "en": "burrito"
@@ -1096,9 +949,6 @@
   {
     "emoji": "🥙",
     "name": "stuffed_flatbread",
-    "shortcode": ":stuffed_flatbread:",
-    "category": "食物和饮料",
-    "subcategory": "熟食",
     "description": {
       "zh": "夹心饼",
       "en": "stuffed flatbread"
@@ -1120,9 +970,6 @@
   {
     "emoji": "🧆",
     "name": "falafel",
-    "shortcode": ":falafel:",
-    "category": "食物和饮料",
-    "subcategory": "熟食",
     "description": {
       "zh": "炸豆丸子",
       "en": "falafel"
@@ -1145,9 +992,6 @@
   {
     "emoji": "🥚",
     "name": "egg",
-    "shortcode": ":egg:",
-    "category": "食物和饮料",
-    "subcategory": "熟食",
     "description": {
       "zh": "蛋",
       "en": "egg"
@@ -1166,9 +1010,6 @@
   {
     "emoji": "🍳",
     "name": "fried_egg",
-    "shortcode": ":fried_egg:",
-    "category": "食物和饮料",
-    "subcategory": "熟食",
     "description": {
       "zh": "煎蛋",
       "en": "cooking"
@@ -1188,9 +1029,6 @@
   {
     "emoji": "🥘",
     "name": "shallow_pan_of_food",
-    "shortcode": ":shallow_pan_of_food:",
-    "category": "食物和饮料",
-    "subcategory": "熟食",
     "description": {
       "zh": "装有食物的浅底锅",
       "en": "shallow pan of food"
@@ -1213,9 +1051,6 @@
   {
     "emoji": "🍲",
     "name": "stew",
-    "shortcode": ":stew:",
-    "category": "食物和饮料",
-    "subcategory": "熟食",
     "description": {
       "zh": "一锅食物",
       "en": "pot of food"
@@ -1236,9 +1071,6 @@
   {
     "emoji": "🥣",
     "name": "bowl_with_spoon",
-    "shortcode": ":bowl_with_spoon:",
-    "category": "食物和饮料",
-    "subcategory": "熟食",
     "description": {
       "zh": "碗勺",
       "en": "bowl with spoon"
@@ -1262,9 +1094,6 @@
   {
     "emoji": "🥗",
     "name": "green_salad",
-    "shortcode": ":green_salad:",
-    "category": "食物和饮料",
-    "subcategory": "熟食",
     "description": {
       "zh": "绿色沙拉",
       "en": "green salad"
@@ -1284,9 +1113,6 @@
   {
     "emoji": "🍿",
     "name": "popcorn",
-    "shortcode": ":popcorn:",
-    "category": "食物和饮料",
-    "subcategory": "熟食",
     "description": {
       "zh": "爆米花",
       "en": "popcorn"
@@ -1305,9 +1131,6 @@
   {
     "emoji": "🧈",
     "name": "butter",
-    "shortcode": ":butter:",
-    "category": "食物和饮料",
-    "subcategory": "熟食",
     "description": {
       "zh": "黄油",
       "en": "butter"
@@ -1328,9 +1151,6 @@
   {
     "emoji": "🧂",
     "name": "salt",
-    "shortcode": ":salt:",
-    "category": "食物和饮料",
-    "subcategory": "熟食",
     "description": {
       "zh": "盐",
       "en": "salt"
@@ -1351,9 +1171,6 @@
   {
     "emoji": "🥫",
     "name": "canned_food",
-    "shortcode": ":canned_food:",
-    "category": "食物和饮料",
-    "subcategory": "熟食",
     "description": {
       "zh": "罐头食品",
       "en": "canned food"
@@ -1373,9 +1190,6 @@
   {
     "emoji": "🍱",
     "name": "bento",
-    "shortcode": ":bento:",
-    "category": "食物和饮料",
-    "subcategory": "亚洲食物",
     "description": {
       "zh": "盒饭",
       "en": "bento box"
@@ -1396,9 +1210,6 @@
   {
     "emoji": "🍘",
     "name": "rice_cracker",
-    "shortcode": ":rice_cracker:",
-    "category": "食物和饮料",
-    "subcategory": "亚洲食物",
     "description": {
       "zh": "米饼",
       "en": "rice cracker"
@@ -1419,9 +1230,6 @@
   {
     "emoji": "🍙",
     "name": "rice_ball",
-    "shortcode": ":rice_ball:",
-    "category": "食物和饮料",
-    "subcategory": "亚洲食物",
     "description": {
       "zh": "饭团",
       "en": "rice ball"
@@ -1442,9 +1250,6 @@
   {
     "emoji": "🍚",
     "name": "rice",
-    "shortcode": ":rice:",
-    "category": "食物和饮料",
-    "subcategory": "亚洲食物",
     "description": {
       "zh": "米饭",
       "en": "cooked rice"
@@ -1464,9 +1269,6 @@
   {
     "emoji": "🍛",
     "name": "curry",
-    "shortcode": ":curry:",
-    "category": "食物和饮料",
-    "subcategory": "亚洲食物",
     "description": {
       "zh": "咖喱饭",
       "en": "curry rice"
@@ -1486,9 +1288,6 @@
   {
     "emoji": "🍜",
     "name": "ramen",
-    "shortcode": ":ramen:",
-    "category": "食物和饮料",
-    "subcategory": "亚洲食物",
     "description": {
       "zh": "面条",
       "en": "steaming bowl"
@@ -1511,9 +1310,6 @@
   {
     "emoji": "🍝",
     "name": "spaghetti",
-    "shortcode": ":spaghetti:",
-    "category": "食物和饮料",
-    "subcategory": "亚洲食物",
     "description": {
       "zh": "意粉",
       "en": "spaghetti"
@@ -1534,9 +1330,6 @@
   {
     "emoji": "🍠",
     "name": "sweet_potato",
-    "shortcode": ":sweet_potato:",
-    "category": "食物和饮料",
-    "subcategory": "亚洲食物",
     "description": {
       "zh": "烤红薯",
       "en": "roasted sweet potato"
@@ -1558,9 +1351,6 @@
   {
     "emoji": "🍢",
     "name": "oden",
-    "shortcode": ":oden:",
-    "category": "食物和饮料",
-    "subcategory": "亚洲食物",
     "description": {
       "zh": "关东煮",
       "en": "oden"
@@ -1581,9 +1371,6 @@
   {
     "emoji": "🍣",
     "name": "sushi",
-    "shortcode": ":sushi:",
-    "category": "食物和饮料",
-    "subcategory": "亚洲食物",
     "description": {
       "zh": "寿司",
       "en": "sushi"
@@ -1602,9 +1389,6 @@
   {
     "emoji": "🍤",
     "name": "fried_shrimp",
-    "shortcode": ":fried_shrimp:",
-    "category": "食物和饮料",
-    "subcategory": "亚洲食物",
     "description": {
       "zh": "天妇罗",
       "en": "fried shrimp"
@@ -1625,9 +1409,6 @@
   {
     "emoji": "🍥",
     "name": "fish_cake",
-    "shortcode": ":fish_cake:",
-    "category": "食物和饮料",
-    "subcategory": "亚洲食物",
     "description": {
       "zh": "鱼板",
       "en": "fish cake with swirl"
@@ -1649,9 +1430,6 @@
   {
     "emoji": "🥮",
     "name": "moon_cake",
-    "shortcode": ":moon_cake:",
-    "category": "食物和饮料",
-    "subcategory": "亚洲食物",
     "description": {
       "zh": "月饼",
       "en": "moon cake"
@@ -1673,9 +1451,6 @@
   {
     "emoji": "🍡",
     "name": "dango",
-    "shortcode": ":dango:",
-    "category": "食物和饮料",
-    "subcategory": "亚洲食物",
     "description": {
       "zh": "团子",
       "en": "dango"
@@ -1697,9 +1472,6 @@
   {
     "emoji": "🥟",
     "name": "dumpling",
-    "shortcode": ":dumpling:",
-    "category": "食物和饮料",
-    "subcategory": "亚洲食物",
     "description": {
       "zh": "饺子",
       "en": "dumpling"
@@ -1720,9 +1492,6 @@
   {
     "emoji": "🥠",
     "name": "fortune_cookie",
-    "shortcode": ":fortune_cookie:",
-    "category": "食物和饮料",
-    "subcategory": "亚洲食物",
     "description": {
       "zh": "幸运饼干",
       "en": "fortune cookie"
@@ -1743,9 +1512,6 @@
   {
     "emoji": "🥡",
     "name": "takeout_box",
-    "shortcode": ":takeout_box:",
-    "category": "食物和饮料",
-    "subcategory": "亚洲食物",
     "description": {
       "zh": "外卖盒",
       "en": "takeout box"
@@ -1768,9 +1534,6 @@
   {
     "emoji": "🦀",
     "name": "crab",
-    "shortcode": ":crab:",
-    "category": "食物和饮料",
-    "subcategory": "海产",
     "description": {
       "zh": "蟹",
       "en": "crab"
@@ -1792,9 +1555,6 @@
   {
     "emoji": "🦞",
     "name": "lobster",
-    "shortcode": ":lobster:",
-    "category": "食物和饮料",
-    "subcategory": "海产",
     "description": {
       "zh": "龙虾",
       "en": "lobster"
@@ -1816,9 +1576,6 @@
   {
     "emoji": "🦐",
     "name": "shrimp",
-    "shortcode": ":shrimp:",
-    "category": "食物和饮料",
-    "subcategory": "海产",
     "description": {
       "zh": "虾",
       "en": "shrimp"
@@ -1838,9 +1595,6 @@
   {
     "emoji": "🦑",
     "name": "squid",
-    "shortcode": ":squid:",
-    "category": "食物和饮料",
-    "subcategory": "海产",
     "description": {
       "zh": "乌贼",
       "en": "squid"
@@ -1862,9 +1616,6 @@
   {
     "emoji": "🦪",
     "name": "oyster",
-    "shortcode": ":oyster:",
-    "category": "食物和饮料",
-    "subcategory": "海产",
     "description": {
       "zh": "牡蛎",
       "en": "oyster"
@@ -1886,9 +1637,6 @@
   {
     "emoji": "🍦",
     "name": "icecream",
-    "shortcode": ":icecream:",
-    "category": "食物和饮料",
-    "subcategory": "甜食",
     "description": {
       "zh": "圆筒冰激凌",
       "en": "soft ice cream"
@@ -1910,9 +1658,6 @@
   {
     "emoji": "🍧",
     "name": "shaved_ice",
-    "shortcode": ":shaved_ice:",
-    "category": "食物和饮料",
-    "subcategory": "甜食",
     "description": {
       "zh": "刨冰",
       "en": "shaved ice"
@@ -1934,9 +1679,6 @@
   {
     "emoji": "🍨",
     "name": "ice_cream",
-    "shortcode": ":ice_cream:",
-    "category": "食物和饮料",
-    "subcategory": "甜食",
     "description": {
       "zh": "冰淇淋",
       "en": "ice cream"
@@ -1958,9 +1700,6 @@
   {
     "emoji": "🍩",
     "name": "doughnut",
-    "shortcode": ":doughnut:",
-    "category": "食物和饮料",
-    "subcategory": "甜食",
     "description": {
       "zh": "甜甜圈",
       "en": "doughnut"
@@ -1980,9 +1719,6 @@
   {
     "emoji": "🍪",
     "name": "cookie",
-    "shortcode": ":cookie:",
-    "category": "食物和饮料",
-    "subcategory": "甜食",
     "description": {
       "zh": "饼干",
       "en": "cookie"
@@ -2002,9 +1738,6 @@
   {
     "emoji": "🎂",
     "name": "birthday",
-    "shortcode": ":birthday:",
-    "category": "食物和饮料",
-    "subcategory": "甜食",
     "description": {
       "zh": "生日蛋糕",
       "en": "birthday cake"
@@ -2025,9 +1758,6 @@
   {
     "emoji": "🍰",
     "name": "cake",
-    "shortcode": ":cake:",
-    "category": "食物和饮料",
-    "subcategory": "甜食",
     "description": {
       "zh": "水果蛋糕",
       "en": "shortcake"
@@ -2047,9 +1777,6 @@
   {
     "emoji": "🧁",
     "name": "cupcake",
-    "shortcode": ":cupcake:",
-    "category": "食物和饮料",
-    "subcategory": "甜食",
     "description": {
       "zh": "纸杯蛋糕",
       "en": "cupcake"
@@ -2070,9 +1797,6 @@
   {
     "emoji": "🥧",
     "name": "pie",
-    "shortcode": ":pie:",
-    "category": "食物和饮料",
-    "subcategory": "甜食",
     "description": {
       "zh": "派",
       "en": "pie"
@@ -2093,9 +1817,6 @@
   {
     "emoji": "🍫",
     "name": "chocolate_bar",
-    "shortcode": ":chocolate_bar:",
-    "category": "食物和饮料",
-    "subcategory": "甜食",
     "description": {
       "zh": "巧克力",
       "en": "chocolate bar"
@@ -2117,9 +1838,6 @@
   {
     "emoji": "🍬",
     "name": "candy",
-    "shortcode": ":candy:",
-    "category": "食物和饮料",
-    "subcategory": "甜食",
     "description": {
       "zh": "糖",
       "en": "candy"
@@ -2139,9 +1857,6 @@
   {
     "emoji": "🍭",
     "name": "lollipop",
-    "shortcode": ":lollipop:",
-    "category": "食物和饮料",
-    "subcategory": "甜食",
     "description": {
       "zh": "棒棒糖",
       "en": "lollipop"
@@ -2160,9 +1875,6 @@
   {
     "emoji": "🍮",
     "name": "custard",
-    "shortcode": ":custard:",
-    "category": "食物和饮料",
-    "subcategory": "甜食",
     "description": {
       "zh": "奶黄",
       "en": "custard"
@@ -2183,9 +1895,6 @@
   {
     "emoji": "🍯",
     "name": "honey_pot",
-    "shortcode": ":honey_pot:",
-    "category": "食物和饮料",
-    "subcategory": "甜食",
     "description": {
       "zh": "蜂蜜",
       "en": "honey pot"
@@ -2206,9 +1915,6 @@
   {
     "emoji": "🍼",
     "name": "baby_bottle",
-    "shortcode": ":baby_bottle:",
-    "category": "食物和饮料",
-    "subcategory": "饮料",
     "description": {
       "zh": "奶瓶",
       "en": "baby bottle"
@@ -2229,9 +1935,6 @@
   {
     "emoji": "🥛",
     "name": "milk_glass",
-    "shortcode": ":milk_glass:",
-    "category": "食物和饮料",
-    "subcategory": "饮料",
     "description": {
       "zh": "一杯奶",
       "en": "glass of milk"
@@ -2252,9 +1955,6 @@
   {
     "emoji": "☕",
     "name": "coffee",
-    "shortcode": ":coffee:",
-    "category": "食物和饮料",
-    "subcategory": "饮料",
     "description": {
       "zh": "热饮",
       "en": "hot beverage"
@@ -2276,9 +1976,6 @@
   {
     "emoji": "🍵",
     "name": "tea",
-    "shortcode": ":tea:",
-    "category": "食物和饮料",
-    "subcategory": "饮料",
     "description": {
       "zh": "热茶",
       "en": "teacup without handle"
@@ -2300,9 +1997,6 @@
   {
     "emoji": "🍶",
     "name": "sake",
-    "shortcode": ":sake:",
-    "category": "食物和饮料",
-    "subcategory": "饮料",
     "description": {
       "zh": "清酒",
       "en": "sake"
@@ -2323,9 +2017,6 @@
   {
     "emoji": "🍾",
     "name": "champagne",
-    "shortcode": ":champagne:",
-    "category": "食物和饮料",
-    "subcategory": "饮料",
     "description": {
       "zh": "开香槟",
       "en": "bottle with popping cork"
@@ -2350,9 +2041,6 @@
   {
     "emoji": "🍷",
     "name": "wine_glass",
-    "shortcode": ":wine_glass:",
-    "category": "食物和饮料",
-    "subcategory": "饮料",
     "description": {
       "zh": "葡萄酒",
       "en": "wine glass"
@@ -2373,9 +2061,6 @@
   {
     "emoji": "🍸",
     "name": "cocktail",
-    "shortcode": ":cocktail:",
-    "category": "食物和饮料",
-    "subcategory": "饮料",
     "description": {
       "zh": "鸡尾酒",
       "en": "cocktail glass"
@@ -2396,9 +2081,6 @@
   {
     "emoji": "🍹",
     "name": "tropical_drink",
-    "shortcode": ":tropical_drink:",
-    "category": "食物和饮料",
-    "subcategory": "饮料",
     "description": {
       "zh": "热带水果饮料",
       "en": "tropical drink"
@@ -2418,9 +2100,6 @@
   {
     "emoji": "🍺",
     "name": "beer",
-    "shortcode": ":beer:",
-    "category": "食物和饮料",
-    "subcategory": "饮料",
     "description": {
       "zh": "啤酒",
       "en": "beer mug"
@@ -2441,9 +2120,6 @@
   {
     "emoji": "🍻",
     "name": "beers",
-    "shortcode": ":beers:",
-    "category": "食物和饮料",
-    "subcategory": "饮料",
     "description": {
       "zh": "干杯",
       "en": "clinking beer mugs"
@@ -2467,9 +2143,6 @@
   {
     "emoji": "🥂",
     "name": "clinking_glasses",
-    "shortcode": ":clinking_glasses:",
-    "category": "食物和饮料",
-    "subcategory": "饮料",
     "description": {
       "zh": "碰杯",
       "en": "clinking glasses"
@@ -2491,9 +2164,6 @@
   {
     "emoji": "🥃",
     "name": "tumbler_glass",
-    "shortcode": ":tumbler_glass:",
-    "category": "食物和饮料",
-    "subcategory": "饮料",
     "description": {
       "zh": "平底杯",
       "en": "tumbler glass"
@@ -2515,9 +2185,6 @@
   {
     "emoji": "🥤",
     "name": "cup_with_straw",
-    "shortcode": ":cup_with_straw:",
-    "category": "食物和饮料",
-    "subcategory": "饮料",
     "description": {
       "zh": "带吸管杯",
       "en": "cup with straw"
@@ -2540,9 +2207,6 @@
   {
     "emoji": "🧃",
     "name": "beverage_box",
-    "shortcode": ":beverage_box:",
-    "category": "食物和饮料",
-    "subcategory": "饮料",
     "description": {
       "zh": "饮料盒",
       "en": "beverage box"
@@ -2565,9 +2229,6 @@
   {
     "emoji": "🧉",
     "name": "mate",
-    "shortcode": ":mate:",
-    "category": "食物和饮料",
-    "subcategory": "饮料",
     "description": {
       "zh": "马黛茶",
       "en": "mate"
@@ -2586,9 +2247,6 @@
   {
     "emoji": "🧊",
     "name": "ice_cube",
-    "shortcode": ":ice_cube:",
-    "category": "食物和饮料",
-    "subcategory": "饮料",
     "description": {
       "zh": "冰块",
       "en": "ice"
@@ -2610,9 +2268,6 @@
   {
     "emoji": "🥢",
     "name": "chopsticks",
-    "shortcode": ":chopsticks:",
-    "category": "食物和饮料",
-    "subcategory": "餐具",
     "description": {
       "zh": "筷子",
       "en": "chopsticks"
@@ -2632,9 +2287,6 @@
   {
     "emoji": "🍴",
     "name": "fork_and_knife",
-    "shortcode": ":fork_and_knife:",
-    "category": "食物和饮料",
-    "subcategory": "餐具",
     "description": {
       "zh": "刀叉",
       "en": "fork and knife"
@@ -2655,9 +2307,6 @@
   {
     "emoji": "🥄",
     "name": "spoon",
-    "shortcode": ":spoon:",
-    "category": "食物和饮料",
-    "subcategory": "餐具",
     "description": {
       "zh": "匙",
       "en": "spoon"
@@ -2679,9 +2328,6 @@
   {
     "emoji": "🔪",
     "name": "knife",
-    "shortcode": ":knife:",
-    "category": "食物和饮料",
-    "subcategory": "餐具",
     "description": {
       "zh": "菜刀",
       "en": "kitchen knife"
@@ -2703,9 +2349,6 @@
   {
     "emoji": "🏺",
     "name": "amphora",
-    "shortcode": ":amphora:",
-    "category": "食物和饮料",
-    "subcategory": "餐具",
     "description": {
       "zh": "双耳瓶",
       "en": "amphora"
@@ -2726,9 +2369,6 @@
   {
     "emoji": "🌶️",
     "name": "hot_pepper",
-    "shortcode": ":hot_pepper:",
-    "category": "食物和饮料",
-    "subcategory": "食物",
     "description": {
       "zh": "辣椒",
       "en": "hot_pepper"
@@ -2747,9 +2387,6 @@
   {
     "emoji": "🍽️",
     "name": "plate_with_cutlery",
-    "shortcode": ":plate_with_cutlery:",
-    "category": "食物和饮料",
-    "subcategory": "食物",
     "description": {
       "zh": "餐具",
       "en": "plate_with_cutlery"

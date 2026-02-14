@@ -2,9 +2,6 @@
   {
     "emoji": "👓",
     "name": "eyeglasses",
-    "shortcode": ":eyeglasses:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "眼镜",
       "en": "glasses"
@@ -24,9 +21,6 @@
   {
     "emoji": "🥽",
     "name": "goggles",
-    "shortcode": ":goggles:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "护目镜",
       "en": "goggles"
@@ -48,9 +42,6 @@
   {
     "emoji": "🥼",
     "name": "lab_coat",
-    "shortcode": ":lab_coat:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "白大褂",
       "en": "lab coat"
@@ -73,9 +64,6 @@
   {
     "emoji": "🦺",
     "name": "safety_vest",
-    "shortcode": ":safety_vest:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "救生衣",
       "en": "safety vest"
@@ -99,9 +87,6 @@
   {
     "emoji": "👔",
     "name": "necktie",
-    "shortcode": ":necktie:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "领带",
       "en": "necktie"
@@ -121,9 +106,6 @@
   {
     "emoji": "👕",
     "name": "tshirt",
-    "shortcode": ":tshirt:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "T恤",
       "en": "t-shirt"
@@ -143,9 +125,6 @@
   {
     "emoji": "👖",
     "name": "jeans",
-    "shortcode": ":jeans:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "牛仔裤",
       "en": "jeans"
@@ -165,9 +144,6 @@
   {
     "emoji": "🧣",
     "name": "scarf",
-    "shortcode": ":scarf:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "围巾",
       "en": "scarf"
@@ -186,9 +162,6 @@
   {
     "emoji": "🧤",
     "name": "gloves",
-    "shortcode": ":gloves:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "手套",
       "en": "gloves"
@@ -207,9 +180,6 @@
   {
     "emoji": "🧥",
     "name": "coat",
-    "shortcode": ":coat:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "外套",
       "en": "coat"
@@ -229,9 +199,6 @@
   {
     "emoji": "🧦",
     "name": "socks",
-    "shortcode": ":socks:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "袜子",
       "en": "socks"
@@ -252,9 +219,6 @@
   {
     "emoji": "👗",
     "name": "dress",
-    "shortcode": ":dress:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "连衣裙",
       "en": "dress"
@@ -274,9 +238,6 @@
   {
     "emoji": "👘",
     "name": "kimono",
-    "shortcode": ":kimono:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "和服",
       "en": "kimono"
@@ -296,9 +257,6 @@
   {
     "emoji": "🥻",
     "name": "sari",
-    "shortcode": ":sari:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "纱丽",
       "en": "sari"
@@ -320,9 +278,6 @@
   {
     "emoji": "🩱",
     "name": "one_piece_swimsuit",
-    "shortcode": ":one_piece_swimsuit:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "连体泳衣",
       "en": "one-piece swimsuit"
@@ -345,9 +300,6 @@
   {
     "emoji": "🩲",
     "name": "swim_brief",
-    "shortcode": ":swim_brief:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "三角裤",
       "en": "briefs"
@@ -371,9 +323,6 @@
   {
     "emoji": "🩳",
     "name": "shorts",
-    "shortcode": ":shorts:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "短裤",
       "en": "shorts"
@@ -397,9 +346,6 @@
   {
     "emoji": "👙",
     "name": "bikini",
-    "shortcode": ":bikini:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "比基尼",
       "en": "bikini"
@@ -420,9 +366,6 @@
   {
     "emoji": "👚",
     "name": "womans_clothes",
-    "shortcode": ":womans_clothes:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "女装",
       "en": "woman’s clothes"
@@ -443,9 +386,6 @@
   {
     "emoji": "👛",
     "name": "purse",
-    "shortcode": ":purse:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "钱包",
       "en": "purse"
@@ -464,9 +404,6 @@
   {
     "emoji": "👜",
     "name": "handbag",
-    "shortcode": ":handbag:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "手提包",
       "en": "handbag"
@@ -486,9 +423,6 @@
   {
     "emoji": "👝",
     "name": "pouch",
-    "shortcode": ":pouch:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "手袋",
       "en": "clutch bag"
@@ -509,9 +443,6 @@
   {
     "emoji": "🎒",
     "name": "school_satchel",
-    "shortcode": ":school_satchel:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "书包",
       "en": "backpack"
@@ -530,9 +461,6 @@
   {
     "emoji": "👞",
     "name": "shoe",
-    "shortcode": ":shoe:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "男鞋",
       "en": "man’s shoe"
@@ -552,9 +480,6 @@
   {
     "emoji": "👟",
     "name": "athletic_shoe",
-    "shortcode": ":athletic_shoe:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "跑鞋",
       "en": "running shoe"
@@ -575,9 +500,6 @@
   {
     "emoji": "🥾",
     "name": "hiking_boot",
-    "shortcode": ":hiking_boot:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "登山鞋",
       "en": "hiking boot"
@@ -600,9 +522,6 @@
   {
     "emoji": "🥿",
     "name": "flat_shoe",
-    "shortcode": ":flat_shoe:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "平底鞋",
       "en": "flat shoe"
@@ -625,9 +544,6 @@
   {
     "emoji": "👠",
     "name": "high_heel",
-    "shortcode": ":high_heel:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "高跟鞋",
       "en": "high-heeled shoe"
@@ -648,9 +564,6 @@
   {
     "emoji": "👡",
     "name": "sandal",
-    "shortcode": ":sandal:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "女式凉鞋",
       "en": "woman’s sandal"
@@ -670,9 +583,6 @@
   {
     "emoji": "🩰",
     "name": "ballet_shoes",
-    "shortcode": ":ballet_shoes:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "芭蕾舞鞋",
       "en": "ballet shoes"
@@ -695,9 +605,6 @@
   {
     "emoji": "👢",
     "name": "boot",
-    "shortcode": ":boot:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "女靴",
       "en": "woman’s boot"
@@ -718,9 +625,6 @@
   {
     "emoji": "👑",
     "name": "crown",
-    "shortcode": ":crown:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "皇冠",
       "en": "crown"
@@ -740,9 +644,6 @@
   {
     "emoji": "👒",
     "name": "womans_hat",
-    "shortcode": ":womans_hat:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "女帽",
       "en": "woman’s hat"
@@ -763,9 +664,6 @@
   {
     "emoji": "🎩",
     "name": "tophat",
-    "shortcode": ":tophat:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "礼帽",
       "en": "top hat"
@@ -787,9 +685,6 @@
   {
     "emoji": "🎓",
     "name": "mortar_board",
-    "shortcode": ":mortar_board:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "毕业帽",
       "en": "graduation cap"
@@ -810,9 +705,6 @@
   {
     "emoji": "🧢",
     "name": "billed_cap",
-    "shortcode": ":billed_cap:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "鸭舌帽",
       "en": "billed cap"
@@ -833,9 +725,6 @@
   {
     "emoji": "📿",
     "name": "prayer_beads",
-    "shortcode": ":prayer_beads:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "念珠",
       "en": "prayer beads"
@@ -859,9 +748,6 @@
   {
     "emoji": "💄",
     "name": "lipstick",
-    "shortcode": ":lipstick:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "唇膏",
       "en": "lipstick"
@@ -882,9 +768,6 @@
   {
     "emoji": "💍",
     "name": "ring",
-    "shortcode": ":ring:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "戒指",
       "en": "ring"
@@ -904,9 +787,6 @@
   {
     "emoji": "💎",
     "name": "gem",
-    "shortcode": ":gem:",
-    "category": "物品",
-    "subcategory": "服饰",
     "description": {
       "zh": "宝石",
       "en": "gem stone"
@@ -927,9 +807,6 @@
   {
     "emoji": "🔇",
     "name": "mute",
-    "shortcode": ":mute:",
-    "category": "物品",
-    "subcategory": "声音",
     "description": {
       "zh": "已静音的扬声器",
       "en": "muted speaker"
@@ -952,9 +829,6 @@
   {
     "emoji": "🔈",
     "name": "speaker",
-    "shortcode": ":speaker:",
-    "category": "物品",
-    "subcategory": "声音",
     "description": {
       "zh": "低音量的扬声器",
       "en": "speaker low volume"
@@ -978,9 +852,6 @@
   {
     "emoji": "🔉",
     "name": "sound",
-    "shortcode": ":sound:",
-    "category": "物品",
-    "subcategory": "声音",
     "description": {
       "zh": "中等音量的扬声器",
       "en": "speaker medium volume"
@@ -1001,9 +872,6 @@
   {
     "emoji": "🔊",
     "name": "loud_sound",
-    "shortcode": ":loud_sound:",
-    "category": "物品",
-    "subcategory": "声音",
     "description": {
       "zh": "高音量的扬声器",
       "en": "speaker high volume"
@@ -1026,9 +894,6 @@
   {
     "emoji": "📢",
     "name": "loudspeaker",
-    "shortcode": ":loudspeaker:",
-    "category": "物品",
-    "subcategory": "声音",
     "description": {
       "zh": "喇叭",
       "en": "loudspeaker"
@@ -1051,9 +916,6 @@
   {
     "emoji": "📣",
     "name": "mega",
-    "shortcode": ":mega:",
-    "category": "物品",
-    "subcategory": "声音",
     "description": {
       "zh": "扩音器",
       "en": "megaphone"
@@ -1076,9 +938,6 @@
   {
     "emoji": "📯",
     "name": "postal_horn",
-    "shortcode": ":postal_horn:",
-    "category": "物品",
-    "subcategory": "声音",
     "description": {
       "zh": "邮号",
       "en": "postal horn"
@@ -1101,9 +960,6 @@
   {
     "emoji": "🔔",
     "name": "bell",
-    "shortcode": ":bell:",
-    "category": "物品",
-    "subcategory": "声音",
     "description": {
       "zh": "铃铛",
       "en": "bell"
@@ -1124,9 +980,6 @@
   {
     "emoji": "🔕",
     "name": "no_bell",
-    "shortcode": ":no_bell:",
-    "category": "物品",
-    "subcategory": "声音",
     "description": {
       "zh": "禁止响铃",
       "en": "bell with slash"
@@ -1151,9 +1004,6 @@
   {
     "emoji": "🎼",
     "name": "musical_score",
-    "shortcode": ":musical_score:",
-    "category": "物品",
-    "subcategory": "音乐",
     "description": {
       "zh": "乐谱",
       "en": "musical score"
@@ -1175,9 +1025,6 @@
   {
     "emoji": "🎵",
     "name": "musical_note",
-    "shortcode": ":musical_note:",
-    "category": "物品",
-    "subcategory": "音乐",
     "description": {
       "zh": "音符",
       "en": "musical note"
@@ -1200,9 +1047,6 @@
   {
     "emoji": "🎶",
     "name": "notes",
-    "shortcode": ":notes:",
-    "category": "物品",
-    "subcategory": "音乐",
     "description": {
       "zh": "多个音符",
       "en": "musical notes"
@@ -1225,9 +1069,6 @@
   {
     "emoji": "🎤",
     "name": "microphone",
-    "shortcode": ":microphone:",
-    "category": "物品",
-    "subcategory": "音乐",
     "description": {
       "zh": "麦克风",
       "en": "microphone"
@@ -1249,9 +1090,6 @@
   {
     "emoji": "🎧",
     "name": "headphones",
-    "shortcode": ":headphones:",
-    "category": "物品",
-    "subcategory": "音乐",
     "description": {
       "zh": "耳机",
       "en": "headphone"
@@ -1271,9 +1109,6 @@
   {
     "emoji": "📻",
     "name": "radio",
-    "shortcode": ":radio:",
-    "category": "物品",
-    "subcategory": "音乐",
     "description": {
       "zh": "收音机",
       "en": "radio"
@@ -1295,9 +1130,6 @@
   {
     "emoji": "🎷",
     "name": "saxophone",
-    "shortcode": ":saxophone:",
-    "category": "物品",
-    "subcategory": "乐器",
     "description": {
       "zh": "萨克斯管",
       "en": "saxophone"
@@ -1319,9 +1151,6 @@
   {
     "emoji": "🎸",
     "name": "guitar",
-    "shortcode": ":guitar:",
-    "category": "物品",
-    "subcategory": "乐器",
     "description": {
       "zh": "吉他",
       "en": "guitar"
@@ -1343,9 +1172,6 @@
   {
     "emoji": "🎹",
     "name": "musical_keyboard",
-    "shortcode": ":musical_keyboard:",
-    "category": "物品",
-    "subcategory": "乐器",
     "description": {
       "zh": "音乐键盘",
       "en": "musical keyboard"
@@ -1368,9 +1194,6 @@
   {
     "emoji": "🎺",
     "name": "trumpet",
-    "shortcode": ":trumpet:",
-    "category": "物品",
-    "subcategory": "乐器",
     "description": {
       "zh": "小号",
       "en": "trumpet"
@@ -1392,9 +1215,6 @@
   {
     "emoji": "🎻",
     "name": "violin",
-    "shortcode": ":violin:",
-    "category": "物品",
-    "subcategory": "乐器",
     "description": {
       "zh": "小提琴",
       "en": "violin"
@@ -1415,9 +1235,6 @@
   {
     "emoji": "🪕",
     "name": "banjo",
-    "shortcode": ":banjo:",
-    "category": "物品",
-    "subcategory": "乐器",
     "description": {
       "zh": "班卓琴",
       "en": "banjo"
@@ -1439,9 +1256,6 @@
   {
     "emoji": "🥁",
     "name": "drum",
-    "shortcode": ":drum:",
-    "category": "物品",
-    "subcategory": "乐器",
     "description": {
       "zh": "鼓",
       "en": "drum"
@@ -1463,9 +1277,6 @@
   {
     "emoji": "📱",
     "name": "iphone",
-    "shortcode": ":iphone:",
-    "category": "物品",
-    "subcategory": "电话",
     "description": {
       "zh": "手机",
       "en": "mobile phone"
@@ -1488,9 +1299,6 @@
   {
     "emoji": "📲",
     "name": "calling",
-    "shortcode": ":calling:",
-    "category": "物品",
-    "subcategory": "电话",
     "description": {
       "zh": "带有箭头的手机",
       "en": "mobile phone with arrow"
@@ -1515,9 +1323,6 @@
   {
     "emoji": "📞",
     "name": "telephone_receiver",
-    "shortcode": ":telephone_receiver:",
-    "category": "物品",
-    "subcategory": "电话",
     "description": {
       "zh": "电话听筒",
       "en": "telephone receiver"
@@ -1540,9 +1345,6 @@
   {
     "emoji": "📟",
     "name": "pager",
-    "shortcode": ":pager:",
-    "category": "物品",
-    "subcategory": "电话",
     "description": {
       "zh": "寻呼机",
       "en": "pager"
@@ -1563,9 +1365,6 @@
   {
     "emoji": "📠",
     "name": "fax",
-    "shortcode": ":fax:",
-    "category": "物品",
-    "subcategory": "电话",
     "description": {
       "zh": "传真机",
       "en": "fax machine"
@@ -1587,9 +1386,6 @@
   {
     "emoji": "🔋",
     "name": "battery",
-    "shortcode": ":battery:",
-    "category": "物品",
-    "subcategory": "电脑",
     "description": {
       "zh": "电池",
       "en": "battery"
@@ -1613,9 +1409,6 @@
   {
     "emoji": "🔌",
     "name": "electric_plug",
-    "shortcode": ":electric_plug:",
-    "category": "物品",
-    "subcategory": "电脑",
     "description": {
       "zh": "电源插头",
       "en": "electric plug"
@@ -1637,9 +1430,6 @@
   {
     "emoji": "💻",
     "name": "computer",
-    "shortcode": ":computer:",
-    "category": "物品",
-    "subcategory": "电脑",
     "description": {
       "zh": "笔记本电脑",
       "en": "laptop"
@@ -1661,9 +1451,6 @@
   {
     "emoji": "💽",
     "name": "minidisc",
-    "shortcode": ":minidisc:",
-    "category": "物品",
-    "subcategory": "电脑",
     "description": {
       "zh": "电脑光盘",
       "en": "computer disk"
@@ -1687,9 +1474,6 @@
   {
     "emoji": "💾",
     "name": "floppy_disk",
-    "shortcode": ":floppy_disk:",
-    "category": "物品",
-    "subcategory": "电脑",
     "description": {
       "zh": "软盘",
       "en": "floppy disk"
@@ -1713,9 +1497,6 @@
   {
     "emoji": "💿",
     "name": "cd",
-    "shortcode": ":cd:",
-    "category": "物品",
-    "subcategory": "电脑",
     "description": {
       "zh": "光盘",
       "en": "optical disk"
@@ -1740,9 +1521,6 @@
   {
     "emoji": "📀",
     "name": "dvd",
-    "shortcode": ":dvd:",
-    "category": "物品",
-    "subcategory": "电脑",
     "description": {
       "zh": "DVD",
       "en": "dvd"
@@ -1765,9 +1543,6 @@
   {
     "emoji": "🧮",
     "name": "abacus",
-    "shortcode": ":abacus:",
-    "category": "物品",
-    "subcategory": "电脑",
     "description": {
       "zh": "算盘",
       "en": "abacus"
@@ -1787,9 +1562,6 @@
   {
     "emoji": "🎥",
     "name": "movie_camera",
-    "shortcode": ":movie_camera:",
-    "category": "物品",
-    "subcategory": "光线和视频",
     "description": {
       "zh": "电影摄影机",
       "en": "movie camera"
@@ -1811,9 +1583,6 @@
   {
     "emoji": "🎬",
     "name": "clapper",
-    "shortcode": ":clapper:",
-    "category": "物品",
-    "subcategory": "光线和视频",
     "description": {
       "zh": "场记板",
       "en": "clapper board"
@@ -1835,9 +1604,6 @@
   {
     "emoji": "📺",
     "name": "tv",
-    "shortcode": ":tv:",
-    "category": "物品",
-    "subcategory": "光线和视频",
     "description": {
       "zh": "电视机",
       "en": "television"
@@ -1858,9 +1624,6 @@
   {
     "emoji": "📷",
     "name": "camera",
-    "shortcode": ":camera:",
-    "category": "物品",
-    "subcategory": "光线和视频",
     "description": {
       "zh": "相机",
       "en": "camera"
@@ -1884,9 +1647,6 @@
   {
     "emoji": "📸",
     "name": "camera_flash",
-    "shortcode": ":camera_flash:",
-    "category": "物品",
-    "subcategory": "光线和视频",
     "description": {
       "zh": "开闪光灯的相机",
       "en": "camera with flash"
@@ -1909,9 +1669,6 @@
   {
     "emoji": "📹",
     "name": "video_camera",
-    "shortcode": ":video_camera:",
-    "category": "物品",
-    "subcategory": "光线和视频",
     "description": {
       "zh": "摄像机",
       "en": "video camera"
@@ -1935,9 +1692,6 @@
   {
     "emoji": "📼",
     "name": "vhs",
-    "shortcode": ":vhs:",
-    "category": "物品",
-    "subcategory": "光线和视频",
     "description": {
       "zh": "录像带",
       "en": "videocassette"
@@ -1959,9 +1713,6 @@
   {
     "emoji": "🔍",
     "name": "mag",
-    "shortcode": ":mag:",
-    "category": "物品",
-    "subcategory": "光线和视频",
     "description": {
       "zh": "左斜的放大镜",
       "en": "magnifying glass tilted left"
@@ -1986,9 +1737,6 @@
   {
     "emoji": "🔎",
     "name": "mag_right",
-    "shortcode": ":mag_right:",
-    "category": "物品",
-    "subcategory": "光线和视频",
     "description": {
       "zh": "右斜的放大镜",
       "en": "magnifying glass tilted right"
@@ -2013,9 +1761,6 @@
   {
     "emoji": "💡",
     "name": "bulb",
-    "shortcode": ":bulb:",
-    "category": "物品",
-    "subcategory": "光线和视频",
     "description": {
       "zh": "灯泡",
       "en": "light bulb"
@@ -2039,9 +1784,6 @@
   {
     "emoji": "🔦",
     "name": "flashlight",
-    "shortcode": ":flashlight:",
-    "category": "物品",
-    "subcategory": "光线和视频",
     "description": {
       "zh": "手电筒",
       "en": "flashlight"
@@ -2062,9 +1804,6 @@
   {
     "emoji": "🏮",
     "name": "lantern",
-    "shortcode": ":lantern:",
-    "category": "物品",
-    "subcategory": "光线和视频",
     "description": {
       "zh": "红灯笼",
       "en": "red paper lantern"
@@ -2087,9 +1826,6 @@
   {
     "emoji": "🪔",
     "name": "diya_lamp",
-    "shortcode": ":diya_lamp:",
-    "category": "物品",
-    "subcategory": "光线和视频",
     "description": {
       "zh": "印度油灯",
       "en": "diya lamp"
@@ -2111,9 +1847,6 @@
   {
     "emoji": "📔",
     "name": "notebook_with_decorative_cover",
-    "shortcode": ":notebook_with_decorative_cover:",
-    "category": "物品",
-    "subcategory": "图书与纸张",
     "description": {
       "zh": "精装笔记本",
       "en": "notebook with decorative cover"
@@ -2138,9 +1871,6 @@
   {
     "emoji": "📕",
     "name": "closed_book",
-    "shortcode": ":closed_book:",
-    "category": "物品",
-    "subcategory": "图书与纸张",
     "description": {
       "zh": "合上的书本",
       "en": "closed book"
@@ -2160,9 +1890,6 @@
   {
     "emoji": "📖",
     "name": "open_book",
-    "shortcode": ":open_book:",
-    "category": "物品",
-    "subcategory": "图书与纸张",
     "description": {
       "zh": "打开的书本",
       "en": "open book"
@@ -2184,9 +1911,6 @@
   {
     "emoji": "📗",
     "name": "green_book",
-    "shortcode": ":green_book:",
-    "category": "物品",
-    "subcategory": "图书与纸张",
     "description": {
       "zh": "绿色书本",
       "en": "green book"
@@ -2206,9 +1930,6 @@
   {
     "emoji": "📘",
     "name": "blue_book",
-    "shortcode": ":blue_book:",
-    "category": "物品",
-    "subcategory": "图书与纸张",
     "description": {
       "zh": "蓝色书本",
       "en": "blue book"
@@ -2229,9 +1950,6 @@
   {
     "emoji": "📙",
     "name": "orange_book",
-    "shortcode": ":orange_book:",
-    "category": "物品",
-    "subcategory": "图书与纸张",
     "description": {
       "zh": "橙色书本",
       "en": "orange book"
@@ -2251,9 +1969,6 @@
   {
     "emoji": "📚",
     "name": "books",
-    "shortcode": ":books:",
-    "category": "物品",
-    "subcategory": "图书与纸张",
     "description": {
       "zh": "书",
       "en": "books"
@@ -2274,9 +1989,6 @@
   {
     "emoji": "📓",
     "name": "notebook",
-    "shortcode": ":notebook:",
-    "category": "物品",
-    "subcategory": "图书与纸张",
     "description": {
       "zh": "笔记本",
       "en": "notebook"
@@ -2299,9 +2011,6 @@
   {
     "emoji": "📒",
     "name": "ledger",
-    "shortcode": ":ledger:",
-    "category": "物品",
-    "subcategory": "图书与纸张",
     "description": {
       "zh": "账本",
       "en": "ledger"
@@ -2324,9 +2033,6 @@
   {
     "emoji": "📃",
     "name": "page_with_curl",
-    "shortcode": ":page_with_curl:",
-    "category": "物品",
-    "subcategory": "图书与纸张",
     "description": {
       "zh": "带卷边的页面",
       "en": "page with curl"
@@ -2350,9 +2056,6 @@
   {
     "emoji": "📜",
     "name": "scroll",
-    "shortcode": ":scroll:",
-    "category": "物品",
-    "subcategory": "图书与纸张",
     "description": {
       "zh": "卷轴",
       "en": "scroll"
@@ -2374,9 +2077,6 @@
   {
     "emoji": "📄",
     "name": "page_facing_up",
-    "shortcode": ":page_facing_up:",
-    "category": "物品",
-    "subcategory": "图书与纸张",
     "description": {
       "zh": "文件",
       "en": "page facing up"
@@ -2399,9 +2099,6 @@
   {
     "emoji": "📰",
     "name": "newspaper",
-    "shortcode": ":newspaper:",
-    "category": "物品",
-    "subcategory": "图书与纸张",
     "description": {
       "zh": "报纸",
       "en": "newspaper"
@@ -2424,9 +2121,6 @@
   {
     "emoji": "📑",
     "name": "bookmark_tabs",
-    "shortcode": ":bookmark_tabs:",
-    "category": "物品",
-    "subcategory": "图书与纸张",
     "description": {
       "zh": "标签页",
       "en": "bookmark tabs"
@@ -2447,9 +2141,6 @@
   {
     "emoji": "🔖",
     "name": "bookmark",
-    "shortcode": ":bookmark:",
-    "category": "物品",
-    "subcategory": "图书与纸张",
     "description": {
       "zh": "书签",
       "en": "bookmark"
@@ -2471,9 +2162,6 @@
   {
     "emoji": "💰",
     "name": "moneybag",
-    "shortcode": ":moneybag:",
-    "category": "物品",
-    "subcategory": "金钱",
     "description": {
       "zh": "钱袋",
       "en": "money bag"
@@ -2495,9 +2183,6 @@
   {
     "emoji": "💴",
     "name": "yen",
-    "shortcode": ":yen:",
-    "category": "物品",
-    "subcategory": "金钱",
     "description": {
       "zh": "日元",
       "en": "yen banknote"
@@ -2520,9 +2205,6 @@
   {
     "emoji": "💵",
     "name": "dollar",
-    "shortcode": ":dollar:",
-    "category": "物品",
-    "subcategory": "金钱",
     "description": {
       "zh": "美元",
       "en": "dollar banknote"
@@ -2545,9 +2227,6 @@
   {
     "emoji": "💶",
     "name": "euro",
-    "shortcode": ":euro:",
-    "category": "物品",
-    "subcategory": "金钱",
     "description": {
       "zh": "欧元",
       "en": "euro banknote"
@@ -2570,9 +2249,6 @@
   {
     "emoji": "💷",
     "name": "pound",
-    "shortcode": ":pound:",
-    "category": "物品",
-    "subcategory": "金钱",
     "description": {
       "zh": "英镑",
       "en": "pound banknote"
@@ -2595,9 +2271,6 @@
   {
     "emoji": "💸",
     "name": "money_with_wings",
-    "shortcode": ":money_with_wings:",
-    "category": "物品",
-    "subcategory": "金钱",
     "description": {
       "zh": "长翅膀的钱",
       "en": "money with wings"
@@ -2620,9 +2293,6 @@
   {
     "emoji": "💳",
     "name": "credit_card",
-    "shortcode": ":credit_card:",
-    "category": "物品",
-    "subcategory": "金钱",
     "description": {
       "zh": "信用卡",
       "en": "credit card"
@@ -2646,9 +2316,6 @@
   {
     "emoji": "🧾",
     "name": "receipt",
-    "shortcode": ":receipt:",
-    "category": "物品",
-    "subcategory": "金钱",
     "description": {
       "zh": "收据",
       "en": "receipt"
@@ -2672,9 +2339,6 @@
   {
     "emoji": "💹",
     "name": "chart",
-    "shortcode": ":chart:",
-    "category": "物品",
-    "subcategory": "金钱",
     "description": {
       "zh": "趋势向上且带有日元符号的图表",
       "en": "chart increasing with yen"
@@ -2701,9 +2365,6 @@
   {
     "emoji": "📧",
     "name": "e-mail",
-    "shortcode": ":e-mail:",
-    "category": "物品",
-    "subcategory": "邮件",
     "description": {
       "zh": "电子邮件",
       "en": "e-mail"
@@ -2723,9 +2384,6 @@
   {
     "emoji": "📨",
     "name": "incoming_envelope",
-    "shortcode": ":incoming_envelope:",
-    "category": "物品",
-    "subcategory": "邮件",
     "description": {
       "zh": "来信",
       "en": "incoming envelope"
@@ -2750,9 +2408,6 @@
   {
     "emoji": "📩",
     "name": "envelope_with_arrow",
-    "shortcode": ":envelope_with_arrow:",
-    "category": "物品",
-    "subcategory": "邮件",
     "description": {
       "zh": "收邮件",
       "en": "envelope with arrow"
@@ -2779,9 +2434,6 @@
   {
     "emoji": "📤",
     "name": "outbox_tray",
-    "shortcode": ":outbox_tray:",
-    "category": "物品",
-    "subcategory": "邮件",
     "description": {
       "zh": "发件箱",
       "en": "outbox tray"
@@ -2805,9 +2457,6 @@
   {
     "emoji": "📥",
     "name": "inbox_tray",
-    "shortcode": ":inbox_tray:",
-    "category": "物品",
-    "subcategory": "邮件",
     "description": {
       "zh": "收件箱",
       "en": "inbox tray"
@@ -2831,9 +2480,6 @@
   {
     "emoji": "📦",
     "name": "package",
-    "shortcode": ":package:",
-    "category": "物品",
-    "subcategory": "邮件",
     "description": {
       "zh": "包裹",
       "en": "package"
@@ -2857,9 +2503,6 @@
   {
     "emoji": "📫",
     "name": "mailbox",
-    "shortcode": ":mailbox:",
-    "category": "物品",
-    "subcategory": "邮件",
     "description": {
       "zh": "有待收信件",
       "en": "closed mailbox with raised flag"
@@ -2885,9 +2528,6 @@
   {
     "emoji": "📪",
     "name": "mailbox_closed",
-    "shortcode": ":mailbox_closed:",
-    "category": "物品",
-    "subcategory": "邮件",
     "description": {
       "zh": "无待收信件",
       "en": "closed mailbox with lowered flag"
@@ -2913,9 +2553,6 @@
   {
     "emoji": "📬",
     "name": "mailbox_with_mail",
-    "shortcode": ":mailbox_with_mail:",
-    "category": "物品",
-    "subcategory": "邮件",
     "description": {
       "zh": "有新信件",
       "en": "open mailbox with raised flag"
@@ -2942,9 +2579,6 @@
   {
     "emoji": "📭",
     "name": "mailbox_with_no_mail",
-    "shortcode": ":mailbox_with_no_mail:",
-    "category": "物品",
-    "subcategory": "邮件",
     "description": {
       "zh": "无新信件",
       "en": "open mailbox with lowered flag"
@@ -2970,9 +2604,6 @@
   {
     "emoji": "📮",
     "name": "postbox",
-    "shortcode": ":postbox:",
-    "category": "物品",
-    "subcategory": "邮件",
     "description": {
       "zh": "邮筒",
       "en": "postbox"
@@ -2993,9 +2624,6 @@
   {
     "emoji": "📝",
     "name": "pencil",
-    "shortcode": ":pencil:",
-    "category": "物品",
-    "subcategory": "书写",
     "description": {
       "zh": "备忘录",
       "en": "memo"
@@ -3016,9 +2644,6 @@
   {
     "emoji": "💼",
     "name": "briefcase",
-    "shortcode": ":briefcase:",
-    "category": "物品",
-    "subcategory": "办公",
     "description": {
       "zh": "公文包",
       "en": "briefcase"
@@ -3039,9 +2664,6 @@
   {
     "emoji": "📁",
     "name": "file_folder",
-    "shortcode": ":file_folder:",
-    "category": "物品",
-    "subcategory": "办公",
     "description": {
       "zh": "文件夹",
       "en": "file folder"
@@ -3063,9 +2685,6 @@
   {
     "emoji": "📂",
     "name": "open_file_folder",
-    "shortcode": ":open_file_folder:",
-    "category": "物品",
-    "subcategory": "办公",
     "description": {
       "zh": "打开的文件夹",
       "en": "open file folder"
@@ -3087,9 +2706,6 @@
   {
     "emoji": "📅",
     "name": "date",
-    "shortcode": ":date:",
-    "category": "物品",
-    "subcategory": "办公",
     "description": {
       "zh": "日历",
       "en": "calendar"
@@ -3109,9 +2725,6 @@
   {
     "emoji": "📆",
     "name": "calendar",
-    "shortcode": ":calendar:",
-    "category": "物品",
-    "subcategory": "办公",
     "description": {
       "zh": "手撕日历",
       "en": "tear-off calendar"
@@ -3132,9 +2745,6 @@
   {
     "emoji": "📇",
     "name": "card_index",
-    "shortcode": ":card_index:",
-    "category": "物品",
-    "subcategory": "办公",
     "description": {
       "zh": "卡片索引",
       "en": "card index"
@@ -3156,9 +2766,6 @@
   {
     "emoji": "📈",
     "name": "chart_with_upwards_trend",
-    "shortcode": ":chart_with_upwards_trend:",
-    "category": "物品",
-    "subcategory": "办公",
     "description": {
       "zh": "趋势向上的图表",
       "en": "chart increasing"
@@ -3180,9 +2787,6 @@
   {
     "emoji": "📉",
     "name": "chart_with_downwards_trend",
-    "shortcode": ":chart_with_downwards_trend:",
-    "category": "物品",
-    "subcategory": "办公",
     "description": {
       "zh": "趋势向下的图表",
       "en": "chart decreasing"
@@ -3204,9 +2808,6 @@
   {
     "emoji": "📊",
     "name": "bar_chart",
-    "shortcode": ":bar_chart:",
-    "category": "物品",
-    "subcategory": "办公",
     "description": {
       "zh": "条形图",
       "en": "bar chart"
@@ -3229,9 +2830,6 @@
   {
     "emoji": "📋",
     "name": "clipboard",
-    "shortcode": ":clipboard:",
-    "category": "物品",
-    "subcategory": "办公",
     "description": {
       "zh": "剪贴板",
       "en": "clipboard"
@@ -3254,9 +2852,6 @@
   {
     "emoji": "📌",
     "name": "pushpin",
-    "shortcode": ":pushpin:",
-    "category": "物品",
-    "subcategory": "办公",
     "description": {
       "zh": "图钉",
       "en": "pushpin"
@@ -3277,9 +2872,6 @@
   {
     "emoji": "📍",
     "name": "round_pushpin",
-    "shortcode": ":round_pushpin:",
-    "category": "物品",
-    "subcategory": "办公",
     "description": {
       "zh": "圆图钉",
       "en": "round pushpin"
@@ -3300,9 +2892,6 @@
   {
     "emoji": "📎",
     "name": "paperclip",
-    "shortcode": ":paperclip:",
-    "category": "物品",
-    "subcategory": "办公",
     "description": {
       "zh": "回形针",
       "en": "paperclip"
@@ -3325,9 +2914,6 @@
   {
     "emoji": "📏",
     "name": "straight_ruler",
-    "shortcode": ":straight_ruler:",
-    "category": "物品",
-    "subcategory": "办公",
     "description": {
       "zh": "直尺",
       "en": "straight ruler"
@@ -3351,9 +2937,6 @@
   {
     "emoji": "📐",
     "name": "triangular_ruler",
-    "shortcode": ":triangular_ruler:",
-    "category": "物品",
-    "subcategory": "办公",
     "description": {
       "zh": "三角尺",
       "en": "triangular ruler"
@@ -3376,9 +2959,6 @@
   {
     "emoji": "🔒",
     "name": "lock",
-    "shortcode": ":lock:",
-    "category": "物品",
-    "subcategory": "锁",
     "description": {
       "zh": "合上的锁",
       "en": "locked"
@@ -3400,9 +2980,6 @@
   {
     "emoji": "🔓",
     "name": "unlock",
-    "shortcode": ":unlock:",
-    "category": "物品",
-    "subcategory": "锁",
     "description": {
       "zh": "打开的锁",
       "en": "unlocked"
@@ -3424,9 +3001,6 @@
   {
     "emoji": "🔏",
     "name": "lock_with_ink_pen",
-    "shortcode": ":lock_with_ink_pen:",
-    "category": "物品",
-    "subcategory": "锁",
     "description": {
       "zh": "墨水笔和锁",
       "en": "locked with pen"
@@ -3450,9 +3024,6 @@
   {
     "emoji": "🔐",
     "name": "closed_lock_with_key",
-    "shortcode": ":closed_lock_with_key:",
-    "category": "物品",
-    "subcategory": "锁",
     "description": {
       "zh": "钥匙和锁",
       "en": "locked with key"
@@ -3475,9 +3046,6 @@
   {
     "emoji": "🔑",
     "name": "key",
-    "shortcode": ":key:",
-    "category": "物品",
-    "subcategory": "锁",
     "description": {
       "zh": "钥匙",
       "en": "key"
@@ -3500,9 +3068,6 @@
   {
     "emoji": "🔨",
     "name": "hammer",
-    "shortcode": ":hammer:",
-    "category": "物品",
-    "subcategory": "工具",
     "description": {
       "zh": "锤子",
       "en": "hammer"
@@ -3525,9 +3090,6 @@
   {
     "emoji": "🪓",
     "name": "axe",
-    "shortcode": ":axe:",
-    "category": "物品",
-    "subcategory": "工具",
     "description": {
       "zh": "斧头",
       "en": "axe"
@@ -3550,9 +3112,6 @@
   {
     "emoji": "🔫",
     "name": "gun",
-    "shortcode": ":gun:",
-    "category": "物品",
-    "subcategory": "工具",
     "description": {
       "zh": "水枪",
       "en": "water pistol"
@@ -3575,9 +3134,6 @@
   {
     "emoji": "🏹",
     "name": "bow_and_arrow",
-    "shortcode": ":bow_and_arrow:",
-    "category": "物品",
-    "subcategory": "工具",
     "description": {
       "zh": "弓和箭",
       "en": "bow and arrow"
@@ -3600,9 +3156,6 @@
   {
     "emoji": "🔧",
     "name": "wrench",
-    "shortcode": ":wrench:",
-    "category": "物品",
-    "subcategory": "工具",
     "description": {
       "zh": "扳手",
       "en": "wrench"
@@ -3622,9 +3175,6 @@
   {
     "emoji": "🔩",
     "name": "nut_and_bolt",
-    "shortcode": ":nut_and_bolt:",
-    "category": "物品",
-    "subcategory": "工具",
     "description": {
       "zh": "螺母与螺栓",
       "en": "nut and bolt"
@@ -3647,9 +3197,6 @@
   {
     "emoji": "🦯",
     "name": "probing_cane",
-    "shortcode": ":probing_cane:",
-    "category": "物品",
-    "subcategory": "工具",
     "description": {
       "zh": "盲杖",
       "en": "white cane"
@@ -3671,9 +3218,6 @@
   {
     "emoji": "🔗",
     "name": "link",
-    "shortcode": ":link:",
-    "category": "物品",
-    "subcategory": "工具",
     "description": {
       "zh": "链接",
       "en": "link"
@@ -3695,9 +3239,6 @@
   {
     "emoji": "🧰",
     "name": "toolbox",
-    "shortcode": ":toolbox:",
-    "category": "物品",
-    "subcategory": "工具",
     "description": {
       "zh": "工具箱",
       "en": "toolbox"
@@ -3718,9 +3259,6 @@
   {
     "emoji": "🧲",
     "name": "magnet",
-    "shortcode": ":magnet:",
-    "category": "物品",
-    "subcategory": "工具",
     "description": {
       "zh": "磁铁",
       "en": "magnet"
@@ -3742,9 +3280,6 @@
   {
     "emoji": "🧪",
     "name": "test_tube",
-    "shortcode": ":test_tube:",
-    "category": "物品",
-    "subcategory": "科技",
     "description": {
       "zh": "试管",
       "en": "test tube"
@@ -3767,9 +3302,6 @@
   {
     "emoji": "🧫",
     "name": "petri_dish",
-    "shortcode": ":petri_dish:",
-    "category": "物品",
-    "subcategory": "科技",
     "description": {
       "zh": "培养皿",
       "en": "petri dish"
@@ -3792,9 +3324,6 @@
   {
     "emoji": "🧬",
     "name": "dna",
-    "shortcode": ":dna:",
-    "category": "物品",
-    "subcategory": "科技",
     "description": {
       "zh": "DNA",
       "en": "dna"
@@ -3818,9 +3347,6 @@
   {
     "emoji": "🔬",
     "name": "microscope",
-    "shortcode": ":microscope:",
-    "category": "物品",
-    "subcategory": "科技",
     "description": {
       "zh": "显微镜",
       "en": "microscope"
@@ -3844,9 +3370,6 @@
   {
     "emoji": "🔭",
     "name": "telescope",
-    "shortcode": ":telescope:",
-    "category": "物品",
-    "subcategory": "科技",
     "description": {
       "zh": "望远镜",
       "en": "telescope"
@@ -3869,9 +3392,6 @@
   {
     "emoji": "📡",
     "name": "satellite",
-    "shortcode": ":satellite:",
-    "category": "物品",
-    "subcategory": "科技",
     "description": {
       "zh": "卫星天线",
       "en": "satellite antenna"
@@ -3894,9 +3414,6 @@
   {
     "emoji": "💉",
     "name": "syringe",
-    "shortcode": ":syringe:",
-    "category": "物品",
-    "subcategory": "医疗",
     "description": {
       "zh": "注射器",
       "en": "syringe"
@@ -3920,9 +3437,6 @@
   {
     "emoji": "🩸",
     "name": "drop_of_blood",
-    "shortcode": ":drop_of_blood:",
-    "category": "物品",
-    "subcategory": "医疗",
     "description": {
       "zh": "血滴",
       "en": "drop of blood"
@@ -3947,9 +3461,6 @@
   {
     "emoji": "💊",
     "name": "pill",
-    "shortcode": ":pill:",
-    "category": "物品",
-    "subcategory": "医疗",
     "description": {
       "zh": "药丸",
       "en": "pill"
@@ -3971,9 +3482,6 @@
   {
     "emoji": "🩹",
     "name": "adhesive_bandage",
-    "shortcode": ":adhesive_bandage:",
-    "category": "物品",
-    "subcategory": "医疗",
     "description": {
       "zh": "创可贴",
       "en": "adhesive bandage"
@@ -3997,9 +3505,6 @@
   {
     "emoji": "🩺",
     "name": "stethoscope",
-    "shortcode": ":stethoscope:",
-    "category": "物品",
-    "subcategory": "医疗",
     "description": {
       "zh": "听诊器",
       "en": "stethoscope"
@@ -4022,9 +3527,6 @@
   {
     "emoji": "🚪",
     "name": "door",
-    "shortcode": ":door:",
-    "category": "物品",
-    "subcategory": "居家",
     "description": {
       "zh": "门",
       "en": "door"
@@ -4048,9 +3550,6 @@
   {
     "emoji": "🪑",
     "name": "chair",
-    "shortcode": ":chair:",
-    "category": "物品",
-    "subcategory": "居家",
     "description": {
       "zh": "椅子",
       "en": "chair"
@@ -4072,9 +3571,6 @@
   {
     "emoji": "🚽",
     "name": "toilet",
-    "shortcode": ":toilet:",
-    "category": "物品",
-    "subcategory": "居家",
     "description": {
       "zh": "马桶",
       "en": "toilet"
@@ -4097,9 +3593,6 @@
   {
     "emoji": "🚿",
     "name": "shower",
-    "shortcode": ":shower:",
-    "category": "物品",
-    "subcategory": "居家",
     "description": {
       "zh": "淋浴",
       "en": "shower"
@@ -4122,9 +3615,6 @@
   {
     "emoji": "🛁",
     "name": "bathtub",
-    "shortcode": ":bathtub:",
-    "category": "物品",
-    "subcategory": "居家",
     "description": {
       "zh": "浴缸",
       "en": "bathtub"
@@ -4148,9 +3638,6 @@
   {
     "emoji": "🪒",
     "name": "razor",
-    "shortcode": ":razor:",
-    "category": "物品",
-    "subcategory": "居家",
     "description": {
       "zh": "剃须刀",
       "en": "razor"
@@ -4173,9 +3660,6 @@
   {
     "emoji": "🧴",
     "name": "lotion_bottle",
-    "shortcode": ":lotion_bottle:",
-    "category": "物品",
-    "subcategory": "居家",
     "description": {
       "zh": "乳液瓶",
       "en": "lotion bottle"
@@ -4198,9 +3682,6 @@
   {
     "emoji": "🧷",
     "name": "safety_pin",
-    "shortcode": ":safety_pin:",
-    "category": "物品",
-    "subcategory": "居家",
     "description": {
       "zh": "安全别针",
       "en": "safety pin"
@@ -4221,9 +3702,6 @@
   {
     "emoji": "🧹",
     "name": "broom",
-    "shortcode": ":broom:",
-    "category": "物品",
-    "subcategory": "居家",
     "description": {
       "zh": "扫帚",
       "en": "broom"
@@ -4245,9 +3723,6 @@
   {
     "emoji": "🧺",
     "name": "basket",
-    "shortcode": ":basket:",
-    "category": "物品",
-    "subcategory": "居家",
     "description": {
       "zh": "筐",
       "en": "basket"
@@ -4269,9 +3744,6 @@
   {
     "emoji": "🧻",
     "name": "roll_of_paper",
-    "shortcode": ":roll_of_paper:",
-    "category": "物品",
-    "subcategory": "居家",
     "description": {
       "zh": "卷纸",
       "en": "roll of paper"
@@ -4294,9 +3766,6 @@
   {
     "emoji": "🧼",
     "name": "soap",
-    "shortcode": ":soap:",
-    "category": "物品",
-    "subcategory": "居家",
     "description": {
       "zh": "皂",
       "en": "soap"
@@ -4320,9 +3789,6 @@
   {
     "emoji": "🧽",
     "name": "sponge",
-    "shortcode": ":sponge:",
-    "category": "物品",
-    "subcategory": "居家",
     "description": {
       "zh": "海绵",
       "en": "sponge"
@@ -4344,9 +3810,6 @@
   {
     "emoji": "🧯",
     "name": "fire_extinguisher",
-    "shortcode": ":fire_extinguisher:",
-    "category": "物品",
-    "subcategory": "居家",
     "description": {
       "zh": "灭火器",
       "en": "fire extinguisher"
@@ -4367,9 +3830,6 @@
   {
     "emoji": "🛒",
     "name": "shopping_cart",
-    "shortcode": ":shopping_cart:",
-    "category": "物品",
-    "subcategory": "居家",
     "description": {
       "zh": "购物车",
       "en": "shopping cart"
@@ -4391,9 +3851,6 @@
   {
     "emoji": "🚬",
     "name": "smoking",
-    "shortcode": ":smoking:",
-    "category": "物品",
-    "subcategory": "其他物品",
     "description": {
       "zh": "香烟",
       "en": "cigarette"
@@ -4415,9 +3872,6 @@
   {
     "emoji": "🗿",
     "name": "moyai",
-    "shortcode": ":moyai:",
-    "category": "物品",
-    "subcategory": "其他物品",
     "description": {
       "zh": "摩埃",
       "en": "moai"
@@ -4439,9 +3893,6 @@
   {
     "emoji": "🕳️",
     "name": "hole",
-    "shortcode": ":hole:",
-    "category": "物品",
-    "subcategory": "其他物品",
     "description": {
       "zh": "洞",
       "en": "hole"
@@ -4459,9 +3910,6 @@
   {
     "emoji": "🛢️",
     "name": "oil_drum",
-    "shortcode": ":oil_drum:",
-    "category": "物品",
-    "subcategory": "其他物品",
     "description": {
       "zh": "油桶",
       "en": "oil_drum"
@@ -4480,9 +3928,6 @@
   {
     "emoji": "🛎️",
     "name": "bellhop_bell",
-    "shortcode": ":bellhop_bell:",
-    "category": "物品",
-    "subcategory": "其他物品",
     "description": {
       "zh": "服务铃",
       "en": "bellhop_bell"
@@ -4501,9 +3946,6 @@
   {
     "emoji": "⏱️",
     "name": "stopwatch",
-    "shortcode": ":stopwatch:",
-    "category": "物品",
-    "subcategory": "其他物品",
     "description": {
       "zh": "秒表",
       "en": "stopwatch"
@@ -4522,9 +3964,6 @@
   {
     "emoji": "⏲️",
     "name": "timer_clock",
-    "shortcode": ":timer_clock:",
-    "category": "物品",
-    "subcategory": "其他物品",
     "description": {
       "zh": "定时器",
       "en": "timer_clock"
@@ -4543,9 +3982,6 @@
   {
     "emoji": "🕰️",
     "name": "mantelpiece_clock",
-    "shortcode": ":mantelpiece_clock:",
-    "category": "物品",
-    "subcategory": "其他物品",
     "description": {
       "zh": "壁炉钟",
       "en": "mantelpiece_clock"
@@ -4564,9 +4000,6 @@
   {
     "emoji": "🌡️",
     "name": "thermometer",
-    "shortcode": ":thermometer:",
-    "category": "物品",
-    "subcategory": "其他物品",
     "description": {
       "zh": "温度计",
       "en": "thermometer"
@@ -4585,9 +4018,6 @@
   {
     "emoji": "🎟️",
     "name": "tickets",
-    "shortcode": ":tickets:",
-    "category": "物品",
-    "subcategory": "其他物品",
     "description": {
       "zh": "票券",
       "en": "tickets"
@@ -4606,9 +4036,6 @@
   {
     "emoji": "☎️",
     "name": "telephone",
-    "shortcode": ":telephone:",
-    "category": "物品",
-    "subcategory": "其他物品",
     "description": {
       "zh": "电话",
       "en": "telephone"

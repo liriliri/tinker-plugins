@@ -86,7 +86,7 @@ const EmojiCard = observer(({ emoji }: EmojiCardProps) => {
             )}
             sideOffset={5}
           >
-            {emoji.shortcode}
+            {`:${emoji.name}:`}
             <Tooltip.Arrow className={tw.tooltip.arrow} />
           </Tooltip.Content>
         </Tooltip.Portal>

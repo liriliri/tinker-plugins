@@ -2,9 +2,6 @@
   {
     "emoji": "🏁",
     "name": "checkered_flag",
-    "shortcode": ":checkered_flag:",
-    "category": "旗帜",
-    "subcategory": "旗子",
     "description": {
       "zh": "终点旗",
       "en": "chequered flag"
@@ -25,9 +22,6 @@
   {
     "emoji": "🚩",
     "name": "triangular_flag_on_post",
-    "shortcode": ":triangular_flag_on_post:",
-    "category": "旗帜",
-    "subcategory": "旗子",
     "description": {
       "zh": "三角旗",
       "en": "triangular flag"
@@ -51,9 +45,6 @@
   {
     "emoji": "🎌",
     "name": "crossed_flags",
-    "shortcode": ":crossed_flags:",
-    "category": "旗帜",
-    "subcategory": "旗子",
     "description": {
       "zh": "交叉旗",
       "en": "crossed flags"
@@ -75,9 +66,6 @@
   {
     "emoji": "🏴",
     "name": "black_flag",
-    "shortcode": ":black_flag:",
-    "category": "旗帜",
-    "subcategory": "旗子",
     "description": {
       "zh": "举黑旗",
       "en": "black flag"
@@ -99,9 +87,6 @@
   {
     "emoji": "🇦🇨",
     "name": "ascension_island",
-    "shortcode": ":ascension_island:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 阿森松岛",
       "en": "flag: Ascension Island"
@@ -122,9 +107,6 @@
   {
     "emoji": "🇦🇩",
     "name": "andorra",
-    "shortcode": ":andorra:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 安道尔",
       "en": "flag: Andorra"
@@ -144,9 +126,6 @@
   {
     "emoji": "🇦🇪",
     "name": "united_arab_emirates",
-    "shortcode": ":united_arab_emirates:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 阿拉伯联合酋长国",
       "en": "flag: United Arab Emirates"
@@ -168,9 +147,6 @@
   {
     "emoji": "🇦🇫",
     "name": "afghanistan",
-    "shortcode": ":afghanistan:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 阿富汗",
       "en": "flag: Afghanistan"
@@ -190,9 +166,6 @@
   {
     "emoji": "🇦🇬",
     "name": "antigua_barbuda",
-    "shortcode": ":antigua_barbuda:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 安提瓜和巴布达",
       "en": "flag: Antigua & Barbuda"
@@ -214,9 +187,6 @@
   {
     "emoji": "🇦🇮",
     "name": "anguilla",
-    "shortcode": ":anguilla:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 安圭拉",
       "en": "flag: Anguilla"
@@ -236,9 +206,6 @@
   {
     "emoji": "🇦🇱",
     "name": "albania",
-    "shortcode": ":albania:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 阿尔巴尼亚",
       "en": "flag: Albania"
@@ -258,9 +225,6 @@
   {
     "emoji": "🇦🇲",
     "name": "armenia",
-    "shortcode": ":armenia:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 亚美尼亚",
       "en": "flag: Armenia"
@@ -280,9 +244,6 @@
   {
     "emoji": "🇦🇴",
     "name": "angola",
-    "shortcode": ":angola:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 安哥拉",
       "en": "flag: Angola"
@@ -302,9 +263,6 @@
   {
     "emoji": "🇦🇶",
     "name": "antarctica",
-    "shortcode": ":antarctica:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 南极洲",
       "en": "flag: Antarctica"
@@ -324,9 +282,6 @@
   {
     "emoji": "🇦🇷",
     "name": "argentina",
-    "shortcode": ":argentina:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 阿根廷",
       "en": "flag: Argentina"
@@ -346,9 +301,6 @@
   {
     "emoji": "🇦🇸",
     "name": "american_samoa",
-    "shortcode": ":american_samoa:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 美属萨摩亚",
       "en": "flag: American Samoa"
@@ -369,9 +321,6 @@
   {
     "emoji": "🇦🇹",
     "name": "austria",
-    "shortcode": ":austria:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 奥地利",
       "en": "flag: Austria"
@@ -391,9 +340,6 @@
   {
     "emoji": "🇦🇺",
     "name": "australia",
-    "shortcode": ":australia:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 澳大利亚",
       "en": "flag: Australia"
@@ -413,9 +359,6 @@
   {
     "emoji": "🇦🇼",
     "name": "aruba",
-    "shortcode": ":aruba:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 阿鲁巴",
       "en": "flag: Aruba"
@@ -435,9 +378,6 @@
   {
     "emoji": "🇦🇽",
     "name": "aland_islands",
-    "shortcode": ":aland_islands:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 奥兰群岛",
       "en": "flag: Åland Islands"
@@ -458,9 +398,6 @@
   {
     "emoji": "🇦🇿",
     "name": "azerbaijan",
-    "shortcode": ":azerbaijan:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 阿塞拜疆",
       "en": "flag: Azerbaijan"
@@ -480,9 +417,6 @@
   {
     "emoji": "🇧🇦",
     "name": "bosnia_herzegovina",
-    "shortcode": ":bosnia_herzegovina:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 波斯尼亚和黑塞哥维那",
       "en": "flag: Bosnia & Herzegovina"
@@ -504,9 +438,6 @@
   {
     "emoji": "🇧🇧",
     "name": "barbados",
-    "shortcode": ":barbados:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 巴巴多斯",
       "en": "flag: Barbados"
@@ -526,9 +457,6 @@
   {
     "emoji": "🇧🇩",
     "name": "bangladesh",
-    "shortcode": ":bangladesh:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 孟加拉国",
       "en": "flag: Bangladesh"
@@ -548,9 +476,6 @@
   {
     "emoji": "🇧🇪",
     "name": "belgium",
-    "shortcode": ":belgium:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 比利时",
       "en": "flag: Belgium"
@@ -570,9 +495,6 @@
   {
     "emoji": "🇧🇫",
     "name": "burkina_faso",
-    "shortcode": ":burkina_faso:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 布基纳法索",
       "en": "flag: Burkina Faso"
@@ -593,9 +515,6 @@
   {
     "emoji": "🇧🇬",
     "name": "bulgaria",
-    "shortcode": ":bulgaria:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 保加利亚",
       "en": "flag: Bulgaria"
@@ -615,9 +534,6 @@
   {
     "emoji": "🇧🇭",
     "name": "bahrain",
-    "shortcode": ":bahrain:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 巴林",
       "en": "flag: Bahrain"
@@ -637,9 +553,6 @@
   {
     "emoji": "🇧🇮",
     "name": "burundi",
-    "shortcode": ":burundi:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 布隆迪",
       "en": "flag: Burundi"
@@ -659,9 +572,6 @@
   {
     "emoji": "🇧🇯",
     "name": "benin",
-    "shortcode": ":benin:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 贝宁",
       "en": "flag: Benin"
@@ -681,9 +591,6 @@
   {
     "emoji": "🇧🇱",
     "name": "st_barthelemy",
-    "shortcode": ":st_barthelemy:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 圣巴泰勒米",
       "en": "flag: St. Barthélemy"
@@ -704,9 +611,6 @@
   {
     "emoji": "🇧🇲",
     "name": "bermuda",
-    "shortcode": ":bermuda:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 百慕大",
       "en": "flag: Bermuda"
@@ -726,9 +630,6 @@
   {
     "emoji": "🇧🇳",
     "name": "brunei",
-    "shortcode": ":brunei:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 文莱",
       "en": "flag: Brunei"
@@ -748,9 +649,6 @@
   {
     "emoji": "🇧🇴",
     "name": "bolivia",
-    "shortcode": ":bolivia:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 玻利维亚",
       "en": "flag: Bolivia"
@@ -770,9 +668,6 @@
   {
     "emoji": "🇧🇶",
     "name": "caribbean_netherlands",
-    "shortcode": ":caribbean_netherlands:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 荷属加勒比区",
       "en": "flag: Caribbean Netherlands"
@@ -793,9 +688,6 @@
   {
     "emoji": "🇧🇷",
     "name": "brazil",
-    "shortcode": ":brazil:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 巴西",
       "en": "flag: Brazil"
@@ -815,9 +707,6 @@
   {
     "emoji": "🇧🇸",
     "name": "bahamas",
-    "shortcode": ":bahamas:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 巴哈马",
       "en": "flag: Bahamas"
@@ -837,9 +726,6 @@
   {
     "emoji": "🇧🇹",
     "name": "bhutan",
-    "shortcode": ":bhutan:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 不丹",
       "en": "flag: Bhutan"
@@ -859,9 +745,6 @@
   {
     "emoji": "🇧🇻",
     "name": "bouvet_island",
-    "shortcode": ":bouvet_island:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 布韦岛",
       "en": "flag: Bouvet Island"
@@ -882,9 +765,6 @@
   {
     "emoji": "🇧🇼",
     "name": "botswana",
-    "shortcode": ":botswana:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 博茨瓦纳",
       "en": "flag: Botswana"
@@ -904,9 +784,6 @@
   {
     "emoji": "🇧🇾",
     "name": "belarus",
-    "shortcode": ":belarus:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 白俄罗斯",
       "en": "flag: Belarus"
@@ -926,9 +803,6 @@
   {
     "emoji": "🇧🇿",
     "name": "belize",
-    "shortcode": ":belize:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 伯利兹",
       "en": "flag: Belize"
@@ -948,9 +822,6 @@
   {
     "emoji": "🇨🇦",
     "name": "canada",
-    "shortcode": ":canada:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 加拿大",
       "en": "flag: Canada"
@@ -970,9 +841,6 @@
   {
     "emoji": "🇨🇨",
     "name": "cocos_islands",
-    "shortcode": ":cocos_islands:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 科科斯（基林）群岛",
       "en": "flag: Cocos (Keeling) Islands"
@@ -994,9 +862,6 @@
   {
     "emoji": "🇨🇩",
     "name": "congo_kinshasa",
-    "shortcode": ":congo_kinshasa:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 刚果（金）",
       "en": "flag: Congo - Kinshasa"
@@ -1018,9 +883,6 @@
   {
     "emoji": "🇨🇫",
     "name": "central_african_republic",
-    "shortcode": ":central_african_republic:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 中非共和国",
       "en": "flag: Central African Republic"
@@ -1042,9 +904,6 @@
   {
     "emoji": "🇨🇬",
     "name": "congo_brazzaville",
-    "shortcode": ":congo_brazzaville:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 刚果（布）",
       "en": "flag: Congo - Brazzaville"
@@ -1066,9 +925,6 @@
   {
     "emoji": "🇨🇭",
     "name": "switzerland",
-    "shortcode": ":switzerland:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 瑞士",
       "en": "flag: Switzerland"
@@ -1088,9 +944,6 @@
   {
     "emoji": "🇨🇮",
     "name": "cote_divoire",
-    "shortcode": ":cote_divoire:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 科特迪瓦",
       "en": "flag: Côte d’Ivoire"
@@ -1111,9 +964,6 @@
   {
     "emoji": "🇨🇰",
     "name": "cook_islands",
-    "shortcode": ":cook_islands:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 库克群岛",
       "en": "flag: Cook Islands"
@@ -1134,9 +984,6 @@
   {
     "emoji": "🇨🇱",
     "name": "chile",
-    "shortcode": ":chile:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 智利",
       "en": "flag: Chile"
@@ -1156,9 +1003,6 @@
   {
     "emoji": "🇨🇲",
     "name": "cameroon",
-    "shortcode": ":cameroon:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 喀麦隆",
       "en": "flag: Cameroon"
@@ -1178,9 +1022,6 @@
   {
     "emoji": "🇨🇳",
     "name": "cn",
-    "shortcode": ":cn:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 中国",
       "en": "flag: China"
@@ -1200,9 +1041,6 @@
   {
     "emoji": "🇨🇴",
     "name": "colombia",
-    "shortcode": ":colombia:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 哥伦比亚",
       "en": "flag: Colombia"
@@ -1222,9 +1060,6 @@
   {
     "emoji": "🇨🇵",
     "name": "clipperton_island",
-    "shortcode": ":clipperton_island:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 克利珀顿岛",
       "en": "flag: Clipperton Island"
@@ -1245,9 +1080,6 @@
   {
     "emoji": "🇨🇷",
     "name": "costa_rica",
-    "shortcode": ":costa_rica:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 哥斯达黎加",
       "en": "flag: Costa Rica"
@@ -1268,9 +1100,6 @@
   {
     "emoji": "🇨🇺",
     "name": "cuba",
-    "shortcode": ":cuba:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 古巴",
       "en": "flag: Cuba"
@@ -1290,9 +1119,6 @@
   {
     "emoji": "🇨🇻",
     "name": "cape_verde",
-    "shortcode": ":cape_verde:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 佛得角",
       "en": "flag: Cape Verde"
@@ -1313,9 +1139,6 @@
   {
     "emoji": "🇨🇼",
     "name": "curacao",
-    "shortcode": ":curacao:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 库拉索",
       "en": "flag: Curaçao"
@@ -1335,9 +1158,6 @@
   {
     "emoji": "🇨🇽",
     "name": "christmas_island",
-    "shortcode": ":christmas_island:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 圣诞岛",
       "en": "flag: Christmas Island"
@@ -1358,9 +1178,6 @@
   {
     "emoji": "🇨🇾",
     "name": "cyprus",
-    "shortcode": ":cyprus:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 塞浦路斯",
       "en": "flag: Cyprus"
@@ -1380,9 +1197,6 @@
   {
     "emoji": "🇨🇿",
     "name": "czech_republic",
-    "shortcode": ":czech_republic:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 捷克",
       "en": "flag: Czechia"
@@ -1402,9 +1216,6 @@
   {
     "emoji": "🇩🇪",
     "name": "de",
-    "shortcode": ":de:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 德国",
       "en": "flag: Germany"
@@ -1424,9 +1235,6 @@
   {
     "emoji": "🇩🇬",
     "name": "diego_garcia",
-    "shortcode": ":diego_garcia:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 迪戈加西亚岛",
       "en": "flag: Diego Garcia"
@@ -1447,9 +1255,6 @@
   {
     "emoji": "🇩🇯",
     "name": "djibouti",
-    "shortcode": ":djibouti:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 吉布提",
       "en": "flag: Djibouti"
@@ -1469,9 +1274,6 @@
   {
     "emoji": "🇩🇰",
     "name": "denmark",
-    "shortcode": ":denmark:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 丹麦",
       "en": "flag: Denmark"
@@ -1491,9 +1293,6 @@
   {
     "emoji": "🇩🇲",
     "name": "dominica",
-    "shortcode": ":dominica:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 多米尼克",
       "en": "flag: Dominica"
@@ -1513,9 +1312,6 @@
   {
     "emoji": "🇩🇴",
     "name": "dominican_republic",
-    "shortcode": ":dominican_republic:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 多米尼加共和国",
       "en": "flag: Dominican Republic"
@@ -1536,9 +1332,6 @@
   {
     "emoji": "🇩🇿",
     "name": "algeria",
-    "shortcode": ":algeria:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 阿尔及利亚",
       "en": "flag: Algeria"
@@ -1558,9 +1351,6 @@
   {
     "emoji": "🇪🇦",
     "name": "ceuta_melilla",
-    "shortcode": ":ceuta_melilla:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 休达及梅利利亚",
       "en": "flag: Ceuta & Melilla"
@@ -1582,9 +1372,6 @@
   {
     "emoji": "🇪🇨",
     "name": "ecuador",
-    "shortcode": ":ecuador:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 厄瓜多尔",
       "en": "flag: Ecuador"
@@ -1604,9 +1391,6 @@
   {
     "emoji": "🇪🇪",
     "name": "estonia",
-    "shortcode": ":estonia:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 爱沙尼亚",
       "en": "flag: Estonia"
@@ -1626,9 +1410,6 @@
   {
     "emoji": "🇪🇬",
     "name": "egypt",
-    "shortcode": ":egypt:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 埃及",
       "en": "flag: Egypt"
@@ -1648,9 +1429,6 @@
   {
     "emoji": "🇪🇭",
     "name": "western_sahara",
-    "shortcode": ":western_sahara:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 西撒哈拉",
       "en": "flag: Western Sahara"
@@ -1671,9 +1449,6 @@
   {
     "emoji": "🇪🇷",
     "name": "eritrea",
-    "shortcode": ":eritrea:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 厄立特里亚",
       "en": "flag: Eritrea"
@@ -1693,9 +1468,6 @@
   {
     "emoji": "🇪🇸",
     "name": "es",
-    "shortcode": ":es:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 西班牙",
       "en": "flag: Spain"
@@ -1715,9 +1487,6 @@
   {
     "emoji": "🇪🇹",
     "name": "ethiopia",
-    "shortcode": ":ethiopia:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 埃塞俄比亚",
       "en": "flag: Ethiopia"
@@ -1737,9 +1506,6 @@
   {
     "emoji": "🇪🇺",
     "name": "european_union",
-    "shortcode": ":european_union:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 欧盟",
       "en": "flag: European Union"
@@ -1760,9 +1526,6 @@
   {
     "emoji": "🇫🇮",
     "name": "finland",
-    "shortcode": ":finland:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 芬兰",
       "en": "flag: Finland"
@@ -1782,9 +1545,6 @@
   {
     "emoji": "🇫🇯",
     "name": "fiji",
-    "shortcode": ":fiji:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 斐济",
       "en": "flag: Fiji"
@@ -1804,9 +1564,6 @@
   {
     "emoji": "🇫🇰",
     "name": "falkland_islands",
-    "shortcode": ":falkland_islands:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 福克兰群岛",
       "en": "flag: Falkland Islands"
@@ -1827,9 +1584,6 @@
   {
     "emoji": "🇫🇲",
     "name": "micronesia",
-    "shortcode": ":micronesia:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 密克罗尼西亚",
       "en": "flag: Micronesia"
@@ -1849,9 +1603,6 @@
   {
     "emoji": "🇫🇴",
     "name": "faroe_islands",
-    "shortcode": ":faroe_islands:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 法罗群岛",
       "en": "flag: Faroe Islands"
@@ -1872,9 +1623,6 @@
   {
     "emoji": "🇫🇷",
     "name": "fr",
-    "shortcode": ":fr:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 法国",
       "en": "flag: France"
@@ -1894,9 +1642,6 @@
   {
     "emoji": "🇬🇦",
     "name": "gabon",
-    "shortcode": ":gabon:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 加蓬",
       "en": "flag: Gabon"
@@ -1916,9 +1661,6 @@
   {
     "emoji": "🇬🇧",
     "name": "uk",
-    "shortcode": ":uk:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 英国",
       "en": "flag: United Kingdom"
@@ -1939,9 +1681,6 @@
   {
     "emoji": "🇬🇩",
     "name": "grenada",
-    "shortcode": ":grenada:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 格林纳达",
       "en": "flag: Grenada"
@@ -1961,9 +1700,6 @@
   {
     "emoji": "🇬🇪",
     "name": "georgia",
-    "shortcode": ":georgia:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 格鲁吉亚",
       "en": "flag: Georgia"
@@ -1983,9 +1719,6 @@
   {
     "emoji": "🇬🇫",
     "name": "french_guiana",
-    "shortcode": ":french_guiana:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 法属圭亚那",
       "en": "flag: French Guiana"
@@ -2006,9 +1739,6 @@
   {
     "emoji": "🇬🇬",
     "name": "guernsey",
-    "shortcode": ":guernsey:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 根西岛",
       "en": "flag: Guernsey"
@@ -2028,9 +1758,6 @@
   {
     "emoji": "🇬🇭",
     "name": "ghana",
-    "shortcode": ":ghana:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 加纳",
       "en": "flag: Ghana"
@@ -2050,9 +1777,6 @@
   {
     "emoji": "🇬🇮",
     "name": "gibraltar",
-    "shortcode": ":gibraltar:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 直布罗陀",
       "en": "flag: Gibraltar"
@@ -2072,9 +1796,6 @@
   {
     "emoji": "🇬🇱",
     "name": "greenland",
-    "shortcode": ":greenland:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 格陵兰",
       "en": "flag: Greenland"
@@ -2094,9 +1815,6 @@
   {
     "emoji": "🇬🇲",
     "name": "gambia",
-    "shortcode": ":gambia:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 冈比亚",
       "en": "flag: Gambia"
@@ -2116,9 +1834,6 @@
   {
     "emoji": "🇬🇳",
     "name": "guinea",
-    "shortcode": ":guinea:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 几内亚",
       "en": "flag: Guinea"
@@ -2138,9 +1853,6 @@
   {
     "emoji": "🇬🇵",
     "name": "guadeloupe",
-    "shortcode": ":guadeloupe:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 瓜德罗普",
       "en": "flag: Guadeloupe"
@@ -2160,9 +1872,6 @@
   {
     "emoji": "🇬🇶",
     "name": "equatorial_guinea",
-    "shortcode": ":equatorial_guinea:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 赤道几内亚",
       "en": "flag: Equatorial Guinea"
@@ -2183,9 +1892,6 @@
   {
     "emoji": "🇬🇷",
     "name": "greece",
-    "shortcode": ":greece:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 希腊",
       "en": "flag: Greece"
@@ -2205,9 +1911,6 @@
   {
     "emoji": "🇬🇸",
     "name": "south_georgia_south_sandwich_islands",
-    "shortcode": ":south_georgia_south_sandwich_islands:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 南乔治亚和南桑威奇群岛",
       "en": "flag: South Georgia & South Sandwich Islands"
@@ -2231,9 +1934,6 @@
   {
     "emoji": "🇬🇹",
     "name": "guatemala",
-    "shortcode": ":guatemala:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 危地马拉",
       "en": "flag: Guatemala"
@@ -2253,9 +1953,6 @@
   {
     "emoji": "🇬🇺",
     "name": "guam",
-    "shortcode": ":guam:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 关岛",
       "en": "flag: Guam"
@@ -2275,9 +1972,6 @@
   {
     "emoji": "🇬🇼",
     "name": "guinea_bissau",
-    "shortcode": ":guinea_bissau:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 几内亚比绍",
       "en": "flag: Guinea-Bissau"
@@ -2297,9 +1991,6 @@
   {
     "emoji": "🇬🇾",
     "name": "guyana",
-    "shortcode": ":guyana:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 圭亚那",
       "en": "flag: Guyana"
@@ -2319,9 +2010,6 @@
   {
     "emoji": "🇭🇰",
     "name": "hong_kong",
-    "shortcode": ":hong_kong:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 中国香港特别行政区",
       "en": "flag: Hong Kong SAR China"
@@ -2344,9 +2032,6 @@
   {
     "emoji": "🇭🇲",
     "name": "heard_mcdonald_islands",
-    "shortcode": ":heard_mcdonald_islands:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 赫德岛和麦克唐纳群岛",
       "en": "flag: Heard & McDonald Islands"
@@ -2369,9 +2054,6 @@
   {
     "emoji": "🇭🇳",
     "name": "honduras",
-    "shortcode": ":honduras:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 洪都拉斯",
       "en": "flag: Honduras"
@@ -2391,9 +2073,6 @@
   {
     "emoji": "🇭🇷",
     "name": "croatia",
-    "shortcode": ":croatia:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 克罗地亚",
       "en": "flag: Croatia"
@@ -2413,9 +2092,6 @@
   {
     "emoji": "🇭🇹",
     "name": "haiti",
-    "shortcode": ":haiti:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 海地",
       "en": "flag: Haiti"
@@ -2435,9 +2111,6 @@
   {
     "emoji": "🇭🇺",
     "name": "hungary",
-    "shortcode": ":hungary:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 匈牙利",
       "en": "flag: Hungary"
@@ -2457,9 +2130,6 @@
   {
     "emoji": "🇮🇨",
     "name": "canary_islands",
-    "shortcode": ":canary_islands:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 加纳利群岛",
       "en": "flag: Canary Islands"
@@ -2480,9 +2150,6 @@
   {
     "emoji": "🇮🇩",
     "name": "indonesia",
-    "shortcode": ":indonesia:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 印度尼西亚",
       "en": "flag: Indonesia"
@@ -2502,9 +2169,6 @@
   {
     "emoji": "🇮🇪",
     "name": "ireland",
-    "shortcode": ":ireland:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 爱尔兰",
       "en": "flag: Ireland"
@@ -2524,9 +2188,6 @@
   {
     "emoji": "🇮🇱",
     "name": "israel",
-    "shortcode": ":israel:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 以色列",
       "en": "flag: Israel"
@@ -2546,9 +2207,6 @@
   {
     "emoji": "🇮🇲",
     "name": "isle_of_man",
-    "shortcode": ":isle_of_man:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 马恩岛",
       "en": "flag: Isle of Man"
@@ -2570,9 +2228,6 @@
   {
     "emoji": "🇮🇳",
     "name": "india",
-    "shortcode": ":india:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 印度",
       "en": "flag: India"
@@ -2592,9 +2247,6 @@
   {
     "emoji": "🇮🇴",
     "name": "british_indian_ocean_territory",
-    "shortcode": ":british_indian_ocean_territory:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 英属印度洋领地",
       "en": "flag: British Indian Ocean Territory"
@@ -2617,9 +2269,6 @@
   {
     "emoji": "🇮🇶",
     "name": "iraq",
-    "shortcode": ":iraq:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 伊拉克",
       "en": "flag: Iraq"
@@ -2639,9 +2288,6 @@
   {
     "emoji": "🇮🇷",
     "name": "iran",
-    "shortcode": ":iran:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 伊朗",
       "en": "flag: Iran"
@@ -2661,9 +2307,6 @@
   {
     "emoji": "🇮🇸",
     "name": "iceland",
-    "shortcode": ":iceland:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 冰岛",
       "en": "flag: Iceland"
@@ -2683,9 +2326,6 @@
   {
     "emoji": "🇮🇹",
     "name": "it",
-    "shortcode": ":it:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 意大利",
       "en": "flag: Italy"
@@ -2705,9 +2345,6 @@
   {
     "emoji": "🇯🇪",
     "name": "jersey",
-    "shortcode": ":jersey:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 泽西岛",
       "en": "flag: Jersey"
@@ -2727,9 +2364,6 @@
   {
     "emoji": "🇯🇲",
     "name": "jamaica",
-    "shortcode": ":jamaica:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 牙买加",
       "en": "flag: Jamaica"
@@ -2749,9 +2383,6 @@
   {
     "emoji": "🇯🇴",
     "name": "jordan",
-    "shortcode": ":jordan:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 约旦",
       "en": "flag: Jordan"
@@ -2771,9 +2402,6 @@
   {
     "emoji": "🇯🇵",
     "name": "jp",
-    "shortcode": ":jp:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 日本",
       "en": "flag: Japan"
@@ -2793,9 +2421,6 @@
   {
     "emoji": "🇰🇪",
     "name": "kenya",
-    "shortcode": ":kenya:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 肯尼亚",
       "en": "flag: Kenya"
@@ -2815,9 +2440,6 @@
   {
     "emoji": "🇰🇬",
     "name": "kyrgyzstan",
-    "shortcode": ":kyrgyzstan:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 吉尔吉斯斯坦",
       "en": "flag: Kyrgyzstan"
@@ -2837,9 +2459,6 @@
   {
     "emoji": "🇰🇭",
     "name": "cambodia",
-    "shortcode": ":cambodia:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 柬埔寨",
       "en": "flag: Cambodia"
@@ -2859,9 +2478,6 @@
   {
     "emoji": "🇰🇮",
     "name": "kiribati",
-    "shortcode": ":kiribati:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 基里巴斯",
       "en": "flag: Kiribati"
@@ -2881,9 +2497,6 @@
   {
     "emoji": "🇰🇲",
     "name": "comoros",
-    "shortcode": ":comoros:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 科摩罗",
       "en": "flag: Comoros"
@@ -2903,9 +2516,6 @@
   {
     "emoji": "🇰🇳",
     "name": "st_kitts_nevis",
-    "shortcode": ":st_kitts_nevis:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 圣基茨和尼维斯",
       "en": "flag: St. Kitts & Nevis"
@@ -2928,9 +2538,6 @@
   {
     "emoji": "🇰🇵",
     "name": "north_korea",
-    "shortcode": ":north_korea:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 朝鲜",
       "en": "flag: North Korea"
@@ -2951,9 +2558,6 @@
   {
     "emoji": "🇰🇷",
     "name": "kr",
-    "shortcode": ":kr:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 韩国",
       "en": "flag: South Korea"
@@ -2974,9 +2578,6 @@
   {
     "emoji": "🇰🇼",
     "name": "kuwait",
-    "shortcode": ":kuwait:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 科威特",
       "en": "flag: Kuwait"
@@ -2996,9 +2597,6 @@
   {
     "emoji": "🇰🇾",
     "name": "cayman_islands",
-    "shortcode": ":cayman_islands:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 开曼群岛",
       "en": "flag: Cayman Islands"
@@ -3019,9 +2617,6 @@
   {
     "emoji": "🇰🇿",
     "name": "kazakhstan",
-    "shortcode": ":kazakhstan:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 哈萨克斯坦",
       "en": "flag: Kazakhstan"
@@ -3041,9 +2636,6 @@
   {
     "emoji": "🇱🇦",
     "name": "laos",
-    "shortcode": ":laos:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 老挝",
       "en": "flag: Laos"
@@ -3063,9 +2655,6 @@
   {
     "emoji": "🇱🇧",
     "name": "lebanon",
-    "shortcode": ":lebanon:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 黎巴嫩",
       "en": "flag: Lebanon"
@@ -3085,9 +2674,6 @@
   {
     "emoji": "🇱🇨",
     "name": "st_lucia",
-    "shortcode": ":st_lucia:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 圣卢西亚",
       "en": "flag: St. Lucia"
@@ -3108,9 +2694,6 @@
   {
     "emoji": "🇱🇮",
     "name": "liechtenstein",
-    "shortcode": ":liechtenstein:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 列支敦士登",
       "en": "flag: Liechtenstein"
@@ -3130,9 +2713,6 @@
   {
     "emoji": "🇱🇰",
     "name": "sri_lanka",
-    "shortcode": ":sri_lanka:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 斯里兰卡",
       "en": "flag: Sri Lanka"
@@ -3153,9 +2733,6 @@
   {
     "emoji": "🇱🇷",
     "name": "liberia",
-    "shortcode": ":liberia:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 利比里亚",
       "en": "flag: Liberia"
@@ -3175,9 +2752,6 @@
   {
     "emoji": "🇱🇸",
     "name": "lesotho",
-    "shortcode": ":lesotho:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 莱索托",
       "en": "flag: Lesotho"
@@ -3197,9 +2771,6 @@
   {
     "emoji": "🇱🇹",
     "name": "lithuania",
-    "shortcode": ":lithuania:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 立陶宛",
       "en": "flag: Lithuania"
@@ -3219,9 +2790,6 @@
   {
     "emoji": "🇱🇺",
     "name": "luxembourg",
-    "shortcode": ":luxembourg:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 卢森堡",
       "en": "flag: Luxembourg"
@@ -3241,9 +2809,6 @@
   {
     "emoji": "🇱🇻",
     "name": "latvia",
-    "shortcode": ":latvia:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 拉脱维亚",
       "en": "flag: Latvia"
@@ -3263,9 +2828,6 @@
   {
     "emoji": "🇱🇾",
     "name": "libya",
-    "shortcode": ":libya:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 利比亚",
       "en": "flag: Libya"
@@ -3285,9 +2847,6 @@
   {
     "emoji": "🇲🇦",
     "name": "morocco",
-    "shortcode": ":morocco:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 摩洛哥",
       "en": "flag: Morocco"
@@ -3307,9 +2866,6 @@
   {
     "emoji": "🇲🇨",
     "name": "monaco",
-    "shortcode": ":monaco:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 摩纳哥",
       "en": "flag: Monaco"
@@ -3329,9 +2885,6 @@
   {
     "emoji": "🇲🇩",
     "name": "moldova",
-    "shortcode": ":moldova:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 摩尔多瓦",
       "en": "flag: Moldova"
@@ -3351,9 +2904,6 @@
   {
     "emoji": "🇲🇪",
     "name": "montenegro",
-    "shortcode": ":montenegro:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 黑山",
       "en": "flag: Montenegro"
@@ -3373,9 +2923,6 @@
   {
     "emoji": "🇲🇫",
     "name": "st_martin",
-    "shortcode": ":st_martin:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 法属圣马丁",
       "en": "flag: St. Martin"
@@ -3396,9 +2943,6 @@
   {
     "emoji": "🇲🇬",
     "name": "madagascar",
-    "shortcode": ":madagascar:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 马达加斯加",
       "en": "flag: Madagascar"
@@ -3418,9 +2962,6 @@
   {
     "emoji": "🇲🇭",
     "name": "marshall_islands",
-    "shortcode": ":marshall_islands:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 马绍尔群岛",
       "en": "flag: Marshall Islands"
@@ -3441,9 +2982,6 @@
   {
     "emoji": "🇲🇰",
     "name": "macedonia",
-    "shortcode": ":macedonia:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 北马其顿",
       "en": "flag: North Macedonia"
@@ -3464,9 +3002,6 @@
   {
     "emoji": "🇲🇱",
     "name": "mali",
-    "shortcode": ":mali:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 马里",
       "en": "flag: Mali"
@@ -3486,9 +3021,6 @@
   {
     "emoji": "🇲🇲",
     "name": "myanmar",
-    "shortcode": ":myanmar:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 缅甸",
       "en": "flag: Myanmar (Burma)"
@@ -3509,9 +3041,6 @@
   {
     "emoji": "🇲🇳",
     "name": "mongolia",
-    "shortcode": ":mongolia:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 蒙古",
       "en": "flag: Mongolia"
@@ -3531,9 +3060,6 @@
   {
     "emoji": "🇲🇴",
     "name": "macau",
-    "shortcode": ":macau:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 中国澳门特别行政区",
       "en": "flag: Macao SAR China"
@@ -3555,9 +3081,6 @@
   {
     "emoji": "🇲🇵",
     "name": "northern_mariana_islands",
-    "shortcode": ":northern_mariana_islands:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 北马里亚纳群岛",
       "en": "flag: Northern Mariana Islands"
@@ -3579,9 +3102,6 @@
   {
     "emoji": "🇲🇶",
     "name": "martinique",
-    "shortcode": ":martinique:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 马提尼克",
       "en": "flag: Martinique"
@@ -3601,9 +3121,6 @@
   {
     "emoji": "🇲🇷",
     "name": "mauritania",
-    "shortcode": ":mauritania:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 毛里塔尼亚",
       "en": "flag: Mauritania"
@@ -3623,9 +3140,6 @@
   {
     "emoji": "🇲🇸",
     "name": "montserrat",
-    "shortcode": ":montserrat:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 蒙特塞拉特",
       "en": "flag: Montserrat"
@@ -3645,9 +3159,6 @@
   {
     "emoji": "🇲🇹",
     "name": "malta",
-    "shortcode": ":malta:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 马耳他",
       "en": "flag: Malta"
@@ -3667,9 +3178,6 @@
   {
     "emoji": "🇲🇺",
     "name": "mauritius",
-    "shortcode": ":mauritius:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 毛里求斯",
       "en": "flag: Mauritius"
@@ -3689,9 +3197,6 @@
   {
     "emoji": "🇲🇻",
     "name": "maldives",
-    "shortcode": ":maldives:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 马尔代夫",
       "en": "flag: Maldives"
@@ -3711,9 +3216,6 @@
   {
     "emoji": "🇲🇼",
     "name": "malawi",
-    "shortcode": ":malawi:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 马拉维",
       "en": "flag: Malawi"
@@ -3733,9 +3235,6 @@
   {
     "emoji": "🇲🇽",
     "name": "mexico",
-    "shortcode": ":mexico:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 墨西哥",
       "en": "flag: Mexico"
@@ -3755,9 +3254,6 @@
   {
     "emoji": "🇲🇾",
     "name": "malaysia",
-    "shortcode": ":malaysia:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 马来西亚",
       "en": "flag: Malaysia"
@@ -3777,9 +3273,6 @@
   {
     "emoji": "🇲🇿",
     "name": "mozambique",
-    "shortcode": ":mozambique:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 莫桑比克",
       "en": "flag: Mozambique"
@@ -3799,9 +3292,6 @@
   {
     "emoji": "🇳🇦",
     "name": "namibia",
-    "shortcode": ":namibia:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 纳米比亚",
       "en": "flag: Namibia"
@@ -3821,9 +3311,6 @@
   {
     "emoji": "🇳🇨",
     "name": "new_caledonia",
-    "shortcode": ":new_caledonia:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 新喀里多尼亚",
       "en": "flag: New Caledonia"
@@ -3844,9 +3331,6 @@
   {
     "emoji": "🇳🇪",
     "name": "niger",
-    "shortcode": ":niger:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 尼日尔",
       "en": "flag: Niger"
@@ -3866,9 +3350,6 @@
   {
     "emoji": "🇳🇫",
     "name": "norfolk_island",
-    "shortcode": ":norfolk_island:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 诺福克岛",
       "en": "flag: Norfolk Island"
@@ -3889,9 +3370,6 @@
   {
     "emoji": "🇳🇬",
     "name": "nigeria",
-    "shortcode": ":nigeria:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 尼日利亚",
       "en": "flag: Nigeria"
@@ -3911,9 +3389,6 @@
   {
     "emoji": "🇳🇮",
     "name": "nicaragua",
-    "shortcode": ":nicaragua:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 尼加拉瓜",
       "en": "flag: Nicaragua"
@@ -3933,9 +3408,6 @@
   {
     "emoji": "🇳🇱",
     "name": "netherlands",
-    "shortcode": ":netherlands:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 荷兰",
       "en": "flag: Netherlands"
@@ -3955,9 +3427,6 @@
   {
     "emoji": "🇳🇴",
     "name": "norway",
-    "shortcode": ":norway:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 挪威",
       "en": "flag: Norway"
@@ -3977,9 +3446,6 @@
   {
     "emoji": "🇳🇵",
     "name": "nepal",
-    "shortcode": ":nepal:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 尼泊尔",
       "en": "flag: Nepal"
@@ -3999,9 +3465,6 @@
   {
     "emoji": "🇳🇷",
     "name": "nauru",
-    "shortcode": ":nauru:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 瑙鲁",
       "en": "flag: Nauru"
@@ -4021,9 +3484,6 @@
   {
     "emoji": "🇳🇺",
     "name": "niue",
-    "shortcode": ":niue:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 纽埃",
       "en": "flag: Niue"
@@ -4043,9 +3503,6 @@
   {
     "emoji": "🇳🇿",
     "name": "new_zealand",
-    "shortcode": ":new_zealand:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 新西兰",
       "en": "flag: New Zealand"
@@ -4066,9 +3523,6 @@
   {
     "emoji": "🇴🇲",
     "name": "oman",
-    "shortcode": ":oman:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 阿曼",
       "en": "flag: Oman"
@@ -4088,9 +3542,6 @@
   {
     "emoji": "🇵🇦",
     "name": "panama",
-    "shortcode": ":panama:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 巴拿马",
       "en": "flag: Panama"
@@ -4110,9 +3561,6 @@
   {
     "emoji": "🇵🇪",
     "name": "peru",
-    "shortcode": ":peru:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 秘鲁",
       "en": "flag: Peru"
@@ -4132,9 +3580,6 @@
   {
     "emoji": "🇵🇫",
     "name": "french_polynesia",
-    "shortcode": ":french_polynesia:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 法属波利尼西亚",
       "en": "flag: French Polynesia"
@@ -4155,9 +3600,6 @@
   {
     "emoji": "🇵🇬",
     "name": "papua_new_guinea",
-    "shortcode": ":papua_new_guinea:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 巴布亚新几内亚",
       "en": "flag: Papua New Guinea"
@@ -4179,9 +3621,6 @@
   {
     "emoji": "🇵🇭",
     "name": "philippines",
-    "shortcode": ":philippines:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 菲律宾",
       "en": "flag: Philippines"
@@ -4201,9 +3640,6 @@
   {
     "emoji": "🇵🇰",
     "name": "pakistan",
-    "shortcode": ":pakistan:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 巴基斯坦",
       "en": "flag: Pakistan"
@@ -4223,9 +3659,6 @@
   {
     "emoji": "🇵🇱",
     "name": "poland",
-    "shortcode": ":poland:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 波兰",
       "en": "flag: Poland"
@@ -4245,9 +3678,6 @@
   {
     "emoji": "🇵🇲",
     "name": "st_pierre_miquelon",
-    "shortcode": ":st_pierre_miquelon:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 圣皮埃尔和密克隆群岛",
       "en": "flag: St. Pierre & Miquelon"
@@ -4270,9 +3700,6 @@
   {
     "emoji": "🇵🇳",
     "name": "pitcairn_islands",
-    "shortcode": ":pitcairn_islands:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 皮特凯恩群岛",
       "en": "flag: Pitcairn Islands"
@@ -4293,9 +3720,6 @@
   {
     "emoji": "🇵🇷",
     "name": "puerto_rico",
-    "shortcode": ":puerto_rico:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 波多黎各",
       "en": "flag: Puerto Rico"
@@ -4316,9 +3740,6 @@
   {
     "emoji": "🇵🇸",
     "name": "palestinian_territories",
-    "shortcode": ":palestinian_territories:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 巴勒斯坦领土",
       "en": "flag: Palestinian Territories"
@@ -4339,9 +3760,6 @@
   {
     "emoji": "🇵🇹",
     "name": "portugal",
-    "shortcode": ":portugal:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 葡萄牙",
       "en": "flag: Portugal"
@@ -4361,9 +3779,6 @@
   {
     "emoji": "🇵🇼",
     "name": "palau",
-    "shortcode": ":palau:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 帕劳",
       "en": "flag: Palau"
@@ -4383,9 +3798,6 @@
   {
     "emoji": "🇵🇾",
     "name": "paraguay",
-    "shortcode": ":paraguay:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 巴拉圭",
       "en": "flag: Paraguay"
@@ -4405,9 +3817,6 @@
   {
     "emoji": "🇶🇦",
     "name": "qatar",
-    "shortcode": ":qatar:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 卡塔尔",
       "en": "flag: Qatar"
@@ -4427,9 +3836,6 @@
   {
     "emoji": "🇷🇪",
     "name": "reunion",
-    "shortcode": ":reunion:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 留尼汪",
       "en": "flag: Réunion"
@@ -4449,9 +3855,6 @@
   {
     "emoji": "🇷🇴",
     "name": "romania",
-    "shortcode": ":romania:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 罗马尼亚",
       "en": "flag: Romania"
@@ -4471,9 +3874,6 @@
   {
     "emoji": "🇷🇸",
     "name": "serbia",
-    "shortcode": ":serbia:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 塞尔维亚",
       "en": "flag: Serbia"
@@ -4493,9 +3893,6 @@
   {
     "emoji": "🇷🇺",
     "name": "ru",
-    "shortcode": ":ru:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 俄罗斯",
       "en": "flag: Russia"
@@ -4515,9 +3912,6 @@
   {
     "emoji": "🇷🇼",
     "name": "rwanda",
-    "shortcode": ":rwanda:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 卢旺达",
       "en": "flag: Rwanda"
@@ -4537,9 +3931,6 @@
   {
     "emoji": "🇸🇦",
     "name": "saudi_arabia",
-    "shortcode": ":saudi_arabia:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 沙特阿拉伯",
       "en": "flag: Saudi Arabia"
@@ -4560,9 +3951,6 @@
   {
     "emoji": "🇸🇧",
     "name": "solomon_islands",
-    "shortcode": ":solomon_islands:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 所罗门群岛",
       "en": "flag: Solomon Islands"
@@ -4583,9 +3971,6 @@
   {
     "emoji": "🇸🇨",
     "name": "seychelles",
-    "shortcode": ":seychelles:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 塞舌尔",
       "en": "flag: Seychelles"
@@ -4605,9 +3990,6 @@
   {
     "emoji": "🇸🇩",
     "name": "sudan",
-    "shortcode": ":sudan:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 苏丹",
       "en": "flag: Sudan"
@@ -4627,9 +4009,6 @@
   {
     "emoji": "🇸🇪",
     "name": "sweden",
-    "shortcode": ":sweden:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 瑞典",
       "en": "flag: Sweden"
@@ -4649,9 +4028,6 @@
   {
     "emoji": "🇸🇬",
     "name": "singapore",
-    "shortcode": ":singapore:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 新加坡",
       "en": "flag: Singapore"
@@ -4671,9 +4047,6 @@
   {
     "emoji": "🇸🇭",
     "name": "st_helena",
-    "shortcode": ":st_helena:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 圣赫勒拿",
       "en": "flag: St. Helena"
@@ -4694,9 +4067,6 @@
   {
     "emoji": "🇸🇮",
     "name": "slovenia",
-    "shortcode": ":slovenia:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 斯洛文尼亚",
       "en": "flag: Slovenia"
@@ -4716,9 +4086,6 @@
   {
     "emoji": "🇸🇯",
     "name": "svalbard_jan_mayen",
-    "shortcode": ":svalbard_jan_mayen:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 斯瓦尔巴和扬马延",
       "en": "flag: Svalbard & Jan Mayen"
@@ -4741,9 +4108,6 @@
   {
     "emoji": "🇸🇰",
     "name": "slovakia",
-    "shortcode": ":slovakia:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 斯洛伐克",
       "en": "flag: Slovakia"
@@ -4763,9 +4127,6 @@
   {
     "emoji": "🇸🇱",
     "name": "sierra_leone",
-    "shortcode": ":sierra_leone:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 塞拉利昂",
       "en": "flag: Sierra Leone"
@@ -4786,9 +4147,6 @@
   {
     "emoji": "🇸🇲",
     "name": "san_marino",
-    "shortcode": ":san_marino:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 圣马力诺",
       "en": "flag: San Marino"
@@ -4809,9 +4167,6 @@
   {
     "emoji": "🇸🇳",
     "name": "senegal",
-    "shortcode": ":senegal:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 塞内加尔",
       "en": "flag: Senegal"
@@ -4831,9 +4186,6 @@
   {
     "emoji": "🇸🇴",
     "name": "somalia",
-    "shortcode": ":somalia:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 索马里",
       "en": "flag: Somalia"
@@ -4853,9 +4205,6 @@
   {
     "emoji": "🇸🇷",
     "name": "suriname",
-    "shortcode": ":suriname:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 苏里南",
       "en": "flag: Suriname"
@@ -4875,9 +4224,6 @@
   {
     "emoji": "🇸🇸",
     "name": "south_sudan",
-    "shortcode": ":south_sudan:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 南苏丹",
       "en": "flag: South Sudan"
@@ -4898,9 +4244,6 @@
   {
     "emoji": "🇸🇹",
     "name": "sao_tome_principe",
-    "shortcode": ":sao_tome_principe:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 圣多美和普林西比",
       "en": "flag: São Tomé & Príncipe"
@@ -4923,9 +4266,6 @@
   {
     "emoji": "🇸🇻",
     "name": "el_salvador",
-    "shortcode": ":el_salvador:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 萨尔瓦多",
       "en": "flag: El Salvador"
@@ -4946,9 +4286,6 @@
   {
     "emoji": "🇸🇽",
     "name": "sint_maarten",
-    "shortcode": ":sint_maarten:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 荷属圣马丁",
       "en": "flag: Sint Maarten"
@@ -4969,9 +4306,6 @@
   {
     "emoji": "🇸🇾",
     "name": "syria",
-    "shortcode": ":syria:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 叙利亚",
       "en": "flag: Syria"
@@ -4991,9 +4325,6 @@
   {
     "emoji": "🇸🇿",
     "name": "swaziland",
-    "shortcode": ":swaziland:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 斯威士兰",
       "en": "flag: Eswatini"
@@ -5013,9 +4344,6 @@
   {
     "emoji": "🇹🇦",
     "name": "tristan_da_cunha",
-    "shortcode": ":tristan_da_cunha:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 特里斯坦-达库尼亚群岛",
       "en": "flag: Tristan da Cunha"
@@ -5037,9 +4365,6 @@
   {
     "emoji": "🇹🇨",
     "name": "turks_caicos_islands",
-    "shortcode": ":turks_caicos_islands:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 特克斯和凯科斯群岛",
       "en": "flag: Turks & Caicos Islands"
@@ -5062,9 +4387,6 @@
   {
     "emoji": "🇹🇩",
     "name": "chad",
-    "shortcode": ":chad:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 乍得",
       "en": "flag: Chad"
@@ -5084,9 +4406,6 @@
   {
     "emoji": "🇹🇫",
     "name": "french_southern_territories",
-    "shortcode": ":french_southern_territories:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 法属南部领地",
       "en": "flag: French Southern Territories"
@@ -5108,9 +4427,6 @@
   {
     "emoji": "🇹🇬",
     "name": "togo",
-    "shortcode": ":togo:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 多哥",
       "en": "flag: Togo"
@@ -5130,9 +4446,6 @@
   {
     "emoji": "🇹🇭",
     "name": "thailand",
-    "shortcode": ":thailand:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 泰国",
       "en": "flag: Thailand"
@@ -5152,9 +4465,6 @@
   {
     "emoji": "🇹🇯",
     "name": "tajikistan",
-    "shortcode": ":tajikistan:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 塔吉克斯坦",
       "en": "flag: Tajikistan"
@@ -5174,9 +4484,6 @@
   {
     "emoji": "🇹🇰",
     "name": "tokelau",
-    "shortcode": ":tokelau:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 托克劳",
       "en": "flag: Tokelau"
@@ -5196,9 +4503,6 @@
   {
     "emoji": "🇹🇱",
     "name": "timor_leste",
-    "shortcode": ":timor_leste:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 东帝汶",
       "en": "flag: Timor-Leste"
@@ -5218,9 +4522,6 @@
   {
     "emoji": "🇹🇲",
     "name": "turkmenistan",
-    "shortcode": ":turkmenistan:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 土库曼斯坦",
       "en": "flag: Turkmenistan"
@@ -5240,9 +4541,6 @@
   {
     "emoji": "🇹🇳",
     "name": "tunisia",
-    "shortcode": ":tunisia:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 突尼斯",
       "en": "flag: Tunisia"
@@ -5262,9 +4560,6 @@
   {
     "emoji": "🇹🇴",
     "name": "tonga",
-    "shortcode": ":tonga:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 汤加",
       "en": "flag: Tonga"
@@ -5284,9 +4579,6 @@
   {
     "emoji": "🇹🇷",
     "name": "tr",
-    "shortcode": ":tr:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 土耳其",
       "en": "flag: Turkey"
@@ -5306,9 +4598,6 @@
   {
     "emoji": "🇹🇹",
     "name": "trinidad_tobago",
-    "shortcode": ":trinidad_tobago:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 特立尼达和多巴哥",
       "en": "flag: Trinidad & Tobago"
@@ -5330,9 +4619,6 @@
   {
     "emoji": "🇹🇻",
     "name": "tuvalu",
-    "shortcode": ":tuvalu:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 图瓦卢",
       "en": "flag: Tuvalu"
@@ -5352,9 +4638,6 @@
   {
     "emoji": "🇹🇼",
     "name": "taiwan",
-    "shortcode": ":taiwan:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 台湾",
       "en": "flag: Taiwan"
@@ -5374,9 +4657,6 @@
   {
     "emoji": "🇹🇿",
     "name": "tanzania",
-    "shortcode": ":tanzania:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 坦桑尼亚",
       "en": "flag: Tanzania"
@@ -5396,9 +4676,6 @@
   {
     "emoji": "🇺🇦",
     "name": "ukraine",
-    "shortcode": ":ukraine:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 乌克兰",
       "en": "flag: Ukraine"
@@ -5418,9 +4695,6 @@
   {
     "emoji": "🇺🇬",
     "name": "uganda",
-    "shortcode": ":uganda:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 乌干达",
       "en": "flag: Uganda"
@@ -5440,9 +4714,6 @@
   {
     "emoji": "🇺🇲",
     "name": "us_outlying_islands",
-    "shortcode": ":us_outlying_islands:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 美国本土外小岛屿",
       "en": "flag: U.S. Outlying Islands"
@@ -5464,9 +4735,6 @@
   {
     "emoji": "🇺🇳",
     "name": "united_nations",
-    "shortcode": ":united_nations:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 联合国",
       "en": "flag: United Nations"
@@ -5487,9 +4755,6 @@
   {
     "emoji": "🇺🇸",
     "name": "us",
-    "shortcode": ":us:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 美国",
       "en": "flag: United States"
@@ -5510,9 +4775,6 @@
   {
     "emoji": "🇺🇾",
     "name": "uruguay",
-    "shortcode": ":uruguay:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 乌拉圭",
       "en": "flag: Uruguay"
@@ -5532,9 +4794,6 @@
   {
     "emoji": "🇺🇿",
     "name": "uzbekistan",
-    "shortcode": ":uzbekistan:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 乌兹别克斯坦",
       "en": "flag: Uzbekistan"
@@ -5554,9 +4813,6 @@
   {
     "emoji": "🇻🇦",
     "name": "vatican_city",
-    "shortcode": ":vatican_city:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 梵蒂冈",
       "en": "flag: Vatican City"
@@ -5577,9 +4833,6 @@
   {
     "emoji": "🇻🇨",
     "name": "st_vincent_grenadines",
-    "shortcode": ":st_vincent_grenadines:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 圣文森特和格林纳丁斯",
       "en": "flag: St. Vincent & Grenadines"
@@ -5602,9 +4855,6 @@
   {
     "emoji": "🇻🇪",
     "name": "venezuela",
-    "shortcode": ":venezuela:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 委内瑞拉",
       "en": "flag: Venezuela"
@@ -5624,9 +4874,6 @@
   {
     "emoji": "🇻🇬",
     "name": "british_virgin_islands",
-    "shortcode": ":british_virgin_islands:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 英属维尔京群岛",
       "en": "flag: British Virgin Islands"
@@ -5648,9 +4895,6 @@
   {
     "emoji": "🇻🇮",
     "name": "us_virgin_islands",
-    "shortcode": ":us_virgin_islands:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 美属维尔京群岛",
       "en": "flag: U.S. Virgin Islands"
@@ -5672,9 +4916,6 @@
   {
     "emoji": "🇻🇳",
     "name": "vietnam",
-    "shortcode": ":vietnam:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 越南",
       "en": "flag: Vietnam"
@@ -5694,9 +4935,6 @@
   {
     "emoji": "🇻🇺",
     "name": "vanuatu",
-    "shortcode": ":vanuatu:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 瓦努阿图",
       "en": "flag: Vanuatu"
@@ -5716,9 +4954,6 @@
   {
     "emoji": "🇼🇫",
     "name": "wallis_futuna",
-    "shortcode": ":wallis_futuna:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 瓦利斯和富图纳",
       "en": "flag: Wallis & Futuna"
@@ -5740,9 +4975,6 @@
   {
     "emoji": "🇼🇸",
     "name": "samoa",
-    "shortcode": ":samoa:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 萨摩亚",
       "en": "flag: Samoa"
@@ -5762,9 +4994,6 @@
   {
     "emoji": "🇽🇰",
     "name": "kosovo",
-    "shortcode": ":kosovo:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 科索沃",
       "en": "flag: Kosovo"
@@ -5784,9 +5013,6 @@
   {
     "emoji": "🇾🇪",
     "name": "yemen",
-    "shortcode": ":yemen:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 也门",
       "en": "flag: Yemen"
@@ -5806,9 +5032,6 @@
   {
     "emoji": "🇾🇹",
     "name": "mayotte",
-    "shortcode": ":mayotte:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 马约特",
       "en": "flag: Mayotte"
@@ -5828,9 +5051,6 @@
   {
     "emoji": "🇿🇦",
     "name": "south_africa",
-    "shortcode": ":south_africa:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 南非",
       "en": "flag: South Africa"
@@ -5851,9 +5071,6 @@
   {
     "emoji": "🇿🇲",
     "name": "zambia",
-    "shortcode": ":zambia:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 赞比亚",
       "en": "flag: Zambia"
@@ -5873,9 +5090,6 @@
   {
     "emoji": "🇿🇼",
     "name": "zimbabwe",
-    "shortcode": ":zimbabwe:",
-    "category": "旗帜",
-    "subcategory": "国家或地区旗",
     "description": {
       "zh": "旗: 津巴布韦",
       "en": "flag: Zimbabwe"
@@ -5895,9 +5109,6 @@
   {
     "emoji": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
     "name": "england",
-    "shortcode": ":england:",
-    "category": "旗帜",
-    "subcategory": "地区旗",
     "description": {
       "zh": "旗: 英格兰",
       "en": "flag: England"
@@ -5917,9 +5128,6 @@
   {
     "emoji": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
     "name": "scotland",
-    "shortcode": ":scotland:",
-    "category": "旗帜",
-    "subcategory": "地区旗",
     "description": {
       "zh": "旗: 苏格兰",
       "en": "flag: Scotland"
@@ -5939,9 +5147,6 @@
   {
     "emoji": "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
     "name": "wales",
-    "shortcode": ":wales:",
-    "category": "旗帜",
-    "subcategory": "地区旗",
     "description": {
       "zh": "旗: 威尔士",
       "en": "flag: Wales"
@@ -5961,9 +5166,6 @@
   {
     "emoji": "🏴‍☠️",
     "name": "pirate_flag",
-    "shortcode": ":pirate_flag:",
-    "category": "旗帜",
-    "subcategory": "旗子",
     "description": {
       "zh": "海盗旗",
       "en": "pirate flag"
@@ -5987,9 +5189,6 @@
   {
     "emoji": "🏳️‍🌈",
     "name": "rainbow_flag",
-    "shortcode": ":rainbow_flag:",
-    "category": "旗帜",
-    "subcategory": "旗子",
     "description": {
       "zh": "彩虹旗",
       "en": "rainbow flag"
