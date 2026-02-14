@@ -171,7 +171,10 @@ class Store {
       }
     } catch (error) {
       console.error('Failed to load token usage data:', error)
-      // On error, show zero data instead of error message
+      this.setError(
+        error instanceof Error ? error.message : 'Unknown error occurred',
+      )
+      // On error, show zero data
       const today = new Date().toISOString().split('T')[0]
       this.setUsageData({
         total: {

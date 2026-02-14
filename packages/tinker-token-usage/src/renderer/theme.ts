@@ -10,32 +10,14 @@ export const tw = {
     primary: 'text-neutral-900 dark:text-neutral-100',
     secondary: 'text-neutral-700 dark:text-neutral-300',
     tertiary: 'text-neutral-600 dark:text-neutral-400',
-    quaternary: 'text-neutral-500 dark:text-neutral-400',
-    mono: 'font-mono text-neutral-700 dark:text-neutral-300',
-    cost: 'text-[#df754f] dark:text-[#f08a65]',
     white: 'text-white',
   },
 
   border: {
     card: 'border border-neutral-300 dark:border-neutral-700',
-    table: 'border-b border-neutral-200 dark:border-neutral-700',
-    tableRow: 'border-b border-neutral-100 dark:border-neutral-800',
-    section: 'border-b border-neutral-200/50 dark:border-neutral-800/50',
-  },
-
-  shadow: {
-    card: 'shadow-lg shadow-neutral-200/50 dark:shadow-neutral-950/50',
-    cardLarge: 'shadow-xl shadow-neutral-200/50 dark:shadow-neutral-950/50',
-    button: 'shadow-lg shadow-[#df754f]/30 dark:shadow-[#df754f]/20',
-    buttonHover:
-      'hover:shadow-xl hover:shadow-[#df754f]/40 dark:hover:shadow-[#df754f]/30',
-    tooltip: 'shadow-xl',
   },
 
   gradient: {
-    title:
-      'bg-gradient-to-br from-neutral-900 to-neutral-700 dark:from-neutral-50 dark:to-neutral-300 bg-clip-text text-transparent',
-    divider: 'bg-gradient-to-r from-[#df754f]/50 to-transparent',
     blue: 'from-blue-500 to-blue-600 dark:from-blue-400 dark:to-blue-500',
     green: 'from-green-500 to-green-600 dark:from-green-400 dark:to-green-500',
     purple:
@@ -65,14 +47,6 @@ export const tw = {
     },
   },
 
-  card: {
-    container: 'rounded-lg p-6',
-    containerLarge: 'rounded-lg',
-    label:
-      'text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-2',
-    value: 'text-3xl font-bold bg-gradient-to-br bg-clip-text text-transparent',
-  },
-
   error: {
     background:
       'bg-gradient-to-br from-red-50 to-red-100/50 dark:from-red-950/30 dark:to-red-900/20',
@@ -86,11 +60,5 @@ export const tw = {
       title: 'text-red-900 dark:text-red-300',
       content: 'text-red-800 dark:text-red-400',
     },
-  },
-
-  tooltip: {
-    content:
-      'bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 px-3 py-2 rounded-md text-xs font-medium',
-    arrow: 'fill-neutral-900 dark:fill-neutral-100',
   },
 }
