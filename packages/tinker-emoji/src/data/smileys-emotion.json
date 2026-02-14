@@ -3458,5 +3458,89 @@
         "bubble"
       ]
     }
+  },
+  {
+    "emoji": "☺️",
+    "name": "relaxed",
+    "shortcode": ":relaxed:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "微笑",
+      "en": "relaxed"
+    },
+    "keywords": {
+      "zh": [
+        "放松",
+        "微笑",
+        "开心"
+      ],
+      "en": [
+        "relaxed"
+      ]
+    }
+  },
+  {
+    "emoji": "☹️",
+    "name": "frowning_face",
+    "shortcode": ":frowning_face:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "皱眉",
+      "en": "frowning_face"
+    },
+    "keywords": {
+      "zh": [
+        "皱眉",
+        "不开心",
+        "难过"
+      ],
+      "en": [
+        "frowning_face"
+      ]
+    }
+  },
+  {
+    "emoji": "❣️",
+    "name": "heavy_heart_exclamation",
+    "shortcode": ":heavy_heart_exclamation:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "心形感叹号",
+      "en": "heavy_heart_exclamation"
+    },
+    "keywords": {
+      "zh": [
+        "心",
+        "感叹",
+        "爱"
+      ],
+      "en": [
+        "heavy_heart_exclamation"
+      ]
+    }
+  },
+  {
+    "emoji": "❤️",
+    "name": "heart",
+    "shortcode": ":heart:",
+    "category": "笑脸和情感",
+    "subcategory": "情感",
+    "description": {
+      "zh": "红心",
+      "en": "heart"
+    },
+    "keywords": {
+      "zh": [
+        "心",
+        "爱",
+        "喜欢"
+      ],
+      "en": [
+        "heart"
+      ]
+    }
   }
 ]

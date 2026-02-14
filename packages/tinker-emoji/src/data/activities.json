@@ -1615,5 +1615,89 @@
         "yarn"
       ]
     }
+  },
+  {
+    "emoji": "⛷️",
+    "name": "skier",
+    "shortcode": ":skier:",
+    "category": "活动",
+    "subcategory": "运动",
+    "description": {
+      "zh": "滑雪",
+      "en": "skier"
+    },
+    "keywords": {
+      "zh": [
+        "滑雪",
+        "运动",
+        "雪"
+      ],
+      "en": [
+        "skier"
+      ]
+    }
+  },
+  {
+    "emoji": "🏌️",
+    "name": "golfing",
+    "shortcode": ":golfing:",
+    "category": "活动",
+    "subcategory": "运动",
+    "description": {
+      "zh": "高尔夫",
+      "en": "golfing"
+    },
+    "keywords": {
+      "zh": [
+        "高尔夫",
+        "运动",
+        "球"
+      ],
+      "en": [
+        "golfing"
+      ]
+    }
+  },
+  {
+    "emoji": "⛹️",
+    "name": "bouncing_ball_person",
+    "shortcode": ":bouncing_ball_person:",
+    "category": "活动",
+    "subcategory": "运动",
+    "description": {
+      "zh": "运球的人",
+      "en": "bouncing_ball_person"
+    },
+    "keywords": {
+      "zh": [
+        "篮球",
+        "运球",
+        "运动"
+      ],
+      "en": [
+        "bouncing_ball_person"
+      ]
+    }
+  },
+  {
+    "emoji": "🏋️",
+    "name": "weight_lifting",
+    "shortcode": ":weight_lifting:",
+    "category": "活动",
+    "subcategory": "运动",
+    "description": {
+      "zh": "举重",
+      "en": "weight_lifting"
+    },
+    "keywords": {
+      "zh": [
+        "举重",
+        "健身",
+        "运动"
+      ],
+      "en": [
+        "weight_lifting"
+      ]
+    }
   }
 ]

@@ -7823,5 +7823,173 @@
         "zombie"
       ]
     }
+  },
+  {
+    "emoji": "🖐️",
+    "name": "raised_hand_with_fingers_splayed",
+    "shortcode": ":raised_hand_with_fingers_splayed:",
+    "category": "人类和身体",
+    "subcategory": "手势",
+    "description": {
+      "zh": "张开的手",
+      "en": "raised_hand_with_fingers_splayed"
+    },
+    "keywords": {
+      "zh": [
+        "手",
+        "张开",
+        "手掌"
+      ],
+      "en": [
+        "raised_hand_with_fingers_splayed"
+      ]
+    }
+  },
+  {
+    "emoji": "✌️",
+    "name": "v",
+    "shortcode": ":v:",
+    "category": "人类和身体",
+    "subcategory": "手势",
+    "description": {
+      "zh": "胜利手势",
+      "en": "v"
+    },
+    "keywords": {
+      "zh": [
+        "胜利",
+        "V",
+        "耶"
+      ],
+      "en": [
+        "v"
+      ]
+    }
+  },
+  {
+    "emoji": "☝️",
+    "name": "point_up",
+    "shortcode": ":point_up:",
+    "category": "人类和身体",
+    "subcategory": "手势",
+    "description": {
+      "zh": "向上指",
+      "en": "point_up"
+    },
+    "keywords": {
+      "zh": [
+        "手指",
+        "向上",
+        "指"
+      ],
+      "en": [
+        "point_up"
+      ]
+    }
+  },
+  {
+    "emoji": "✍️",
+    "name": "writing_hand",
+    "shortcode": ":writing_hand:",
+    "category": "人类和身体",
+    "subcategory": "手势",
+    "description": {
+      "zh": "写字的手",
+      "en": "writing_hand"
+    },
+    "keywords": {
+      "zh": [
+        "写",
+        "手",
+        "书写"
+      ],
+      "en": [
+        "writing_hand"
+      ]
+    }
+  },
+  {
+    "emoji": "👁️",
+    "name": "eye",
+    "shortcode": ":eye:",
+    "category": "人类和身体",
+    "subcategory": "手势",
+    "description": {
+      "zh": "眼睛",
+      "en": "eye"
+    },
+    "keywords": {
+      "zh": [
+        "眼睛",
+        "看",
+        "视觉"
+      ],
+      "en": [
+        "eye"
+      ]
+    }
+  },
+  {
+    "emoji": "🕵️",
+    "name": "detective",
+    "shortcode": ":detective:",
+    "category": "人类和身体",
+    "subcategory": "手势",
+    "description": {
+      "zh": "侦探",
+      "en": "detective"
+    },
+    "keywords": {
+      "zh": [
+        "侦探",
+        "调查",
+        "福尔摩斯"
+      ],
+      "en": [
+        "detective"
+      ]
+    }
+  },
+  {
+    "emoji": "🕴️",
+    "name": "business_suit_levitating",
+    "shortcode": ":business_suit_levitating:",
+    "category": "人类和身体",
+    "subcategory": "手势",
+    "description": {
+      "zh": "西装悬浮",
+      "en": "business_suit_levitating"
+    },
+    "keywords": {
+      "zh": [
+        "西装",
+        "商务",
+        "悬浮"
+      ],
+      "en": [
+        "business_suit_levitating"
+      ]
+    }
+  },
+  {
+    "emoji": "🗣️",
+    "name": "speaking_head",
+    "shortcode": ":speaking_head:",
+    "category": "人类和身体",
+    "subcategory": "手势",
+    "description": {
+      "zh": "说话的头",
+      "en": "speaking_head"
+    },
+    "keywords": {
+      "zh": [
+        "说话",
+        "头",
+        "交流"
+      ],
+      "en": [
+        "speaking_head"
+      ]
+    }
   }
 ]

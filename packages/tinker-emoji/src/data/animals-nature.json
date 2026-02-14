@@ -2712,5 +2712,131 @@
         "dog"
       ]
     }
+  },
+  {
+    "emoji": "🐿️",
+    "name": "chipmunk",
+    "shortcode": ":chipmunk:",
+    "category": "动物和自然",
+    "subcategory": "动物",
+    "description": {
+      "zh": "花栗鼠",
+      "en": "chipmunk"
+    },
+    "keywords": {
+      "zh": [
+        "花栗鼠",
+        "松鼠",
+        "动物"
+      ],
+      "en": [
+        "chipmunk"
+      ]
+    }
+  },
+  {
+    "emoji": "🕊️",
+    "name": "dove",
+    "shortcode": ":dove:",
+    "category": "动物和自然",
+    "subcategory": "动物",
+    "description": {
+      "zh": "鸽子",
+      "en": "dove"
+    },
+    "keywords": {
+      "zh": [
+        "鸽子",
+        "和平",
+        "鸟"
+      ],
+      "en": [
+        "dove"
+      ]
+    }
+  },
+  {
+    "emoji": "🕷️",
+    "name": "spider",
+    "shortcode": ":spider:",
+    "category": "动物和自然",
+    "subcategory": "动物",
+    "description": {
+      "zh": "蜘蛛",
+      "en": "spider"
+    },
+    "keywords": {
+      "zh": [
+        "蜘蛛",
+        "昆虫",
+        "动物"
+      ],
+      "en": [
+        "spider"
+      ]
+    }
+  },
+  {
+    "emoji": "🕸️",
+    "name": "spider_web",
+    "shortcode": ":spider_web:",
+    "category": "动物和自然",
+    "subcategory": "动物",
+    "description": {
+      "zh": "蜘蛛网",
+      "en": "spider_web"
+    },
+    "keywords": {
+      "zh": [
+        "蜘蛛网",
+        "网",
+        "蜘蛛"
+      ],
+      "en": [
+        "spider_web"
+      ]
+    }
+  },
+  {
+    "emoji": "🏵️",
+    "name": "rosette",
+    "shortcode": ":rosette:",
+    "category": "动物和自然",
+    "subcategory": "动物",
+    "description": {
+      "zh": "玫瑰花饰",
+      "en": "rosette"
+    },
+    "keywords": {
+      "zh": [
+        "玫瑰",
+        "花",
+        "装饰"
+      ],
+      "en": [
+        "rosette"
+      ]
+    }
+  },
+  {
+    "emoji": "☘️",
+    "name": "shamrock",
+    "shortcode": ":shamrock:",
+    "category": "动物和自然",
+    "subcategory": "动物",
+    "description": {
+      "zh": "三叶草",
+      "en": "shamrock"
+    },
+    "keywords": {
+      "zh": [
+        "三叶草",
+        "幸运",
+        "植物"
+      ],
+      "en": [
+        "shamrock"
+      ]
+    }
   }
 ]

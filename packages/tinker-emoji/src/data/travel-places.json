@@ -3713,5 +3713,593 @@
         "wave"
       ]
     }
+  },
+  {
+    "emoji": "🗺️",
+    "name": "world_map",
+    "shortcode": ":world_map:",
+    "category": "旅行和地点",
+    "subcategory": "地点",
+    "description": {
+      "zh": "世界地图",
+      "en": "world_map"
+    },
+    "keywords": {
+      "zh": [
+        "地图",
+        "世界",
+        "旅行"
+      ],
+      "en": [
+        "world_map"
+      ]
+    }
+  },
+  {
+    "emoji": "🏔️",
+    "name": "mountain_snow",
+    "shortcode": ":mountain_snow:",
+    "category": "旅行和地点",
+    "subcategory": "地点",
+    "description": {
+      "zh": "雪山",
+      "en": "mountain_snow"
+    },
+    "keywords": {
+      "zh": [
+        "雪山",
+        "山",
+        "雪"
+      ],
+      "en": [
+        "mountain_snow"
+      ]
+    }
+  },
+  {
+    "emoji": "⛰️",
+    "name": "mountain",
+    "shortcode": ":mountain:",
+    "category": "旅行和地点",
+    "subcategory": "地点",
+    "description": {
+      "zh": "山",
+      "en": "mountain"
+    },
+    "keywords": {
+      "zh": [
+        "山",
+        "高山",
+        "自然"
+      ],
+      "en": [
+        "mountain"
+      ]
+    }
+  },
+  {
+    "emoji": "🏕️",
+    "name": "camping",
+    "shortcode": ":camping:",
+    "category": "旅行和地点",
+    "subcategory": "地点",
+    "description": {
+      "zh": "露营",
+      "en": "camping"
+    },
+    "keywords": {
+      "zh": [
+        "露营",
+        "帐篷",
+        "户外"
+      ],
+      "en": [
+        "camping"
+      ]
+    }
+  },
+  {
+    "emoji": "🏖️",
+    "name": "beach_umbrella",
+    "shortcode": ":beach_umbrella:",
+    "category": "旅行和地点",
+    "subcategory": "地点",
+    "description": {
+      "zh": "沙滩伞",
+      "en": "beach_umbrella"
+    },
+    "keywords": {
+      "zh": [
+        "沙滩",
+        "伞",
+        "海滩"
+      ],
+      "en": [
+        "beach_umbrella"
+      ]
+    }
+  },
+  {
+    "emoji": "🏜️",
+    "name": "desert",
+    "shortcode": ":desert:",
+    "category": "旅行和地点",
+    "subcategory": "地点",
+    "description": {
+      "zh": "沙漠",
+      "en": "desert"
+    },
+    "keywords": {
+      "zh": [
+        "沙漠",
+        "干旱",
+        "沙"
+      ],
+      "en": [
+        "desert"
+      ]
+    }
+  },
+  {
+    "emoji": "🏝️",
+    "name": "desert_island",
+    "shortcode": ":desert_island:",
+    "category": "旅行和地点",
+    "subcategory": "地点",
+    "description": {
+      "zh": "荒岛",
+      "en": "desert_island"
+    },
+    "keywords": {
+      "zh": [
+        "荒岛",
+        "岛",
+        "无人岛"
+      ],
+      "en": [
+        "desert_island"
+      ]
+    }
+  },
+  {
+    "emoji": "🏞️",
+    "name": "national_park",
+    "shortcode": ":national_park:",
+    "category": "旅行和地点",
+    "subcategory": "地点",
+    "description": {
+      "zh": "国家公园",
+      "en": "national_park"
+    },
+    "keywords": {
+      "zh": [
+        "公园",
+        "自然",
+        "国家公园"
+      ],
+      "en": [
+        "national_park"
+      ]
+    }
+  },
+  {
+    "emoji": "🏟️",
+    "name": "stadium",
+    "shortcode": ":stadium:",
+    "category": "旅行和地点",
+    "subcategory": "地点",
+    "description": {
+      "zh": "体育场",
+      "en": "stadium"
+    },
+    "keywords": {
+      "zh": [
+        "体育场",
+        "运动",
+        "场馆"
+      ],
+      "en": [
+        "stadium"
+      ]
+    }
+  },
+  {
+    "emoji": "🏛️",
+    "name": "classical_building",
+    "shortcode": ":classical_building:",
+    "category": "旅行和地点",
+    "subcategory": "地点",
+    "description": {
+      "zh": "古典建筑",
+      "en": "classical_building"
+    },
+    "keywords": {
+      "zh": [
+        "建筑",
+        "古典",
+        "历史"
+      ],
+      "en": [
+        "classical_building"
+      ]
+    }
+  },
+  {
+    "emoji": "🏗️",
+    "name": "building_construction",
+    "shortcode": ":building_construction:",
+    "category": "旅行和地点",
+    "subcategory": "地点",
+    "description": {
+      "zh": "建筑施工",
+      "en": "building_construction"
+    },
+    "keywords": {
+      "zh": [
+        "施工",
+        "建筑",
+        "工地"
+      ],
+      "en": [
+        "building_construction"
+      ]
+    }
+  },
+  {
+    "emoji": "🏘️",
+    "name": "houses",
+    "shortcode": ":houses:",
+    "category": "旅行和地点",
+    "subcategory": "地点",
+    "description": {
+      "zh": "房屋",
+      "en": "houses"
+    },
+    "keywords": {
+      "zh": [
+        "房屋",
+        "房子",
+        "建筑"
+      ],
+      "en": [
+        "houses"
+      ]
+    }
+  },
+  {
+    "emoji": "🏚️",
+    "name": "derelict_house",
+    "shortcode": ":derelict_house:",
+    "category": "旅行和地点",
+    "subcategory": "地点",
+    "description": {
+      "zh": "废弃房屋",
+      "en": "derelict_house"
+    },
+    "keywords": {
+      "zh": [
+        "废弃",
+        "房屋",
+        "破旧"
+      ],
+      "en": [
+        "derelict_house"
+      ]
+    }
+  },
+  {
+    "emoji": "⛩️",
+    "name": "shinto_shrine",
+    "shortcode": ":shinto_shrine:",
+    "category": "旅行和地点",
+    "subcategory": "地点",
+    "description": {
+      "zh": "神社",
+      "en": "shinto_shrine"
+    },
+    "keywords": {
+      "zh": [
+        "神社",
+        "日本",
+        "神道"
+      ],
+      "en": [
+        "shinto_shrine"
+      ]
+    }
+  },
+  {
+    "emoji": "🏙️",
+    "name": "cityscape",
+    "shortcode": ":cityscape:",
+    "category": "旅行和地点",
+    "subcategory": "地点",
+    "description": {
+      "zh": "城市景观",
+      "en": "cityscape"
+    },
+    "keywords": {
+      "zh": [
+        "城市",
+        "景观",
+        "建筑"
+      ],
+      "en": [
+        "cityscape"
+      ]
+    }
+  },
+  {
+    "emoji": "♨️",
+    "name": "hotsprings",
+    "shortcode": ":hotsprings:",
+    "category": "旅行和地点",
+    "subcategory": "地点",
+    "description": {
+      "zh": "温泉",
+      "en": "hotsprings"
+    },
+    "keywords": {
+      "zh": [
+        "温泉",
+        "泡温泉",
+        "热水"
+      ],
+      "en": [
+        "hotsprings"
+      ]
+    }
+  },
+  {
+    "emoji": "🏎️",
+    "name": "racing_car",
+    "shortcode": ":racing_car:",
+    "category": "旅行和地点",
+    "subcategory": "地点",
+    "description": {
+      "zh": "赛车",
+      "en": "racing_car"
+    },
+    "keywords": {
+      "zh": [
+        "赛车",
+        "汽车",
+        "速度"
+      ],
+      "en": [
+        "racing_car"
+      ]
+    }
+  },
+  {
+    "emoji": "🏍️",
+    "name": "motorcycle",
+    "shortcode": ":motorcycle:",
+    "category": "旅行和地点",
+    "subcategory": "地点",
+    "description": {
+      "zh": "摩托车",
+      "en": "motorcycle"
+    },
+    "keywords": {
+      "zh": [
+        "摩托车",
+        "机车",
+        "车"
+      ],
+      "en": [
+        "motorcycle"
+      ]
+    }
+  },
+  {
+    "emoji": "🛣️",
+    "name": "motorway",
+    "shortcode": ":motorway:",
+    "category": "旅行和地点",
+    "subcategory": "地点",
+    "description": {
+      "zh": "高速公路",
+      "en": "motorway"
+    },
+    "keywords": {
+      "zh": [
+        "高速",
+        "公路",
+        "道路"
+      ],
+      "en": [
+        "motorway"
+      ]
+    }
+  },
+  {
+    "emoji": "🛤️",
+    "name": "railway_track",
+    "shortcode": ":railway_track:",
+    "category": "旅行和地点",
+    "subcategory": "地点",
+    "description": {
+      "zh": "铁轨",
+      "en": "railway_track"
+    },
+    "keywords": {
+      "zh": [
+        "铁轨",
+        "铁路",
+        "火车"
+      ],
+      "en": [
+        "railway_track"
+      ]
+    }
+  },
+  {
+    "emoji": "🛳️",
+    "name": "passenger_ship",
+    "shortcode": ":passenger_ship:",
+    "category": "旅行和地点",
+    "subcategory": "地点",
+    "description": {
+      "zh": "客轮",
+      "en": "passenger_ship"
+    },
+    "keywords": {
+      "zh": [
+        "客轮",
+        "轮船",
+        "旅行"
+      ],
+      "en": [
+        "passenger_ship"
+      ]
+    }
+  },
+  {
+    "emoji": "⛴️",
+    "name": "ferry",
+    "shortcode": ":ferry:",
+    "category": "旅行和地点",
+    "subcategory": "地点",
+    "description": {
+      "zh": "渡船",
+      "en": "ferry"
+    },
+    "keywords": {
+      "zh": [
+        "渡船",
+        "轮渡",
+        "船"
+      ],
+      "en": [
+        "ferry"
+      ]
+    }
+  },
+  {
+    "emoji": "🛥️",
+    "name": "motor_boat",
+    "shortcode": ":motor_boat:",
+    "category": "旅行和地点",
+    "subcategory": "地点",
+    "description": {
+      "zh": "快艇",
+      "en": "motor_boat"
+    },
+    "keywords": {
+      "zh": [
+        "快艇",
+        "摩托艇",
+        "船"
+      ],
+      "en": [
+        "motor_boat"
+      ]
+    }
+  },
+  {
+    "emoji": "✈️",
+    "name": "airplane",
+    "shortcode": ":airplane:",
+    "category": "旅行和地点",
+    "subcategory": "地点",
+    "description": {
+      "zh": "飞机",
+      "en": "airplane"
+    },
+    "keywords": {
+      "zh": [
+        "飞机",
+        "航空",
+        "旅行"
+      ],
+      "en": [
+        "airplane"
+      ]
+    }
+  },
+  {
+    "emoji": "🛩️",
+    "name": "small_airplane",
+    "shortcode": ":small_airplane:",
+    "category": "旅行和地点",
+    "subcategory": "地点",
+    "description": {
+      "zh": "小型飞机",
+      "en": "small_airplane"
+    },
+    "keywords": {
+      "zh": [
+        "小飞机",
+        "飞机",
+        "航空"
+      ],
+      "en": [
+        "small_airplane"
+      ]
+    }
+  },
+  {
+    "emoji": "🛰️",
+    "name": "artificial_satellite",
+    "shortcode": ":artificial_satellite:",
+    "category": "旅行和地点",
+    "subcategory": "地点",
+    "description": {
+      "zh": "人造卫星",
+      "en": "artificial_satellite"
+    },
+    "keywords": {
+      "zh": [
+        "卫星",
+        "航天",
+        "太空"
+      ],
+      "en": [
+        "artificial_satellite"
+      ]
+    }
+  },
+  {
+    "emoji": "☂️",
+    "name": "open_umbrella",
+    "shortcode": ":open_umbrella:",
+    "category": "旅行和地点",
+    "subcategory": "地点",
+    "description": {
+      "zh": "雨伞",
+      "en": "open_umbrella"
+    },
+    "keywords": {
+      "zh": [
+        "雨伞",
+        "伞",
+        "下雨"
+      ],
+      "en": [
+        "open_umbrella"
+      ]
+    }
+  },
+  {
+    "emoji": "⛱️",
+    "name": "parasol_on_ground",
+    "shortcode": ":parasol_on_ground:",
+    "category": "旅行和地点",
+    "subcategory": "地点",
+    "description": {
+      "zh": "遮阳伞",
+      "en": "parasol_on_ground"
+    },
+    "keywords": {
+      "zh": [
+        "遮阳伞",
+        "伞",
+        "海滩"
+      ],
+      "en": [
+        "parasol_on_ground"
+      ]
+    }
   }
 ]

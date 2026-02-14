@@ -4435,5 +4435,193 @@
         "moai"
       ]
     }
+  },
+  {
+    "emoji": "🕳️",
+    "name": "hole",
+    "shortcode": ":hole:",
+    "category": "物品",
+    "subcategory": "其他物品",
+    "description": {
+      "zh": "洞",
+      "en": "hole"
+    },
+    "keywords": {
+      "zh": [
+        "洞",
+        "孔"
+      ],
+      "en": [
+        "hole"
+      ]
+    }
+  },
+  {
+    "emoji": "🛢️",
+    "name": "oil_drum",
+    "shortcode": ":oil_drum:",
+    "category": "物品",
+    "subcategory": "其他物品",
+    "description": {
+      "zh": "油桶",
+      "en": "oil_drum"
+    },
+    "keywords": {
+      "zh": [
+        "油桶",
+        "石油",
+        "桶"
+      ],
+      "en": [
+        "oil_drum"
+      ]
+    }
+  },
+  {
+    "emoji": "🛎️",
+    "name": "bellhop_bell",
+    "shortcode": ":bellhop_bell:",
+    "category": "物品",
+    "subcategory": "其他物品",
+    "description": {
+      "zh": "服务铃",
+      "en": "bellhop_bell"
+    },
+    "keywords": {
+      "zh": [
+        "服务铃",
+        "铃铛",
+        "酒店"
+      ],
+      "en": [
+        "bellhop_bell"
+      ]
+    }
+  },
+  {
+    "emoji": "⏱️",
+    "name": "stopwatch",
+    "shortcode": ":stopwatch:",
+    "category": "物品",
+    "subcategory": "其他物品",
+    "description": {
+      "zh": "秒表",
+      "en": "stopwatch"
+    },
+    "keywords": {
+      "zh": [
+        "秒表",
+        "计时",
+        "时间"
+      ],
+      "en": [
+        "stopwatch"
+      ]
+    }
+  },
+  {
+    "emoji": "⏲️",
+    "name": "timer_clock",
+    "shortcode": ":timer_clock:",
+    "category": "物品",
+    "subcategory": "其他物品",
+    "description": {
+      "zh": "定时器",
+      "en": "timer_clock"
+    },
+    "keywords": {
+      "zh": [
+        "定时器",
+        "时钟",
+        "倒计时"
+      ],
+      "en": [
+        "timer_clock"
+      ]
+    }
+  },
+  {
+    "emoji": "🕰️",
+    "name": "mantelpiece_clock",
+    "shortcode": ":mantelpiece_clock:",
+    "category": "物品",
+    "subcategory": "其他物品",
+    "description": {
+      "zh": "壁炉钟",
+      "en": "mantelpiece_clock"
+    },
+    "keywords": {
+      "zh": [
+        "钟",
+        "时钟",
+        "壁炉"
+      ],
+      "en": [
+        "mantelpiece_clock"
+      ]
+    }
+  },
+  {
+    "emoji": "🌡️",
+    "name": "thermometer",
+    "shortcode": ":thermometer:",
+    "category": "物品",
+    "subcategory": "其他物品",
+    "description": {
+      "zh": "温度计",
+      "en": "thermometer"
+    },
+    "keywords": {
+      "zh": [
+        "温度计",
+        "温度",
+        "测量"
+      ],
+      "en": [
+        "thermometer"
+      ]
+    }
+  },
+  {
+    "emoji": "🎟️",
+    "name": "tickets",
+    "shortcode": ":tickets:",
+    "category": "物品",
+    "subcategory": "其他物品",
+    "description": {
+      "zh": "票券",
+      "en": "tickets"
+    },
+    "keywords": {
+      "zh": [
+        "票券",
+        "票",
+        "入场"
+      ],
+      "en": [
+        "tickets"
+      ]
+    }
+  },
+  {
+    "emoji": "☎️",
+    "name": "telephone",
+    "shortcode": ":telephone:",
+    "category": "物品",
+    "subcategory": "其他物品",
+    "description": {
+      "zh": "电话",
+      "en": "telephone"
+    },
+    "keywords": {
+      "zh": [
+        "电话",
+        "通话",
+        "联系"
+      ],
+      "en": [
+        "telephone"
+      ]
+    }
   }
 ]

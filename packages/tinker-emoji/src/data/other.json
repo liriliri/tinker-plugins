@@ -1,1359 +1,20 @@
 [
   {
-    "emoji": "☺️",
-    "name": "relaxed",
-    "shortcode": ":relaxed:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "relaxed"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "relaxed"
-      ]
-    }
-  },
-  {
-    "emoji": "☹️",
-    "name": "frowning_face",
-    "shortcode": ":frowning_face:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "frowning_face"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "frowning_face"
-      ]
-    }
-  },
-  {
-    "emoji": "☠️",
-    "name": "skull_and_crossbones",
-    "shortcode": ":skull_and_crossbones:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "skull_and_crossbones"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "skull_and_crossbones"
-      ]
-    }
-  },
-  {
-    "emoji": "❣️",
-    "name": "heavy_heart_exclamation",
-    "shortcode": ":heavy_heart_exclamation:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "heavy_heart_exclamation"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "heavy_heart_exclamation"
-      ]
-    }
-  },
-  {
-    "emoji": "❤️",
-    "name": "heart",
-    "shortcode": ":heart:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "heart"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "heart"
-      ]
-    }
-  },
-  {
-    "emoji": "🕳️",
-    "name": "hole",
-    "shortcode": ":hole:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "hole"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "hole"
-      ]
-    }
-  },
-  {
-    "emoji": "🗨️",
-    "name": "left_speech_bubble",
-    "shortcode": ":left_speech_bubble:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "left_speech_bubble"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "left_speech_bubble"
-      ]
-    }
-  },
-  {
-    "emoji": "🗯️",
-    "name": "right_anger_bubble",
-    "shortcode": ":right_anger_bubble:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "right_anger_bubble"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "right_anger_bubble"
-      ]
-    }
-  },
-  {
-    "emoji": "🖐️",
-    "name": "raised_hand_with_fingers_splayed",
-    "shortcode": ":raised_hand_with_fingers_splayed:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "raised_hand_with_fingers_splayed"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "raised_hand_with_fingers_splayed"
-      ]
-    }
-  },
-  {
-    "emoji": "✌️",
-    "name": "v",
-    "shortcode": ":v:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "v"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "v"
-      ]
-    }
-  },
-  {
-    "emoji": "☝️",
-    "name": "point_up",
-    "shortcode": ":point_up:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "point_up"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "point_up"
-      ]
-    }
-  },
-  {
-    "emoji": "✍️",
-    "name": "writing_hand",
-    "shortcode": ":writing_hand:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "writing_hand"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "writing_hand"
-      ]
-    }
-  },
-  {
-    "emoji": "👁️",
-    "name": "eye",
-    "shortcode": ":eye:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "eye"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "eye"
-      ]
-    }
-  },
-  {
-    "emoji": "🕵️",
-    "name": "detective",
-    "shortcode": ":detective:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "detective"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "detective"
-      ]
-    }
-  },
-  {
-    "emoji": "🕴️",
-    "name": "business_suit_levitating",
-    "shortcode": ":business_suit_levitating:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "business_suit_levitating"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "business_suit_levitating"
-      ]
-    }
-  },
-  {
-    "emoji": "⛷️",
-    "name": "skier",
-    "shortcode": ":skier:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "skier"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "skier"
-      ]
-    }
-  },
-  {
-    "emoji": "🏌️",
-    "name": "golfing",
-    "shortcode": ":golfing:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "golfing"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "golfing"
-      ]
-    }
-  },
-  {
-    "emoji": "⛹️",
-    "name": "bouncing_ball_person",
-    "shortcode": ":bouncing_ball_person:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "bouncing_ball_person"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "bouncing_ball_person"
-      ]
-    }
-  },
-  {
-    "emoji": "🏋️",
-    "name": "weight_lifting",
-    "shortcode": ":weight_lifting:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "weight_lifting"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "weight_lifting"
-      ]
-    }
-  },
-  {
-    "emoji": "🗣️",
-    "name": "speaking_head",
-    "shortcode": ":speaking_head:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "speaking_head"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "speaking_head"
-      ]
-    }
-  },
-  {
-    "emoji": "🐿️",
-    "name": "chipmunk",
-    "shortcode": ":chipmunk:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "chipmunk"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "chipmunk"
-      ]
-    }
-  },
-  {
-    "emoji": "🕊️",
-    "name": "dove",
-    "shortcode": ":dove:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "dove"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "dove"
-      ]
-    }
-  },
-  {
-    "emoji": "🕷️",
-    "name": "spider",
-    "shortcode": ":spider:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "spider"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "spider"
-      ]
-    }
-  },
-  {
-    "emoji": "🕸️",
-    "name": "spider_web",
-    "shortcode": ":spider_web:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "spider_web"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "spider_web"
-      ]
-    }
-  },
-  {
-    "emoji": "🏵️",
-    "name": "rosette",
-    "shortcode": ":rosette:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "rosette"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "rosette"
-      ]
-    }
-  },
-  {
-    "emoji": "☘️",
-    "name": "shamrock",
-    "shortcode": ":shamrock:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "shamrock"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "shamrock"
-      ]
-    }
-  },
-  {
-    "emoji": "🌶️",
-    "name": "hot_pepper",
-    "shortcode": ":hot_pepper:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "hot_pepper"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "hot_pepper"
-      ]
-    }
-  },
-  {
-    "emoji": "🍽️",
-    "name": "plate_with_cutlery",
-    "shortcode": ":plate_with_cutlery:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "plate_with_cutlery"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "plate_with_cutlery"
-      ]
-    }
-  },
-  {
-    "emoji": "🗺️",
-    "name": "world_map",
-    "shortcode": ":world_map:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "world_map"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "world_map"
-      ]
-    }
-  },
-  {
-    "emoji": "🏔️",
-    "name": "mountain_snow",
-    "shortcode": ":mountain_snow:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "mountain_snow"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "mountain_snow"
-      ]
-    }
-  },
-  {
-    "emoji": "⛰️",
-    "name": "mountain",
-    "shortcode": ":mountain:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "mountain"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "mountain"
-      ]
-    }
-  },
-  {
-    "emoji": "🏕️",
-    "name": "camping",
-    "shortcode": ":camping:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "camping"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "camping"
-      ]
-    }
-  },
-  {
-    "emoji": "🏖️",
-    "name": "beach_umbrella",
-    "shortcode": ":beach_umbrella:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "beach_umbrella"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "beach_umbrella"
-      ]
-    }
-  },
-  {
-    "emoji": "🏜️",
-    "name": "desert",
-    "shortcode": ":desert:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "desert"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "desert"
-      ]
-    }
-  },
-  {
-    "emoji": "🏝️",
-    "name": "desert_island",
-    "shortcode": ":desert_island:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "desert_island"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "desert_island"
-      ]
-    }
-  },
-  {
-    "emoji": "🏞️",
-    "name": "national_park",
-    "shortcode": ":national_park:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "national_park"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "national_park"
-      ]
-    }
-  },
-  {
-    "emoji": "🏟️",
-    "name": "stadium",
-    "shortcode": ":stadium:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "stadium"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "stadium"
-      ]
-    }
-  },
-  {
-    "emoji": "🏛️",
-    "name": "classical_building",
-    "shortcode": ":classical_building:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "classical_building"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "classical_building"
-      ]
-    }
-  },
-  {
-    "emoji": "🏗️",
-    "name": "building_construction",
-    "shortcode": ":building_construction:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "building_construction"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "building_construction"
-      ]
-    }
-  },
-  {
-    "emoji": "🏘️",
-    "name": "houses",
-    "shortcode": ":houses:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "houses"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "houses"
-      ]
-    }
-  },
-  {
-    "emoji": "🏚️",
-    "name": "derelict_house",
-    "shortcode": ":derelict_house:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "derelict_house"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "derelict_house"
-      ]
-    }
-  },
-  {
-    "emoji": "⛩️",
-    "name": "shinto_shrine",
-    "shortcode": ":shinto_shrine:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "shinto_shrine"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "shinto_shrine"
-      ]
-    }
-  },
-  {
-    "emoji": "🏙️",
-    "name": "cityscape",
-    "shortcode": ":cityscape:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "cityscape"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "cityscape"
-      ]
-    }
-  },
-  {
-    "emoji": "♨️",
-    "name": "hotsprings",
-    "shortcode": ":hotsprings:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "hotsprings"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "hotsprings"
-      ]
-    }
-  },
-  {
-    "emoji": "🏎️",
-    "name": "racing_car",
-    "shortcode": ":racing_car:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "racing_car"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "racing_car"
-      ]
-    }
-  },
-  {
-    "emoji": "🏍️",
-    "name": "motorcycle",
-    "shortcode": ":motorcycle:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "motorcycle"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "motorcycle"
-      ]
-    }
-  },
-  {
-    "emoji": "🛣️",
-    "name": "motorway",
-    "shortcode": ":motorway:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "motorway"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "motorway"
-      ]
-    }
-  },
-  {
-    "emoji": "🛤️",
-    "name": "railway_track",
-    "shortcode": ":railway_track:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "railway_track"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "railway_track"
-      ]
-    }
-  },
-  {
-    "emoji": "🛢️",
-    "name": "oil_drum",
-    "shortcode": ":oil_drum:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "oil_drum"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "oil_drum"
-      ]
-    }
-  },
-  {
-    "emoji": "🛳️",
-    "name": "passenger_ship",
-    "shortcode": ":passenger_ship:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "passenger_ship"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "passenger_ship"
-      ]
-    }
-  },
-  {
-    "emoji": "⛴️",
-    "name": "ferry",
-    "shortcode": ":ferry:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "ferry"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "ferry"
-      ]
-    }
-  },
-  {
-    "emoji": "🛥️",
-    "name": "motor_boat",
-    "shortcode": ":motor_boat:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "motor_boat"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "motor_boat"
-      ]
-    }
-  },
-  {
-    "emoji": "✈️",
-    "name": "airplane",
-    "shortcode": ":airplane:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "airplane"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "airplane"
-      ]
-    }
-  },
-  {
-    "emoji": "🛩️",
-    "name": "small_airplane",
-    "shortcode": ":small_airplane:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "small_airplane"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "small_airplane"
-      ]
-    }
-  },
-  {
-    "emoji": "🛰️",
-    "name": "artificial_satellite",
-    "shortcode": ":artificial_satellite:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "artificial_satellite"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "artificial_satellite"
-      ]
-    }
-  },
-  {
-    "emoji": "🛎️",
-    "name": "bellhop_bell",
-    "shortcode": ":bellhop_bell:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "bellhop_bell"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "bellhop_bell"
-      ]
-    }
-  },
-  {
-    "emoji": "⏱️",
-    "name": "stopwatch",
-    "shortcode": ":stopwatch:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "stopwatch"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "stopwatch"
-      ]
-    }
-  },
-  {
-    "emoji": "⏲️",
-    "name": "timer_clock",
-    "shortcode": ":timer_clock:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "timer_clock"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "timer_clock"
-      ]
-    }
-  },
-  {
-    "emoji": "🕰️",
-    "name": "mantelpiece_clock",
-    "shortcode": ":mantelpiece_clock:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "mantelpiece_clock"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "mantelpiece_clock"
-      ]
-    }
-  },
-  {
-    "emoji": "🌡️",
-    "name": "thermometer",
-    "shortcode": ":thermometer:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "thermometer"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "thermometer"
-      ]
-    }
-  },
-  {
-    "emoji": "☀️",
-    "name": "sunny",
-    "shortcode": ":sunny:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "sunny"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "sunny"
-      ]
-    }
-  },
-  {
-    "emoji": "☁️",
-    "name": "cloud",
-    "shortcode": ":cloud:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "cloud"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "cloud"
-      ]
-    }
-  },
-  {
-    "emoji": "⛈️",
-    "name": "cloud_with_lightning_and_rain",
-    "shortcode": ":cloud_with_lightning_and_rain:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "cloud_with_lightning_and_rain"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "cloud_with_lightning_and_rain"
-      ]
-    }
-  },
-  {
-    "emoji": "🌤️",
-    "name": "sun_behind_small_cloud",
-    "shortcode": ":sun_behind_small_cloud:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "sun_behind_small_cloud"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "sun_behind_small_cloud"
-      ]
-    }
-  },
-  {
-    "emoji": "🌥️",
-    "name": "sun_behind_large_cloud",
-    "shortcode": ":sun_behind_large_cloud:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "sun_behind_large_cloud"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "sun_behind_large_cloud"
-      ]
-    }
-  },
-  {
-    "emoji": "🌦️",
-    "name": "sun_behind_rain_cloud",
-    "shortcode": ":sun_behind_rain_cloud:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "sun_behind_rain_cloud"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "sun_behind_rain_cloud"
-      ]
-    }
-  },
-  {
-    "emoji": "🌧️",
-    "name": "cloud_with_rain",
-    "shortcode": ":cloud_with_rain:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "cloud_with_rain"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "cloud_with_rain"
-      ]
-    }
-  },
-  {
-    "emoji": "🌨️",
-    "name": "cloud_with_snow",
-    "shortcode": ":cloud_with_snow:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "cloud_with_snow"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "cloud_with_snow"
-      ]
-    }
-  },
-  {
-    "emoji": "🌩️",
-    "name": "cloud_with_lightning",
-    "shortcode": ":cloud_with_lightning:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "cloud_with_lightning"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "cloud_with_lightning"
-      ]
-    }
-  },
-  {
-    "emoji": "🌪️",
-    "name": "tornado",
-    "shortcode": ":tornado:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "tornado"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "tornado"
-      ]
-    }
-  },
-  {
-    "emoji": "🌫️",
-    "name": "fog",
-    "shortcode": ":fog:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "fog"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "fog"
-      ]
-    }
-  },
-  {
-    "emoji": "🌬️",
-    "name": "wind_face",
-    "shortcode": ":wind_face:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "wind_face"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "wind_face"
-      ]
-    }
-  },
-  {
-    "emoji": "☂️",
-    "name": "open_umbrella",
-    "shortcode": ":open_umbrella:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "open_umbrella"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "open_umbrella"
-      ]
-    }
-  },
-  {
-    "emoji": "⛱️",
-    "name": "parasol_on_ground",
-    "shortcode": ":parasol_on_ground:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "parasol_on_ground"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "parasol_on_ground"
-      ]
-    }
-  },
-  {
-    "emoji": "❄️",
-    "name": "snowflake",
-    "shortcode": ":snowflake:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "snowflake"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "snowflake"
-      ]
-    }
-  },
-  {
-    "emoji": "☃️",
-    "name": "snowman_with_snow",
-    "shortcode": ":snowman_with_snow:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "snowman_with_snow"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "snowman_with_snow"
-      ]
-    }
-  },
-  {
-    "emoji": "☄️",
-    "name": "comet",
-    "shortcode": ":comet:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "comet"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "comet"
-      ]
-    }
-  },
-  {
-    "emoji": "🎗️",
-    "name": "reminder_ribbon",
-    "shortcode": ":reminder_ribbon:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "reminder_ribbon"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "reminder_ribbon"
-      ]
-    }
-  },
-  {
-    "emoji": "🎟️",
-    "name": "tickets",
-    "shortcode": ":tickets:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "tickets"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "tickets"
-      ]
-    }
-  },
-  {
     "emoji": "🎖️",
     "name": "medal_military",
     "shortcode": ":medal_military:",
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "军功章",
       "en": "medal_military"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "勋章",
+        "军功",
+        "奖章"
+      ],
       "en": [
         "medal_military"
       ]
@@ -1366,11 +27,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "溜冰鞋",
       "en": "ice_skate"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "溜冰",
+        "滑冰",
+        "冰鞋"
+      ],
       "en": [
         "ice_skate"
       ]
@@ -1383,11 +48,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "游戏手柄",
       "en": "joystick"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "手柄",
+        "游戏",
+        "摇杆"
+      ],
       "en": [
         "joystick"
       ]
@@ -1400,11 +69,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "黑桃",
       "en": "spades"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "黑桃",
+        "扑克",
+        "牌"
+      ],
       "en": [
         "spades"
       ]
@@ -1417,11 +90,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "红心",
       "en": "hearts"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "红心",
+        "扑克",
+        "牌"
+      ],
       "en": [
         "hearts"
       ]
@@ -1434,11 +111,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "方块",
       "en": "diamonds"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "方块",
+        "扑克",
+        "牌"
+      ],
       "en": [
         "diamonds"
       ]
@@ -1451,11 +132,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "梅花",
       "en": "clubs"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "梅花",
+        "扑克",
+        "牌"
+      ],
       "en": [
         "clubs"
       ]
@@ -1468,11 +153,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "国际象棋兵",
       "en": "chess_pawn"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "国际象棋",
+        "兵",
+        "棋"
+      ],
       "en": [
         "chess_pawn"
       ]
@@ -1485,11 +174,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "画框",
       "en": "framed_picture"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "画框",
+        "图画",
+        "艺术"
+      ],
       "en": [
         "framed_picture"
       ]
@@ -1502,11 +195,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "墨镜",
       "en": "dark_sunglasses"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "墨镜",
+        "太阳镜",
+        "眼镜"
+      ],
       "en": [
         "dark_sunglasses"
       ]
@@ -1519,11 +216,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "购物袋",
       "en": "shopping"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "购物",
+        "袋",
+        "包"
+      ],
       "en": [
         "shopping"
       ]
@@ -1536,11 +237,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "救援头盔",
       "en": "rescue_worker_helmet"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "头盔",
+        "救援",
+        "安全"
+      ],
       "en": [
         "rescue_worker_helmet"
       ]
@@ -1553,11 +258,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "录音麦克风",
       "en": "studio_microphone"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "麦克风",
+        "录音",
+        "音乐"
+      ],
       "en": [
         "studio_microphone"
       ]
@@ -1570,11 +279,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "调节滑块",
       "en": "level_slider"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "滑块",
+        "调节",
+        "控制"
+      ],
       "en": [
         "level_slider"
       ]
@@ -1587,30 +300,17 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "控制旋钮",
       "en": "control_knobs"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "旋钮",
+        "控制",
+        "调节"
+      ],
       "en": [
         "control_knobs"
-      ]
-    }
-  },
-  {
-    "emoji": "☎️",
-    "name": "telephone",
-    "shortcode": ":telephone:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "telephone"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "telephone"
       ]
     }
   },
@@ -1621,11 +321,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "台式电脑",
       "en": "desktop_computer"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "台式机",
+        "电脑",
+        "计算机"
+      ],
       "en": [
         "desktop_computer"
       ]
@@ -1638,11 +342,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "打印机",
       "en": "printer"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "打印机",
+        "打印",
+        "办公"
+      ],
       "en": [
         "printer"
       ]
@@ -1655,11 +363,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "键盘",
       "en": "keyboard"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "键盘",
+        "输入",
+        "电脑"
+      ],
       "en": [
         "keyboard"
       ]
@@ -1672,11 +384,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "鼠标",
       "en": "computer_mouse"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "鼠标",
+        "电脑",
+        "输入"
+      ],
       "en": [
         "computer_mouse"
       ]
@@ -1689,11 +405,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "轨迹球",
       "en": "trackball"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "轨迹球",
+        "鼠标",
+        "输入"
+      ],
       "en": [
         "trackball"
       ]
@@ -1706,11 +426,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "胶卷",
       "en": "film_strip"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "胶卷",
+        "电影",
+        "摄影"
+      ],
       "en": [
         "film_strip"
       ]
@@ -1723,11 +447,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "电影放映机",
       "en": "film_projector"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "放映机",
+        "电影",
+        "投影"
+      ],
       "en": [
         "film_projector"
       ]
@@ -1740,11 +468,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "蜡烛",
       "en": "candle"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "蜡烛",
+        "火",
+        "光"
+      ],
       "en": [
         "candle"
       ]
@@ -1757,11 +489,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "卷起的报纸",
       "en": "newspaper_roll"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "报纸",
+        "新闻",
+        "卷起"
+      ],
       "en": [
         "newspaper_roll"
       ]
@@ -1774,11 +510,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "标签",
       "en": "label"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "标签",
+        "标记",
+        "贴纸"
+      ],
       "en": [
         "label"
       ]
@@ -1791,11 +531,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "信封",
       "en": "envelope"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "信封",
+        "信",
+        "邮件"
+      ],
       "en": [
         "envelope"
       ]
@@ -1808,11 +552,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "投票箱",
       "en": "ballot_box"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "投票箱",
+        "投票",
+        "选举"
+      ],
       "en": [
         "ballot_box"
       ]
@@ -1825,11 +573,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "铅笔",
       "en": "pencil2"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "铅笔",
+        "写",
+        "书写"
+      ],
       "en": [
         "pencil2"
       ]
@@ -1842,11 +594,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "钢笔尖",
       "en": "black_nib"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "钢笔",
+        "笔尖",
+        "书写"
+      ],
       "en": [
         "black_nib"
       ]
@@ -1859,11 +615,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "钢笔",
       "en": "fountain_pen"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "钢笔",
+        "笔",
+        "书写"
+      ],
       "en": [
         "fountain_pen"
       ]
@@ -1876,11 +636,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "圆珠笔",
       "en": "pen"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "圆珠笔",
+        "笔",
+        "书写"
+      ],
       "en": [
         "pen"
       ]
@@ -1893,11 +657,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "画笔",
       "en": "paintbrush"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "画笔",
+        "绘画",
+        "艺术"
+      ],
       "en": [
         "paintbrush"
       ]
@@ -1910,11 +678,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "蜡笔",
       "en": "crayon"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "蜡笔",
+        "绘画",
+        "儿童"
+      ],
       "en": [
         "crayon"
       ]
@@ -1927,11 +699,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "卡片索引分隔",
       "en": "card_index_dividers"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "索引",
+        "分隔",
+        "分类"
+      ],
       "en": [
         "card_index_dividers"
       ]
@@ -1944,11 +720,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "螺旋记事本",
       "en": "spiral_notepad"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "记事本",
+        "笔记本",
+        "本子"
+      ],
       "en": [
         "spiral_notepad"
       ]
@@ -1961,11 +741,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "螺旋日历",
       "en": "spiral_calendar"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "日历",
+        "螺旋",
+        "时间"
+      ],
       "en": [
         "spiral_calendar"
       ]
@@ -1978,11 +762,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "回形针",
       "en": "paperclips"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "回形针",
+        "夹子",
+        "多个"
+      ],
       "en": [
         "paperclips"
       ]
@@ -1995,11 +783,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "剪刀",
       "en": "scissors"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "剪刀",
+        "剪",
+        "裁剪"
+      ],
       "en": [
         "scissors"
       ]
@@ -2012,11 +804,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "卡片盒",
       "en": "card_file_box"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "卡片盒",
+        "盒子",
+        "存储"
+      ],
       "en": [
         "card_file_box"
       ]
@@ -2029,11 +825,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "文件柜",
       "en": "file_cabinet"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "文件柜",
+        "柜子",
+        "办公"
+      ],
       "en": [
         "file_cabinet"
       ]
@@ -2046,11 +846,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "废纸篓",
       "en": "wastebasket"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "废纸篓",
+        "垃圾桶",
+        "垃圾"
+      ],
       "en": [
         "wastebasket"
       ]
@@ -2063,11 +867,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "老式钥匙",
       "en": "old_key"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "钥匙",
+        "老式",
+        "古董"
+      ],
       "en": [
         "old_key"
       ]
@@ -2080,11 +888,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "镐",
       "en": "pick"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "镐",
+        "工具",
+        "挖掘"
+      ],
       "en": [
         "pick"
       ]
@@ -2097,11 +909,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "锤和镐",
       "en": "hammer_and_pick"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "锤",
+        "镐",
+        "工具"
+      ],
       "en": [
         "hammer_and_pick"
       ]
@@ -2114,11 +930,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "锤和扳手",
       "en": "hammer_and_wrench"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "锤",
+        "扳手",
+        "工具"
+      ],
       "en": [
         "hammer_and_wrench"
       ]
@@ -2131,11 +951,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "匕首",
       "en": "dagger"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "匕首",
+        "刀",
+        "武器"
+      ],
       "en": [
         "dagger"
       ]
@@ -2148,11 +972,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "交叉的剑",
       "en": "crossed_swords"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "剑",
+        "交叉",
+        "武器"
+      ],
       "en": [
         "crossed_swords"
       ]
@@ -2165,11 +993,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "盾牌",
       "en": "shield"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "盾牌",
+        "防御",
+        "保护"
+      ],
       "en": [
         "shield"
       ]
@@ -2182,11 +1014,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "齿轮",
       "en": "gear"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "齿轮",
+        "设置",
+        "机械"
+      ],
       "en": [
         "gear"
       ]
@@ -2199,11 +1035,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "夹钳",
       "en": "clamp"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "夹钳",
+        "工具",
+        "固定"
+      ],
       "en": [
         "clamp"
       ]
@@ -2216,11 +1056,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "天平",
       "en": "balance_scale"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "天平",
+        "秤",
+        "称重"
+      ],
       "en": [
         "balance_scale"
       ]
@@ -2233,11 +1077,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "锁链",
       "en": "chains"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "锁链",
+        "链条",
+        "束缚"
+      ],
       "en": [
         "chains"
       ]
@@ -2250,11 +1098,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "蒸馏器",
       "en": "alembic"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "蒸馏器",
+        "化学",
+        "实验"
+      ],
       "en": [
         "alembic"
       ]
@@ -2267,11 +1119,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "床",
       "en": "bed"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "床",
+        "睡觉",
+        "休息"
+      ],
       "en": [
         "bed"
       ]
@@ -2284,11 +1140,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "沙发和灯",
       "en": "couch_and_lamp"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "沙发",
+        "灯",
+        "家具"
+      ],
       "en": [
         "couch_and_lamp"
       ]
@@ -2301,11 +1161,15 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "棺材",
       "en": "coffin"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "棺材",
+        "死亡",
+        "葬礼"
+      ],
       "en": [
         "coffin"
       ]
@@ -2318,1186 +1182,17 @@
     "category": "other",
     "subcategory": "",
     "description": {
-      "zh": "",
+      "zh": "骨灰盒",
       "en": "funeral_urn"
     },
     "keywords": {
-      "zh": [],
+      "zh": [
+        "骨灰盒",
+        "骨灰",
+        "葬礼"
+      ],
       "en": [
         "funeral_urn"
-      ]
-    }
-  },
-  {
-    "emoji": "⚠️",
-    "name": "warning",
-    "shortcode": ":warning:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "warning"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "warning"
-      ]
-    }
-  },
-  {
-    "emoji": "☢️",
-    "name": "radioactive",
-    "shortcode": ":radioactive:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "radioactive"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "radioactive"
-      ]
-    }
-  },
-  {
-    "emoji": "☣️",
-    "name": "biohazard",
-    "shortcode": ":biohazard:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "biohazard"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "biohazard"
-      ]
-    }
-  },
-  {
-    "emoji": "⬆️",
-    "name": "arrow_up",
-    "shortcode": ":arrow_up:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "arrow_up"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "arrow_up"
-      ]
-    }
-  },
-  {
-    "emoji": "↗️",
-    "name": "arrow_upper_right",
-    "shortcode": ":arrow_upper_right:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "arrow_upper_right"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "arrow_upper_right"
-      ]
-    }
-  },
-  {
-    "emoji": "➡️",
-    "name": "arrow_right",
-    "shortcode": ":arrow_right:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "arrow_right"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "arrow_right"
-      ]
-    }
-  },
-  {
-    "emoji": "↘️",
-    "name": "arrow_lower_right",
-    "shortcode": ":arrow_lower_right:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "arrow_lower_right"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "arrow_lower_right"
-      ]
-    }
-  },
-  {
-    "emoji": "⬇️",
-    "name": "arrow_down",
-    "shortcode": ":arrow_down:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "arrow_down"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "arrow_down"
-      ]
-    }
-  },
-  {
-    "emoji": "↙️",
-    "name": "arrow_lower_left",
-    "shortcode": ":arrow_lower_left:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "arrow_lower_left"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "arrow_lower_left"
-      ]
-    }
-  },
-  {
-    "emoji": "⬅️",
-    "name": "arrow_left",
-    "shortcode": ":arrow_left:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "arrow_left"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "arrow_left"
-      ]
-    }
-  },
-  {
-    "emoji": "↖️",
-    "name": "arrow_upper_left",
-    "shortcode": ":arrow_upper_left:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "arrow_upper_left"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "arrow_upper_left"
-      ]
-    }
-  },
-  {
-    "emoji": "↕️",
-    "name": "arrow_up_down",
-    "shortcode": ":arrow_up_down:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "arrow_up_down"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "arrow_up_down"
-      ]
-    }
-  },
-  {
-    "emoji": "↔️",
-    "name": "left_right_arrow",
-    "shortcode": ":left_right_arrow:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "left_right_arrow"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "left_right_arrow"
-      ]
-    }
-  },
-  {
-    "emoji": "↩️",
-    "name": "leftwards_arrow_with_hook",
-    "shortcode": ":leftwards_arrow_with_hook:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "leftwards_arrow_with_hook"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "leftwards_arrow_with_hook"
-      ]
-    }
-  },
-  {
-    "emoji": "↪️",
-    "name": "arrow_right_hook",
-    "shortcode": ":arrow_right_hook:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "arrow_right_hook"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "arrow_right_hook"
-      ]
-    }
-  },
-  {
-    "emoji": "⤴️",
-    "name": "arrow_heading_up",
-    "shortcode": ":arrow_heading_up:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "arrow_heading_up"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "arrow_heading_up"
-      ]
-    }
-  },
-  {
-    "emoji": "⤵️",
-    "name": "arrow_heading_down",
-    "shortcode": ":arrow_heading_down:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "arrow_heading_down"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "arrow_heading_down"
-      ]
-    }
-  },
-  {
-    "emoji": "⚛️",
-    "name": "atom_symbol",
-    "shortcode": ":atom_symbol:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "atom_symbol"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "atom_symbol"
-      ]
-    }
-  },
-  {
-    "emoji": "🕉️",
-    "name": "om",
-    "shortcode": ":om:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "om"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "om"
-      ]
-    }
-  },
-  {
-    "emoji": "✡️",
-    "name": "star_of_david",
-    "shortcode": ":star_of_david:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "star_of_david"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "star_of_david"
-      ]
-    }
-  },
-  {
-    "emoji": "☸️",
-    "name": "wheel_of_dharma",
-    "shortcode": ":wheel_of_dharma:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "wheel_of_dharma"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "wheel_of_dharma"
-      ]
-    }
-  },
-  {
-    "emoji": "☯️",
-    "name": "yin_yang",
-    "shortcode": ":yin_yang:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "yin_yang"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "yin_yang"
-      ]
-    }
-  },
-  {
-    "emoji": "✝️",
-    "name": "latin_cross",
-    "shortcode": ":latin_cross:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "latin_cross"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "latin_cross"
-      ]
-    }
-  },
-  {
-    "emoji": "☦️",
-    "name": "orthodox_cross",
-    "shortcode": ":orthodox_cross:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "orthodox_cross"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "orthodox_cross"
-      ]
-    }
-  },
-  {
-    "emoji": "☪️",
-    "name": "star_and_crescent",
-    "shortcode": ":star_and_crescent:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "star_and_crescent"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "star_and_crescent"
-      ]
-    }
-  },
-  {
-    "emoji": "☮️",
-    "name": "peace_symbol",
-    "shortcode": ":peace_symbol:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "peace_symbol"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "peace_symbol"
-      ]
-    }
-  },
-  {
-    "emoji": "▶️",
-    "name": "arrow_forward",
-    "shortcode": ":arrow_forward:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "arrow_forward"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "arrow_forward"
-      ]
-    }
-  },
-  {
-    "emoji": "⏭️",
-    "name": "next_track_button",
-    "shortcode": ":next_track_button:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "next_track_button"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "next_track_button"
-      ]
-    }
-  },
-  {
-    "emoji": "⏯️",
-    "name": "play_or_pause_button",
-    "shortcode": ":play_or_pause_button:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "play_or_pause_button"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "play_or_pause_button"
-      ]
-    }
-  },
-  {
-    "emoji": "◀️",
-    "name": "arrow_backward",
-    "shortcode": ":arrow_backward:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "arrow_backward"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "arrow_backward"
-      ]
-    }
-  },
-  {
-    "emoji": "⏮️",
-    "name": "previous_track_button",
-    "shortcode": ":previous_track_button:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "previous_track_button"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "previous_track_button"
-      ]
-    }
-  },
-  {
-    "emoji": "⏸️",
-    "name": "pause_button",
-    "shortcode": ":pause_button:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "pause_button"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "pause_button"
-      ]
-    }
-  },
-  {
-    "emoji": "⏹️",
-    "name": "stop_button",
-    "shortcode": ":stop_button:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "stop_button"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "stop_button"
-      ]
-    }
-  },
-  {
-    "emoji": "⏺️",
-    "name": "record_button",
-    "shortcode": ":record_button:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "record_button"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "record_button"
-      ]
-    }
-  },
-  {
-    "emoji": "⏏️",
-    "name": "eject_button",
-    "shortcode": ":eject_button:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "eject_button"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "eject_button"
-      ]
-    }
-  },
-  {
-    "emoji": "♀️",
-    "name": "female_sign",
-    "shortcode": ":female_sign:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "female_sign"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "female_sign"
-      ]
-    }
-  },
-  {
-    "emoji": "♂️",
-    "name": "male_sign",
-    "shortcode": ":male_sign:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "male_sign"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "male_sign"
-      ]
-    }
-  },
-  {
-    "emoji": "✖️",
-    "name": "heavy_multiplication_x",
-    "shortcode": ":heavy_multiplication_x:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "heavy_multiplication_x"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "heavy_multiplication_x"
-      ]
-    }
-  },
-  {
-    "emoji": "♾️",
-    "name": "infinity",
-    "shortcode": ":infinity:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "infinity"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "infinity"
-      ]
-    }
-  },
-  {
-    "emoji": "‼️",
-    "name": "bangbang",
-    "shortcode": ":bangbang:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "bangbang"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "bangbang"
-      ]
-    }
-  },
-  {
-    "emoji": "⁉️",
-    "name": "interrobang",
-    "shortcode": ":interrobang:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "interrobang"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "interrobang"
-      ]
-    }
-  },
-  {
-    "emoji": "〰️",
-    "name": "wavy_dash",
-    "shortcode": ":wavy_dash:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "wavy_dash"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "wavy_dash"
-      ]
-    }
-  },
-  {
-    "emoji": "⚕️",
-    "name": "medical_symbol",
-    "shortcode": ":medical_symbol:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "medical_symbol"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "medical_symbol"
-      ]
-    }
-  },
-  {
-    "emoji": "♻️",
-    "name": "recycle",
-    "shortcode": ":recycle:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "recycle"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "recycle"
-      ]
-    }
-  },
-  {
-    "emoji": "⚜️",
-    "name": "fleur_de_lis",
-    "shortcode": ":fleur_de_lis:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "fleur_de_lis"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "fleur_de_lis"
-      ]
-    }
-  },
-  {
-    "emoji": "☑️",
-    "name": "ballot_box_with_check",
-    "shortcode": ":ballot_box_with_check:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "ballot_box_with_check"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "ballot_box_with_check"
-      ]
-    }
-  },
-  {
-    "emoji": "✔️",
-    "name": "heavy_check_mark",
-    "shortcode": ":heavy_check_mark:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "heavy_check_mark"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "heavy_check_mark"
-      ]
-    }
-  },
-  {
-    "emoji": "〽️",
-    "name": "part_alternation_mark",
-    "shortcode": ":part_alternation_mark:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "part_alternation_mark"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "part_alternation_mark"
-      ]
-    }
-  },
-  {
-    "emoji": "✳️",
-    "name": "eight_spoked_asterisk",
-    "shortcode": ":eight_spoked_asterisk:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "eight_spoked_asterisk"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "eight_spoked_asterisk"
-      ]
-    }
-  },
-  {
-    "emoji": "✴️",
-    "name": "eight_pointed_black_star",
-    "shortcode": ":eight_pointed_black_star:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "eight_pointed_black_star"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "eight_pointed_black_star"
-      ]
-    }
-  },
-  {
-    "emoji": "❇️",
-    "name": "sparkle",
-    "shortcode": ":sparkle:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "sparkle"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "sparkle"
-      ]
-    }
-  },
-  {
-    "emoji": "©️",
-    "name": "copyright",
-    "shortcode": ":copyright:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "copyright"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "copyright"
-      ]
-    }
-  },
-  {
-    "emoji": "®️",
-    "name": "registered",
-    "shortcode": ":registered:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "registered"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "registered"
-      ]
-    }
-  },
-  {
-    "emoji": "™️",
-    "name": "tm",
-    "shortcode": ":tm:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "tm"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "tm"
-      ]
-    }
-  },
-  {
-    "emoji": "🅰️",
-    "name": "a",
-    "shortcode": ":a:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "a"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "a"
-      ]
-    }
-  },
-  {
-    "emoji": "🅱️",
-    "name": "b",
-    "shortcode": ":b:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "b"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "b"
-      ]
-    }
-  },
-  {
-    "emoji": "ℹ️",
-    "name": "information_source",
-    "shortcode": ":information_source:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "information_source"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "information_source"
-      ]
-    }
-  },
-  {
-    "emoji": "Ⓜ️",
-    "name": "m",
-    "shortcode": ":m:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "m"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "m"
-      ]
-    }
-  },
-  {
-    "emoji": "🅾️",
-    "name": "o2",
-    "shortcode": ":o2:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "o2"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "o2"
-      ]
-    }
-  },
-  {
-    "emoji": "🅿️",
-    "name": "parking",
-    "shortcode": ":parking:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "parking"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "parking"
-      ]
-    }
-  },
-  {
-    "emoji": "🈂️",
-    "name": "sa",
-    "shortcode": ":sa:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "sa"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "sa"
-      ]
-    }
-  },
-  {
-    "emoji": "🈷️",
-    "name": "u6708",
-    "shortcode": ":u6708:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "u6708"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "u6708"
-      ]
-    }
-  },
-  {
-    "emoji": "㊗️",
-    "name": "congratulations",
-    "shortcode": ":congratulations:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "congratulations"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "congratulations"
-      ]
-    }
-  },
-  {
-    "emoji": "㊙️",
-    "name": "secret",
-    "shortcode": ":secret:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "secret"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "secret"
-      ]
-    }
-  },
-  {
-    "emoji": "◼️",
-    "name": "black_medium_square",
-    "shortcode": ":black_medium_square:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "black_medium_square"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "black_medium_square"
-      ]
-    }
-  },
-  {
-    "emoji": "◻️",
-    "name": "white_medium_square",
-    "shortcode": ":white_medium_square:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "white_medium_square"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "white_medium_square"
-      ]
-    }
-  },
-  {
-    "emoji": "▪️",
-    "name": "black_small_square",
-    "shortcode": ":black_small_square:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "black_small_square"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "black_small_square"
-      ]
-    }
-  },
-  {
-    "emoji": "▫️",
-    "name": "white_small_square",
-    "shortcode": ":white_small_square:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "white_small_square"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "white_small_square"
-      ]
-    }
-  },
-  {
-    "emoji": "🏳️",
-    "name": "white_flag",
-    "shortcode": ":white_flag:",
-    "category": "other",
-    "subcategory": "",
-    "description": {
-      "zh": "",
-      "en": "white_flag"
-    },
-    "keywords": {
-      "zh": [],
-      "en": [
-        "white_flag"
       ]
     }
   }

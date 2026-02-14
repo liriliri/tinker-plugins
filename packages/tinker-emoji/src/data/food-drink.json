@@ -2722,5 +2722,47 @@
         "amphora"
       ]
     }
+  },
+  {
+    "emoji": "🌶️",
+    "name": "hot_pepper",
+    "shortcode": ":hot_pepper:",
+    "category": "食物和饮料",
+    "subcategory": "食物",
+    "description": {
+      "zh": "辣椒",
+      "en": "hot_pepper"
+    },
+    "keywords": {
+      "zh": [
+        "辣椒",
+        "辣",
+        "食物"
+      ],
+      "en": [
+        "hot_pepper"
+      ]
+    }
+  },
+  {
+    "emoji": "🍽️",
+    "name": "plate_with_cutlery",
+    "shortcode": ":plate_with_cutlery:",
+    "category": "食物和饮料",
+    "subcategory": "食物",
+    "description": {
+      "zh": "餐具",
+      "en": "plate_with_cutlery"
+    },
+    "keywords": {
+      "zh": [
+        "餐具",
+        "刀叉",
+        "用餐"
+      ],
+      "en": [
+        "plate_with_cutlery"
+      ]
+    }
   }
 ]
