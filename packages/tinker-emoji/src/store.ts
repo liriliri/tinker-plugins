@@ -74,13 +74,19 @@ class Store {
     if (this.searchQuery.trim()) {
       const query = this.searchQuery.toLowerCase().trim()
       result = result.filter((emoji) => {
+        const nameLower = emoji.name.toLowerCase()
+        const descZhLower = emoji.description.zh.toLowerCase()
+        const descEnLower = emoji.description.en.toLowerCase()
+        const keywordsZhLower = emoji.keywords.zh.map((k) => k.toLowerCase())
+        const keywordsEnLower = emoji.keywords.en.map((k) => k.toLowerCase())
+
         // Search in name, descriptions, and keywords
         return (
-          emoji.name.toLowerCase().includes(query) ||
-          emoji.description.zh.toLowerCase().includes(query) ||
-          emoji.description.en.toLowerCase().includes(query) ||
-          emoji.keywords.zh.some((k) => k.toLowerCase().includes(query)) ||
-          emoji.keywords.en.some((k) => k.toLowerCase().includes(query))
+          nameLower.includes(query) ||
+          descZhLower.includes(query) ||
+          descEnLower.includes(query) ||
+          keywordsZhLower.some((k) => k.includes(query)) ||
+          keywordsEnLower.some((k) => k.includes(query))
         )
       })
     }

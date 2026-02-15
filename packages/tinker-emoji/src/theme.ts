@@ -3,8 +3,8 @@ export const tw = {
     primary: 'bg-white dark:bg-zinc-900',
     secondary: 'bg-zinc-50 dark:bg-zinc-800',
     hover: 'hover:bg-zinc-100 dark:hover:bg-zinc-800',
-    transparent: 'bg-transparent',
     scrollbarHover: 'hover:bg-zinc-100/50 dark:hover:bg-zinc-800/50',
+    selectItemHover: 'hover:bg-zinc-200 dark:hover:bg-zinc-700',
   },
   text: {
     primary: 'text-zinc-900 dark:text-zinc-100',
@@ -22,7 +22,6 @@ export const tw = {
   accent: {
     bg: 'bg-yellow-400 dark:bg-yellow-500',
     text: 'text-zinc-900',
-    ring: 'focus:ring-2 focus:ring-yellow-400/20 dark:focus:ring-yellow-500/20',
     focusRing: 'focus:ring-2 focus:ring-yellow-400 dark:focus:ring-yellow-500',
   },
   scrollbar: {
@@ -31,11 +30,5 @@ export const tw = {
   tooltip: {
     bg: 'bg-zinc-800 dark:bg-zinc-700',
     arrow: 'fill-zinc-800 dark:fill-zinc-700',
-  },
-  tab: {
-    active:
-      'data-[state=active]:bg-yellow-400 data-[state=active]:text-zinc-900 data-[state=active]:dark:bg-yellow-500 data-[state=active]:dark:text-zinc-900',
-    inactive:
-      'data-[state=inactive]:bg-transparent data-[state=inactive]:text-zinc-600 dark:data-[state=inactive]:text-zinc-400',
   },
 }

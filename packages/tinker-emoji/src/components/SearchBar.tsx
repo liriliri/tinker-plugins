@@ -28,7 +28,7 @@ const SearchBar = observer(() => {
           tw.text.primary,
           tw.border.primary,
           tw.border.focus,
-          tw.accent.ring,
+          tw.accent.focusRing,
           'transition-colors',
           'focus:outline-none',
           tw.text.placeholder,

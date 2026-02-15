@@ -34,7 +34,9 @@ const CategorySelect = observer(() => {
     }),
   ]
 
-  const selectedCategory = categories.find((cat) => cat.id === store.selectedCategory)
+  const selectedCategory = categories.find(
+    (cat) => cat.id === store.selectedCategory,
+  )
 
   return (
     <Select.Root
@@ -81,11 +83,13 @@ const CategorySelect = observer(() => {
                   'flex items-center gap-2 px-3 py-2 rounded cursor-pointer',
                   'text-sm outline-none transition-colors',
                   tw.text.primary,
-                  'hover:bg-zinc-200 dark:hover:bg-zinc-700',
+                  tw.background.selectItemHover,
                   'data-highlighted:bg-zinc-200 dark:data-highlighted:bg-zinc-700',
                 )}
               >
-                <span className="text-sm">{CATEGORY_ICONS[cat.key] || '📦'}</span>
+                <span className="text-sm">
+                  {CATEGORY_ICONS[cat.key] || '📦'}
+                </span>
                 <Select.ItemText>{cat.label}</Select.ItemText>
               </Select.Item>
             ))}

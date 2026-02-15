@@ -12,20 +12,6 @@ import objects from './objects.json'
 import symbols from './symbols.json'
 import flags from './flags.json'
 
-// Category name mapping from English keys to Chinese display names
-export const categoryKeyMap: Record<string, string> = {
-  smileysEmotion: '笑脸和情感',
-  other: '其他',
-  peopleBody: '人类和身体',
-  animalsNature: '动物和自然',
-  foodDrink: '食物和饮料',
-  travelPlaces: '旅行和地点',
-  activities: '活动',
-  objects: '物品',
-  symbols: '符号',
-  flags: '旗帜',
-}
-
 // 为每个分类的 emoji 添加 category 字段
 const addCategory = (emojis: any[], category: string): EmojiData[] =>
   emojis.map((emoji) => ({ ...emoji, category }))

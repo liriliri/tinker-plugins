@@ -3,7 +3,7 @@ import className from 'licia/className'
 import store from './store'
 import { tw } from './theme'
 import SearchBar from './components/SearchBar'
-import CategorySelect from './components/CategoryTabs'
+import CategorySelect from './components/CategorySelect'
 import EmojiGrid from './components/EmojiGrid'
 
 const App = observer(() => {
