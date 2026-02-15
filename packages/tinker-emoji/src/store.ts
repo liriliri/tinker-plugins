@@ -36,7 +36,13 @@ class Store {
         })
 
         this.categories = categoriesMap
-        this.categoryList = Object.keys(this.categories)
+        const categoryKeys = Object.keys(this.categories)
+        const otherIndex = categoryKeys.indexOf('other')
+        if (otherIndex !== -1) {
+          categoryKeys.splice(otherIndex, 1)
+          categoryKeys.push('other')
+        }
+        this.categoryList = categoryKeys
         this.isLoading = false
       })
     } catch (err) {

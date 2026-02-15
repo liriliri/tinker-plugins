@@ -37,7 +37,7 @@ const EmojiGrid = observer(() => {
   return (
     <ScrollArea.Root className="h-full">
       <ScrollArea.Viewport className="h-full w-full">
-        <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12 gap-1 pr-3">
+        <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12 gap-1 px-2 py-2">
           {emojis.map((emoji) => (
             <EmojiCard key={emoji.emoji} emoji={emoji} />
           ))}

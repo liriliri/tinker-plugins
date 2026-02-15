@@ -9,7 +9,7 @@ export interface EmojiData {
     zh: string[]
     en: string[]
   }
-  category?: string // 动态添加
+  category?: string
 }
 
 export interface CategoryData {

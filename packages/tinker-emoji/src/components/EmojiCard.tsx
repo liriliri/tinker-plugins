@@ -31,7 +31,6 @@ const EmojiCard = observer(({ emoji }: EmojiCardProps) => {
           <div
             className={className(
               'relative group cursor-pointer rounded-lg p-2.5 transition-all',
-              tw.background.transparent,
               tw.background.hover,
               'active:scale-95',
               'focus:outline-none',
