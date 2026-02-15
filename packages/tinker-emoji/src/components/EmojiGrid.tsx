@@ -57,7 +57,7 @@ const EmojiGrid = observer(() => {
             tw.scrollbar.thumb,
             'relative before:content-[""] before:absolute',
             'before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2',
-            'before:w-full before:h-full before:min-w-[44px] before:min-h-[44px]',
+            'before:w-full before:h-full before:min-w-11 before:min-h-11',
           )}
         />
       </ScrollArea.Scrollbar>

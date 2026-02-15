@@ -6,6 +6,10 @@
     "dist/",
     "icon.png"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
