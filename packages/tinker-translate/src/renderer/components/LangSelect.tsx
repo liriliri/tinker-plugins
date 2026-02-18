@@ -1,32 +1,6 @@
 import * as Select from '@radix-ui/react-select'
 import { Check, ChevronDown } from 'lucide-react'
-import className from 'licia/className'
 import type { Language } from '../lib/languages'
-
-const triggerClass = className(
-  'inline-flex items-center justify-between gap-2 px-3 py-1 rounded-md border text-sm',
-  'bg-white dark:bg-neutral-800',
-  'text-neutral-900 dark:text-neutral-100',
-  'border-neutral-300 dark:border-neutral-700',
-  'hover:bg-neutral-100 dark:hover:bg-neutral-700',
-  'focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 dark:focus:ring-offset-neutral-900',
-  'data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed',
-  'transition-colors min-w-[120px]',
-)
-
-const contentClass = className(
-  'overflow-hidden rounded-md border shadow-lg z-50',
-  'bg-white dark:bg-neutral-800',
-  'border-neutral-300 dark:border-neutral-700',
-)
-
-const itemClass = className(
-  'relative flex items-center px-8 py-2 text-sm rounded cursor-pointer outline-none',
-  'text-neutral-900 dark:text-neutral-100',
-  'data-highlighted:bg-neutral-100 dark:data-highlighted:bg-neutral-700',
-  'data-[state=checked]:font-medium',
-  'transition-colors',
-)
 
 interface LangSelectProps {
   value: string
@@ -42,17 +16,19 @@ function LangSelect({
   excludeAuto,
 }: LangSelectProps) {
   const items = excludeAuto ? langs.filter((l) => l.code !== 'auto') : langs
+
   return (
     <Select.Root value={value} onValueChange={onValueChange}>
-      <Select.Trigger className={triggerClass}>
+      <Select.Trigger className="inline-flex items-center gap-1 px-2 py-1 text-[12px] font-medium rounded-md border-none bg-transparent text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors duration-150 w-22 cursor-pointer outline-none focus:outline-none">
         <Select.Value />
-        <Select.Icon>
-          <ChevronDown className="w-4 h-4 text-neutral-500" />
+        <Select.Icon className="ml-auto shrink-0">
+          <ChevronDown className="w-3 h-3 text-stone-400 dark:text-stone-500" />
         </Select.Icon>
       </Select.Trigger>
+
       <Select.Portal>
         <Select.Content
-          className={contentClass}
+          className="overflow-hidden rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-900 shadow-[0_8px_24px_rgba(0,0,0,0.1),0_2px_6px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.5)] z-50 min-w-32.5"
           position="popper"
           sideOffset={4}
         >
@@ -61,10 +37,10 @@ function LangSelect({
               <Select.Item
                 key={lang.code}
                 value={lang.code}
-                className={itemClass}
+                className="relative flex items-center px-2 py-1.25 pl-6.5 text-[12px] rounded-md cursor-pointer outline-none text-stone-700 dark:text-stone-300 data-highlighted:bg-stone-100 dark:data-highlighted:bg-stone-800 data-[state=checked]:font-semibold data-[state=checked]:text-amber-600 dark:data-[state=checked]:text-amber-400 transition-colors duration-75"
               >
-                <Select.ItemIndicator className="absolute left-2">
-                  <Check className="w-4 h-4" />
+                <Select.ItemIndicator className="absolute left-2 flex items-center text-amber-500 dark:text-amber-400">
+                  <Check className="w-3 h-3" />
                 </Select.ItemIndicator>
                 <Select.ItemText>{lang.name_cn}</Select.ItemText>
               </Select.Item>

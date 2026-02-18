@@ -1,5 +1,5 @@
 import * as Tooltip from '@radix-ui/react-tooltip'
-import { ArrowLeftRight } from 'lucide-react'
+import { ArrowLeftRight, Check, Copy } from 'lucide-react'
 import className from 'licia/className'
 import LangSelect from './LangSelect'
 import { services, type Language, type Service } from '../lib/languages'
@@ -12,13 +12,16 @@ interface ToolbarProps {
   canSwap: boolean
   canClear: boolean
   canTranslate: boolean
+  canCopy: boolean
   isTranslating: boolean
+  copied: boolean
   onServiceChange: (s: Service) => void
   onSourceLangChange: (v: string) => void
   onTargetLangChange: (v: string) => void
   onSwap: () => void
   onClear: () => void
   onTranslate: () => void
+  onCopy: () => void
 }
 
 function Toolbar({
@@ -29,82 +32,116 @@ function Toolbar({
   canSwap,
   canClear,
   canTranslate,
+  canCopy,
   isTranslating,
+  copied,
   onServiceChange,
   onSourceLangChange,
   onTargetLangChange,
   onSwap,
   onClear,
   onTranslate,
+  onCopy,
 }: ToolbarProps) {
   return (
-    <div className="flex items-center gap-2 px-3 py-2 border-b border-neutral-200 dark:border-neutral-700 shrink-0 bg-neutral-100 dark:bg-[#303030]">
-      {/* Service toggle */}
-      <div className="flex items-center rounded-md border border-neutral-300 dark:border-neutral-700 overflow-hidden mr-1">
-        {services.map((s) => (
-          <button
-            key={s.value}
-            onClick={() => onServiceChange(s.value)}
+    <div className="flex items-center px-2.5 py-2 bg-white dark:bg-stone-900 border-b border-stone-200 dark:border-stone-800 shrink-0 min-h-11.5">
+      {/* Left: service toggle — flex-1 so it balances the right side */}
+      <div className="flex-1 flex items-center">
+        <div className="relative flex items-center bg-stone-100 dark:bg-stone-800 rounded-lg p-0.75 shrink-0">
+          <div
             className={className(
-              'px-3 py-1 text-sm font-medium transition-colors',
-              service === s.value
-                ? 'bg-blue-600 text-white dark:bg-blue-500'
-                : 'bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-700',
+              'service-pill bg-white dark:bg-stone-700 shadow-sm dark:shadow-none ring-[0.5px] ring-black/5 dark:ring-white/5',
+              service === 'bing' && 'service-pill--bing',
             )}
-          >
-            {s.label}
-          </button>
-        ))}
+          />
+          {services.map((s) => (
+            <button
+              key={s.value}
+              onClick={() => onServiceChange(s.value)}
+              className={className(
+                'relative z-10 px-2.5 py-0.5 text-[11.5px] font-semibold rounded-[5px] transition-colors duration-150 cursor-pointer border-none bg-transparent',
+                service === s.value
+                  ? 'text-stone-900 dark:text-stone-100'
+                  : 'text-stone-400 dark:text-stone-500 hover:text-stone-600 dark:hover:text-stone-300',
+              )}
+            >
+              {s.label}
+            </button>
+          ))}
+        </div>
       </div>
 
-      <LangSelect
-        value={sourceLang}
-        onValueChange={onSourceLangChange}
-        langs={currentLanguages}
-      />
+      {/* Center: language row — not flex-1, so it stays truly centered */}
+      <div className="flex items-center gap-0.5">
+        <LangSelect
+          value={sourceLang}
+          onValueChange={onSourceLangChange}
+          langs={currentLanguages}
+        />
 
-      <Tooltip.Root>
-        <Tooltip.Trigger asChild>
-          <button
-            onClick={onSwap}
-            disabled={!canSwap}
-            className={className(
-              'p-1.5 rounded-md transition-colors',
-              canSwap
-                ? 'text-neutral-500 hover:text-blue-600 hover:bg-blue-50 dark:hover:text-blue-400 dark:hover:bg-blue-900/20'
-                : 'text-neutral-300 dark:text-neutral-600 cursor-not-allowed',
-            )}
-          >
-            <ArrowLeftRight className="w-4 h-4" />
-          </button>
-        </Tooltip.Trigger>
-        <Tooltip.Portal>
-          <Tooltip.Content
-            className="px-2 py-1 text-xs rounded bg-neutral-800 text-white dark:bg-neutral-200 dark:text-neutral-900 shadow"
-            sideOffset={4}
-          >
-            Swap languages
-            <Tooltip.Arrow className="fill-neutral-800 dark:fill-neutral-200" />
-          </Tooltip.Content>
-        </Tooltip.Portal>
-      </Tooltip.Root>
+        <Tooltip.Root>
+          <Tooltip.Trigger asChild>
+            <button
+              onClick={onSwap}
+              disabled={!canSwap}
+              className={className(
+                'swap-btn flex items-center justify-center w-7 h-7 rounded-md border-none bg-transparent transition-colors duration-150 shrink-0 cursor-pointer',
+                canSwap
+                  ? 'text-stone-400 dark:text-stone-500 hover:text-stone-700 dark:hover:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800'
+                  : 'text-stone-300 dark:text-stone-700 cursor-not-allowed',
+              )}
+            >
+              <ArrowLeftRight className="swap-icon w-3.5 h-3.5" />
+            </button>
+          </Tooltip.Trigger>
+          <Tooltip.Portal>
+            <Tooltip.Content
+              className="px-2 py-1 text-[11px] font-medium rounded-md bg-stone-900 dark:bg-stone-100 text-white dark:text-stone-900 shadow-md"
+              sideOffset={5}
+            >
+              交换语言
+              <Tooltip.Arrow className="fill-stone-900 dark:fill-stone-100" />
+            </Tooltip.Content>
+          </Tooltip.Portal>
+        </Tooltip.Root>
 
-      <LangSelect
-        value={targetLang}
-        onValueChange={onTargetLangChange}
-        langs={currentLanguages}
-        excludeAuto
-      />
+        <LangSelect
+          value={targetLang}
+          onValueChange={onTargetLangChange}
+          langs={currentLanguages}
+          excludeAuto
+        />
+      </div>
 
-      <div className="flex gap-2 ml-auto">
+      {/* Right: actions — flex-1 + justify-end to mirror the left side */}
+      <div className="flex-1 flex items-center justify-end gap-1.5">
+        <button
+          onClick={onCopy}
+          disabled={!canCopy}
+          className={className(
+            'flex items-center gap-1 px-2.5 py-1 text-[11.5px] font-medium rounded-md border transition-all duration-150 cursor-pointer bg-transparent',
+            canCopy
+              ? copied
+                ? 'border-emerald-400 dark:border-emerald-700 text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/30'
+                : 'border-stone-200 dark:border-stone-700 text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-stone-700 dark:hover:text-stone-200'
+              : 'border-stone-100 dark:border-stone-800 text-stone-300 dark:text-stone-700 cursor-not-allowed',
+          )}
+        >
+          {copied ? (
+            <Check className="w-3 h-3" />
+          ) : (
+            <Copy className="w-3 h-3" />
+          )}
+          {copied ? '已复制' : '复制'}
+        </button>
         <button
           onClick={onClear}
           disabled={!canClear}
           className={className(
-            'px-3 py-1 rounded-md text-sm font-medium transition-colors border',
+            'px-2.5 py-1 text-[11.5px] font-medium rounded-md border transition-colors duration-150 cursor-pointer bg-transparent',
             canClear
-              ? 'border-neutral-300 dark:border-neutral-600 text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-700'
-              : 'border-neutral-200 dark:border-neutral-700 text-neutral-400 dark:text-neutral-600 cursor-not-allowed',
+              ? 'border-stone-200 dark:border-stone-700 text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-stone-700 dark:hover:text-stone-200'
+              : 'border-stone-100 dark:border-stone-800 text-stone-300 dark:text-stone-700 cursor-not-allowed',
           )}
         >
           清空
@@ -113,13 +150,21 @@ function Toolbar({
           onClick={onTranslate}
           disabled={!canTranslate}
           className={className(
-            'px-3 py-1 rounded-md text-sm font-medium transition-colors',
+            'px-3 py-1 text-[11.5px] font-semibold rounded-md border-none transition-all duration-150 min-w-13 flex items-center justify-center gap-1 cursor-pointer',
             canTranslate
-              ? 'bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600'
-              : 'bg-neutral-200 dark:bg-neutral-700 text-neutral-400 dark:text-neutral-500 cursor-not-allowed',
+              ? 'bg-stone-900 dark:bg-stone-100 text-white dark:text-stone-900 hover:bg-stone-700 dark:hover:bg-stone-300 hover:-translate-y-px active:translate-y-0'
+              : 'bg-stone-100 dark:bg-stone-800 text-stone-300 dark:text-stone-600 cursor-not-allowed',
           )}
         >
-          {isTranslating ? '翻译中...' : '翻译'}
+          {isTranslating ? (
+            <span className="flex items-center gap-0.75 h-3">
+              <span className="dot dot-1" />
+              <span className="dot dot-2" />
+              <span className="dot dot-3" />
+            </span>
+          ) : (
+            '翻译'
+          )}
         </button>
       </div>
     </div>

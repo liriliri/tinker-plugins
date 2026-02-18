@@ -12,6 +12,7 @@ function App() {
   const [service, setService] = useState<Service>('google')
   const [isTranslating, setIsTranslating] = useState(false)
   const [error, setError] = useState('')
+  const [copied, setCopied] = useState(false)
 
   const currentLanguages = service === 'bing' ? bingLanguages : languages
 
@@ -71,9 +72,17 @@ function App() {
     setError('')
   }
 
+  const handleCopy = () => {
+    if (!translatedText) return
+    navigator.clipboard.writeText(translatedText).then(() => {
+      setCopied(true)
+      setTimeout(() => setCopied(false), 1800)
+    })
+  }
+
   return (
     <Tooltip.Provider delayDuration={300}>
-      <div className="h-screen flex flex-col bg-white dark:bg-neutral-800 overflow-hidden">
+      <div className="h-screen flex flex-col bg-stone-50 dark:bg-stone-950 overflow-hidden">
         <Toolbar
           service={service}
           sourceLang={sourceLang}
@@ -82,13 +91,16 @@ function App() {
           canSwap={sourceLang !== 'auto'}
           canClear={!!(sourceText || translatedText)}
           canTranslate={!isTranslating && !!sourceText.trim()}
+          canCopy={!!translatedText}
           isTranslating={isTranslating}
+          copied={copied}
           onServiceChange={handleServiceChange}
           onSourceLangChange={setSourceLang}
           onTargetLangChange={setTargetLang}
           onSwap={handleSwapLanguages}
           onClear={handleClear}
           onTranslate={handleTranslate}
+          onCopy={handleCopy}
         />
         <TranslatePanel
           sourceText={sourceText}
