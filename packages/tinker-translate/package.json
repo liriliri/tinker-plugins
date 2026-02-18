@@ -35,6 +35,8 @@
     }
   },
   "devDependencies": {
+    "@radix-ui/react-select": "^2.2.6",
+    "@radix-ui/react-tooltip": "^1.2.8",
     "concurrently": "^9.2.0"
   }
 }
