@@ -3,6 +3,7 @@ import * as Tooltip from '@radix-ui/react-tooltip'
 import * as Select from '@radix-ui/react-select'
 import { ArrowLeftRight, Check, ChevronDown, Copy } from 'lucide-react'
 import className from 'licia/className'
+import { useTranslation } from 'react-i18next'
 import LangSelect from './LangSelect'
 import {
   languages,
@@ -14,6 +15,7 @@ import { tw } from '../theme'
 import store from '../store'
 
 const Toolbar = observer(() => {
+  const { t } = useTranslation()
   const currentLanguages = store.service === 'bing' ? bingLanguages : languages
 
   return (
@@ -89,7 +91,7 @@ const Toolbar = observer(() => {
               className={`px-2 py-1 text-[11px] font-medium rounded-md ${tw.tooltip.content} shadow-md`}
               sideOffset={5}
             >
-              交换语言
+              {t('swapLanguages')}
               <Tooltip.Arrow className={tw.tooltip.arrow} />
             </Tooltip.Content>
           </Tooltip.Portal>
@@ -122,7 +124,7 @@ const Toolbar = observer(() => {
           ) : (
             <Copy className="w-3 h-3" />
           )}
-          {store.copied ? '已复制' : '复制'}
+          {store.copied ? t('copied') : t('copy')}
         </button>
         <button
           onClick={() => store.handleClear()}
@@ -134,7 +136,7 @@ const Toolbar = observer(() => {
               : `${tw.button.outlined.disabled} cursor-not-allowed`,
           )}
         >
-          清空
+          {t('clear')}
         </button>
         <button
           onClick={() => store.handleTranslate()}
@@ -153,7 +155,7 @@ const Toolbar = observer(() => {
               <span className="dot dot-3" />
             </span>
           ) : (
-            '翻译'
+            t('translate')
           )}
         </button>
       </div>

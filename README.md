@@ -20,5 +20,13 @@ All plugins in the list can be installed to TINKER by running `npm i -g tinker-x
       <th><img src="./packages/tinker-token-usage/screenshot.png"/></th>
       <th><img src="https://raw.githubusercontent.com/liriliri/tinker-whois/master/screenshot.png"/></th>
     </tr>
+    <tr>
+      <th><a href="./packages/tinker-translate/">tinker-translate</a></th>
+      <th><a href="./packages/tinker-emoji/">tinker-emoji</a></th>
+    </tr>
+    <tr>
+      <th><img src="./packages/tinker-translate/screenshot.png"/></th>
+      <th><img src="./packages/tinker-emoji/screenshot.png"/></th>
+    </tr>
   </tbody>
 </table>

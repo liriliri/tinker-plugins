@@ -1,13 +1,15 @@
 # tinker-translate
 
-A translation plugin for [TINKER](https://github.com/liriliri/tinker), powered by Google Translate and Bing Translate.
+A translation plugin for [TINKER](https://github.com/liriliri/tinker), supporting Google, Bing, and DeepL translation services.
+
+![Screenshot](https://raw.githubusercontent.com/liriliri/tinker-plugins/master/packages/tinker-translate/screenshot.png)
 
 ## Features
 
-- **Google Translate & Bing Translate** integration
+- **Google, Bing & DeepL** translation services
 - **16+ languages** support
 - **Auto-detect** source language
-- **Modern UI** with dark mode support
+- **i18n** support for English and Chinese
 
 ## Installation
 
@@ -15,7 +17,7 @@ Download and install TINKER from `https://tinker.liriliri.io/`, then run `npm i 
 
 ## Usage
 
-1. Select translation service (Google or Bing)
+1. Select translation service (Google, Bing, or DeepL)
 2. Enter text in the source text area
 3. Select source and target languages
 4. Click "Translate" button

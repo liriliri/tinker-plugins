@@ -1,6 +1,7 @@
 import { makeAutoObservable } from 'mobx'
 import LocalStore from 'licia/LocalStore'
 import waitUntil from 'licia/waitUntil'
+import i18n from './i18n'
 import { type Service } from './lib/languages'
 
 const storage = new LocalStore('tinker-translate')
@@ -110,7 +111,7 @@ class Store {
 
   async handleTranslate() {
     if (!this.sourceText.trim()) {
-      this.showError('请输入要翻译的文字')
+      this.showError(i18n.t('emptySourceError'))
       return
     }
 
@@ -126,7 +127,7 @@ class Store {
       )
       this.translatedText = result.text
     } catch (err) {
-      this.showError('翻译失败，请稍后重试')
+      this.showError(i18n.t('translateFailed'))
       console.error(err)
     } finally {
       this.isTranslating = false

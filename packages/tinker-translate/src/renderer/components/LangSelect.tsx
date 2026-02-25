@@ -1,5 +1,6 @@
 import * as Select from '@radix-ui/react-select'
 import { Check, ChevronDown } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import type { Language } from '../lib/languages'
 import { tw } from '../theme'
 
@@ -16,15 +17,18 @@ function LangSelect({
   langs,
   excludeAuto,
 }: LangSelectProps) {
+  const { t } = useTranslation()
   const items = excludeAuto ? langs.filter((l) => l.code !== 'auto') : langs
 
   return (
     <Select.Root value={value} onValueChange={onValueChange}>
       <Select.Trigger
-        className={`inline-flex items-center gap-1 px-2 py-1 text-[12px] font-medium rounded-md border-none bg-transparent ${tw.select.trigger} transition-colors duration-150 w-22 cursor-pointer outline-none focus:outline-none`}
+        className={`inline-flex items-center gap-1 px-2 py-1 text-[12px] font-medium rounded-md border-none bg-transparent ${tw.select.trigger} transition-colors duration-150 w-22 cursor-pointer outline-none focus:outline-none overflow-hidden`}
       >
-        <Select.Value />
-        <Select.Icon className="ml-auto shrink-0">
+        <span className="truncate whitespace-nowrap min-w-0 flex-1">
+          <Select.Value />
+        </span>
+        <Select.Icon className="shrink-0">
           <ChevronDown className={`w-3 h-3 ${tw.select.chevron}`} />
         </Select.Icon>
       </Select.Trigger>
@@ -47,7 +51,7 @@ function LangSelect({
                 >
                   <Check className="w-3 h-3" />
                 </Select.ItemIndicator>
-                <Select.ItemText>{lang.name_cn}</Select.ItemText>
+                <Select.ItemText>{t(lang.code)}</Select.ItemText>
               </Select.Item>
             ))}
           </Select.Viewport>

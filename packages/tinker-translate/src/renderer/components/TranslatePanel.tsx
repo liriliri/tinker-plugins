@@ -1,8 +1,11 @@
 import { observer } from 'mobx-react-lite'
+import { useTranslation } from 'react-i18next'
 import { tw } from '../theme'
 import store from '../store'
 
 const TranslatePanel = observer(() => {
+  const { t } = useTranslation()
+
   return (
     <div className="grid grid-cols-2 flex-1 min-h-0">
       {/* Source panel */}
@@ -12,7 +15,7 @@ const TranslatePanel = observer(() => {
         <textarea
           value={store.sourceText}
           onChange={(e) => store.setSourceText(e.target.value)}
-          placeholder="输入要翻译的文字..."
+          placeholder={t('sourcePlaceholder')}
           className={`flex-1 w-full px-4 py-3.5 text-[13px] leading-[1.75] resize-none outline-none border-none bg-transparent ${tw.text.primary} ${tw.text.placeholder}`}
         />
       </div>
@@ -29,7 +32,7 @@ const TranslatePanel = observer(() => {
                 <span className="dot dot-2" />
                 <span className="dot dot-3" />
               </span>
-              <span>翻译中</span>
+              <span>{t('translating')}</span>
             </div>
           ) : store.translatedText ? (
             <p
@@ -39,7 +42,7 @@ const TranslatePanel = observer(() => {
             </p>
           ) : (
             <p className={`text-[13px] italic ${tw.text.muted}`}>
-              翻译结果将显示在这里...
+              {t('targetPlaceholder')}
             </p>
           )}
         </div>
