@@ -9,158 +9,132 @@ import type {
 type ReadFile = typeof import('node:fs/promises').readFile
 type WriteFile = typeof import('node:fs/promises').writeFile
 
+interface RunProgress {
+  /** e.g., "1024kbits/s" */
+  bitrate: string
+  fps: number
+  frame: number
+  /** 0-100, only available when duration is known */
+  percent?: number
+  q: number | string
+  /** in bytes */
+  size: number
+  /** e.g., "1.5x" */
+  speed: string
+  /** e.g., "00:01:23.45" */
+  time: string
+}
+
+interface FFmpegTask {
+  /** Force kill (SIGKILL) */
+  kill(): void
+  /** Graceful quit (SIGTERM) */
+  quit(): void
+}
+
+interface VideoStream {
+  codec: string
+  width: number
+  height: number
+  fps: number
+  bitrate?: number
+  /** JPEG data URL */
+  thumbnail: string
+}
+
+interface AudioStream {
+  codec: string
+  /** in Hz */
+  sampleRate?: number
+  bitrate?: number
+}
+
+interface MediaInfo {
+  /** in bytes */
+  size: number
+  /** in seconds */
+  duration: number
+  /** present only if the file contains a video stream */
+  videoStream?: VideoStream
+  /** present only if the file contains an audio stream */
+  audioStream?: AudioStream
+}
+
 declare global {
-  /**
-   * Global Tinker API for plugin development.
-   * Provides access to system features, dialogs, and theme management.
-   */
   const tinker: {
-    /**
-     * Get the current theme.
-     * @returns 'light' or 'dark'
-     * @example
-     * const theme = await tinker.getTheme()
-     * console.log(theme) // 'dark'
-     */
+    /** @returns 'light' or 'dark' */
     getTheme(): Promise<string>
 
-    /**
-     * Get the user's language setting.
-     * @returns Language code (e.g., 'en-US', 'zh-CN')
-     * @example
-     * const lang = await tinker.getLanguage()
-     * i18n.changeLanguage(lang)
-     */
+    /** @returns Language code (e.g., 'en-US', 'zh-CN') */
     getLanguage(): Promise<string>
 
-    /**
-     * Show a native file open dialog.
-     * @param options - Dialog options (title, filters, properties, etc.)
-     * @returns Object with canceled flag and filePaths array
-     * @example
-     * const result = await tinker.showOpenDialog({
-     *   title: 'Select Image',
-     *   filters: [{ name: 'Images', extensions: ['png', 'jpg'] }],
-     *   properties: ['openFile']
-     * })
-     * if (!result.canceled) {
-     *   console.log(result.filePaths[0])
-     * }
-     */
+    /** Show a native file open dialog. */
     showOpenDialog(options: OpenDialogOptions): Promise<OpenDialogReturnValue>
 
-    /**
-     * Show a native file save dialog.
-     * @param options - Dialog options (title, defaultPath, filters, etc.)
-     * @returns Object with canceled flag and filePath string
-     * @example
-     * const result = await tinker.showSaveDialog({
-     *   title: 'Save Image',
-     *   defaultPath: 'output.png',
-     *   filters: [{ name: 'PNG', extensions: ['png'] }]
-     * })
-     * if (!result.canceled) {
-     *   // Save to result.filePath
-     * }
-     */
+    /** Show a native file save dialog. */
     showSaveDialog(options: SaveDialogOptions): Promise<SaveDialogReturnValue>
 
-    /**
-     * Show the given file in the system file manager.
-     * @param path - Absolute path to the file
-     * @example
-     * tinker.showItemInPath('/path/to/file.png')
-     */
+    /** Show the given file in the system file manager. */
     showItemInPath(path: string): void
 
     /**
      * Set the window title.
-     * @param title - The title text. If empty, will use the plugin name. If non-empty, will be formatted as "{title} - {plugin name}"
-     * @example
-     * tinker.setTitle('My Custom Title')
-     * // Window title becomes: "My Custom Title - Plugin Name"
-     *
-     * tinker.setTitle('')
-     * // Window title becomes: "Plugin Name"
+     * Empty string resets to plugin name; otherwise formatted as "{title} - {plugin name}".
      */
     setTitle(title: string): void
 
-    /**
-     * Get file paths from the system clipboard.
-     * @returns Array of file paths
-     * @example
-     * const filePaths = await tinker.getClipboardFilePaths()
-     * console.log(filePaths) // ['/path/to/file1.png', '/path/to/file2.jpg']
-     */
+    /** Get file paths from the system clipboard. */
     getClipboardFilePaths(): Promise<string[]>
 
-    /**
-     * Capture a screenshot of the screen.
-     * @returns Data URL of the captured screenshot, or empty string if canceled or failed
-     * @example
-     * const dataUrl = await tinker.captureScreen()
-     * if (dataUrl) {
-     *   const img = document.createElement('img')
-     *   img.src = dataUrl
-     *   document.body.appendChild(img)
-     * }
-     */
+    /** @returns Data URL of the screenshot, or empty string if canceled or failed */
     captureScreen(): Promise<string>
 
     /**
      * Get the icon for a file or file extension.
      * @param filePath - File path or extension (e.g., '/path/to/file.pdf' or '.pdf')
-     * @returns PNG Data URL of the file icon
-     * @example
-     * // Get icon by file extension
-     * const pdfIcon = await tinker.getFileIcon('.pdf')
-     * const img = document.createElement('img')
-     * img.src = pdfIcon
-     *
-     * // Get icon by file path
-     * const fileIcon = await tinker.getFileIcon('/path/to/document.docx')
+     * @returns PNG data URL
      */
     getFileIcon(filePath: string): Promise<string>
 
-    /**
-     * Read a file from the filesystem using Node's fs.promises.readFile.
-     * @param path - File path or URL
-     * @param options - Encoding or read options
-     * @returns Buffer or string depending on options
-     * @example
-     * const content = await tinker.readFile('/path/to/file.txt', 'utf-8')
-     */
+    /** Wraps Node's fs.promises.readFile */
     readFile: ReadFile
 
-    /**
-     * Write data to a file using Node's fs.promises.writeFile.
-     * @param path - File path or URL
-     * @param data - Data to write
-     * @param options - Write options
-     * @example
-     * await tinker.writeFile('/path/to/file.txt', 'Hello World')
-     */
+    /** Wraps Node's fs.promises.writeFile */
     writeFile: WriteFile
+
+    /** Returns the OS temp directory path. */
+    tmpdir(): string
 
     /**
      * Register an event listener.
-     * @param event - Event name (e.g., 'changeTheme', 'changeLanguage')
-     * @param callback - Event handler function
+     * @param event - e.g., 'changeTheme', 'changeLanguage'
      * @returns Unsubscribe function
-     * @example
-     * const unsubscribe = tinker.on('changeTheme', async () => {
-     *   const theme = await tinker.getTheme()
-     *   store.setIsDark(theme === 'dark')
-     * })
-     * // Later: unsubscribe()
      */
     on(event: string, callback: (...args: any[]) => void): () => void
 
     /**
+     * Run FFmpeg with the specified arguments.
+     * @param args - FFmpeg args (without 'ffmpeg' itself), must include output file path
+     * @example
+     * const task = tinker.runFFmpeg(
+     *   ['-i', 'input.mp4', '-c:v', 'libx264', 'output.mp4'],
+     *   (progress) => console.log(`${progress.percent}%`)
+     * )
+     * task.kill()
+     */
+    runFFmpeg(
+      args: string[],
+      onProgress?: (progress: RunProgress) => void
+    ): FFmpegTask
+
+    /**
+     * Get media information for a file using FFmpeg.
+     * Throws if the file is not a valid media file.
+     */
+    getMediaInfo(filePath: string): Promise<MediaInfo>
+
+    /**
      * Show a context menu at the specified position.
-     * @param x - X coordinate (px)
-     * @param y - Y coordinate (px)
-     * @param options - Menu items array
      * @example
      * tinker.showContextMenu(event.clientX, event.clientY, [
      *   { label: 'Copy', click: () => handleCopy() },
@@ -171,7 +145,7 @@ declare global {
     showContextMenu: (
       x: number,
       y: number,
-      options: MenuItemConstructorOptions[],
+      options: MenuItemConstructorOptions[]
     ) => void
   }
 }
