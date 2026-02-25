@@ -1,0 +1,43 @@
+{
+  "name": "tinker-bilibili-downloader",
+  "version": "0.1.0",
+  "description": "Bilibili Video Downloader Plugin for TINKER",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:preload\"",
+    "dev:renderer": "vite",
+    "dev:preload": "vite build --watch --config vite.preload.ts",
+    "build": "concurrently \"npm run build:renderer\" \"npm run build:preload\"",
+    "build:renderer": "vite build",
+    "build:preload": "vite build --config vite.preload.ts",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "bilibili",
+    "downloader",
+    "video"
+  ],
+  "tinker": {
+    "name": "Bilibili Downloader",
+    "main": "dist/renderer/index.html",
+    "preload": "dist/preload/index.mjs",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "B站视频下载"
+      }
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}
