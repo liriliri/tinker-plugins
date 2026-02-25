@@ -39,6 +39,7 @@ export const bingLanguages: Language[] = [
 export const services = [
   { value: 'google', label: 'Google' },
   { value: 'bing', label: 'Bing' },
+  { value: 'deepl', label: 'DeepL' },
 ] as const
 
-export type Service = 'google' | 'bing'
+export type Service = 'google' | 'bing' | 'deepl'

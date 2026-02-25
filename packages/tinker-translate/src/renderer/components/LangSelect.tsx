@@ -1,6 +1,7 @@
 import * as Select from '@radix-ui/react-select'
 import { Check, ChevronDown } from 'lucide-react'
 import type { Language } from '../lib/languages'
+import { tw } from '../theme'
 
 interface LangSelectProps {
   value: string
@@ -19,16 +20,18 @@ function LangSelect({
 
   return (
     <Select.Root value={value} onValueChange={onValueChange}>
-      <Select.Trigger className="inline-flex items-center gap-1 px-2 py-1 text-[12px] font-medium rounded-md border-none bg-transparent text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors duration-150 w-22 cursor-pointer outline-none focus:outline-none">
+      <Select.Trigger
+        className={`inline-flex items-center gap-1 px-2 py-1 text-[12px] font-medium rounded-md border-none bg-transparent ${tw.select.trigger} transition-colors duration-150 w-22 cursor-pointer outline-none focus:outline-none`}
+      >
         <Select.Value />
         <Select.Icon className="ml-auto shrink-0">
-          <ChevronDown className="w-3 h-3 text-stone-400 dark:text-stone-500" />
+          <ChevronDown className={`w-3 h-3 ${tw.select.chevron}`} />
         </Select.Icon>
       </Select.Trigger>
 
       <Select.Portal>
         <Select.Content
-          className="overflow-hidden rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-900 shadow-[0_8px_24px_rgba(0,0,0,0.1),0_2px_6px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.5)] z-50 min-w-32.5"
+          className={`overflow-hidden rounded-xl border ${tw.select.content} shadow-[0_8px_24px_rgba(0,0,0,0.1),0_2px_6px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.5)] z-50 min-w-32.5`}
           position="popper"
           sideOffset={4}
         >
@@ -37,9 +40,11 @@ function LangSelect({
               <Select.Item
                 key={lang.code}
                 value={lang.code}
-                className="relative flex items-center px-2 py-1.25 pl-6.5 text-[12px] rounded-md cursor-pointer outline-none text-stone-700 dark:text-stone-300 data-highlighted:bg-stone-100 dark:data-highlighted:bg-stone-800 data-[state=checked]:font-semibold data-[state=checked]:text-amber-600 dark:data-[state=checked]:text-amber-400 transition-colors duration-75"
+                className={`relative flex items-center px-2 py-1.25 pl-6.5 text-[12px] rounded-md cursor-pointer outline-none ${tw.select.item} data-[state=checked]:font-semibold ${tw.select.itemChecked} transition-colors duration-75`}
               >
-                <Select.ItemIndicator className="absolute left-2 flex items-center text-amber-500 dark:text-amber-400">
+                <Select.ItemIndicator
+                  className={`absolute left-2 flex items-center ${tw.select.itemIndicator}`}
+                >
                   <Check className="w-3 h-3" />
                 </Select.ItemIndicator>
                 <Select.ItemText>{lang.name_cn}</Select.ItemText>

@@ -7,7 +7,7 @@ interface TranslateResult {
   to?: string
 }
 
-export type TranslateService = 'google' | 'bing'
+export type TranslateService = 'google' | 'bing' | 'deepl'
 
 function httpsRequest(
   options: https.RequestOptions,
@@ -145,6 +145,73 @@ async function translateWithBing(
   return { text: result[0].translations[0].text.trim(), from, to }
 }
 
+function getDeepLICount(text: string): number {
+  return text.split('i').length - 1
+}
+
+function getDeepLTimestamp(iCount: number): number {
+  const ts = Date.now()
+  if (iCount !== 0) {
+    const ic = iCount + 1
+    return ts - (ts % ic) + ic
+  }
+  return ts
+}
+
+function getDeepLRandomId(): number {
+  return (Math.floor(Math.random() * 99999) + 100000) * 1000
+}
+
+async function translateWithDeepL(
+  text: string,
+  from: string,
+  to: string,
+): Promise<TranslateResult> {
+  const id = getDeepLRandomId()
+  const body = {
+    jsonrpc: '2.0',
+    method: 'LMT_handle_texts',
+    id,
+    params: {
+      splitting: 'newlines',
+      lang: {
+        source_lang_user_selected:
+          from !== 'auto' ? from.slice(0, 2).toUpperCase() : 'auto',
+        target_lang: to.slice(0, 2).toUpperCase(),
+      },
+      texts: [{ text, requestAlternatives: 3 }],
+      timestamp: getDeepLTimestamp(getDeepLICount(text)),
+    },
+  }
+
+  let bodyStr = JSON.stringify(body)
+  if ((id + 5) % 29 === 0 || (id + 3) % 13 === 0) {
+    bodyStr = bodyStr.replace('"method":"', '"method" : "')
+  } else {
+    bodyStr = bodyStr.replace('"method":"', '"method": "')
+  }
+
+  const options = {
+    hostname: 'www2.deepl.com',
+    port: 443,
+    path: '/jsonrpc',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Content-Length': Buffer.byteLength(bodyStr),
+    },
+  }
+
+  const { statusCode, data } = await httpsRequest(options, bodyStr)
+  if (statusCode !== 200) throw new Error(`HTTP Error: ${statusCode}`)
+
+  const result = JSON.parse(data)
+  if (result?.result?.texts?.[0]?.text) {
+    return { text: result.result.texts[0].text.trim(), from, to }
+  }
+  throw new Error(result?.error?.message ?? 'Invalid response format')
+}
+
 const translateObj = {
   translate: async (
     text: string,
@@ -155,6 +222,8 @@ const translateObj = {
     try {
       if (service === 'bing') {
         return await translateWithBing(text, from, to)
+      } else if (service === 'deepl') {
+        return await translateWithDeepL(text, from, to)
       } else {
         return await translateWithGoogle(text, from, to)
       }
