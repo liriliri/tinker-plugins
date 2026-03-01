@@ -4,19 +4,10 @@ import className from 'licia/className'
 import store, { TaskData } from '../store'
 import { tw } from '../theme'
 
-const statusLabel: Record<string, string> = {
-  pending: 'pending',
-  downloading: 'downloading',
-  merging: 'merging',
-  done: 'done',
-  error: 'error',
-}
-
 const TaskItem = observer(({ task }: { task: TaskData }) => {
   const { t } = useTranslation()
 
   const handleOpenFolder = () => {
-    const dir = task.outputPath.substring(0, task.outputPath.lastIndexOf('/'))
     tinker.showItemInPath(task.outputPath)
   }
 

@@ -1,6 +1,4 @@
-import * as https from 'node:https'
-import * as http from 'node:http'
-import { URL } from 'node:url'
+import got from 'got'
 import { qualityMap } from '../shared/types'
 import type { VideoData, Page } from '../shared/types'
 
@@ -20,76 +18,31 @@ function formatSeconds(seconds: number): string {
   return `${m}:${String(s).padStart(2, '0')}`
 }
 
-export interface GotResult {
+interface GotResult {
   body: any
   headers: Record<string, string | string[] | undefined>
   statusCode: number
   redirectUrls: string[]
 }
 
-export function got(
+export async function request(
   url: string,
   options: { headers?: Record<string, string>; responseType?: string } = {},
-  redirectUrls: string[] = [],
 ): Promise<GotResult> {
-  return new Promise((resolve, reject) => {
-    const parsedUrl = new URL(url)
-    const isHttps = parsedUrl.protocol === 'https:'
-    const lib = isHttps ? https : http
-
-    const reqOptions = {
-      hostname: parsedUrl.hostname,
-      port: parsedUrl.port || (isHttps ? 443 : 80),
-      path: parsedUrl.pathname + parsedUrl.search,
-      method: 'GET',
-      headers: {
-        'User-Agent': UA,
-        ...(options.headers || {}),
-      },
-    }
-
-    const req = lib.request(reqOptions, (res) => {
-      // Handle redirects, preserving headers and tracking redirect URLs
-      if (
-        res.statusCode &&
-        res.statusCode >= 300 &&
-        res.statusCode < 400 &&
-        res.headers.location
-      ) {
-        const redirectUrl = res.headers.location.startsWith('http')
-          ? res.headers.location
-          : `${parsedUrl.protocol}//${parsedUrl.host}${res.headers.location}`
-        got(redirectUrl, options, [...redirectUrls, redirectUrl])
-          .then(resolve)
-          .catch(reject)
-        return
-      }
-
-      const chunks: Buffer[] = []
-      res.on('data', (chunk: Buffer) => chunks.push(chunk))
-      res.on('end', () => {
-        const rawBody = Buffer.concat(chunks).toString('utf8')
-        let body: any = rawBody
-        if (options.responseType === 'json') {
-          try {
-            body = JSON.parse(rawBody)
-          } catch {
-            body = rawBody
-          }
-        }
-        resolve({
-          body,
-          headers: res.headers as Record<string, string | string[] | undefined>,
-          statusCode: res.statusCode || 200,
-          redirectUrls,
-        })
-      })
-      res.on('error', reject)
-    })
-
-    req.on('error', reject)
-    req.end()
+  const res = await got(url, {
+    headers: {
+      'User-Agent': UA,
+      ...options.headers,
+    },
+    responseType: options.responseType === 'json' ? 'json' : 'text',
+    followRedirect: true,
   })
+  return {
+    body: res.body,
+    headers: res.headers as Record<string, string | string[] | undefined>,
+    statusCode: res.statusCode,
+    redirectUrls: res.redirectUrls.map((u: string) => u.toString()),
+  }
 }
 
 /**
@@ -97,7 +50,7 @@ export function got(
  * @returns 0: visitor, 1: normal user, 2: VIP
  */
 export async function checkLogin(sessdata: string): Promise<number> {
-  const result = await got('https://api.bilibili.com/x/web-interface/nav', {
+  const result = await request('https://api.bilibili.com/x/web-interface/nav', {
     headers: {
       cookie: `SESSDATA=${sessdata}`,
     },
@@ -128,7 +81,7 @@ export function checkUrl(url: string): string {
 }
 
 async function getAcceptQuality(cid: number, bvid: string, sessdata: string) {
-  const result = await got(
+  const result = await request(
     `https://api.bilibili.com/x/player/playurl?cid=${cid}&bvid=${bvid}&qn=127&type=&otype=json&fourk=1&fnver=0&fnval=80`,
     {
       headers: { cookie: `SESSDATA=${sessdata}` },
@@ -327,7 +280,7 @@ export async function parseHtml(
       if (!videoInfoMatch) throw new Error('Failed to parse SS page')
       const { mediaInfo } = JSON.parse(videoInfoMatch[1])
       const epUrl = `https://www.bilibili.com/bangumi/play/ep${mediaInfo.newestEp.id}`
-      const result = await got(epUrl, {
+      const result = await request(epUrl, {
         headers: { cookie: `SESSDATA=${sessdata}` },
       })
       return parseEP(result.body, epUrl, sessdata)
@@ -346,7 +299,7 @@ export async function getDownloadUrl(
   quality: number,
   sessdata: string,
 ): Promise<{ video: string; audio: string }> {
-  const result = await got(
+  const result = await request(
     `https://api.bilibili.com/x/player/playurl?cid=${cid}&bvid=${bvid}&qn=${quality}&type=&otype=json&fourk=1&fnver=0&fnval=80`,
     {
       headers: { cookie: `SESSDATA=${sessdata}` },

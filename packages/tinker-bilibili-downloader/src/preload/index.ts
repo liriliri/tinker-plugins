@@ -1,6 +1,6 @@
 import { contextBridge } from 'electron'
 import {
-  got,
+  request,
   checkLogin,
   checkUrl,
   parseHtml,
@@ -24,7 +24,7 @@ function ensureDir(dir: string): void {
 }
 
 const bilibiliDownloaderObj = {
-  got,
+  request,
   checkLogin,
   checkUrl,
   parseHtml,

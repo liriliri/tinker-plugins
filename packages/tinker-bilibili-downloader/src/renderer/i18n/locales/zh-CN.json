@@ -12,7 +12,6 @@
   "pending": "等待中",
   "error": "错误",
   "openFolder": "打开文件夹",
-  "retry": "重试",
   "delete": "删除",
   "downloadPath": "下载目录",
   "selectFolder": "选择文件夹",
@@ -25,10 +24,5 @@
   "pages": "分集",
   "up": "UP主",
   "duration": "时长",
-  "noTasks": "暂无任务",
-  "invalidUrl": "无效的 B 站链接",
-  "loginStatus": "登录状态",
-  "visitor": "游客",
-  "normalUser": "普通用户",
-  "vipUser": "大会员"
+  "noTasks": "暂无任务"
 }

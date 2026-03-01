@@ -36,8 +36,8 @@
       }
     }
   },
-  "dependencies": {},
   "devDependencies": {
-    "concurrently": "^9.2.0"
+    "concurrently": "^9.2.0",
+    "got": "^11.8.6"
   }
 }

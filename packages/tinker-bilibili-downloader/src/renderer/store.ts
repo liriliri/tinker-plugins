@@ -182,8 +182,12 @@ class Store {
   }
 
   async parseUrl() {
-    const url = this.urlInput.trim()
+    let url = this.urlInput.trim()
     if (!url) return
+
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+      url = `https://${url}`
+    }
 
     const type = bilibiliDownloader.checkUrl(url)
     if (!type) {
@@ -193,7 +197,7 @@ class Store {
 
     this.setLoading(true)
     try {
-      const result = await bilibiliDownloader.got(url, {
+      const result = await bilibiliDownloader.request(url, {
         headers: this.settings.sessdata
           ? { cookie: `SESSDATA=${this.settings.sessdata}` }
           : {},
@@ -224,6 +228,10 @@ class Store {
 
   async startDownload() {
     if (!this.videoInfo) return
+    if (!this.settings.downloadPath) {
+      alert('Please set a download path in settings first.')
+      return
+    }
     this.setShowVideoModal(false)
 
     const nanoid = () =>
