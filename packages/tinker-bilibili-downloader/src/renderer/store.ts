@@ -1,7 +1,7 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 import waitUntil from 'licia/waitUntil'
 import LocalStore from 'licia/LocalStore'
-import { VideoData, qualityMap } from '../common/types'
+import { VideoData, qualityMap, userQuality } from '../common/types'
 import type { TaskData, TaskStatus, Settings } from './types'
 
 export type { TaskData, TaskStatus, Settings }
@@ -165,11 +165,14 @@ class Store {
 
     this.setLoading(true)
     try {
-      const result = await bilibiliDownloader.request(url, {
-        headers: this.settings.sessdata
-          ? { cookie: `SESSDATA=${this.settings.sessdata}` }
-          : {},
-      })
+      const [result, loginStatus] = await Promise.all([
+        bilibiliDownloader.request(url, {
+          headers: this.settings.sessdata
+            ? { cookie: `SESSDATA=${this.settings.sessdata}` }
+            : {},
+        }),
+        bilibiliDownloader.checkLogin(this.settings.sessdata),
+      ])
       const finalUrl =
         result.redirectUrls.length > 0
           ? result.redirectUrls[result.redirectUrls.length - 1]
@@ -179,6 +182,10 @@ class Store {
         type,
         finalUrl,
         this.settings.sessdata,
+      )
+      const allowed = userQuality[loginStatus] ?? userQuality[0]
+      info.qualityOptions = info.qualityOptions.filter((opt) =>
+        allowed.includes(opt.value),
       )
       runInAction(() => {
         this.videoInfo = info

@@ -1,5 +1,11 @@
 // Shared types and constants used by both preload and renderer
 
+export const userQuality: Record<number, number[]> = {
+  0: [16, 32],
+  1: [16, 32, 64, 80],
+  2: [16, 32, 64, 74, 80, 112, 116, 120, 125, 126, 127],
+}
+
 export const qualityMap: Record<number, string> = {
   127: 'quality_127',
   126: 'quality_126',
