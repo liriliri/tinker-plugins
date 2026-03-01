@@ -1,17 +1,17 @@
 // Shared types and constants used by both preload and renderer
 
 export const qualityMap: Record<number, string> = {
-  127: '8K 超高清',
-  126: '杜比视界',
-  125: 'HDR 真彩色',
-  120: '4K 超清',
-  116: '1080P 60帧',
-  112: '1080P 高码率',
-  80: '1080P 高清',
-  74: '720P 60帧',
-  64: '720P 高清',
-  32: '480P 清晰',
-  16: '360P 流畅',
+  127: 'quality_127',
+  126: 'quality_126',
+  125: 'quality_125',
+  120: 'quality_120',
+  116: 'quality_116',
+  112: 'quality_112',
+  80: 'quality_80',
+  74: 'quality_74',
+  64: 'quality_64',
+  32: 'quality_32',
+  16: 'quality_16',
 }
 
 export interface Page {

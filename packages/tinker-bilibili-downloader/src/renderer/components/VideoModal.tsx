@@ -25,7 +25,9 @@ const VideoModal = observer(() => {
         )}
       >
         {/* Header */}
-        <div className="p-4 border-b border-neutral-200 dark:border-neutral-700 flex gap-3">
+        <div
+          className={className('p-4 border-b flex gap-3', tw.border.divider)}
+        >
           <img
             src={videoInfo.cover}
             alt="cover"
@@ -50,7 +52,7 @@ const VideoModal = observer(() => {
         </div>
 
         {/* Quality selection */}
-        <div className="p-4 border-b border-neutral-200 dark:border-neutral-700">
+        <div className={className('p-4 border-b', tw.border.divider)}>
           <div
             className={className('text-xs font-medium mb-2', tw.text.secondary)}
           >
@@ -75,7 +77,7 @@ const VideoModal = observer(() => {
                       ),
                 )}
               >
-                {opt.label}
+                {t(opt.label)}
               </button>
             ))}
           </div>
@@ -83,7 +85,12 @@ const VideoModal = observer(() => {
 
         {/* Pages selection (multi-page) */}
         {isMultiPage && (
-          <div className="p-4 border-b border-neutral-200 dark:border-neutral-700 flex-1 overflow-y-auto">
+          <div
+            className={className(
+              'p-4 border-b flex-1 overflow-y-auto',
+              tw.border.divider,
+            )}
+          >
             <div className="flex items-center justify-between mb-2">
               <div
                 className={className('text-xs font-medium', tw.text.secondary)}

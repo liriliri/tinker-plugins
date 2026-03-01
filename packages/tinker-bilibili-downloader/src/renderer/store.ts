@@ -1,44 +1,12 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 import waitUntil from 'licia/waitUntil'
 import LocalStore from 'licia/LocalStore'
-import { VideoData, qualityMap } from '../shared/types'
+import { VideoData, qualityMap } from '../common/types'
+import type { TaskData, TaskStatus, Settings } from './types'
+
+export type { TaskData, TaskStatus, Settings }
 
 const storage = new LocalStore('tinker-bilibili-downloader')
-
-export type TaskStatus =
-  | 'pending'
-  | 'downloading'
-  | 'merging'
-  | 'done'
-  | 'error'
-
-export interface TaskData {
-  id: string
-  title: string
-  cover: string
-  bvid: string
-  cid: number
-  quality: number
-  qualityLabel: string
-  downloadUrl: { video: string; audio: string }
-  outputPath: string
-  videoTmpPath: string
-  audioTmpPath: string
-  status: TaskStatus
-  progress: number
-  videoProgress: number
-  audioProgress: number
-  error?: string
-  createdTime: number
-}
-
-export interface Settings {
-  downloadPath: string
-  sessdata: string
-  isMerge: boolean
-  isDelete: boolean
-  isFolder: boolean
-}
 
 class Store {
   isDark: boolean = false
@@ -207,7 +175,7 @@ class Store {
           ? result.redirectUrls[result.redirectUrls.length - 1]
           : url
       const info = await bilibiliDownloader.parseHtml(
-        result.body,
+        result.body as string,
         type,
         finalUrl,
         this.settings.sessdata,
@@ -218,9 +186,11 @@ class Store {
         this.selectedPages = info.page.map((p) => p.page)
         this.showVideoModal = true
       })
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('Failed to parse URL:', err)
-      alert(`Failed to parse URL: ${err.message}`)
+      alert(
+        `Failed to parse URL: ${err instanceof Error ? err.message : String(err)}`,
+      )
     } finally {
       runInAction(() => this.setLoading(false))
     }
@@ -275,7 +245,7 @@ class Store {
             this.selectedQuality,
             this.settings.sessdata,
           )
-        } catch (err: any) {
+        } catch (err: unknown) {
           console.error('Failed to get download URL:', err)
           continue
         }
@@ -375,10 +345,13 @@ class Store {
       runInAction(() => {
         this.updateTask(taskId, { status: 'done', progress: 100 })
       })
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('Download failed:', err)
       runInAction(() => {
-        this.updateTask(taskId, { status: 'error', error: err.message })
+        this.updateTask(taskId, {
+          status: 'error',
+          error: err instanceof Error ? err.message : String(err),
+        })
       })
     }
   }

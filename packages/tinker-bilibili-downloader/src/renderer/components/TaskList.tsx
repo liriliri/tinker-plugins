@@ -1,10 +1,15 @@
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import className from 'licia/className'
-import store, { TaskData } from '../store'
+import store from '../store'
+import type { TaskData } from '../types'
 import { tw } from '../theme'
 
-const TaskItem = observer(({ task }: { task: TaskData }) => {
+interface TaskItemProps {
+  task: TaskData
+}
+
+const TaskItem = observer(({ task }: TaskItemProps) => {
   const { t } = useTranslation()
 
   const handleOpenFolder = () => {
@@ -35,7 +40,7 @@ const TaskItem = observer(({ task }: { task: TaskData }) => {
           {task.title}
         </div>
         <div className={className('text-xs mt-0.5', tw.text.tertiary)}>
-          {task.qualityLabel}
+          {t(task.qualityLabel)}
         </div>
 
         {/* Progress bar */}

@@ -27,7 +27,7 @@ const SettingsPanel = observer(() => {
         )}
       >
         {/* Header */}
-        <div className="p-4 border-b border-neutral-200 dark:border-neutral-700">
+        <div className={className('p-4 border-b', tw.border.divider)}>
           <h2 className={className('font-semibold', tw.text.primary)}>
             {t('settings')}
           </h2>
@@ -112,7 +112,12 @@ const SettingsPanel = observer(() => {
         </div>
 
         {/* Footer */}
-        <div className="p-4 border-t border-neutral-200 dark:border-neutral-700 flex justify-end">
+        <div
+          className={className(
+            'p-4 border-t flex justify-end',
+            tw.border.divider,
+          )}
+        >
           <button
             onClick={() => store.setShowSettings(false)}
             className={className(
@@ -130,30 +135,15 @@ const SettingsPanel = observer(() => {
   )
 })
 
-const Toggle = ({
-  label,
-  checked,
-  onChange,
-}: {
-  label: string
-  checked: boolean
-  onChange: (v: boolean) => void
-}) => {
+const Toggle = ({ label, checked, onChange }: ToggleProps) => {
   return (
     <label className="flex items-center justify-between cursor-pointer">
-      <span
-        className={className(
-          'text-sm',
-          'text-neutral-700 dark:text-neutral-300',
-        )}
-      >
-        {label}
-      </span>
+      <span className={className('text-sm', tw.text.secondary)}>{label}</span>
       <div
         onClick={() => onChange(!checked)}
         className={className(
           'relative w-10 h-5 rounded-full transition-colors',
-          checked ? 'bg-pink-500' : 'bg-neutral-300 dark:bg-neutral-600',
+          checked ? tw.toggle.trackActive : tw.toggle.trackInactive,
         )}
       >
         <div
@@ -168,3 +158,9 @@ const Toggle = ({
 }
 
 export default SettingsPanel
+
+interface ToggleProps {
+  label: string
+  checked: boolean
+  onChange: (v: boolean) => void
+}

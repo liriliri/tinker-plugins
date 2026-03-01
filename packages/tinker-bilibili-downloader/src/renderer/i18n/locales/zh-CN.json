@@ -24,5 +24,16 @@
   "pages": "分集",
   "up": "UP主",
   "duration": "时长",
-  "noTasks": "暂无任务"
+  "noTasks": "暂无任务",
+  "quality_127": "8K 超高清",
+  "quality_126": "杜比视界",
+  "quality_125": "HDR 真彩色",
+  "quality_120": "4K 超清",
+  "quality_116": "1080P 60帧",
+  "quality_112": "1080P 高码率",
+  "quality_80": "1080P 高清",
+  "quality_74": "720P 60帧",
+  "quality_64": "720P 高清",
+  "quality_32": "480P 清晰",
+  "quality_16": "360P 流畅"
 }

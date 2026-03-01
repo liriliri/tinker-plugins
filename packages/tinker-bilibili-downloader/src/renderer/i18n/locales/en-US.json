@@ -24,5 +24,16 @@
   "pages": "Episodes",
   "up": "UP",
   "duration": "Duration",
-  "noTasks": "No tasks"
+  "noTasks": "No tasks",
+  "quality_127": "8K Ultra HD",
+  "quality_126": "Dolby Vision",
+  "quality_125": "HDR True Color",
+  "quality_120": "4K Ultra HD",
+  "quality_116": "1080P 60fps",
+  "quality_112": "1080P High Rate",
+  "quality_80": "1080P HD",
+  "quality_74": "720P 60fps",
+  "quality_64": "720P HD",
+  "quality_32": "480P",
+  "quality_16": "360P"
 }

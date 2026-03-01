@@ -15,6 +15,7 @@ export const tw = {
 
   border: {
     card: 'border border-neutral-300 dark:border-neutral-700',
+    divider: 'border-neutral-200 dark:border-neutral-700',
   },
 
   button: {
@@ -57,5 +58,10 @@ export const tw = {
     accent: 'text-pink-500 dark:text-pink-400',
     accentGradient:
       'from-pink-500 to-pink-600 dark:from-pink-400 dark:to-pink-500',
+  },
+
+  toggle: {
+    trackActive: 'bg-pink-500',
+    trackInactive: 'bg-neutral-300 dark:bg-neutral-600',
   },
 }
