@@ -48,40 +48,28 @@ interface BVInitialState {
   videoData: BilibiliVideoData
 }
 
-interface BilibiliUpInfo {
-  name?: string
-  mid?: number
-}
-
-interface BilibiliMediaInfo {
+interface BangumiEpisode {
+  aid: number
+  bvid: string
+  cid: number
   cover: string
-  upInfo?: BilibiliUpInfo
-  newestEp: { id: number }
-}
-
-interface BilibiliEpInfo {
-  bvid: string
-  cid: number
   duration: number
-}
-
-interface BilibiliEpItem {
-  share_copy: string
-  duration: number
-  cid: number
-  bvid: string
+  ep_id: number
+  id: number
+  season_id: number
   share_url: string
+  show_title?: string
+  title?: string
+  long_title?: string
 }
 
-interface EPInitialState {
-  h1Title: string
-  mediaInfo: BilibiliMediaInfo
-  epInfo: BilibiliEpInfo
-  epList: BilibiliEpItem[]
-}
-
-interface SSInitialState {
-  mediaInfo: BilibiliMediaInfo
+interface BangumiSeasonResult {
+  cover: string
+  season_title: string
+  season_id: number
+  episodes: BangumiEpisode[]
+  section?: { id: number; title: string; episodes: BangumiEpisode[] }[]
+  up_info?: { uname: string; mid: number }
 }
 
 interface AcceptQuality {
@@ -209,17 +197,6 @@ function parseBVPageData(videoData: BilibiliVideoData, url: string): Page[] {
   }))
 }
 
-function parseEPPageData(epList: BilibiliEpItem[]): Page[] {
-  return epList.map((item, index) => ({
-    title: item.share_copy,
-    page: index + 1,
-    duration: formatSeconds(item.duration / 1000),
-    cid: item.cid,
-    bvid: item.bvid,
-    url: item.share_url,
-  }))
-}
-
 async function parseBV(
   html: string,
   url: string,
@@ -285,65 +262,79 @@ async function parseBV(
   }
 }
 
-async function parseEP(
-  html: string,
+async function parseBangumi(
+  id: string,
+  idType: 'ep' | 'ss',
   url: string,
   sessdata: string,
 ): Promise<VideoData> {
-  const videoInfoMatch = html.match(
-    /<script>window\.__INITIAL_STATE__=([\s\S]*?);\(function\(\)\{var s;/,
+  const params =
+    idType === 'ss'
+      ? `season_id=${id.replace(/\D/g, '')}`
+      : `ep_id=${id.replace(/\D/g, '')}`
+  const result = await request(
+    `https://api.bilibili.com/pgc/view/web/season?${params}`,
+    {
+      headers: { cookie: `SESSDATA=${sessdata}` },
+      responseType: 'json',
+    },
   )
-  if (!videoInfoMatch) throw new Error('Failed to parse EP page')
-  const { h1Title, mediaInfo, epInfo, epList } = JSON.parse(
-    videoInfoMatch[1],
-  ) as EPInitialState
-
-  let acceptQuality: AcceptQuality
-  try {
-    const playInfoMatch = html.match(
-      /<script>window\.__playinfo__=([\s\S]*?)<\/script><script>window\.__INITIAL_STATE__=/,
-    )
-    if (!playInfoMatch) throw new Error('no playinfo')
-    const playInfo = JSON.parse(playInfoMatch[1]) as {
-      data: { accept_quality: number[]; dash?: BilibiliDash }
-    }
-    acceptQuality = {
-      accept_quality: playInfo.data.accept_quality,
-      video: playInfo.data.dash?.video || [],
-      audio: playInfo.data.dash?.audio || [],
-    }
-  } catch {
-    acceptQuality = await getAcceptQuality(epInfo.cid, epInfo.bvid, sessdata)
+  const body = result.body as {
+    code: number
+    message: string
+    result: BangumiSeasonResult
   }
+  if (body.code !== 0) throw new Error(`Bilibili API error: ${body.message}`)
+  const data = body.result
+
+  const epIdNum = idType === 'ep' ? Number(id.replace(/\D/g, '')) : undefined
+  const targetEp = epIdNum
+    ? (data.episodes.find((ep) => ep.ep_id === epIdNum) ?? data.episodes[0])
+    : data.episodes[0]
+
+  const acceptQuality = await getAcceptQuality(
+    targetEp.cid,
+    targetEp.bvid,
+    sessdata,
+  )
+
+  const pages: Page[] = data.episodes.map((ep, index) => ({
+    title: ep.long_title || ep.show_title || ep.title || String(index + 1),
+    page: index + 1,
+    duration: formatSeconds(ep.duration / 1000),
+    cid: ep.cid,
+    bvid: ep.bvid,
+    epid: ep.ep_id,
+    ssid: data.season_id,
+    url: ep.share_url,
+  }))
 
   return {
     id: '',
-    title: h1Title,
+    title: data.season_title,
     url,
-    bvid: epInfo.bvid,
-    cid: epInfo.cid,
-    cover: mediaInfo.cover.startsWith('http')
-      ? mediaInfo.cover
-      : `https:${mediaInfo.cover}`,
+    bvid: targetEp.bvid,
+    cid: targetEp.cid,
+    cover: data.cover,
     createdTime: -1,
     quality: -1,
-    duration: formatSeconds(epInfo.duration / 1000),
-    up: [
-      { name: mediaInfo.upInfo?.name || '', mid: mediaInfo.upInfo?.mid || 0 },
-    ],
+    duration: formatSeconds(targetEp.duration / 1000),
+    up: data.up_info
+      ? [{ name: data.up_info.uname, mid: data.up_info.mid }]
+      : [],
     qualityOptions: acceptQuality.accept_quality.map((q) => ({
       label: qualityMap[q] || String(q),
       value: q,
     })),
-    page: parseEPPageData(epList),
+    page: pages,
     video: acceptQuality.video.map((v) => ({
       id: v.id,
-      cid: epInfo.cid,
+      cid: targetEp.cid,
       url: v.baseUrl || v.base_url || '',
     })),
     audio: acceptQuality.audio.map((a) => ({
       id: a.id,
-      cid: epInfo.cid,
+      cid: targetEp.cid,
       url: a.baseUrl || a.base_url || '',
     })),
     downloadUrl: { video: '', audio: '' },
@@ -359,19 +350,13 @@ export async function parseHtml(
   switch (type) {
     case 'BV':
       return parseBV(html, url, sessdata)
-    case 'ep':
-      return parseEP(html, url, sessdata)
+    case 'ep': {
+      const epId = url.match(/play\/ep(\d+)/)?.[1] ?? ''
+      return parseBangumi(epId, 'ep', url, sessdata)
+    }
     case 'ss': {
-      const videoInfoMatch = html.match(
-        /<script>window\.__INITIAL_STATE__=([\s\S]*?);\(function\(\)\{var s;/,
-      )
-      if (!videoInfoMatch) throw new Error('Failed to parse SS page')
-      const { mediaInfo } = JSON.parse(videoInfoMatch[1]) as SSInitialState
-      const epUrl = `https://www.bilibili.com/bangumi/play/ep${mediaInfo.newestEp.id}`
-      const result = await request(epUrl, {
-        headers: { cookie: `SESSDATA=${sessdata}` },
-      })
-      return parseEP(result.body as string, epUrl, sessdata)
+      const ssId = url.match(/play\/ss(\d+)/)?.[1] ?? ''
+      return parseBangumi(ssId, 'ss', url, sessdata)
     }
     default:
       throw new Error(`Unknown URL type: ${type}`)
@@ -383,16 +368,37 @@ export async function getDownloadUrl(
   bvid: string,
   quality: number,
   sessdata: string,
+  epid?: number,
+  ssid?: number,
 ): Promise<{ video: string; audio: string }> {
-  const result = await request(
-    `https://api.bilibili.com/x/player/playurl?cid=${cid}&bvid=${bvid}&qn=${quality}&type=&otype=json&fourk=1&fnver=0&fnval=80`,
-    {
-      headers: { cookie: `SESSDATA=${sessdata}` },
-      responseType: 'json',
-    },
-  )
-  const body = result.body as { data?: { dash?: BilibiliDash } }
-  const dash = body.data?.dash
+  let result: GotResult
+  let dash: BilibiliDash | undefined
+
+  if (epid && ssid) {
+    result = await request(
+      `https://api.bilibili.com/pgc/player/web/v2/playurl?cid=${cid}&ep_id=${epid}&season_id=${ssid}&qn=${quality}&type=&otype=json&fourk=1&fnver=0&fnval=80`,
+      {
+        headers: { cookie: `SESSDATA=${sessdata}` },
+        responseType: 'json',
+      },
+    )
+    const body = result.body as {
+      code: number
+      result?: { video_info?: { dash?: BilibiliDash } }
+    }
+    dash = body.result?.video_info?.dash
+  } else {
+    result = await request(
+      `https://api.bilibili.com/x/player/playurl?cid=${cid}&bvid=${bvid}&qn=${quality}&type=&otype=json&fourk=1&fnver=0&fnval=80`,
+      {
+        headers: { cookie: `SESSDATA=${sessdata}` },
+        responseType: 'json',
+      },
+    )
+    const body = result.body as { data?: { dash?: BilibiliDash } }
+    dash = body.data?.dash
+  }
+
   if (!dash) throw new Error('No dash data in response')
 
   const videoItem = dash.video.find((v) => v.id === quality) || dash.video[0]

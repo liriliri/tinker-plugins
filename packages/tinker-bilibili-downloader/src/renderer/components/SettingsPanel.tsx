@@ -25,7 +25,7 @@ const SettingsPanel = observer(() => {
         <Dialog.Content
           className={className(
             'fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2',
-            'z-50 w-[420px] rounded-2xl shadow-2xl outline-none',
+            'z-50 w-[420px] max-w-[calc(100vw-2rem)] max-h-[calc(100vh-2rem)] rounded-2xl shadow-2xl outline-none overflow-auto',
             tw.background.card,
             tw.border.card,
           )}

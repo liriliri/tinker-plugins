@@ -25,6 +25,8 @@ export interface Page {
   duration: string
   cid: number
   bvid: string
+  epid?: number
+  ssid?: number
 }
 
 export interface VideoData {

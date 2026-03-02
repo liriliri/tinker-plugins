@@ -247,6 +247,8 @@ class Store {
             pageInfo.bvid,
             this.selectedQuality,
             this.settings.sessdata,
+            pageInfo.epid,
+            pageInfo.ssid,
           )
         } catch (err: unknown) {
           console.error('Failed to get download URL:', err)
