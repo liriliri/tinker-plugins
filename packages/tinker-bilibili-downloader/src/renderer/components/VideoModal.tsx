@@ -25,6 +25,7 @@ const VideoModal = observer(() => {
           <Dialog.Content
             className={className(
               'w-[520px] max-w-full max-h-[90vh] flex flex-col rounded-2xl shadow-2xl outline-none overflow-hidden',
+              isMultiPage && 'h-[90vh]',
               tw.background.card,
               tw.border.card,
             )}
@@ -113,7 +114,7 @@ const VideoModal = observer(() => {
                   </button>
                 </div>
                 <ScrollArea.Root className="flex-1 min-h-0 overflow-hidden">
-                  <ScrollArea.Viewport className="w-full h-full">
+                  <ScrollArea.Viewport className="h-full w-full">
                     <div className="space-y-0.5 px-4 pb-4">
                       {videoInfo.page.map((p) => (
                         <label

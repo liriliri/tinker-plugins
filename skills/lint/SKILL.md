@@ -91,6 +91,13 @@ Go through each category below and report violations with file path and line num
 - When a UI component library is needed, prefer `@radix-ui/*` packages
 - All UI library dependencies (e.g. `@radix-ui/*`, `lucide-react`) must be listed under `devDependencies` in `package.json`, not `dependencies`
 
+### 12. Use licia Utilities
+
+- Prefer functions from the `licia` utility library over hand-rolled implementations (e.g. use `licia/map`, `licia/each`, `licia/isStr`, `licia/trim`, etc.)
+- Common candidates: string manipulation, type checking, array/object helpers, async utilities, DOM helpers
+- Import individual modules: `import map from 'licia/map'` (not `import { map } from 'licia'`)
+- Do not reimplement logic that already exists in `licia`
+
 ## Output Format
 
 For each violation found, output:
