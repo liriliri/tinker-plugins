@@ -23,21 +23,6 @@ const CATEGORY_ICONS: Record<string, string> = {
 const CategorySelect = observer(() => {
   const { t } = useTranslation()
 
-  const categories = [
-    { id: 'all', key: 'all', label: t('all') },
-    ...store.categoryList.map((cat) => {
-      return {
-        id: cat,
-        key: cat,
-        label: t(cat),
-      }
-    }),
-  ]
-
-  const selectedCategory = categories.find(
-    (cat) => cat.id === store.selectedCategory,
-  )
-
   return (
     <Select.Root
       value={store.selectedCategory}
@@ -57,7 +42,7 @@ const CategorySelect = observer(() => {
       >
         <div className="flex items-center gap-2">
           <span className="text-sm">
-            {CATEGORY_ICONS[selectedCategory?.key || 'all'] || '📦'}
+            {CATEGORY_ICONS[store.selectedCategory] || '📦'}
           </span>
           <Select.Value />
         </div>
@@ -75,22 +60,20 @@ const CategorySelect = observer(() => {
           sideOffset={5}
         >
           <Select.Viewport className="p-1">
-            {categories.map((cat) => (
+            {['all', ...store.categoryList].map((cat) => (
               <Select.Item
-                key={cat.id}
-                value={cat.id}
+                key={cat}
+                value={cat}
                 className={className(
                   'flex items-center gap-2 px-3 py-2 rounded cursor-pointer',
                   'text-sm outline-none transition-colors',
                   tw.text.primary,
                   tw.background.selectItemHover,
-                  'data-highlighted:bg-zinc-200 dark:data-highlighted:bg-zinc-700',
+                  tw.background.selectItemHighlight,
                 )}
               >
-                <span className="text-sm">
-                  {CATEGORY_ICONS[cat.key] || '📦'}
-                </span>
-                <Select.ItemText>{cat.label}</Select.ItemText>
+                <span className="text-sm">{CATEGORY_ICONS[cat] || '📦'}</span>
+                <Select.ItemText>{t(cat)}</Select.ItemText>
               </Select.Item>
             ))}
           </Select.Viewport>

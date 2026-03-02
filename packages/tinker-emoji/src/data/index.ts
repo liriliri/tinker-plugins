@@ -12,11 +12,10 @@ import objects from './objects.json'
 import symbols from './symbols.json'
 import flags from './flags.json'
 
-// 为每个分类的 emoji 添加 category 字段
-const addCategory = (emojis: any[], category: string): EmojiData[] =>
+const addCategory = (emojis: EmojiData[], category: string): EmojiData[] =>
   emojis.map((emoji) => ({ ...emoji, category }))
 
-export const allEmojis: EmojiData[] = [
+const allEmojis: EmojiData[] = [
   ...addCategory(smileys_emotion, 'smileysEmotion'),
   ...addCategory(other, 'other'),
   ...addCategory(people_body, 'peopleBody'),

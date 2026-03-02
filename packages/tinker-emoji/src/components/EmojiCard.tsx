@@ -46,10 +46,8 @@ const EmojiCard = observer(({ emoji }: EmojiCardProps) => {
               }
             }}
           >
-            {/* Emoji */}
             <div className="text-3xl text-center mb-1.5">{emoji.emoji}</div>
 
-            {/* Description */}
             <div
               className={className(
                 'text-[10px] text-center truncate leading-tight',
@@ -59,7 +57,6 @@ const EmojiCard = observer(({ emoji }: EmojiCardProps) => {
               {description || emoji.name}
             </div>
 
-            {/* Copied indicator */}
             {copied && (
               <div
                 className={className(

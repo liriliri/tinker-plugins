@@ -1,9 +1,8 @@
 import { makeAutoObservable, runInAction } from 'mobx'
-import type { EmojiData, CategoryData } from './types'
+import type { EmojiData } from './types'
 
 class Store {
   emojis: EmojiData[] = []
-  categories: CategoryData = {}
   categoryList: string[] = []
 
   selectedCategory: string = 'all'
@@ -24,19 +23,14 @@ class Store {
       runInAction(() => {
         this.emojis = emojisModule.default as EmojiData[]
 
-        // Build categories from emojis
-        const categoriesMap: CategoryData = {}
-        this.emojis.forEach((emoji) => {
-          const category = emoji.category
-          if (!category) return
-          if (!categoriesMap[category]) {
-            categoriesMap[category] = []
+        const seen = new Set<string>()
+        const categoryKeys: string[] = []
+        for (const emoji of this.emojis) {
+          if (emoji.category && !seen.has(emoji.category)) {
+            seen.add(emoji.category)
+            categoryKeys.push(emoji.category)
           }
-          categoriesMap[category].push(emoji)
-        })
-
-        this.categories = categoriesMap
-        const categoryKeys = Object.keys(this.categories)
+        }
         const otherIndex = categoryKeys.indexOf('other')
         if (otherIndex !== -1) {
           categoryKeys.splice(otherIndex, 1)
@@ -65,12 +59,10 @@ class Store {
   get filteredEmojis(): EmojiData[] {
     let result = this.emojis
 
-    // Filter by category
     if (this.selectedCategory !== 'all') {
       result = result.filter((e) => e.category === this.selectedCategory)
     }
 
-    // Filter by search query
     if (this.searchQuery.trim()) {
       const query = this.searchQuery.toLowerCase().trim()
       result = result.filter((emoji) => {
@@ -80,7 +72,6 @@ class Store {
         const keywordsZhLower = emoji.keywords.zh.map((k) => k.toLowerCase())
         const keywordsEnLower = emoji.keywords.en.map((k) => k.toLowerCase())
 
-        // Search in name, descriptions, and keywords
         return (
           nameLower.includes(query) ||
           descZhLower.includes(query) ||

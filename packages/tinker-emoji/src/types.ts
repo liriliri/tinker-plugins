@@ -11,7 +11,3 @@ export interface EmojiData {
   }
   category?: string
 }
-
-export interface CategoryData {
-  [category: string]: EmojiData[]
-}

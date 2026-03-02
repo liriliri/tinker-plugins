@@ -5,6 +5,8 @@ export const tw = {
     hover: 'hover:bg-zinc-100 dark:hover:bg-zinc-800',
     scrollbarHover: 'hover:bg-zinc-100/50 dark:hover:bg-zinc-800/50',
     selectItemHover: 'hover:bg-zinc-200 dark:hover:bg-zinc-700',
+    selectItemHighlight:
+      'data-highlighted:bg-zinc-200 dark:data-highlighted:bg-zinc-700',
   },
   text: {
     primary: 'text-zinc-900 dark:text-zinc-100',
