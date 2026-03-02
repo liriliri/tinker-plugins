@@ -1,19 +1,18 @@
 import { makeAutoObservable } from 'mobx'
 import waitUntil from 'licia/waitUntil'
 import LocalStore from 'licia/LocalStore'
-import { TokenUsageData, DataSource } from '../preload'
+import type { TokenUsageData, DataSource } from '../common/types'
 
 const storage = new LocalStore('tinker-token-usage')
 const STORAGE_KEY_DATA_SOURCE = 'dataSource'
 
-class Store {
-  // Theme management
-  isDark: boolean = false
+function todayStr(): string {
+  return new Date().toISOString().split('T')[0]
+}
 
-  // Data source management
+class Store {
   dataSource: DataSource = 'claude-code'
 
-  // Token usage state
   usageData: TokenUsageData | null = {
     total: {
       inputTokens: 0,
@@ -28,7 +27,7 @@ class Store {
   loading: boolean = false
   error: string | null = null
   dateRange: { start: string; end: string } | null = (() => {
-    const today = new Date().toISOString().split('T')[0]
+    const today = todayStr()
     return { start: today, end: today }
   })()
   seriesVisibility: {
@@ -58,31 +57,9 @@ class Store {
 
   private async init() {
     await waitUntil(() => typeof tokenUsage !== 'undefined')
-    this.initTheme()
     this.loadUsageData()
   }
 
-  // Theme methods
-  setIsDark(isDark: boolean) {
-    this.isDark = isDark
-  }
-
-  protected async initTheme() {
-    try {
-      const theme = await tinker.getTheme()
-      this.isDark = theme === 'dark'
-
-      // Listen for theme changes
-      tinker.on('changeTheme', async () => {
-        const newTheme = await tinker.getTheme()
-        this.setIsDark(newTheme === 'dark')
-      })
-    } catch (err) {
-      console.error('Failed to initialize theme:', err)
-    }
-  }
-
-  // Data source methods
   setDataSource(source: DataSource) {
     this.dataSource = source
     storage.set(STORAGE_KEY_DATA_SOURCE, source)
@@ -93,7 +70,6 @@ class Store {
     await this.loadUsageData()
   }
 
-  // Token usage methods
   setUsageData(data: TokenUsageData | null) {
     this.usageData = data
   }
@@ -117,7 +93,6 @@ class Store {
       (v) => v,
     ).length
 
-    // Prevent hiding the last visible series
     if (visibleCount === 1 && this.seriesVisibility[seriesKey]) {
       return
     }
@@ -125,7 +100,6 @@ class Store {
     this.seriesVisibility[seriesKey] = !this.seriesVisibility[seriesKey]
   }
 
-  // Computed property: calculate stats for selected date range
   get filteredStats() {
     if (!this.usageData || !this.dateRange) {
       return this.usageData?.total || null
@@ -163,7 +137,6 @@ class Store {
     try {
       const data = await tokenUsage.getUsage(this.dataSource)
       this.setUsageData(data)
-      // Update date range to actual data range
       if (data.byDay && data.byDay.length > 0) {
         const startDate = data.byDay[0].date
         const endDate = data.byDay[data.byDay.length - 1].date
@@ -174,8 +147,7 @@ class Store {
       this.setError(
         error instanceof Error ? error.message : 'Unknown error occurred',
       )
-      // On error, show zero data
-      const today = new Date().toISOString().split('T')[0]
+      const today = todayStr()
       this.setUsageData({
         total: {
           inputTokens: 0,

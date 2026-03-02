@@ -36,7 +36,9 @@ const StatCard = ({
         onClick && tw.background.hover,
       )}
     >
-      <div className="text-[10px] font-medium text-neutral-500 dark:text-neutral-400 tracking-wider mb-1">
+      <div
+        className={`text-[10px] font-medium ${tw.text.muted} tracking-wider mb-1`}
+      >
         {label}
       </div>
       <div
@@ -44,7 +46,7 @@ const StatCard = ({
           'text-xl font-bold',
           isActive
             ? 'bg-gradient-to-br bg-clip-text text-transparent'
-            : 'text-neutral-500 dark:text-neutral-400',
+            : tw.text.muted,
           isActive && colorClasses[color],
         )}
       >

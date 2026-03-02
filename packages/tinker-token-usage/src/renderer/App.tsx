@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import className from 'licia/className'
 import store from './store'
 import { tw } from './theme'
-import { formatNumber } from './lib/format'
+import { formatNumber, formatDate } from './lib/format'
 import StatCard from './components/StatCard'
 import ErrorMessage from './components/ErrorMessage'
 import RefreshButton from './components/RefreshButton'
@@ -17,26 +17,15 @@ const App = observer(() => {
   const formatDateRange = () => {
     if (!dateRange) return ''
 
-    const formatDateFull = (dateStr: string) => {
-      try {
-        const date = new Date(dateStr)
-        // Use the current i18n language for date formatting
-        const locale = i18n.language === 'zh-CN' ? 'zh-CN' : 'en-US'
-        return date.toLocaleDateString(locale, {
-          month: 'short',
-          day: 'numeric',
-          year: 'numeric',
-        })
-      } catch {
-        return dateStr
-      }
-    }
+    const locale = i18n.language === 'zh-CN' ? 'zh-CN' : 'en-US'
+    const fmt = (dateStr: string) =>
+      formatDate(dateStr, locale, { year: 'numeric' })
 
     if (dateRange.start === dateRange.end) {
-      return formatDateFull(dateRange.start)
+      return fmt(dateRange.start)
     }
 
-    return `${formatDateFull(dateRange.start)} - ${formatDateFull(dateRange.end)}`
+    return `${fmt(dateRange.start)} - ${fmt(dateRange.end)}`
   }
 
   return (

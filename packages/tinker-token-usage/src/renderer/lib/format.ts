@@ -2,15 +2,17 @@ export const formatNumber = (num: number): string => {
   return num.toLocaleString()
 }
 
-export const formatDate = (dateStr: string, locale?: string): string => {
+export const formatDate = (
+  dateStr: string,
+  locale?: string,
+  options?: Intl.DateTimeFormatOptions,
+): string => {
   try {
-    // ccusage returns date in YYYY-MM-DD format
     const date = new Date(dateStr)
-
-    // Use locale-aware formatting
     return date.toLocaleDateString(locale, {
       month: 'short',
       day: 'numeric',
+      ...options,
     })
   } catch {
     return dateStr

@@ -5,6 +5,7 @@ import ReactECharts from 'echarts-for-react'
 import className from 'licia/className'
 import { formatNumber, formatDate } from '../lib/format'
 import store from '../store'
+import { tw } from '../theme'
 
 const DailyChart = observer(() => {
   const { t, i18n } = useTranslation()
@@ -40,7 +41,11 @@ const DailyChart = observer(() => {
     setZoom(null)
   }, [usageData])
 
-  const handleDataZoom = (params: any) => {
+  const handleDataZoom = (params: {
+    batch?: Array<{ start: number; end: number }>
+    start?: number
+    end?: number
+  }) => {
     const payload = Array.isArray(params?.batch) ? params.batch[0] : params
     const start = typeof payload?.start === 'number' ? payload.start : null
     const end = typeof payload?.end === 'number' ? payload.end : null
@@ -68,7 +73,9 @@ const DailyChart = observer(() => {
       <div className={className('p-8 flex justify-center items-center')}>
         <div
           className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-          style={{ borderColor: '#df754f transparent #df754f transparent' }}
+          style={{
+            borderColor: `${tw.chart.spinner} transparent ${tw.chart.spinner} transparent`,
+          }}
           role="status"
         >
           <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
@@ -81,15 +88,22 @@ const DailyChart = observer(() => {
 
   const chartOption = {
     backgroundColor: 'transparent',
-    color: ['#3b82f6', '#10b981', '#a855f7', '#f59e0b'],
+    color: tw.chart.colors,
     tooltip: {
       trigger: 'axis',
-      backgroundColor: 'rgba(255, 255, 255, 0.95)',
-      borderColor: 'rgba(148, 163, 184, 0.35)',
-      textStyle: { color: '#0f172a' },
-      formatter: (params: any) => {
+      backgroundColor: tw.chart.tooltip.background,
+      borderColor: tw.chart.tooltip.border,
+      textStyle: { color: tw.chart.tooltip.text },
+      formatter: (
+        params: Array<{
+          axisValue: string
+          marker: string
+          seriesName: string
+          value: number
+        }>,
+      ) => {
         let result = `<div style="font-weight: 600; margin-bottom: 4px;">${params[0].axisValue}</div>`
-        params.forEach((param: any) => {
+        params.forEach((param) => {
           result += `<div style="margin: 2px 0;">${param.marker} ${param.seriesName}: ${formatNumber(param.value)}</div>`
         })
         return result
@@ -108,9 +122,9 @@ const DailyChart = observer(() => {
         xAxisIndex: 0,
         height: 24,
         bottom: 20,
-        borderColor: 'rgba(148, 163, 184, 0.35)',
-        fillerColor: 'rgba(59, 130, 246, 0.12)',
-        handleStyle: { color: 'rgba(59, 130, 246, 0.6)' },
+        borderColor: tw.chart.zoom.border,
+        fillerColor: tw.chart.zoom.filler,
+        handleStyle: { color: tw.chart.zoom.handle },
         start: zoom?.start,
         end: zoom?.end,
       },
@@ -118,8 +132,8 @@ const DailyChart = observer(() => {
     xAxis: {
       type: 'category',
       data: chartData.dates,
-      axisLabel: { hideOverlap: true, color: '#64748b' },
-      axisLine: { lineStyle: { color: 'rgba(148, 163, 184, 0.35)' } },
+      axisLabel: { hideOverlap: true, color: tw.chart.axis.label },
+      axisLine: { lineStyle: { color: tw.chart.axis.line } },
     },
     yAxis: [
       {
@@ -127,17 +141,17 @@ const DailyChart = observer(() => {
         name: 'tokens',
         position: 'left',
         axisLabel: {
-          color: '#64748b',
+          color: tw.chart.axis.label,
           formatter: (value: number) => formatNumber(value),
         },
-        splitLine: { lineStyle: { color: 'rgba(148, 163, 184, 0.18)' } },
+        splitLine: { lineStyle: { color: tw.chart.axis.split } },
       },
       {
         type: 'value',
         name: t('sessionCount'),
         position: 'right',
         axisLabel: {
-          color: '#64748b',
+          color: tw.chart.axis.label,
           formatter: (value: number) => formatNumber(value),
         },
         splitLine: { show: false },
@@ -150,8 +164,8 @@ const DailyChart = observer(() => {
         smooth: true,
         data: chartData.inputTokens,
         yAxisIndex: 0,
-        itemStyle: { color: '#3b82f6' },
-        lineStyle: { color: '#3b82f6' },
+        itemStyle: { color: tw.chart.colors[0] },
+        lineStyle: { color: tw.chart.colors[0] },
       },
       store.seriesVisibility.outputTokens && {
         name: t('outputTokens'),
@@ -159,8 +173,8 @@ const DailyChart = observer(() => {
         smooth: true,
         data: chartData.outputTokens,
         yAxisIndex: 0,
-        itemStyle: { color: '#10b981' },
-        lineStyle: { color: '#10b981' },
+        itemStyle: { color: tw.chart.colors[1] },
+        lineStyle: { color: tw.chart.colors[1] },
       },
       store.seriesVisibility.totalTokens && {
         name: t('totalTokens'),
@@ -168,8 +182,8 @@ const DailyChart = observer(() => {
         smooth: true,
         data: chartData.totalTokens,
         yAxisIndex: 0,
-        itemStyle: { color: '#a855f7' },
-        lineStyle: { color: '#a855f7' },
+        itemStyle: { color: tw.chart.colors[2] },
+        lineStyle: { color: tw.chart.colors[2] },
       },
       store.seriesVisibility.sessionCount && {
         name: t('sessionCount'),
@@ -177,8 +191,8 @@ const DailyChart = observer(() => {
         smooth: true,
         data: chartData.sessionCounts,
         yAxisIndex: 1,
-        itemStyle: { color: '#f59e0b' },
-        lineStyle: { color: '#f59e0b' },
+        itemStyle: { color: tw.chart.colors[3] },
+        lineStyle: { color: tw.chart.colors[3] },
       },
     ].filter(Boolean),
   }

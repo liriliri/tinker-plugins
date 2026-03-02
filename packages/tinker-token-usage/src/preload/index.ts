@@ -6,29 +6,7 @@ import {
   type SessionUsage,
 } from 'ccusage/data-loader'
 import { loadCodexTokenUsageEvents } from './codexLoader'
-
-export type DataSource = 'claude-code' | 'codex'
-
-export interface TokenUsageData {
-  total: {
-    inputTokens: number
-    outputTokens: number
-    cacheCreationTokens: number
-    cacheReadTokens: number
-    totalTokens: number
-    sessionCount: number
-  }
-  byDay: Array<{
-    date: string
-    inputTokens: number
-    outputTokens: number
-    cacheCreationTokens: number
-    cacheReadTokens: number
-    totalTokens: number
-    sessionCount: number
-    modelsUsed: string[]
-  }>
-}
+import type { DataSource, TokenUsageData } from '../common/types'
 
 const tokenUsageObj = {
   getUsage: async (
@@ -48,11 +26,9 @@ const tokenUsageObj = {
 }
 
 async function getClaudeCodeUsage(): Promise<TokenUsageData> {
-  // Load daily usage data and session data from Claude Code
   const dailyData: DailyUsage[] = await loadDailyUsageData({})
   const sessionData: SessionUsage[] = await loadSessionData({})
 
-  // Build a map of date -> session count
   const sessionCountByDate = new Map<string, Set<string>>()
   for (const session of sessionData) {
     // Extract date from lastActivity (YYYY-MM-DD format)
@@ -63,7 +39,6 @@ async function getClaudeCodeUsage(): Promise<TokenUsageData> {
     sessionCountByDate.get(date)!.add(session.sessionId)
   }
 
-  // Calculate total tokens and session count
   let totalInputTokens = 0
   let totalOutputTokens = 0
   let totalCacheCreationTokens = 0
@@ -78,7 +53,6 @@ async function getClaudeCodeUsage(): Promise<TokenUsageData> {
     const dayTotalTokens =
       inputTokens + outputTokens + cacheCreationTokens + cacheReadTokens
 
-    // Get session count for this day
     const sessionsForDay = sessionCountByDate.get(day.date)
     const sessionCount = sessionsForDay ? sessionsForDay.size : 0
 
@@ -87,7 +61,6 @@ async function getClaudeCodeUsage(): Promise<TokenUsageData> {
     totalCacheCreationTokens += cacheCreationTokens
     totalCacheReadTokens += cacheReadTokens
 
-    // Collect all unique session IDs
     if (sessionsForDay) {
       sessionsForDay.forEach((id) => allSessionIds.add(id))
     }
@@ -119,19 +92,18 @@ async function getClaudeCodeUsage(): Promise<TokenUsageData> {
 
   return {
     total,
-    byDay: byDay.sort((a, b) => a.date.localeCompare(b.date)), // Sort by date ascending
+    byDay: byDay.sort((a, b) => a.date.localeCompare(b.date)),
   }
 }
 
 async function getCodexUsage(): Promise<TokenUsageData> {
   const events = await loadCodexTokenUsageEvents()
 
-  // Group by date
   const dailyMap = new Map<
     string,
     {
-      inputTokens: number // Total input tokens (cached + non-cached)
-      cachedInputTokens: number // Cached input tokens
+      inputTokens: number
+      cachedInputTokens: number
       outputTokens: number
       totalTokens: number
       sessions: Set<string>
@@ -161,8 +133,7 @@ async function getCodexUsage(): Promise<TokenUsageData> {
     dayData.models.add(event.model)
   }
 
-  // Calculate totals
-  let totalInputTokens = 0 // Non-cached input tokens
+  let totalInputTokens = 0
   let totalOutputTokens = 0
   let totalCacheReadTokens = 0
   const allSessionIds = new Set<string>()
@@ -170,8 +141,6 @@ async function getCodexUsage(): Promise<TokenUsageData> {
   const byDay = Array.from(dailyMap.entries())
     .sort(([a], [b]) => a.localeCompare(b))
     .map(([date, data]) => {
-      // In Codex: inputTokens = cached + non-cached
-      // We need to split them to match Claude Code format
       const nonCachedInput = Math.max(
         0,
         data.inputTokens - data.cachedInputTokens,
@@ -186,10 +155,10 @@ async function getCodexUsage(): Promise<TokenUsageData> {
 
       return {
         date,
-        inputTokens: nonCachedInput, // Non-cached input tokens (to match Claude Code)
+        inputTokens: nonCachedInput,
         outputTokens: data.outputTokens,
-        cacheCreationTokens: 0, // Codex doesn't track cache creation separately
-        cacheReadTokens: cachedInput, // Cached input tokens
+        cacheCreationTokens: 0,
+        cacheReadTokens: cachedInput,
         totalTokens: data.totalTokens,
         sessionCount: data.sessions.size,
         modelsUsed: Array.from(data.models),
@@ -197,10 +166,10 @@ async function getCodexUsage(): Promise<TokenUsageData> {
     })
 
   const total = {
-    inputTokens: totalInputTokens, // Non-cached input tokens
+    inputTokens: totalInputTokens,
     outputTokens: totalOutputTokens,
     cacheCreationTokens: 0,
-    cacheReadTokens: totalCacheReadTokens, // Cached input tokens
+    cacheReadTokens: totalCacheReadTokens,
     totalTokens: totalInputTokens + totalOutputTokens + totalCacheReadTokens,
     sessionCount: allSessionIds.size,
   }

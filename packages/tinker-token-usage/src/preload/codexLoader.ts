@@ -22,9 +22,7 @@ type TokenUsageEvent = {
   inputTokens: number
   cachedInputTokens: number
   outputTokens: number
-  reasoningOutputTokens: number
   totalTokens: number
-  isFallbackModel?: boolean
 }
 
 function ensureNumber(value: unknown): number {
@@ -83,9 +81,15 @@ function subtractRawUsage(
   }
 }
 
-function convertToDelta(
-  raw: RawUsage,
-): Omit<TokenUsageEvent, 'sessionId' | 'timestamp' | 'model'> {
+type TokenDelta = {
+  inputTokens: number
+  cachedInputTokens: number
+  outputTokens: number
+  reasoningOutputTokens: number
+  totalTokens: number
+}
+
+function convertToDelta(raw: RawUsage): TokenDelta {
   const total =
     raw.total_tokens > 0
       ? raw.total_tokens
@@ -256,7 +260,6 @@ export async function loadCodexTokenUsageEvents(): Promise<TokenUsageEvent[]> {
 
         const extractionSource = Object.assign({}, payloadObj, { info })
         const extractedModel = extractModel(extractionSource)
-        let isFallbackModel = false
 
         if (extractedModel != null) {
           currentModel = extractedModel
@@ -266,22 +269,18 @@ export async function loadCodexTokenUsageEvents(): Promise<TokenUsageEvent[]> {
         let model = extractedModel ?? currentModel
         if (model == null) {
           model = LEGACY_FALLBACK_MODEL
-          isFallbackModel = true
           currentModel = model
           currentModelIsFallback = true
-        } else if (extractedModel == null && currentModelIsFallback) {
-          isFallbackModel = true
         }
 
         const event: TokenUsageEvent = {
           sessionId,
           timestamp,
           model,
-          ...delta,
-        }
-
-        if (isFallbackModel) {
-          event.isFallbackModel = true
+          inputTokens: delta.inputTokens,
+          cachedInputTokens: delta.cachedInputTokens,
+          outputTokens: delta.outputTokens,
+          totalTokens: delta.totalTokens,
         }
 
         events.push(event)

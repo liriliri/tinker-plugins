@@ -10,6 +10,7 @@ export const tw = {
     primary: 'text-neutral-900 dark:text-neutral-100',
     secondary: 'text-neutral-700 dark:text-neutral-300',
     tertiary: 'text-neutral-600 dark:text-neutral-400',
+    muted: 'text-neutral-500 dark:text-neutral-400',
     white: 'text-white',
   },
 
@@ -60,5 +61,25 @@ export const tw = {
       title: 'text-red-900 dark:text-red-300',
       content: 'text-red-800 dark:text-red-400',
     },
+  },
+
+  chart: {
+    colors: ['#3b82f6', '#10b981', '#a855f7', '#f59e0b'],
+    tooltip: {
+      background: 'rgba(255, 255, 255, 0.95)',
+      border: 'rgba(148, 163, 184, 0.35)',
+      text: '#0f172a',
+    },
+    axis: {
+      label: '#64748b',
+      line: 'rgba(148, 163, 184, 0.35)',
+      split: 'rgba(148, 163, 184, 0.18)',
+    },
+    zoom: {
+      border: 'rgba(148, 163, 184, 0.35)',
+      filler: 'rgba(59, 130, 246, 0.12)',
+      handle: 'rgba(59, 130, 246, 0.6)',
+    },
+    spinner: '#df754f',
   },
 }

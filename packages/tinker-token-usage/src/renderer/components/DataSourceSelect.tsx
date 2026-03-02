@@ -4,7 +4,7 @@ import { Check, ChevronDown } from 'lucide-react'
 import className from 'licia/className'
 import store from '../store'
 import { tw } from '../theme'
-import type { DataSource } from '../../preload'
+import type { DataSource } from '../../common/types'
 
 const DataSourceSelect = observer(() => {
   const handleValueChange = (value: DataSource) => {
