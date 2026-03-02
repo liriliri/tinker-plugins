@@ -5,12 +5,9 @@ import { ArrowLeftRight, Check, ChevronDown, Copy } from 'lucide-react'
 import className from 'licia/className'
 import { useTranslation } from 'react-i18next'
 import LangSelect from './LangSelect'
-import {
-  languages,
-  bingLanguages,
-  services,
-  type Service,
-} from '../lib/languages'
+import DotSpinner from './DotSpinner'
+import { languages, bingLanguages, services } from '../lib/languages'
+import type { Service } from '../../common/types'
 import { tw } from '../theme'
 import store from '../store'
 
@@ -77,13 +74,13 @@ const Toolbar = observer(() => {
               onClick={() => store.handleSwapLanguages()}
               disabled={!store.canSwap}
               className={className(
-                'swap-btn flex items-center justify-center w-7 h-7 rounded-md border-none bg-transparent transition-colors duration-150 shrink-0 cursor-pointer',
+                'group flex items-center justify-center w-7 h-7 rounded-md border-none bg-transparent transition-colors duration-150 shrink-0 cursor-pointer',
                 store.canSwap
                   ? `${tw.button.icon.default} ${tw.button.icon.hover}`
                   : `${tw.button.icon.disabled} cursor-not-allowed`,
               )}
             >
-              <ArrowLeftRight className="swap-icon w-3.5 h-3.5" />
+              <ArrowLeftRight className="w-3.5 h-3.5 transition-transform duration-300 ease-[cubic-bezier(0.34,1.4,0.64,1)] group-enabled:group-hover:rotate-180" />
             </button>
           </Tooltip.Trigger>
           <Tooltip.Portal>
@@ -148,15 +145,7 @@ const Toolbar = observer(() => {
               : `${tw.button.primary.disabled} cursor-not-allowed`,
           )}
         >
-          {store.isTranslating ? (
-            <span className="flex items-center gap-0.75 h-3">
-              <span className="dot dot-1" />
-              <span className="dot dot-2" />
-              <span className="dot dot-3" />
-            </span>
-          ) : (
-            t('translate')
-          )}
+          {store.isTranslating ? <DotSpinner /> : t('translate')}
         </button>
       </div>
     </div>

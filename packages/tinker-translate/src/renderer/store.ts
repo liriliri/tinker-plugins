@@ -1,15 +1,11 @@
 import { makeAutoObservable } from 'mobx'
 import LocalStore from 'licia/LocalStore'
-import waitUntil from 'licia/waitUntil'
 import i18n from './i18n'
-import { type Service } from './lib/languages'
+import { type Service } from '../common/types'
 
 const storage = new LocalStore('tinker-translate')
 
 class Store {
-  // Theme
-  isDark: boolean = false
-
   // Translation state
   sourceText: string = ''
   translatedText: string = ''
@@ -27,24 +23,10 @@ class Store {
 
   constructor() {
     makeAutoObservable(this)
-    this.init()
-  }
-
-  private async init() {
-    await waitUntil(() => typeof tinker !== 'undefined')
-    const theme = await tinker.getTheme()
-    this.isDark = theme === 'dark'
-    tinker.on('changeTheme', async () => {
-      this.isDark = (await tinker.getTheme()) === 'dark'
-    })
   }
 
   setSourceText(text: string) {
     this.sourceText = text
-  }
-
-  setTranslatedText(text: string) {
-    this.translatedText = text
   }
 
   setSourceLang(lang: string) {

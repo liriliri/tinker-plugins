@@ -2,6 +2,7 @@ import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import { tw } from '../theme'
 import store from '../store'
+import DotSpinner from './DotSpinner'
 
 const TranslatePanel = observer(() => {
   const { t } = useTranslation()
@@ -27,11 +28,7 @@ const TranslatePanel = observer(() => {
             <div
               className={`flex items-center gap-2 ${tw.text.translating} text-[12.5px]`}
             >
-              <span className="flex items-center gap-0.75 h-3">
-                <span className="dot dot-1" />
-                <span className="dot dot-2" />
-                <span className="dot dot-3" />
-              </span>
+              <DotSpinner />
               <span>{t('translating')}</span>
             </div>
           ) : store.translatedText ? (

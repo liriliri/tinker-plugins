@@ -1,13 +1,12 @@
 import { contextBridge } from 'electron'
 import https from 'https'
+import type { Service } from '../common/types'
 
 interface TranslateResult {
   text: string
   from?: string
   to?: string
 }
-
-export type TranslateService = 'google' | 'bing' | 'deepl'
 
 function httpsRequest(
   options: https.RequestOptions,
@@ -217,7 +216,7 @@ const translateObj = {
     text: string,
     from: string,
     to: string,
-    service: TranslateService = 'google',
+    service: Service = 'google',
   ): Promise<TranslateResult> => {
     try {
       if (service === 'bing') {
