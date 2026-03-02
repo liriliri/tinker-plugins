@@ -1,5 +1,3 @@
-// Shared types and constants used by both preload and renderer
-
 export const userQuality: Record<number, number[]> = {
   0: [16, 32],
   1: [16, 32, 64, 80],

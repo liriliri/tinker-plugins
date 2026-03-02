@@ -2,9 +2,8 @@ import { makeAutoObservable, runInAction } from 'mobx'
 import waitUntil from 'licia/waitUntil'
 import LocalStore from 'licia/LocalStore'
 import { VideoData, qualityMap, userQuality } from '../common/types'
-import type { TaskData, TaskStatus, Settings } from './types'
-
-export type { TaskData, TaskStatus, Settings }
+import type { TaskData, Settings } from './types'
+import uuid from 'licia/uuid'
 
 const storage = new LocalStore('tinker-bilibili-downloader')
 
@@ -57,7 +56,7 @@ class Store {
     this.isDark = isDark
   }
 
-  protected async initTheme() {
+  private async initTheme() {
     try {
       const theme = await tinker.getTheme()
       this.isDark = theme === 'dark'
@@ -211,14 +210,11 @@ class Store {
     }
     this.setShowVideoModal(false)
 
-    const nanoid = () =>
-      Math.random().toString(36).slice(2, 10) + Date.now().toString(36)
-
     for (const pageNum of this.selectedPages) {
       const pageInfo = this.videoInfo.page.find((p) => p.page === pageNum)
       if (!pageInfo) continue
 
-      const taskId = nanoid()
+      const taskId = uuid()
       const safeTitle = pageInfo.title
         .replace(/[/\\?%*:|"<>]/g, '_')
         .slice(0, 60)

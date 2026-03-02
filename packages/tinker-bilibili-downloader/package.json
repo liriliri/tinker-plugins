@@ -37,7 +37,13 @@
     }
   },
   "devDependencies": {
+    "@radix-ui/react-dialog": "^1.1.14",
+    "@radix-ui/react-progress": "^1.1.7",
+    "@radix-ui/react-scroll-area": "^1.2.9",
+    "@radix-ui/react-switch": "^1.1.11",
+    "@radix-ui/react-tabs": "^1.1.12",
     "concurrently": "^9.2.0",
-    "got": "^11.8.6"
+    "got": "^11.8.6",
+    "lucide-react": "^0.564.0"
   }
 }

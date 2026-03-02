@@ -1,5 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
+import * as Dialog from '@radix-ui/react-dialog'
 import className from 'licia/className'
 import store from '../store'
 import { tw } from '../theme'
@@ -18,149 +19,105 @@ const SettingsPanel = observer(() => {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-      <div
-        className={className(
-          tw.background.card,
-          tw.border.card,
-          'rounded-xl w-[420px] shadow-2xl',
-        )}
-      >
-        {/* Header */}
-        <div className={className('p-4 border-b', tw.border.divider)}>
-          <h2 className={className('font-semibold', tw.text.primary)}>
-            {t('settings')}
-          </h2>
-        </div>
-
-        {/* Body */}
-        <div className="p-4 space-y-4">
-          {/* Download Path */}
-          <div>
-            <label
-              className={className(
-                'block text-xs font-medium mb-1.5',
-                tw.text.secondary,
-              )}
+    <Dialog.Root open onOpenChange={() => store.setShowSettings(false)}>
+      <Dialog.Portal>
+        <Dialog.Overlay className="fixed inset-0 z-50 bg-black/50" />
+        <Dialog.Content
+          className={className(
+            'fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2',
+            'z-50 w-[420px] rounded-2xl shadow-2xl outline-none',
+            tw.background.card,
+            tw.border.card,
+          )}
+          aria-describedby={undefined}
+        >
+          <div className={className('px-4 py-3 border-b', tw.border.divider)}>
+            <Dialog.Title
+              className={className('font-semibold text-sm', tw.text.primary)}
             >
-              {t('downloadPath')}
-            </label>
-            <div className="flex gap-2">
-              <input
-                type="text"
-                value={settings.downloadPath}
-                readOnly
+              {t('settings')}
+            </Dialog.Title>
+          </div>
+
+          <div className="p-4 space-y-4">
+            <div>
+              <label
                 className={className(
-                  tw.input.base,
-                  tw.input.focus,
-                  'flex-1 cursor-default',
-                )}
-              />
-              <button
-                onClick={handleSelectFolder}
-                className={className(
-                  tw.button.secondary.base,
-                  tw.button.secondary.hover,
-                  tw.button.secondary.transition,
-                  'text-sm whitespace-nowrap flex-shrink-0',
+                  'block text-xs font-medium mb-1.5',
+                  tw.text.secondary,
                 )}
               >
-                {t('selectFolder')}
-              </button>
+                {t('downloadPath')}
+              </label>
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={settings.downloadPath}
+                  readOnly
+                  className={className(
+                    tw.input.base,
+                    tw.input.focus,
+                    'flex-1 cursor-default',
+                  )}
+                />
+                <button
+                  onClick={handleSelectFolder}
+                  className={className(
+                    tw.button.secondary.base,
+                    tw.button.secondary.hover,
+                    tw.button.secondary.transition,
+                    'text-sm whitespace-nowrap flex-shrink-0',
+                  )}
+                >
+                  {t('selectFolder')}
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <label
+                className={className(
+                  'block text-xs font-medium mb-1.5',
+                  tw.text.secondary,
+                )}
+              >
+                {t('sessdata')}
+              </label>
+              <input
+                type="password"
+                value={settings.sessdata}
+                onChange={(e) =>
+                  store.updateSettings({ sessdata: e.target.value })
+                }
+                placeholder="SESSDATA=..."
+                className={className(tw.input.base, tw.input.focus)}
+              />
             </div>
           </div>
 
-          {/* SESSDATA */}
-          <div>
-            <label
-              className={className(
-                'block text-xs font-medium mb-1.5',
-                tw.text.secondary,
-              )}
-            >
-              {t('sessdata')}
-            </label>
-            <input
-              type="password"
-              value={settings.sessdata}
-              onChange={(e) =>
-                store.updateSettings({ sessdata: e.target.value })
-              }
-              placeholder="SESSDATA=..."
-              className={className(tw.input.base, tw.input.focus)}
-            />
-          </div>
-
-          {/* Toggles */}
-          <div className="space-y-2">
-            <Toggle
-              label={t('mergeVideo')}
-              checked={settings.isMerge}
-              onChange={(v) => store.updateSettings({ isMerge: v })}
-            />
-            <Toggle
-              label={t('deleteTmp')}
-              checked={settings.isDelete}
-              onChange={(v) => store.updateSettings({ isDelete: v })}
-            />
-            <Toggle
-              label={t('organizeByFolder')}
-              checked={settings.isFolder}
-              onChange={(v) => store.updateSettings({ isFolder: v })}
-            />
-          </div>
-        </div>
-
-        {/* Footer */}
-        <div
-          className={className(
-            'p-4 border-t flex justify-end',
-            tw.border.divider,
-          )}
-        >
-          <button
-            onClick={() => store.setShowSettings(false)}
+          <div
             className={className(
-              tw.button.primary.base,
-              tw.button.primary.hover,
-              tw.button.primary.transition,
-              'text-sm',
+              'px-4 py-3 border-t flex justify-end',
+              tw.border.divider,
             )}
           >
-            {t('confirm')}
-          </button>
-        </div>
-      </div>
-    </div>
+            <Dialog.Close asChild>
+              <button
+                className={className(
+                  tw.button.primary.base,
+                  tw.button.primary.hover,
+                  tw.button.primary.transition,
+                  'text-sm',
+                )}
+              >
+                {t('confirm')}
+              </button>
+            </Dialog.Close>
+          </div>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
   )
 })
 
-const Toggle = ({ label, checked, onChange }: ToggleProps) => {
-  return (
-    <label className="flex items-center justify-between cursor-pointer">
-      <span className={className('text-sm', tw.text.secondary)}>{label}</span>
-      <div
-        onClick={() => onChange(!checked)}
-        className={className(
-          'relative w-10 h-5 rounded-full transition-colors',
-          checked ? tw.toggle.trackActive : tw.toggle.trackInactive,
-        )}
-      >
-        <div
-          className={className(
-            'absolute top-0.5 w-4 h-4 bg-white rounded-full shadow transition-transform',
-            checked ? 'translate-x-5' : 'translate-x-0.5',
-          )}
-        />
-      </div>
-    </label>
-  )
-}
-
 export default SettingsPanel
-
-interface ToggleProps {
-  label: string
-  checked: boolean
-  onChange: (v: boolean) => void
-}

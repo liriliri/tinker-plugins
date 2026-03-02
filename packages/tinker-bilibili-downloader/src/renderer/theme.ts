@@ -1,67 +1,83 @@
 export const tw = {
   background: {
-    primary:
-      'bg-gradient-to-br from-neutral-50 via-neutral-100 to-neutral-50 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950',
-    card: 'bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl',
-    hover: 'hover:bg-neutral-50 dark:hover:bg-neutral-800/50',
+    primary: 'bg-[#F4F5F7] dark:bg-[#18191C]',
+    card: 'bg-white dark:bg-[#212225] shadow-sm dark:shadow-none',
+    hover: 'hover:bg-[#F4F5F7] dark:hover:bg-[#2C2D30]',
   },
 
   text: {
-    primary: 'text-neutral-900 dark:text-neutral-100',
-    secondary: 'text-neutral-700 dark:text-neutral-300',
-    tertiary: 'text-neutral-600 dark:text-neutral-400',
+    primary: 'text-[#18191C] dark:text-[#E3E5E7]',
+    secondary: 'text-[#61666D] dark:text-[#9499A0]',
+    tertiary: 'text-[#9499A0] dark:text-[#61666D]',
     white: 'text-white',
   },
 
   border: {
-    card: 'border border-neutral-300 dark:border-neutral-700',
-    divider: 'border-neutral-200 dark:border-neutral-700',
+    card: 'dark:border dark:border-[#303030]',
+    divider: 'border-[#E3E5E7] dark:border-[#303030]',
   },
 
   button: {
     primary: {
-      base: 'bg-gradient-to-br from-pink-500 to-pink-600 dark:from-pink-400 dark:to-pink-500 text-white rounded-lg px-4 py-2 font-medium',
-      hover: 'hover:opacity-90 active:scale-95',
+      base: 'bg-[#FB7299] text-white rounded-full px-4 py-2 font-medium',
+      hover: 'hover:bg-[#FC8BAB] active:scale-95',
       disabled:
-        'disabled:from-neutral-300 disabled:to-neutral-400 dark:disabled:from-neutral-700 dark:disabled:to-neutral-800 disabled:cursor-not-allowed disabled:scale-100',
-      transition: 'transition-all duration-200',
+        'disabled:opacity-40 disabled:cursor-not-allowed disabled:scale-100',
+      transition: 'transition-all duration-150',
     },
     secondary: {
-      base: 'bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-lg px-4 py-2 font-medium',
-      hover: 'hover:bg-neutral-200 dark:hover:bg-neutral-700',
-      transition: 'transition-all duration-200',
+      base: 'bg-[#F4F5F7] dark:bg-[#2C2D30] text-[#61666D] dark:text-[#9499A0] rounded-full px-4 py-2 font-medium',
+      hover: 'hover:bg-[#E3E5E7] dark:hover:bg-[#303030]',
+      transition: 'transition-all duration-150',
     },
   },
 
   input: {
-    base: 'bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-600 rounded-lg px-3 py-2 text-sm text-neutral-900 dark:text-neutral-100 outline-none w-full',
-    focus:
-      'focus:ring-2 focus:ring-pink-500 dark:focus:ring-pink-400 focus:border-transparent',
+    base: 'bg-white dark:bg-[#2C2D30] border border-[#E3E5E7] dark:border-transparent rounded-full px-4 py-2 text-sm text-[#18191C] dark:text-[#E3E5E7] outline-none w-full placeholder:text-[#9499A0]',
+    focus: 'focus:ring-2 focus:ring-[#FB7299] focus:ring-opacity-30',
   },
 
   progress: {
-    track: 'bg-neutral-200 dark:bg-neutral-700 rounded-full',
-    bar: 'bg-gradient-to-r from-pink-500 to-pink-400 rounded-full',
-  },
-
-  error: {
-    background:
-      'bg-gradient-to-br from-red-50 to-red-100/50 dark:from-red-950/30 dark:to-red-900/20',
-    border: 'border border-red-200 dark:border-red-800/50',
-    text: {
-      title: 'text-red-900 dark:text-red-300',
-      content: 'text-red-800 dark:text-red-400',
-    },
+    track: 'bg-[#E3E5E7] dark:bg-[#303030]',
+    bar: 'bg-gradient-to-r from-[#FB7299] to-[#FC8BAB]',
   },
 
   bilibili: {
-    accent: 'text-pink-500 dark:text-pink-400',
-    accentGradient:
-      'from-pink-500 to-pink-600 dark:from-pink-400 dark:to-pink-500',
+    accent: 'text-[#FB7299]',
+    accentBg: 'bg-[#FB7299]',
+    accentGradient: 'from-[#FB7299] to-[#FC8BAB]',
+    accentCheckbox: 'accent-[#FB7299]',
+    tab: {
+      active: 'text-[#FB7299] border-[#FB7299]',
+      inactive: 'border-transparent hover:text-[#FB7299]',
+    },
+    badge: {
+      active: 'bg-[#FB7299] text-white',
+      inactive: 'bg-[#E3E5E7] dark:bg-[#303030] text-[#9499A0]',
+    },
+    qualityButton: {
+      active: 'bg-[#FB7299] text-white',
+      inactive:
+        'bg-[#F4F5F7] dark:bg-[#2C2D30] text-[#61666D] dark:text-[#9499A0] hover:bg-[#E3E5E7] dark:hover:bg-[#303030]',
+    },
   },
 
-  toggle: {
-    trackActive: 'bg-pink-500',
-    trackInactive: 'bg-neutral-300 dark:bg-neutral-600',
+  status: {
+    downloading: 'border-l-[3px] border-l-[#FB7299]',
+    merging: 'border-l-[3px] border-l-[#FAAB53]',
+    done: 'border-l-[3px] border-l-[#52C41A]',
+    error: 'border-l-[3px] border-l-[#FF4D4F]',
+    pending: 'border-l-[3px] border-l-[#E3E5E7] dark:border-l-[#303030]',
+    iconMerging: 'text-[#FAAB53]',
+    iconDownloading: 'text-[#FB7299]',
+    textDone: 'text-[#52C41A]',
+    textError: 'text-[#FF4D4F]',
+    deleteButton: 'text-[#9499A0] hover:text-[#FF4D4F]',
+  },
+
+  scrollbar: {
+    thumb: 'bg-[#E3E5E7] dark:bg-[#303030]',
+    track:
+      'data-[state=unchecked]:bg-[#E3E5E7] dark:data-[state=unchecked]:bg-[#303030]',
   },
 }

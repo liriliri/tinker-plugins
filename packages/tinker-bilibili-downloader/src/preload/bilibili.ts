@@ -127,10 +127,6 @@ export async function request(
   }
 }
 
-/**
- * Check login status
- * @returns 0: visitor, 1: normal user, 2: VIP
- */
 export async function checkLogin(sessdata: string): Promise<number> {
   const result = await request('https://api.bilibili.com/x/web-interface/nav', {
     headers: {
@@ -147,10 +143,6 @@ export async function checkLogin(sessdata: string): Promise<number> {
   return 0
 }
 
-/**
- * Check URL type
- * @returns 'BV', 'ss', 'ep', or ''
- */
 export function checkUrl(url: string): string {
   const map: Record<string, string> = {
     'video/av': 'BV',
@@ -358,9 +350,6 @@ async function parseEP(
   }
 }
 
-/**
- * Parse HTML to extract video info
- */
 export async function parseHtml(
   html: string,
   type: string,
@@ -389,9 +378,6 @@ export async function parseHtml(
   }
 }
 
-/**
- * Get download URL for a specific quality
- */
 export async function getDownloadUrl(
   cid: number,
   bvid: string,
