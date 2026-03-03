@@ -1,0 +1,15 @@
+{
+  "recognize": "重新识别",
+  "screenshot": "截屏识别",
+  "dropHint": "点击上传或拖拽图片到这里",
+  "pasteHint": "支持 Ctrl+V 粘贴截图",
+  "copy": "复制",
+  "copied": "已复制",
+  "save": "保存",
+  "stripNewlines": "去除换行",
+  "recognizing": "识别中...",
+  "placeholder": "识别结果将显示在这里",
+  "langChiSimEng": "中英文混合",
+  "langChiSim": "中文",
+  "langEng": "英文"
+}

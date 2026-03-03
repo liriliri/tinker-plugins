@@ -1,0 +1,38 @@
+{
+  "name": "tinker-ocr",
+  "version": "0.1.0",
+  "description": "OCR Plugin for Tinker",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "ocr"
+  ],
+  "tinker": {
+    "name": "OCR",
+    "main": "dist/index.html",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "OCR 识别"
+      }
+    }
+  },
+  "devDependencies": {
+    "@radix-ui/react-select": "^2.2.6",
+    "@radix-ui/react-tooltip": "^1.2.8",
+    "lucide-react": "^0.564.0",
+    "tesseract.js": "^7.0.0"
+  }
+}

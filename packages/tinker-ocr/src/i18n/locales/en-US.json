@@ -1,0 +1,15 @@
+{
+  "recognize": "Recognize",
+  "screenshot": "Capture Screen",
+  "dropHint": "Click to upload or drag & drop image here",
+  "pasteHint": "Supports Ctrl+V to paste screenshot",
+  "copy": "Copy",
+  "copied": "Copied!",
+  "save": "Save",
+  "stripNewlines": "Strip Newlines",
+  "recognizing": "Recognizing...",
+  "placeholder": "Recognition result will appear here",
+  "langChiSimEng": "Chinese + English",
+  "langChiSim": "Chinese",
+  "langEng": "English"
+}
