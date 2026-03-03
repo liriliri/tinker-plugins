@@ -24,5 +24,13 @@ All plugins in the list can be installed to TINKER by running `npm i -g tinker-x
       <th><img src="./packages/tinker-translate/screenshot.png"/></th>
       <th><img src="./packages/tinker-emoji/screenshot.png"/></th>
     </tr>
+    <tr>
+      <th><a href="./packages/tinker-bilibili-downloader/">tinker-bilibili-downloader</a></th>
+      <th><a href="./packages/tinker-ocr/">tinker-ocr</a></th>
+    </tr>
+    <tr>
+      <th><img src="./packages/tinker-bilibili-downloader/screenshot.png"/></th>
+      <th><img src="./packages/tinker-ocr/screenshot.png"/></th>
+    </tr>
   </tbody>
 </table>
