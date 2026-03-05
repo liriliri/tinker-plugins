@@ -1,0 +1,35 @@
+{
+  "name": "tinker-white-noise",
+  "version": "0.1.0",
+  "description": "White Noise Plugin for Tinker",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "white-noise"
+  ],
+  "tinker": {
+    "name": "White Noise",
+    "main": "dist/index.html",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "白噪音"
+      }
+    }
+  },
+  "devDependencies": {
+    "luna-shader-toy-player": "^0.6.0"
+  }
+}
