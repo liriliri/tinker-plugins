@@ -1,7 +1,7 @@
 import { makeAutoObservable } from 'mobx'
 import LocalStore from 'licia/LocalStore'
 
-export type Scene =
+type Scene =
   | 'snowy'
   | 'rainy'
   | 'seaside'
