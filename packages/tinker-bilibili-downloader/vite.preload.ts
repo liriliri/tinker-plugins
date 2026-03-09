@@ -16,7 +16,7 @@ export default defineConfig(async (): Promise<UserConfig> => {
         entry: 'src/preload/index.ts',
         name: 'Main',
         fileName: 'index',
-        formats: ['es'],
+        formats: ['cjs'],
       },
       rollupOptions: {
         external: builtins,

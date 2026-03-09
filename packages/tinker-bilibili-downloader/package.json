@@ -1,6 +1,6 @@
 {
   "name": "tinker-bilibili-downloader",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Bilibili Video Downloader Plugin for TINKER",
   "files": [
     "dist/",
@@ -28,7 +28,7 @@
   "tinker": {
     "name": "Bilibili Downloader",
     "main": "dist/renderer/index.html",
-    "preload": "dist/preload/index.mjs",
+    "preload": "dist/preload/index.js",
     "icon": "icon.png",
     "locales": {
       "zh-CN": {

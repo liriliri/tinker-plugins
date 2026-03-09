@@ -224,7 +224,7 @@ class Store {
         : this.settings.downloadPath
       const outputPath = `${outputDir}/${fileName}.mp4`
       bilibiliDownloader.ensureDir(outputDir)
-      const tmpBase = tinker.tmpdir()
+      const tmpBase = await tinker.getPath('temp')
       const videoTmpPath = `${tmpBase}/${taskId}-video.m4s`
       const audioTmpPath = `${tmpBase}/${taskId}-audio.m4s`
 
