@@ -32,5 +32,13 @@ All plugins in the list can be installed to TINKER by running `npm i -g tinker-x
       <th><img src="./packages/tinker-bilibili-downloader/screenshot.png"/></th>
       <th><img src="./packages/tinker-ocr/screenshot.png"/></th>
     </tr>
+    <tr>
+      <th><a href="./packages/tinker-white-noise/">tinker-white-noise</a></th>
+      <th><a href="./packages/tinker-wallpaper/">tinker-wallpaper</a></th>
+    </tr>
+    <tr>
+      <th><img src="./packages/tinker-white-noise/screenshot.png"/></th>
+      <th><img src="./packages/tinker-wallpaper/screenshot.png"/></th>
+    </tr>
   </tbody>
 </table>
