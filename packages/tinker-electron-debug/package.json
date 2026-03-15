@@ -1,0 +1,52 @@
+{
+  "name": "tinker-electron-debug",
+  "version": "0.1.0",
+  "description": "Debug in-production Electron based app",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:preload\"",
+    "dev:renderer": "vite",
+    "dev:preload": "vite build --watch --config vite.preload.ts",
+    "build": "concurrently \"npm run build:renderer\" \"npm run build:preload\"",
+    "build:renderer": "vite build",
+    "build:preload": "vite build --config vite.preload.ts",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "electron-debug"
+  ],
+  "tinker": {
+    "name": "Electron Debug",
+    "main": "dist/renderer/index.html",
+    "preload": "dist/preload/index.mjs",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "Electron 调试"
+      }
+    }
+  },
+  "devDependencies": {
+    "@radix-ui/react-dialog": "^1.1.14",
+    "@radix-ui/react-select": "^2.2.6",
+    "@radix-ui/react-toast": "^1.2.15",
+    "@radix-ui/react-tooltip": "^1.2.8",
+    "@types/ws": "^8.18.1",
+    "@xterm/addon-canvas": "^0.7.0",
+    "@xterm/addon-fit": "^0.11.0",
+    "@xterm/xterm": "^5.5.0",
+    "concurrently": "^9.2.0"
+  },
+  "dependencies": {
+    "got": "^11.8.6",
+    "ws": "^8.19.0"
+  }
+}
