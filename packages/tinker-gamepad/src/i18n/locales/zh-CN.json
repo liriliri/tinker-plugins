@@ -1,0 +1,12 @@
+{
+  "waitingForInput": "等待输入",
+  "connectPrompt": "连接手柄并按下任意按键",
+  "axes": "摇杆",
+  "buttons": "按键",
+  "connected": "已连接",
+  "leftX": "左 X",
+  "leftY": "左 Y",
+  "rightX": "右 X",
+  "rightY": "右 Y",
+  "clearPaths": "清除轨迹"
+}

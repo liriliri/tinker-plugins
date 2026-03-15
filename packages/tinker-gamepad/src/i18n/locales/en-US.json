@@ -1,0 +1,12 @@
+{
+  "waitingForInput": "WAITING FOR INPUT",
+  "connectPrompt": "Connect a gamepad and press any button",
+  "axes": "AXES",
+  "buttons": "BUTTONS",
+  "connected": "CONNECTED",
+  "leftX": "Left X",
+  "leftY": "Left Y",
+  "rightX": "Right X",
+  "rightY": "Right Y",
+  "clearPaths": "CLEAR PATHS"
+}
