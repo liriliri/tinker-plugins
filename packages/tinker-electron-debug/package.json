@@ -1,6 +1,6 @@
 {
   "name": "tinker-electron-debug",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Debug in-production Electron based app",
   "files": [
     "dist/",
@@ -26,7 +26,7 @@
   "tinker": {
     "name": "Electron Debug",
     "main": "dist/renderer/index.html",
-    "preload": "dist/preload/index.mjs",
+    "preload": "dist/preload/index.js",
     "icon": "icon.png",
     "locales": {
       "zh-CN": {
