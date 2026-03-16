@@ -3,7 +3,7 @@ import { builtinModules } from 'node:module'
 import path from 'node:path'
 
 const external = builtinModules.filter((e) => !e.startsWith('_'))
-external.push('electron', ...external.map((m) => `node:${m}`))
+external.push('electron', 'got', ...external.map((m) => `node:${m}`))
 
 export default defineConfig(async (): Promise<UserConfig> => {
   const pkg = require(path.join(process.cwd(), 'package.json'))
