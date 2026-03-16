@@ -2,12 +2,12 @@ import { defineConfig, UserConfig } from 'vite'
 import { builtinModules } from 'node:module'
 import path from 'node:path'
 
-const external = builtinModules.filter((e) => !e.startsWith('_'))
-external.push(
+const builtins = builtinModules.filter((e) => !e.startsWith('_'))
+builtins.push(
   'electron',
   'ccusage',
   'ccusage/data-loader',
-  ...external.map((m) => `node:${m}`),
+  ...builtins.map((m) => `node:${m}`),
 )
 
 export default defineConfig(async (): Promise<UserConfig> => {
@@ -21,10 +21,10 @@ export default defineConfig(async (): Promise<UserConfig> => {
         entry: 'src/preload/index.ts',
         name: 'Main',
         fileName: 'index',
-        formats: ['cjs'],
+        formats: ['es'],
       },
       rollupOptions: {
-        external,
+        external: builtins,
       },
     },
   }
