@@ -178,7 +178,9 @@ const electronDebugObj = {
       nodeTarget.webSocketDebuggerUrl,
       'Runtime.evaluate',
       { expression: code, awaitPromise: false },
-    )) as { exceptionDetails?: { exception?: { description?: string }; text: string } }
+    )) as {
+      exceptionDetails?: { exception?: { description?: string }; text: string }
+    }
     if (result?.exceptionDetails) {
       throw new Error(
         result.exceptionDetails.exception?.description ||

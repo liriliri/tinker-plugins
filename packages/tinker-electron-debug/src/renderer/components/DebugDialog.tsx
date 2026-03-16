@@ -33,9 +33,7 @@ const PageRow = observer(({ page, nodePort }: PageRowProps) => {
         {page.type}
       </span>
       <div className="flex-1 min-w-0">
-        <div
-          className={`text-[12px] ${tw.text.primary} truncate leading-snug`}
-        >
+        <div className={`text-[12px] ${tw.text.primary} truncate leading-snug`}>
           {page.title || page.url}
         </div>
         {page.title && (
@@ -89,7 +87,11 @@ const DebugView = observer(() => {
               </div>
             ) : (
               activeSession.pages.map((page) => (
-                <PageRow key={page.id} page={page} nodePort={activeSession.nodePort} />
+                <PageRow
+                  key={page.id}
+                  page={page}
+                  nodePort={activeSession.nodePort}
+                />
               ))
             )}
           </div>
@@ -156,7 +158,9 @@ const DebugDialog = observer(() => {
                   alt={dialogApp.name}
                   className="w-5 h-5 object-contain"
                 />
-                <span className={`status-pulse absolute -bottom-0.5 -right-0.5 w-2 h-2 rounded-full bg-emerald-500 border ${tw.border.statusIndicator}`} />
+                <span
+                  className={`status-pulse absolute -bottom-0.5 -right-0.5 w-2 h-2 rounded-full bg-emerald-500 border ${tw.border.statusIndicator}`}
+                />
               </div>
             )}
             <Dialog.Title
