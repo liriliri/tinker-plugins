@@ -1,4 +1,3 @@
-import got from 'got'
 import { qualityMap } from '../common/types'
 import type { VideoData, Page } from '../common/types'
 
@@ -72,13 +71,7 @@ interface BangumiSeasonResult {
   up_info?: { uname: string; mid: number }
 }
 
-interface AcceptQuality {
-  accept_quality: number[]
-  video: BilibiliDashStream[]
-  audio: BilibiliDashStream[]
-}
-
-interface GotResult {
+interface FetchResult {
   body: unknown
   headers: Record<string, string | string[] | undefined>
   statusCode: number
@@ -98,20 +91,21 @@ function formatSeconds(seconds: number): string {
 export async function request(
   url: string,
   options: { headers?: Record<string, string>; responseType?: string } = {},
-): Promise<GotResult> {
-  const res = await got(url, {
+): Promise<FetchResult> {
+  const res = await fetch(url, {
     headers: {
       'User-Agent': UA,
       ...options.headers,
     },
-    responseType: options.responseType === 'json' ? 'json' : 'text',
-    followRedirect: true,
   })
+  const finalUrl = res.url
+  const body =
+    options.responseType === 'json' ? await res.json() : await res.text()
   return {
-    body: res.body,
-    headers: res.headers as Record<string, string | string[] | undefined>,
-    statusCode: res.statusCode,
-    redirectUrls: res.redirectUrls.map((u: string) => u.toString()),
+    body,
+    headers: Object.fromEntries(res.headers.entries()),
+    statusCode: res.status,
+    redirectUrls: finalUrl !== url ? [finalUrl] : [],
   }
 }
 
@@ -371,7 +365,7 @@ export async function getDownloadUrl(
   epid?: number,
   ssid?: number,
 ): Promise<{ video: string; audio: string }> {
-  let result: GotResult
+  let result: FetchResult
   let dash: BilibiliDash | undefined
 
   if (epid && ssid) {

@@ -3,7 +3,6 @@ import fs from 'fs'
 import path from 'path'
 import process from 'process'
 import { spawn } from 'child_process'
-import got from 'got'
 import getPort from 'licia/getPort'
 import WebSocket from 'ws'
 
@@ -135,9 +134,13 @@ const electronDebugObj = {
 
   getPages: async (port: number): Promise<unknown[]> => {
     try {
-      return await got(`http://127.0.0.1:${port}/json`, {
-        timeout: { request: 2000 },
-      }).json()
+      const controller = new AbortController()
+      const timer = setTimeout(() => controller.abort(), 2000)
+      const res = await fetch(`http://127.0.0.1:${port}/json`, {
+        signal: controller.signal,
+      })
+      clearTimeout(timer)
+      return await res.json()
     } catch {
       return []
     }
@@ -147,10 +150,13 @@ const electronDebugObj = {
     nodePort: number,
     devtoolsFrontendUrl: string,
   ): Promise<void> => {
-    const pages: Array<{ webSocketDebuggerUrl: string }> = await got(
-      `http://127.0.0.1:${nodePort}/json`,
-      { timeout: { request: 2000 } },
-    ).json()
+    const controller = new AbortController()
+    const timer = setTimeout(() => controller.abort(), 2000)
+    const res = await fetch(`http://127.0.0.1:${nodePort}/json`, {
+      signal: controller.signal,
+    })
+    clearTimeout(timer)
+    const pages: Array<{ webSocketDebuggerUrl: string }> = await res.json()
 
     const nodeTarget = pages[0]
     if (!nodeTarget?.webSocketDebuggerUrl) {

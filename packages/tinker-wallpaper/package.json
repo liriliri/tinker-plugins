@@ -1,6 +1,6 @@
 {
   "name": "tinker-wallpaper",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Wallpaper Plugin for TINKER",
   "files": [
     "dist/",
@@ -41,7 +41,6 @@
     "@radix-ui/react-toast": "^1.2.15",
     "@radix-ui/react-tooltip": "^1.2.8",
     "cheerio": "^1.2.0",
-    "concurrently": "^9.2.0",
-    "got": "^11.8.6"
+    "concurrently": "^9.2.0"
   }
 }

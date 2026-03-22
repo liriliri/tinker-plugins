@@ -4,7 +4,6 @@ import path from 'node:path'
 import os from 'node:os'
 import { exec } from 'node:child_process'
 import * as cheerio from 'cheerio'
-import got from 'got'
 import type { Wallpaper, ImageOption } from '../common/types'
 
 const defaultHeaders = {
@@ -17,13 +16,19 @@ async function fetchUrl(
   url: string,
   timeout = 10000,
 ): Promise<{ status: number; body: string }> {
-  const res = await got(url, {
-    headers: defaultHeaders,
-    timeout: { request: timeout },
-    followRedirect: false,
-    throwHttpErrors: false,
-  })
-  return { status: res.statusCode, body: res.body }
+  const controller = new AbortController()
+  const timer = setTimeout(() => controller.abort(), timeout)
+  try {
+    const res = await fetch(url, {
+      headers: defaultHeaders,
+      redirect: 'manual',
+      signal: controller.signal,
+    })
+    const body = await res.text()
+    return { status: res.status, body }
+  } finally {
+    clearTimeout(timer)
+  }
 }
 
 function extractWallpapers(html: string): Wallpaper[] {
@@ -145,14 +150,21 @@ function extractImageOptions(html: string, pageUrl: string): ImageOption[] {
 }
 
 async function fetchImageData(url: string): Promise<Buffer> {
-  return got(url, {
-    headers: {
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
-      Referer: 'https://www.bizhihui.com/',
-    },
-    timeout: { request: 60000 },
-    responseType: 'buffer',
-  }).buffer()
+  const controller = new AbortController()
+  const timer = setTimeout(() => controller.abort(), 60000)
+  try {
+    const res = await fetch(url, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
+        Referer: 'https://www.bizhihui.com/',
+      },
+      signal: controller.signal,
+    })
+    const arrayBuffer = await res.arrayBuffer()
+    return Buffer.from(arrayBuffer)
+  } finally {
+    clearTimeout(timer)
+  }
 }
 
 function execAsync(command: string): Promise<string> {
