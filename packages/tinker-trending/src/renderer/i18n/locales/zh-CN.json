@@ -1,0 +1,9 @@
+{
+  "appTitle": "热搜榜",
+  "loading": "加载中...",
+  "search": "搜索来源...",
+  "add": "添加",
+  "remove": "移除",
+  "selectSource": "选择来源以预览",
+  "noData": "暂无数据"
+}

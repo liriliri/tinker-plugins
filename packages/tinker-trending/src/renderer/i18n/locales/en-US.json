@@ -1,0 +1,9 @@
+{
+  "appTitle": "Trending",
+  "loading": "Loading...",
+  "search": "Search sources...",
+  "add": "Add",
+  "remove": "Remove",
+  "selectSource": "Select a source to preview",
+  "noData": "No data"
+}
