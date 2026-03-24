@@ -1,7 +1,7 @@
 import * as Select from '@radix-ui/react-select'
 import { Check, ChevronDown } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
-import type { Language } from '../lib/languages'
+import type { Language } from '../types'
 import { tw } from '../theme'
 
 interface LangSelectProps {

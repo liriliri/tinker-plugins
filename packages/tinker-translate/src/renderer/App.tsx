@@ -15,7 +15,7 @@ const App = observer(() => {
     <Toast.Provider duration={4000}>
       <Tooltip.Provider delayDuration={300}>
         <div
-          className={`h-screen flex flex-col ${tw.background.app} overflow-hidden`}
+          className={`h-screen flex flex-col ${tw.background.app} overflow-hidden antialiased`}
         >
           <Toolbar />
           <TranslatePanel />

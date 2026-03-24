@@ -1,12 +1,18 @@
 import { observer } from 'mobx-react-lite'
 import * as Tooltip from '@radix-ui/react-tooltip'
 import * as Select from '@radix-ui/react-select'
-import { ArrowLeftRight, Check, ChevronDown, Copy } from 'lucide-react'
+import {
+  ArrowLeftRight,
+  Check,
+  ChevronDown,
+  Clipboard,
+  Copy,
+} from 'lucide-react'
 import className from 'licia/className'
 import { useTranslation } from 'react-i18next'
 import LangSelect from './LangSelect'
 import DotSpinner from './DotSpinner'
-import { languages, bingLanguages, services } from '../lib/languages'
+import { languages, bingLanguages } from '../lib/languages'
 import type { Service } from '../../common/types'
 import { tw } from '../theme'
 import store from '../store'
@@ -20,7 +26,7 @@ const Toolbar = observer(() => {
       className={`flex items-center px-2.5 py-2 ${tw.background.toolbar} border-b ${tw.border.divider} shrink-0 min-h-11.5`}
     >
       {/* Left: service select — flex-1 so it balances the right side */}
-      <div className="flex-1 flex items-center">
+      <div className="flex-1 flex items-center gap-1.5">
         <Select.Root
           value={store.service}
           onValueChange={(v) => store.handleServiceChange(v as Service)}
@@ -40,7 +46,7 @@ const Toolbar = observer(() => {
               sideOffset={4}
             >
               <Select.Viewport className="p-1">
-                {services.map((s) => (
+                {store.availableServices.map((s) => (
                   <Select.Item
                     key={s.value}
                     value={s.value}
@@ -58,6 +64,25 @@ const Toolbar = observer(() => {
             </Select.Content>
           </Select.Portal>
         </Select.Root>
+        <Tooltip.Root>
+          <Tooltip.Trigger asChild>
+            <button
+              onClick={() => store.handlePaste()}
+              className={`flex items-center justify-center w-7 h-7 rounded-md border-none bg-transparent transition-colors duration-150 shrink-0 cursor-pointer ${tw.button.icon.default} ${tw.button.icon.hover}`}
+            >
+              <Clipboard className="w-3.5 h-3.5" />
+            </button>
+          </Tooltip.Trigger>
+          <Tooltip.Portal>
+            <Tooltip.Content
+              className={`px-2 py-1 text-[11px] font-medium rounded-md ${tw.tooltip.content} shadow-md`}
+              sideOffset={5}
+            >
+              {t('paste')}
+              <Tooltip.Arrow className={tw.tooltip.arrow} />
+            </Tooltip.Content>
+          </Tooltip.Portal>
+        </Tooltip.Root>
       </div>
 
       {/* Center: language row — not flex-1, so it stays truly centered */}

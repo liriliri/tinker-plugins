@@ -2,27 +2,32 @@ import { makeAutoObservable } from 'mobx'
 import LocalStore from 'licia/LocalStore'
 import i18n from './i18n'
 import { type Service } from '../common/types'
+import { services, aiService } from './lib/languages'
 
 const storage = new LocalStore('tinker-translate')
 
 class Store {
-  // Translation state
   sourceText: string = ''
   translatedText: string = ''
   sourceLang: string = storage.get('sourceLang') ?? 'auto'
   targetLang: string = storage.get('targetLang') ?? 'zh-CN'
   service: Service = storage.get('service') ?? 'google'
   isTranslating: boolean = false
-
-  // Toast
   toastOpen: boolean = false
   toastMsg: string = ''
-
-  // Copy
   copied: boolean = false
+  hasAI: boolean = false
 
   constructor() {
     makeAutoObservable(this)
+  }
+
+  async init() {
+    const providers = await tinker.getAIProviders()
+    this.hasAI = providers.length > 0
+    if (!this.hasAI && this.service === 'ai') {
+      this.setService('google')
+    }
   }
 
   setSourceText(text: string) {
@@ -86,6 +91,11 @@ class Store {
     this.translatedText = prevSourceText
   }
 
+  async handlePaste() {
+    const text = await navigator.clipboard.readText()
+    if (text) this.sourceText = text
+  }
+
   handleClear() {
     this.sourceText = ''
     this.translatedText = ''
@@ -123,6 +133,10 @@ class Store {
     setTimeout(() => {
       this.copied = false
     }, 1800)
+  }
+
+  get availableServices() {
+    return this.hasAI ? [...services, aiService] : [...services]
   }
 
   get canSwap() {

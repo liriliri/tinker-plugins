@@ -1,1 +1,1 @@
-export type Service = 'google' | 'bing' | 'deepl'
+export type Service = 'google' | 'bing' | 'deepl' | 'ai'

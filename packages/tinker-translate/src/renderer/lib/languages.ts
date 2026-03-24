@@ -1,6 +1,4 @@
-export interface Language {
-  code: string
-}
+import type { Language } from '../types'
 
 const commonLanguages: Language[] = [
   { code: 'auto' },
@@ -40,3 +38,5 @@ export const services = [
   { value: 'bing', label: 'Bing' },
   { value: 'deepl', label: 'DeepL' },
 ] as const
+
+export const aiService = { value: 'ai', label: 'AI' } as const
