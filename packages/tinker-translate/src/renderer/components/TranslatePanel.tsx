@@ -8,7 +8,7 @@ const TranslatePanel = observer(() => {
   const { t } = useTranslation()
 
   return (
-    <div className="grid grid-cols-2 flex-1 min-h-0">
+    <div className="grid grid-cols-2 grid-rows-1 flex-1 min-h-0">
       <div
         className={`flex flex-col ${tw.background.sourcePanel} border-r ${tw.border.divider}`}
       >
@@ -20,7 +20,7 @@ const TranslatePanel = observer(() => {
         />
       </div>
 
-      <div className={`flex flex-col ${tw.background.targetPanel}`}>
+      <div className={`flex flex-col min-h-0 ${tw.background.targetPanel}`}>
         <div className="flex-1 min-h-0 overflow-y-auto px-4 py-3.5">
           {store.isTranslating ? (
             <div
