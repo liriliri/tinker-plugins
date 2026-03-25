@@ -11,7 +11,7 @@ export function buildIframeHtml(gameUrl: string, baseUrl: string) {
 html,body{margin:0;padding:0;overflow:hidden;background:#000;}
 .container{position:fixed;inset:0;display:flex;justify-content:center;align-items:center;background:#000;}
 #loading{position:absolute;inset:0;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;font:18px Menlo,monospace;z-index:10;}
-#canvas{width:auto!important;height:100%!important;max-width:100%;max-height:100%;object-fit:contain;}
+#canvas{aspect-ratio:4/3;height:100%!important;max-width:100%;max-height:100%;outline:none;}
 </style>
 </head>
 <body>

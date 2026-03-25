@@ -28,29 +28,14 @@ const HOTKEYS = [72, 80, 32] // H, P, Space
 
 interface BtnProps {
   onClick: () => void
-  onMouseDown?: (e: React.MouseEvent) => void
   icon: React.ReactNode
   label: string
   isDark: boolean
-  title?: string
 }
 
-const ToolbarBtn = ({
-  onClick,
-  onMouseDown,
-  icon,
-  label,
-  isDark,
-  title,
-}: BtnProps) => (
-  <button
-    className={tw.btn(isDark)}
-    onClick={onClick}
-    onMouseDown={onMouseDown}
-    title={title}
-  >
+const ToolbarBtn = ({ onClick, icon, label, isDark }: BtnProps) => (
+  <button className={tw.btn(isDark)} onClick={onClick} title={label}>
     {icon}
-    <span>{label}</span>
   </button>
 )
 
@@ -97,7 +82,7 @@ const App = observer(() => {
 
     const iframe = document.createElement('iframe')
     iframe.style.cssText =
-      'position:absolute;inset:0;width:100%;height:100%;border:none;'
+      'position:absolute;inset:0;width:100%;height:100%;border:none;pointer-events:none;'
     containerRef.current?.appendChild(iframe)
     iframeRef.current = iframe
 
@@ -109,10 +94,6 @@ const App = observer(() => {
     setRomLoaded(true)
     setIsPaused(false)
     setIsMuted(false)
-
-    iframe.addEventListener('load', () => {
-      iframe.contentWindow?.focus()
-    })
   }, [])
 
   const openFile = useCallback(() => {
@@ -126,36 +107,19 @@ const App = observer(() => {
     input.click()
   }, [loadRom])
 
-  const focusCanvas = useCallback(() => {
-    const canvas =
-      iframeRef.current?.contentWindow?.document.getElementById('canvas')
-    if (canvas) {
-      canvas.focus()
-    } else {
-      iframeRef.current?.contentWindow?.focus()
-    }
-  }, [])
-
   const handleReset = useCallback(() => {
     triggerKey('KeyH')
-    focusCanvas()
-  }, [triggerKey, focusCanvas])
+  }, [triggerKey])
 
   const handleTogglePause = useCallback(() => {
     triggerKey('KeyP')
     setIsPaused((p) => !p)
-    focusCanvas()
-  }, [triggerKey, focusCanvas])
+  }, [triggerKey])
 
   const handleToggleMute = useCallback(() => {
     triggerKey('F9')
     setIsMuted((m) => !m)
-    focusCanvas()
-  }, [triggerKey, focusCanvas])
-
-  const preventFocusLoss = useCallback((e: React.MouseEvent) => {
-    e.preventDefault()
-  }, [])
+  }, [triggerKey])
 
   const handleFullscreen = useCallback(() => {
     fullscreen.toggle(containerRef.current ?? undefined)
@@ -230,21 +194,18 @@ const App = observer(() => {
               icon={isPaused ? <Play size={13} /> : <Pause size={13} />}
               label={isPaused ? t('resume') : t('pause')}
               isDark={isDark}
-              onMouseDown={preventFocusLoss}
             />
             <ToolbarBtn
               onClick={handleReset}
               icon={<RotateCcw size={13} />}
               label={t('reset')}
               isDark={isDark}
-              onMouseDown={preventFocusLoss}
             />
             <ToolbarBtn
               onClick={handleToggleMute}
               icon={isMuted ? <VolumeX size={13} /> : <Volume2 size={13} />}
               label={isMuted ? t('unmute') : t('mute')}
               isDark={isDark}
-              onMouseDown={preventFocusLoss}
             />
           </>
         )}

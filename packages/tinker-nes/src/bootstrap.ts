@@ -53,7 +53,7 @@ function tryStart() {
 
   emFs.writeFile(
     '/home/web_user/retroarch/userdata/retroarch.cfg',
-    'menu_driver = "rgui"\n',
+    'menu_driver = "rgui"\naspect_ratio_index = "0"\nvideo_force_aspect = "true"\n',
   )
   emFs.writeFile(
     '/home/web_user/retroarch/userdata/retroarch-core-options.cfg',
@@ -73,7 +73,6 @@ function tryStart() {
       document.getElementById('loading')!.style.display = 'none'
       emModule.callMain(['-v', path])
       emModule.resumeMainLoop()
-      document.getElementById('canvas')!.focus()
     })
 }
 
