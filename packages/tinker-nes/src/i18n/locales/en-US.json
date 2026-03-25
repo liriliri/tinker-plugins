@@ -1,0 +1,11 @@
+{
+  "openRom": "Open ROM",
+  "dropRom": "Drop .nes file here",
+  "reset": "Reset",
+  "fullscreen": "Fullscreen",
+  "mute": "Mute",
+  "unmute": "Unmute",
+  "pause": "Pause",
+  "resume": "Resume",
+  "loading": "LOADING..."
+}

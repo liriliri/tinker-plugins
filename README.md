@@ -48,5 +48,13 @@ All plugins in the list can be installed to TINKER by running `npm i -g tinker-x
       <th><img src="./packages/tinker-electron-debug/screenshot.png"/></th>
       <th><img src="./packages/tinker-gamepad/screenshot.png"/></th>
     </tr>
+    <tr>
+      <th><a href="./packages/tinker-trending/">tinker-trending</a></th>
+      <th><a href="./packages/tinker-nes/">tinker-nes</a></th>
+    </tr>
+    <tr>
+      <th><img src="./packages/tinker-trending/screenshot.png"/></th>
+      <th><img src="./packages/tinker-nes/screenshot.png"/></th>
+    </tr>
   </tbody>
 </table>

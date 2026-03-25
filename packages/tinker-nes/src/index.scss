@@ -1,0 +1,38 @@
+@use 'tailwindcss';
+@config "../tailwind.config.js";
+
+html.dark {
+  color-scheme: dark;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+@keyframes nes-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.nes-blink {
+  animation: nes-blink 1.2s step-end infinite;
+}
+
+.scanlines {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.12) 2px,
+    rgba(0, 0, 0, 0.12) 4px
+  );
+}

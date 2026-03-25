@@ -1,5 +1,6 @@
 references/
 node_modules/
 dist/
+tests/
 .claude/
 package-lock.json
