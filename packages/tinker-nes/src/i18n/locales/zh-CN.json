@@ -7,5 +7,21 @@
   "unmute": "取消静音",
   "pause": "暂停",
   "resume": "继续",
-  "loading": "加载中..."
+  "loading": "加载中...",
+  "keymap": "按键设置",
+  "player1": "玩家 1",
+  "player2": "玩家 2",
+  "button": "按钮",
+  "pressKey": "按下按键...",
+  "pressBtn": "按下手柄键...",
+  "btn": "键",
+  "save": "保存",
+  "nes_up": "上",
+  "nes_down": "下",
+  "nes_left": "左",
+  "nes_right": "右",
+  "nes_a": "A",
+  "nes_b": "B",
+  "nes_start": "Start",
+  "nes_select": "Select"
 }

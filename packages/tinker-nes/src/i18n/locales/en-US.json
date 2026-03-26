@@ -7,5 +7,21 @@
   "unmute": "Unmute",
   "pause": "Pause",
   "resume": "Resume",
-  "loading": "LOADING..."
+  "loading": "LOADING...",
+  "keymap": "Key Bindings",
+  "player1": "Player 1",
+  "player2": "Player 2",
+  "button": "Button",
+  "pressKey": "Press key...",
+  "pressBtn": "Press btn...",
+  "btn": "Btn",
+  "save": "Save",
+  "nes_up": "Up",
+  "nes_down": "Down",
+  "nes_left": "Left",
+  "nes_right": "Right",
+  "nes_a": "A",
+  "nes_b": "B",
+  "nes_start": "Start",
+  "nes_select": "Select"
 }

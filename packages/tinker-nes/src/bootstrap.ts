@@ -1,3 +1,4 @@
+import { RETROARCH_CFG } from './lib/keymap'
 import { configure, InMemory } from '@zenfs/core'
 import { IndexedDB } from '@zenfs/dom'
 import EmscriptenPlugin from '@zenfs/emscripten/plugin'
@@ -51,9 +52,10 @@ function tryStart() {
 
   const emFs = emModule.FS
 
+  emFs.mkdirTree('/home/web_user/.config/retroarch')
   emFs.writeFile(
-    '/home/web_user/retroarch/userdata/retroarch.cfg',
-    'menu_driver = "rgui"\naspect_ratio_index = "0"\nvideo_force_aspect = "true"\n',
+    '/home/web_user/.config/retroarch/retroarch.cfg',
+    RETROARCH_CFG,
   )
   emFs.writeFile(
     '/home/web_user/retroarch/userdata/retroarch-core-options.cfg',
