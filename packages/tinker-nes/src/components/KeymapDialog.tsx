@@ -178,16 +178,14 @@ export default function KeymapDialog({
                 ? formatKeyCode(binding.keyboard)
                 : '—'}
           </span>
-          {binding.keyboard && !isListening(player, button, 'keyboard') && (
-            <X
-              size={9}
-              className="opacity-40 hover:opacity-100 cursor-pointer"
-              onClick={(e) => {
-                e.stopPropagation()
-                clearBinding(player, button, 'keyboard')
-              }}
-            />
-          )}
+          <X
+            size={9}
+            className={`cursor-pointer ${binding.keyboard && !isListening(player, button, 'keyboard') ? 'opacity-40 hover:opacity-100' : 'invisible'}`}
+            onClick={(e) => {
+              e.stopPropagation()
+              clearBinding(player, button, 'keyboard')
+            }}
+          />
         </button>
         <button
           className={btnCls(isListening(player, button, 'gamepad'))}
@@ -205,17 +203,14 @@ export default function KeymapDialog({
                 ? `${t('btn')} ${binding.gamepad}`
                 : '—'}
           </span>
-          {binding.gamepad !== null &&
-            !isListening(player, button, 'gamepad') && (
-              <X
-                size={9}
-                className="opacity-40 hover:opacity-100 cursor-pointer"
-                onClick={(e) => {
-                  e.stopPropagation()
-                  clearBinding(player, button, 'gamepad')
-                }}
-              />
-            )}
+          <X
+            size={9}
+            className={`cursor-pointer ${binding.gamepad !== null && !isListening(player, button, 'gamepad') ? 'opacity-40 hover:opacity-100' : 'invisible'}`}
+            onClick={(e) => {
+              e.stopPropagation()
+              clearBinding(player, button, 'gamepad')
+            }}
+          />
         </button>
       </div>
     </td>
