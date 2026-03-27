@@ -1,7 +1,12 @@
 import escapeJsStr from 'licia/escapeJsStr'
 
-export function buildIframeHtml(gameUrl: string, baseUrl: string) {
+export function buildIframeHtml(
+  gameUrl: string,
+  gameName: string,
+  baseUrl: string,
+) {
   const escapedGameUrl = escapeJsStr(gameUrl)
+  const escapedGameName = escapeJsStr(gameName)
   const escapedCoreUrl = escapeJsStr(`${baseUrl}fceumm_libretro.js`)
 
   return `<!DOCTYPE html>
@@ -15,11 +20,12 @@ html,body{margin:0;padding:0;overflow:hidden;background:#000;}
 </style>
 </head>
 <body>
+<script>navigator.getGamepads = () => []</script>
 <div class="container">
   <div id="loading">LOADING...</div>
   <canvas id="canvas"></canvas>
 </div>
-<script>window.gameUrl='${escapedGameUrl}';window.coreUrl='${escapedCoreUrl}';</script>
+<script>window.gameUrl='${escapedGameUrl}';window.gameName='${escapedGameName}';window.coreUrl='${escapedCoreUrl}';</script>
 <script type="module" src="${baseUrl}bootstrap.js"></script>
 </body>
 </html>`

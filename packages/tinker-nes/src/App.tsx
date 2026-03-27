@@ -1,16 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
-import {
-  FolderOpen,
-  Pause,
-  Play,
-  RotateCcw,
-  Volume2,
-  VolumeX,
-  Maximize,
-  Keyboard,
-} from 'lucide-react'
+import md5 from 'licia/md5'
 import contain from 'licia/contain'
 import endWith from 'licia/endWith'
 import fullscreen from 'licia/fullscreen'
@@ -22,31 +13,48 @@ import {
   NesButton,
   PlayerKeymap,
   INTERNAL_KEYS,
+  TURBO_BUTTON_MAP,
   loadKeymap,
   saveKeymap,
 } from './lib/keymap'
 import KeymapDialog from './components/KeymapDialog'
+import Toolbar from './components/Toolbar'
 
 const TOOLBAR_KEY_CODES: Record<string, number> = {
   KeyH: 72,
   KeyP: 80,
+  F2: 113,
+  F4: 115,
   F9: 120,
 }
 
 const HOTKEYS = [72, 80, 32] // H, P, Space
 
-interface BtnProps {
-  onClick: () => void
-  icon: React.ReactNode
-  label: string
-  isDark: boolean
+const TURBO_INTERVAL_MS = 50
+const TURBO_PERIOD = 3 // gamepad turbo toggles every N frames
+
+interface KeyLookup {
+  btn: NesButton
+  code: string
+  keyCode: number
 }
 
-const ToolbarBtn = ({ onClick, icon, label, isDark }: BtnProps) => (
-  <button className={tw.btn(isDark)} onClick={onClick} title={label}>
-    {icon}
-  </button>
-)
+function findKeyBinding(
+  inputCode: string,
+  km: [PlayerKeymap, PlayerKeymap],
+): KeyLookup | null {
+  for (let p = 0; p < 2; p++) {
+    const player = km[p as 0 | 1]
+    for (const btn of Object.keys(player) as NesButton[]) {
+      if (player[btn].keyboard === inputCode) {
+        const targetBtn = TURBO_BUTTON_MAP[btn] ?? btn
+        const { code, keyCode } = INTERNAL_KEYS[p as 0 | 1][targetBtn]
+        return { btn, code, keyCode }
+      }
+    }
+  }
+  return null
+}
 
 function postKey(win: Window, type: string, code: string, keyCode: number) {
   win.postMessage({ type, code, keyCode }, '*')
@@ -66,6 +74,7 @@ const App = observer(() => {
   const [keymap, setKeymap] = useState(() => loadKeymap())
 
   const padPressedRef = useRef<Set<string>>(new Set())
+  const turboFrameRef = useRef<Map<string, number>>(new Map())
   const keymapRef = useRef(keymap)
   useEffect(() => {
     keymapRef.current = keymap
@@ -86,13 +95,15 @@ const App = observer(() => {
     )
   }, [])
 
-  const loadRom = useCallback((file: File) => {
+  const loadRom = useCallback(async (file: File) => {
+    const buffer = await file.arrayBuffer()
+    const romMd5 = md5([...new Uint8Array(buffer)]) + '.nes'
     if (blobUrlRef.current) URL.revokeObjectURL(blobUrlRef.current)
-    const url = URL.createObjectURL(file)
+    const url = URL.createObjectURL(new Blob([buffer]))
     blobUrlRef.current = url
     const base = import.meta.env.BASE_URL || './'
     const baseUrl = endWith(base, '/') ? base : `${base}/`
-    const html = buildIframeHtml(url, baseUrl)
+    const html = buildIframeHtml(url, romMd5, baseUrl)
     if (iframeRef.current) {
       iframeRef.current.remove()
       iframeRef.current = null
@@ -127,6 +138,14 @@ const App = observer(() => {
 
   const handleReset = useCallback(
     () => triggerToolbarKey('KeyH'),
+    [triggerToolbarKey],
+  )
+  const handleSaveState = useCallback(
+    () => triggerToolbarKey('F2'),
+    [triggerToolbarKey],
+  )
+  const handleLoadState = useCallback(
+    () => triggerToolbarKey('F4'),
     [triggerToolbarKey],
   )
   const handleTogglePause = useCallback(() => {
@@ -166,33 +185,58 @@ const App = observer(() => {
     [],
   )
 
-  // keyboard forwarding with remap: user key → internal fixed key for that player
   useEffect(() => {
-    const forward = (type: string) => (e: KeyboardEvent) => {
+    const turboIntervals = new Map<string, ReturnType<typeof setInterval>>()
+
+    const onKeydown = (e: KeyboardEvent) => {
       if (showKeymap) return
       if (contain(HOTKEYS, e.keyCode)) return
       const win = iframeRef.current?.contentWindow
       if (!win) return
-      const km = keymapRef.current
-      for (let p = 0; p < 2; p++) {
-        const player = km[p as 0 | 1]
-        for (const btn of Object.keys(player) as NesButton[]) {
-          if (player[btn].keyboard === e.code) {
-            e.preventDefault()
-            const { code, keyCode } = INTERNAL_KEYS[p as 0 | 1][btn]
-            postKey(win, type, code, keyCode)
-            return
-          }
-        }
+      const binding = findKeyBinding(e.code, keymapRef.current)
+      if (!binding) return
+      e.preventDefault()
+      const { btn, code, keyCode } = binding
+      if (TURBO_BUTTON_MAP[btn] && !turboIntervals.has(e.code)) {
+        postKey(win, 'keydown', code, keyCode)
+        let turboDown = true
+        const id = setInterval(() => {
+          const w = iframeRef.current?.contentWindow
+          if (!w) return
+          turboDown = !turboDown
+          postKey(w, turboDown ? 'keydown' : 'keyup', code, keyCode)
+        }, TURBO_INTERVAL_MS)
+        turboIntervals.set(e.code, id)
+      } else if (!TURBO_BUTTON_MAP[btn]) {
+        postKey(win, 'keydown', code, keyCode)
       }
     }
-    const onKeydown = forward('keydown')
-    const onKeyup = forward('keyup')
+
+    const onKeyup = (e: KeyboardEvent) => {
+      if (showKeymap) return
+      if (contain(HOTKEYS, e.keyCode)) return
+      const win = iframeRef.current?.contentWindow
+      if (!win) return
+      const binding = findKeyBinding(e.code, keymapRef.current)
+      if (!binding) return
+      e.preventDefault()
+      const { btn, code, keyCode } = binding
+      if (TURBO_BUTTON_MAP[btn]) {
+        const id = turboIntervals.get(e.code)
+        if (id !== undefined) {
+          clearInterval(id)
+          turboIntervals.delete(e.code)
+        }
+      }
+      postKey(win, 'keyup', code, keyCode)
+    }
+
     window.addEventListener('keydown', onKeydown)
     window.addEventListener('keyup', onKeyup)
     return () => {
       window.removeEventListener('keydown', onKeydown)
       window.removeEventListener('keyup', onKeyup)
+      turboIntervals.forEach((id) => clearInterval(id))
     }
   }, [showKeymap])
 
@@ -220,8 +264,18 @@ const App = observer(() => {
           if (pad.buttons[idx]?.pressed) {
             const key = `${p}-${btn}`
             pressed.add(key)
-            if (!padPressedRef.current.has(key)) {
-              const { code, keyCode } = INTERNAL_KEYS[p as 0 | 1][btn]
+            const targetBtn = TURBO_BUTTON_MAP[btn] ?? btn
+            const { code, keyCode } = INTERNAL_KEYS[p as 0 | 1][targetBtn]
+            if (TURBO_BUTTON_MAP[btn]) {
+              const frame =
+                ((turboFrameRef.current.get(key) ?? 0) + 1) % (TURBO_PERIOD * 2)
+              turboFrameRef.current.set(key, frame)
+              if (frame % TURBO_PERIOD === 1) {
+                postKey(win, 'keydown', code, keyCode)
+              } else if (frame % TURBO_PERIOD === 0) {
+                postKey(win, 'keyup', code, keyCode)
+              }
+            } else if (!padPressedRef.current.has(key)) {
               postKey(win, 'keydown', code, keyCode)
             }
           }
@@ -231,8 +285,10 @@ const App = observer(() => {
       for (const key of padPressedRef.current) {
         if (!pressed.has(key)) {
           const [pStr, btn] = key.split('-') as [string, NesButton]
-          const { code, keyCode } = INTERNAL_KEYS[+pStr as 0 | 1][btn]
+          const targetBtn = TURBO_BUTTON_MAP[btn] ?? btn
+          const { code, keyCode } = INTERNAL_KEYS[+pStr as 0 | 1][targetBtn]
           postKey(win, 'keyup', code, keyCode)
+          turboFrameRef.current.delete(key)
         }
       }
 
@@ -245,52 +301,20 @@ const App = observer(() => {
 
   return (
     <div className={`h-screen flex flex-col font-mono ${tw.appBg(isDark)}`}>
-      <div
-        className={`flex items-center gap-0.5 px-2 py-1 shrink-0 border-b ${tw.toolbar(isDark)}`}
-      >
-        <ToolbarBtn
-          onClick={openFile}
-          icon={<FolderOpen size={13} />}
-          label={t('openRom')}
-          isDark={isDark}
-        />
-        {romLoaded && (
-          <>
-            <div className={tw.divider(isDark)} />
-            <ToolbarBtn
-              onClick={handleTogglePause}
-              icon={isPaused ? <Play size={13} /> : <Pause size={13} />}
-              label={isPaused ? t('resume') : t('pause')}
-              isDark={isDark}
-            />
-            <ToolbarBtn
-              onClick={handleReset}
-              icon={<RotateCcw size={13} />}
-              label={t('reset')}
-              isDark={isDark}
-            />
-            <ToolbarBtn
-              onClick={handleToggleMute}
-              icon={isMuted ? <VolumeX size={13} /> : <Volume2 size={13} />}
-              label={isMuted ? t('unmute') : t('mute')}
-              isDark={isDark}
-            />
-          </>
-        )}
-        <div className="ml-auto" />
-        <ToolbarBtn
-          onClick={() => setShowKeymap(true)}
-          icon={<Keyboard size={13} />}
-          label={t('keymap')}
-          isDark={isDark}
-        />
-        <ToolbarBtn
-          onClick={handleFullscreen}
-          icon={<Maximize size={13} />}
-          label={t('fullscreen')}
-          isDark={isDark}
-        />
-      </div>
+      <Toolbar
+        isDark={isDark}
+        romLoaded={romLoaded}
+        isPaused={isPaused}
+        isMuted={isMuted}
+        onOpenFile={openFile}
+        onTogglePause={handleTogglePause}
+        onReset={handleReset}
+        onToggleMute={handleToggleMute}
+        onSaveState={handleSaveState}
+        onLoadState={handleLoadState}
+        onFullscreen={handleFullscreen}
+        onOpenKeymap={() => setShowKeymap(true)}
+      />
 
       <div
         ref={containerRef}

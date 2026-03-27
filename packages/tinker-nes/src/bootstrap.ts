@@ -1,12 +1,32 @@
-import { RETROARCH_CFG } from './lib/keymap'
 import { configure, InMemory } from '@zenfs/core'
 import { IndexedDB } from '@zenfs/dom'
 import EmscriptenPlugin from '@zenfs/emscripten/plugin'
-import last from 'licia/last'
-import trim from 'licia/trim'
 import trigger from 'licia/trigger'
 
-const { gameUrl, coreUrl } = window as any
+const RETROARCH_CFG = `menu_driver = "rgui"
+aspect_ratio_index = "0"
+video_force_aspect = "true"
+input_joypad_driver = "null"
+input_player1_up = "up"
+input_player1_down = "down"
+input_player1_left = "left"
+input_player1_right = "right"
+input_player1_a = "x"
+input_player1_b = "z"
+input_player1_start = "enter"
+input_player1_select = "rshift"
+input_player2_up = "keypad8"
+input_player2_down = "keypad5"
+input_player2_left = "keypad4"
+input_player2_right = "keypad6"
+input_player2_a = "keypad2"
+input_player2_b = "keypad1"
+input_player2_start = "keypad0"
+input_player2_select = "kp_period"
+savestate_file_compression = false
+`
+
+const { gameUrl, gameName, coreUrl } = window as any
 
 let emModule: any
 let fsReady = false
@@ -53,6 +73,8 @@ function tryStart() {
   const emFs = emModule.FS
 
   emFs.mkdirTree('/home/web_user/.config/retroarch')
+  emFs.mkdirTree('/home/web_user/retroarch/userdata/states')
+  emFs.mkdirTree('/home/web_user/retroarch/userdata/saves')
   emFs.writeFile(
     '/home/web_user/.config/retroarch/retroarch.cfg',
     RETROARCH_CFG,
@@ -65,9 +87,8 @@ function tryStart() {
   fetch(gameUrl)
     .then((r) => r.arrayBuffer())
     .then((buffer) => {
-      const name = getFileName(gameUrl)
       const data = new Uint8Array(buffer)
-      const path = '/home/web_user/retroarch/userdata/' + name
+      const path = '/home/web_user/retroarch/userdata/' + (gameName || 'game')
       emFs.writeFile(path, data, { encoding: 'binary' })
       return path
     })
@@ -76,11 +97,6 @@ function tryStart() {
       emModule.callMain(['-v', path])
       emModule.resumeMainLoop()
     })
-}
-
-function getFileName(url: string) {
-  const ret = trim((last(url.split('/')) ?? 'game').split('?')[0])
-  return ret || 'game'
 }
 
 const moduleConfig = {

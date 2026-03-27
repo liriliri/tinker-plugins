@@ -171,7 +171,7 @@ export default function KeymapDialog({
           }
         >
           <Keyboard size={10} />
-          <span className="min-w-[60px]">
+          <span className="w-[72px] truncate">
             {isListening(player, button, 'keyboard')
               ? t('pressKey')
               : binding.keyboard
@@ -196,7 +196,7 @@ export default function KeymapDialog({
           }
         >
           <Gamepad2 size={10} />
-          <span className="min-w-[40px]">
+          <span className="w-[52px] truncate">
             {isListening(player, button, 'gamepad')
               ? t('pressBtn')
               : binding.gamepad !== null
@@ -222,7 +222,7 @@ export default function KeymapDialog({
       onClick={handleBackdrop}
     >
       <div
-        className={`rounded border shadow-xl w-[560px] max-h-[80vh] flex flex-col font-mono ${dialogBg}`}
+        className={`rounded border shadow-xl w-[620px] max-h-[90vh] flex flex-col font-mono ${dialogBg}`}
       >
         {/* header */}
         <div

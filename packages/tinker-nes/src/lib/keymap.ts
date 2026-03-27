@@ -5,6 +5,8 @@ export type NesButton =
   | 'right'
   | 'a'
   | 'b'
+  | 'turboA'
+  | 'turboB'
   | 'start'
   | 'select'
 
@@ -15,9 +17,16 @@ export const NES_BUTTONS: NesButton[] = [
   'right',
   'a',
   'b',
+  'turboA',
+  'turboB',
   'start',
   'select',
 ]
+
+export const TURBO_BUTTON_MAP: Partial<Record<NesButton, NesButton>> = {
+  turboA: 'a',
+  turboB: 'b',
+}
 
 // Fixed internal keys for each player used in retroarch.cfg
 // Player1: RetroArch defaults; Player2: separate keys that won't conflict
@@ -32,6 +41,8 @@ export const INTERNAL_KEYS: [
     right: { code: 'ArrowRight', keyCode: 39 },
     a: { code: 'KeyX', keyCode: 88 },
     b: { code: 'KeyZ', keyCode: 90 },
+    turboA: { code: 'KeyX', keyCode: 88 },
+    turboB: { code: 'KeyZ', keyCode: 90 },
     start: { code: 'Enter', keyCode: 13 },
     select: { code: 'ShiftRight', keyCode: 16 },
   },
@@ -42,31 +53,12 @@ export const INTERNAL_KEYS: [
     right: { code: 'Numpad6', keyCode: 102 },
     a: { code: 'Numpad2', keyCode: 98 },
     b: { code: 'Numpad1', keyCode: 97 },
+    turboA: { code: 'Numpad2', keyCode: 98 },
+    turboB: { code: 'Numpad1', keyCode: 97 },
     start: { code: 'Numpad0', keyCode: 96 },
     select: { code: 'NumpadDecimal', keyCode: 110 },
   },
 ]
-
-export const RETROARCH_CFG = `menu_driver = "rgui"
-aspect_ratio_index = "0"
-video_force_aspect = "true"
-input_player1_up = "up"
-input_player1_down = "down"
-input_player1_left = "left"
-input_player1_right = "right"
-input_player1_a = "x"
-input_player1_b = "z"
-input_player1_start = "enter"
-input_player1_select = "rshift"
-input_player2_up = "keypad8"
-input_player2_down = "keypad5"
-input_player2_left = "keypad4"
-input_player2_right = "keypad6"
-input_player2_a = "keypad2"
-input_player2_b = "keypad1"
-input_player2_start = "keypad0"
-input_player2_select = "kp_period"
-`
 
 export interface ButtonBinding {
   keyboard: string | null // KeyboardEvent.code
@@ -83,6 +75,8 @@ export const DEFAULT_KEYMAP: [PlayerKeymap, PlayerKeymap] = [
     right: { keyboard: 'ArrowRight', gamepad: 15 },
     a: { keyboard: 'KeyX', gamepad: 1 },
     b: { keyboard: 'KeyZ', gamepad: 0 },
+    turboA: { keyboard: 'KeyA', gamepad: 3 },
+    turboB: { keyboard: 'KeyS', gamepad: 2 },
     start: { keyboard: 'Enter', gamepad: 9 },
     select: { keyboard: 'ShiftRight', gamepad: 8 },
   },
@@ -93,6 +87,8 @@ export const DEFAULT_KEYMAP: [PlayerKeymap, PlayerKeymap] = [
     right: { keyboard: null, gamepad: 15 },
     a: { keyboard: null, gamepad: 1 },
     b: { keyboard: null, gamepad: 0 },
+    turboA: { keyboard: null, gamepad: null },
+    turboB: { keyboard: null, gamepad: null },
     start: { keyboard: null, gamepad: 9 },
     select: { keyboard: null, gamepad: 8 },
   },
@@ -103,7 +99,13 @@ const STORAGE_KEY = 'tinker-nes-keymap'
 export function loadKeymap(): [PlayerKeymap, PlayerKeymap] {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
-    if (raw) return JSON.parse(raw)
+    if (raw) {
+      const saved = JSON.parse(raw) as [PlayerKeymap, PlayerKeymap]
+      return [
+        { ...DEFAULT_KEYMAP[0], ...saved[0] },
+        { ...DEFAULT_KEYMAP[1], ...saved[1] },
+      ]
+    }
   } catch {
     // ignore
   }
