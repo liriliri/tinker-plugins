@@ -15,6 +15,12 @@ interface BilibiliDash {
   audio: BilibiliDashStream[]
 }
 
+interface AcceptQuality {
+  accept_quality: number[]
+  video: BilibiliDashStream[]
+  audio: BilibiliDashStream[]
+}
+
 interface BilibiliPageItem {
   page: number
   part: string
@@ -237,17 +243,17 @@ async function parseBV(
     up: videoData.staff
       ? videoData.staff.map((s) => ({ name: s.name, mid: s.mid }))
       : [{ name: videoData.owner.name, mid: videoData.owner.mid }],
-    qualityOptions: acceptQuality.accept_quality.map((q) => ({
+    qualityOptions: acceptQuality.accept_quality.map((q: number) => ({
       label: qualityMap[q] || String(q),
       value: q,
     })),
     page: parseBVPageData(videoData, url),
-    video: acceptQuality.video.map((v) => ({
+    video: acceptQuality.video.map((v: BilibiliDashStream) => ({
       id: v.id,
       cid: videoData.cid,
       url: v.baseUrl || v.base_url || '',
     })),
-    audio: acceptQuality.audio.map((a) => ({
+    audio: acceptQuality.audio.map((a: BilibiliDashStream) => ({
       id: a.id,
       cid: videoData.cid,
       url: a.baseUrl || a.base_url || '',
@@ -316,17 +322,17 @@ async function parseBangumi(
     up: data.up_info
       ? [{ name: data.up_info.uname, mid: data.up_info.mid }]
       : [],
-    qualityOptions: acceptQuality.accept_quality.map((q) => ({
+    qualityOptions: acceptQuality.accept_quality.map((q: number) => ({
       label: qualityMap[q] || String(q),
       value: q,
     })),
     page: pages,
-    video: acceptQuality.video.map((v) => ({
+    video: acceptQuality.video.map((v: BilibiliDashStream) => ({
       id: v.id,
       cid: targetEp.cid,
       url: v.baseUrl || v.base_url || '',
     })),
-    audio: acceptQuality.audio.map((a) => ({
+    audio: acceptQuality.audio.map((a: BilibiliDashStream) => ({
       id: a.id,
       cid: targetEp.cid,
       url: a.baseUrl || a.base_url || '',
