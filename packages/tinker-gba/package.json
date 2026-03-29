@@ -1,0 +1,38 @@
+{
+  "name": "tinker-gba",
+  "version": "0.1.0",
+  "description": "GBA Emulator Plugin for Tinker",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "gba",
+    "emulator"
+  ],
+  "tinker": {
+    "name": "GBA",
+    "main": "dist/index.html",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "GBA"
+      }
+    }
+  },
+  "devDependencies": {
+    "@zenfs/core": "^2.5.2",
+    "@zenfs/dom": "^1.2.7",
+    "@zenfs/emscripten": "^1.0.5"
+  }
+}
