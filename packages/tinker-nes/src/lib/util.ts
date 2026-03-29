@@ -20,7 +20,11 @@ html,body{margin:0;padding:0;overflow:hidden;background:#000;}
 </style>
 </head>
 <body>
-<script>navigator.getGamepads = () => []</script>
+<script>
+navigator.getGamepads = () => [];
+window.addEventListener('gamepadconnected', e => e.stopImmediatePropagation(), true);
+window.addEventListener('gamepaddisconnected', e => e.stopImmediatePropagation(), true);
+</script>
 <div class="container">
   <div id="loading">LOADING...</div>
   <canvas id="canvas"></canvas>
