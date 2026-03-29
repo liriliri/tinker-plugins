@@ -26,9 +26,23 @@ input_player2_select = "kp_period"
 savestate_file_compression = false
 `
 
-const { gameUrl, gameName, coreUrl } = window as any
+interface EmscriptenModule {
+  FS: typeof FS & {
+    mkdirTree: (path: string) => void
+  }
+  callMain: (args: string[]) => void
+  resumeMainLoop: () => void
+}
 
-let emModule: any
+interface BootstrapWindow {
+  gameUrl: string
+  gameName: string
+  coreUrl: string
+}
+
+const { gameUrl, gameName, coreUrl } = window as unknown as BootstrapWindow
+
+let emModule: EmscriptenModule | null = null
 let fsReady = false
 let moduleReady = false
 
@@ -54,7 +68,7 @@ async function setupFs() {
 }
 
 function mountToEmscripten() {
-  const emFs = emModule.FS
+  const emFs = emModule!.FS
   // Ensure /home exists in Emscripten's FS before mounting
   try {
     emFs.mkdir('/home')
@@ -70,7 +84,7 @@ function tryStart() {
 
   mountToEmscripten()
 
-  const emFs = emModule.FS
+  const emFs = emModule!.FS
 
   emFs.mkdirTree('/home/web_user/.config/retroarch')
   emFs.mkdirTree('/home/web_user/retroarch/userdata/states')
@@ -94,19 +108,21 @@ function tryStart() {
     })
     .then((path) => {
       document.getElementById('loading')!.style.display = 'none'
-      emModule.callMain(['-v', path])
-      emModule.resumeMainLoop()
+      emModule!.callMain(['-v', path])
+      emModule!.resumeMainLoop()
     })
 }
+
+const canvasEl = document.getElementById('canvas')
 
 const moduleConfig = {
   noInitialRun: true,
   arguments: ['-v', '--menu'],
-  preRun: [] as any[],
-  postRun: [] as any[],
+  preRun: [] as (() => void)[],
+  postRun: [] as (() => void)[],
   print: (text: string) => console.log(text),
-  printErr: (text: string) => console.log(text),
-  canvas: document.getElementById('canvas'),
+  printErr: (text: string) => console.error(text),
+  canvas: canvasEl,
   totalDependencies: 0,
   monitorRunDependencies(left: number) {
     this.totalDependencies = Math.max(this.totalDependencies, left)
@@ -116,8 +132,7 @@ const moduleConfig = {
 window.addEventListener('message', (e) => {
   const { type, code, keyCode } = e.data ?? {}
   if (type !== 'keydown' && type !== 'keyup') return
-  const canvas = document.getElementById('canvas')
-  const target = canvas ?? document
+  const target = canvasEl ?? document
   trigger(target, type, { code, keyCode, which: keyCode, bubbles: true })
 })
 
@@ -126,7 +141,7 @@ window.addEventListener('load', () => {
   setupFs()
   import(/* @vite-ignore */ coreUrl)
     .then((m) => m.default(moduleConfig))
-    .then((instance: any) => {
+    .then((instance: EmscriptenModule) => {
       emModule = instance
       moduleReady = true
       tryStart()

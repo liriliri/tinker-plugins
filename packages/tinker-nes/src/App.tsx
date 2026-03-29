@@ -338,7 +338,9 @@ const App = observer(() => {
         )}
         {isDragging && (
           <div className={tw.dragOverlay}>
-            <p className="text-red-500 text-[10px] tracking-[0.3em] uppercase animate-pulse">
+            <p
+              className={`text-[10px] tracking-[0.3em] uppercase animate-pulse ${tw.dragText(isDark)}`}
+            >
               {t('dropRom')}
             </p>
           </div>

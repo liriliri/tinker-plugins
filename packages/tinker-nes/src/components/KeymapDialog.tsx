@@ -36,25 +36,20 @@ export default function KeymapDialog({
   )
   const [listening, setListening] = useState<BindingTarget | null>(null)
 
-  const startListening = useCallback((target: BindingTarget) => {
-    setListening(target)
-  }, [])
-
   const clearBinding = useCallback(
     (player: 0 | 1, button: NesButton, type: 'keyboard' | 'gamepad') => {
       setDraft((prev) => {
-        const next: [PlayerKeymap, PlayerKeymap] = [
-          cloneDeep(prev[0]),
-          cloneDeep(prev[1]),
-        ]
-        next[player][button] = { ...next[player][button], [type]: null }
+        const next = [...prev] as [PlayerKeymap, PlayerKeymap]
+        next[player] = {
+          ...prev[player],
+          [button]: { ...prev[player][button], [type]: null },
+        }
         return next
       })
     },
     [],
   )
 
-  // keyboard capture
   useEffect(() => {
     if (!listening || listening.type !== 'keyboard') return
     const handler = (e: KeyboardEvent) => {
@@ -66,11 +61,11 @@ export default function KeymapDialog({
       }
       const { player, button } = listening
       setDraft((prev) => {
-        const next: [PlayerKeymap, PlayerKeymap] = [
-          cloneDeep(prev[0]),
-          cloneDeep(prev[1]),
-        ]
-        next[player][button] = { ...next[player][button], keyboard: e.code }
+        const next = [...prev] as [PlayerKeymap, PlayerKeymap]
+        next[player] = {
+          ...prev[player],
+          [button]: { ...prev[player][button], keyboard: e.code },
+        }
         return next
       })
       setListening(null)
@@ -79,7 +74,6 @@ export default function KeymapDialog({
     return () => window.removeEventListener('keydown', handler, true)
   }, [listening])
 
-  // gamepad capture
   useEffect(() => {
     if (!listening || listening.type !== 'gamepad') return
     let raf: number
@@ -91,11 +85,11 @@ export default function KeymapDialog({
           if (pad.buttons[i].pressed) {
             const { player, button } = listening
             setDraft((prev) => {
-              const next: [PlayerKeymap, PlayerKeymap] = [
-                cloneDeep(prev[0]),
-                cloneDeep(prev[1]),
-              ]
-              next[player][button] = { ...next[player][button], gamepad: i }
+              const next = [...prev] as [PlayerKeymap, PlayerKeymap]
+              next[player] = {
+                ...prev[player],
+                [button]: { ...prev[player][button], gamepad: i },
+              }
               return next
             })
             setListening(null)
@@ -109,7 +103,6 @@ export default function KeymapDialog({
     return () => cancelAnimationFrame(raf)
   }, [listening])
 
-  // close on backdrop click
   const handleBackdrop = useCallback(
     (e: React.MouseEvent) => {
       if (e.target === e.currentTarget) onClose()
@@ -126,22 +119,12 @@ export default function KeymapDialog({
     onClose()
   }, [draft, onSave, onClose])
 
-  const overlayBg = isDark ? 'bg-black/70' : 'bg-black/40'
-  const dialogBg = isDark
-    ? 'bg-[#111] border-[#2a2a2a] text-zinc-100'
-    : 'bg-[#e8e4dc] border-[#b0aca4] text-zinc-900'
-  const headerBg = isDark ? 'border-[#1e1e1e]' : 'border-[#b0aca4]'
-  const tableBg = isDark ? 'bg-[#0a0a0a]' : 'bg-[#d4d0c8]'
-  const thCls = isDark ? 'text-zinc-500' : 'text-zinc-500'
-  const tdBorder = isDark ? 'border-[#1e1e1e]' : 'border-[#c0bcb4]'
-  const btnCls = (active: boolean) =>
-    `flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono transition-all ${
-      active
-        ? 'bg-red-500/20 text-red-400 animate-pulse'
-        : isDark
-          ? 'bg-white/5 text-zinc-400 hover:bg-white/10 hover:text-zinc-100'
-          : 'bg-black/5 text-zinc-600 hover:bg-black/10 hover:text-zinc-900'
-    }`
+  const overlayBg = tw.dialogOverlay(isDark)
+  const dialogBg = tw.dialogBg(isDark)
+  const borderCls = tw.dialogBorder(isDark)
+  const tableBg = tw.tableBg(isDark)
+  const thCls = tw.tableHeader(isDark)
+  const btnCls = (active: boolean) => tw.dialogBindingBtn(isDark, active)
 
   const isListening = (
     player: 0 | 1,
@@ -159,7 +142,7 @@ export default function KeymapDialog({
   ) => (
     <td
       key={`${player}-${button}`}
-      className={`py-1.5 px-3 border-b ${tdBorder}`}
+      className={`py-1.5 px-3 border-b ${borderCls}`}
     >
       <div className="flex gap-1.5">
         <button
@@ -167,7 +150,7 @@ export default function KeymapDialog({
           onClick={() =>
             isListening(player, button, 'keyboard')
               ? setListening(null)
-              : startListening({ player, button, type: 'keyboard' })
+              : setListening({ player, button, type: 'keyboard' })
           }
         >
           <Keyboard size={10} />
@@ -192,7 +175,7 @@ export default function KeymapDialog({
           onClick={() =>
             isListening(player, button, 'gamepad')
               ? setListening(null)
-              : startListening({ player, button, type: 'gamepad' })
+              : setListening({ player, button, type: 'gamepad' })
           }
         >
           <Gamepad2 size={10} />
@@ -226,7 +209,7 @@ export default function KeymapDialog({
       >
         {/* header */}
         <div
-          className={`flex items-center justify-between px-4 py-2.5 border-b ${headerBg}`}
+          className={`flex items-center justify-between px-4 py-2.5 border-b ${borderCls}`}
         >
           <span className="text-[11px] tracking-wider uppercase">
             {t('keymap')}
@@ -262,7 +245,7 @@ export default function KeymapDialog({
               {NES_BUTTONS.map((btn) => (
                 <tr key={btn}>
                   <td
-                    className={`py-1.5 px-3 border-b tracking-wider uppercase ${tdBorder} ${thCls}`}
+                    className={`py-1.5 px-3 border-b tracking-wider uppercase ${borderCls} ${thCls}`}
                   >
                     {t(`nes_${btn}`)}
                   </td>
@@ -276,7 +259,7 @@ export default function KeymapDialog({
 
         {/* footer */}
         <div
-          className={`flex items-center justify-between px-4 py-2.5 border-t ${headerBg}`}
+          className={`flex items-center justify-between px-4 py-2.5 border-t ${borderCls}`}
         >
           <button
             className={tw.btn(isDark)}
@@ -287,11 +270,7 @@ export default function KeymapDialog({
             <span className="text-[10px]">{t('reset')}</span>
           </button>
           <button
-            className={`px-4 py-1.5 rounded text-[10px] tracking-wider transition-all active:scale-95 ${
-              isDark
-                ? 'bg-zinc-100 text-zinc-900 hover:bg-white'
-                : 'bg-zinc-800 text-zinc-100 hover:bg-zinc-900'
-            }`}
+            className={`px-4 py-1.5 rounded text-[10px] tracking-wider transition-all active:scale-95 ${tw.dialogSaveBtn}`}
             onClick={handleSave}
           >
             {t('save')}
