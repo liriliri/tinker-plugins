@@ -56,5 +56,13 @@ All plugins in the list can be installed to TINKER by running `npm i -g tinker-x
       <th><img src="./packages/tinker-trending/screenshot.png"/></th>
       <th><img src="./packages/tinker-nes/screenshot.png"/></th>
     </tr>
+    <tr>
+      <th><a href="./packages/tinker-gba/">tinker-gba</a></th>
+      <th><a href="./packages/tinker-hanzi-converter/">tinker-hanzi-converter</a></th>
+    </tr>
+    <tr>
+      <th><img src="./packages/tinker-gba/screenshot.png"/></th>
+      <th><img src="./packages/tinker-hanzi-converter/screenshot.png"/></th>
+    </tr>
   </tbody>
 </table>

@@ -1,0 +1,15 @@
+{
+  "tabPinyin": "拼音",
+  "tabRmb": "人民币大写",
+  "tabChinese": "简繁转换",
+  "copied": "已复制！",
+  "pinyinPlaceholder": "请输入或粘贴中文文本...",
+  "rmbPlaceholder": "请输入数字，例如 1234.56",
+  "chinesePlaceholder": "请输入中文文本...",
+  "tone": "带声调",
+  "toneNum": "数字声调",
+  "normal": "无声调",
+  "toTraditional": "简→繁",
+  "toSimplified": "繁→简",
+  "copy": "复制"
+}
