@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "ignoreDeprecations": "6.0",
     "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
@@ -16,5 +17,10 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
+  "include": [
+    "packages/tinker-*/src/**/*",
+    "vite-env.d.ts",
+    "node_modules/tinker-api-types/tinker.d.ts"
+  ],
   "exclude": ["**/references/**"]
 }
