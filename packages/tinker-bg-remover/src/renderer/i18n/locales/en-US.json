@@ -1,0 +1,11 @@
+{
+  "model": "Model",
+  "openImage": "Open Image",
+  "removeBackground": "Remove Background",
+  "save": "Save",
+  "reset": "Reset",
+  "dropHint": "Drop image here or click to open",
+  "model_small": "Fast",
+  "model_medium": "Balanced",
+  "model_large": "Quality"
+}

@@ -41,7 +41,7 @@ Notes: `preload` only when needed; `locales` for localized names; prefer `tinker
 
 ## Tinker API
 
-Global `tinker` is available in renderer and preload (see `tinker.d.ts`):
+Global `tinker` is available in renderer and preload (see `node_modules/tinker-api-types/tinker.d.ts`):
 - Theme/locale: `getTheme()` / `getLanguage()`
 - Dialogs: `showOpenDialog()` / `showSaveDialog()`
 - System: `showItemInPath()` / `showContextMenu()` / `setTitle()`
