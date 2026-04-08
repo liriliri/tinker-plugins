@@ -1,0 +1,36 @@
+{
+  "name": "tinker-video-converter",
+  "version": "0.1.0",
+  "description": "Video Format Converter Plugin for Tinker",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "video",
+    "converter"
+  ],
+  "tinker": {
+    "name": "Video Converter",
+    "main": "dist/index.html",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "视频转换"
+      }
+    }
+  },
+  "devDependencies": {
+    "@radix-ui/react-dialog": "^1.1.15"
+  }
+}

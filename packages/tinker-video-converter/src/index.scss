@@ -1,0 +1,269 @@
+@use 'tailwindcss';
+@config "../tailwind.config.js";
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+html.dark {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root,
+#app {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Mono font utility */
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* DropZone filmstrip animation */
+@keyframes filmScroll {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 -120px;
+  }
+}
+
+.film-strip-bg {
+  background-image: repeating-linear-gradient(
+    180deg,
+    transparent 0px,
+    transparent 26px,
+    rgba(245, 158, 11, 0.04) 26px,
+    rgba(245, 158, 11, 0.04) 28px,
+    transparent 28px,
+    transparent 30px
+  );
+  animation: filmScroll 4s linear infinite;
+}
+
+/* Perforations along left edge */
+.film-perf-left::before,
+.film-perf-right::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 16px;
+  background-image: repeating-linear-gradient(
+    180deg,
+    transparent 0px,
+    transparent 8px,
+    rgba(245, 158, 11, 0.06) 8px,
+    rgba(245, 158, 11, 0.06) 22px,
+    transparent 22px,
+    transparent 30px
+  );
+  animation: filmScroll 4s linear infinite;
+}
+.film-perf-left::before {
+  left: 0;
+}
+.film-perf-right::after {
+  right: 0;
+}
+
+/* Progress bar glow */
+@keyframes progressPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 8px rgba(245, 158, 11, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(245, 158, 11, 0.6);
+  }
+}
+
+.progress-bar-active {
+  animation: progressPulse 2s ease-in-out infinite;
+}
+
+/* Progress bar stripe animation */
+@keyframes progressStripes {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 20px 0;
+  }
+}
+
+.progress-stripes {
+  background-image: linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.1) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.1) 75%,
+    transparent 75%
+  );
+  background-size: 20px 20px;
+  animation: progressStripes 0.6s linear infinite;
+}
+
+/* Stagger entrance */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out both;
+}
+
+/* Subtle noise texture on panels */
+.noise-texture {
+  position: relative;
+}
+.noise-texture::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.015;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Badge / pill styling */
+.tag {
+  @apply inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-mono font-medium tracking-wide;
+}
+
+/* Select styling */
+.select-styled {
+  @apply text-xs pl-2.5 pr-7 py-[5px] rounded-md border appearance-none cursor-pointer transition-all duration-150;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%2371717A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+}
+
+/* Range slider custom */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  outline: none;
+}
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #f59e0b;
+  cursor: pointer;
+  border: 2px solid #1c1917;
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s;
+}
+input[type='range']::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.15);
+}
+input[type='range']:disabled::-webkit-slider-thumb {
+  background: #52525b;
+  cursor: not-allowed;
+}
+
+/* Dialog animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes scaleOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+.animate-fade-in {
+  animation: fadeIn 0.15s ease-out;
+}
+.animate-fade-out {
+  animation: fadeOut 0.15s ease-in;
+}
+.animate-scale-in {
+  animation: scaleIn 0.2s ease-out;
+}
+.animate-scale-out {
+  animation: scaleOut 0.15s ease-in;
+}
+
+/* Glow button */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+}
+.btn-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.2s;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), transparent 60%);
+}
+.btn-glow:hover::after {
+  opacity: 1;
+}
