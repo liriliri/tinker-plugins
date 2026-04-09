@@ -5,6 +5,17 @@ export interface VideoFormat {
   label: string
 }
 
+export interface ContainerFormat {
+  value: string
+  ext: string
+  label: string
+}
+
+export interface VideoEncoder {
+  value: string
+  label: string
+}
+
 export interface VideoInfo {
   codec: string
   width: number
@@ -47,12 +58,27 @@ export enum QueueItemStatus {
 }
 
 export interface ConversionSettings {
-  outputFormat: string
+  container: string
+  videoEncoder: string
   outputDir: string
   preset: string
+  qualityType: 'crf' | 'abr'
   crf: number
+  avgBitrate: number
+  multiPass: boolean
+  encoderTune: string
+  encoderProfile: string
+  encoderLevel: string
+  resolution: string
+  framerate: string
+  framerateMode: string
   audioCodec: string
   audioBitrate: string
+  audioSampleRate: string
+  audioMixdown: string
+  deinterlace: string
+  denoise: string
+  sharpen: string
 }
 
 export interface QueueItem {

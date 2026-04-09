@@ -4,6 +4,7 @@ import { Film } from 'lucide-react'
 import fileSize from 'licia/fileSize'
 import { tw } from '../theme'
 import store from '../store'
+import { GLOBAL_PRESETS } from '../lib/constants'
 
 function formatDuration(seconds: number): string {
   const h = Math.floor(seconds / 3600)
@@ -49,14 +50,14 @@ export default observer(function SourceInfo() {
           <div className="relative flex-shrink-0 rounded-lg overflow-hidden shadow-lg shadow-black/30">
             <img
               src={videoInfo.thumbnail}
-              className="w-28 h-[72px] object-cover"
+              className="w-40 h-[90px] object-cover"
               draggable={false}
             />
             <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-lg" />
           </div>
         ) : (
           <div
-            className={`w-28 h-[72px] flex items-center justify-center rounded-lg ${tw.bg.surface} border ${tw.border}`}
+            className={`w-40 h-[90px] flex items-center justify-center rounded-lg ${tw.bg.surface} border ${tw.border}`}
           >
             <Film className={`w-6 h-6 ${tw.text.muted}`} />
           </div>
@@ -91,6 +92,31 @@ export default observer(function SourceInfo() {
               </Tag>
             )}
             <Tag>{formatSize(source.size)}</Tag>
+          </div>
+          <div className="flex items-center gap-2 mt-2">
+            <select
+              value={store.activePresetName}
+              onChange={(e) => {
+                const preset = GLOBAL_PRESETS.find(
+                  (p) => p.name === e.target.value,
+                )
+                if (preset) store.applyPreset(preset)
+              }}
+              disabled={store.isConverting}
+              className="select-styled border-stone-700 bg-stone-800/80 text-stone-200 focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20 disabled:opacity-40 disabled:cursor-not-allowed text-[11px] flex-1"
+            >
+              <option value="">{t('customPreset')}</option>
+              {GLOBAL_PRESETS.map((p) => (
+                <option key={p.name} value={p.name}>
+                  {p.name}
+                </option>
+              ))}
+            </select>
+            {store.activePresetName && store.isPresetModified && (
+              <span className="text-[10px] font-medium text-amber-400 bg-amber-500/10 border border-amber-500/20 rounded px-1.5 py-0.5 shrink-0">
+                {t('modified')}
+              </span>
+            )}
           </div>
         </div>
       </div>

@@ -1,36 +1,135 @@
 import type { SourceFile, ConversionSettings } from '../types'
-import { VIDEO_OUTPUT_FORMATS } from './constants'
+import { CONTAINERS, RESOLUTION_HEIGHT, isAudioReencoding } from './constants'
 
-function getVideoCodecArgs(codec: string, ext: string): string[] {
+function getVideoEncoderLib(codec: string): string {
   switch (codec) {
     case 'vp9':
-      return [
-        '-c:v',
-        'libvpx-vp9',
-        '-crf',
-        '23',
-        '-b:v',
-        '0',
-        '-deadline',
-        'good',
-        '-cpu-used',
-        '2',
-      ]
+      return 'libvpx-vp9'
     case 'vp8':
-      return ['-c:v', 'libvpx', '-crf', '10', '-b:v', '1M']
+      return 'libvpx'
     case 'av1':
-      return ['-c:v', 'libsvtav1', '-crf', '30', '-preset', '6']
+      return 'libsvtav1'
     case 'prores':
-      return ['-c:v', 'prores_ks', '-profile:v', '3']
+      return 'prores_ks'
     case 'xvid':
-      return ['-c:v', 'libxvid', '-vtag', 'xvid', '-qscale:v', '4']
+      return 'libxvid'
     case 'h265':
+      return 'libx265'
+    default:
+      return 'libx264'
+  }
+}
+
+interface VideoCodecOpts {
+  codec: string
+  ext: string
+  qualityType: 'crf' | 'abr'
+  crf: number
+  avgBitrate: number
+  multiPass: boolean
+  preset: string
+}
+
+function getVideoCodecArgs(opts: VideoCodecOpts): string[] {
+  const { codec, ext, qualityType, crf, avgBitrate, multiPass, preset } = opts
+  const args: string[] = ['-c:v', getVideoEncoderLib(codec)]
+
+  switch (codec) {
+    case 'vp9': {
+      if (qualityType === 'abr') {
+        args.push('-b:v', `${avgBitrate}k`)
+      } else {
+        args.push('-crf', String(crf), '-b:v', '0')
+      }
+      args.push('-deadline', 'good', '-cpu-used', '2')
+      break
+    }
+    case 'vp8': {
+      if (qualityType === 'abr') {
+        args.push('-b:v', `${avgBitrate}k`)
+      } else {
+        args.push('-crf', String(crf), '-b:v', '1M')
+      }
+      break
+    }
+    case 'av1': {
+      args.push('-preset', preset)
+      if (qualityType === 'abr') {
+        args.push('-b:v', `${avgBitrate}k`)
+        if (multiPass) {
+          args.push('-pass', '1')
+        }
+      } else {
+        args.push('-crf', String(crf))
+      }
+      break
+    }
+    case 'prores': {
+      args.push('-profile:v', '3')
+      break
+    }
+    case 'xvid': {
+      args.push('-vtag', 'xvid')
+      if (qualityType === 'abr') {
+        args.push('-b:v', `${avgBitrate}k`)
+      } else {
+        args.push('-qscale:v', '4')
+      }
+      break
+    }
+    case 'h265':
+    case 'h264':
     default: {
-      const lib = codec === 'h265' ? 'libx265' : 'libx264'
-      const base = ['-c:v', lib, '-preset', 'medium', '-crf', '23']
-      return ext === 'ts' ? base : [...base, '-pix_fmt', 'yuv420p']
+      args.push('-preset', preset)
+      if (qualityType === 'abr') {
+        args.push('-b:v', `${avgBitrate}k`)
+        if (multiPass) {
+          args.push('-pass', '1')
+        }
+      } else {
+        args.push('-crf', String(crf))
+      }
+      if (ext !== 'ts') {
+        args.push('-pix_fmt', 'yuv420p')
+      }
+      break
     }
   }
+
+  return args
+}
+
+function getEncoderTuneArgs(codec: string, tune: string): string[] {
+  if (!tune || tune === 'none') return []
+  if (codec === 'av1') {
+    return [
+      '-svtav1-params',
+      `tune=${tune === 'vq' ? '0' : tune === 'psnr' ? '1' : '3'}`,
+    ]
+  }
+  if (codec === 'h264' || codec === 'h265') {
+    return ['-tune', tune]
+  }
+  return []
+}
+
+function getEncoderProfileArgs(codec: string, profile: string): string[] {
+  if (!profile || profile === 'auto') return []
+  if (codec === 'h264' || codec === 'h265' || codec === 'av1') {
+    return ['-profile:v', profile]
+  }
+  return []
+}
+
+function getEncoderLevelArgs(codec: string, level: string): string[] {
+  if (!level || level === 'auto') return []
+  if (codec === 'h264' || codec === 'h265') {
+    return ['-level:v', level]
+  }
+  if (codec === 'av1') {
+    return ['-level', level]
+  }
+  return []
 }
 
 function getAudioArgs(audioCodec: string, audioBitrate: string): string[] {
@@ -41,6 +140,117 @@ function getAudioArgs(audioCodec: string, audioBitrate: string): string[] {
   return ['-c:a', 'aac', '-b:a', audioBitrate]
 }
 
+function getAudioSampleRateArgs(sampleRate: string): string[] {
+  if (!sampleRate || sampleRate === 'auto') return []
+  return ['-ar', sampleRate]
+}
+
+function getAudioMixdownArgs(mixdown: string): string[] {
+  if (!mixdown || mixdown === 'auto') return []
+  switch (mixdown) {
+    case 'mono':
+      return ['-ac', '1']
+    case 'stereo':
+      return ['-ac', '2']
+    case '5.1':
+      return ['-ac', '6']
+    default:
+      return []
+  }
+}
+
+function buildScaleFilter(resolution: string): string | null {
+  if (!resolution || resolution === 'auto') return null
+  const height = RESOLUTION_HEIGHT[resolution]
+  if (!height) return null
+  return `scale=-2:'min(${height},ih)'`
+}
+
+function buildVideoFilters(opts: {
+  resolution: string
+  framerate: string
+  framerateMode: string
+  deinterlace: string
+  denoise: string
+  sharpen: string
+}): string[] {
+  const filters: string[] = []
+
+  if (opts.deinterlace && opts.deinterlace !== 'off') {
+    filters.push(opts.deinterlace)
+  }
+
+  if (opts.denoise && opts.denoise !== 'off') {
+    switch (opts.denoise) {
+      case 'nlmeans-light':
+        filters.push('nlmeans=s=3:p=7:r=5')
+        break
+      case 'nlmeans-medium':
+        filters.push('nlmeans=s=6:p=7:r=5')
+        break
+      case 'nlmeans-strong':
+        filters.push('nlmeans=s=10:p=7:r=5')
+        break
+      case 'hqdn3d-light':
+        filters.push('hqdn3d=2:1:2:3')
+        break
+      case 'hqdn3d-medium':
+        filters.push('hqdn3d=4:3:6:4.5')
+        break
+      case 'hqdn3d-strong':
+        filters.push('hqdn3d=7:7:12:8')
+        break
+    }
+  }
+
+  if (opts.resolution && opts.resolution !== 'auto') {
+    const scale = buildScaleFilter(opts.resolution)
+    if (scale) {
+      filters.push(scale)
+    }
+  }
+
+  if (opts.sharpen && opts.sharpen !== 'off') {
+    switch (opts.sharpen) {
+      case 'unsharp-light':
+        filters.push('unsharp=3:3:0.5:3:3:0.5')
+        break
+      case 'unsharp-medium':
+        filters.push('unsharp=5:5:1.0:5:5:1.0')
+        break
+      case 'unsharp-strong':
+        filters.push('unsharp=7:7:1.5:7:7:1.5')
+        break
+    }
+  }
+
+  if (
+    opts.framerate &&
+    opts.framerate !== 'auto' &&
+    opts.framerateMode === 'pfr'
+  ) {
+    filters.push(`fps=fps=${opts.framerate}`)
+  }
+
+  return filters
+}
+
+function getFramerateArgs(framerate: string, framerateMode: string): string[] {
+  if (!framerate || framerate === 'auto') {
+    return framerateMode === 'cfr' ? [] : ['-vsync', 'vfr']
+  }
+
+  if (framerateMode === 'cfr') {
+    return ['-r', framerate]
+  }
+
+  if (framerateMode === 'pfr') {
+    return []
+  }
+
+  return ['-vsync', 'vfr']
+}
+
 export interface ConvertOptions extends ConversionSettings {
   source: SourceFile
 }
@@ -49,11 +259,11 @@ export function buildFFmpegArgs(opts: ConvertOptions): {
   args: string[]
   outputPath: string
 } {
-  const fmt = VIDEO_OUTPUT_FORMATS.find((f) => f.value === opts.outputFormat)
-  if (!fmt) throw new Error('Unknown format')
+  const containerDef = CONTAINERS.find((c) => c.value === opts.container)
+  if (!containerDef) throw new Error('Unknown container')
 
-  const ext = fmt.ext
-  const codec = fmt.codec
+  const ext = containerDef.ext
+  const codec = opts.videoEncoder
   const baseName = opts.source.fileName.replace(/\.[^.]+$/, '')
   const outputPath = opts.outputDir
     ? `${opts.outputDir}/${baseName}.${ext}`
@@ -61,25 +271,52 @@ export function buildFFmpegArgs(opts: ConvertOptions): {
 
   const args = ['-i', opts.source.filePath]
 
-  if (ext === 'gif') {
-    args.push(
-      '-vf',
-      'fps=15,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse',
-      '-loop',
-      '0',
-    )
+  if (codec === 'gif') {
+    const gifFilters = ['fps=15']
+
+    const scale = buildScaleFilter(opts.resolution)
+    if (scale) {
+      gifFilters.push(scale)
+    }
+
+    gifFilters.push('split[s0][s1]', '[s0]palettegen[p]', '[s1][p]paletteuse')
+    args.push('-vf', gifFilters.join(','), '-loop', '0')
   } else {
-    const codecArgs = getVideoCodecArgs(codec, ext)
-    const presetIdx = codecArgs.indexOf('-preset')
-    if (presetIdx !== -1) {
-      codecArgs[presetIdx + 1] = opts.preset
-    }
-    const crfIdx = codecArgs.indexOf('-crf')
-    if (crfIdx !== -1) {
-      codecArgs[crfIdx + 1] = String(opts.crf)
-    }
+    const codecArgs = getVideoCodecArgs({
+      codec,
+      ext,
+      qualityType: opts.qualityType,
+      crf: opts.crf,
+      avgBitrate: opts.avgBitrate,
+      multiPass: opts.multiPass,
+      preset: opts.preset,
+    })
     args.push(...codecArgs)
+
+    args.push(...getEncoderTuneArgs(codec, opts.encoderTune))
+    args.push(...getEncoderProfileArgs(codec, opts.encoderProfile))
+    args.push(...getEncoderLevelArgs(codec, opts.encoderLevel))
+
+    const vf = buildVideoFilters({
+      resolution: opts.resolution,
+      framerate: opts.framerate,
+      framerateMode: opts.framerateMode,
+      deinterlace: opts.deinterlace,
+      denoise: opts.denoise,
+      sharpen: opts.sharpen,
+    })
+    if (vf.length > 0) {
+      args.push('-vf', vf.join(','))
+    }
+
+    args.push(...getFramerateArgs(opts.framerate, opts.framerateMode))
+
     args.push(...getAudioArgs(opts.audioCodec, opts.audioBitrate))
+
+    if (isAudioReencoding(opts.audioCodec)) {
+      args.push(...getAudioSampleRateArgs(opts.audioSampleRate))
+      args.push(...getAudioMixdownArgs(opts.audioMixdown))
+    }
   }
 
   if (ext === 'mp4' || ext === 'm4v') {

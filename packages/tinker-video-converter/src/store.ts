@@ -5,21 +5,71 @@ import type {
   ConversionSettings,
 } from './types'
 import { QueueItemStatus } from './types'
-import { VIDEO_EXTENSIONS, VIDEO_OUTPUT_FORMATS } from './lib/constants'
+import {
+  VIDEO_EXTENSIONS,
+  CONTAINERS,
+  CONTAINER_ENCODERS,
+  getDefaultEncoder,
+  getEncodersForContainer,
+  GLOBAL_PRESETS,
+} from './lib/constants'
+import type { GlobalPreset } from './lib/constants'
 import { buildFFmpegArgs } from './lib/ffmpegArgs'
 import LocalStore from 'licia/LocalStore'
 import queueStore from './queueStore'
 
 const settings = new LocalStore('tinker-video-converter')
 
+const SETTING_DEFAULTS: Record<string, string> = {
+  container: CONTAINERS[0].value,
+  videoEncoder: getDefaultEncoder(CONTAINERS[0].value),
+  outputDir: '',
+  preset: 'medium',
+  qualityType: 'crf',
+  crf: '23',
+  avgBitrate: '2500',
+  multiPass: 'false',
+  encoderTune: 'none',
+  encoderProfile: 'auto',
+  encoderLevel: 'auto',
+  resolution: 'auto',
+  framerate: 'auto',
+  framerateMode: 'auto',
+  audioCodec: 'aac',
+  audioBitrate: '128k',
+  audioSampleRate: 'auto',
+  audioMixdown: 'auto',
+  deinterlace: 'off',
+  denoise: 'off',
+  sharpen: 'off',
+}
+
 class Store {
   source: SourceFile | null = null
-  outputFormat: string = VIDEO_OUTPUT_FORMATS[0].value
+  container: string = CONTAINERS[0].value
+  videoEncoder: string = getDefaultEncoder(CONTAINERS[0].value)
   outputDir: string = ''
   preset: string = 'medium'
+  qualityType: 'crf' | 'abr' = 'crf'
   crf: number = 23
+  avgBitrate: number = 2500
+  multiPass: boolean = false
+  encoderTune: string = 'none'
+  encoderProfile: string = 'auto'
+  encoderLevel: string = 'auto'
+  resolution: string = 'auto'
+  framerate: string = 'auto'
+  framerateMode: string = 'auto'
   audioCodec: string = 'aac'
   audioBitrate: string = '128k'
+  audioSampleRate: string = 'auto'
+  audioMixdown: string = 'auto'
+  deinterlace: string = 'off'
+  denoise: string = 'off'
+  sharpen: string = 'off'
+
+  activePresetName: string = ''
+  private _presetSnapshot: string = ''
 
   isConverting = false
   isDone = false
@@ -34,30 +84,77 @@ class Store {
     makeAutoObservable(this, {
       currentTask: false,
       queueLoopActive: false,
+      _presetSnapshot: false,
     } as Record<string, false>)
-    this.outputFormat = settings.get('format') || VIDEO_OUTPUT_FORMATS[0].value
-    this.outputDir = settings.get('outputDir') || ''
-    this.preset = settings.get('preset') || 'medium'
-    this.crf = parseInt(settings.get('crf') || '23', 10)
-    this.audioCodec = settings.get('audioCodec') || 'aac'
-    this.audioBitrate = settings.get('audioBitrate') || '128k'
+    for (const [key, defaultVal] of Object.entries(SETTING_DEFAULTS)) {
+      const stored = settings.get(key) || defaultVal
+      const field = key as keyof this
+      if (typeof this[field] === 'number') {
+        ;(this as any)[field] = parseInt(stored, 10)
+      } else if (typeof this[field] === 'boolean') {
+        ;(this as any)[field] = stored === 'true'
+      } else {
+        ;(this as any)[field] = stored
+      }
+    }
+    this.activePresetName = settings.get('activePresetName') || ''
+    this._presetSnapshot = settings.get('presetSnapshot') || ''
   }
 
   get canStart() {
     return !!this.source && !this.isConverting
   }
 
-  get outputFormatConfig() {
-    return VIDEO_OUTPUT_FORMATS.find((f) => f.value === this.outputFormat)
+  get containerConfig() {
+    return CONTAINERS.find((c) => c.value === this.container)
+  }
+
+  get availableEncoders() {
+    return getEncodersForContainer(this.container)
   }
 
   get formatLabel() {
-    return this.outputFormatConfig?.label || ''
+    const c = this.containerConfig
+    return c ? `${c.label} (${this.videoEncoder})` : ''
   }
 
-  setOutputFormat(value: string) {
-    this.outputFormat = value
-    settings.set('format', value)
+  private persistSetting(key: string, value: string | number | boolean) {
+    ;(this as any)[key] = value
+    settings.set(key, String(value))
+  }
+
+  get isPresetModified(): boolean {
+    if (!this.activePresetName || !this._presetSnapshot) return false
+    return this._settingsFingerprint() !== this._presetSnapshot
+  }
+
+  private _settingsFingerprint(): string {
+    const s = this.getCurrentSettings()
+    const { outputDir: _, ...rest } = s
+    return JSON.stringify(rest)
+  }
+
+  applyPreset(preset: GlobalPreset) {
+    for (const [key, val] of Object.entries(preset.settings)) {
+      this.persistSetting(key, val)
+    }
+
+    this.activePresetName = preset.name
+    this._presetSnapshot = this._settingsFingerprint()
+    settings.set('activePresetName', preset.name)
+    settings.set('presetSnapshot', this._presetSnapshot)
+  }
+
+  setContainer(value: string) {
+    this.persistSetting('container', value)
+    const allowed = CONTAINER_ENCODERS[value] || []
+    if (!allowed.includes(this.videoEncoder)) {
+      this.setVideoEncoder(getDefaultEncoder(value))
+    }
+  }
+
+  setVideoEncoder(value: string) {
+    this.persistSetting('videoEncoder', value)
   }
 
   setOutputDir(dir: string) {
@@ -66,23 +163,75 @@ class Store {
   }
 
   setPreset(value: string) {
-    this.preset = value
-    settings.set('preset', value)
+    this.persistSetting('preset', value)
   }
 
   setCrf(value: number) {
-    this.crf = value
-    settings.set('crf', String(value))
+    this.persistSetting('crf', value)
+  }
+
+  setQualityType(value: 'crf' | 'abr') {
+    this.persistSetting('qualityType', value)
+  }
+
+  setAvgBitrate(value: number) {
+    this.persistSetting('avgBitrate', value)
+  }
+
+  setMultiPass(value: boolean) {
+    this.persistSetting('multiPass', value)
+  }
+
+  setEncoderTune(value: string) {
+    this.persistSetting('encoderTune', value)
+  }
+
+  setEncoderProfile(value: string) {
+    this.persistSetting('encoderProfile', value)
+  }
+
+  setEncoderLevel(value: string) {
+    this.persistSetting('encoderLevel', value)
+  }
+
+  setResolution(value: string) {
+    this.persistSetting('resolution', value)
+  }
+
+  setFramerate(value: string) {
+    this.persistSetting('framerate', value)
+  }
+
+  setFramerateMode(value: string) {
+    this.persistSetting('framerateMode', value)
   }
 
   setAudioCodec(value: string) {
-    this.audioCodec = value
-    settings.set('audioCodec', value)
+    this.persistSetting('audioCodec', value)
   }
 
   setAudioBitrate(value: string) {
-    this.audioBitrate = value
-    settings.set('audioBitrate', value)
+    this.persistSetting('audioBitrate', value)
+  }
+
+  setAudioSampleRate(value: string) {
+    this.persistSetting('audioSampleRate', value)
+  }
+
+  setAudioMixdown(value: string) {
+    this.persistSetting('audioMixdown', value)
+  }
+
+  setDeinterlace(value: string) {
+    this.persistSetting('deinterlace', value)
+  }
+
+  setDenoise(value: string) {
+    this.persistSetting('denoise', value)
+  }
+
+  setSharpen(value: string) {
+    this.persistSetting('sharpen', value)
   }
 
   async openFile() {
@@ -156,12 +305,27 @@ class Store {
 
   private getCurrentSettings(): ConversionSettings {
     return {
-      outputFormat: this.outputFormat,
+      container: this.container,
+      videoEncoder: this.videoEncoder,
       outputDir: this.outputDir,
       preset: this.preset,
+      qualityType: this.qualityType,
       crf: this.crf,
+      avgBitrate: this.avgBitrate,
+      multiPass: this.multiPass,
+      encoderTune: this.encoderTune,
+      encoderProfile: this.encoderProfile,
+      encoderLevel: this.encoderLevel,
+      resolution: this.resolution,
+      framerate: this.framerate,
+      framerateMode: this.framerateMode,
       audioCodec: this.audioCodec,
       audioBitrate: this.audioBitrate,
+      audioSampleRate: this.audioSampleRate,
+      audioMixdown: this.audioMixdown,
+      deinterlace: this.deinterlace,
+      denoise: this.denoise,
+      sharpen: this.sharpen,
     }
   }
 
