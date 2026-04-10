@@ -1,6 +1,6 @@
 # tinker-bg-remover
 
-A background removal plugin for [TINKER](https://github.com/liriliri/tinker), powered by [@imgly/background-removal-node](https://github.com/nicojones/background-removal-js).
+A background removal plugin for [TINKER](https://github.com/liriliri/tinker), powered by [@imgly/background-removal-node](https://github.com/imgly/background-removal-js).
 
 ![Screenshot](https://raw.githubusercontent.com/liriliri/tinker-plugins/master/packages/tinker-bg-remover/screenshot.png)
 

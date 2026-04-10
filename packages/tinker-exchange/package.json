@@ -1,0 +1,35 @@
+{
+  "name": "tinker-exchange",
+  "version": "0.1.0",
+  "description": "Currency Exchange Rate Calculator Plugin for Tinker",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "exchange"
+  ],
+  "tinker": {
+    "name": "Currency Exchange",
+    "main": "dist/index.html",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "汇率换算"
+      }
+    }
+  },
+  "devDependencies": {
+    "@radix-ui/react-dialog": "^1.1.14"
+  }
+}

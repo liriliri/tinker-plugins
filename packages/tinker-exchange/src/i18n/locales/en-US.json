@@ -1,0 +1,7 @@
+{
+  "inputAmount": "Enter amount",
+  "addCurrency": "Add currency",
+  "selectBaseCurrency": "Select base currency",
+  "searchCurrency": "Search currency...",
+  "noResults": "No currencies found"
+}
