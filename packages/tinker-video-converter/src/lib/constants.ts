@@ -17,8 +17,6 @@ export const VIDEO_EXTENSIONS = new Set([
   '.ts',
 ])
 
-// --- Container / Encoder (split like HandBrake) ---
-
 export const CONTAINERS: ContainerFormat[] = [
   { value: 'mp4', ext: 'mp4', label: 'MP4' },
   { value: 'mkv', ext: 'mkv', label: 'MKV' },
@@ -131,8 +129,6 @@ export const AUDIO_CODECS: { value: string; label: string }[] = [
 ]
 
 export const AUDIO_BITRATES = ['64k', '96k', '128k', '192k', '256k', '320k']
-
-// --- Encoder Tune / Profile / Level (aligned with HandBrake) ---
 
 export const ENCODER_TUNES: Record<string, { value: string; label: string }[]> =
   {
@@ -259,8 +255,6 @@ export const ENCODER_LEVELS: Record<
   av1: AV1_LEVELS,
 }
 
-// --- Resolution & Framerate ---
-
 export const RESOLUTIONS: { value: string; label: string }[] = [
   { value: 'auto', label: 'Auto' },
   { value: '2160p', label: '2160p (4K)' },
@@ -301,8 +295,6 @@ export const FRAMERATE_MODES: { value: string; label: string }[] = [
   { value: 'pfr', label: 'Peak Limited (PFR)' },
 ]
 
-// --- Audio Sample Rate & Mixdown ---
-
 export const AUDIO_SAMPLE_RATES: { value: string; label: string }[] = [
   { value: 'auto', label: 'Auto' },
   { value: '22050', label: '22.05 kHz' },
@@ -318,8 +310,6 @@ export const AUDIO_MIXDOWNS: { value: string; label: string }[] = [
   { value: 'stereo', label: 'Stereo' },
   { value: '5.1', label: '5.1 Surround' },
 ]
-
-// --- Video Filters ---
 
 export const DEINTERLACE_OPTIONS: { value: string; label: string }[] = [
   { value: 'off', label: 'Off' },
@@ -343,8 +333,6 @@ export const SHARPEN_OPTIONS: { value: string; label: string }[] = [
   { value: 'unsharp-medium', label: 'Unsharp (Medium)' },
   { value: 'unsharp-strong', label: 'Unsharp (Strong)' },
 ]
-
-// --- Global Presets (like HandBrake, sets all params at once) ---
 
 type PresetSettings = Omit<ConversionSettings, 'outputDir'>
 

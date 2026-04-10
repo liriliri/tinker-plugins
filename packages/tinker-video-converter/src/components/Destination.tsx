@@ -19,11 +19,11 @@ export default observer(function Destination() {
           {t('destination')}
         </span>
         <div
-          className={`flex items-center flex-1 px-2 py-[5px] text-xs rounded-md border border-stone-300 dark:border-stone-700 ${tw.bg.input} transition-colors focus-within:border-teal-500/40`}
+          className={`flex items-center flex-1 px-2 py-[5px] text-xs rounded-md border ${tw.borderInput} ${tw.bg.input} transition-colors focus-within:border-teal-500/40`}
         >
           <button
             onClick={() => store.browseOutputDir()}
-            className="text-stone-400 dark:text-stone-500 hover:text-teal-600 dark:hover:text-teal-400 shrink-0 mr-1.5 transition-colors"
+            className={`${tw.link.icon} shrink-0 mr-1.5 transition-colors`}
           >
             <Folder className="w-3.5 h-3.5" />
           </button>
@@ -32,12 +32,12 @@ export default observer(function Destination() {
             value={store.outputDir}
             onChange={(e) => store.setOutputDir(e.target.value)}
             placeholder={t('outputDir')}
-            className={`flex-1 min-w-0 bg-transparent text-stone-700 dark:text-stone-200 focus:outline-none placeholder:text-stone-400 dark:placeholder:text-stone-600 text-xs font-mono`}
+            className={`flex-1 min-w-0 bg-transparent ${tw.text.body} focus:outline-none ${tw.text.placeholder} text-xs font-mono`}
           />
           {store.outputDir && (
             <button
               onClick={() => store.setOutputDir('')}
-              className="text-stone-400 dark:text-stone-600 hover:text-stone-600 dark:hover:text-stone-300 shrink-0 ml-1 transition-colors"
+              className={`${tw.link.clear} shrink-0 ml-1 transition-colors`}
             >
               <X className="w-3 h-3" />
             </button>

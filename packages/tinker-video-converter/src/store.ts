@@ -148,7 +148,8 @@ class Store {
 
   applyPreset(preset: GlobalPreset) {
     for (const [key, val] of Object.entries(preset.settings)) {
-      this.persistSetting(key, val)
+      ;(this as Record<string, string | number | boolean>)[key] = val
+      settings.set(key, String(val))
     }
 
     this.activePresetName = preset.name

@@ -8,7 +8,11 @@ import { tw } from './theme'
 
 const MODEL_OPTIONS: ModelSize[] = ['small', 'medium']
 
-const SectionLabel = ({ children }: { children: React.ReactNode }) => (
+interface SectionLabelProps {
+  children: React.ReactNode
+}
+
+const SectionLabel = ({ children }: SectionLabelProps) => (
   <div
     className={`text-[10px] font-semibold uppercase tracking-widest ${tw.text.muted} mb-2`}
   >
@@ -16,7 +20,11 @@ const SectionLabel = ({ children }: { children: React.ReactNode }) => (
   </div>
 )
 
-const ModelSelector = observer(({ t }: { t: (key: string) => string }) => (
+interface TranslateProps {
+  t: (key: string) => string
+}
+
+const ModelSelector = observer(({ t }: TranslateProps) => (
   <div className="flex flex-col gap-1.5">
     {MODEL_OPTIONS.map((m) => (
       <button
@@ -41,9 +49,9 @@ const ModelSelector = observer(({ t }: { t: (key: string) => string }) => (
   </div>
 ))
 
-const Sidebar = observer(({ t }: { t: (key: string) => string }) => (
+const Sidebar = observer(({ t }: TranslateProps) => (
   <div
-    className={`w-[200px] shrink-0 ${tw.background.sidebar} flex flex-col border-r border-neutral-200 dark:border-neutral-800`}
+    className={`w-[200px] shrink-0 ${tw.background.sidebar} flex flex-col border-r ${tw.border.sidebar}`}
   >
     <div className="flex-1 p-4 flex flex-col gap-5">
       <div className="animate-slide-in-left" style={{ animationDelay: '0ms' }}>
@@ -106,19 +114,20 @@ const Sidebar = observer(({ t }: { t: (key: string) => string }) => (
   </div>
 ))
 
+interface DropZoneProps extends TranslateProps {
+  isDragOver: boolean
+  onDragOver: (e: React.DragEvent) => void
+  onDragLeave: () => void
+  onDrop: (e: React.DragEvent) => void
+}
+
 const DropZone = ({
   isDragOver,
   onDragOver,
   onDragLeave,
   onDrop,
   t,
-}: {
-  isDragOver: boolean
-  onDragOver: (e: React.DragEvent) => void
-  onDragLeave: () => void
-  onDrop: (e: React.DragEvent) => void
-  t: (key: string) => string
-}) => (
+}: DropZoneProps) => (
   <div
     onDragOver={onDragOver}
     onDragLeave={onDragLeave}
@@ -148,7 +157,9 @@ const ProcessingOverlay = () => (
     className={`absolute inset-0 flex flex-col items-center justify-center ${tw.overlay.processing} rounded-xl z-10`}
   >
     <div className="relative w-12 h-12 flex items-center justify-center">
-      <div className="absolute inset-0 rounded-full border-2 border-teal-400/30 animate-pulse-ring" />
+      <div
+        className={`absolute inset-0 rounded-full border-2 ${tw.overlay.ring} animate-pulse-ring`}
+      />
       <Eraser className="w-5 h-5 text-white" />
     </div>
   </div>

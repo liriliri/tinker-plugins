@@ -44,7 +44,7 @@ const Select = ({
     value={value}
     onChange={(e) => onChange(e.target.value)}
     disabled={disabled}
-    className={`select-styled border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-800/80 text-stone-700 dark:text-stone-200 focus:border-teal-500/50 focus:ring-1 focus:ring-teal-500/20 disabled:opacity-40 disabled:cursor-not-allowed ${cls || ''}`}
+    className={`${tw.input.select} ${cls || ''}`}
   >
     {options.map((o) => (
       <option key={o.value} value={o.value}>
@@ -142,7 +142,9 @@ const VideoTab = observer(() => {
               disabled={store.isConverting}
               className="flex-1"
             />
-            <span className="text-xs font-mono text-teal-600 dark:text-teal-400 w-7 text-right tabular-nums">
+            <span
+              className={`text-xs font-mono ${tw.accent.text} w-7 text-right tabular-nums`}
+            >
               {store.crf}
             </span>
           </div>
@@ -161,9 +163,9 @@ const VideoTab = observer(() => {
                 store.setAvgBitrate(parseInt(e.target.value, 10) || 2500)
               }
               disabled={store.isConverting}
-              className="flex-1 select-styled border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-800/80 text-stone-700 dark:text-stone-200 focus:border-teal-500/50 focus:ring-1 focus:ring-teal-500/20 disabled:opacity-40 disabled:cursor-not-allowed"
+              className={`flex-1 ${tw.input.select}`}
             />
-            <span className="text-[11px] font-mono text-stone-400 dark:text-stone-500 shrink-0">
+            <span className={`text-[11px] font-mono ${tw.text.muted} shrink-0`}>
               kbps
             </span>
           </div>
@@ -179,7 +181,7 @@ const VideoTab = observer(() => {
               disabled={store.isConverting}
               className="accent-teal-500"
             />
-            <span className="text-xs text-stone-600 dark:text-stone-300">
+            <span className={`text-xs ${tw.text.label}`}>
               {t('multiPassDesc')}
             </span>
           </label>

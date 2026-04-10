@@ -111,22 +111,8 @@ export function createQueueItem(
   }
 }
 
-export function getConversionDuration(item: QueueItem): number {
-  if (item.startedAt === null || item.completedAt === null) {
-    return 0
-  }
-  return item.completedAt - item.startedAt
-}
-
 export function shouldAutoStartNextJob(queue: QueueItem[]): boolean {
   const hasRunning = hasRunningJob(queue)
   const hasPending = hasPendingJobs(queue)
   return !hasRunning && hasPending
-}
-
-export function getQueueSummaryString(stats: QueueStats): string {
-  if (stats.total === 0) {
-    return 'Queue empty'
-  }
-  return `Queue: ${stats.inProgress + stats.pending}/${stats.total}`
 }

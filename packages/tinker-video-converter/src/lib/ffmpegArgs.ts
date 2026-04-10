@@ -166,6 +166,21 @@ function buildScaleFilter(resolution: string): string | null {
   return `scale=-2:'min(${height},ih)'`
 }
 
+const DENOISE_FILTERS: Record<string, string> = {
+  'nlmeans-light': 'nlmeans=s=3:p=7:r=5',
+  'nlmeans-medium': 'nlmeans=s=6:p=7:r=5',
+  'nlmeans-strong': 'nlmeans=s=10:p=7:r=5',
+  'hqdn3d-light': 'hqdn3d=2:1:2:3',
+  'hqdn3d-medium': 'hqdn3d=4:3:6:4.5',
+  'hqdn3d-strong': 'hqdn3d=7:7:12:8',
+}
+
+const SHARPEN_FILTERS: Record<string, string> = {
+  'unsharp-light': 'unsharp=3:3:0.5:3:3:0.5',
+  'unsharp-medium': 'unsharp=5:5:1.0:5:5:1.0',
+  'unsharp-strong': 'unsharp=7:7:1.5:7:7:1.5',
+}
+
 function buildVideoFilters(opts: {
   resolution: string
   framerate: string
@@ -181,26 +196,8 @@ function buildVideoFilters(opts: {
   }
 
   if (opts.denoise && opts.denoise !== 'off') {
-    switch (opts.denoise) {
-      case 'nlmeans-light':
-        filters.push('nlmeans=s=3:p=7:r=5')
-        break
-      case 'nlmeans-medium':
-        filters.push('nlmeans=s=6:p=7:r=5')
-        break
-      case 'nlmeans-strong':
-        filters.push('nlmeans=s=10:p=7:r=5')
-        break
-      case 'hqdn3d-light':
-        filters.push('hqdn3d=2:1:2:3')
-        break
-      case 'hqdn3d-medium':
-        filters.push('hqdn3d=4:3:6:4.5')
-        break
-      case 'hqdn3d-strong':
-        filters.push('hqdn3d=7:7:12:8')
-        break
-    }
+    const filter = DENOISE_FILTERS[opts.denoise]
+    if (filter) filters.push(filter)
   }
 
   if (opts.resolution && opts.resolution !== 'auto') {
@@ -211,17 +208,8 @@ function buildVideoFilters(opts: {
   }
 
   if (opts.sharpen && opts.sharpen !== 'off') {
-    switch (opts.sharpen) {
-      case 'unsharp-light':
-        filters.push('unsharp=3:3:0.5:3:3:0.5')
-        break
-      case 'unsharp-medium':
-        filters.push('unsharp=5:5:1.0:5:5:1.0')
-        break
-      case 'unsharp-strong':
-        filters.push('unsharp=7:7:1.5:7:7:1.5')
-        break
-    }
+    const filter = SHARPEN_FILTERS[opts.sharpen]
+    if (filter) filters.push(filter)
   }
 
   if (

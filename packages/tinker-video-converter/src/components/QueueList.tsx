@@ -11,12 +11,8 @@ export default observer(function QueueList() {
     return (
       <div className="flex-1 flex flex-col items-center justify-center">
         <div className="text-center">
-          <p className="text-sm text-stone-400 dark:text-stone-500 mb-1">
-            {t('queueEmpty')}
-          </p>
-          <p className="text-xs text-stone-300 dark:text-stone-600">
-            {t('addItemsToQueue')}
-          </p>
+          <p className={`text-sm ${tw.text.muted} mb-1`}>{t('queueEmpty')}</p>
+          <p className={`text-xs ${tw.text.dimmed}`}>{t('addItemsToQueue')}</p>
         </div>
       </div>
     )
@@ -24,7 +20,7 @@ export default observer(function QueueList() {
 
   return (
     <div
-      className={`flex-1 overflow-y-auto bg-white dark:bg-stone-950 border-r ${tw.border}`}
+      className={`flex-1 overflow-y-auto ${tw.bg.card} border-r ${tw.border}`}
       style={{
         scrollbarWidth: 'thin',
         scrollbarColor: '#a8a29e #f5f5f4',

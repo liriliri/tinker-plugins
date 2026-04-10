@@ -40,6 +40,7 @@ export const tw = {
 
   overlay: {
     processing: 'bg-neutral-900/30 dark:bg-black/50 backdrop-blur-sm',
+    ring: 'border-teal-400/30 dark:border-teal-400/30',
   },
 
   dropzone: {
@@ -54,6 +55,10 @@ export const tw = {
     iconBg: 'bg-teal-100 dark:bg-teal-900/40',
     iconText: 'text-teal-500 dark:text-teal-400',
     dot: 'bg-teal-500 dark:bg-teal-400',
+  },
+
+  border: {
+    sidebar: 'border-neutral-200 dark:border-neutral-800',
   },
 
   divider: 'bg-neutral-200 dark:bg-neutral-700',

@@ -11,7 +11,7 @@ export default observer(function QueueSidebar() {
 
   return (
     <div
-      className={`w-64 flex flex-col border-l ${tw.border} bg-stone-50/40 dark:bg-stone-900/40`}
+      className={`w-64 flex flex-col border-l ${tw.border} ${tw.bg.sidebar}`}
       style={{
         scrollbarWidth: 'thin',
         scrollbarColor: '#a8a29e #f5f5f4',
@@ -19,34 +19,34 @@ export default observer(function QueueSidebar() {
     >
       <div className="flex-1 overflow-y-auto p-3 space-y-3">
         <div className="space-y-2">
-          <div className="text-xs font-medium text-stone-600 dark:text-stone-300">
+          <div className={`text-xs font-medium ${tw.text.label}`}>
             {t('items')}: {stats.total}
           </div>
-          <div className="space-y-1 text-xs text-stone-500 dark:text-stone-400">
+          <div className={`space-y-1 text-xs ${tw.text.secondary}`}>
             <div className="flex items-center justify-between">
               <span className="flex items-center gap-1">
-                <Clock className="w-3 h-3 text-stone-400 dark:text-stone-500" />
+                <Clock className={`w-3 h-3 ${tw.text.muted}`} />
                 {t('pending')}
               </span>
               <span>{stats.pending}</span>
             </div>
             <div className="flex items-center justify-between">
               <span className="flex items-center gap-1">
-                <Clock className="w-3 h-3 text-teal-500 dark:text-teal-400" />
+                <Clock className={`w-3 h-3 ${tw.status.accentIcon}`} />
                 {t('processing')}
               </span>
               <span>{stats.inProgress}</span>
             </div>
             <div className="flex items-center justify-between">
               <span className="flex items-center gap-1">
-                <CheckCircle2 className="w-3 h-3 text-emerald-500 dark:text-emerald-400" />
+                <CheckCircle2 className={`w-3 h-3 ${tw.status.success}`} />
                 {t('completed')}
               </span>
               <span>{stats.done}</span>
             </div>
             <div className="flex items-center justify-between">
               <span className="flex items-center gap-1">
-                <AlertCircle className="w-3 h-3 text-red-500 dark:text-red-400" />
+                <AlertCircle className={`w-3 h-3 ${tw.status.error}`} />
                 {t('failed')}
               </span>
               <span>{stats.failed}</span>
@@ -59,10 +59,10 @@ export default observer(function QueueSidebar() {
             <div className={`border-t ${tw.border}`} />
             <div className="space-y-3">
               <div>
-                <div className="text-xs font-medium text-stone-600 dark:text-stone-300 mb-1">
+                <div className={`text-xs font-medium ${tw.text.label} mb-1`}>
                   {t('currentFile')}
                 </div>
-                <div className="text-xs text-stone-500 dark:text-stone-400 truncate">
+                <div className={`text-xs ${tw.text.secondary} truncate`}>
                   {job.sourceFile.fileName}
                 </div>
               </div>
@@ -70,20 +70,24 @@ export default observer(function QueueSidebar() {
               {job.progress && (
                 <>
                   <div>
-                    <div className="text-xs font-medium text-stone-600 dark:text-stone-300 mb-1">
+                    <div
+                      className={`text-xs font-medium ${tw.text.label} mb-1`}
+                    >
                       {t('progress')}
                     </div>
-                    <div className="text-xs text-teal-600 dark:text-teal-400 font-mono">
+                    <div className={`text-xs ${tw.accent.text} font-mono`}>
                       {Math.round(job.progress.percent)}%
                     </div>
                   </div>
 
                   {job.progress.speed && (
                     <div>
-                      <div className="text-xs font-medium text-stone-600 dark:text-stone-300 mb-1">
+                      <div
+                        className={`text-xs font-medium ${tw.text.label} mb-1`}
+                      >
                         {t('speed')}
                       </div>
-                      <div className="text-xs text-stone-500 dark:text-stone-400 font-mono">
+                      <div className={`text-xs ${tw.text.secondary} font-mono`}>
                         {job.progress.speed}
                       </div>
                     </div>
@@ -91,10 +95,12 @@ export default observer(function QueueSidebar() {
 
                   {job.progress.time && (
                     <div>
-                      <div className="text-xs font-medium text-stone-600 dark:text-stone-300 mb-1">
+                      <div
+                        className={`text-xs font-medium ${tw.text.label} mb-1`}
+                      >
                         {t('elapsed')}
                       </div>
-                      <div className="text-xs text-stone-500 dark:text-stone-400 font-mono">
+                      <div className={`text-xs ${tw.text.secondary} font-mono`}>
                         {job.progress.time}
                       </div>
                     </div>
@@ -102,10 +108,12 @@ export default observer(function QueueSidebar() {
 
                   {job.progress.fps > 0 && (
                     <div>
-                      <div className="text-xs font-medium text-stone-600 dark:text-stone-300 mb-1">
+                      <div
+                        className={`text-xs font-medium ${tw.text.label} mb-1`}
+                      >
                         {t('fps')}
                       </div>
-                      <div className="text-xs text-stone-500 dark:text-stone-400 font-mono">
+                      <div className={`text-xs ${tw.text.secondary} font-mono`}>
                         {Math.round(job.progress.fps)}
                       </div>
                     </div>

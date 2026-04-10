@@ -103,7 +103,7 @@ export default observer(function SourceInfo() {
                 if (preset) store.applyPreset(preset)
               }}
               disabled={store.isConverting}
-              className="select-styled border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-800/80 text-stone-700 dark:text-stone-200 focus:border-teal-500/50 focus:ring-1 focus:ring-teal-500/20 disabled:opacity-40 disabled:cursor-not-allowed text-[11px] flex-1"
+              className={`${tw.input.select} text-[11px] flex-1`}
             >
               <option value="">{t('customPreset')}</option>
               {GLOBAL_PRESETS.map((p) => (

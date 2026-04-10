@@ -180,25 +180,22 @@ class QueueStore {
   }
 
   resetFailedItems(): void {
+    this.resetItems((item) => item.status === QueueItemStatus.FAILED)
+  }
+
+  resetAllItems(): void {
+    this.resetItems(() => true)
+  }
+
+  private resetItems(predicate: (item: QueueItem) => boolean): void {
     for (const item of this.items) {
-      if (item.status === QueueItemStatus.FAILED) {
+      if (predicate(item)) {
         item.status = QueueItemStatus.PENDING
         item.error = null
         item.progress = null
         item.startedAt = null
         item.completedAt = null
       }
-    }
-    this.saveQueue()
-  }
-
-  resetAllItems(): void {
-    for (const item of this.items) {
-      item.status = QueueItemStatus.PENDING
-      item.error = null
-      item.progress = null
-      item.startedAt = null
-      item.completedAt = null
     }
     this.saveQueue()
   }

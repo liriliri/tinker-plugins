@@ -1,14 +1,7 @@
 import { makeAutoObservable } from 'mobx'
 import base64 from 'licia/base64'
 import type { ModelSize } from '../common/types'
-import { bytesToDataUrl, parseImageDataUrl } from '../lib/image'
-
-const DIRECTLY_SUPPORTED_TYPES = new Set([
-  'image/png',
-  'image/jpeg',
-  'image/jpg',
-  'image/webp',
-])
+import { bytesToDataUrl, parseImageDataUrl, toPng } from '../lib/image'
 
 class Store {
   originalImage: string | null = null
@@ -46,25 +39,6 @@ class Store {
     this.isProcessing = false
   }
 
-  private async toPng(dataUrl: string): Promise<string> {
-    const parsed = parseImageDataUrl(dataUrl)
-
-    if (parsed && DIRECTLY_SUPPORTED_TYPES.has(parsed.mime)) return dataUrl
-
-    return new Promise((resolve, reject) => {
-      const img = new Image()
-      img.onload = () => {
-        const canvas = document.createElement('canvas')
-        canvas.width = img.width
-        canvas.height = img.height
-        canvas.getContext('2d')!.drawImage(img, 0, 0)
-        resolve(canvas.toDataURL('image/png'))
-      }
-      img.onerror = reject
-      img.src = dataUrl
-    })
-  }
-
   async removeBackground() {
     if (!this.originalImage || this.isProcessing) return
 
@@ -72,7 +46,7 @@ class Store {
     this.resultImage = null
 
     try {
-      const input = await this.toPng(this.originalImage)
+      const input = await toPng(this.originalImage)
       const result = await bgRemover.removeBackground(input, this.model)
       this.resultImage = result
     } catch (err) {
@@ -94,12 +68,9 @@ class Store {
 
     const filePath = result.filePaths[0]
     const fileName = filePath.split(/[/\\]/).pop() || ''
-    const buffer = await tinker.readFile(filePath)
+    const buffer = (await tinker.readFile(filePath)) as ArrayBuffer
     this.setOriginalImage(
-      bytesToDataUrl(
-        new Uint8Array(buffer as unknown as ArrayBuffer),
-        filePath,
-      ),
+      bytesToDataUrl(new Uint8Array(buffer), filePath),
       fileName,
     )
   }

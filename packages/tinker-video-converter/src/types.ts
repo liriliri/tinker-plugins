@@ -94,10 +94,6 @@ export interface QueueItem {
   completedAt: number | null
 }
 
-export interface QueueItemWithResult extends QueueItem {
-  duration: number // conversion duration in milliseconds
-}
-
 export interface QueueStats {
   total: number
   pending: number
