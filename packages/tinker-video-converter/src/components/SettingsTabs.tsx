@@ -1,6 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
+import { X, Terminal } from 'lucide-react'
+import * as Dialog from '@radix-ui/react-dialog'
 import { tw } from '../theme'
 import store from '../store'
 import {
@@ -42,7 +44,7 @@ const Select = ({
     value={value}
     onChange={(e) => onChange(e.target.value)}
     disabled={disabled}
-    className={`select-styled border-stone-700 bg-stone-800/80 text-stone-200 focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20 disabled:opacity-40 disabled:cursor-not-allowed ${cls || ''}`}
+    className={`select-styled border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-800/80 text-stone-700 dark:text-stone-200 focus:border-teal-500/50 focus:ring-1 focus:ring-teal-500/20 disabled:opacity-40 disabled:cursor-not-allowed ${cls || ''}`}
   >
     {options.map((o) => (
       <option key={o.value} value={o.value}>
@@ -140,7 +142,7 @@ const VideoTab = observer(() => {
               disabled={store.isConverting}
               className="flex-1"
             />
-            <span className="text-xs font-mono text-amber-400 w-7 text-right tabular-nums">
+            <span className="text-xs font-mono text-teal-600 dark:text-teal-400 w-7 text-right tabular-nums">
               {store.crf}
             </span>
           </div>
@@ -159,9 +161,9 @@ const VideoTab = observer(() => {
                 store.setAvgBitrate(parseInt(e.target.value, 10) || 2500)
               }
               disabled={store.isConverting}
-              className="flex-1 select-styled border-stone-700 bg-stone-800/80 text-stone-200 focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20 disabled:opacity-40 disabled:cursor-not-allowed"
+              className="flex-1 select-styled border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-800/80 text-stone-700 dark:text-stone-200 focus:border-teal-500/50 focus:ring-1 focus:ring-teal-500/20 disabled:opacity-40 disabled:cursor-not-allowed"
             />
-            <span className="text-[11px] font-mono text-stone-500 shrink-0">
+            <span className="text-[11px] font-mono text-stone-400 dark:text-stone-500 shrink-0">
               kbps
             </span>
           </div>
@@ -175,9 +177,11 @@ const VideoTab = observer(() => {
               checked={store.multiPass}
               onChange={(e) => store.setMultiPass(e.target.checked)}
               disabled={store.isConverting}
-              className="accent-amber-500"
+              className="accent-teal-500"
             />
-            <span className="text-xs text-stone-300">{t('multiPassDesc')}</span>
+            <span className="text-xs text-stone-600 dark:text-stone-300">
+              {t('multiPassDesc')}
+            </span>
           </label>
         </FieldRow>
       )}
@@ -358,9 +362,79 @@ const TAB_COMPONENTS: Record<TabKey, React.ComponentType> = {
   audio: AudioTab,
 }
 
+const CommandModal = observer(({ onClose }: { onClose: () => void }) => {
+  const { t } = useTranslation()
+  const [copied, setCopied] = useState(false)
+  const timerRef = useRef<ReturnType<typeof setTimeout>>()
+  const command = store.ffmpegCommand
+
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current)
+    }
+  }, [])
+
+  const handleCopy = () => {
+    if (!command) return
+    navigator.clipboard.writeText(command)
+    setCopied(true)
+    if (timerRef.current) clearTimeout(timerRef.current)
+    timerRef.current = setTimeout(() => setCopied(false), 1500)
+  }
+
+  return (
+    <Dialog.Root open onOpenChange={(open) => !open && onClose()}>
+      <Dialog.Portal>
+        <Dialog.Overlay className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 data-[state=open]:animate-fade-in" />
+        <Dialog.Content
+          className={`fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 ${tw.bg.panel} rounded-xl shadow-2xl border ${tw.border} w-[520px] max-w-[90vw] max-h-[70vh] flex flex-col data-[state=open]:animate-scale-in`}
+          aria-describedby={undefined}
+        >
+          <Dialog.Title
+            className={`flex items-center justify-between px-4 py-3 border-b ${tw.border}`}
+          >
+            <span className={`text-sm font-semibold ${tw.text.primary}`}>
+              {t('ffmpegCommand')}
+            </span>
+            <Dialog.Close asChild>
+              <button className={`${tw.button.ghost} rounded-md p-1`}>
+                <X className="w-3.5 h-3.5" />
+              </button>
+            </Dialog.Close>
+          </Dialog.Title>
+          <div className="flex-1 min-h-0 overflow-y-auto p-4">
+            {command ? (
+              <pre
+                className={`text-xs font-mono leading-relaxed ${tw.text.secondary} whitespace-pre-wrap break-all select-all ${tw.bg.surface} rounded-lg p-3`}
+              >
+                {command}
+              </pre>
+            ) : (
+              <p className={`text-xs ${tw.text.muted} text-center py-6`}>
+                {t('noSourceForCommand')}
+              </p>
+            )}
+          </div>
+          {command && (
+            <div className={`px-4 py-3 border-t ${tw.border} flex justify-end`}>
+              <button
+                onClick={handleCopy}
+                className={`${tw.button.secondary} rounded-md px-3 py-1.5 text-xs font-medium transition-colors`}
+              >
+                {copied ? t('copied') : t('copy')}
+              </button>
+            </div>
+          )}
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
+  )
+})
+
 export default observer(function SettingsTabs() {
   const { t } = useTranslation()
   const [activeTab, setActiveTab] = useState<TabKey>('video')
+  const [showCommand, setShowCommand] = useState(false)
 
   const isGif = store.container === 'gif'
   const visibleTabs = isGif
@@ -371,7 +445,9 @@ export default observer(function SettingsTabs() {
 
   return (
     <div className="flex-1 min-h-0 flex flex-col">
-      <div className="flex border-b border-stone-800 px-2 gap-0.5 shrink-0">
+      <div
+        className={`flex items-center border-b ${tw.border} px-2 gap-0.5 shrink-0`}
+      >
         {visibleTabs.map((key) => (
           <button
             key={key}
@@ -379,15 +455,23 @@ export default observer(function SettingsTabs() {
             className={`px-3 py-1.5 text-[11px] font-semibold uppercase tracking-widest transition-colors relative ${
               activeTab === key
                 ? `${tw.text.accent}`
-                : `${tw.text.muted} hover:text-stone-300`
+                : `${tw.text.muted} hover:text-stone-600 dark:hover:text-stone-300`
             }`}
           >
             {t(key)}
             {activeTab === key && (
-              <div className="absolute bottom-0 left-1 right-1 h-0.5 rounded-full bg-amber-500" />
+              <div className="absolute bottom-0 left-1 right-1 h-0.5 rounded-full bg-teal-500" />
             )}
           </button>
         ))}
+        <div className="flex-1" />
+        <button
+          onClick={() => setShowCommand(true)}
+          className={`${tw.button.ghost} rounded-md p-1.5 transition-colors`}
+          title={t('ffmpegCommand')}
+        >
+          <Terminal className="w-3.5 h-3.5" />
+        </button>
       </div>
       <div className="flex-1 min-h-0 overflow-y-auto">
         <div
@@ -397,6 +481,7 @@ export default observer(function SettingsTabs() {
           <ActiveComponent />
         </div>
       </div>
+      {showCommand && <CommandModal onClose={() => setShowCommand(false)} />}
     </div>
   )
 })

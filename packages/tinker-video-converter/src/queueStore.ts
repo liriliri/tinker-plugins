@@ -26,7 +26,6 @@ class QueueStore {
   items: QueueItem[] = []
   isQueueVisible = false
   isPaused = false
-  currentActiveTab: 'queue' | 'stats' | 'logs' = 'queue'
 
   constructor() {
     makeAutoObservable(this)
@@ -90,17 +89,6 @@ class QueueStore {
     }
 
     this.items.splice(index, 1)
-    this.saveQueue()
-    return true
-  }
-
-  moveItem(fromIndex: number, toIndex: number): boolean {
-    if (fromIndex < 0 || fromIndex >= this.items.length) return false
-    if (toIndex < 0 || toIndex >= this.items.length) return false
-    if (fromIndex === toIndex) return true
-
-    const [item] = this.items.splice(fromIndex, 1)
-    this.items.splice(toIndex, 0, item)
     this.saveQueue()
     return true
   }
@@ -225,10 +213,6 @@ class QueueStore {
 
   toggleQueueVisibility(): void {
     this.isQueueVisible = !this.isQueueVisible
-  }
-
-  setActiveTab(tab: 'queue' | 'stats' | 'logs'): void {
-    this.currentActiveTab = tab
   }
 
   private saveQueue(): void {

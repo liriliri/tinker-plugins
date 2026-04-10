@@ -105,6 +105,15 @@ class Store {
     return !!this.source && !this.isConverting
   }
 
+  get ffmpegCommand(): string | null {
+    if (!this.source) return null
+    const { args } = buildFFmpegArgs({
+      source: this.source,
+      ...this.getCurrentSettings(),
+    })
+    return `ffmpeg ${args.map((a) => (/[  '"\\$`!#&|;()<>]/.test(a) ? `'${a.replace(/'/g, "'\\''")}'` : a)).join(' ')}`
+  }
+
   get containerConfig() {
     return CONTAINERS.find((c) => c.value === this.container)
   }
@@ -121,11 +130,14 @@ class Store {
   private persistSetting(key: string, value: string | number | boolean) {
     ;(this as any)[key] = value
     settings.set(key, String(value))
-  }
-
-  get isPresetModified(): boolean {
-    if (!this.activePresetName || !this._presetSnapshot) return false
-    return this._settingsFingerprint() !== this._presetSnapshot
+    if (this.activePresetName && this._presetSnapshot) {
+      if (this._settingsFingerprint() !== this._presetSnapshot) {
+        this.activePresetName = ''
+        this._presetSnapshot = ''
+        settings.set('activePresetName', '')
+        settings.set('presetSnapshot', '')
+      }
+    }
   }
 
   private _settingsFingerprint(): string {

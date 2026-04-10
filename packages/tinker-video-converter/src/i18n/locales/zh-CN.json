@@ -1,5 +1,5 @@
 {
-  "openSource": "打开源文件",
+  "openSource": "打开",
   "start": "开始",
   "cancel": "取消",
   "dropHint": "拖放视频文件到这里或点击打开",
@@ -21,7 +21,6 @@
   "preset": "预设",
   "presetLabel": "预设",
   "customPreset": "自定义",
-  "modified": "已修改",
   "quality": "质量 (CRF)",
   "qualityType": "质量模式",
   "avgBitrate": "码率",
@@ -65,16 +64,18 @@
   "items": "项",
   "empty": "空",
   "queue": "队列",
-  "stats": "统计",
-  "logs": "日志",
   "currentFile": "当前文件",
   "elapsed": "已用时间",
   "noActiveConversion": "无活动转换",
-  "logsNotAvailable": "日志暂不可用",
   "pause": "暂停",
   "resume": "继续",
   "more": "更多",
   "close": "关闭",
   "canceled": "已取消",
-  "delete": "删除"
+  "delete": "删除",
+  "showCommand": "命令",
+  "ffmpegCommand": "FFmpeg 命令",
+  "copied": "已复制！",
+  "copy": "复制",
+  "noSourceForCommand": "请先打开源文件以预览命令"
 }

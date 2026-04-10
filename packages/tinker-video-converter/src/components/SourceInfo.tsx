@@ -103,7 +103,7 @@ export default observer(function SourceInfo() {
                 if (preset) store.applyPreset(preset)
               }}
               disabled={store.isConverting}
-              className="select-styled border-stone-700 bg-stone-800/80 text-stone-200 focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20 disabled:opacity-40 disabled:cursor-not-allowed text-[11px] flex-1"
+              className="select-styled border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-800/80 text-stone-700 dark:text-stone-200 focus:border-teal-500/50 focus:ring-1 focus:ring-teal-500/20 disabled:opacity-40 disabled:cursor-not-allowed text-[11px] flex-1"
             >
               <option value="">{t('customPreset')}</option>
               {GLOBAL_PRESETS.map((p) => (
@@ -112,11 +112,6 @@ export default observer(function SourceInfo() {
                 </option>
               ))}
             </select>
-            {store.activePresetName && store.isPresetModified && (
-              <span className="text-[10px] font-medium text-amber-400 bg-amber-500/10 border border-amber-500/20 rounded px-1.5 py-0.5 shrink-0">
-                {t('modified')}
-              </span>
-            )}
           </div>
         </div>
       </div>

@@ -41,19 +41,23 @@ export default function DropZone() {
         <div
           className={`relative w-20 h-20 rounded-2xl flex items-center justify-center transition-all duration-300 ${
             hovering
-              ? 'bg-amber-500/15 shadow-[0_0_40px_rgba(245,158,11,0.15)]'
-              : 'bg-stone-800/60'
+              ? 'bg-teal-500/15 shadow-[0_0_40px_rgba(20,184,166,0.15)]'
+              : 'bg-stone-200/60 dark:bg-stone-800/60'
           }`}
         >
           <Film
             className={`w-8 h-8 transition-colors duration-300 ${
-              hovering ? 'text-amber-400' : 'text-stone-500'
+              hovering
+                ? 'text-teal-500 dark:text-teal-400'
+                : 'text-stone-400 dark:text-stone-500'
             }`}
             strokeWidth={1.5}
           />
           <div
             className={`absolute inset-0 rounded-2xl border transition-colors duration-300 ${
-              hovering ? 'border-amber-500/40' : 'border-stone-700/50'
+              hovering
+                ? 'border-teal-500/40'
+                : 'border-stone-300/50 dark:border-stone-700/50'
             }`}
           />
         </div>
@@ -61,12 +65,14 @@ export default function DropZone() {
         <div className="flex flex-col items-center gap-1.5">
           <p
             className={`text-sm font-medium transition-colors duration-300 ${
-              hovering ? 'text-stone-200' : 'text-stone-400'
+              hovering
+                ? 'text-stone-700 dark:text-stone-200'
+                : 'text-stone-500 dark:text-stone-400'
             }`}
           >
             {t('dropHint')}
           </p>
-          <p className="text-[11px] text-stone-600 font-mono">
+          <p className="text-[11px] text-stone-400 dark:text-stone-600 font-mono">
             MP4 · MKV · AVI · MOV · WebM
           </p>
         </div>

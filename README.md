@@ -64,5 +64,13 @@ All plugins in the list can be installed to TINKER by running `npm i -g tinker-x
       <th><img src="./packages/tinker-gba/screenshot.png"/></th>
       <th><img src="./packages/tinker-hanzi-converter/screenshot.png"/></th>
     </tr>
+    <tr>
+      <th><a href="./packages/tinker-bg-remover/">tinker-bg-remover</a></th>
+      <th><a href="./packages/tinker-video-converter/">tinker-video-converter</a></th>
+    </tr>
+    <tr>
+      <th><img src="./packages/tinker-bg-remover/screenshot.png"/></th>
+      <th><img src="./packages/tinker-video-converter/screenshot.png"/></th>
+    </tr>
   </tbody>
 </table>

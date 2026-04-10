@@ -1,5 +1,5 @@
 {
-  "openSource": "Open Source",
+  "openSource": "Open",
   "start": "Start",
   "cancel": "Cancel",
   "dropHint": "Drop a video file here or click to open",
@@ -21,7 +21,6 @@
   "preset": "Preset",
   "presetLabel": "Preset",
   "customPreset": "Custom",
-  "modified": "Modified",
   "quality": "Quality (CRF)",
   "qualityType": "Quality",
   "avgBitrate": "Bitrate",
@@ -65,16 +64,18 @@
   "items": "items",
   "empty": "Empty",
   "queue": "Queue",
-  "stats": "Stats",
-  "logs": "Logs",
   "currentFile": "Current File",
   "elapsed": "Elapsed",
   "noActiveConversion": "No active conversion",
-  "logsNotAvailable": "Logs not available yet",
   "pause": "Pause",
   "resume": "Resume",
   "more": "More",
   "close": "Close",
   "canceled": "Canceled",
-  "delete": "Delete"
+  "delete": "Delete",
+  "showCommand": "Command",
+  "ffmpegCommand": "FFmpeg Command",
+  "copied": "Copied!",
+  "copy": "Copy",
+  "noSourceForCommand": "Open a source file to preview the command"
 }

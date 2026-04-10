@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
-import { FolderOpen, Play, Square, RotateCcw, Plus, List } from 'lucide-react'
+import { FolderOpen, Play, Square, Plus, List } from 'lucide-react'
 import { tw } from '../theme'
 import store from '../store'
 import queueStore from '../queueStore'
@@ -30,17 +30,6 @@ export default observer(function Toolbar() {
         <FolderOpen className="w-3.5 h-3.5" />
         {t('openSource')}
       </button>
-
-      {store.source && !store.isConverting && (
-        <button
-          onClick={() => store.reset()}
-          className={`p-1 rounded-md text-[11px] transition-all duration-150 ${tw.button.ghost}`}
-          style={{ WebkitAppRegion: 'no-drag' } as React.CSSProperties}
-          title={t('resetAll')}
-        >
-          <RotateCcw className="w-3 h-3" />
-        </button>
-      )}
 
       {store.source && !store.isConverting && (
         <button
