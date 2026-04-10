@@ -25,7 +25,7 @@ jobs:
           node-version: '22.x'
           registry-url: 'https://registry.npmjs.org'
       - run: |
-          npm i -g npm@11
+          npm i -g npm@11.10.0
           npm i
           cd packages/tinker-${{ github.event.inputs.component }}
           npm run build
