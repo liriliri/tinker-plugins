@@ -1,6 +1,6 @@
 {
   "name": "tinker-bg-remover",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Background Remover Plugin for Tinker",
   "files": [
     "dist/",
