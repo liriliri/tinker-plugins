@@ -1,0 +1,22 @@
+{
+  "search": "Search city...",
+  "loading": "Loading...",
+  "searching": "Searching...",
+  "noResults": "No cities found",
+  "noCity": "Search for a city to view weather",
+  "feelsLike": "Feels like",
+  "today": "Today",
+  "tomorrow": "Tomorrow",
+  "dayAfter": "Day After",
+  "humidity": "Humidity",
+  "wind": "Wind",
+  "uvIndex": "UV Index",
+  "precipitation": "Precip.",
+  "sunrise": "Sunrise",
+  "sunset": "Sunset",
+  "forecast": "Forecast",
+  "details": "Details",
+  "error": "Failed to load weather data",
+  "recent": "Recent",
+  "recent": "Recent"
+}

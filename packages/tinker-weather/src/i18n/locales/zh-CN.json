@@ -1,0 +1,21 @@
+{
+  "search": "搜索城市...",
+  "loading": "加载中...",
+  "searching": "搜索中...",
+  "noResults": "未找到城市",
+  "noCity": "搜索城市以查看天气",
+  "feelsLike": "体感",
+  "today": "今日",
+  "tomorrow": "明日",
+  "dayAfter": "后日",
+  "humidity": "湿度",
+  "wind": "风速",
+  "uvIndex": "紫外线",
+  "precipitation": "降水",
+  "sunrise": "日出",
+  "sunset": "日落",
+  "forecast": "预报",
+  "details": "详情",
+  "error": "天气数据加载失败",
+  "recent": "最近"
+}

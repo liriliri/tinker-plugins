@@ -1,0 +1,16 @@
+<svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="snow-cg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ECEFF1" />
+      <stop offset="100%" stop-color="#CFD8DC" />
+    </linearGradient>
+  </defs>
+  <path d="M78 140c-30 0-54-18-54-40s24-40 54-40c8.5 0 16.7 1.7 24 4.8C110.6 53 126.4 42 145 42c28.6 0 52 19.2 52 43 0 2-.2 3.8-.5 5.7C207.7 94.5 216 103.5 216 114.5c0 15-15 27-33.6 27H78z" fill="url(#snow-cg)" />
+  <g fill="#E3F2FD" stroke="#BBDEFB" stroke-width="1.5">
+    <circle cx="90" cy="170" r="7" />
+    <circle cx="130" cy="180" r="7" />
+    <circle cx="170" cy="170" r="7" />
+    <circle cx="110" cy="205" r="7" />
+    <circle cx="150" cy="210" r="7" />
+  </g>
+</svg>

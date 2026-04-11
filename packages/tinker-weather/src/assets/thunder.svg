@@ -1,0 +1,10 @@
+<svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="thun-cg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#78909C" />
+      <stop offset="100%" stop-color="#546E7A" />
+    </linearGradient>
+  </defs>
+  <path d="M78 130c-30 0-54-18-54-40s24-40 54-40c8.5 0 16.7 1.7 24 4.8C110.6 43 126.4 32 145 32c28.6 0 52 19.2 52 43 0 2-.2 3.8-.5 5.7C207.7 84.5 216 93.5 216 104.5c0 15-15 27-33.6 27H78z" fill="url(#thun-cg)" />
+  <polygon points="140,135 115,185 132,185 112,235 160,175 138,175 155,135" fill="#FFD600" opacity="0.95" />
+</svg>

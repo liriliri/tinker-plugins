@@ -1,0 +1,16 @@
+<svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="driz-cg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ECEFF1" />
+      <stop offset="100%" stop-color="#B0BEC5" />
+    </linearGradient>
+  </defs>
+  <path d="M78 148c-30 0-54-18-54-40s24-40 54-40c8.5 0 16.7 1.7 24 4.8C110.6 61 126.4 50 145 50c28.6 0 52 19.2 52 43 0 2-.2 3.8-.5 5.7C207.7 102.5 216 111.5 216 122.5c0 15-15 27-33.6 27H78z" fill="url(#driz-cg)" />
+  <g fill="#90CAF9" opacity="0.8">
+    <circle cx="95" cy="175" r="5" />
+    <circle cx="130" cy="185" r="5" />
+    <circle cx="165" cy="175" r="5" />
+    <circle cx="110" cy="205" r="5" />
+    <circle cx="150" cy="210" r="5" />
+  </g>
+</svg>
