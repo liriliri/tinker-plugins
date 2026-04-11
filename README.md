@@ -72,5 +72,13 @@ All plugins in the list can be installed to TINKER by running `npm i -g tinker-x
       <th><img src="./packages/tinker-bg-remover/screenshot.png"/></th>
       <th><img src="./packages/tinker-video-converter/screenshot.png"/></th>
     </tr>
+    <tr>
+      <th><a href="./packages/tinker-exchange/">tinker-exchange</a></th>
+      <th><a href="./packages/tinker-weather/">tinker-weather</a></th>
+    </tr>
+    <tr>
+      <th><img src="./packages/tinker-exchange/screenshot.png"/></th>
+      <th><img src="./packages/tinker-weather/screenshot.png"/></th>
+    </tr>
   </tbody>
 </table>
