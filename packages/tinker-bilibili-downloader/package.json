@@ -1,6 +1,6 @@
 {
   "name": "tinker-bilibili-downloader",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Bilibili Video Downloader Plugin for TINKER",
   "files": [
     "dist/",

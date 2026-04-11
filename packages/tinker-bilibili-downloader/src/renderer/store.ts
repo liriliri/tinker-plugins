@@ -210,6 +210,12 @@ class Store {
     }
     this.setShowVideoModal(false)
 
+    const tmpBase = await tinker.getPath('temp')
+    const bestAudio =
+      this.videoInfo.audio.length > 0
+        ? [...this.videoInfo.audio].sort((a, b) => b.id - a.id)[0]
+        : null
+
     for (const pageNum of this.selectedPages) {
       const pageInfo = this.videoInfo.page.find((p) => p.page === pageNum)
       if (!pageInfo) continue
@@ -224,7 +230,6 @@ class Store {
         : this.settings.downloadPath
       const outputPath = `${outputDir}/${fileName}.mp4`
       bilibiliDownloader.ensureDir(outputDir)
-      const tmpBase = await tinker.getPath('temp')
       const videoTmpPath = `${tmpBase}/${taskId}-video.m4s`
       const audioTmpPath = `${tmpBase}/${taskId}-audio.m4s`
 
@@ -232,14 +237,10 @@ class Store {
       const videoItem = this.videoInfo.video.find(
         (v) => v.id === this.selectedQuality && v.cid === pageInfo.cid,
       )
-      const audioItem =
-        this.videoInfo.audio.length > 0
-          ? [...this.videoInfo.audio].sort((a, b) => b.id - a.id)[0]
-          : null
 
-      if (videoItem && audioItem) {
+      if (videoItem && bestAudio) {
         downloadUrl.video = videoItem.url
-        downloadUrl.audio = audioItem.url
+        downloadUrl.audio = bestAudio.url
       } else {
         try {
           downloadUrl = await bilibiliDownloader.getDownloadUrl(

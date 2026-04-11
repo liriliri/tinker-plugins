@@ -1,8 +1,13 @@
+import * as https from 'node:https'
+import * as http from 'node:http'
+import * as zlib from 'node:zlib'
+import { URL } from 'node:url'
+import query from 'licia/query'
+import contain from 'licia/contain'
+import lpad from 'licia/lpad'
 import { qualityMap } from '../common/types'
+import { UA } from './constants'
 import type { VideoData, Page } from '../common/types'
-
-const UA =
-  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
 
 interface BilibiliDashStream {
   id: number
@@ -89,37 +94,92 @@ function formatSeconds(seconds: number): string {
   const m = Math.floor((seconds % 3600) / 60)
   const s = Math.floor(seconds % 60)
   if (h > 0) {
-    return `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`
+    return `${h}:${lpad(String(m), 2, '0')}:${lpad(String(s), 2, '0')}`
   }
-  return `${m}:${String(s).padStart(2, '0')}`
+  return `${m}:${lpad(String(s), 2, '0')}`
 }
 
-export async function request(
+export function request(
   url: string,
   options: { headers?: Record<string, string>; responseType?: string } = {},
 ): Promise<FetchResult> {
-  const res = await fetch(url, {
-    headers: {
-      'User-Agent': UA,
-      ...options.headers,
-    },
+  return new Promise((resolve, reject) => {
+    const redirectUrls: string[] = []
+
+    function doRequest(requestUrl: string): void {
+      const parsedUrl = new URL(requestUrl)
+      const isHttps = parsedUrl.protocol === 'https:'
+      const lib = isHttps ? https : http
+
+      const reqOptions = {
+        hostname: parsedUrl.hostname,
+        port: parsedUrl.port || (isHttps ? 443 : 80),
+        path: parsedUrl.pathname + parsedUrl.search,
+        method: 'GET',
+        headers: {
+          'User-Agent': UA,
+          'Accept-Encoding': 'gzip, deflate',
+          ...options.headers,
+        },
+      }
+
+      const req = lib.request(reqOptions, (res) => {
+        if (
+          res.statusCode &&
+          res.statusCode >= 300 &&
+          res.statusCode < 400 &&
+          res.headers.location
+        ) {
+          const location = new URL(
+            res.headers.location,
+            `${parsedUrl.protocol}//${parsedUrl.host}`,
+          ).href
+          redirectUrls.push(location)
+          doRequest(location)
+          return
+        }
+
+        let stream: NodeJS.ReadableStream = res
+        const encoding = res.headers['content-encoding']
+        if (encoding === 'gzip') {
+          stream = res.pipe(zlib.createGunzip())
+        } else if (encoding === 'deflate') {
+          stream = res.pipe(zlib.createInflate())
+        } else if (encoding === 'br') {
+          stream = res.pipe(zlib.createBrotliDecompress())
+        }
+
+        const chunks: Buffer[] = []
+        stream.on('data', (chunk: Buffer) => chunks.push(chunk))
+        stream.on('end', () => {
+          const raw = Buffer.concat(chunks).toString('utf-8')
+          const body = options.responseType === 'json' ? JSON.parse(raw) : raw
+          const headers: Record<string, string | string[] | undefined> = {}
+          for (const [key, value] of Object.entries(res.headers)) {
+            headers[key] = value
+          }
+          resolve({
+            body,
+            headers,
+            statusCode: res.statusCode || 0,
+            redirectUrls,
+          })
+        })
+        stream.on('error', reject)
+        res.on('error', reject)
+      })
+
+      req.on('error', reject)
+      req.end()
+    }
+
+    doRequest(url)
   })
-  const finalUrl = res.url
-  const body =
-    options.responseType === 'json' ? await res.json() : await res.text()
-  return {
-    body,
-    headers: Object.fromEntries(res.headers.entries()),
-    statusCode: res.status,
-    redirectUrls: finalUrl !== url ? [finalUrl] : [],
-  }
 }
 
 export async function checkLogin(sessdata: string): Promise<number> {
   const result = await request('https://api.bilibili.com/x/web-interface/nav', {
-    headers: {
-      cookie: `SESSDATA=${sessdata}`,
-    },
+    headers: sessdataHeaders(sessdata),
     responseType: 'json',
   })
   const data = (
@@ -131,17 +191,49 @@ export async function checkLogin(sessdata: string): Promise<number> {
   return 0
 }
 
+const URL_TYPE_MAP: Record<string, string> = {
+  'video/av': 'BV',
+  'video/BV': 'BV',
+  'play/ss': 'ss',
+  'play/ep': 'ep',
+}
+
 export function checkUrl(url: string): string {
-  const map: Record<string, string> = {
-    'video/av': 'BV',
-    'video/BV': 'BV',
-    'play/ss': 'ss',
-    'play/ep': 'ep',
-  }
-  for (const key in map) {
-    if (url.includes(key)) return map[key]
+  for (const key in URL_TYPE_MAP) {
+    if (contain(url, key)) return URL_TYPE_MAP[key]
   }
   return ''
+}
+
+function getStreamUrl(stream: BilibiliDashStream): string {
+  return stream.baseUrl || stream.base_url || ''
+}
+
+function mapQualityOptions(qualities: number[]) {
+  return qualities.map((q) => ({
+    label: qualityMap[q] || String(q),
+    value: q,
+  }))
+}
+
+function mapStreams(streams: BilibiliDashStream[], cid: number) {
+  return streams.map((s) => ({
+    id: s.id,
+    cid,
+    url: getStreamUrl(s),
+  }))
+}
+
+const PLAYURL_PARAMS = {
+  type: '',
+  otype: 'json',
+  fourk: 1,
+  fnver: 0,
+  fnval: 80,
+}
+
+function sessdataHeaders(sessdata: string) {
+  return { cookie: `SESSDATA=${sessdata}` }
 }
 
 async function getAcceptQuality(
@@ -149,10 +241,11 @@ async function getAcceptQuality(
   bvid: string,
   sessdata: string,
 ): Promise<AcceptQuality> {
+  const qs = query.stringify({ cid, bvid, qn: 127, ...PLAYURL_PARAMS })
   const result = await request(
-    `https://api.bilibili.com/x/player/playurl?cid=${cid}&bvid=${bvid}&qn=127&type=&otype=json&fourk=1&fnver=0&fnval=80`,
+    `https://api.bilibili.com/x/player/playurl?${qs}`,
     {
-      headers: { cookie: `SESSDATA=${sessdata}` },
+      headers: sessdataHeaders(sessdata),
       responseType: 'json',
     },
   )
@@ -165,12 +258,6 @@ async function getAcceptQuality(
     video: dash?.video || [],
     audio: dash?.audio || [],
   }
-}
-
-function getHighQualityAudio(
-  audioArray: BilibiliDashStream[],
-): BilibiliDashStream {
-  return audioArray.sort((a, b) => b.id - a.id)[0]
 }
 
 function parseBVPageData(videoData: BilibiliVideoData, url: string): Page[] {
@@ -243,21 +330,10 @@ async function parseBV(
     up: videoData.staff
       ? videoData.staff.map((s) => ({ name: s.name, mid: s.mid }))
       : [{ name: videoData.owner.name, mid: videoData.owner.mid }],
-    qualityOptions: acceptQuality.accept_quality.map((q: number) => ({
-      label: qualityMap[q] || String(q),
-      value: q,
-    })),
+    qualityOptions: mapQualityOptions(acceptQuality.accept_quality),
     page: parseBVPageData(videoData, url),
-    video: acceptQuality.video.map((v: BilibiliDashStream) => ({
-      id: v.id,
-      cid: videoData.cid,
-      url: v.baseUrl || v.base_url || '',
-    })),
-    audio: acceptQuality.audio.map((a: BilibiliDashStream) => ({
-      id: a.id,
-      cid: videoData.cid,
-      url: a.baseUrl || a.base_url || '',
-    })),
+    video: mapStreams(acceptQuality.video, videoData.cid),
+    audio: mapStreams(acceptQuality.audio, videoData.cid),
     downloadUrl: { video: '', audio: '' },
   }
 }
@@ -268,14 +344,15 @@ async function parseBangumi(
   url: string,
   sessdata: string,
 ): Promise<VideoData> {
+  const idNum = id.replace(/\D/g, '')
   const params =
     idType === 'ss'
-      ? `season_id=${id.replace(/\D/g, '')}`
-      : `ep_id=${id.replace(/\D/g, '')}`
+      ? query.stringify({ season_id: idNum })
+      : query.stringify({ ep_id: idNum })
   const result = await request(
     `https://api.bilibili.com/pgc/view/web/season?${params}`,
     {
-      headers: { cookie: `SESSDATA=${sessdata}` },
+      headers: sessdataHeaders(sessdata),
       responseType: 'json',
     },
   )
@@ -287,7 +364,7 @@ async function parseBangumi(
   if (body.code !== 0) throw new Error(`Bilibili API error: ${body.message}`)
   const data = body.result
 
-  const epIdNum = idType === 'ep' ? Number(id.replace(/\D/g, '')) : undefined
+  const epIdNum = idType === 'ep' ? Number(idNum) : undefined
   const targetEp = epIdNum
     ? (data.episodes.find((ep) => ep.ep_id === epIdNum) ?? data.episodes[0])
     : data.episodes[0]
@@ -322,21 +399,10 @@ async function parseBangumi(
     up: data.up_info
       ? [{ name: data.up_info.uname, mid: data.up_info.mid }]
       : [],
-    qualityOptions: acceptQuality.accept_quality.map((q: number) => ({
-      label: qualityMap[q] || String(q),
-      value: q,
-    })),
+    qualityOptions: mapQualityOptions(acceptQuality.accept_quality),
     page: pages,
-    video: acceptQuality.video.map((v: BilibiliDashStream) => ({
-      id: v.id,
-      cid: targetEp.cid,
-      url: v.baseUrl || v.base_url || '',
-    })),
-    audio: acceptQuality.audio.map((a: BilibiliDashStream) => ({
-      id: a.id,
-      cid: targetEp.cid,
-      url: a.baseUrl || a.base_url || '',
-    })),
+    video: mapStreams(acceptQuality.video, targetEp.cid),
+    audio: mapStreams(acceptQuality.audio, targetEp.cid),
     downloadUrl: { video: '', audio: '' },
   }
 }
@@ -375,10 +441,17 @@ export async function getDownloadUrl(
   let dash: BilibiliDash | undefined
 
   if (epid && ssid) {
+    const qs = query.stringify({
+      cid,
+      ep_id: epid,
+      season_id: ssid,
+      qn: quality,
+      ...PLAYURL_PARAMS,
+    })
     result = await request(
-      `https://api.bilibili.com/pgc/player/web/v2/playurl?cid=${cid}&ep_id=${epid}&season_id=${ssid}&qn=${quality}&type=&otype=json&fourk=1&fnver=0&fnval=80`,
+      `https://api.bilibili.com/pgc/player/web/v2/playurl?${qs}`,
       {
-        headers: { cookie: `SESSDATA=${sessdata}` },
+        headers: sessdataHeaders(sessdata),
         responseType: 'json',
       },
     )
@@ -388,13 +461,11 @@ export async function getDownloadUrl(
     }
     dash = body.result?.video_info?.dash
   } else {
-    result = await request(
-      `https://api.bilibili.com/x/player/playurl?cid=${cid}&bvid=${bvid}&qn=${quality}&type=&otype=json&fourk=1&fnver=0&fnval=80`,
-      {
-        headers: { cookie: `SESSDATA=${sessdata}` },
-        responseType: 'json',
-      },
-    )
+    const qs = query.stringify({ cid, bvid, qn: quality, ...PLAYURL_PARAMS })
+    result = await request(`https://api.bilibili.com/x/player/playurl?${qs}`, {
+      headers: sessdataHeaders(sessdata),
+      responseType: 'json',
+    })
     const body = result.body as { data?: { dash?: BilibiliDash } }
     dash = body.data?.dash
   }
@@ -402,10 +473,10 @@ export async function getDownloadUrl(
   if (!dash) throw new Error('No dash data in response')
 
   const videoItem = dash.video.find((v) => v.id === quality) || dash.video[0]
-  const audioItem = getHighQualityAudio(dash.audio)
+  const audioItem = [...dash.audio].sort((a, b) => b.id - a.id)[0]
 
   return {
-    video: videoItem.baseUrl || videoItem.base_url || '',
-    audio: audioItem.baseUrl || audioItem.base_url || '',
+    video: getStreamUrl(videoItem),
+    audio: getStreamUrl(audioItem),
   }
 }

@@ -30,7 +30,7 @@ const TaskItem = observer(({ task }: TaskItemProps) => {
         alt="cover"
         className="w-20 h-14 object-cover rounded-xl flex-shrink-0"
       />
-      <div className="flex-1 min-w-0">
+      <div className="flex-1 w-0">
         <div
           className={className('text-sm font-medium truncate', tw.text.primary)}
         >
@@ -42,24 +42,24 @@ const TaskItem = observer(({ task }: TaskItemProps) => {
 
         {(task.status === 'downloading' || task.status === 'merging') && (
           <div className="mt-2">
-            <Progress.Root
-              value={task.progress}
-              className={className(
-                'h-1 w-full rounded-full overflow-hidden',
-                tw.progress.track,
-              )}
-            >
-              <Progress.Indicator
+            <div className="flex items-center gap-2">
+              <Progress.Root
+                value={task.progress}
                 className={className(
-                  'h-full transition-all duration-300',
-                  tw.progress.bar,
+                  'h-1 flex-1 rounded-full overflow-hidden',
+                  tw.progress.track,
                 )}
-                style={{ transform: `translateX(-${100 - task.progress}%)` }}
-              />
-            </Progress.Root>
-            <div className="flex items-center gap-1 mt-1">
+              >
+                <Progress.Indicator
+                  className={className(
+                    'h-full transition-all duration-300',
+                    tw.progress.bar,
+                  )}
+                  style={{ transform: `translateX(-${100 - task.progress}%)` }}
+                />
+              </Progress.Root>
               {task.status === 'merging' ? (
-                <>
+                <div className="flex items-center gap-1 flex-shrink-0">
                   <Loader2
                     size={10}
                     className={className('animate-spin', tw.status.iconMerging)}
@@ -67,9 +67,9 @@ const TaskItem = observer(({ task }: TaskItemProps) => {
                   <span className={className('text-xs', tw.text.tertiary)}>
                     {t('merging')}
                   </span>
-                </>
+                </div>
               ) : (
-                <>
+                <div className="flex items-center gap-1 flex-shrink-0">
                   <Loader2
                     size={10}
                     className={className(
@@ -80,7 +80,7 @@ const TaskItem = observer(({ task }: TaskItemProps) => {
                   <span className={className('text-xs', tw.text.tertiary)}>
                     {task.progress}%
                   </span>
-                </>
+                </div>
               )}
             </div>
           </div>
