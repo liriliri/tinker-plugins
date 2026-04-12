@@ -1,7 +1,7 @@
 {
   "name": "tinker-exchange",
   "version": "0.1.0",
-  "description": "Currency Exchange Rate Calculator Plugin for Tinker",
+  "description": "Currency Exchange Rate Calculator Plugin for TINKER",
   "files": [
     "dist/",
     "icon.png"
@@ -21,11 +21,13 @@
   ],
   "tinker": {
     "name": "Currency Exchange",
+    "description": "Currency exchange rate calculator",
     "main": "dist/index.html",
     "icon": "icon.png",
     "locales": {
       "zh-CN": {
-        "name": "汇率换算"
+        "name": "汇率换算",
+        "description": "货币汇率计算器"
       }
     }
   },

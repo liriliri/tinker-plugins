@@ -1,7 +1,7 @@
 {
   "name": "tinker-hanzi-converter",
   "version": "0.1.0",
-  "description": "Chinese Character Tools Plugin for Tinker",
+  "description": "Chinese Character Tools Plugin for TINKER",
   "files": [
     "dist/",
     "icon.png"
@@ -22,11 +22,13 @@
   ],
   "tinker": {
     "name": "Hanzi Converter",
+    "description": "Chinese character tools for pinyin and conversion",
     "main": "dist/index.html",
     "icon": "icon.png",
     "locales": {
       "zh-CN": {
-        "name": "汉字转换"
+        "name": "汉字转换",
+        "description": "汉字拼音、大写金额、简繁转换工具"
       }
     }
   },

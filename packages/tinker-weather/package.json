@@ -1,7 +1,7 @@
 {
   "name": "tinker-weather",
   "version": "0.1.0",
-  "description": "Weather Plugin for Tinker",
+  "description": "Weather Plugin for TINKER",
   "files": [
     "dist/",
     "icon.png"
@@ -21,11 +21,13 @@
   ],
   "tinker": {
     "name": "Weather",
+    "description": "Check real-time weather and forecasts",
     "main": "dist/index.html",
     "icon": "icon.png",
     "locales": {
       "zh-CN": {
-        "name": "天气"
+        "name": "天气",
+        "description": "查看实时天气和天气预报"
       }
     }
   },

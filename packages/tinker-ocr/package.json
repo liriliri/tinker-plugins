@@ -1,7 +1,7 @@
 {
   "name": "tinker-ocr",
   "version": "0.1.0",
-  "description": "OCR Plugin for Tinker",
+  "description": "OCR Plugin for TINKER",
   "files": [
     "dist/",
     "icon.png"
@@ -21,11 +21,13 @@
   ],
   "tinker": {
     "name": "OCR",
+    "description": "Recognize text from images using Tesseract.js",
     "main": "dist/index.html",
     "icon": "icon.png",
     "locales": {
       "zh-CN": {
-        "name": "OCR 识别"
+        "name": "OCR 识别",
+        "description": "使用 Tesseract.js 识别图片中的文字"
       }
     }
   },

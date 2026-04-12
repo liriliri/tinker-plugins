@@ -25,12 +25,14 @@
   ],
   "tinker": {
     "name": "Translate",
+    "description": "Translate text with multiple translation services",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",
     "locales": {
       "zh-CN": {
-        "name": "翻译"
+        "name": "翻译",
+        "description": "使用多种翻译服务翻译文本"
       }
     }
   },

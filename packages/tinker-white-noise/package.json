@@ -1,7 +1,7 @@
 {
   "name": "tinker-white-noise",
   "version": "0.1.0",
-  "description": "White Noise Plugin for Tinker",
+  "description": "White Noise Plugin for TINKER",
   "files": [
     "dist/",
     "icon.png"
@@ -21,11 +21,13 @@
   ],
   "tinker": {
     "name": "White Noise",
+    "description": "Play ambient white noise with visual effects",
     "main": "dist/index.html",
     "icon": "icon.png",
     "locales": {
       "zh-CN": {
-        "name": "白噪音"
+        "name": "白噪音",
+        "description": "播放环境白噪音，配合视觉效果"
       }
     }
   },

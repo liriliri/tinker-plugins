@@ -27,12 +27,14 @@
   ],
   "tinker": {
     "name": "Bilibili Downloader",
+    "description": "Download Bilibili videos with quality selection",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",
     "locales": {
       "zh-CN": {
-        "name": "B站视频下载"
+        "name": "B站视频下载",
+        "description": "下载哔哩哔哩视频，支持画质选择"
       }
     }
   },

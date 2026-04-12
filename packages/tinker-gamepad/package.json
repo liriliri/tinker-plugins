@@ -1,7 +1,7 @@
 {
   "name": "tinker-gamepad",
   "version": "0.1.0",
-  "description": "Gamepad Tester Plugin for Tinker",
+  "description": "Gamepad Tester Plugin for TINKER",
   "files": [
     "dist/",
     "icon.png"
@@ -21,11 +21,13 @@
   ],
   "tinker": {
     "name": "Gamepad",
+    "description": "Test and visualize gamepad inputs",
     "main": "dist/index.html",
     "icon": "icon.png",
     "locales": {
       "zh-CN": {
-        "name": "手柄测试"
+        "name": "手柄测试",
+        "description": "测试并可视化游戏手柄输入"
       }
     }
   }

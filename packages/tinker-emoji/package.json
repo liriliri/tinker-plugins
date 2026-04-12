@@ -1,7 +1,7 @@
 {
   "name": "tinker-emoji",
   "version": "0.1.0",
-  "description": "Emoji Search Plugin for Tinker",
+  "description": "Emoji Search Plugin for TINKER",
   "files": [
     "dist/",
     "icon.png"
@@ -21,8 +21,15 @@
   ],
   "tinker": {
     "name": "Emoji",
+    "description": "Search and copy emojis quickly",
     "main": "dist/index.html",
-    "icon": "icon.png"
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "Emoji",
+        "description": "快速搜索并复制表情符号"
+      }
+    }
   },
   "devDependencies": {
     "@radix-ui/react-scroll-area": "^1.2.2",

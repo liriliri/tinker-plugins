@@ -27,12 +27,14 @@
   ],
   "tinker": {
     "name": "Token Usage",
+    "description": "Track token usage statistics for AI coding tools",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.mjs",
     "icon": "icon.png",
     "locales": {
       "zh-CN": {
-        "name": "Token 统计"
+        "name": "Token 统计",
+        "description": "跟踪 AI 编程工具的 Token 用量统计"
       }
     }
   },

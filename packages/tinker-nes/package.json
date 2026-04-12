@@ -1,7 +1,7 @@
 {
   "name": "tinker-nes",
   "version": "0.2.2",
-  "description": "NES Emulator Plugin for Tinker",
+  "description": "NES Emulator Plugin for TINKER",
   "files": [
     "dist/",
     "icon.png"
@@ -22,11 +22,13 @@
   ],
   "tinker": {
     "name": "NES",
+    "description": "Play NES ROMs with save state support",
     "main": "dist/index.html",
     "icon": "icon.png",
     "locales": {
       "zh-CN": {
-        "name": "红白机"
+        "name": "红白机",
+        "description": "运行 NES 游戏，支持存档"
       }
     }
   },

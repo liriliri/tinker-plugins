@@ -25,12 +25,14 @@
   ],
   "tinker": {
     "name": "Trending",
+    "description": "Browse trending topics from multiple platforms",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",
     "locales": {
       "zh-CN": {
-        "name": "热搜榜"
+        "name": "热搜榜",
+        "description": "浏览多个平台的热搜榜"
       }
     }
   },

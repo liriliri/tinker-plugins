@@ -25,12 +25,14 @@
   ],
   "tinker": {
     "name": "Wallpaper",
+    "description": "Search, preview and set desktop wallpapers",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",
     "locales": {
       "zh-CN": {
-        "name": "壁纸"
+        "name": "壁纸",
+        "description": "搜索、预览并设置桌面壁纸"
       }
     }
   },

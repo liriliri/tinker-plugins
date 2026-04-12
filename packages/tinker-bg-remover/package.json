@@ -1,7 +1,7 @@
 {
   "name": "tinker-bg-remover",
   "version": "0.1.1",
-  "description": "Background Remover Plugin for Tinker",
+  "description": "Background Remover Plugin for TINKER",
   "files": [
     "dist/",
     "icon.png"
@@ -25,12 +25,14 @@
   ],
   "tinker": {
     "name": "Background Remover",
+    "description": "Remove image backgrounds locally with AI",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",
     "locales": {
       "zh-CN": {
-        "name": "抠图"
+        "name": "抠图",
+        "description": "使用 AI 在本地移除图片背景"
       }
     }
   },

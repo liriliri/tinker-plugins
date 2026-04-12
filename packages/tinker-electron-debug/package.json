@@ -1,7 +1,7 @@
 {
   "name": "tinker-electron-debug",
   "version": "0.1.3",
-  "description": "Debug in-production Electron based app",
+  "description": "Electron Debug Plugin for TINKER",
   "files": [
     "dist/",
     "icon.png"
@@ -25,12 +25,14 @@
   ],
   "tinker": {
     "name": "Electron Debug",
+    "description": "Remote debugger for Electron applications",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",
     "locales": {
       "zh-CN": {
-        "name": "Electron 调试"
+        "name": "Electron 调试",
+        "description": "远程调试 Electron 应用"
       }
     }
   },
