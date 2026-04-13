@@ -1,0 +1,16 @@
+{
+  "search": "搜索地点...",
+  "noResults": "未找到匹配的位置",
+  "locations": "搜索结果",
+  "road": "路线",
+  "satellite": "卫星",
+  "appTitle": "地图",
+  "locationCount": "{{count}} 个地点",
+  "searching": "搜索中...",
+  "searchHint": "搜索任意地点",
+  "bookmarkLocation": "标注此位置",
+  "bookmarkNamePlaceholder": "输入地址名称...",
+  "bookmarks": "标注",
+  "cancel": "取消",
+  "save": "保存"
+}

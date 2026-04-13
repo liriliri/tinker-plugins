@@ -1,0 +1,47 @@
+{
+  "name": "tinker-map",
+  "version": "0.1.0",
+  "description": "Map Plugin for TINKER",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:preload\"",
+    "dev:renderer": "vite",
+    "dev:preload": "vite build --watch --config vite.preload.ts",
+    "build": "concurrently \"npm run build:renderer\" \"npm run build:preload\"",
+    "build:renderer": "vite build",
+    "build:preload": "vite build --config vite.preload.ts",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "map"
+  ],
+  "tinker": {
+    "name": "Map",
+    "description": "Explore maps, search locations and manage bookmarks",
+    "main": "dist/renderer/index.html",
+    "preload": "dist/preload/index.js",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "地图",
+        "description": "浏览地图、搜索地点和管理标注"
+      }
+    }
+  },
+  "devDependencies": {
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@types/leaflet": "^1.9.8",
+    "concurrently": "^9.2.0",
+    "leaflet": "^1.9.4",
+    "leaflet.chinatmsproviders": "^3.0.6",
+    "react-leaflet": "^5.0.0"
+  }
+}

@@ -1,0 +1,153 @@
+@use 'tailwindcss';
+@config "../../tailwind.config.js";
+
+@import 'leaflet/dist/leaflet.css';
+
+html.dark {
+  color-scheme: dark;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+.selected-marker {
+  filter: hue-rotate(200deg);
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.2);
+  }
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.18);
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.3s ease-out both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s ease-out both;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.2s ease-out both;
+}
+
+/* Leaflet overrides */
+.leaflet-bottom.leaflet-left {
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: auto;
+  top: 0;
+}
+
+.leaflet-control-scale {
+  margin: 14px 0 !important;
+}
+
+.leaflet-control-scale-line {
+  background: none !important;
+  border: none !important;
+  font-size: 12px !important;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 0 !important;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
+  position: relative;
+  padding-bottom: 4px !important;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    border-bottom: 1.5px solid rgba(0, 0, 0, 0.5);
+    border-left: 1.5px solid rgba(0, 0, 0, 0.5);
+    border-right: 1.5px solid rgba(0, 0, 0, 0.5);
+    border-radius: 0 0 2px 2px;
+  }
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 10px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12) !important;
+  padding: 0 !important;
+}
+
+.leaflet-popup-content {
+  margin: 10px 14px !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+}
+
+.leaflet-popup-tip {
+  box-shadow: none !important;
+}
+
+html.dark .leaflet-popup-content-wrapper {
+  background: #27272a !important;
+  color: #e4e4e7 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+html.dark .leaflet-popup-tip {
+  background: #27272a !important;
+}

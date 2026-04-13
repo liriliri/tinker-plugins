@@ -1,0 +1,16 @@
+{
+  "search": "Search places...",
+  "noResults": "No matching locations",
+  "locations": "Results",
+  "road": "Road",
+  "satellite": "Satellite",
+  "appTitle": "Map",
+  "locationCount": "{{count}} places",
+  "searching": "Searching...",
+  "searchHint": "Search for any place",
+  "bookmarkLocation": "Bookmark this location",
+  "bookmarkNamePlaceholder": "Enter location name...",
+  "bookmarks": "Bookmarks",
+  "cancel": "Cancel",
+  "save": "Save"
+}
