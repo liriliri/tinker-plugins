@@ -1,0 +1,14 @@
+{
+  "filePath": "共享文件路径",
+  "filePathPlaceholder": "输入或选择共享文件路径...",
+  "browse": "浏览",
+  "start": "开始同步",
+  "stop": "停止同步",
+  "syncing": "同步中",
+  "stopped": "已停止",
+  "error": "错误",
+  "emptyPathError": "请输入或选择共享文件路径",
+  "autoSync": "启动时自动同步",
+  "clipboardContent": "剪贴板内容",
+  "emptyClipboard": "剪贴板为空"
+}

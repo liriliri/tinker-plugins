@@ -1,0 +1,14 @@
+{
+  "filePath": "Shared file path",
+  "filePathPlaceholder": "Enter or select a shared file path...",
+  "browse": "Browse",
+  "start": "Start Sync",
+  "stop": "Stop Sync",
+  "syncing": "Syncing",
+  "stopped": "Stopped",
+  "error": "Error",
+  "emptyPathError": "Please enter or select a shared file path",
+  "autoSync": "Auto sync on startup",
+  "clipboardContent": "Clipboard Content",
+  "emptyClipboard": "Clipboard is empty"
+}

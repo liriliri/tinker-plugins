@@ -1,0 +1,42 @@
+{
+  "name": "tinker-clipboard-sync",
+  "version": "0.1.0",
+  "description": "Clipboard sync plugin for TINKER via shared files in VM",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:preload\"",
+    "dev:renderer": "vite",
+    "dev:preload": "vite build --watch --config vite.preload.ts",
+    "build": "concurrently \"npm run build:renderer\" \"npm run build:preload\"",
+    "build:renderer": "vite build",
+    "build:preload": "vite build --config vite.preload.ts",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "clipboard-sync"
+  ],
+  "tinker": {
+    "name": "Clipboard Sync",
+    "description": "Sync clipboard between host and VM via shared files",
+    "main": "dist/renderer/index.html",
+    "preload": "dist/preload/index.js",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "剪贴板同步",
+        "description": "通过共享文件在宿主机和虚拟机之间同步剪贴板"
+      }
+    }
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}

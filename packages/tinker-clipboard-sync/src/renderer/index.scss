@@ -1,0 +1,23 @@
+@use 'tailwindcss';
+@config "../../tailwind.config.js";
+
+html.dark {
+  color-scheme: dark;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: theme('colors.zinc.300');
+  border-radius: 2px;
+}
+@media (prefers-color-scheme: dark) {
+  ::-webkit-scrollbar-thumb {
+    background: theme('colors.zinc.600');
+  }
+}
