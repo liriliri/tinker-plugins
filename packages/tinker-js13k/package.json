@@ -1,0 +1,35 @@
+{
+  "name": "tinker-js13k",
+  "version": "0.1.0",
+  "description": "JS13K Games Plugin for TINKER",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "js13k",
+    "games"
+  ],
+  "tinker": {
+    "name": "JS13K Games",
+    "description": "Play curated JS13K games",
+    "main": "dist/index.html",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "JS13K 游戏",
+        "description": "畅玩精选 JS13K 游戏"
+      }
+    }
+  }
+}
