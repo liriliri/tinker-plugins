@@ -80,5 +80,13 @@ All plugins in the list can be installed to TINKER by running `npm i -g tinker-x
       <th><img src="./packages/tinker-exchange/screenshot.png"/></th>
       <th><img src="./packages/tinker-weather/screenshot.png"/></th>
     </tr>
+    <tr>
+      <th><a href="./packages/tinker-js13k/">tinker-js13k</a></th>
+      <th><a href="./packages/tinker-lunar-calendar/">tinker-lunar-calendar</a></th>
+    </tr>
+    <tr>
+      <th><img src="./packages/tinker-js13k/screenshot.png"/></th>
+      <th><img src="./packages/tinker-lunar-calendar/screenshot.png"/></th>
+    </tr>
   </tbody>
 </table>
