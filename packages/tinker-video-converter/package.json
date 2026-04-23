@@ -1,6 +1,6 @@
 {
   "name": "tinker-video-converter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Video Format Converter Plugin for TINKER",
   "files": [
     "dist/",

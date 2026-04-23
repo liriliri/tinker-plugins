@@ -1,7 +1,6 @@
 @use 'tailwindcss';
 @config "../tailwind.config.js";
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap');
 
 html.dark {
   color-scheme: dark;
@@ -17,7 +16,7 @@ body,
 }
 
 body {
-  font-family: 'DM Sans', system-ui, sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
 }
 
 /* Custom scrollbar - light */
@@ -45,7 +44,7 @@ body {
 
 /* Mono font utility */
 .font-mono {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
 /* DropZone filmstrip animation */
