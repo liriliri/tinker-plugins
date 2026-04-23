@@ -1,0 +1,83 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  theme: {
+    extend: {
+      fontFamily: {
+        brush: [
+          '"Kaiti SC"',
+          '"STKaiti"',
+          'KaiTi',
+          '"楷体"',
+          '"Songti SC"',
+          '"STSong"',
+          'SimSun',
+          '"宋体"',
+          'serif',
+        ],
+        serif: [
+          '"Songti SC"',
+          '"STSong"',
+          'SimSun',
+          '"宋体"',
+          'Georgia',
+          'serif',
+        ],
+        numeral: [
+          'Georgia',
+          '"Times New Roman"',
+          '"Songti SC"',
+          'SimSun',
+          'serif',
+        ],
+      },
+      colors: {
+        zhu: {
+          50: '#fdf4f0',
+          100: '#fbe3dc',
+          200: '#f4bfb1',
+          300: '#e38c79',
+          400: '#c85b47',
+          500: '#a93d2c',
+          600: '#8b2a1f',
+          700: '#6e2218',
+          800: '#501810',
+          900: '#3a110a',
+        },
+        xuan: {
+          50: '#fbf6ec',
+          100: '#f4ecdb',
+          200: '#ebdcba',
+          300: '#dcc38e',
+          400: '#c9a766',
+          500: '#a88545',
+          600: '#81672f',
+          700: '#5b481f',
+          800: '#3a2e14',
+          900: '#1f180a',
+        },
+        mo: {
+          100: '#dad3c4',
+          200: '#b6ad97',
+          300: '#7a7058',
+          400: '#443e31',
+          500: '#24201a',
+          600: '#161310',
+          700: '#0e0c09',
+          800: '#070604',
+        },
+        jin: {
+          300: '#e8c478',
+          400: '#c99b48',
+          500: '#a57a2c',
+        },
+        cui: {
+          400: '#4d8c70',
+          500: '#2d6a4f',
+          600: '#1c4a38',
+        },
+      },
+    },
+  },
+  plugins: [],
+}

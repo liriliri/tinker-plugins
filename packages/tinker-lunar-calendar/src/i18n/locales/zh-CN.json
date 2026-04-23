@@ -1,0 +1,22 @@
+{
+  "year": "年",
+  "month": "月",
+  "mon": "一",
+  "tue": "二",
+  "wed": "三",
+  "thu": "四",
+  "fri": "五",
+  "sat": "六",
+  "sun": "日",
+  "constellation": "星座",
+  "solarTerm": "节气",
+  "chong": "冲",
+  "sha": "煞",
+  "suiCi": "歲次",
+  "weekdayPrefix": "星期",
+  "holidayMark": "休",
+  "workdayMark": "班",
+  "todayMark": "今",
+  "yiBrush": "宜",
+  "jiBrush": "忌"
+}

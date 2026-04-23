@@ -1,0 +1,37 @@
+{
+  "name": "tinker-lunar-calendar",
+  "version": "0.1.0",
+  "description": "Lunar Calendar Plugin for TINKER",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "lunar-calendar"
+  ],
+  "tinker": {
+    "name": "Lunar Calendar",
+    "description": "A perpetual calendar with lunar date support",
+    "main": "dist/index.html",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "万年历",
+        "description": "支持农历的万年历"
+      }
+    }
+  },
+  "devDependencies": {
+    "lunar-javascript": "^1.7.7"
+  }
+}

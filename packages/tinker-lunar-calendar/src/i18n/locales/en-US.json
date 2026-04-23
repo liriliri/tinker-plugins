@@ -1,0 +1,22 @@
+{
+  "year": "",
+  "month": "",
+  "mon": "Mon",
+  "tue": "Tue",
+  "wed": "Wed",
+  "thu": "Thu",
+  "fri": "Fri",
+  "sat": "Sat",
+  "sun": "Sun",
+  "constellation": "Constellation",
+  "solarTerm": "Solar Term",
+  "chong": "Clash",
+  "sha": "Sha",
+  "suiCi": "Cycle",
+  "weekdayPrefix": "",
+  "holidayMark": "OFF",
+  "workdayMark": "ON",
+  "todayMark": "NOW",
+  "yiBrush": "GOOD",
+  "jiBrush": "AVOID"
+}

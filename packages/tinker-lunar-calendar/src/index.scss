@@ -1,0 +1,81 @@
+@use 'tailwindcss';
+@config "../tailwind.config.js";
+
+html.dark {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root,
+#app {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Songti SC', 'STSong', SimSun, '宋体', Georgia, serif;
+  font-feature-settings: 'palt';
+  -webkit-font-smoothing: antialiased;
+  color: #24201a;
+}
+
+html.dark body {
+  color: #e9dfc6;
+}
+
+.paper-bg {
+  background-color: #f4e8cf;
+}
+
+html.dark .paper-bg {
+  background-color: #141210;
+}
+
+.paper-card {
+  background-color: #fbf4e1;
+}
+
+html.dark .paper-card {
+  background-color: #1c1814;
+}
+
+.gold-frame {
+  position: relative;
+  border: 1px solid rgba(201, 155, 72, 0.55);
+  box-shadow:
+    inset 0 0 0 3px #fbf4e1,
+    inset 0 0 0 4px rgba(201, 155, 72, 0.35);
+}
+
+html.dark .gold-frame {
+  border-color: rgba(201, 155, 72, 0.5);
+  box-shadow:
+    inset 0 0 0 3px #1c1814,
+    inset 0 0 0 4px rgba(201, 155, 72, 0.28);
+}
+
+.scroll-mo::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.scroll-mo::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scroll-mo::-webkit-scrollbar-thumb {
+  background: rgba(165, 122, 44, 0.4);
+  border-radius: 3px;
+}
+
+.scroll-mo::-webkit-scrollbar-thumb:hover {
+  background: rgba(165, 122, 44, 0.6);
+}
+
+.writing-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  letter-spacing: 0.15em;
+}

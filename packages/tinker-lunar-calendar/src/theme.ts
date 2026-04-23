@@ -1,0 +1,34 @@
+export const tw = {
+  background: {
+    primary: 'paper-bg',
+    secondary: 'paper-card',
+    cellHover: 'hover:bg-xuan-100/60 dark:hover:bg-mo-700/40',
+    zodiacInner: 'bg-xuan-50/40 dark:bg-mo-700/40',
+  },
+  text: {
+    primary: 'text-mo-500 dark:text-xuan-100',
+    secondary: 'text-mo-400 dark:text-xuan-200',
+    muted: 'text-mo-300 dark:text-xuan-300/70',
+    mutedSoft: 'text-mo-300 dark:text-xuan-300/60',
+    accent: 'text-zhu-600 dark:text-zhu-300',
+    accentSoft: 'text-zhu-500/10 dark:text-zhu-300/10',
+    gold: 'text-jin-500 dark:text-jin-400',
+    onSeal: 'text-xuan-50',
+    cuiAccent: 'text-cui-600 dark:text-cui-400',
+  },
+  border: {
+    primary: 'border border-jin-500/40 dark:border-jin-400/40',
+    ring: 'ring-1 ring-zhu-500/60 dark:ring-zhu-300/50',
+    zhuSoft: 'border-zhu-500/40',
+    cuiSoft: 'border-cui-500/40',
+  },
+  accent: {
+    bgStrong: 'bg-zhu-600',
+    chipZhu: 'bg-zhu-100/40 dark:bg-zhu-900/20',
+    chipCui: 'bg-cui-400/10 dark:bg-cui-600/10',
+    overlayOnSeal: 'bg-xuan-50/25',
+  },
+  decoration: {
+    flourish: 'text-jin-500/70 dark:text-jin-400/60',
+  },
+}
