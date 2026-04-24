@@ -1,0 +1,12 @@
+{
+  "searchPlaceholder": "搜索单词...",
+  "addDictionary": "添加词典",
+  "manageDictionaries": "管理词典",
+  "noDictionary": "未加载词典",
+  "noDictionaryHint": "点击左侧添加按钮导入 MDX 词典文件",
+  "noResults": "未找到结果",
+  "all": "全部",
+  "showInFolder": "打开所在位置",
+  "remove": "删除",
+  "error": "错误"
+}

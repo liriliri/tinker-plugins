@@ -1,0 +1,12 @@
+{
+  "searchPlaceholder": "Search word...",
+  "addDictionary": "Add Dictionary",
+  "manageDictionaries": "Manage Dictionaries",
+  "noDictionary": "No dictionary loaded",
+  "noDictionaryHint": "Click the Add button on the left to import an MDX dictionary file",
+  "noResults": "No results found",
+  "all": "All",
+  "showInFolder": "Show in Folder",
+  "remove": "Remove",
+  "error": "Error"
+}

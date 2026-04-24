@@ -1,0 +1,49 @@
+{
+  "name": "tinker-dictionary",
+  "version": "0.1.0",
+  "description": "Dictionary Plugin for TINKER",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:preload\"",
+    "dev:renderer": "vite",
+    "dev:preload": "vite build --watch --config vite.preload.ts",
+    "build": "concurrently \"npm run build:renderer\" \"npm run build:preload\"",
+    "build:renderer": "vite build",
+    "build:preload": "vite build --config vite.preload.ts",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "dictionary"
+  ],
+  "tinker": {
+    "name": "Dictionary",
+    "description": "Look up word definitions and translations",
+    "main": "dist/renderer/index.html",
+    "preload": "dist/preload/index.js",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "词典",
+        "description": "查询单词定义和翻译"
+      }
+    }
+  },
+  "devDependencies": {
+    "@radix-ui/react-toast": "^1.2.15",
+    "concurrently": "^9.2.0",
+    "darkreader": "^4.9.120",
+    "idb": "^8.0.3"
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.17",
+    "js-mdict": "^7.0.0"
+  }
+}
