@@ -88,5 +88,13 @@ All plugins in the list can be installed to TINKER by running `npm i -g tinker-x
       <th><img src="./packages/tinker-js13k/screenshot.png"/></th>
       <th><img src="./packages/tinker-lunar-calendar/screenshot.png"/></th>
     </tr>
+    <tr>
+      <th><a href="./packages/tinker-dictionary/">tinker-dictionary</a></th>
+      <th><a href="./packages/tinker-typing-test/">tinker-typing-test</a></th>
+    </tr>
+    <tr>
+      <th><img src="./packages/tinker-dictionary/screenshot.png"/></th>
+      <th><img src="./packages/tinker-typing-test/screenshot.png"/></th>
+    </tr>
   </tbody>
 </table>
