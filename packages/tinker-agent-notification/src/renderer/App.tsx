@@ -1,11 +1,20 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useRef } from 'react'
 import { observer } from 'mobx-react-lite'
 import className from 'licia/className'
 import fileUrl from 'licia/fileUrl'
+import contain from 'licia/contain'
+import last from 'licia/last'
 import { useTranslation } from 'react-i18next'
 import * as Toast from '@radix-ui/react-toast'
-import { RotateCcw, Bell, FolderOpen, Play, AudioLines } from 'lucide-react'
-import store, { agents, soundPacks, hookTypes } from './store'
+import {
+  RotateCcw,
+  Bell,
+  FolderOpen,
+  Play,
+  AudioLines,
+  ChevronDown,
+} from 'lucide-react'
+import store, { soundPacks, hookTypes } from './store'
 import { tw } from './theme'
 
 const WaveformIcon = ({ size = 16 }: { size?: number }) => (
@@ -15,6 +24,48 @@ const WaveformIcon = ({ size = 16 }: { size?: number }) => (
 const BellIcon = () => <Bell size={14} />
 
 const FolderIcon = () => <FolderOpen size={13} />
+
+const Select = ({
+  value,
+  onChange,
+  children,
+  flex,
+}: {
+  value: string
+  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void
+  children: React.ReactNode
+  flex?: boolean
+}) => (
+  <div
+    className={className(
+      'relative inline-flex items-center rounded-md',
+      flex ? 'flex-1' : '',
+      tw.border.card,
+      tw.background.primary,
+    )}
+  >
+    <select
+      className={className(
+        'appearance-none pl-3 pr-8 py-2 rounded-md text-sm border-0 outline-none',
+        'bg-transparent',
+        'cursor-pointer',
+        flex ? 'w-full' : '',
+        tw.text.primary,
+      )}
+      value={value}
+      onChange={onChange}
+    >
+      {children}
+    </select>
+    <ChevronDown
+      size={14}
+      className={className(
+        'absolute right-2.5 pointer-events-none',
+        tw.text.muted,
+      )}
+    />
+  </div>
+)
 
 const PreviewButton = ({
   onClick,
@@ -101,31 +152,18 @@ const AgentSection = observer(
             icon={<WaveformIcon size={14} />}
             title={t('soundPacks')}
           />
-          <div
-            className={className(
-              'flex items-center gap-3 px-3.5 py-2.5 rounded-md',
-              tw.border.card,
-              tw.background.primary,
-            )}
+          <Select
+            value={agentStore.selectedPack}
+            onChange={(e) => agentStore.setSelectedPack(e.target.value)}
+            flex
           >
-            <select
-              className={className(
-                'flex-1 px-3 py-1.5 rounded text-sm border-0 outline-none',
-                'bg-transparent',
-                'cursor-pointer',
-                tw.text.primary,
-              )}
-              value={agentStore.selectedPack}
-              onChange={(e) => agentStore.setSelectedPack(e.target.value)}
-            >
-              {soundPacks.map((pack) => (
-                <option key={pack.id} value={pack.id}>
-                  {t(`soundPack_${pack.id}`)}
-                </option>
-              ))}
-              <option value="custom">{t('customSelected')}</option>
-            </select>
-          </div>
+            {soundPacks.map((pack) => (
+              <option key={pack.id} value={pack.id}>
+                {t(`soundPack_${pack.id}`)}
+              </option>
+            ))}
+            <option value="custom">{t('customSelected')}</option>
+          </Select>
         </div>
 
         <div className="flex flex-col gap-2">
@@ -158,7 +196,7 @@ const AgentSection = observer(
                       )}
                     >
                       {agentStore.customSoundPaths[h.id]
-                        ? agentStore.customSoundPaths[h.id].split('/').pop()
+                        ? last(agentStore.customSoundPaths[h.id].split('/'))
                         : ''}
                     </span>
                   )}
@@ -221,11 +259,17 @@ const App = observer(() => {
   const [toastType, setToastType] = useState<'success' | 'error'>('success')
   const agentStore = store.selectedAgentStore
 
+  const toastTimer = useRef<ReturnType<typeof setTimeout>>()
+
   const showToast = useCallback((msg: string, type: 'success' | 'error') => {
+    clearTimeout(toastTimer.current)
     setToastMsg(msg)
     setToastType(type)
     setToastOpen(false)
-    requestAnimationFrame(() => setToastOpen(true))
+    requestAnimationFrame(() => {
+      setToastOpen(true)
+      toastTimer.current = setTimeout(() => setToastOpen(false), 3000)
+    })
   }, [])
 
   const previewSound = useCallback((url: string, e?: React.MouseEvent) => {
@@ -236,7 +280,7 @@ const App = observer(() => {
 
   const handleApply = async () => {
     await agentStore.applyConfig()
-    if (agentStore.message.includes('✓')) {
+    if (contain(agentStore.message, '✓')) {
       showToast(t('applySuccess'), 'success')
     } else {
       showToast(t('applyFailed'), 'error')
@@ -245,7 +289,7 @@ const App = observer(() => {
 
   const handleRemove = async () => {
     await agentStore.removeConfig()
-    if (agentStore.message.includes('✓')) {
+    if (contain(agentStore.message, '✓')) {
       showToast(t('removeSuccess'), 'success')
     } else {
       showToast(t('removeFailed'), 'error')
@@ -253,7 +297,7 @@ const App = observer(() => {
   }
 
   return (
-    <Toast.Provider swipeDirection="right" duration={3000}>
+    <Toast.Provider swipeDirection="right" duration={Infinity}>
       <div
         className={className(
           'h-screen flex flex-col p-5 overflow-auto',
@@ -263,27 +307,21 @@ const App = observer(() => {
         <div className="mx-auto max-w-xl w-full flex flex-col gap-5 animate-fade-in">
           <div
             className={className(
-              'flex items-center gap-2.5 px-3.5 py-2.5 rounded-md',
+              'flex items-center gap-2.5 px-5 py-2.5 rounded-md',
               tw.border.card,
               tw.background.secondary,
             )}
           >
-            <select
-              className={className(
-                'px-3 py-1.5 rounded text-sm border-0 outline-none',
-                'bg-transparent',
-                'cursor-pointer',
-                tw.text.primary,
-              )}
+            <Select
               value={store.selectedAgentId}
               onChange={(e) => store.setSelectedAgent(e.target.value)}
             >
-              {agents.map((agent) => (
+              {store.visibleAgents.map((agent) => (
                 <option key={agent.id} value={agent.id}>
                   {agent.name}
                 </option>
               ))}
-            </select>
+            </Select>
             <div className="flex-1" />
             <button
               className={className(

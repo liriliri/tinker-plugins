@@ -1,5 +1,9 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 import { t } from 'i18next'
+import startWith from 'licia/startWith'
+import endWith from 'licia/endWith'
+import isEmpty from 'licia/isEmpty'
+import isWindows from 'licia/isWindows'
 
 export interface SoundPack {
   id: string
@@ -18,6 +22,7 @@ export interface AgentDef {
   name: string
   configDir: string
   configFile?: string
+  requireDir?: boolean
 }
 
 export const agents: AgentDef[] = [
@@ -26,6 +31,7 @@ export const agents: AgentDef[] = [
     id: 'claude-internal',
     name: 'Claude Internal',
     configDir: '.claude-internal',
+    requireDir: true,
   },
   {
     id: 'claude',
@@ -37,6 +43,13 @@ export const agents: AgentDef[] = [
     name: 'Codex',
     configDir: '.codex',
     configFile: 'hooks.json',
+  },
+  {
+    id: 'codex-internal',
+    name: 'Codex Internal',
+    configDir: '.codex-internal',
+    configFile: 'hooks.json',
+    requireDir: true,
   },
 ]
 
@@ -73,11 +86,29 @@ interface Settings {
   hooks?: Record<string, HookEntry[]>
 }
 
-function isAfplayHook(hook: Hook): boolean {
+function buildPlayCommand(soundPath: string): string {
+  if (isWindows) {
+    return `powershell -c "(New-Object Media.SoundPlayer '${soundPath}').PlaySync()"`
+  }
+  return `afplay ${soundPath}`
+}
+
+function extractSoundPath(command: string): string | null {
+  if (startWith(command, 'afplay ')) {
+    return command.replace('afplay ', '').trim()
+  }
+  const match = command.match(/Media\.SoundPlayer\s+'([^']+)'\)/)
+  if (match) {
+    return match[1]
+  }
+  return null
+}
+
+function isSoundHook(hook: Hook): boolean {
   return (
     hook.type === 'command' &&
     typeof hook.command === 'string' &&
-    hook.command.startsWith('afplay ')
+    extractSoundPath(hook.command) !== null
   )
 }
 
@@ -89,7 +120,7 @@ function removeAfplayEntries(
     if (hookDef.matcher && entry.matcher !== hookDef.matcher) return true
     if (!hookDef.matcher && entry.matcher) return true
     if (!entry.hooks) return true
-    return !entry.hooks.some(isAfplayHook)
+    return !entry.hooks.some(isSoundHook)
   })
 }
 
@@ -159,14 +190,14 @@ export class AgentStore {
           if (hookDef.matcher && entry.matcher !== hookDef.matcher) continue
 
           for (const hook of entry.hooks) {
-            if (isAfplayHook(hook)) {
-              const soundPath = hook.command!.replace('afplay ', '').trim()
+            if (isSoundHook(hook)) {
+              const soundPath = extractSoundPath(hook.command!)!
               found = true
 
               runInAction(() => {
                 this.enabledHooks[hookDef.id] = true
                 const pack = soundPacks.find((p) =>
-                  soundPath.endsWith(`/${p.id}/${hookDef.file}`),
+                  endWith(soundPath, `/${p.id}/${hookDef.file}`),
                 )
                 if (pack) {
                   this.selectedPack = pack.id
@@ -256,7 +287,7 @@ export class AgentStore {
               hooks: [
                 {
                   type: 'command',
-                  command: `afplay ${soundPath}`,
+                  command: buildPlayCommand(soundPath),
                 },
               ],
             }
@@ -272,7 +303,7 @@ export class AgentStore {
         }
       }
 
-      if (Object.keys(settings.hooks).length === 0) {
+      if (isEmpty(settings.hooks)) {
         delete settings.hooks
       }
 
@@ -322,7 +353,7 @@ export class AgentStore {
           }
         }
 
-        if (Object.keys(settings.hooks).length === 0) {
+        if (isEmpty(settings.hooks)) {
           delete settings.hooks
         }
       }
@@ -354,6 +385,7 @@ class Store {
   soundsDir: string = ''
   selectedAgentId: string = agents[0].id
   agentStores: Map<string, AgentStore> = new Map()
+  visibleAgentIds: Set<string> = new Set(agents.map((a) => a.id))
 
   constructor() {
     makeAutoObservable(this)
@@ -363,12 +395,30 @@ class Store {
     this.init()
   }
 
+  get visibleAgents(): AgentDef[] {
+    return agents.filter((a) => this.visibleAgentIds.has(a.id))
+  }
+
   async init() {
     const home = await tinker.getPath('home')
-    const soundsDir = agentBell.getSoundsDir()
+    const soundsDir = agentNotification.getSoundsDir()
     runInAction(() => {
       this.soundsDir = soundsDir
     })
+
+    for (const agent of agents) {
+      if (agent.requireDir) {
+        try {
+          const stat = await tinker.fstat(`${home}/${agent.configDir}`)
+          if (!stat.isDirectory) throw new Error()
+        } catch {
+          runInAction(() => {
+            this.visibleAgentIds.delete(agent.id)
+          })
+        }
+      }
+    }
+
     for (const agentStore of this.agentStores.values()) {
       await agentStore.init(home)
     }

@@ -3,12 +3,12 @@ import path from 'node:path'
 
 const soundsDir = path.resolve(__dirname, '..', 'sounds')
 
-const agentBell = {
+const agentNotificationObj = {
   getSoundsDir: () => soundsDir,
 }
 
-contextBridge.exposeInMainWorld('agentBell', agentBell)
+contextBridge.exposeInMainWorld('agentNotification', agentNotificationObj)
 
 declare global {
-  const agentBell: typeof agentBell
+  const agentNotification: typeof agentNotificationObj
 }
