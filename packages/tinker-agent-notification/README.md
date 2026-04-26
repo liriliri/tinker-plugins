@@ -1,23 +1,23 @@
-# tinker-emoji
+# tinker-agent-notification
 
-An emoji picker plugin for [TINKER](https://github.com/liriliri/tinker), supporting 1700+ emojis with search and category browsing.
+A notification sound plugin for [TINKER](https://github.com/liriliri/tinker), allowing you to configure sounds for coding agent events like session start, prompt submit, and stop.
 
-![Screenshot](https://raw.githubusercontent.com/liriliri/tinker-plugins/master/packages/tinker-emoji/screenshot.png)
+![Screenshot](https://raw.githubusercontent.com/liriliri/tinker-plugins/master/packages/tinker-agent-notification/screenshot.png)
 
 ## Features
 
-- **1700+ Emojis** with categories
-- **Search** by name, description, or keywords (bilingual)
-- **Click to Copy** to clipboard
-- **Dark Mode** support
+- **Multi-Agent Support** for CodeBuddy, Claude, Codex and more
+- **5 Built-in Sound Packs** with custom sound file support
+- **4 Event Triggers**: Ready, Work, Stop, Permission
+- **Per-Event Toggle** to enable/disable individual notifications
 
 ## Installation
 
-Download and install TINKER from `https://tinker.liriliri.io/`, then run `npm i -g tinker-emoji`.
+Download and install TINKER from `https://tinker.liriliri.io/`, then run `npm i -g tinker-agent-notification`.
 
 ## Usage
 
-1. Browse emojis by category
-2. Search for emojis using keywords
-3. Click to copy emoji to clipboard
-
+1. Select a coding agent from the dropdown
+2. Choose a sound pack or use custom audio files
+3. Toggle events you want notifications for
+4. Click "Apply" to save configuration

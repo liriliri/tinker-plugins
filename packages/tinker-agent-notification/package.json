@@ -34,7 +34,7 @@
     "icon": "icon.png",
     "locales": {
       "zh-CN": {
-        "name": "Agent 提示",
+        "name": "Agent 提示音",
         "description": "为编码 Agent 配置提示音"
       }
     }
