@@ -1,0 +1,21 @@
+{
+  "soundPacks": "语音包",
+  "soundPack_default": "默认",
+  "soundPack_young-girl": "稚嫩少女",
+  "soundPack_elegant-lady": "知性御姐",
+  "soundPack_gentle-lord": "温润公子",
+  "soundPack_graceful-beauty": "灵韵佳人",
+  "customSelected": "自定义",
+  "events": "事件",
+  "hookType_ready": "会话开始",
+  "hookType_work": "开始工作",
+  "hookType_stop": "任务完成",
+  "hookType_permission": "等待确认",
+  "apply": "设置",
+  "saving": "保存中...",
+  "audioFiles": "音频文件",
+  "applySuccess": "✓ 设置成功。",
+  "applyFailed": "✗ 设置失败",
+  "removeSuccess": "✓ 已移除。",
+  "removeFailed": "✗ 移除失败"
+}

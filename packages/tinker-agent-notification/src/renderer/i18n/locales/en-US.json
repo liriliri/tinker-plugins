@@ -1,0 +1,21 @@
+{
+  "soundPacks": "Sound Packs",
+  "soundPack_default": "Default",
+  "soundPack_young-girl": "Young Girl",
+  "soundPack_elegant-lady": "Elegant Lady",
+  "soundPack_gentle-lord": "Gentle Lord",
+  "soundPack_graceful-beauty": "Graceful Beauty",
+  "customSelected": "Custom",
+  "events": "Events",
+  "hookType_ready": "Session Start",
+  "hookType_work": "Prompt Submit",
+  "hookType_stop": "Task Complete",
+  "hookType_permission": "Permission Request",
+  "apply": "Apply",
+  "saving": "Saving...",
+  "audioFiles": "Audio Files",
+  "applySuccess": "✓ Settings applied.",
+  "applyFailed": "✗ Failed to apply settings",
+  "removeSuccess": "✓ Settings removed.",
+  "removeFailed": "✗ Failed to remove settings"
+}
