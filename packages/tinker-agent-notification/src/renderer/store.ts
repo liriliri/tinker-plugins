@@ -88,16 +88,22 @@ interface Settings {
 
 function buildPlayCommand(soundPath: string): string {
   if (isWindows) {
-    return `powershell -c "(New-Object Media.SoundPlayer '${soundPath}').PlaySync()"`
+    return (
+      'powershell -ExecutionPolicy Bypass -File "' +
+      store.playScript +
+      '" "' +
+      soundPath +
+      '"'
+    )
   }
-  return `afplay ${soundPath}`
+  return 'afplay ' + soundPath
 }
 
 function extractSoundPath(command: string): string | null {
   if (startWith(command, 'afplay ')) {
     return command.replace('afplay ', '').trim()
   }
-  const match = command.match(/Media\.SoundPlayer\s+'([^']+)'\)/)
+  const match = command.match(/play\.ps1"\s+"([^"]+)"/)
   if (match) {
     return match[1]
   }
@@ -383,6 +389,7 @@ export class AgentStore {
 
 class Store {
   soundsDir: string = ''
+  playScript: string = ''
   selectedAgentId: string = agents[0].id
   agentStores: Map<string, AgentStore> = new Map()
   visibleAgentIds: Set<string> = new Set(agents.map((a) => a.id))
@@ -402,8 +409,10 @@ class Store {
   async init() {
     const home = await tinker.getPath('home')
     const soundsDir = agentNotification.getSoundsDir()
+    const playScript = agentNotification.getPlayScript()
     runInAction(() => {
       this.soundsDir = soundsDir
+      this.playScript = playScript
     })
 
     for (const agent of agents) {
