@@ -2,6 +2,7 @@ import { makeAutoObservable, runInAction } from 'mobx'
 import { t } from 'i18next'
 import startWith from 'licia/startWith'
 import endWith from 'licia/endWith'
+import trim from 'licia/trim'
 import isEmpty from 'licia/isEmpty'
 import isWindows from 'licia/isWindows'
 
@@ -96,12 +97,12 @@ function buildPlayCommand(soundPath: string): string {
       '"'
     )
   }
-  return 'afplay ' + soundPath
+  return 'afplay "' + soundPath + '"'
 }
 
 function extractSoundPath(command: string): string | null {
   if (startWith(command, 'afplay ')) {
-    return command.replace('afplay ', '').trim()
+    return trim(command.replace('afplay ', ''), '"')
   }
   const match = command.match(/play\.ps1"\s+"([^"]+)"/)
   if (match) {

@@ -1,6 +1,6 @@
 {
   "name": "tinker-agent-notification",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Coding Agent Notification Sound Plugin for TINKER",
   "files": [
     "dist/",
