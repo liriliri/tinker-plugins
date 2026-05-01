@@ -1,0 +1,37 @@
+{
+  "name": "tinker-life-progress",
+  "version": "0.1.0",
+  "description": "Life Progress Plugin for TINKER",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "life-progress"
+  ],
+  "tinker": {
+    "name": "Life Progress",
+    "description": "Visualize life, month, and day progress",
+    "main": "dist/index.html",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "人生进度",
+        "description": "可视化人生、月份和每日进度"
+      }
+    }
+  },
+  "devDependencies": {
+    "@radix-ui/react-dialog": "^1.1.4"
+  }
+}

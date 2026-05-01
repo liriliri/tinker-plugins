@@ -1,0 +1,17 @@
+{
+  "title": "Life Progress",
+  "life": "Life",
+  "year": "Year",
+  "month": "Month",
+  "week": "Week",
+  "day": "Day",
+  "daysLeft": "{{count}} days left",
+  "hoursLeft": "{{count}} hours left",
+  "birthday": "Birthday",
+  "lifespan": "Lifespan (years)",
+  "settings": "Settings",
+  "save": "Save",
+  "nights": "🌙 {{count}} nights slept",
+  "meals": "🍚 {{count}} meals eaten",
+  "years": "🚶 {{count}} years walked"
+}

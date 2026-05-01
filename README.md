@@ -96,5 +96,13 @@ All plugins in the list can be installed to TINKER by running `npm i -g tinker-x
       <th><img src="./packages/tinker-dictionary/screenshot.png"/></th>
       <th><img src="./packages/tinker-typing-test/screenshot.png"/></th>
     </tr>
+    <tr>
+      <th><a href="./packages/tinker-agent-notification/">tinker-agent-notification</a></th>
+      <th><a href="./packages/tinker-life-progress/">tinker-life-progress</a></th>
+    </tr>
+    <tr>
+      <th><img src="./packages/tinker-agent-notification/screenshot.png"/></th>
+      <th><img src="./packages/tinker-life-progress/screenshot.png"/></th>
+    </tr>
   </tbody>
 </table>

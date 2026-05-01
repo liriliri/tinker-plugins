@@ -1,0 +1,17 @@
+{
+  "title": "人生进度",
+  "life": "人生",
+  "year": "今年",
+  "month": "本月",
+  "week": "本周",
+  "day": "今天",
+  "daysLeft": "还剩 {{count}} 天",
+  "hoursLeft": "还剩 {{count}} 小时",
+  "birthday": "生日",
+  "lifespan": "预期寿命（年）",
+  "settings": "设置",
+  "save": "保存",
+  "nights": "🌙 度过了 {{count}} 个夜晚",
+  "meals": "🍚 吃了约 {{count}} 顿饭",
+  "years": "🚶 走过了 {{count}} 年"
+}
