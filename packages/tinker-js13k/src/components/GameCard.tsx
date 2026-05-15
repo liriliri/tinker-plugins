@@ -38,7 +38,7 @@ const GameCard = observer(({ game }: Props) => {
         </div>
 
         <div className="absolute bottom-3 right-3 ps-play-fab">
-          <Play size={16} fill="currentColor" style={{ marginLeft: 2 }} />
+          <Play size={16} fill="currentColor" className="ml-0.5" />
         </div>
       </div>
 
