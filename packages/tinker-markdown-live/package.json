@@ -1,0 +1,45 @@
+{
+  "name": "tinker-markdown-live",
+  "version": "0.1.0",
+  "description": "A WYSIWYG markdown editor for TINKER",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:preload\"",
+    "dev:renderer": "vite",
+    "dev:preload": "vite build --watch --config vite.preload.ts",
+    "build": "concurrently \"npm run build:renderer\" \"npm run build:preload\"",
+    "build:renderer": "vite build",
+    "build:preload": "vite build --config vite.preload.ts",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "markdown"
+  ],
+  "tinker": {
+    "name": "Markdown Live",
+    "description": "A WYSIWYG markdown editor with live editing",
+    "main": "dist/renderer/index.html",
+    "preload": "dist/preload/index.mjs",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "Markdown 实时编辑",
+        "description": "所见即所得的 Markdown 编辑器"
+      }
+    }
+  },
+  "devDependencies": {
+    "@milkdown/crepe": "^7.21.1",
+    "@milkdown/kit": "^7.21.1",
+    "@milkdown/react": "^7.21.1",
+    "concurrently": "^9.2.0"
+  }
+}
