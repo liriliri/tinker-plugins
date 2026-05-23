@@ -7,7 +7,7 @@ A notification sound plugin for [TINKER](https://github.com/liriliri/tinker), al
 ## Features
 
 - **Multi-Agent Support** for CodeBuddy, Claude, Codex and more
-- **5 Built-in Sound Packs** with custom sound file support
+- **5 Builtin Sound Packs** with custom sound file support
 - **4 Event Triggers**: Ready, Work, Stop, Permission
 - **Per-Event Toggle** to enable/disable individual notifications
 
