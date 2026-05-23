@@ -1,6 +1,6 @@
 # TINKER Official Plugins
 
-This repository contains officially maintained non-builtin [TINKER](https://github.com/liriliri/tinker) plugins.
+This repository contains officially maintained non-built-in [TINKER](https://github.com/liriliri/tinker) plugins.
 
 ## Plugins
 

@@ -10,7 +10,7 @@ An Electron app debugger plugin for [TINKER](https://github.com/liriliri/tinker)
 - **Launch & attach** debugger with a single click
 - **Inspect pages** — view Node.js and renderer process targets
 - **DevTools integration** — open Chrome DevTools for any target
-- **Live log output** — stream stdout/stderr in a builtin terminal
+- **Live log output** — stream stdout/stderr in a built-in terminal
 - **Multi-session** support for debugging multiple apps simultaneously
 
 ## Installation
