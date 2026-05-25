@@ -12,7 +12,7 @@
   },
   "scripts": {
     "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:preload\"",
-    "dev:renderer": "vite",
+    "dev:renderer": "vite build --watch",
     "dev:preload": "vite build --watch --config vite.preload.ts",
     "build": "concurrently \"npm run build:renderer\" \"npm run build:preload\"",
     "build:renderer": "vite build",

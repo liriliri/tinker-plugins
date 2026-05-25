@@ -1,4 +1,5 @@
 ---
+name: simplify
 description: Review changed code for reuse, quality, and efficiency, then fix any issues found.
 argument-hint: <plugin-name-or-file-path>
 ---

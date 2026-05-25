@@ -1,4 +1,5 @@
 ---
+name: new
 description: Create a new Tinker plugin from the template
 argument-hint: <plugin-name> [description]
 ---

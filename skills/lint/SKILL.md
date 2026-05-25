@@ -1,4 +1,5 @@
 ---
+name: lint
 description: Check code against Tinker plugin coding standards
 argument-hint: <plugin-name-or-file-path>
 ---
