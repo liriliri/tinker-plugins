@@ -1,30 +1,21 @@
 import { useState } from 'react'
+import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import * as Dialog from '@radix-ui/react-dialog'
 import className from 'licia/className'
 import { tw } from '../theme'
+import store from '../store'
 
-interface Props {
-  open: boolean
-  onOpenChange: (open: boolean) => void
-  birthday: string
-  lifespan: number
-  onSave: (settings: { birthday: string; lifespan: number }) => void
-}
-
-export default function Settings({
-  open,
-  onOpenChange,
-  birthday,
-  lifespan,
-  onSave,
-}: Props) {
+const Settings = observer(() => {
   const { t } = useTranslation()
-  const [bd, setBd] = useState(birthday)
-  const [ls, setLs] = useState(lifespan)
+  const [bd, setBd] = useState(store.birthday)
+  const [ls, setLs] = useState(store.lifespan)
 
   return (
-    <Dialog.Root open={open} onOpenChange={onOpenChange}>
+    <Dialog.Root
+      open={store.showSettings}
+      onOpenChange={(open) => store.setShowSettings(open)}
+    >
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-black/50 backdrop-blur-sm animate-in" />
         <Dialog.Content
@@ -77,7 +68,7 @@ export default function Settings({
               />
             </label>
             <button
-              onClick={() => onSave({ birthday: bd, lifespan: ls })}
+              onClick={() => store.saveSettings(bd, ls)}
               className={className(
                 'self-end px-5 py-2 rounded-md text-sm font-semibold mt-1',
                 'bg-gradient-to-r from-amber-400 to-amber-500',
@@ -93,4 +84,6 @@ export default function Settings({
       </Dialog.Portal>
     </Dialog.Root>
   )
-}
+})
+
+export default Settings

@@ -1,48 +1,13 @@
 import { useEffect, useState } from 'react'
 import clamp from 'licia/clamp'
 import className from 'licia/className'
-import { tw } from '../theme'
-
-const colorConfig = {
-  'bg-rose-500': {
-    track: 'text-rose-200/60 dark:text-rose-900/60',
-    text: 'text-rose-600 dark:text-rose-400',
-    glow: 'text-rose-500',
-    gradient: 'from-rose-400 to-rose-600',
-  },
-  'bg-amber-500': {
-    track: 'text-amber-200/60 dark:text-amber-900/60',
-    text: 'text-amber-600 dark:text-amber-400',
-    glow: 'text-amber-500',
-    gradient: 'from-amber-400 to-amber-600',
-  },
-  'bg-emerald-500': {
-    track: 'text-emerald-200/60 dark:text-emerald-900/60',
-    text: 'text-emerald-600 dark:text-emerald-400',
-    glow: 'text-emerald-500',
-    gradient: 'from-emerald-400 to-emerald-600',
-  },
-  'bg-purple-500': {
-    track: 'text-purple-200/60 dark:text-purple-900/60',
-    text: 'text-purple-600 dark:text-purple-400',
-    glow: 'text-purple-500',
-    gradient: 'from-purple-400 to-purple-600',
-  },
-  'bg-blue-500': {
-    track: 'text-blue-200/60 dark:text-blue-900/60',
-    text: 'text-blue-600 dark:text-blue-400',
-    glow: 'text-blue-500',
-    gradient: 'from-blue-400 to-blue-600',
-  },
-}
-
-type ColorKey = keyof typeof colorConfig
+import { tw, progressColors, ProgressColorKey } from '../theme'
 
 interface Props {
   label: string
   progress: number
   subtitle: string
-  color: ColorKey
+  color: ProgressColorKey
   stats?: string[]
 }
 
@@ -60,7 +25,7 @@ export default function ProgressCard({
     const id = requestAnimationFrame(() => setDisplayPercent(percent))
     return () => cancelAnimationFrame(id)
   }, [percent])
-  const config = colorConfig[color]
+  const config = progressColors[color]
 
   const radius = 26
   const strokeWidth = 5
