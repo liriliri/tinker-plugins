@@ -1,7 +1,7 @@
 import { makeAutoObservable } from 'mobx'
 import base64 from 'licia/base64'
 import type { ModelSize } from '../common/types'
-import { bytesToDataUrl, parseImageDataUrl, toPng } from './image'
+import { bytesToDataUrl, parseImageDataUrl, toPng } from './lib/image'
 
 class Store {
   originalImage: string | null = null

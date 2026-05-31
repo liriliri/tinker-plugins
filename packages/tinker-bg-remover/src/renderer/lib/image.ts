@@ -12,7 +12,7 @@ const DIRECTLY_SUPPORTED_TYPES = new Set([
   'image/webp',
 ])
 
-export function getImageMime(name: string, fallback = DEFAULT_IMAGE_MIME) {
+function getImageMime(name: string, fallback = DEFAULT_IMAGE_MIME) {
   const ext = String(last(name.split('.')) || '').toLowerCase()
   const resolvedMime = ext ? mime(ext) : undefined
 

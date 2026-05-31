@@ -6,6 +6,5 @@
   "reset": "重置",
   "dropHint": "拖拽图片到此处或点击打开",
   "model_small": "快速",
-  "model_medium": "均衡",
-  "model_large": "精细"
+  "model_medium": "均衡"
 }

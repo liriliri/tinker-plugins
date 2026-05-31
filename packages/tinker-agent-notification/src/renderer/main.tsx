@@ -29,7 +29,9 @@ const App = observer(() => {
   const [toastMsg, setToastMsg] = useState('')
   const [toastType, setToastType] = useState<'success' | 'error'>('success')
 
-  const toastTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
+  const toastTimer = useRef<ReturnType<typeof setTimeout> | undefined>(
+    undefined,
+  )
 
   const showToast = useCallback((msg: string, type: 'success' | 'error') => {
     clearTimeout(toastTimer.current)
