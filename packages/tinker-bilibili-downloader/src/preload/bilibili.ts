@@ -290,7 +290,7 @@ async function parseBV(
   sessdata: string,
 ): Promise<VideoData> {
   const videoInfoMatch = html.match(
-    /<\/script><script>window\.__INITIAL_STATE__=([\s\S]*?);\(function\(\)/,
+    /<script>window\.__INITIAL_STATE__=([\s\S]*?);\(function\(\)/,
   )
   if (!videoInfoMatch) throw new Error('Failed to parse BV page')
   const { videoData } = JSON.parse(videoInfoMatch[1]) as BVInitialState
@@ -298,7 +298,7 @@ async function parseBV(
   let acceptQuality: AcceptQuality
   try {
     const playInfoMatch = html.match(
-      /<script>window\.__playinfo__=([\s\S]*?)<\/script><script>window\.__INITIAL_STATE__=/,
+      /<script>window\.__playinfo__=([\s\S]*?)<\/script>/,
     )
     if (!playInfoMatch) throw new Error('no playinfo')
     const playInfo = JSON.parse(playInfoMatch[1]) as {

@@ -19,8 +19,6 @@ export interface TaskData {
   audioTmpPath: string
   status: TaskStatus
   progress: number
-  videoProgress: number
-  audioProgress: number
   error?: string
   createdTime: number
 }

@@ -9,7 +9,6 @@ export const tw = {
     primary: 'text-[#18191C] dark:text-[#E3E5E7]',
     secondary: 'text-[#61666D] dark:text-[#9499A0]',
     tertiary: 'text-[#9499A0] dark:text-[#61666D]',
-    white: 'text-white',
   },
 
   border: {
@@ -44,8 +43,6 @@ export const tw = {
 
   bilibili: {
     accent: 'text-[#FB7299]',
-    accentBg: 'bg-[#FB7299]',
-    accentGradient: 'from-[#FB7299] to-[#FC8BAB]',
     accentCheckbox: 'accent-[#FB7299]',
     tab: {
       active: 'text-[#FB7299] border-[#FB7299]',
@@ -77,7 +74,5 @@ export const tw = {
 
   scrollbar: {
     thumb: 'bg-[#E3E5E7] dark:bg-[#303030]',
-    track:
-      'data-[state=unchecked]:bg-[#E3E5E7] dark:data-[state=unchecked]:bg-[#303030]',
   },
 }

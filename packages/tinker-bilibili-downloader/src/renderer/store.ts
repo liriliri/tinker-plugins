@@ -1,5 +1,4 @@
 import { makeAutoObservable, runInAction } from 'mobx'
-import waitUntil from 'licia/waitUntil'
 import LocalStore from 'licia/LocalStore'
 import { VideoData, qualityMap, userQuality } from '../common/types'
 import type { TaskData, Settings } from './types'
@@ -8,8 +7,6 @@ import uuid from 'licia/uuid'
 const storage = new LocalStore('tinker-bilibili-downloader')
 
 class Store {
-  isDark: boolean = false
-
   settings: Settings = {
     downloadPath: '',
     sessdata: '',
@@ -33,7 +30,6 @@ class Store {
   constructor() {
     makeAutoObservable(this)
     this.loadSettings()
-    this.init()
   }
 
   private loadSettings() {
@@ -45,28 +41,6 @@ class Store {
 
   saveSettings() {
     storage.set('settings', { ...this.settings })
-  }
-
-  private async init() {
-    await waitUntil(() => typeof bilibiliDownloader !== 'undefined')
-    this.initTheme()
-  }
-
-  setIsDark(isDark: boolean) {
-    this.isDark = isDark
-  }
-
-  private async initTheme() {
-    try {
-      const theme = await tinker.getTheme()
-      this.isDark = theme === 'dark'
-      tinker.on('changeTheme', async () => {
-        const newTheme = await tinker.getTheme()
-        runInAction(() => this.setIsDark(newTheme === 'dark'))
-      })
-    } catch (err) {
-      console.error('Failed to initialize theme:', err)
-    }
   }
 
   setUrlInput(url: string) {
@@ -87,10 +61,6 @@ class Store {
 
   setActiveTab(tab: 'downloading' | 'done') {
     this.activeTab = tab
-  }
-
-  setVideoInfo(info: VideoData | null) {
-    this.videoInfo = info
   }
 
   setSelectedQuality(quality: number) {
@@ -272,8 +242,6 @@ class Store {
         audioTmpPath,
         status: 'pending',
         progress: 0,
-        videoProgress: 0,
-        audioProgress: 0,
         createdTime: Date.now(),
       }
 
@@ -305,8 +273,6 @@ class Store {
         (received, total) => {
           runInAction(() => {
             this.updateTask(taskId, {
-              videoProgress:
-                total > 0 ? Math.floor((received / total) * 100) : 0,
               progress: total > 0 ? Math.floor((received / total) * 50) : 0,
             })
           })
@@ -320,8 +286,6 @@ class Store {
         (received, total) => {
           runInAction(() => {
             this.updateTask(taskId, {
-              audioProgress:
-                total > 0 ? Math.floor((received / total) * 100) : 0,
               progress:
                 50 + (total > 0 ? Math.floor((received / total) * 40) : 0),
             })
