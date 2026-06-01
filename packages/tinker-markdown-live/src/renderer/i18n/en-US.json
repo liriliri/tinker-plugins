@@ -1,7 +1,11 @@
 {
   "new": "New",
-  "open": "Open",
   "save": "Save",
   "untitled": "Untitled",
-  "placeholder": "Type / to use slash command"
+  "placeholder": "Type / to use slash command",
+  "fileTree": "Markdown file tree",
+  "openFolder": "Open folder",
+  "hideFileTree": "Hide file list",
+  "showFileTree": "Show file list",
+  "noMarkdownFiles": "No markdown files"
 }

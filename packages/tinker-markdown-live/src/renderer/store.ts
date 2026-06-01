@@ -1,5 +1,10 @@
 import { makeAutoObservable } from 'mobx'
+import LocalStore from 'licia/LocalStore'
 import splitPath from 'licia/splitPath'
+
+const storage = new LocalStore('tinker-markdown-live')
+const STORAGE_LAST_FOLDER = 'lastFolderPath'
+
 class Store {
   filePath: string | null = null
   isDark: boolean = false
@@ -17,6 +22,8 @@ class Store {
       const t = await tinker.getTheme()
       this.setDark(t === 'dark')
     })
+
+    tinker.setTitle('')
   }
 
   setDark(dark: boolean) {
@@ -32,10 +39,27 @@ class Store {
     this.content = content
   }
 
+  setRootFolderName(name: string | null) {
+    tinker.setTitle(name ?? '')
+  }
+
+  getLastFolderPath() {
+    const path = storage.get(STORAGE_LAST_FOLDER)
+    return typeof path === 'string' && path ? path : null
+  }
+
+  setLastFolderPath(path: string) {
+    storage.set(STORAGE_LAST_FOLDER, path)
+  }
+
+  clearLastFolderPath() {
+    storage.remove(STORAGE_LAST_FOLDER)
+  }
+
   get fileName() {
-    if (!this.filePath) return 'Untitled'
+    if (!this.filePath) return ''
     const { name } = splitPath(this.filePath)
-    return name || 'Untitled'
+    return name || ''
   }
 }
 

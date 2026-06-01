@@ -1,16 +1,11 @@
 import { contextBridge } from 'electron'
+import { listMarkdownFilesForPath, watchMarkdownTree } from './markdownFiles'
 
 const markdownObj = {
   readFile: (path: string) => tinker.readFile(path, 'utf8'),
   writeFile: (path: string, content: string) => tinker.writeFile(path, content),
-  showOpenDialog: () =>
-    tinker.showOpenDialog({
-      filters: [{ name: 'Markdown', extensions: ['md', 'markdown'] }],
-    }),
-  showSaveDialog: () =>
-    tinker.showSaveDialog({
-      filters: [{ name: 'Markdown', extensions: ['md', 'markdown'] }],
-    }),
+  listMarkdownFilesForPath,
+  watchMarkdownTree,
 }
 
 contextBridge.exposeInMainWorld('markdown', markdownObj)

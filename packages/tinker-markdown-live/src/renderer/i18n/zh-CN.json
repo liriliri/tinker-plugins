@@ -1,7 +1,11 @@
 {
   "new": "新建",
-  "open": "打开",
   "save": "保存",
   "untitled": "未命名",
-  "placeholder": "输入 / 使用斜杠命令"
+  "placeholder": "输入 / 使用斜杠命令",
+  "fileTree": "Markdown 文件树",
+  "openFolder": "打开文件夹",
+  "hideFileTree": "隐藏文件列表",
+  "showFileTree": "显示文件列表",
+  "noMarkdownFiles": "没有 Markdown 文件"
 }
