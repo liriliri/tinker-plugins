@@ -1,4 +1,5 @@
 import { makeAutoObservable } from 'mobx'
+import isStr from 'licia/isStr'
 import LocalStore from 'licia/LocalStore'
 import splitPath from 'licia/splitPath'
 
@@ -45,7 +46,7 @@ class Store {
 
   getLastFolderPath() {
     const path = storage.get(STORAGE_LAST_FOLDER)
-    return typeof path === 'string' && path ? path : null
+    return isStr(path) && path ? path : null
   }
 
   setLastFolderPath(path: string) {

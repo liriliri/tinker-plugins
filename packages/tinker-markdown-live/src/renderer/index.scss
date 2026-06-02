@@ -40,9 +40,16 @@ html.dark ::-webkit-scrollbar-thumb {
   --crepe-color-on-surface: theme('colors.neutral.800');
   --crepe-color-on-surface-variant: theme('colors.neutral.400');
   --crepe-color-outline: theme('colors.neutral.300');
-  --crepe-color-primary: theme('colors.neutral.900');
+  --crepe-color-primary: theme('colors.blue.600');
   --crepe-color-hover: theme('colors.neutral.100');
   --crepe-color-selected: theme('colors.neutral.200');
+  --crepe-font-default:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --crepe-font-title:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --crepe-font-code:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    monospace;
 }
 
 html.dark .milkdown {
@@ -52,12 +59,24 @@ html.dark .milkdown {
   --crepe-color-surface-low: theme('colors.neutral.800');
   --crepe-color-on-surface: theme('colors.neutral.200');
   --crepe-color-on-surface-variant: theme('colors.neutral.500');
-  --crepe-color-outline: theme('colors.neutral.600');
-  --crepe-color-primary: theme('colors.neutral.100');
+  --crepe-color-outline: theme('colors.neutral.700');
+  --crepe-color-primary: theme('colors.blue.400');
   --crepe-color-hover: theme('colors.neutral.800');
-  --crepe-color-selected: theme('colors.neutral.700');
+  --crepe-color-selected: theme('colors.neutral.800');
 }
 
 .milkdown .ProseMirror {
   padding: 16px 96px;
+
+  p {
+    line-height: 1.65;
+  }
+}
+
+.milkdown .ProseMirror a {
+  color: theme('colors.blue.600');
+}
+
+html.dark .milkdown .ProseMirror a {
+  color: theme('colors.blue.400');
 }

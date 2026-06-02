@@ -1,5 +1,4 @@
 {
-  "new": "新建",
   "save": "保存",
   "untitled": "未命名",
   "placeholder": "输入 / 使用斜杠命令",
@@ -7,5 +6,20 @@
   "openFolder": "打开文件夹",
   "hideFileTree": "隐藏文件列表",
   "showFileTree": "显示文件列表",
-  "noMarkdownFiles": "没有 Markdown 文件"
+  "noMarkdownFiles": "没有 Markdown 文件",
+  "emptyEditorHint": "打开文件夹，选择文件开始编辑",
+  "newMarkdownFile": "新建文件",
+  "newMarkdownFolder": "新建文件夹",
+  "renameMarkdownFile": "重命名",
+  "deleteMarkdownFile": "删除",
+  "confirmDeleteMarkdownFile": "确定删除「{{name}}」吗？",
+  "confirmDeleteMarkdownFolder": "确定删除文件夹「{{name}}」及其全部内容吗？",
+  "newMarkdownFileName": "新文件名",
+  "newMarkdownFolderName": "新文件夹名",
+  "renameMarkdownItem": "重命名",
+  "outline": "大纲",
+  "documentOutline": "文档大纲",
+  "noHeadings": "没有标题",
+  "hideOutline": "隐藏大纲",
+  "showOutline": "显示大纲"
 }

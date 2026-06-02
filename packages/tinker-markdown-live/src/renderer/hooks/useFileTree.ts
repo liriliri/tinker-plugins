@@ -1,19 +1,14 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import splitPath from 'licia/splitPath'
 import type { MarkdownFolderFile } from '../../common/types'
+import { folderBaseName } from '../../common/path'
 import { pickFolderPath } from '../lib/dialog'
 import store from '../store'
 
 const FILE_TREE_DEFAULT_WIDTH = 240
 
-function folderNameFromPath(folderPath: string) {
-  const { name } = splitPath(folderPath)
-  return name || folderPath
-}
-
 export function useFileTree() {
   const [files, setFiles] = useState<MarkdownFolderFile[]>([])
-  const [rootName, setRootName] = useState('')
   const [sourcePath, setSourcePath] = useState<string | null>(null)
   const [open, setOpen] = useState(false)
   const loadedSourcePathRef = useRef<string | null>(null)
@@ -27,7 +22,7 @@ export function useFileTree() {
       }
 
       try {
-        setFiles(await markdown.listMarkdownFilesForPath(path))
+        setFiles(await markdownLive.listMarkdownFilesForPath(path))
       } catch {
         setFiles([])
       }
@@ -36,13 +31,12 @@ export function useFileTree() {
   )
 
   const openFolderPath = useCallback(async (path: string) => {
-    const folderName = folderNameFromPath(path)
+    const folderName = folderBaseName(path)
 
     try {
-      const nextFiles = await markdown.listMarkdownFilesForPath(path)
+      const nextFiles = await markdownLive.listMarkdownFilesForPath(path)
       loadedSourcePathRef.current = path
       setSourcePath(path)
-      setRootName(folderName)
       setFiles(nextFiles)
       setOpen(true)
       store.setLastFolderPath(path)
@@ -64,10 +58,9 @@ export function useFileTree() {
 
     loadedSourcePathRef.current = dir
     setSourcePath(dir)
-    setRootName(folderNameFromPath(dir))
     setOpen(true)
     store.setLastFolderPath(dir)
-    store.setRootFolderName(folderNameFromPath(dir))
+    store.setRootFolderName(folderBaseName(dir))
   }, [])
 
   const toggle = useCallback(
@@ -99,7 +92,7 @@ export function useFileTree() {
     }
 
     loadedSourcePathRef.current = sourcePath
-    markdown
+    markdownLive
       .listMarkdownFilesForPath(sourcePath)
       .then((nextFiles) => {
         if (active) setFiles(nextFiles)
@@ -118,7 +111,7 @@ export function useFileTree() {
 
     let active = true
 
-    const unwatch = markdown.watchMarkdownTree(sourcePath, () => {
+    const unwatch = markdownLive.watchMarkdownTree(sourcePath, () => {
       if (active) refresh(sourcePath)
     })
 
@@ -134,12 +127,94 @@ export function useFileTree() {
     void openFolderPath(path)
   }, [openFolderPath])
 
+  const createFile = useCallback(
+    async (
+      fileName: string,
+      parentPath: string | null = null,
+      contents?: string,
+    ) => {
+      if (!sourcePath) return null
+
+      try {
+        const file = await markdownLive.createMarkdownTreeFile(
+          sourcePath,
+          fileName,
+          {
+            parentPath,
+            contents,
+          },
+        )
+        await refresh(sourcePath)
+        return file
+      } catch {
+        return null
+      }
+    },
+    [refresh, sourcePath],
+  )
+
+  const createFolder = useCallback(
+    async (folderName: string, parentPath: string | null = null) => {
+      if (!sourcePath) return null
+
+      try {
+        const folder = await markdownLive.createMarkdownTreeFolder(
+          sourcePath,
+          folderName,
+          parentPath,
+        )
+        await refresh(sourcePath)
+        return folder
+      } catch {
+        return null
+      }
+    },
+    [refresh, sourcePath],
+  )
+
+  const renameFile = useCallback(
+    async (file: MarkdownFolderFile, fileName: string) => {
+      if (!sourcePath) return null
+
+      try {
+        const renamedFile = await markdownLive.renameMarkdownTreeFile(
+          sourcePath,
+          file.path,
+          fileName,
+        )
+        await refresh(sourcePath)
+        return renamedFile
+      } catch {
+        return null
+      }
+    },
+    [refresh, sourcePath],
+  )
+
+  const deleteFile = useCallback(
+    async (file: MarkdownFolderFile) => {
+      if (!sourcePath) return false
+
+      try {
+        await markdownLive.deleteMarkdownTreeFile(sourcePath, file.path)
+        await refresh(sourcePath)
+        return true
+      } catch {
+        return false
+      }
+    },
+    [refresh, sourcePath],
+  )
+
   return {
+    createFile,
+    createFolder,
+    deleteFile,
     files,
     open,
     openMarkdownFolder,
     refresh,
-    rootName,
+    renameFile,
     setRootFromFilePath,
     sourcePath,
     toggle,

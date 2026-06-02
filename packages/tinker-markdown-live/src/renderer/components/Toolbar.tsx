@@ -1,17 +1,10 @@
 import { useTranslation } from 'react-i18next'
-import {
-  FolderOpen,
-  PanelLeftClose,
-  PanelLeftOpen,
-  Save,
-  SquarePen,
-} from 'lucide-react'
+import { FolderOpen, PanelLeftClose, PanelLeftOpen, Save } from 'lucide-react'
 import { tw } from '../theme'
 
 interface ToolbarProps {
   fileName: string
   fileTreeOpen: boolean
-  onNew: () => void
   onOpenFolder: () => void
   onSave: () => void
   onToggleFileTree: () => void
@@ -20,7 +13,6 @@ interface ToolbarProps {
 export default function Toolbar({
   fileName,
   fileTreeOpen,
-  onNew,
   onOpenFolder,
   onSave,
   onToggleFileTree,
@@ -43,13 +35,6 @@ export default function Toolbar({
         )}
       </button>
       <button
-        onClick={onNew}
-        className={tw.toolbarBtn.icon}
-        aria-label={t('new')}
-      >
-        <SquarePen aria-hidden="true" size={15} />
-      </button>
-      <button
         onClick={onOpenFolder}
         className={tw.toolbarBtn.icon}
         aria-label={t('openFolder')}
@@ -63,12 +48,14 @@ export default function Toolbar({
       >
         <Save aria-hidden="true" size={15} />
       </button>
-      <span
-        className={`ml-auto min-w-0 truncate px-2 ${tw.toolbar.title}`}
-        title={fileName || t('untitled')}
-      >
-        {fileName || t('untitled')}
-      </span>
+      {fileName ? (
+        <span
+          className={`ml-auto min-w-0 truncate px-2 ${tw.toolbar.title}`}
+          title={fileName}
+        >
+          {fileName}
+        </span>
+      ) : null}
     </div>
   )
 }

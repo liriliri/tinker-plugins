@@ -1,4 +1,7 @@
+import compact from 'licia/compact'
+import each from 'licia/each'
 import type { MarkdownFolderFile } from '../../common/types'
+import { joinNativePath } from '../../common/path'
 
 type FolderNode = {
   type: 'folder'
@@ -30,15 +33,9 @@ function sortTreeNodes(nodes: TreeNode[]) {
     return nodeNameSort(left, right)
   })
 
-  nodes.forEach((node) => {
+  each(nodes, (node) => {
     if (node.type === 'folder') sortTreeNodes(node.children)
   })
-}
-
-function joinNativePath(rootPath: string, relativePath: string) {
-  const parts = relativePath.split('/').filter(Boolean)
-  const root = rootPath.replace(/[/\\]+$/, '')
-  return parts.length ? `${root}/${parts.join('/')}` : root
 }
 
 export function buildFileTree(
@@ -74,7 +71,7 @@ export function buildFileTree(
   }
 
   files.forEach((file) => {
-    const parts = file.relativePath.split(/[\\/]/).filter(Boolean)
+    const parts = compact(file.relativePath.split(/[\\/]/))
     if (parts.length === 0) return
 
     let siblings = rootNodes
@@ -121,7 +118,7 @@ export function collectFolderPaths(nodes: TreeNode[]) {
   const paths: string[] = []
 
   const collect = (treeNodes: TreeNode[]) => {
-    treeNodes.forEach((node) => {
+    each(treeNodes, (node) => {
       if (node.type !== 'folder') return
       paths.push(node.relativePath)
       collect(node.children)

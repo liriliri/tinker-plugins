@@ -3,15 +3,12 @@ import { watch } from 'node:fs'
 import fs from 'node:fs/promises'
 import debounce from 'licia/debounce'
 import type { MarkdownFolderFile } from '../common/types'
+import { toRelativePath } from './pathUtil'
 
 const SKIP_DIRS = new Set(['.git', 'node_modules', 'target', 'dist', 'build'])
 
 function isMarkdownFile(filePath: string) {
   return /\.(md|markdown)$/i.test(filePath)
-}
-
-function toRelativePath(root: string, target: string) {
-  return path.relative(root, target).split(path.sep).join('/')
 }
 
 async function collectMarkdownFiles(

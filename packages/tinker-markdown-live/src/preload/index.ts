@@ -1,15 +1,23 @@
 import { contextBridge } from 'electron'
 import { listMarkdownFilesForPath, watchMarkdownTree } from './markdownFiles'
+import {
+  createMarkdownTreeFile,
+  createMarkdownTreeFolder,
+  deleteMarkdownTreeFile,
+  renameMarkdownTreeFile,
+} from './markdownTreeOps'
 
-const markdownObj = {
-  readFile: (path: string) => tinker.readFile(path, 'utf8'),
-  writeFile: (path: string, content: string) => tinker.writeFile(path, content),
+const markdownLiveObj = {
   listMarkdownFilesForPath,
   watchMarkdownTree,
+  createMarkdownTreeFile,
+  createMarkdownTreeFolder,
+  renameMarkdownTreeFile,
+  deleteMarkdownTreeFile,
 }
 
-contextBridge.exposeInMainWorld('markdown', markdownObj)
+contextBridge.exposeInMainWorld('markdownLive', markdownLiveObj)
 
 declare global {
-  const markdown: typeof markdownObj
+  const markdownLive: typeof markdownLiveObj
 }

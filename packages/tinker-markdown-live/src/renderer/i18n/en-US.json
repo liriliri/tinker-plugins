@@ -1,5 +1,4 @@
 {
-  "new": "New",
   "save": "Save",
   "untitled": "Untitled",
   "placeholder": "Type / to use slash command",
@@ -7,5 +6,20 @@
   "openFolder": "Open folder",
   "hideFileTree": "Hide file list",
   "showFileTree": "Show file list",
-  "noMarkdownFiles": "No markdown files"
+  "noMarkdownFiles": "No markdown files",
+  "emptyEditorHint": "Open a folder and select a file to start editing",
+  "newMarkdownFile": "New file",
+  "newMarkdownFolder": "New folder",
+  "renameMarkdownFile": "Rename",
+  "deleteMarkdownFile": "Delete",
+  "confirmDeleteMarkdownFile": "Delete \"{{name}}\"?",
+  "confirmDeleteMarkdownFolder": "Delete folder \"{{name}}\" and all contents?",
+  "newMarkdownFileName": "New file name",
+  "newMarkdownFolderName": "New folder name",
+  "renameMarkdownItem": "Rename item",
+  "outline": "Outline",
+  "documentOutline": "Document outline",
+  "noHeadings": "No headings",
+  "hideOutline": "Hide outline",
+  "showOutline": "Show outline"
 }
