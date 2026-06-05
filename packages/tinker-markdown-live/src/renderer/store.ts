@@ -10,6 +10,7 @@ class Store {
   filePath: string | null = null
   isDark: boolean = false
   content: string = ''
+  private savedContent: string = ''
 
   constructor() {
     makeAutoObservable(this)
@@ -38,6 +39,14 @@ class Store {
 
   setContent(content: string) {
     this.content = content
+  }
+
+  markSaved() {
+    this.savedContent = this.content
+  }
+
+  get isDirty() {
+    return this.content !== this.savedContent
   }
 
   setRootFolderName(name: string | null) {

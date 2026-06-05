@@ -8,7 +8,7 @@ export const tw = {
     title: 'text-xs text-neutral-400 dark:text-neutral-500',
   },
   toolbarBtn: {
-    icon: 'inline-flex size-7 cursor-pointer items-center justify-center rounded-md border border-transparent bg-transparent text-neutral-400 opacity-55 transition-[opacity,background-color,color] duration-150 ease-out hover:bg-neutral-100 hover:text-blue-600 hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 dark:text-neutral-500 dark:hover:bg-[#363636] dark:hover:text-blue-400 dark:focus-visible:ring-blue-400/40',
+    icon: 'inline-flex size-7 cursor-pointer items-center justify-center rounded-md border border-transparent bg-transparent text-neutral-400 opacity-80 transition-[opacity,background-color,color] duration-150 ease-out hover:bg-neutral-100 hover:text-blue-600 hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 dark:text-neutral-500 dark:hover:bg-[#363636] dark:hover:text-blue-400 dark:focus-visible:ring-blue-400/40',
   },
   editor: {
     bg: 'bg-white dark:bg-neutral-900',

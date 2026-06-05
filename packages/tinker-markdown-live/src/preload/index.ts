@@ -1,5 +1,5 @@
 import { contextBridge } from 'electron'
-import { listMarkdownFilesForPath, watchMarkdownTree } from './markdownFiles'
+import { listMarkdownFilesForPath, watchPaths } from './markdownFiles'
 import {
   createMarkdownTreeFile,
   createMarkdownTreeFolder,
@@ -9,7 +9,7 @@ import {
 
 const markdownLiveObj = {
   listMarkdownFilesForPath,
-  watchMarkdownTree,
+  watchPaths,
   createMarkdownTreeFile,
   createMarkdownTreeFolder,
   renameMarkdownTreeFile,

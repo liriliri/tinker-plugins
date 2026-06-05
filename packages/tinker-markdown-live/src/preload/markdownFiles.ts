@@ -1,8 +1,13 @@
 import path from 'node:path'
-import { watch } from 'node:fs'
 import fs from 'node:fs/promises'
+import { watch, type FSWatcher } from 'chokidar'
 import debounce from 'licia/debounce'
-import type { MarkdownFolderFile } from '../common/types'
+import normalizePath from 'licia/normalizePath'
+import type {
+  MarkdownFolderFile,
+  FileWatchEventType,
+  IFileWatchEvent,
+} from '../common/types'
 import { toRelativePath } from './pathUtil'
 
 const SKIP_DIRS = new Set(['.git', 'node_modules', 'target', 'dist', 'build'])
@@ -77,18 +82,72 @@ export async function listMarkdownFilesForPath(rootPath: string) {
   return files
 }
 
-export function watchMarkdownTree(rootPath: string, onChange: () => void) {
-  const notify = debounce(onChange, 200)
+const WATCH_EVENTS = new Set<FileWatchEventType>([
+  'add',
+  'addDir',
+  'change',
+  'unlink',
+  'unlinkDir',
+])
 
-  try {
-    const watcher = watch(rootPath, { recursive: true }, () => {
-      notify()
-    })
+let watchSession = 0
+let watcher: FSWatcher | null = null
+let flushDebounced: (() => void) | null = null
+let pendingEvents: IFileWatchEvent[] = []
 
+export function watchPaths(
+  paths: string[],
+  onChange: (events: IFileWatchEvent[]) => void,
+): () => void {
+  const session = ++watchSession
+
+  flushDebounced = null
+  pendingEvents = []
+  void watcher?.close()
+  watcher = null
+
+  if (paths.length === 0) {
     return () => {
-      watcher.close()
+      ++watchSession
+      flushDebounced = null
+      pendingEvents = []
+      void watcher?.close()
+      watcher = null
     }
-  } catch {
-    return () => {}
+  }
+
+  flushDebounced = debounce(() => {
+    if (session !== watchSession) return
+    const events = pendingEvents
+    pendingEvents = []
+    if (events.length > 0) {
+      onChange(events)
+    }
+  }, 300)
+
+  const w = watch(paths, {
+    ignoreInitial: true,
+    persistent: true,
+    depth: 0,
+    ignorePermissionErrors: true,
+  })
+
+  w.on('all', (event, filePath) => {
+    if (!WATCH_EVENTS.has(event as FileWatchEventType)) return
+    pendingEvents.push({
+      type: event as FileWatchEventType,
+      path: normalizePath(filePath),
+    })
+    flushDebounced?.()
+  })
+
+  watcher = w
+
+  return () => {
+    ++watchSession
+    flushDebounced = null
+    pendingEvents = []
+    void w.close()
+    watcher = null
   }
 }

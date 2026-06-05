@@ -1,10 +1,17 @@
 import { useTranslation } from 'react-i18next'
-import { FolderOpen, PanelLeftClose, PanelLeftOpen, Save } from 'lucide-react'
+import {
+  FolderOpen,
+  PanelLeftClose,
+  PanelLeftOpen,
+  Save,
+  Circle,
+} from 'lucide-react'
 import { tw } from '../theme'
 
 interface ToolbarProps {
   fileName: string
   fileTreeOpen: boolean
+  isDirty: boolean
   onOpenFolder: () => void
   onSave: () => void
   onToggleFileTree: () => void
@@ -13,6 +20,7 @@ interface ToolbarProps {
 export default function Toolbar({
   fileName,
   fileTreeOpen,
+  isDirty,
   onOpenFolder,
   onSave,
   onToggleFileTree,
@@ -53,6 +61,14 @@ export default function Toolbar({
           className={`ml-auto min-w-0 truncate px-2 ${tw.toolbar.title}`}
           title={fileName}
         >
+          {isDirty ? (
+            <Circle
+              aria-label="Unsaved changes"
+              className="mr-1 inline-block -translate-y-px text-blue-500 dark:text-blue-400"
+              fill="currentColor"
+              size={6}
+            />
+          ) : null}
           {fileName}
         </span>
       ) : null}

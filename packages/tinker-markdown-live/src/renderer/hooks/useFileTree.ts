@@ -1,17 +1,30 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import splitPath from 'licia/splitPath'
 import type { MarkdownFolderFile } from '../../common/types'
 import { folderBaseName } from '../../common/path'
 import { pickFolderPath } from '../lib/dialog'
+import { buildFileTree, collectFolderPaths } from '../lib/fileTree'
 import store from '../store'
 
 const FILE_TREE_DEFAULT_WIDTH = 240
 
-export function useFileTree() {
+interface UseFileTreeParams {
+  openFilePath: string | null
+  onFileChanged: (path: string) => void
+}
+
+export function useFileTree({
+  openFilePath,
+  onFileChanged,
+}: UseFileTreeParams) {
   const [files, setFiles] = useState<MarkdownFolderFile[]>([])
   const [sourcePath, setSourcePath] = useState<string | null>(null)
   const [open, setOpen] = useState(false)
+  const [expandedFolders, setExpandedFolders] = useState<Set<string>>(
+    () => new Set(),
+  )
   const loadedSourcePathRef = useRef<string | null>(null)
+  const recentlySavedPathsRef = useRef<Map<string, number>>(new Map())
 
   const refresh = useCallback(
     async (fallbackPath: string | null = null) => {
@@ -67,13 +80,54 @@ export function useFileTree() {
     (fallbackPath: string | null = null) => {
       setOpen((currentOpen) => {
         const nextOpen = !currentOpen
-        if (nextOpen) refresh(fallbackPath)
+        if (nextOpen) void refresh(fallbackPath)
         return nextOpen
       })
     },
     [refresh],
   )
 
+  const markSavedPath = useCallback((filePath: string) => {
+    recentlySavedPathsRef.current.set(filePath, Date.now())
+  }, [])
+
+  const toggleFolder = useCallback((relativePath: string) => {
+    setExpandedFolders((current) => {
+      const next = new Set(current)
+      if (next.has(relativePath)) {
+        next.delete(relativePath)
+      } else {
+        next.add(relativePath)
+      }
+      return next
+    })
+  }, [])
+
+  // Build a stable key for expanded folders to use in effect deps
+  const expandedDirsKey = useMemo(
+    () => [...expandedFolders].sort().join('\0'),
+    [expandedFolders],
+  )
+
+  // Clear expanded folders when root path changes
+  useEffect(() => {
+    setExpandedFolders(new Set())
+  }, [sourcePath])
+
+  // Auto-expand first folder
+  useEffect(() => {
+    if (!sourcePath || files.length === 0) return
+    const tree = buildFileTree(files, sourcePath)
+    const folderPaths = collectFolderPaths(tree)
+    if (folderPaths.length === 0) return
+
+    setExpandedFolders((current) => {
+      if (current.size > 0) return current
+      return new Set(folderPaths.slice(0, 1))
+    })
+  }, [sourcePath, files])
+
+  // Load files when sourcePath changes (ignores initial mount)
   useEffect(() => {
     let active = true
 
@@ -106,21 +160,49 @@ export function useFileTree() {
     }
   }, [sourcePath])
 
+  // On-demand file watching with chokidar
   useEffect(() => {
     if (!sourcePath) return
-
     let active = true
 
-    const unwatch = markdownLive.watchMarkdownTree(sourcePath, () => {
-      if (active) refresh(sourcePath)
+    const watchPaths: string[] = [sourcePath]
+    for (const rp of expandedFolders) {
+      watchPaths.push(sourcePath + '/' + rp)
+    }
+    if (openFilePath) {
+      watchPaths.push(openFilePath)
+    }
+
+    const unwatch = markdownLive.watchPaths(watchPaths, (events) => {
+      if (!active) return
+
+      let shouldRefresh = false
+
+      for (const event of events) {
+        if (event.type === 'change') {
+          if (event.path !== openFilePath) continue
+          const savedAt = recentlySavedPathsRef.current.get(event.path)
+          if (savedAt && Date.now() - savedAt < 500) {
+            recentlySavedPathsRef.current.delete(event.path)
+            continue
+          }
+          onFileChanged(event.path)
+          continue
+        }
+
+        shouldRefresh = true
+      }
+
+      if (shouldRefresh) void refresh(sourcePath)
     })
 
     return () => {
       active = false
       unwatch()
     }
-  }, [refresh, sourcePath])
+  }, [sourcePath, expandedDirsKey, openFilePath, onFileChanged, refresh])
 
+  // Auto-open last folder on mount
   useEffect(() => {
     const path = store.getLastFolderPath()
     if (!path) return
@@ -210,7 +292,9 @@ export function useFileTree() {
     createFile,
     createFolder,
     deleteFile,
+    expandedFolders,
     files,
+    markSavedPath,
     open,
     openMarkdownFolder,
     refresh,
@@ -218,6 +302,7 @@ export function useFileTree() {
     setRootFromFilePath,
     sourcePath,
     toggle,
+    toggleFolder,
     width: FILE_TREE_DEFAULT_WIDTH,
   }
 }

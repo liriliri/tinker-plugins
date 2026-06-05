@@ -1,10 +1,5 @@
 import trim from 'licia/trim'
-import {
-  useEffect,
-  useMemo,
-  useState,
-  type MouseEvent as ReactMouseEvent,
-} from 'react'
+import { useMemo, useState, type MouseEvent as ReactMouseEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 import {
   ChevronDown,
@@ -16,11 +11,7 @@ import {
 import type { MarkdownFolderFile } from '../../common/types'
 import type { MarkdownOutlineItem } from '../lib/markdownOutline'
 import DocumentOutline from './DocumentOutline'
-import {
-  buildFileTree,
-  collectFolderPaths,
-  type TreeNode,
-} from '../lib/fileTree'
+import { buildFileTree, type TreeNode } from '../lib/fileTree'
 import {
   folderNodeAsFile,
   normalizeCreateParentPath,
@@ -30,6 +21,7 @@ import { tw } from '../theme'
 
 interface FileTreeProps {
   currentPath: string | null
+  expandedFolders: Set<string>
   files: MarkdownFolderFile[]
   open: boolean
   rootPath: string | null
@@ -51,6 +43,7 @@ interface FileTreeProps {
     fileName: string,
   ) => void | Promise<void>
   onSelectOutlineItem: (item: MarkdownOutlineItem, index: number) => void
+  onToggleFolder: (relativePath: string) => void
 }
 
 interface FileTreeNodesProps {
@@ -311,6 +304,7 @@ function FileTreeNodes({
 
 export default function FileTree({
   currentPath,
+  expandedFolders,
   files,
   open,
   rootPath,
@@ -322,12 +316,10 @@ export default function FileTree({
   onOpenFolder,
   onRenameFile,
   onSelectOutlineItem,
+  onToggleFolder,
   outlineItems,
 }: FileTreeProps) {
   const { t } = useTranslation()
-  const [expandedFolders, setExpandedFolders] = useState<Set<string>>(
-    () => new Set(),
-  )
   const [creatingFile, setCreatingFile] = useState(false)
   const [creatingFolder, setCreatingFolder] = useState(false)
   const [creatingParentPath, setCreatingParentPath] = useState<string | null>(
@@ -339,20 +331,6 @@ export default function FileTree({
   const [renameFileName, setRenameFileName] = useState('')
 
   const tree = useMemo(() => buildFileTree(files, rootPath), [files, rootPath])
-  const folderPaths = useMemo(() => collectFolderPaths(tree), [tree])
-
-  useEffect(() => {
-    setExpandedFolders(new Set())
-  }, [rootPath])
-
-  useEffect(() => {
-    if (!rootPath || folderPaths.length === 0) return
-
-    setExpandedFolders((current) => {
-      if (current.size > 0) return current
-      return new Set(folderPaths.slice(0, 1))
-    })
-  }, [rootPath, folderPaths])
 
   const cancelInputs = () => {
     setCreatingFile(false)
@@ -364,25 +342,24 @@ export default function FileTree({
     setRenameFileName('')
   }
 
-  const startCreatingFile = (parentPath: string | null = null) => {
-    setCreatingFolder(false)
+  const startCreating = (
+    parentPath: string | null,
+    type: 'file' | 'folder',
+  ) => {
+    setCreatingFile(type === 'file')
+    setCreatingFolder(type === 'folder')
+    setNewFileName('')
     setNewFolderName('')
     setRenamingPath(null)
     setRenameFileName('')
     setCreatingParentPath(normalizeCreateParentPath(parentPath))
-    setCreatingFile(true)
-    setNewFileName('')
   }
 
-  const startCreatingFolder = (parentPath: string | null = null) => {
-    setCreatingFile(false)
-    setNewFileName('')
-    setRenamingPath(null)
-    setRenameFileName('')
-    setCreatingParentPath(normalizeCreateParentPath(parentPath))
-    setCreatingFolder(true)
-    setNewFolderName('')
-  }
+  const startCreatingFile = (parentPath: string | null = null) =>
+    startCreating(parentPath, 'file')
+
+  const startCreatingFolder = (parentPath: string | null = null) =>
+    startCreating(parentPath, 'folder')
 
   const startRenamingFile = (file: MarkdownFolderFile) => {
     cancelInputs()
@@ -390,27 +367,23 @@ export default function FileTree({
     setRenameFileName(file.name)
   }
 
-  const commitCreateFile = () => {
-    const normalizedName = trim(newFileName)
+  const commitCreate = (
+    rawName: string,
+    createFn: (name: string, parentPath: string | null) => void | Promise<void>,
+  ) => {
+    const normalizedName = trim(rawName)
     if (!normalizedName) {
       cancelInputs()
       return
     }
 
-    void onCreateFile(normalizedName, creatingParentPath)
+    void createFn(normalizedName, creatingParentPath)
     cancelInputs()
   }
 
-  const commitCreateFolder = () => {
-    const normalizedName = trim(newFolderName)
-    if (!normalizedName) {
-      cancelInputs()
-      return
-    }
+  const commitCreateFile = () => commitCreate(newFileName, onCreateFile)
 
-    void onCreateFolder(normalizedName, creatingParentPath)
-    cancelInputs()
-  }
+  const commitCreateFolder = () => commitCreate(newFolderName, onCreateFolder)
 
   const commitRenameFile = (file: MarkdownFolderFile) => {
     const normalizedName = trim(renameFileName)
@@ -469,18 +442,6 @@ export default function FileTree({
     tinker.showContextMenu(event.clientX, event.clientY, menuItems)
   }
 
-  const toggleFolder = (relativePath: string) => {
-    setExpandedFolders((current) => {
-      const next = new Set(current)
-      if (next.has(relativePath)) {
-        next.delete(relativePath)
-      } else {
-        next.add(relativePath)
-      }
-      return next
-    })
-  }
-
   const handleBlankAreaMouseDown = (event: ReactMouseEvent<HTMLDivElement>) => {
     const target = event.target instanceof Element ? event.target : null
     if (target?.closest('button, input')) return
@@ -524,7 +485,7 @@ export default function FileTree({
                 onRenameFileNameChange={setRenameFileName}
                 onSetNewFileName={setNewFileName}
                 onSetNewFolderName={setNewFolderName}
-                onToggleFolder={toggleFolder}
+                onToggleFolder={onToggleFolder}
               />
             ) : (
               <p className={`m-0 px-4 py-3 text-xs ${tw.sidebar.muted}`}>
