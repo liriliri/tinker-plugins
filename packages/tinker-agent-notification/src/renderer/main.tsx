@@ -58,7 +58,7 @@ const App = observer(() => {
           tw.background.primary,
         )}
       >
-        <div className="mx-auto max-w-xl w-full flex flex-col gap-5 animate-fade-in">
+        <div className="mx-auto max-w-xl w-full flex flex-col gap-5">
           <AgentToolbar showToast={showToast} />
           <AgentSection previewSound={previewSound} />
         </div>
