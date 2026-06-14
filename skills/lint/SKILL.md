@@ -93,6 +93,7 @@ Go through each category below and report violations with file path and line num
 
 - When a UI component library is needed, prefer `@radix-ui/*` packages
 - All UI library dependencies (e.g. `@radix-ui/*`, `lucide-react`) must be listed under `devDependencies` in `package.json`, not `dependencies`
+- If a dependency is already installed at the monorepo root level, do NOT add it to the plugin's `package.json` — only add dependencies that are specific to this plugin
 
 ### 12. Use licia Utilities
 

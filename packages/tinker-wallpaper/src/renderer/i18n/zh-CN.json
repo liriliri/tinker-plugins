@@ -5,5 +5,6 @@
   "preview": "预览",
   "saveTooltip": "保存图片到本地",
   "setWallpaperTooltip": "设置为桌面壁纸",
-  "auto": "自动"
+  "auto": "自动",
+  "error": "错误"
 }

@@ -6,7 +6,7 @@ import { exec } from 'node:child_process'
 import * as cheerio from 'cheerio'
 import type { Wallpaper, ImageOption } from '../common/types'
 
-const defaultHeaders = {
+const DEFAULT_HEADERS = {
   'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
   Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
   Referer: 'https://www.bizhihui.com/',
@@ -20,7 +20,7 @@ async function fetchUrl(
   const timer = setTimeout(() => controller.abort(), timeout)
   try {
     const res = await fetch(url, {
-      headers: defaultHeaders,
+      headers: DEFAULT_HEADERS,
       redirect: 'manual',
       signal: controller.signal,
     })
