@@ -35,7 +35,9 @@ Ask the user: does this plugin need Node.js/Electron APIs (file system, OS info,
 cp -r packages/tinker-<source> packages/tinker-<plugin-name>
 ```
 
-Where `<source>` is the similar plugin chosen by the user, or the simplest existing plugin that matches the type (basic or advanced).
+Where `<source>` is the similar plugin chosen by the user, or the default template for the type:
+- **basic** → `hanzi-converter` (flat `src/`, standard `App.tsx` + `main.tsx`, no data files)
+- **advanced** → `wallpaper` (`src/renderer/` + `src/preload/`, single preload file, optional `src/common/`)
 
 ### 4. Update `package.json`
 
@@ -46,16 +48,16 @@ Edit `packages/tinker-<plugin-name>/package.json`:
 - `tinker.name` → Title Case English name
 - `tinker.locales.zh-CN.name` → Chinese name (ask if unclear)
 
-**Basic plugin** layout (`src/` flat, e.g. like `tinker-emoji`):
+**Basic plugin** layout (`src/` flat, e.g. like `tinker-hanzi-converter`):
 - `scripts`: only `dev` and `build` using plain `vite` commands (no `concurrently`)
 - `tinker.main` → `"dist/index.html"`
 - Remove `tinker.preload`
 - `index.html` entry: `<script type="module" src="/src/main.tsx"></script>`
 
-**Advanced plugin** layout (`src/renderer/` + `src/preload/`, e.g. like `tinker-translate`):
+**Advanced plugin** layout (`src/renderer/` + `src/preload/`, e.g. like `tinker-wallpaper`):
 - Keep `concurrently`-based `dev`/`build` scripts as-is
 - `tinker.main` → `"dist/renderer/index.html"`
-- `tinker.preload` → `"dist/preload/index.mjs"`
+- `tinker.preload` → `"dist/preload/index.js"`
 - `index.html` entry: `<script type="module" src="/src/renderer/main.tsx"></script>`
 
 Also remind the user: **`icon.png` must be replaced** with a real icon (200×200 px).
