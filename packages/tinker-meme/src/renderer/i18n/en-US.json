@@ -1,0 +1,9 @@
+{
+  "searchPlaceholder": "Search memes, press Enter",
+  "loading": "Loading...",
+  "noResults": "No results found",
+  "loadFailed": "Failed to load memes",
+  "copied": "Copied",
+  "copyFailed": "Failed to copy",
+  "save": "Save"
+}

@@ -1,0 +1,14 @@
+@use 'tailwindcss';
+@config "../../tailwind.config.js";
+
+html.dark {
+  color-scheme: dark;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
