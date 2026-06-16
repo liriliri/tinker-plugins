@@ -4,7 +4,7 @@ import last from 'licia/last'
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import { AudioLines, Bell, FolderOpen } from 'lucide-react'
-import store, { soundPacks, hookTypes } from '../store'
+import store, { soundPacks } from '../store'
 import { tw } from '../theme'
 import Select from './Select'
 import PreviewButton from './PreviewButton'
@@ -51,7 +51,7 @@ const AgentSection = observer(
         <div className="flex flex-col gap-2">
           <SectionHeader icon={<Bell size={14} />} title={t('events')} />
           <div className="flex flex-col gap-1">
-            {hookTypes.map((h) => (
+            {store.selectedAgentStore.enabledHookTypes.map((h) => (
               <div
                 key={h.id}
                 className={className(

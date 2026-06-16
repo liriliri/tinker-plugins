@@ -1,12 +1,15 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 import { t } from 'i18next'
-import startWith from 'licia/startWith'
 import endWith from 'licia/endWith'
-import trim from 'licia/trim'
 import isEmpty from 'licia/isEmpty'
 import isWindows from 'licia/isWindows'
+import isArr from 'licia/isArr'
+import naturalSort from 'licia/naturalSort'
+import type { HookTypeDef } from './types'
+import type { HooksFormat } from './lib/hooksFormat'
+import { resolveFormat } from './lib/hooksFormat'
 
-export interface SoundPack {
+interface SoundPack {
   id: string
 }
 
@@ -18,15 +21,16 @@ export const soundPacks: SoundPack[] = [
   { id: 'graceful-beauty' },
 ]
 
-export interface AgentDef {
+interface AgentDef {
   id: string
   name: string
   configDir: string
   configFile?: string
   requireDir?: boolean
+  format?: 'default' | 'cursor'
 }
 
-export const agents: AgentDef[] = [
+const agents: AgentDef[] = [
   { id: 'codebuddy', name: 'CodeBuddy', configDir: '.codebuddy' },
   {
     id: 'claude-internal',
@@ -52,19 +56,37 @@ export const agents: AgentDef[] = [
     configFile: 'hooks.json',
     requireDir: true,
   },
+  {
+    id: 'cursor',
+    name: 'Cursor',
+    configDir: '.cursor',
+    configFile: 'hooks.json',
+    format: 'cursor',
+  },
 ]
 
-export type HookType = 'ready' | 'work' | 'stop' | 'permission'
+type HookType = 'ready' | 'work' | 'stop' | 'permission'
 
 export const hookTypes: {
   id: HookType
   file: string
   event: string
   matcher?: string
+  cursorEvent?: string
 }[] = [
-  { id: 'ready', file: 'ready.mp3', event: 'SessionStart' },
-  { id: 'work', file: 'work.mp3', event: 'UserPromptSubmit' },
-  { id: 'stop', file: 'stop.mp3', event: 'Stop' },
+  {
+    id: 'ready',
+    file: 'ready.mp3',
+    event: 'SessionStart',
+    cursorEvent: 'sessionStart',
+  },
+  {
+    id: 'work',
+    file: 'work.mp3',
+    event: 'UserPromptSubmit',
+    cursorEvent: 'beforeSubmitPrompt',
+  },
+  { id: 'stop', file: 'stop.mp3', event: 'Stop', cursorEvent: 'stop' },
   {
     id: 'permission',
     file: 'permission.mp3',
@@ -84,51 +106,15 @@ interface HookEntry {
 }
 
 interface Settings {
+  version?: number
   hooks?: Record<string, HookEntry[]>
 }
 
 function buildPlayCommand(soundPath: string): string {
   if (isWindows) {
-    return (
-      'powershell -ExecutionPolicy Bypass -File "' +
-      store.playScript +
-      '" "' +
-      soundPath +
-      '"'
-    )
+    return `powershell -ExecutionPolicy Bypass -File "${store.playScript}" "${soundPath}"`
   }
-  return 'afplay "' + soundPath + '"'
-}
-
-function extractSoundPath(command: string): string | null {
-  if (startWith(command, 'afplay ')) {
-    return trim(command.replace('afplay ', ''), '"')
-  }
-  const match = command.match(/play\.ps1"\s+"([^"]+)"/)
-  if (match) {
-    return match[1]
-  }
-  return null
-}
-
-function isSoundHook(hook: Hook): boolean {
-  return (
-    hook.type === 'command' &&
-    typeof hook.command === 'string' &&
-    extractSoundPath(hook.command) !== null
-  )
-}
-
-function removeAfplayEntries(
-  entries: HookEntry[],
-  hookDef: (typeof hookTypes)[number],
-): HookEntry[] {
-  return entries.filter((entry) => {
-    if (hookDef.matcher && entry.matcher !== hookDef.matcher) return true
-    if (!hookDef.matcher && entry.matcher) return true
-    if (!entry.hooks) return true
-    return !entry.hooks.some(isSoundHook)
-  })
+  return `afplay "${soundPath}"`
 }
 
 export class AgentStore {
@@ -162,6 +148,14 @@ export class AgentStore {
     await this.loadCurrentConfig()
   }
 
+  get hooksFormat(): HooksFormat {
+    return resolveFormat(this.agent.format)
+  }
+
+  get enabledHookTypes(): typeof hookTypes {
+    return this.hooksFormat.filterHookTypes(hookTypes)
+  }
+
   getSoundAbsolutePath(hookType: HookType): string {
     if (this.selectedPack === 'custom') {
       return this.customSoundPaths[hookType]
@@ -172,9 +166,12 @@ export class AgentStore {
 
   get canApply(): boolean {
     if (this.selectedPack === 'custom') {
-      const hasAnyEnabled = hookTypes.some((h) => this.enabledHooks[h.id])
+      const hookTypesToCheck = this.enabledHookTypes
+      const hasAnyEnabled = hookTypesToCheck.some(
+        (h) => this.enabledHooks[h.id],
+      )
       if (!hasAnyEnabled) return false
-      for (const h of hookTypes) {
+      for (const h of hookTypesToCheck) {
         if (this.enabledHooks[h.id] && !this.customSoundPaths[h.id])
           return false
       }
@@ -189,33 +186,25 @@ export class AgentStore {
       let found = false
 
       for (const hookDef of hookTypes) {
-        const eventHooks = settings?.hooks?.[hookDef.event]
-        if (!eventHooks || !Array.isArray(eventHooks)) continue
+        const eventName = this.hooksFormat.getEventName(hookDef)
+        const entries = settings?.hooks?.[eventName]
+        if (!entries || !isArr(entries)) continue
 
-        for (const entry of eventHooks) {
-          if (!entry.hooks) continue
-          if (hookDef.matcher && entry.matcher !== hookDef.matcher) continue
-
-          for (const hook of entry.hooks) {
-            if (isSoundHook(hook)) {
-              const soundPath = extractSoundPath(hook.command!)!
-              found = true
-
-              runInAction(() => {
-                this.enabledHooks[hookDef.id] = true
-                const pack = soundPacks.find((p) =>
-                  endWith(soundPath, `/${p.id}/${hookDef.file}`),
-                )
-                if (pack) {
-                  this.selectedPack = pack.id
-                } else {
-                  this.selectedPack = 'custom'
-                  this.customSoundPaths[hookDef.id] = soundPath
-                }
-              })
-              break
+        const soundPath = this.hooksFormat.detectSound(entries, hookDef)
+        if (soundPath) {
+          found = true
+          runInAction(() => {
+            this.enabledHooks[hookDef.id] = true
+            const pack = soundPacks.find((p) =>
+              endWith(soundPath, `/${p.id}/${hookDef.file}`),
+            )
+            if (pack) {
+              this.selectedPack = pack.id
+            } else {
+              this.selectedPack = 'custom'
+              this.customSoundPaths[hookDef.id] = soundPath
             }
-          }
+          })
         }
       }
 
@@ -275,38 +264,31 @@ export class AgentStore {
         settings.hooks = {}
       }
 
-      for (const hookDef of hookTypes) {
-        const event = hookDef.event
+      Object.assign(settings, this.hooksFormat.initialSettings())
 
-        if (!settings.hooks[event]) {
-          settings.hooks[event] = []
+      for (const hookDef of this.enabledHookTypes) {
+        const eventName = this.hooksFormat.getEventName(hookDef)
+
+        if (!settings.hooks[eventName]) {
+          settings.hooks[eventName] = []
         }
 
-        settings.hooks[event] = removeAfplayEntries(
-          settings.hooks[event],
+        settings.hooks[eventName] = this.hooksFormat.filterEntries(
+          settings.hooks[eventName],
           hookDef,
         )
 
         if (this.enabledHooks[hookDef.id]) {
           const soundPath = this.getSoundAbsolutePath(hookDef.id)
           if (soundPath) {
-            const hookEntry: HookEntry = {
-              hooks: [
-                {
-                  type: 'command',
-                  command: buildPlayCommand(soundPath),
-                },
-              ],
-            }
-            if (hookDef.matcher) {
-              hookEntry.matcher = hookDef.matcher
-            }
-            settings.hooks[event].push(hookEntry)
+            settings.hooks[eventName].push(
+              this.hooksFormat.buildEntry(buildPlayCommand(soundPath), hookDef),
+            )
           }
         }
 
-        if (settings.hooks[event].length === 0) {
-          delete settings.hooks[event]
+        if (settings.hooks[eventName].length === 0) {
+          delete settings.hooks[eventName]
         }
       }
 
@@ -346,22 +328,25 @@ export class AgentStore {
 
       if (settings.hooks) {
         for (const hookDef of hookTypes) {
-          const event = hookDef.event
-          if (!settings.hooks[event] || !Array.isArray(settings.hooks[event]))
+          const eventName = this.hooksFormat.getEventName(hookDef)
+          if (!settings.hooks[eventName] || !isArr(settings.hooks[eventName]))
             continue
 
-          settings.hooks[event] = removeAfplayEntries(
-            settings.hooks[event],
+          settings.hooks[eventName] = this.hooksFormat.filterEntries(
+            settings.hooks[eventName],
             hookDef,
           )
 
-          if (settings.hooks[event].length === 0) {
-            delete settings.hooks[event]
+          if (settings.hooks[eventName].length === 0) {
+            delete settings.hooks[eventName]
           }
         }
 
         if (isEmpty(settings.hooks)) {
           delete settings.hooks
+          for (const key of Object.keys(this.hooksFormat.initialSettings())) {
+            delete (settings as any)[key]
+          }
         }
       }
 
@@ -404,7 +389,9 @@ class Store {
   }
 
   get visibleAgents(): AgentDef[] {
-    return agents.filter((a) => this.visibleAgentIds.has(a.id))
+    return agents
+      .filter((a) => this.visibleAgentIds.has(a.id))
+      .sort((a, b) => naturalSort.comparator(a.name, b.name))
   }
 
   async init() {
