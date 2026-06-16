@@ -39,18 +39,36 @@ function Thumb({ src, onClick }: ThumbProps) {
 const WallpaperGrid = observer(() => {
   const { t } = useTranslation()
   const obsRef = useRef<IntersectionObserver | null>(null)
+  const sentinelElRef = useRef<HTMLDivElement | null>(null)
 
-  const sentinelRef = useCallback((el: HTMLDivElement | null) => {
+  useEffect(() => {
+    const el = sentinelElRef.current
+    if (!el || !store.hasMore || store.isLoading) return
     if (obsRef.current) obsRef.current.disconnect()
-    if (!el) return
     obsRef.current = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting) store.loadMore()
+        if (entries[0].isIntersecting && !store.isLoading) store.loadMore()
       },
       { threshold: 0.1 },
     )
     obsRef.current.observe(el)
+    return () => obsRef.current?.disconnect()
+  }, [store.hasMore, store.isLoading])
+
+  const sentinelRef = useCallback((el: HTMLDivElement | null) => {
+    sentinelElRef.current = el
   }, [])
+
+  useEffect(() => {
+    if (!store.hasMore || store.isLoading || store.wallpapers.length === 0)
+      return
+    const el = sentinelElRef.current
+    if (!el) return
+    const rect = el.getBoundingClientRect()
+    if (rect.top < window.innerHeight + 200) {
+      store.loadMore()
+    }
+  }, [store.wallpapers.length])
 
   if (!store.isLoading && store.wallpapers.length === 0) {
     return <div className={tw.grid.empty}>{t('noResults')}</div>
