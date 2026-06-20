@@ -1,0 +1,354 @@
+{
+  "ENFJ": {
+    "type": "ENFJ",
+    "nickname": "The Giver",
+    "description": "ENFJs are people-focused individuals who live in a world of people possibilities. They have excellent people skills, understanding and caring deeply about others with a special talent for bringing out the best in them. Their main interest is giving love, support, and encouragement to others. They are charming, warm, creative, and derive their greatest satisfaction from helping people grow and succeed.",
+    "strengths": [
+      "Exceptionally good people skills and empathy",
+      "Natural leaders who inspire and motivate others",
+      "Loyal, honest, and committed to relationships",
+      "Strong organizational capabilities",
+      "Creative, imaginative, and enthusiastic",
+      "Skilled at creating harmony and resolving conflict"
+    ],
+    "weaknesses": [
+      "Tend to place others' needs above their own",
+      "Extremely sensitive to criticism and conflict",
+      "Can be manipulative or controlling when unhealthy",
+      "May become overly idealistic or self-sacrificing",
+      "Tendency to avoid dealing with impersonal logic",
+      "May struggle with making tough individual decisions"
+    ],
+    "career": "Thrive in people-oriented roles such as counseling, teaching, human resources, social work, or leadership positions where they can inspire and develop others."
+  },
+  "ENTJ": {
+    "type": "ENTJ",
+    "nickname": "The Executive",
+    "description": "ENTJs are natural-born leaders who live in a world of possibilities and challenges to be conquered. They are assertive, confident, and driven to organize people and resources to achieve long-term goals. Quick to grasp complexities and make decisive judgments, they excel at turning visions into executable plans. They are career-focused and thrive in leadership positions.",
+    "strengths": [
+      "Natural leaders with excellent organizational skills",
+      "Confident, decisive, and assertive",
+      "Strategic long-range thinkers",
+      "Excellent verbal communication skills",
+      "Highly value knowledge and self-improvement",
+      "Able to turn theories into actionable plans"
+    ],
+    "weaknesses": [
+      "Can be impatient with inefficiency and incompetence",
+      "Tendency to be challenging and confrontational",
+      "Not naturally attuned to others' feelings",
+      "May appear arrogant, intimidating, or overbearing",
+      "Difficulty with routine and detail-oriented tasks",
+      "Can be overly critical of different opinions"
+    ],
+    "career": "Excel as executives, entrepreneurs, lawyers, management consultants, military officers, or any role requiring strategic vision and decisive leadership."
+  },
+  "ENFP": {
+    "type": "ENFP",
+    "nickname": "The Inspirer",
+    "description": "ENFPs are warm, enthusiastic people who live in a world of possibilities. They are keenly perceptive of people and their needs, and use their intuition and flexibility to connect with others on a deep level. They value authenticity, creativity, and personal growth above all else. ENFPs are free spirits who bring energy, imagination, and inspiration to everything they do.",
+    "strengths": [
+      "Warm, enthusiastic, and people-oriented",
+      "Exceptional communication and social skills",
+      "Creative, imaginative, and visionary",
+      "Perceptive about others' feelings and motivations",
+      "Flexible, spontaneous, and adaptable",
+      "Strong sense of possibility and potential"
+    ],
+    "weaknesses": [
+      "Tendency to overcommit and take on too much",
+      "May struggle with following through on projects",
+      "Can become overly emotional or people-pleasing",
+      "Difficulty with routine and practical details",
+      "May avoid conflict and difficult conversations",
+      "Tendency to overthink or become scattered"
+    ],
+    "career": "Shine in creative fields like writing, counseling, teaching, journalism, marketing, or entrepreneurship where they can express ideas and help others grow."
+  },
+  "ENTP": {
+    "type": "ENTP",
+    "nickname": "The Visionary",
+    "description": "ENTPs are innovative, intellectually curious individuals who thrive on analyzing and understanding complex systems. They are natural debaters who love to explore ideas from every angle, not for the sake of winning arguments but to understand possibilities. Quick-witted, charming, and entrepreneurial, they see opportunities everywhere and enjoy the thrill of creating something new.",
+    "strengths": [
+      "Innovative, creative, and resourceful",
+      "Excellent analytical and problem-solving skills",
+      "Quick-witted, charming, and enthusiastic",
+      "Open to new ideas and possibilities",
+      "Natural entrepreneurs and idea generators",
+      "Skilled at seeing the big picture and patterns"
+    ],
+    "weaknesses": [
+      "May argue or debate excessively for its own sake",
+      "Can be insensitive to others' feelings",
+      "Tendency to abandon projects mid-way",
+      "May break rules or challenge authority unnecessarily",
+      "Can be unpredictable and unreliable",
+      "Difficulty with routine tasks and administrative details"
+    ],
+    "career": "Excel as entrepreneurs, inventors, lawyers, software developers, consultants, or in any role rewarding creative problem-solving and intellectual challenge."
+  },
+  "ESFJ": {
+    "type": "ESFJ",
+    "nickname": "The Caregiver",
+    "description": "ESFJs are warm-hearted, conscientious individuals who live in a world of concrete, personal realities. They are deeply invested in the well-being of those around them and derive great satisfaction from helping others in practical, tangible ways. Highly cooperative and organized, they value tradition, loyalty, and harmony in their relationships and communities.",
+    "strengths": [
+      "Warm, caring, and deeply loyal to others",
+      "Practical and organized in daily life",
+      "Excellent at creating harmony and cooperation",
+      "Highly conscientious and dependable",
+      "Sensitive to others' needs and feelings",
+      "Strong sense of duty and responsibility"
+    ],
+    "weaknesses": [
+      "May be overly concerned with social status and approval",
+      "Can be inflexible when traditions are challenged",
+      "Tendency to be too self-sacrificing",
+      "May avoid change and new experiences",
+      "Can be controlling in caretaking roles",
+      "Difficulty accepting criticism or conflict"
+    ],
+    "career": "Thrive in healthcare, education, social services, administration, and community-oriented roles where they can provide practical support and care."
+  },
+  "ESFP": {
+    "type": "ESFP",
+    "nickname": "The Performer",
+    "description": "ESFPs are spontaneous, energetic individuals who live in the moment and embrace life with enthusiasm. They love people, excitement, and new experiences. Their focus is on the here and now, and they have a natural talent for bringing joy and entertainment to others. Warm, generous, and fun-loving, they make everything feel like an adventure.",
+    "strengths": [
+      "Outgoing, friendly, and socially skilled",
+      "Spontaneous, adaptable, and open to new experiences",
+      "Practical and realistic with strong common sense",
+      "Naturally warm, generous, and fun-loving",
+      "Great at bringing people together",
+      "Observant and aware of sensory details"
+    ],
+    "weaknesses": [
+      "May become bored easily and seek constant stimulation",
+      "Can be impulsive and take unnecessary risks",
+      "Tendency to avoid long-term planning",
+      "May struggle with abstract theory and concepts",
+      "Can be overly sensitive to criticism",
+      "Difficulty with commitment and follow-through"
+    ],
+    "career": "Flourish as performers, event planners, sales representatives, travel guides, nurses, or in any hands-on, people-oriented role offering variety and action."
+  },
+  "ESTJ": {
+    "type": "ESTJ",
+    "nickname": "The Guardian",
+    "description": "ESTJs are practical, matter-of-fact individuals who value tradition, order, and structure. They live by clear standards and expectations, and they work diligently to ensure that rules and procedures are followed. Decisive, organized, and dedicated, they naturally take charge of situations and ensure that things are done correctly and efficiently.",
+    "strengths": [
+      "Highly organized, practical, and dependable",
+      "Strong leadership and management abilities",
+      "Committed, hardworking, and dedicated",
+      "Clear, direct, and honest communicators",
+      "Excellent at creating and maintaining order",
+      "Strong sense of duty and responsibility"
+    ],
+    "weaknesses": [
+      "Can be rigid and inflexible with rules",
+      "May be insensitive to emotions and feelings",
+      "Tendency to be judgmental and critical",
+      "Difficulty adapting to change and new ideas",
+      "Can be overly focused on social status",
+      "May struggle to see alternative perspectives"
+    ],
+    "career": "Excel as managers, military officers, judges, police officers, accountants, and administrators where structure, order, and clear procedures are valued."
+  },
+  "ESTP": {
+    "type": "ESTP",
+    "nickname": "The Doer",
+    "description": "ESTPs are action-oriented, pragmatic individuals who thrive on excitement and hands-on experience. They are masters of the present moment, quick to assess situations and take decisive action. Bold, direct, and persuasive, they excel in environments that require quick thinking, adaptability, and a cool head under pressure.",
+    "strengths": [
+      "Action-oriented, bold, and decisive",
+      "Excellent crisis management and problem-solving",
+      "Observant and quick to notice details",
+      "Naturally persuasive and charming",
+      "Adaptable, flexible, and resourceful",
+      "Realistic and practical in approach"
+    ],
+    "weaknesses": [
+      "Can be impulsive and take unnecessary risks",
+      "May struggle with long-term commitments",
+      "Tendency to be insensitive or blunt",
+      "Can grow bored with routine and structure",
+      "May break rules to achieve immediate goals",
+      "Difficulty with abstract or theoretical concepts"
+    ],
+    "career": "Thrive as entrepreneurs, salespeople, emergency responders, athletes, or in any fast-paced role where action, risk-taking, and quick thinking are required."
+  },
+  "INFJ": {
+    "type": "INFJ",
+    "nickname": "The Protector",
+    "description": "INFJs are insightful, principled individuals who combine deep intuition with strong values and empathy. They see patterns, meanings, and connections that others miss, and they use their understanding to help and guide people. Gentle, caring, and complex, INFJs are deeply committed to making the world a better place and helping others reach their full potential.",
+    "strengths": [
+      "Deeply insightful, intuitive, and perceptive",
+      "Strong sense of purpose and idealism",
+      "Exceptionally empathetic and understanding",
+      "Creative and visionary thinkers",
+      "Excellent written communication skills",
+      "Passionate, committed, and determined"
+    ],
+    "weaknesses": [
+      "Can be overly private and difficult to know",
+      "Tendency to burn out from emotional intensity",
+      "Extremely sensitive to conflict and criticism",
+      "May set unrealistically high standards",
+      "Tendency to neglect their own needs",
+      "Can be stubborn about deeply held beliefs"
+    ],
+    "career": "Excel in counseling, psychology, writing, education, human rights, and creative arts where they can express deep understanding and help others grow."
+  },
+  "INFP": {
+    "type": "INFP",
+    "nickname": "The Idealist",
+    "description": "INFPs are idealistic, introspective individuals guided by their deeply held values and beliefs. They see the world through a lens of possibilities and potential, always searching for meaning and purpose. Creative, sensitive, and deeply empathetic, they care profoundly about personal growth, authenticity, and helping others live more fulfilling lives.",
+    "strengths": [
+      "Deeply empathetic, caring, and compassionate",
+      "Strong values and idealistic vision",
+      "Creative, imaginative, and artistic",
+      "Open-minded, flexible, and accepting",
+      "Passionate about meaningful causes",
+      "Excellent listening and understanding skills"
+    ],
+    "weaknesses": [
+      "May be overly idealistic and impractical",
+      "Tendency to take things too personally",
+      "Can struggle with criticism and conflict",
+      "May have difficulty with routine tasks",
+      "Tendency to overthink and procrastinate",
+      "Can be reserved and hard to get to know"
+    ],
+    "career": "Shine as writers, counselors, artists, psychologists, social workers, and non-profit workers where they can express values and help others meaningfully."
+  },
+  "INTJ": {
+    "type": "INTJ",
+    "nickname": "The Scientist",
+    "description": "INTJs are strategic, analytical thinkers who live in a world of ideas and strategic planning. They value intelligence, knowledge, and competence above all else, and are driven to understand complex systems and improve them. Independent, determined, and visionary, they excel at seeing the big picture and developing long-term strategies to achieve their goals.",
+    "strengths": [
+      "Brilliant strategic and analytical thinkers",
+      "Independent, determined, and self-motivated",
+      "Natural ability to see the big picture",
+      "Open to new ideas backed by evidence",
+      "Excellent at planning and organization",
+      "High standards and commitment to excellence"
+    ],
+    "weaknesses": [
+      "Can be overly critical and dismissive of emotions",
+      "May come across as arrogant or aloof",
+      "Tendency to be overly perfectionist",
+      "Difficulty with social niceties and small talk",
+      "May overlook others' feelings and contributions",
+      "Can be stubborn when convinced of being right"
+    ],
+    "career": "Thrive as scientists, engineers, professors, software developers, strategists, and in any field requiring deep analysis, innovation, and independent thinking."
+  },
+  "INTP": {
+    "type": "INTP",
+    "nickname": "The Thinker",
+    "description": "INTPs are logical, analytical thinkers who are driven to understand how things work. They live in a world of theoretical possibilities and abstract concepts, preferring to analyze and deconstruct ideas rather than deal with practical matters. Independent, curious, and open-minded, they value intellectual precision and are comfortable challenging conventional wisdom.",
+    "strengths": [
+      "Exceptional analytical and abstract thinking",
+      "Open-minded, objective, and logical",
+      "Creative problem-solvers and innovators",
+      "Independent, adaptable, and flexible",
+      "Honest, direct, and intellectually honest",
+      "Enthusiastic about knowledge and discovery"
+    ],
+    "weaknesses": [
+      "May be overly detached from emotions and people",
+      "Tendency to over-analyze and second-guess",
+      "Can struggle with practical and routine tasks",
+      "May be socially withdrawn or appear insensitive",
+      "Difficulty with deadlines and structure",
+      "Can get lost in theory at the expense of action"
+    ],
+    "career": "Excel as professors, scientists, programmers, philosophers, architects, and researchers where deep thinking, analysis, and intellectual freedom are valued."
+  },
+  "ISFJ": {
+    "type": "ISFJ",
+    "nickname": "The Nurturer",
+    "description": "ISFJs are gentle, caring individuals who are deeply committed to protecting and supporting those they care about. They live in a world of concrete, personal realities, drawing on rich stores of memories and experiences to guide their actions. Quietly dedicated and highly observant, they work tirelessly behind the scenes to ensure the well-being of others.",
+    "strengths": [
+      "Warm, caring, and deeply loyal to loved ones",
+      "Practical, organized, and reliable",
+      "Excellent memory for details and personal history",
+      "Patient, supportive, and nurturing",
+      "Hardworking with a strong sense of duty",
+      "Perceptive and sensitive to others' needs"
+    ],
+    "weaknesses": [
+      "May take things too personally",
+      "Tendency to overwork and neglect self-care",
+      "Can be overly humble and avoid recognition",
+      "May resist change and new approaches",
+      "Tendency to repress their own feelings",
+      "Can be too self-critical and perfectionist"
+    ],
+    "career": "Thrive in healthcare, education, social work, counseling, and administrative roles where they can provide steady, caring support and practical assistance."
+  },
+  "ISFP": {
+    "type": "ISFP",
+    "nickname": "The Artist",
+    "description": "ISFPs are gentle, sensitive individuals who experience the world through their rich inner values and aesthetics. They live in the moment, appreciating beauty, art, and the sensory richness of life. Quietly creative and deeply caring, they express themselves through action rather than words, always guided by their personal sense of what is true and meaningful.",
+    "strengths": [
+      "Sensitive, kind, and deeply caring",
+      "Artistic, creative, and aesthetically aware",
+      "Live in the moment and appreciate beauty",
+      "Loyal, committed, and true to their values",
+      "Adaptable, flexible, and spontaneous",
+      "Quietly supportive and encouraging of others"
+    ],
+    "weaknesses": [
+      "May have difficulty with long-term planning",
+      "Tendency to avoid conflict and confrontation",
+      "Can be overly reserved and hard to know",
+      "May underestimate or undervalue themselves",
+      "Difficulty with criticism and judgment",
+      "Can struggle with structured environments"
+    ],
+    "career": "Flourish as artists, designers, musicians, photographers, veterinarians, or in any role allowing creative expression and personal connection."
+  },
+  "ISTJ": {
+    "type": "ISTJ",
+    "nickname": "The Duty Fulfiller",
+    "description": "ISTJs are responsible, meticulous individuals who value tradition, order, and dependability. They take their commitments seriously and follow through with quiet determination. Practical, logical, and thorough, they excel at creating and maintaining systems and are the backbone of any organization. Their word is their bond, and they expect the same from others.",
+    "strengths": [
+      "Reliable, dependable, and thoroughly committed",
+      "Practical, organized, and detail-oriented",
+      "Strong sense of duty and integrity",
+      "Calm, steady, and composed under pressure",
+      "Excellent at creating order and systems",
+      "Patient and thorough in their work"
+    ],
+    "weaknesses": [
+      "May be overly rigid and resistant to change",
+      "Tendency to be judgmental and critical",
+      "Can struggle with expressing emotions",
+      "May overlook the big picture for details",
+      "Difficulty with ambiguity and spontaneity",
+      "Can be stubborn about rules and procedures"
+    ],
+    "career": "Excel as accountants, auditors, military officers, administrators, lawyers, and in any role requiring precision, reliability, and adherence to standards."
+  },
+  "ISTP": {
+    "type": "ISTP",
+    "nickname": "The Mechanic",
+    "description": "ISTPs are practical, action-oriented individuals who excel at understanding how things work. They are masters of tools, systems, and physical problem-solving. Calm, analytical, and highly observant of their environment, they thrive on hands-on challenges and crisis situations. Reserved in social settings but bold in action, they value freedom, competence, and efficiency.",
+    "strengths": [
+      "Excellent hands-on problem-solving skills",
+      "Calm, cool, and composed under pressure",
+      "Highly observant and logical thinkers",
+      "Adaptable, flexible, and resourceful",
+      "Independent and self-reliant",
+      "Good at troubleshooting and fixing things"
+    ],
+    "weaknesses": [
+      "May be overly reserved and difficult to know",
+      "Tendency to be insensitive or blunt",
+      "Can struggle with long-term commitments",
+      "May take unnecessary risks for excitement",
+      "Difficulty with emotional expression",
+      "Can be stubborn and uncooperative with rules"
+    ],
+    "career": "Thrive as mechanics, engineers, pilots, forensic scientists, carpenters, or in any hands-on role requiring technical skill, analysis, and practical problem-solving."
+  }
+}

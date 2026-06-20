@@ -1,0 +1,19 @@
+{
+  "introTitle": "MBTI 性格测试",
+  "introDescription": "通过这 70 道 MBTI 测试题了解你的人格类型。这些问题没有正确答案——根据你最真实的感觉快速回答，而不是你希望别人怎样看待你。",
+  "introStartButton": "开始测试",
+  "introTips": "快速、诚实地回答。跟随你的第一直觉。",
+  "questionCompleted": "你已经回答了所有问题！",
+  "questionViewResult": "查看结果",
+  "questionLabel": "第 {{number}} 题",
+  "resultRestartButton": "重新测试",
+  "resultDimensionScores": "维度得分",
+  "resultStrengths": "优势",
+  "resultWeaknesses": "不足",
+  "resultCareer": "职业方向",
+  "resultDescription": "性格描述",
+  "dimensionsEI": "外向 (E) vs 内向 (I)",
+  "dimensionsSN": "感觉 (S) vs 直觉 (N)",
+  "dimensionsTF": "思考 (T) vs 情感 (F)",
+  "dimensionsJP": "判断 (J) vs 知觉 (P)"
+}

@@ -1,0 +1,19 @@
+{
+  "introTitle": "MBTI Personality Test",
+  "introDescription": "Discover your personality type with this 70-question MBTI assessment. There are no right or wrong answers \u2014 respond quickly based on what feels most natural to you, not how you\u2019d like to be seen.",
+  "introStartButton": "Start Test",
+  "introTips": "Answer quickly and honestly. Go with your first instinct.",
+  "questionCompleted": "You\u2019ve answered all questions!",
+  "questionViewResult": "View My Result",
+  "questionLabel": "Question {{number}}",
+  "resultRestartButton": "Take Again",
+  "resultDimensionScores": "Dimension Scores",
+  "resultStrengths": "Strengths",
+  "resultWeaknesses": "Weaknesses",
+  "resultCareer": "Career Direction",
+  "resultDescription": "Description",
+  "dimensionsEI": "Extraversion vs Introversion",
+  "dimensionsSN": "Sensing vs Intuition",
+  "dimensionsTF": "Thinking vs Feeling",
+  "dimensionsJP": "Judging vs Perceiving"
+}

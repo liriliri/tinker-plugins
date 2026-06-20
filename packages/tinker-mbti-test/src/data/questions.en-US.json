@@ -1,0 +1,492 @@
+[
+  {
+    "id": 1,
+    "text": "At a party do you:",
+    "optionA": "Interact with many, including strangers",
+    "optionB": "Interact with a few, known to you",
+    "dimension": "EI"
+  },
+  {
+    "id": 8,
+    "text": "At parties do you:",
+    "optionA": "Stay late, with increasing energy",
+    "optionB": "Leave early with decreased energy",
+    "dimension": "EI"
+  },
+  {
+    "id": 15,
+    "text": "In your social groups do you:",
+    "optionA": "Keep abreast of other's happenings",
+    "optionB": "Get behind on the news",
+    "dimension": "EI"
+  },
+  {
+    "id": 22,
+    "text": "In phoning do you:",
+    "optionA": "Rarely question that it will all be said",
+    "optionB": "Rehearse what you'll say",
+    "dimension": "EI"
+  },
+  {
+    "id": 29,
+    "text": "In company do you:",
+    "optionA": "Initiate conversation",
+    "optionB": "Wait to be approached",
+    "dimension": "EI"
+  },
+  {
+    "id": 36,
+    "text": "Does new and non-routine interaction with others:",
+    "optionA": "Stimulate and energize you",
+    "optionB": "Tax your reserves",
+    "dimension": "EI"
+  },
+  {
+    "id": 43,
+    "text": "Do you prefer:",
+    "optionA": "Many friends with brief contact",
+    "optionB": "A few friends with more lengthy contact",
+    "dimension": "EI"
+  },
+  {
+    "id": 50,
+    "text": "Do you:",
+    "optionA": "Speak easily and at length with strangers",
+    "optionB": "Find little to say to strangers",
+    "dimension": "EI"
+  },
+  {
+    "id": 57,
+    "text": "When the phone rings do you:",
+    "optionA": "Hasten to get to it first",
+    "optionB": "Hope someone else will answer",
+    "dimension": "EI"
+  },
+  {
+    "id": 64,
+    "text": "Are you more inclined to be:",
+    "optionA": "Easy to approach",
+    "optionB": "Somewhat reserved",
+    "dimension": "EI"
+  },
+  {
+    "id": 2,
+    "text": "Are you more:",
+    "optionA": "Realistic than speculative",
+    "optionB": "Speculative than realistic",
+    "dimension": "SN"
+  },
+  {
+    "id": 9,
+    "text": "Are you more attracted to:",
+    "optionA": "Sensible people",
+    "optionB": "Imaginative people",
+    "dimension": "SN"
+  },
+  {
+    "id": 16,
+    "text": "In doing ordinary things are you more likely to:",
+    "optionA": "Do it the usual way",
+    "optionB": "Do it your own way",
+    "dimension": "SN"
+  },
+  {
+    "id": 23,
+    "text": "Facts:",
+    "optionA": "\"Speak for themselves\"",
+    "optionB": "Illustrate principles",
+    "dimension": "SN"
+  },
+  {
+    "id": 30,
+    "text": "Common sense is:",
+    "optionA": "Rarely questionable",
+    "optionB": "Frequently questionable",
+    "dimension": "SN"
+  },
+  {
+    "id": 37,
+    "text": "Are you more frequently:",
+    "optionA": "A practical sort of person",
+    "optionB": "A fanciful sort of person",
+    "dimension": "SN"
+  },
+  {
+    "id": 44,
+    "text": "Do you go more by:",
+    "optionA": "Facts",
+    "optionB": "Principles",
+    "dimension": "SN"
+  },
+  {
+    "id": 51,
+    "text": "Are you more likely to trust your:",
+    "optionA": "Experience",
+    "optionB": "Hunch",
+    "dimension": "SN"
+  },
+  {
+    "id": 58,
+    "text": "Do you prize more in yourself:",
+    "optionA": "A strong sense of reality",
+    "optionB": "A vivid imagination",
+    "dimension": "SN"
+  },
+  {
+    "id": 65,
+    "text": "In writings do you prefer:",
+    "optionA": "The more literal",
+    "optionB": "The more figurative",
+    "dimension": "SN"
+  },
+  {
+    "id": 3,
+    "text": "Is it worse to:",
+    "optionA": "Have your \"head in the clouds\"",
+    "optionB": "Be \"in a rut\"",
+    "dimension": "SN"
+  },
+  {
+    "id": 10,
+    "text": "Are you more interested in:",
+    "optionA": "What is actual",
+    "optionB": "What is possible",
+    "dimension": "SN"
+  },
+  {
+    "id": 17,
+    "text": "Writers should:",
+    "optionA": "\"Say what they mean and mean what they say\"",
+    "optionB": "Express things more by use of analogy",
+    "dimension": "SN"
+  },
+  {
+    "id": 24,
+    "text": "Are visionaries:",
+    "optionA": "Somewhat annoying",
+    "optionB": "Rather fascinating",
+    "dimension": "SN"
+  },
+  {
+    "id": 31,
+    "text": "Children often do not:",
+    "optionA": "Make themselves useful enough",
+    "optionB": "Exercise their fantasy enough",
+    "dimension": "SN"
+  },
+  {
+    "id": 38,
+    "text": "Are you more likely to:",
+    "optionA": "See how others are useful",
+    "optionB": "See how others see",
+    "dimension": "SN"
+  },
+  {
+    "id": 45,
+    "text": "Are you more interested in:",
+    "optionA": "Production and distribution",
+    "optionB": "Design and research",
+    "dimension": "SN"
+  },
+  {
+    "id": 52,
+    "text": "Do you feel:",
+    "optionA": "More practical than ingenious",
+    "optionB": "More ingenious than practical",
+    "dimension": "SN"
+  },
+  {
+    "id": 59,
+    "text": "Are you drawn more to:",
+    "optionA": "Fundamentals",
+    "optionB": "Overtones",
+    "dimension": "SN"
+  },
+  {
+    "id": 66,
+    "text": "Is it harder for you to:",
+    "optionA": "Identify with others",
+    "optionB": "Utilize others",
+    "dimension": "SN"
+  },
+  {
+    "id": 4,
+    "text": "Are you more impressed by:",
+    "optionA": "Principles",
+    "optionB": "Emotions",
+    "dimension": "TF"
+  },
+  {
+    "id": 11,
+    "text": "In judging others are you more swayed by:",
+    "optionA": "Laws than circumstances",
+    "optionB": "Circumstances than laws",
+    "dimension": "TF"
+  },
+  {
+    "id": 18,
+    "text": "Which appeals to you more:",
+    "optionA": "Consistency of thought",
+    "optionB": "Harmonious human relationships",
+    "dimension": "TF"
+  },
+  {
+    "id": 25,
+    "text": "Are you more often:",
+    "optionA": "A cool-headed person",
+    "optionB": "A warm-hearted person",
+    "dimension": "TF"
+  },
+  {
+    "id": 32,
+    "text": "In making decisions do you feel more comfortable with:",
+    "optionA": "Standards",
+    "optionB": "Feelings",
+    "dimension": "TF"
+  },
+  {
+    "id": 39,
+    "text": "Which is more satisfying:",
+    "optionA": "To discuss an issue thoroughly",
+    "optionB": "To arrive at agreement on an issue",
+    "dimension": "TF"
+  },
+  {
+    "id": 46,
+    "text": "Which is more of a compliment:",
+    "optionA": "\"There is a very logical person.\"",
+    "optionB": "\"There is a very sentimental person.\"",
+    "dimension": "TF"
+  },
+  {
+    "id": 53,
+    "text": "Which person is more to be complimented – one of:",
+    "optionA": "Clear reason",
+    "optionB": "Strong feeling",
+    "dimension": "TF"
+  },
+  {
+    "id": 60,
+    "text": "Which seems the greater error:",
+    "optionA": "To be too passionate",
+    "optionB": "To be too objective",
+    "dimension": "TF"
+  },
+  {
+    "id": 67,
+    "text": "Which do you wish more for yourself:",
+    "optionA": "Clarity of reason",
+    "optionB": "Strength of compassion",
+    "dimension": "TF"
+  },
+  {
+    "id": 5,
+    "text": "Are more drawn toward the:",
+    "optionA": "Convincing",
+    "optionB": "Touching",
+    "dimension": "TF"
+  },
+  {
+    "id": 12,
+    "text": "In approaching others is your inclination to be somewhat:",
+    "optionA": "Objective",
+    "optionB": "Personal",
+    "dimension": "TF"
+  },
+  {
+    "id": 19,
+    "text": "Are you more comfortable in making:",
+    "optionA": "Logical judgments",
+    "optionB": "Value judgments",
+    "dimension": "TF"
+  },
+  {
+    "id": 26,
+    "text": "Is it worse to be:",
+    "optionA": "Unjust",
+    "optionB": "Merciless",
+    "dimension": "TF"
+  },
+  {
+    "id": 33,
+    "text": "Are you more:",
+    "optionA": "Firm than gentle",
+    "optionB": "Gentle than firm",
+    "dimension": "TF"
+  },
+  {
+    "id": 40,
+    "text": "Which rules you more:",
+    "optionA": "Your head",
+    "optionB": "Your heart",
+    "dimension": "TF"
+  },
+  {
+    "id": 47,
+    "text": "Do you value in yourself more that you are:",
+    "optionA": "Unwavering",
+    "optionB": "Devoted",
+    "dimension": "TF"
+  },
+  {
+    "id": 54,
+    "text": "Are you inclined more to be:",
+    "optionA": "Fair-minded",
+    "optionB": "Sympathetic",
+    "dimension": "TF"
+  },
+  {
+    "id": 61,
+    "text": "Do you see yourself as basically:",
+    "optionA": "Hard-headed",
+    "optionB": "Soft-hearted",
+    "dimension": "TF"
+  },
+  {
+    "id": 68,
+    "text": "Which is the greater fault:",
+    "optionA": "Being indiscriminate",
+    "optionB": "Being critical",
+    "dimension": "TF"
+  },
+  {
+    "id": 6,
+    "text": "Do you prefer to work:",
+    "optionA": "To deadlines",
+    "optionB": "Just \"whenever\"",
+    "dimension": "JP"
+  },
+  {
+    "id": 13,
+    "text": "Are you more:",
+    "optionA": "Punctual",
+    "optionB": "Leisurely",
+    "dimension": "JP"
+  },
+  {
+    "id": 20,
+    "text": "Do you want things:",
+    "optionA": "Settled and decided",
+    "optionB": "Unsettled and undecided",
+    "dimension": "JP"
+  },
+  {
+    "id": 27,
+    "text": "Should one usually let events occur:",
+    "optionA": "By careful selection and choice",
+    "optionB": "Randomly and by chance",
+    "dimension": "JP"
+  },
+  {
+    "id": 34,
+    "text": "Which is more admirable:",
+    "optionA": "The ability to organize and be methodical",
+    "optionB": "The ability to adapt and make do",
+    "dimension": "JP"
+  },
+  {
+    "id": 41,
+    "text": "Are you more comfortable with work that is:",
+    "optionA": "Contracted",
+    "optionB": "Done on a casual basis",
+    "dimension": "JP"
+  },
+  {
+    "id": 48,
+    "text": "Do you more often prefer the:",
+    "optionA": "Final and unalterable statement",
+    "optionB": "Tentative and preliminary statement",
+    "dimension": "JP"
+  },
+  {
+    "id": 55,
+    "text": "Is it preferable mostly to:",
+    "optionA": "Make sure things are arranged",
+    "optionB": "Just let things happen",
+    "dimension": "JP"
+  },
+  {
+    "id": 62,
+    "text": "Which situation appeals to you more:",
+    "optionA": "The structured and scheduled",
+    "optionB": "The unstructured and unscheduled",
+    "dimension": "JP"
+  },
+  {
+    "id": 69,
+    "text": "Do you prefer the:",
+    "optionA": "Planned event",
+    "optionB": "Unplanned event",
+    "dimension": "JP"
+  },
+  {
+    "id": 7,
+    "text": "Do you tend to choose:",
+    "optionA": "Rather carefully",
+    "optionB": "Somewhat impulsively",
+    "dimension": "JP"
+  },
+  {
+    "id": 14,
+    "text": "Does it bother you more having things:",
+    "optionA": "Incomplete",
+    "optionB": "Completed",
+    "dimension": "JP"
+  },
+  {
+    "id": 21,
+    "text": "Would you say you are more:",
+    "optionA": "Serious and determined",
+    "optionB": "Easy-going",
+    "dimension": "JP"
+  },
+  {
+    "id": 28,
+    "text": "Do you feel better about:",
+    "optionA": "Having purchased",
+    "optionB": "Having the option to buy",
+    "dimension": "JP"
+  },
+  {
+    "id": 35,
+    "text": "Do you put more value on:",
+    "optionA": "Infinite",
+    "optionB": "Open-minded",
+    "dimension": "JP"
+  },
+  {
+    "id": 42,
+    "text": "Do you tend to look for:",
+    "optionA": "The orderly",
+    "optionB": "Whatever turns up",
+    "dimension": "JP"
+  },
+  {
+    "id": 49,
+    "text": "Are you more comfortable:",
+    "optionA": "After a decision",
+    "optionB": "Before a decision",
+    "dimension": "JP"
+  },
+  {
+    "id": 56,
+    "text": "In relationships should most things be:",
+    "optionA": "Re-negotiable",
+    "optionB": "Random and circumstantial",
+    "dimension": "JP"
+  },
+  {
+    "id": 63,
+    "text": "Are you a person that is more:",
+    "optionA": "Routinized than whimsical",
+    "optionB": "Whimsical than routinized",
+    "dimension": "JP"
+  },
+  {
+    "id": 70,
+    "text": "Do you tend to be more:",
+    "optionA": "Deliberate than spontaneous",
+    "optionB": "Spontaneous than deliberate",
+    "dimension": "JP"
+  }
+]

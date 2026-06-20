@@ -1,0 +1,22 @@
+@use 'tailwindcss';
+@config "../tailwind.config.js";
+
+html.dark {
+  color-scheme: dark;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(59, 130, 246, 0.3) transparent;
+}
+
+.dark * {
+  scrollbar-color: rgba(96, 165, 250, 0.35) transparent;
+}

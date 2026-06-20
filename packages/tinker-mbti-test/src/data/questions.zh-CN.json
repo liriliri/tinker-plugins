@@ -1,0 +1,492 @@
+[
+  {
+    "id": 1,
+    "text": "在派对上，你通常会：",
+    "optionA": "与许多人交流，包括陌生人",
+    "optionB": "与几个你认识的人交流",
+    "dimension": "EI"
+  },
+  {
+    "id": 8,
+    "text": "在聚会上你通常：",
+    "optionA": "待到很晚，越来越有活力",
+    "optionB": "早早离开，感觉越来越疲倦",
+    "dimension": "EI"
+  },
+  {
+    "id": 15,
+    "text": "在你的社交圈中你是：",
+    "optionA": "了解他人动态",
+    "optionB": "对新闻消息不太了解",
+    "dimension": "EI"
+  },
+  {
+    "id": 22,
+    "text": "打电话时你：",
+    "optionA": "很少担心不知道说什么",
+    "optionB": "提前准备你要说的话",
+    "dimension": "EI"
+  },
+  {
+    "id": 29,
+    "text": "在公司中你会：",
+    "optionA": "发起对话",
+    "optionB": "等待别人接近",
+    "dimension": "EI"
+  },
+  {
+    "id": 36,
+    "text": "与他人的新的非日常互动：",
+    "optionA": "刺激你并使你精力充沛",
+    "optionB": "消耗你的精力",
+    "dimension": "EI"
+  },
+  {
+    "id": 43,
+    "text": "你更喜欢：",
+    "optionA": "许多朋友但联系短暂",
+    "optionB": "少数朋友但联系时间更长",
+    "dimension": "EI"
+  },
+  {
+    "id": 50,
+    "text": "你：",
+    "optionA": "与陌生人轻松并详细地交谈",
+    "optionB": "与陌生人没什么可说的",
+    "dimension": "EI"
+  },
+  {
+    "id": 57,
+    "text": "电话铃响时你是否：",
+    "optionA": "急忙去第一个接电话",
+    "optionB": "希望别人会接",
+    "dimension": "EI"
+  },
+  {
+    "id": 64,
+    "text": "你更倾向于是：",
+    "optionA": "容易接近",
+    "optionB": "有些保留",
+    "dimension": "EI"
+  },
+  {
+    "id": 2,
+    "text": "你更倾向于：",
+    "optionA": "现实一些，而不是爱幻想",
+    "optionB": "爱幻想，而不是过于现实",
+    "dimension": "SN"
+  },
+  {
+    "id": 9,
+    "text": "你更被哪种人吸引：",
+    "optionA": "理智的人",
+    "optionB": "富有想象力的人",
+    "dimension": "SN"
+  },
+  {
+    "id": 16,
+    "text": "在做日常事务时你更倾向于：",
+    "optionA": "按常规方式做",
+    "optionB": "用你自己的方式做",
+    "dimension": "SN"
+  },
+  {
+    "id": 23,
+    "text": "事实应该是：",
+    "optionA": "不言自明",
+    "optionB": "用来说明原理",
+    "dimension": "SN"
+  },
+  {
+    "id": 30,
+    "text": "常识是：",
+    "optionA": "很少被质疑",
+    "optionB": "经常被质疑",
+    "dimension": "SN"
+  },
+  {
+    "id": 37,
+    "text": "你更常是：",
+    "optionA": "一个实际的人",
+    "optionB": "一个异想天开的人",
+    "dimension": "SN"
+  },
+  {
+    "id": 44,
+    "text": "你更依赖：",
+    "optionA": "事实",
+    "optionB": "原则",
+    "dimension": "SN"
+  },
+  {
+    "id": 51,
+    "text": "你更倾向于信任你的：",
+    "optionA": "经验",
+    "optionB": "直觉",
+    "dimension": "SN"
+  },
+  {
+    "id": 58,
+    "text": "你更欣赏自己：",
+    "optionA": "很强的现实感",
+    "optionB": "丰富的想象力",
+    "dimension": "SN"
+  },
+  {
+    "id": 65,
+    "text": "在写作中，你更喜欢哪种表达方式：",
+    "optionA": "更直接明了的",
+    "optionB": "更富有比喻性的",
+    "dimension": "SN"
+  },
+  {
+    "id": 3,
+    "text": "以下哪种情况更糟：",
+    "optionA": "总是异想天开",
+    "optionB": "墨守成规",
+    "dimension": "SN"
+  },
+  {
+    "id": 10,
+    "text": "你对以下哪个更感兴趣：",
+    "optionA": "现实存在的事物",
+    "optionB": "可能存在的事物",
+    "dimension": "SN"
+  },
+  {
+    "id": 17,
+    "text": "作家应该：",
+    "optionA": "直接说自己想表达的意思",
+    "optionB": "多用比喻来表达想法",
+    "dimension": "SN"
+  },
+  {
+    "id": 24,
+    "text": "你觉得有远见的人是：",
+    "optionA": "有点让人烦",
+    "optionB": "非常吸引人",
+    "dimension": "SN"
+  },
+  {
+    "id": 31,
+    "text": "孩子们通常没有做到：",
+    "optionA": "让自己变得更有用",
+    "optionB": "充分发挥他们的想象力",
+    "dimension": "SN"
+  },
+  {
+    "id": 38,
+    "text": "你更可能：",
+    "optionA": "看出别人的用处",
+    "optionB": "看出别人的视角",
+    "dimension": "SN"
+  },
+  {
+    "id": 45,
+    "text": "你更感兴趣的是：",
+    "optionA": "生产和分配",
+    "optionB": "设计和研究",
+    "dimension": "SN"
+  },
+  {
+    "id": 52,
+    "text": "你觉得自己：",
+    "optionA": "注重实际多于有创造力",
+    "optionB": "有创造力多于注重实际",
+    "dimension": "SN"
+  },
+  {
+    "id": 59,
+    "text": "你更倾向于关注：",
+    "optionA": "基础原理",
+    "optionB": "深层含义",
+    "dimension": "SN"
+  },
+  {
+    "id": 66,
+    "text": "对你来说更难的是：",
+    "optionA": "理解他人",
+    "optionB": "利用他人",
+    "dimension": "SN"
+  },
+  {
+    "id": 4,
+    "text": "你更欣赏：",
+    "optionA": "原则",
+    "optionB": "情感",
+    "dimension": "TF"
+  },
+  {
+    "id": 11,
+    "text": "当评判他人时，你更容易被哪种因素影响：",
+    "optionA": "法律比具体情况更重要",
+    "optionB": "具体情况比法律更重要",
+    "dimension": "TF"
+  },
+  {
+    "id": 18,
+    "text": "你更喜欢哪一种：",
+    "optionA": "坚持统一的原则或方法",
+    "optionB": "因情境改变想法或立场",
+    "dimension": "TF"
+  },
+  {
+    "id": 25,
+    "text": "你更常是：",
+    "optionA": "一个冷静的人",
+    "optionB": "一个热心的人",
+    "dimension": "TF"
+  },
+  {
+    "id": 32,
+    "text": "在做决定时你感觉更舒服的是：",
+    "optionA": "标准",
+    "optionB": "感觉",
+    "dimension": "TF"
+  },
+  {
+    "id": 39,
+    "text": "更令人满意的是：",
+    "optionA": "彻底讨论一个问题",
+    "optionB": "就一个问题达成协议",
+    "dimension": "TF"
+  },
+  {
+    "id": 46,
+    "text": "更大的赞美是：",
+    "optionA": "\"那是一个非常逻辑的人\"",
+    "optionB": "\"那是一个非常感性的人\"",
+    "dimension": "TF"
+  },
+  {
+    "id": 53,
+    "text": "以下哪个人更值得赞扬：",
+    "optionA": "理智清晰的人",
+    "optionB": "情感强烈的人",
+    "dimension": "TF"
+  },
+  {
+    "id": 60,
+    "text": "你觉得哪种问题更大：",
+    "optionA": "太过感情用事",
+    "optionB": "太过理性",
+    "dimension": "TF"
+  },
+  {
+    "id": 67,
+    "text": "你更希望自己拥有：",
+    "optionA": "清晰的理性",
+    "optionB": "强大的同情心",
+    "dimension": "TF"
+  },
+  {
+    "id": 5,
+    "text": "你更倾向于：",
+    "optionA": "有说服力的",
+    "optionB": "感人的",
+    "dimension": "TF"
+  },
+  {
+    "id": 12,
+    "text": "在与他人交往时，你倾向于：",
+    "optionA": "比较客观",
+    "optionB": "更带有个人感情",
+    "dimension": "TF"
+  },
+  {
+    "id": 19,
+    "text": "你在做哪种判断时更舒服：",
+    "optionA": "逻辑判断",
+    "optionB": "价值判断",
+    "dimension": "TF"
+  },
+  {
+    "id": 26,
+    "text": "更糟糕的是：",
+    "optionA": "不公正",
+    "optionB": "无情",
+    "dimension": "TF"
+  },
+  {
+    "id": 33,
+    "text": "你更倾向于：",
+    "optionA": "坚定而不是温柔",
+    "optionB": "温柔而不是坚定",
+    "dimension": "TF"
+  },
+  {
+    "id": 40,
+    "text": "更多支配你的是：",
+    "optionA": "你的头脑",
+    "optionB": "你的心",
+    "dimension": "TF"
+  },
+  {
+    "id": 47,
+    "text": "你更看重自己的是：",
+    "optionA": "坚定不移",
+    "optionB": "忠诚奉献",
+    "dimension": "TF"
+  },
+  {
+    "id": 54,
+    "text": "你更倾向于是：",
+    "optionA": "公正的",
+    "optionB": "有同情心的",
+    "dimension": "TF"
+  },
+  {
+    "id": 61,
+    "text": "你认为自己基本上是：",
+    "optionA": "头脑硬",
+    "optionB": "心肠软",
+    "dimension": "TF"
+  },
+  {
+    "id": 68,
+    "text": "哪种问题更大：",
+    "optionA": "没有分辨力",
+    "optionB": "过于挑剔",
+    "dimension": "TF"
+  },
+  {
+    "id": 6,
+    "text": "你更喜欢哪种工作方式：",
+    "optionA": "按截止日期完成任务",
+    "optionB": "随意什么时候都行",
+    "dimension": "JP"
+  },
+  {
+    "id": 13,
+    "text": "你更倾向于：",
+    "optionA": "守时",
+    "optionB": "从容",
+    "dimension": "JP"
+  },
+  {
+    "id": 20,
+    "text": "你更希望事情是：",
+    "optionA": "尘埃落定，已经决定的",
+    "optionB": "尚未确定，充满变数的",
+    "dimension": "JP"
+  },
+  {
+    "id": 27,
+    "text": "一般来说，应该让事情怎么发展：",
+    "optionA": "经过仔细选择和决定",
+    "optionB": "顺其自然，听天由命",
+    "dimension": "JP"
+  },
+  {
+    "id": 34,
+    "text": "更值得钦佩的是：",
+    "optionA": "有组织并且有条理的能力",
+    "optionB": "适应和权宜之计的能力",
+    "dimension": "JP"
+  },
+  {
+    "id": 41,
+    "text": "你对哪种工作更感到舒适：",
+    "optionA": "合同工",
+    "optionB": "临时性工作",
+    "dimension": "JP"
+  },
+  {
+    "id": 48,
+    "text": "你更常喜欢哪种表达方式：",
+    "optionA": "确定的、不可更改的说法",
+    "optionB": "暂时的、还在讨论中的说法",
+    "dimension": "JP"
+  },
+  {
+    "id": 55,
+    "text": "通常更偏好：",
+    "optionA": "确保事情有条不紊",
+    "optionB": "随遇而安",
+    "dimension": "JP"
+  },
+  {
+    "id": 62,
+    "text": "哪种情境更吸引你：",
+    "optionA": "有结构和计划的",
+    "optionB": "无结构和未计划的",
+    "dimension": "JP"
+  },
+  {
+    "id": 69,
+    "text": "你更喜欢：",
+    "optionA": "有计划的活动",
+    "optionB": "无计划的活动",
+    "dimension": "JP"
+  },
+  {
+    "id": 7,
+    "text": "你做选择时更倾向于：",
+    "optionA": "比较谨慎",
+    "optionB": "有点冲动",
+    "dimension": "JP"
+  },
+  {
+    "id": 14,
+    "text": "什么情况更让你烦恼：",
+    "optionA": "事情未完成",
+    "optionB": "事情已完成",
+    "dimension": "JP"
+  },
+  {
+    "id": 21,
+    "text": "你会说你更：",
+    "optionA": "严肃和坚定",
+    "optionB": "随和",
+    "dimension": "JP"
+  },
+  {
+    "id": 28,
+    "text": "你对以下哪种情况感觉更满意：",
+    "optionA": "已经购买了",
+    "optionB": "拥有购买的机会",
+    "dimension": "JP"
+  },
+  {
+    "id": 35,
+    "text": "你更重视：",
+    "optionA": "无限",
+    "optionB": "思想开放",
+    "dimension": "JP"
+  },
+  {
+    "id": 42,
+    "text": "你倾向于寻找：",
+    "optionA": "有序的",
+    "optionB": "任何出现的",
+    "dimension": "JP"
+  },
+  {
+    "id": 49,
+    "text": "你在什么时候感觉更舒服：",
+    "optionA": "做出决定之后",
+    "optionB": "做决定之前",
+    "dimension": "JP"
+  },
+  {
+    "id": 56,
+    "text": "在关系中大多数事情应该是：",
+    "optionA": "可重新协商的",
+    "optionB": "随机和依情境而变的",
+    "dimension": "JP"
+  },
+  {
+    "id": 63,
+    "text": "你是一个更倾向于：",
+    "optionA": "有规律的而不是异想天开的",
+    "optionB": "异想天开的而不是有规律的",
+    "dimension": "JP"
+  },
+  {
+    "id": 70,
+    "text": "你倾向于更多地是：",
+    "optionA": "深思熟虑的",
+    "optionB": "随性所至的",
+    "dimension": "JP"
+  }
+]
