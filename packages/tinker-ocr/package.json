@@ -1,6 +1,6 @@
 {
   "name": "tinker-ocr",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "OCR Plugin for TINKER",
   "files": [
     "dist/",
