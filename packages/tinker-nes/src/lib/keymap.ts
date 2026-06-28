@@ -93,25 +93,3 @@ export const DEFAULT_KEYMAP: [PlayerKeymap, PlayerKeymap] = [
     select: { keyboard: null, gamepad: 8 },
   },
 ]
-
-const STORAGE_KEY = 'tinker-nes-keymap'
-
-export function loadKeymap(): [PlayerKeymap, PlayerKeymap] {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY)
-    if (raw) {
-      const saved = JSON.parse(raw) as [PlayerKeymap, PlayerKeymap]
-      return [
-        { ...DEFAULT_KEYMAP[0], ...saved[0] },
-        { ...DEFAULT_KEYMAP[1], ...saved[1] },
-      ]
-    }
-  } catch {
-    // ignore
-  }
-  return DEFAULT_KEYMAP
-}
-
-export function saveKeymap(keymap: [PlayerKeymap, PlayerKeymap]) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(keymap))
-}

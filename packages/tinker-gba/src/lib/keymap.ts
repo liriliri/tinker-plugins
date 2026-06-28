@@ -58,22 +58,3 @@ export const DEFAULT_KEYMAP: Keymap = {
   start: { keyboard: 'Enter', gamepad: 9 },
   select: { keyboard: 'ShiftRight', gamepad: 8 },
 }
-
-const STORAGE_KEY = 'tinker-gba-keymap'
-
-export function loadKeymap(): Keymap {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY)
-    if (raw) {
-      const saved = JSON.parse(raw) as Keymap
-      return { ...DEFAULT_KEYMAP, ...saved }
-    }
-  } catch {
-    // ignore
-  }
-  return DEFAULT_KEYMAP
-}
-
-export function saveKeymap(keymap: Keymap) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(keymap))
-}

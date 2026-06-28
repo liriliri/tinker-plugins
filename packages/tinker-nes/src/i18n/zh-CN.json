@@ -1,7 +1,6 @@
 {
   "search": "搜索 ROM",
   "sidebar": "侧边栏",
-  "playHistory": "游玩历史",
   "emptyHistory": "暂无游玩记录",
   "openRom": "打开 ROM",
   "dropRom": "拖入 .nes 文件",
@@ -31,5 +30,8 @@
   "nes_turboA": "连击 A",
   "nes_turboB": "连击 B",
   "nes_start": "Start",
-  "nes_select": "Select"
+  "nes_select": "Select",
+  "error": "错误",
+  "fileNotFound": "文件不存在：{{name}}",
+  "deleteHistory": "从历史记录中删除"
 }

@@ -1,62 +1,23 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { observer } from 'mobx-react-lite'
-import { useTranslation } from 'react-i18next'
+import i18n from 'i18next'
 import md5 from 'licia/md5'
-import contain from 'licia/contain'
 import endWith from 'licia/endWith'
 import fullscreen from 'licia/fullscreen'
 import lowerCase from 'licia/lowerCase'
-import store from './store'
-import { tw } from './theme'
-import { buildIframeHtml } from './lib/util'
+import splitPath from 'licia/splitPath'
+import store from '../store'
+import { buildIframeHtml } from './util'
+import { GbaButton, INTERNAL_KEYS } from './keymap'
 import {
-  GbaButton,
-  Keymap,
-  INTERNAL_KEYS,
-  loadKeymap,
-  saveKeymap,
-} from './lib/keymap'
-import KeymapDialog from './components/KeymapDialog'
-import Toolbar from './components/Toolbar'
-import Sidebar from './components/Sidebar'
+  TOOLBAR_KEY_CODES,
+  findKeyBinding,
+  isHotkey,
+  postKey,
+} from './emulatorInput'
 
-interface FileWithPath extends File {
-  path?: string
-}
+const ROM_EXT = '.gba'
 
-const TOOLBAR_KEY_CODES: Record<string, number> = {
-  KeyH: 72,
-  KeyP: 80,
-  F2: 113,
-  F4: 115,
-  F9: 120,
-}
-
-const HOTKEYS = [72, 80, 32] // H, P, Space
-
-interface KeyLookup {
-  btn: GbaButton
-  code: string
-  keyCode: number
-}
-
-function findKeyBinding(inputCode: string, km: Keymap): KeyLookup | null {
-  for (const btn of Object.keys(km) as GbaButton[]) {
-    if (km[btn].keyboard === inputCode) {
-      const { code, keyCode } = INTERNAL_KEYS[btn]
-      return { btn, code, keyCode }
-    }
-  }
-  return null
-}
-
-function postKey(win: Window, type: string, code: string, keyCode: number) {
-  win.postMessage({ type, code, keyCode }, '*')
-}
-
-const App = observer(() => {
-  const { isDark } = store
-  const { t } = useTranslation()
+export function useEmulator(showKeymap: boolean) {
   const containerRef = useRef<HTMLDivElement>(null)
   const iframeRef = useRef<HTMLIFrameElement | null>(null)
   const blobUrlRef = useRef<string | null>(null)
@@ -64,18 +25,8 @@ const App = observer(() => {
   const [isPaused, setIsPaused] = useState(false)
   const [isMuted, setIsMuted] = useState(false)
   const [isDragging, setIsDragging] = useState(false)
-  const [showKeymap, setShowKeymap] = useState(false)
-  const [keymap, setKeymap] = useState(() => loadKeymap())
 
   const padPressedRef = useRef<Set<string>>(new Set())
-  const keymapRef = useRef(keymap)
-  const showKeymapRef = useRef(showKeymap)
-  useEffect(() => {
-    keymapRef.current = keymap
-  }, [keymap])
-  useEffect(() => {
-    showKeymapRef.current = showKeymap
-  }, [showKeymap])
 
   useEffect(() => {
     return () => {
@@ -99,13 +50,13 @@ const App = observer(() => {
   }, [])
 
   const loadRomBuffer = useCallback(async (buffer: ArrayBuffer) => {
-    const romMd5 = md5([...new Uint8Array(buffer)]) + '.gba'
+    const romMd5 = md5([...new Uint8Array(buffer)]) + ROM_EXT
     if (blobUrlRef.current) URL.revokeObjectURL(blobUrlRef.current)
     const url = URL.createObjectURL(new Blob([buffer]))
     blobUrlRef.current = url
     const base = import.meta.env.BASE_URL || './'
     const baseUrl = endWith(base, '/') ? base : `${base}/`
-    const html = buildIframeHtml(url, romMd5, baseUrl)
+    const html = buildIframeHtml(url, romMd5, baseUrl, i18n.t('loading'))
     if (iframeRef.current) {
       iframeRef.current.remove()
       iframeRef.current = null
@@ -129,16 +80,29 @@ const App = observer(() => {
 
   const loadRomFromPath = useCallback(
     async (filePath: string) => {
-      const data = await tinker.readFile(filePath)
-      const buffer =
-        data instanceof ArrayBuffer
-          ? data
-          : data.buffer.slice(
-              data.byteOffset,
-              data.byteOffset + data.byteLength,
-            )
-      await loadRomBuffer(buffer)
-      store.setCurrentRom(filePath)
+      try {
+        const stat = await tinker.fstat(filePath)
+        if (!stat.isFile) {
+          store.showError(
+            i18n.t('fileNotFound', { name: splitPath(filePath).name }),
+          )
+          return
+        }
+        const data = await tinker.readFile(filePath)
+        const buffer =
+          data instanceof ArrayBuffer
+            ? data
+            : data.buffer.slice(
+                data.byteOffset,
+                data.byteOffset + data.byteLength,
+              )
+        await loadRomBuffer(buffer)
+        store.setCurrentRom(filePath)
+      } catch {
+        store.showError(
+          i18n.t('fileNotFound', { name: splitPath(filePath).name }),
+        )
+      }
     },
     [loadRomBuffer],
   )
@@ -146,7 +110,7 @@ const App = observer(() => {
   const loadRom = useCallback(
     async (file: File) => {
       await loadRomBuffer(await file.arrayBuffer())
-      const path = (file as FileWithPath).path
+      const path = (file as File & { path?: string }).path
       if (path) store.setCurrentRom(path)
     },
     [loadRomBuffer],
@@ -155,7 +119,7 @@ const App = observer(() => {
   const openFile = useCallback(() => {
     const input = document.createElement('input')
     input.type = 'file'
-    input.accept = '.gba'
+    input.accept = ROM_EXT
     input.onchange = () => {
       const file = input.files?.[0]
       if (file) loadRom(file)
@@ -197,25 +161,20 @@ const App = observer(() => {
       e.preventDefault()
       setIsDragging(false)
       const file = Array.from(e.dataTransfer.files).find((f) =>
-        endWith(lowerCase(f.name), '.gba'),
+        endWith(lowerCase(f.name), ROM_EXT),
       )
       if (file) loadRom(file)
     },
     [loadRom],
   )
 
-  const handleSaveKeymap = useCallback((newKeymap: Keymap) => {
-    saveKeymap(newKeymap)
-    setKeymap(newKeymap)
-  }, [])
-
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
-      if (showKeymapRef.current) return
-      if (contain(HOTKEYS, e.keyCode)) return
+      if (showKeymap) return
+      if (isHotkey(e.keyCode)) return
       const win = iframeRef.current?.contentWindow
       if (!win) return
-      const binding = findKeyBinding(e.code, keymapRef.current)
+      const binding = findKeyBinding(e.code, store.keymap)
       if (!binding) return
       e.preventDefault()
       postKey(win, e.type, binding.code, binding.keyCode)
@@ -227,7 +186,7 @@ const App = observer(() => {
       window.removeEventListener('keydown', handleKey)
       window.removeEventListener('keyup', handleKey)
     }
-  }, [])
+  }, [showKeymap])
 
   useEffect(() => {
     let raf: number
@@ -238,10 +197,9 @@ const App = observer(() => {
         return
       }
 
-      const km = keymapRef.current
+      const km = store.keymap
       const pressed = new Set<string>()
-      const pads = navigator.getGamepads()
-      const pad = pads[0]
+      const pad = navigator.getGamepads()[0]
 
       if (pad) {
         for (const btn of Object.keys(km) as GbaButton[]) {
@@ -271,69 +229,22 @@ const App = observer(() => {
     return () => cancelAnimationFrame(raf)
   }, [])
 
-  return (
-    <div className={`h-screen flex flex-col font-mono ${tw.appBg(isDark)}`}>
-      <Toolbar
-        isDark={isDark}
-        romLoaded={romLoaded}
-        isPaused={isPaused}
-        isMuted={isMuted}
-        onOpenFile={openFile}
-        onLoadRomPath={loadRomFromPath}
-        onTogglePause={handleTogglePause}
-        onReset={handleReset}
-        onToggleMute={handleToggleMute}
-        onSaveState={handleSaveState}
-        onLoadState={handleLoadState}
-        onFullscreen={handleFullscreen}
-        onOpenKeymap={() => setShowKeymap(true)}
-      />
-
-      <div className="flex flex-1 min-h-0">
-        {store.sidebarOpen && <Sidebar onSelect={loadRomFromPath} />}
-
-        <div
-          ref={containerRef}
-          className="relative flex-1 overflow-hidden bg-black"
-          onDragOver={handleDragOver}
-          onDragLeave={handleDragLeave}
-          onDrop={handleDrop}
-        >
-          {romLoaded && (
-            <div className="scanlines absolute inset-0 pointer-events-none z-10" />
-          )}
-          {!romLoaded && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 select-none">
-              <span className="text-5xl">🎮</span>
-              <p
-                className={`text-xs tracking-[0.25em] uppercase gba-blink ${tw.emptyText()}`}
-              >
-                {t('dropRom')}
-              </p>
-            </div>
-          )}
-          {isDragging && (
-            <div className={tw.dragOverlay}>
-              <p
-                className={`text-[10px] tracking-[0.3em] uppercase animate-pulse ${tw.dragText(isDark)}`}
-              >
-                {t('dropRom')}
-              </p>
-            </div>
-          )}
-        </div>
-      </div>
-
-      {showKeymap && (
-        <KeymapDialog
-          isDark={isDark}
-          keymap={keymap}
-          onClose={() => setShowKeymap(false)}
-          onSave={handleSaveKeymap}
-        />
-      )}
-    </div>
-  )
-})
-
-export default App
+  return {
+    containerRef,
+    romLoaded,
+    isPaused,
+    isMuted,
+    isDragging,
+    openFile,
+    loadRomFromPath,
+    handleTogglePause,
+    handleReset,
+    handleToggleMute,
+    handleSaveState,
+    handleLoadState,
+    handleFullscreen,
+    handleDragOver,
+    handleDragLeave,
+    handleDrop,
+  }
+}

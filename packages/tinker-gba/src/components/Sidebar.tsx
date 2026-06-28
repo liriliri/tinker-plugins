@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
-import { Gamepad2 } from 'lucide-react'
+import { Gamepad2, X } from 'lucide-react'
 import store from '../store'
 import { tw } from '../theme'
 
@@ -21,15 +21,28 @@ export default observer(function Sidebar({ onSelect }: Props) {
       ) : (
         <div className="flex-1 min-h-0 overflow-y-auto">
           {playHistory.map((item) => (
-            <button
+            <div
               key={item.path}
               className={tw.sidebarItem(isDark, item.path === currentRomPath)}
-              onClick={() => onSelect(item.path)}
-              title={item.path}
             >
-              <Gamepad2 size={12} className={tw.sidebarItemIcon(isDark)} />
-              <span className="truncate">{item.name}</span>
-            </button>
+              <button
+                type="button"
+                className={tw.sidebarItemBtn}
+                onClick={() => onSelect(item.path)}
+                title={item.path}
+              >
+                <Gamepad2 size={12} className={tw.sidebarItemIcon(isDark)} />
+                <span className="truncate">{item.name}</span>
+              </button>
+              <button
+                type="button"
+                className={tw.sidebarDeleteBtn(isDark)}
+                onClick={() => store.removeFromPlayHistory(item.path)}
+                title={t('deleteHistory')}
+              >
+                <X size={12} />
+              </button>
+            </div>
           ))}
         </div>
       )}

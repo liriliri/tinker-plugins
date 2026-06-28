@@ -74,7 +74,7 @@ export const tw = {
       isDark ? 'bg-[#222226] border-[#333338]' : 'bg-[#e4e4e8] border-[#d0d0d6]'
     }`,
   sidebarItem: (isDark: boolean, active: boolean) =>
-    `w-full text-left px-3 py-2 flex items-center gap-2 text-[10px] transition-colors ${
+    `flex items-center gap-1 px-3 py-2 text-[10px] transition-colors ${
       active
         ? isDark
           ? 'bg-[#4b5691]/20 text-[#8a94c0]'
@@ -83,8 +83,33 @@ export const tw = {
           ? 'text-gray-300 hover:bg-[#4b5691]/10 hover:text-[#8a94c0]'
           : 'text-gray-600 hover:bg-[#4b5691]/10 hover:text-[#4b5691]'
     }`,
+  sidebarItemBtn:
+    'flex-1 min-w-0 flex items-center gap-2 text-left bg-transparent border-none p-0 cursor-pointer',
+  sidebarDeleteBtn: (isDark: boolean) =>
+    `shrink-0 p-0.5 rounded ${
+      isDark
+        ? 'text-gray-500 hover:text-[#8a94c0]'
+        : 'text-gray-400 hover:text-[#4b5691]'
+    }`,
   sidebarItemIcon: (isDark: boolean) =>
     isDark ? 'text-gray-500 shrink-0' : 'text-gray-400 shrink-0',
   sidebarEmpty: (isDark: boolean) =>
     `text-center text-[10px] ${isDark ? 'text-gray-600' : 'text-gray-400'}`,
+  toast: {
+    root: (isDark: boolean) =>
+      `rounded border shadow-lg px-4 py-3 flex items-start gap-3 ${
+        isDark ? 'bg-[#222226] border-[#333338]' : 'bg-white border-[#d0d0d6]'
+      }`,
+    title: (isDark: boolean) =>
+      `text-[10px] font-semibold tracking-wide ${
+        isDark ? 'text-[#8a94c0]' : 'text-[#4b5691]'
+      }`,
+    description: (isDark: boolean) =>
+      `text-[10px] mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`,
+    close: (isDark: boolean) =>
+      isDark
+        ? 'text-gray-500 hover:text-gray-300 cursor-pointer'
+        : 'text-gray-400 hover:text-gray-600 cursor-pointer',
+    viewport: 'fixed bottom-4 right-4 flex flex-col gap-2 w-72 z-50',
+  },
 }

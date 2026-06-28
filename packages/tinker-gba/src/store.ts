@@ -1,12 +1,8 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 import debounce from 'licia/debounce'
+import LocalStore from 'licia/LocalStore'
 import splitPath from 'licia/splitPath'
-import {
-  createHistoryEntry,
-  loadPlayHistory,
-  MAX_PLAY_HISTORY,
-  savePlayHistory,
-} from './lib/history'
+import { DEFAULT_KEYMAP, type Keymap } from './lib/keymap'
 import type { PlayHistoryItem } from './types'
 
 interface FileSearchResult {
@@ -15,6 +11,12 @@ interface FileSearchResult {
 }
 
 const ROM_EXTS = ['gba']
+const STORAGE_PLAY_HISTORY = 'STORAGE_PLAY_HISTORY'
+const STORAGE_KEYMAP = 'STORAGE_KEYMAP'
+const STORAGE_SIDEBAR_OPEN = 'STORAGE_SIDEBAR_OPEN'
+const MAX_PLAY_HISTORY = 50
+
+const storage = new LocalStore('tinker-gba')
 
 class Store {
   isDark: boolean = false
@@ -24,13 +26,51 @@ class Store {
   sidebarOpen: boolean = false
   playHistory: PlayHistoryItem[] = []
   currentRomPath: string = ''
+  keymap: Keymap = DEFAULT_KEYMAP
+  toastOpen: boolean = false
+  toastMsg: string = ''
 
   private searchFileTask: tinker.SearchFileTask | null = null
 
   constructor() {
     makeAutoObservable(this)
-    this.playHistory = loadPlayHistory()
+    this.playHistory = this.loadPlayHistory()
+    this.keymap = this.loadKeymap()
+    this.sidebarOpen = storage.get(STORAGE_SIDEBAR_OPEN) ?? false
     this.initTheme()
+  }
+
+  private loadKeymap(): Keymap {
+    const saved = storage.get<Keymap>(STORAGE_KEYMAP)
+    if (saved) {
+      return { ...DEFAULT_KEYMAP, ...saved }
+    }
+    return DEFAULT_KEYMAP
+  }
+
+  private saveKeymap(keymap: Keymap) {
+    storage.set(STORAGE_KEYMAP, keymap)
+  }
+
+  setKeymap(keymap: Keymap) {
+    this.keymap = keymap
+    this.saveKeymap(keymap)
+  }
+
+  private loadPlayHistory(): PlayHistoryItem[] {
+    return storage.get(STORAGE_PLAY_HISTORY) || []
+  }
+
+  private savePlayHistory(items: PlayHistoryItem[]) {
+    storage.set(STORAGE_PLAY_HISTORY, items)
+  }
+
+  private createHistoryEntry(path: string): PlayHistoryItem {
+    return {
+      path,
+      name: splitPath(path).name,
+      playedAt: Date.now(),
+    }
   }
 
   private async initTheme() {
@@ -43,17 +83,27 @@ class Store {
 
   toggleSidebar() {
     this.sidebarOpen = !this.sidebarOpen
+    storage.set(STORAGE_SIDEBAR_OPEN, this.sidebarOpen)
   }
 
   setCurrentRom(filePath: string) {
     this.currentRomPath = filePath
-    const entry = createHistoryEntry(filePath)
+    const entry = this.createHistoryEntry(filePath)
     const next = [
       entry,
       ...this.playHistory.filter((item) => item.path !== filePath),
     ].slice(0, MAX_PLAY_HISTORY)
     this.playHistory = next
-    savePlayHistory(next)
+    this.savePlayHistory(next)
+  }
+
+  removeFromPlayHistory(filePath: string) {
+    const next = this.playHistory.filter((item) => item.path !== filePath)
+    this.playHistory = next
+    this.savePlayHistory(next)
+    if (this.currentRomPath === filePath) {
+      this.currentRomPath = ''
+    }
   }
 
   setSearchQuery(query: string) {
@@ -65,6 +115,18 @@ class Store {
     this.searchQuery = ''
     this.fileSearchResults = []
     this.isSearchingFiles = false
+  }
+
+  showError(msg: string) {
+    this.toastMsg = msg
+    this.toastOpen = false
+    requestAnimationFrame(() => {
+      this.toastOpen = true
+    })
+  }
+
+  setToastOpen(open: boolean) {
+    this.toastOpen = open
   }
 
   private debouncedFileSearch = debounce((query: string) => {

@@ -1,7 +1,6 @@
 {
   "search": "搜索 ROM",
   "sidebar": "侧边栏",
-  "playHistory": "游玩历史",
   "emptyHistory": "暂无游玩记录",
   "openRom": "打开 ROM",
   "dropRom": "拖入 .gba 文件",
@@ -15,7 +14,6 @@
   "resume": "继续",
   "loading": "加载中...",
   "keymap": "按键设置",
-  "binding": "绑定",
   "keyboard": "键盘",
   "gamepad": "手柄",
   "button": "按钮",
@@ -32,5 +30,8 @@
   "gba_l": "L",
   "gba_r": "R",
   "gba_start": "Start",
-  "gba_select": "Select"
+  "gba_select": "Select",
+  "error": "错误",
+  "fileNotFound": "文件不存在：{{name}}",
+  "deleteHistory": "从历史记录中删除"
 }

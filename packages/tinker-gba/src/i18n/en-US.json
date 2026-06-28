@@ -1,7 +1,6 @@
 {
   "search": "Search ROM",
   "sidebar": "Sidebar",
-  "playHistory": "Play History",
   "emptyHistory": "No play history yet",
   "openRom": "Open ROM",
   "dropRom": "Drop .gba file here",
@@ -15,7 +14,6 @@
   "resume": "Resume",
   "loading": "LOADING...",
   "keymap": "Key Bindings",
-  "binding": "Binding",
   "keyboard": "Keyboard",
   "gamepad": "Gamepad",
   "button": "Button",
@@ -32,5 +30,8 @@
   "gba_l": "L",
   "gba_r": "R",
   "gba_start": "Start",
-  "gba_select": "Select"
+  "gba_select": "Select",
+  "error": "Error",
+  "fileNotFound": "File not found: {{name}}",
+  "deleteHistory": "Remove from history"
 }

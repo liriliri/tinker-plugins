@@ -4,10 +4,12 @@ export function buildIframeHtml(
   gameUrl: string,
   gameName: string,
   baseUrl: string,
+  loadingText: string,
 ) {
   const escapedGameUrl = escapeJsStr(gameUrl)
   const escapedGameName = escapeJsStr(gameName)
   const escapedCoreUrl = escapeJsStr(`${baseUrl}vba_next_libretro.js`)
+  const escapedLoadingText = escapeJsStr(loadingText)
 
   return `<!DOCTYPE html>
 <html>
@@ -26,7 +28,7 @@ window.addEventListener('gamepadconnected', e => e.stopImmediatePropagation(), t
 window.addEventListener('gamepaddisconnected', e => e.stopImmediatePropagation(), true);
 </script>
 <div class="container">
-  <div id="loading">LOADING...</div>
+  <div id="loading">${escapedLoadingText}</div>
   <canvas id="canvas"></canvas>
 </div>
 <script>window.gameUrl='${escapedGameUrl}';window.gameName='${escapedGameName}';window.coreUrl='${escapedCoreUrl}';</script>

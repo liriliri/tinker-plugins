@@ -1,6 +1,6 @@
 {
   "name": "tinker-nes",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "NES Emulator Plugin for TINKER",
   "files": [
     "dist/",
@@ -33,6 +33,7 @@
     }
   },
   "devDependencies": {
+    "@radix-ui/react-toast": "^1.2.15",
     "@zenfs/core": "^2.5.2",
     "@zenfs/dom": "^1.2.7",
     "@zenfs/emscripten": "^1.0.5"
