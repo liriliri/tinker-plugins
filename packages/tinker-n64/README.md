@@ -2,6 +2,8 @@
 
 A N64 emulator plugin for [TINKER](https://github.com/liriliri/tinker), supporting ROM loading with keyboard and gamepad controls, save states, and fullscreen playback.
 
+![Screenshot](https://raw.githubusercontent.com/liriliri/tinker-plugins/master/packages/tinker-n64/screenshot.png)
+
 ## Features
 
 - **N64 Emulation** powered by N64Wasm (Mupen64Plus)
