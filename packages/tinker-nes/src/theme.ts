@@ -36,4 +36,55 @@ export const tw = {
           : 'bg-gray-200 text-gray-500 hover:bg-[#af1c29]/10 hover:text-[#af1c29]'
     }`,
   dialogSaveBtn: 'bg-[#af1c29] text-white hover:bg-[#c4303d]',
+  searchInput: (isDark: boolean) =>
+    `w-full pl-7 pr-7 py-1 text-[10px] tracking-wide rounded border focus:outline-none focus:ring-1 ${
+      isDark
+        ? 'bg-[#1c1c1f] border-[#333337] text-gray-200 placeholder:text-gray-600 focus:ring-[#af1c29]/50 focus:border-[#af1c29]/50'
+        : 'bg-white border-[#d8d8dc] text-gray-700 placeholder:text-gray-400 focus:ring-[#af1c29]/30 focus:border-[#af1c29]/50'
+    }`,
+  searchIcon: (isDark: boolean) => (isDark ? 'text-gray-600' : 'text-gray-400'),
+  searchClear: (isDark: boolean) =>
+    isDark
+      ? 'text-gray-600 hover:text-gray-300'
+      : 'text-gray-400 hover:text-gray-600',
+  searchDropdown: (isDark: boolean) =>
+    `absolute top-full left-0 right-0 mt-1 max-h-64 overflow-y-auto rounded border shadow-lg z-50 ${
+      isDark ? 'bg-[#242428] border-[#333337]' : 'bg-white border-[#d8d8dc]'
+    }`,
+  searchDropdownItem: (isDark: boolean, active: boolean) =>
+    `w-full text-left px-3 py-1.5 flex items-center gap-2 text-[10px] cursor-pointer ${
+      active
+        ? isDark
+          ? 'bg-[#af1c29]/20 text-[#d4545f]'
+          : 'bg-[#af1c29]/10 text-[#af1c29]'
+        : isDark
+          ? 'text-gray-300 hover:bg-[#af1c29]/10 hover:text-[#d4545f]'
+          : 'text-gray-600 hover:bg-[#af1c29]/10 hover:text-[#af1c29]'
+    }`,
+  searchDropdownIcon: (isDark: boolean) =>
+    isDark ? 'text-gray-500' : 'text-gray-400',
+  btnActive: (isDark: boolean) =>
+    `flex items-center gap-1.5 px-2.5 py-1.5 text-[10px] tracking-wider rounded transition-all duration-100 active:scale-95 ${
+      isDark
+        ? 'text-[#d4545f] bg-[#af1c29]/15'
+        : 'text-[#af1c29] bg-[#af1c29]/10'
+    }`,
+  sidebar: (isDark: boolean) =>
+    `flex flex-col w-52 shrink-0 border-r overflow-hidden ${
+      isDark ? 'bg-[#242428] border-[#333337]' : 'bg-[#eaeaec] border-[#d8d8dc]'
+    }`,
+  sidebarItem: (isDark: boolean, active: boolean) =>
+    `w-full text-left px-3 py-2 flex items-center gap-2 text-[10px] transition-colors ${
+      active
+        ? isDark
+          ? 'bg-[#af1c29]/20 text-[#d4545f]'
+          : 'bg-[#af1c29]/10 text-[#af1c29]'
+        : isDark
+          ? 'text-gray-300 hover:bg-[#af1c29]/10 hover:text-[#d4545f]'
+          : 'text-gray-600 hover:bg-[#af1c29]/10 hover:text-[#af1c29]'
+    }`,
+  sidebarItemIcon: (isDark: boolean) =>
+    isDark ? 'text-gray-500 shrink-0' : 'text-gray-400 shrink-0',
+  sidebarEmpty: (isDark: boolean) =>
+    `text-center text-[10px] ${isDark ? 'text-gray-600' : 'text-gray-400'}`,
 }

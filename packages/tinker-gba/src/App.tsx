@@ -18,6 +18,11 @@ import {
 } from './lib/keymap'
 import KeymapDialog from './components/KeymapDialog'
 import Toolbar from './components/Toolbar'
+import Sidebar from './components/Sidebar'
+
+interface FileWithPath extends File {
+  path?: string
+}
 
 const TOOLBAR_KEY_CODES: Record<string, number> = {
   KeyH: 72,
@@ -93,8 +98,7 @@ const App = observer(() => {
     )
   }, [])
 
-  const loadRom = useCallback(async (file: File) => {
-    const buffer = await file.arrayBuffer()
+  const loadRomBuffer = useCallback(async (buffer: ArrayBuffer) => {
     const romMd5 = md5([...new Uint8Array(buffer)]) + '.gba'
     if (blobUrlRef.current) URL.revokeObjectURL(blobUrlRef.current)
     const url = URL.createObjectURL(new Blob([buffer]))
@@ -122,6 +126,31 @@ const App = observer(() => {
     setIsPaused(false)
     setIsMuted(false)
   }, [])
+
+  const loadRomFromPath = useCallback(
+    async (filePath: string) => {
+      const data = await tinker.readFile(filePath)
+      const buffer =
+        data instanceof ArrayBuffer
+          ? data
+          : data.buffer.slice(
+              data.byteOffset,
+              data.byteOffset + data.byteLength,
+            )
+      await loadRomBuffer(buffer)
+      store.setCurrentRom(filePath)
+    },
+    [loadRomBuffer],
+  )
+
+  const loadRom = useCallback(
+    async (file: File) => {
+      await loadRomBuffer(await file.arrayBuffer())
+      const path = (file as FileWithPath).path
+      if (path) store.setCurrentRom(path)
+    },
+    [loadRomBuffer],
+  )
 
   const openFile = useCallback(() => {
     const input = document.createElement('input')
@@ -250,6 +279,7 @@ const App = observer(() => {
         isPaused={isPaused}
         isMuted={isMuted}
         onOpenFile={openFile}
+        onLoadRomPath={loadRomFromPath}
         onTogglePause={handleTogglePause}
         onReset={handleReset}
         onToggleMute={handleToggleMute}
@@ -259,35 +289,39 @@ const App = observer(() => {
         onOpenKeymap={() => setShowKeymap(true)}
       />
 
-      <div
-        ref={containerRef}
-        className="relative flex-1 overflow-hidden bg-black"
-        onDragOver={handleDragOver}
-        onDragLeave={handleDragLeave}
-        onDrop={handleDrop}
-      >
-        {romLoaded && (
-          <div className="scanlines absolute inset-0 pointer-events-none z-10" />
-        )}
-        {!romLoaded && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 select-none">
-            <span className="text-5xl">🎮</span>
-            <p
-              className={`text-xs tracking-[0.25em] uppercase gba-blink ${tw.emptyText()}`}
-            >
-              {t('dropRom')}
-            </p>
-          </div>
-        )}
-        {isDragging && (
-          <div className={tw.dragOverlay}>
-            <p
-              className={`text-[10px] tracking-[0.3em] uppercase animate-pulse ${tw.dragText(isDark)}`}
-            >
-              {t('dropRom')}
-            </p>
-          </div>
-        )}
+      <div className="flex flex-1 min-h-0">
+        {store.sidebarOpen && <Sidebar onSelect={loadRomFromPath} />}
+
+        <div
+          ref={containerRef}
+          className="relative flex-1 overflow-hidden bg-black"
+          onDragOver={handleDragOver}
+          onDragLeave={handleDragLeave}
+          onDrop={handleDrop}
+        >
+          {romLoaded && (
+            <div className="scanlines absolute inset-0 pointer-events-none z-10" />
+          )}
+          {!romLoaded && (
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 select-none">
+              <span className="text-5xl">🎮</span>
+              <p
+                className={`text-xs tracking-[0.25em] uppercase gba-blink ${tw.emptyText()}`}
+              >
+                {t('dropRom')}
+              </p>
+            </div>
+          )}
+          {isDragging && (
+            <div className={tw.dragOverlay}>
+              <p
+                className={`text-[10px] tracking-[0.3em] uppercase animate-pulse ${tw.dragText(isDark)}`}
+              >
+                {t('dropRom')}
+              </p>
+            </div>
+          )}
+        </div>
       </div>
 
       {showKeymap && (

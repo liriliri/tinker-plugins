@@ -1,4 +1,8 @@
 {
+  "search": "Search ROM",
+  "sidebar": "Sidebar",
+  "playHistory": "Play History",
+  "emptyHistory": "No play history yet",
   "openRom": "Open ROM",
   "dropRom": "Drop .gba file here",
   "reset": "Reset",

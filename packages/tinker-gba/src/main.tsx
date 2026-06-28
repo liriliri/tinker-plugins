@@ -17,7 +17,6 @@ i18n.use(initReactI18next).init({
     escapeValue: false,
   },
 })
-
 ;(async function () {
   const language = await tinker.getLanguage()
   i18n.changeLanguage(language)
