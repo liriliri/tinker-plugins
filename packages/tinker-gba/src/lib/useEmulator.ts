@@ -16,6 +16,26 @@ import {
 } from './emulatorInput'
 
 const ROM_EXT = '.gba'
+const AXIS_THRESHOLD = 0.5
+
+function isGamepadBindingActive(
+  pad: Gamepad,
+  binding: {
+    gamepad: number | null
+    gamepadAxis: { axis: number; direction: 'negative' | 'positive' } | null
+  },
+) {
+  if (binding.gamepad !== null && binding.gamepad >= 0) {
+    if (pad.buttons[binding.gamepad]?.pressed) return true
+  }
+  if (binding.gamepadAxis) {
+    const v = pad.axes[binding.gamepadAxis.axis] ?? 0
+    return binding.gamepadAxis.direction === 'negative'
+      ? v < -AXIS_THRESHOLD
+      : v > AXIS_THRESHOLD
+  }
+  return false
+}
 
 export function useEmulator(showKeymap: boolean) {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -203,14 +223,12 @@ export function useEmulator(showKeymap: boolean) {
 
       if (pad) {
         for (const btn of Object.keys(km) as GbaButton[]) {
-          const idx = km[btn].gamepad
-          if (idx === null) continue
-          if (pad.buttons[idx]?.pressed) {
-            pressed.add(btn)
-            const { code, keyCode } = INTERNAL_KEYS[btn]
-            if (!padPressedRef.current.has(btn)) {
-              postKey(win, 'keydown', code, keyCode)
-            }
+          const binding = km[btn]
+          if (!isGamepadBindingActive(pad, binding)) continue
+          pressed.add(btn)
+          const { code, keyCode } = INTERNAL_KEYS[btn]
+          if (!padPressedRef.current.has(btn)) {
+            postKey(win, 'keydown', code, keyCode)
           }
         }
       }

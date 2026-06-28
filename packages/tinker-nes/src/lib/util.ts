@@ -15,10 +15,10 @@ export function buildIframeHtml(
 <html>
 <head>
 <style>
-html,body{margin:0;padding:0;overflow:hidden;background:#000;}
-.container{position:fixed;inset:0;display:flex;justify-content:center;align-items:center;background:#000;}
+html,body{margin:0;padding:0;overflow:hidden;background:#000;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;}
+.container{position:fixed;inset:0;display:flex;justify-content:center;align-items:center;background:#000;user-select:none;}
 #loading{position:absolute;inset:0;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;font:18px Menlo,monospace;z-index:10;}
-#canvas{aspect-ratio:4/3;height:100%!important;max-width:100%;max-height:100%;outline:none;}
+#canvas{aspect-ratio:4/3;height:100%!important;max-width:100%;max-height:100%;outline:none;user-select:none;-webkit-user-select:none;}
 </style>
 </head>
 <body>

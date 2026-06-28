@@ -1,26 +1,29 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { X, RotateCcw, Gamepad2, Keyboard } from 'lucide-react'
+import * as ScrollArea from '@radix-ui/react-scroll-area'
+import cloneDeep from 'licia/cloneDeep'
 import { tw } from '../theme'
 import {
-  GBA_BUTTONS,
-  GbaButton,
-  Keymap,
+  N64_BUTTONS,
+  N64Button,
+  PlayerKeymap,
   DEFAULT_KEYMAP,
-  DIRECTION_BUTTONS,
-  formatGamepadAxis,
   ButtonBinding,
+  ANALOG_BUTTONS,
+  formatGamepadAxis,
+  codeToKey,
 } from '../lib/keymap'
 
 interface Props {
   isDark: boolean
-  keymap: Keymap
+  keymap: PlayerKeymap
   onClose: () => void
-  onSave: (keymap: Keymap) => void
+  onSave: (keymap: PlayerKeymap) => void
 }
 
 type BindingTarget = {
-  button: GbaButton
+  button: N64Button
   type: 'keyboard' | 'gamepad'
 }
 
@@ -31,11 +34,11 @@ export default function KeymapDialog({
   onSave,
 }: Props) {
   const { t } = useTranslation()
-  const [draft, setDraft] = useState<Keymap>(() => ({ ...keymap }))
+  const [draft, setDraft] = useState<PlayerKeymap>(() => cloneDeep(keymap))
   const [listening, setListening] = useState<BindingTarget | null>(null)
 
   const clearBinding = useCallback(
-    (button: GbaButton, type: 'keyboard' | 'gamepad') => {
+    (button: N64Button, type: 'keyboard' | 'gamepad') => {
       setDraft((prev) => ({
         ...prev,
         [button]: {
@@ -61,7 +64,11 @@ export default function KeymapDialog({
       const { button } = listening
       setDraft((prev) => ({
         ...prev,
-        [button]: { ...prev[button], keyboard: e.code },
+        [button]: {
+          ...prev[button],
+          keyboard: e.code,
+          key: codeToKey(e.code),
+        },
       }))
       setListening(null)
     }
@@ -78,7 +85,7 @@ export default function KeymapDialog({
         if (!pad) continue
         const { button } = listening
 
-        if (DIRECTION_BUTTONS.has(button)) {
+        if (ANALOG_BUTTONS.has(button)) {
           for (let a = 0; a < pad.axes.length; a++) {
             const v = pad.axes[a]
             if (v < -0.5) {
@@ -138,7 +145,7 @@ export default function KeymapDialog({
   )
 
   const handleReset = useCallback(() => {
-    setDraft({ ...DEFAULT_KEYMAP })
+    setDraft(cloneDeep(DEFAULT_KEYMAP))
   }, [])
 
   const handleSave = useCallback(() => {
@@ -151,10 +158,9 @@ export default function KeymapDialog({
   const borderCls = tw.dialogBorder(isDark)
   const tableBg = tw.tableBg(isDark)
   const thCls = tw.tableHeader(isDark)
-
   const btnCls = (active: boolean) => tw.dialogBindingBtn(isDark, active)
 
-  const isListening = (button: GbaButton, type: 'keyboard' | 'gamepad') =>
+  const isListening = (button: N64Button, type: 'keyboard' | 'gamepad') =>
     listening?.button === button && listening?.type === type
 
   const formatGamepadBinding = (binding: ButtonBinding) => {
@@ -164,7 +170,7 @@ export default function KeymapDialog({
   }
 
   const renderBindingBtn = (
-    button: GbaButton,
+    button: N64Button,
     type: 'keyboard' | 'gamepad',
     binding: ButtonBinding,
   ) => {
@@ -176,7 +182,7 @@ export default function KeymapDialog({
     const label = active
       ? type === 'keyboard'
         ? t('pressKey')
-        : DIRECTION_BUTTONS.has(button)
+        : ANALOG_BUTTONS.has(button)
           ? t('pressAxis')
           : t('pressBtn')
       : type === 'keyboard'
@@ -188,6 +194,7 @@ export default function KeymapDialog({
     return (
       <td key={type} className={`py-1.5 px-3 border-b ${borderCls}`}>
         <button
+          type="button"
           className={`${btnCls(active)} w-full justify-between`}
           onClick={() =>
             active ? setListening(null) : setListening({ button, type })
@@ -213,62 +220,73 @@ export default function KeymapDialog({
       onClick={handleBackdrop}
     >
       <div
-        className={`rounded border shadow-xl w-[520px] max-h-[90vh] flex flex-col font-mono ${dialogBg}`}
+        className={`rounded border shadow-xl w-[520px] max-h-[90vh] min-h-0 flex flex-col overflow-hidden font-mono ${dialogBg}`}
       >
         <div
-          className={`flex items-center justify-between px-4 py-2.5 border-b ${borderCls}`}
+          className={`shrink-0 flex items-center justify-between px-4 py-2.5 border-b ${borderCls}`}
         >
           <span className="text-[11px] tracking-wider uppercase">
             {t('keymap')}
           </span>
-          <button className={tw.btn(isDark)} onClick={onClose}>
+          <button type="button" className={tw.btn(isDark)} onClick={onClose}>
             <X size={13} />
           </button>
         </div>
 
-        <div className="overflow-auto flex-1">
-          <table className={`w-full text-[10px] ${tableBg}`}>
-            <thead>
-              <tr>
-                <th
-                  className={`py-1.5 px-3 text-left font-normal tracking-wider uppercase ${thCls}`}
-                >
-                  {t('button')}
-                </th>
-                <th
-                  className={`py-1.5 px-3 text-left font-normal tracking-wider uppercase ${thCls}`}
-                >
-                  <Keyboard size={10} className="inline mr-1" />
-                  {t('keyboard')}
-                </th>
-                <th
-                  className={`py-1.5 px-3 text-left font-normal tracking-wider uppercase ${thCls}`}
-                >
-                  <Gamepad2 size={10} className="inline mr-1" />
-                  {t('gamepad')}
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {GBA_BUTTONS.map((btn) => (
-                <tr key={btn}>
-                  <td
-                    className={`py-1.5 px-3 border-b tracking-wider uppercase ${borderCls} ${thCls}`}
-                  >
-                    {t(`gba_${btn}`)}
-                  </td>
-                  {renderBindingBtn(btn, 'keyboard', draft[btn])}
-                  {renderBindingBtn(btn, 'gamepad', draft[btn])}
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="flex-1 min-h-0 overflow-hidden flex flex-col">
+          <ScrollArea.Root className={tw.scrollArea.root}>
+            <ScrollArea.Viewport className={tw.scrollArea.viewport}>
+              <table className={`w-full text-[10px] ${tableBg}`}>
+                <thead>
+                  <tr>
+                    <th
+                      className={`sticky top-0 z-10 py-1.5 px-3 text-left font-normal tracking-wider uppercase ${tableBg} ${thCls}`}
+                    >
+                      {t('button')}
+                    </th>
+                    <th
+                      className={`sticky top-0 z-10 py-1.5 px-3 text-left font-normal tracking-wider uppercase ${tableBg} ${thCls}`}
+                    >
+                      <Keyboard size={10} className="inline mr-1" />
+                      {t('keyboard')}
+                    </th>
+                    <th
+                      className={`sticky top-0 z-10 py-1.5 px-3 text-left font-normal tracking-wider uppercase ${tableBg} ${thCls}`}
+                    >
+                      <Gamepad2 size={10} className="inline mr-1" />
+                      {t('gamepad')}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {N64_BUTTONS.map((btn) => (
+                    <tr key={btn}>
+                      <td
+                        className={`py-1.5 px-3 border-b tracking-wider uppercase ${borderCls} ${thCls}`}
+                      >
+                        {t(`n64_${btn}`)}
+                      </td>
+                      {renderBindingBtn(btn, 'keyboard', draft[btn])}
+                      {renderBindingBtn(btn, 'gamepad', draft[btn])}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </ScrollArea.Viewport>
+            <ScrollArea.Scrollbar
+              orientation="vertical"
+              className={tw.scrollArea.scrollbar(isDark)}
+            >
+              <ScrollArea.Thumb className={tw.scrollArea.thumb(isDark)} />
+            </ScrollArea.Scrollbar>
+          </ScrollArea.Root>
         </div>
 
         <div
-          className={`flex items-center justify-between px-4 py-2.5 border-t ${borderCls}`}
+          className={`shrink-0 flex items-center justify-between px-4 py-2.5 border-t ${borderCls}`}
         >
           <button
+            type="button"
             className={tw.btn(isDark)}
             onClick={handleReset}
             title={t('reset')}
@@ -278,7 +296,7 @@ export default function KeymapDialog({
           </button>
           <button
             type="button"
-            className={`px-4 py-1.5 rounded text-[10px] tracking-wider transition-all active:scale-95 ${tw.dialogSaveBtn()}`}
+            className={`px-4 py-1.5 rounded text-[10px] tracking-wider transition-all active:scale-95 ${tw.dialogSaveBtn}`}
             onClick={handleSave}
           >
             {t('save')}

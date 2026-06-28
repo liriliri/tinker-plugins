@@ -2,7 +2,7 @@ import { makeAutoObservable, runInAction } from 'mobx'
 import debounce from 'licia/debounce'
 import LocalStore from 'licia/LocalStore'
 import splitPath from 'licia/splitPath'
-import { DEFAULT_KEYMAP, type PlayerKeymap } from './lib/keymap'
+import { DEFAULT_KEYMAP, NES_BUTTONS, type PlayerKeymap } from './lib/keymap'
 import type { PlayHistoryItem } from './types'
 
 interface FileSearchResult {
@@ -41,14 +41,20 @@ class Store {
   }
 
   private loadKeymap(): [PlayerKeymap, PlayerKeymap] {
-    const saved = storage.get<[PlayerKeymap, PlayerKeymap]>(STORAGE_KEYMAP)
-    if (saved) {
-      return [
-        { ...DEFAULT_KEYMAP[0], ...saved[0] },
-        { ...DEFAULT_KEYMAP[1], ...saved[1] },
-      ]
-    }
-    return DEFAULT_KEYMAP
+    const saved =
+      storage.get<[Partial<PlayerKeymap>, Partial<PlayerKeymap>]>(
+        STORAGE_KEYMAP,
+      )
+    if (!saved) return DEFAULT_KEYMAP
+    return [0, 1].map((p) => {
+      const result = { ...DEFAULT_KEYMAP[p as 0 | 1] }
+      for (const btn of NES_BUTTONS) {
+        if (saved[p as 0 | 1]?.[btn]) {
+          result[btn] = { ...result[btn], ...saved[p as 0 | 1]![btn]! }
+        }
+      }
+      return result
+    }) as [PlayerKeymap, PlayerKeymap]
   }
 
   private saveKeymap(keymap: [PlayerKeymap, PlayerKeymap]) {

@@ -1,7 +1,7 @@
 {
-  "name": "tinker-nes",
-  "version": "0.3.1",
-  "description": "NES Emulator Plugin for TINKER",
+  "name": "tinker-n64",
+  "version": "0.1.0",
+  "description": "N64 Emulator Plugin for TINKER",
   "files": [
     "dist/",
     "icon.png"
@@ -17,25 +17,23 @@
   },
   "keywords": [
     "tinker",
-    "nes",
+    "n64",
     "emulator"
   ],
   "tinker": {
-    "name": "NES",
-    "description": "Play NES ROMs with save state support",
+    "name": "N64",
+    "description": "Play N64 ROMs with save state support",
     "main": "dist/index.html",
     "icon": "icon.png",
     "locales": {
       "zh-CN": {
-        "name": "红白机",
-        "description": "运行 NES 游戏，支持存档"
+        "name": "N64",
+        "description": "运行 N64 游戏，支持存档"
       }
     }
   },
   "devDependencies": {
-    "@radix-ui/react-toast": "^1.2.15",
-    "@zenfs/core": "^2.5.2",
-    "@zenfs/dom": "^1.2.7",
-    "@zenfs/emscripten": "^1.0.5"
+    "@radix-ui/react-scroll-area": "^1.2.10",
+    "@radix-ui/react-toast": "^1.2.15"
   }
 }

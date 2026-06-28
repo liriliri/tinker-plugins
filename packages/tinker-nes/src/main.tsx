@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { observer } from 'mobx-react-lite'
 import i18n from 'i18next'
@@ -33,6 +33,11 @@ const App = observer(() => {
   const [showKeymap, setShowKeymap] = useState(false)
   const emulator = useEmulator(showKeymap)
 
+  const handleSaveKeymap = useCallback((keymap: typeof store.keymap) => {
+    store.setKeymap(keymap)
+    setShowKeymap(false)
+  }, [])
+
   return (
     <Toast.Provider duration={4000}>
       <div className={`h-screen flex flex-col font-mono ${tw.appBg(isDark)}`}>
@@ -60,6 +65,7 @@ const App = observer(() => {
             romLoaded={emulator.romLoaded}
             isDragging={emulator.isDragging}
             isDark={isDark}
+            onOpenFile={emulator.openFile}
             onDragOver={emulator.handleDragOver}
             onDragLeave={emulator.handleDragLeave}
             onDrop={emulator.handleDrop}
@@ -71,7 +77,7 @@ const App = observer(() => {
             isDark={isDark}
             keymap={store.keymap}
             onClose={() => setShowKeymap(false)}
-            onSave={store.setKeymap}
+            onSave={handleSaveKeymap}
           />
         )}
       </div>

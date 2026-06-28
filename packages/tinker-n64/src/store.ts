@@ -2,7 +2,7 @@ import { makeAutoObservable, runInAction } from 'mobx'
 import debounce from 'licia/debounce'
 import LocalStore from 'licia/LocalStore'
 import splitPath from 'licia/splitPath'
-import { DEFAULT_KEYMAP, GBA_BUTTONS, type Keymap } from './lib/keymap'
+import { DEFAULT_KEYMAP, N64_BUTTONS, type PlayerKeymap } from './lib/keymap'
 import type { PlayHistoryItem } from './types'
 
 interface FileSearchResult {
@@ -10,13 +10,13 @@ interface FileSearchResult {
   name: string
 }
 
-const ROM_EXTS = ['gba']
+const ROM_EXTS = ['n64', 'v64', 'z64']
 const STORAGE_PLAY_HISTORY = 'STORAGE_PLAY_HISTORY'
 const STORAGE_KEYMAP = 'STORAGE_KEYMAP'
 const STORAGE_SIDEBAR_OPEN = 'STORAGE_SIDEBAR_OPEN'
 const MAX_PLAY_HISTORY = 50
 
-const storage = new LocalStore('tinker-gba')
+const storage = new LocalStore('tinker-n64')
 
 class Store {
   isDark: boolean = false
@@ -26,7 +26,7 @@ class Store {
   sidebarOpen: boolean = false
   playHistory: PlayHistoryItem[] = []
   currentRomPath: string = ''
-  keymap: Keymap = DEFAULT_KEYMAP
+  keymap: PlayerKeymap = DEFAULT_KEYMAP
   toastOpen: boolean = false
   toastMsg: string = ''
 
@@ -40,11 +40,11 @@ class Store {
     this.initTheme()
   }
 
-  private loadKeymap(): Keymap {
-    const saved = storage.get<Partial<Keymap>>(STORAGE_KEYMAP)
+  private loadKeymap(): PlayerKeymap {
+    const saved = storage.get<Partial<PlayerKeymap>>(STORAGE_KEYMAP)
     if (!saved) return { ...DEFAULT_KEYMAP }
     const result = { ...DEFAULT_KEYMAP }
-    for (const btn of GBA_BUTTONS) {
+    for (const btn of N64_BUTTONS) {
       if (saved[btn]) {
         result[btn] = { ...result[btn], ...saved[btn] }
       }
@@ -52,11 +52,11 @@ class Store {
     return result
   }
 
-  private saveKeymap(keymap: Keymap) {
+  private saveKeymap(keymap: PlayerKeymap) {
     storage.set(STORAGE_KEYMAP, keymap)
   }
 
-  setKeymap(keymap: Keymap) {
+  setKeymap(keymap: PlayerKeymap) {
     this.keymap = keymap
     this.saveKeymap(keymap)
   }

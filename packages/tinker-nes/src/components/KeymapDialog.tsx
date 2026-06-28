@@ -9,6 +9,8 @@ import {
   PlayerKeymap,
   DEFAULT_KEYMAP,
   ButtonBinding,
+  DIRECTION_BUTTONS,
+  formatGamepadAxis,
 } from '../lib/keymap'
 
 interface Props {
@@ -42,7 +44,12 @@ export default function KeymapDialog({
         const next = [...prev] as [PlayerKeymap, PlayerKeymap]
         next[player] = {
           ...prev[player],
-          [button]: { ...prev[player][button], [type]: null },
+          [button]: {
+            ...prev[player][button],
+            ...(type === 'keyboard'
+              ? { keyboard: null }
+              : { gamepad: null, gamepadAxis: null }),
+          },
         }
         return next
       })
@@ -81,14 +88,58 @@ export default function KeymapDialog({
       const pads = navigator.getGamepads()
       for (const pad of pads) {
         if (!pad) continue
+        const { player, button } = listening
+
+        if (DIRECTION_BUTTONS.has(button)) {
+          for (let a = 0; a < pad.axes.length; a++) {
+            const v = pad.axes[a]
+            if (v < -0.5) {
+              setDraft((prev) => {
+                const next = [...prev] as [PlayerKeymap, PlayerKeymap]
+                next[player] = {
+                  ...prev[player],
+                  [button]: {
+                    ...prev[player][button],
+                    gamepad: null,
+                    gamepadAxis: { axis: a, direction: 'negative' },
+                  },
+                }
+                return next
+              })
+              setListening(null)
+              return
+            }
+            if (v > 0.5) {
+              setDraft((prev) => {
+                const next = [...prev] as [PlayerKeymap, PlayerKeymap]
+                next[player] = {
+                  ...prev[player],
+                  [button]: {
+                    ...prev[player][button],
+                    gamepad: null,
+                    gamepadAxis: { axis: a, direction: 'positive' },
+                  },
+                }
+                return next
+              })
+              setListening(null)
+              return
+            }
+          }
+          continue
+        }
+
         for (let i = 0; i < pad.buttons.length; i++) {
           if (pad.buttons[i].pressed) {
-            const { player, button } = listening
             setDraft((prev) => {
               const next = [...prev] as [PlayerKeymap, PlayerKeymap]
               next[player] = {
                 ...prev[player],
-                [button]: { ...prev[player][button], gamepad: i },
+                [button]: {
+                  ...prev[player][button],
+                  gamepad: i,
+                  gamepadAxis: null,
+                },
               }
               return next
             })
@@ -115,9 +166,9 @@ export default function KeymapDialog({
   }, [])
 
   const handleSave = useCallback(() => {
+    setListening(null)
     onSave(draft)
-    onClose()
-  }, [draft, onSave, onClose])
+  }, [draft, onSave])
 
   const overlayBg = tw.dialogOverlay(isDark)
   const dialogBg = tw.dialogBg(isDark)
@@ -134,6 +185,12 @@ export default function KeymapDialog({
     listening?.player === player &&
     listening?.button === button &&
     listening?.type === type
+
+  const formatGamepadBinding = (binding: ButtonBinding) => {
+    if (binding.gamepadAxis) return formatGamepadAxis(binding.gamepadAxis)
+    if (binding.gamepad !== null) return `${t('btn')} ${binding.gamepad}`
+    return '—'
+  }
 
   const renderCell = (
     player: 0 | 1,
@@ -179,16 +236,16 @@ export default function KeymapDialog({
           }
         >
           <Gamepad2 size={10} />
-          <span className="w-[52px] truncate">
+          <span className="w-[72px] truncate">
             {isListening(player, button, 'gamepad')
-              ? t('pressBtn')
-              : binding.gamepad !== null
-                ? `${t('btn')} ${binding.gamepad}`
-                : '—'}
+              ? DIRECTION_BUTTONS.has(button)
+                ? t('pressAxis')
+                : t('pressBtn')
+              : formatGamepadBinding(binding)}
           </span>
           <X
             size={9}
-            className={`cursor-pointer ${binding.gamepad !== null && !isListening(player, button, 'gamepad') ? 'opacity-40 hover:opacity-100' : 'invisible'}`}
+            className={`cursor-pointer ${(binding.gamepad !== null || binding.gamepadAxis) && !isListening(player, button, 'gamepad') ? 'opacity-40 hover:opacity-100' : 'invisible'}`}
             onClick={(e) => {
               e.stopPropagation()
               clearBinding(player, button, 'gamepad')
@@ -205,7 +262,7 @@ export default function KeymapDialog({
       onClick={handleBackdrop}
     >
       <div
-        className={`rounded border shadow-xl w-[620px] max-h-[90vh] flex flex-col font-mono ${dialogBg}`}
+        className={`rounded border shadow-xl w-[660px] max-h-[90vh] flex flex-col font-mono ${dialogBg}`}
       >
         {/* header */}
         <div
@@ -270,6 +327,7 @@ export default function KeymapDialog({
             <span className="text-[10px]">{t('reset')}</span>
           </button>
           <button
+            type="button"
             className={`px-4 py-1.5 rounded text-[10px] tracking-wider transition-all active:scale-95 ${tw.dialogSaveBtn}`}
             onClick={handleSave}
           >

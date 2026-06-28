@@ -23,6 +23,13 @@ export const NES_BUTTONS: NesButton[] = [
   'select',
 ]
 
+export const DIRECTION_BUTTONS = new Set<NesButton>([
+  'up',
+  'down',
+  'left',
+  'right',
+])
+
 export const TURBO_BUTTON_MAP: Partial<Record<NesButton, NesButton>> = {
   turboA: 'a',
   turboB: 'b',
@@ -60,36 +67,55 @@ export const INTERNAL_KEYS: [
   },
 ]
 
+export type GamepadAxisDirection = 'negative' | 'positive'
+
+export interface GamepadAxisBinding {
+  axis: number
+  direction: GamepadAxisDirection
+}
+
 export interface ButtonBinding {
   keyboard: string | null // KeyboardEvent.code
   gamepad: number | null // gamepad button index
+  gamepadAxis: GamepadAxisBinding | null
 }
 
 export type PlayerKeymap = Record<NesButton, ButtonBinding>
 
+const bind = (
+  keyboard: string | null,
+  gamepad: number | null,
+  gamepadAxis: GamepadAxisBinding | null = null,
+): ButtonBinding => ({ keyboard, gamepad, gamepadAxis })
+
 export const DEFAULT_KEYMAP: [PlayerKeymap, PlayerKeymap] = [
   {
-    up: { keyboard: 'ArrowUp', gamepad: 12 },
-    down: { keyboard: 'ArrowDown', gamepad: 13 },
-    left: { keyboard: 'ArrowLeft', gamepad: 14 },
-    right: { keyboard: 'ArrowRight', gamepad: 15 },
-    a: { keyboard: 'KeyX', gamepad: 1 },
-    b: { keyboard: 'KeyZ', gamepad: 0 },
-    turboA: { keyboard: 'KeyS', gamepad: 3 },
-    turboB: { keyboard: 'KeyA', gamepad: 2 },
-    start: { keyboard: 'Enter', gamepad: 9 },
-    select: { keyboard: 'ShiftRight', gamepad: 8 },
+    up: bind('ArrowUp', 12, { axis: 1, direction: 'negative' }),
+    down: bind('ArrowDown', 13, { axis: 1, direction: 'positive' }),
+    left: bind('ArrowLeft', 14, { axis: 0, direction: 'negative' }),
+    right: bind('ArrowRight', 15, { axis: 0, direction: 'positive' }),
+    a: bind('KeyX', 1),
+    b: bind('KeyZ', 0),
+    turboA: bind('KeyS', 3),
+    turboB: bind('KeyA', 2),
+    start: bind('Enter', 9),
+    select: bind('ShiftRight', 8),
   },
   {
-    up: { keyboard: null, gamepad: 12 },
-    down: { keyboard: null, gamepad: 13 },
-    left: { keyboard: null, gamepad: 14 },
-    right: { keyboard: null, gamepad: 15 },
-    a: { keyboard: null, gamepad: 1 },
-    b: { keyboard: null, gamepad: 0 },
-    turboA: { keyboard: null, gamepad: 3 },
-    turboB: { keyboard: null, gamepad: 2 },
-    start: { keyboard: null, gamepad: 9 },
-    select: { keyboard: null, gamepad: 8 },
+    up: bind(null, 12, { axis: 1, direction: 'negative' }),
+    down: bind(null, 13, { axis: 1, direction: 'positive' }),
+    left: bind(null, 14, { axis: 0, direction: 'negative' }),
+    right: bind(null, 15, { axis: 0, direction: 'positive' }),
+    a: bind(null, 1),
+    b: bind(null, 0),
+    turboA: bind(null, 3),
+    turboB: bind(null, 2),
+    start: bind(null, 9),
+    select: bind(null, 8),
   },
 ]
+
+export function formatGamepadAxis(axis: GamepadAxisBinding): string {
+  const sign = axis.direction === 'negative' ? '−' : '+'
+  return `Axis ${axis.axis}${sign}`
+}

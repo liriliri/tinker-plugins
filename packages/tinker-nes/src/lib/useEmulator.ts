@@ -18,6 +18,26 @@ import {
 } from './emulatorInput'
 
 const ROM_EXT = '.nes'
+const AXIS_THRESHOLD = 0.5
+
+function isGamepadBindingActive(
+  pad: Gamepad,
+  binding: {
+    gamepad: number | null
+    gamepadAxis: { axis: number; direction: 'negative' | 'positive' } | null
+  },
+) {
+  if (binding.gamepad !== null && binding.gamepad >= 0) {
+    if (pad.buttons[binding.gamepad]?.pressed) return true
+  }
+  if (binding.gamepadAxis) {
+    const v = pad.axes[binding.gamepadAxis.axis] ?? 0
+    return binding.gamepadAxis.direction === 'negative'
+      ? v < -AXIS_THRESHOLD
+      : v > AXIS_THRESHOLD
+  }
+  return false
+}
 
 export function useEmulator(showKeymap: boolean) {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -244,25 +264,23 @@ export function useEmulator(showKeymap: boolean) {
         if (!pad) continue
         const player = km[p as 0 | 1]
         for (const btn of Object.keys(player) as NesButton[]) {
-          const idx = player[btn].gamepad
-          if (idx === null) continue
-          if (pad.buttons[idx]?.pressed) {
-            const key = `${p}-${btn}`
-            pressed.add(key)
-            const targetBtn = TURBO_BUTTON_MAP[btn] ?? btn
-            const { code, keyCode } = INTERNAL_KEYS[p as 0 | 1][targetBtn]
-            if (TURBO_BUTTON_MAP[btn]) {
-              const frame =
-                ((turboFrameRef.current.get(key) ?? 0) + 1) % (TURBO_PERIOD * 2)
-              turboFrameRef.current.set(key, frame)
-              if (frame % TURBO_PERIOD === 1) {
-                postKey(win, 'keydown', code, keyCode)
-              } else if (frame % TURBO_PERIOD === 0) {
-                postKey(win, 'keyup', code, keyCode)
-              }
-            } else if (!padPressedRef.current.has(key)) {
+          const binding = player[btn]
+          if (!isGamepadBindingActive(pad, binding)) continue
+          const key = `${p}-${btn}`
+          pressed.add(key)
+          const targetBtn = TURBO_BUTTON_MAP[btn] ?? btn
+          const { code, keyCode } = INTERNAL_KEYS[p as 0 | 1][targetBtn]
+          if (TURBO_BUTTON_MAP[btn]) {
+            const frame =
+              ((turboFrameRef.current.get(key) ?? 0) + 1) % (TURBO_PERIOD * 2)
+            turboFrameRef.current.set(key, frame)
+            if (frame % TURBO_PERIOD === 1) {
               postKey(win, 'keydown', code, keyCode)
+            } else if (frame % TURBO_PERIOD === 0) {
+              postKey(win, 'keyup', code, keyCode)
             }
+          } else if (!padPressedRef.current.has(key)) {
+            postKey(win, 'keydown', code, keyCode)
           }
         }
       }

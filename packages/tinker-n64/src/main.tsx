@@ -44,11 +44,9 @@ const App = observer(() => {
         <Toolbar
           isDark={isDark}
           romLoaded={emulator.romLoaded}
-          isPaused={emulator.isPaused}
           isMuted={emulator.isMuted}
           onOpenFile={emulator.openFile}
           onLoadRomPath={emulator.loadRomFromPath}
-          onTogglePause={emulator.handleTogglePause}
           onReset={emulator.handleReset}
           onToggleMute={emulator.handleToggleMute}
           onSaveState={emulator.handleSaveState}

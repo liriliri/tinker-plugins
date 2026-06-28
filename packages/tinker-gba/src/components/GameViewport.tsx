@@ -6,6 +6,7 @@ interface GameViewportProps {
   romLoaded: boolean
   isDragging: boolean
   isDark: boolean
+  onOpenFile: () => void
   onDragOver: (e: React.DragEvent) => void
   onDragLeave: () => void
   onDrop: (e: React.DragEvent) => void
@@ -16,6 +17,7 @@ const GameViewport = ({
   romLoaded,
   isDragging,
   isDark,
+  onOpenFile,
   onDragOver,
   onDragLeave,
   onDrop,
@@ -25,7 +27,8 @@ const GameViewport = ({
   return (
     <div
       ref={containerRef}
-      className="relative flex-1 overflow-hidden bg-black"
+      className="game-viewport relative flex-1 overflow-hidden bg-black select-none outline-none"
+      onMouseDown={(e) => e.preventDefault()}
       onDragOver={onDragOver}
       onDragLeave={onDragLeave}
       onDrop={onDrop}
@@ -34,7 +37,10 @@ const GameViewport = ({
         <div className="scanlines absolute inset-0 pointer-events-none z-10" />
       )}
       {!romLoaded && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 select-none">
+        <div
+          className="absolute inset-0 flex flex-col items-center justify-center gap-4 select-none cursor-pointer"
+          onClick={onOpenFile}
+        >
           <span className="text-5xl">🎮</span>
           <p
             className={`text-xs tracking-[0.25em] uppercase gba-blink ${tw.emptyText()}`}
