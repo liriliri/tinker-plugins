@@ -112,5 +112,13 @@ All plugins in the list can be installed to TINKER by running `npm i -g tinker-x
       <th><img src="./packages/tinker-meme/screenshot.png"/></th>
       <th><img src="./packages/tinker-markdown-live/screenshot.png"/></th>
     </tr>
+    <tr>
+      <th><a href="./packages/tinker-mbti-test/">tinker-mbti-test</a></th>
+      <th><a href="./packages/tinker-n64/">tinker-n64</a></th>
+    </tr>
+    <tr>
+      <th><img src="./packages/tinker-mbti-test/screenshot.png"/></th>
+      <th><img src="./packages/tinker-n64/screenshot.png"/></th>
+    </tr>
   </tbody>
 </table>
