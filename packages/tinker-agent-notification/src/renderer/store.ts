@@ -33,9 +33,9 @@ interface AgentDef {
 const agents: AgentDef[] = [
   { id: 'codebuddy', name: 'CodeBuddy', configDir: '.codebuddy' },
   {
-    id: 'claude-internal',
-    name: 'Claude Internal',
-    configDir: '.claude-internal',
+    id: 'tclaude',
+    name: 'TClaude',
+    configDir: '.tclaude',
     requireDir: true,
   },
   {
@@ -50,9 +50,9 @@ const agents: AgentDef[] = [
     configFile: 'hooks.json',
   },
   {
-    id: 'codex-internal',
-    name: 'Codex Internal',
-    configDir: '.codex-internal',
+    id: 'tcodex',
+    name: 'TCodex',
+    configDir: '.tcodex',
     configFile: 'hooks.json',
     requireDir: true,
   },
