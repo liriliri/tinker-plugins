@@ -1,10 +1,11 @@
 import { observer } from 'mobx-react-lite'
 import { useState, useEffect } from 'react'
 import className from 'licia/className'
+import contain from 'licia/contain'
 import * as Dialog from '@radix-ui/react-dialog'
 import { Search, X } from 'lucide-react'
 import store from '../store'
-import { getFlag } from '../lib/util'
+import Flag from './Flag'
 import { tw } from '../theme'
 import { useTranslation } from 'react-i18next'
 
@@ -32,7 +33,7 @@ const CurrencySearchDialog = observer(
     }, [open])
 
     const filtered = store.currencyCodes.filter((code) => {
-      if (excludeCodes.includes(code)) return false
+      if (contain(excludeCodes, code)) return false
       if (!search) return true
       const q = search.toLowerCase()
       const name = store.getCurrencyName(code).toLowerCase()
@@ -106,7 +107,9 @@ const CurrencySearchDialog = observer(
                       tw.background.hover,
                     )}
                   >
-                    <span className="shrink-0">{getFlag(code)}</span>
+                    <span className="shrink-0">
+                      <Flag code={code} />
+                    </span>
                     <span
                       className={className(
                         'font-bold w-12 shrink-0',

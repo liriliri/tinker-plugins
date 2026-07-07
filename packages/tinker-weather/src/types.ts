@@ -38,3 +38,13 @@ export interface WeatherData {
   current: CurrentWeather
   daily: DailyForecast[]
 }
+
+export type WeatherIconType =
+  | 'sun'
+  | 'cloud'
+  | 'fog'
+  | 'drizzle'
+  | 'rain'
+  | 'snow'
+  | 'thunder'
+  | 'wind'

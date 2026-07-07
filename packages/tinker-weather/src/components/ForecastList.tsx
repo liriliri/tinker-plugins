@@ -2,23 +2,26 @@ import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import { useMemo } from 'react'
 import className from 'licia/className'
+import clamp from 'licia/clamp'
+import flatten from 'licia/flatten'
+import map from 'licia/map'
+import max from 'licia/max'
+import min from 'licia/min'
 import store from '../store'
-import { wmoDescription, wmoToIcon } from '../weather'
-import { WeatherIcon } from '../icons'
+import { wmoDescription, wmoToIcon } from '../lib/weather'
+import WeatherIcon from './WeatherIcon'
+import { tw } from '../theme'
 
 const DAY_KEYS = ['today', 'tomorrow', 'dayAfter']
 
-function TempBar({
-  min,
-  max,
-  rangeMin,
-  rangeMax,
-}: {
+interface TempBarProps {
   min: number
   max: number
   rangeMin: number
   rangeMax: number
-}) {
+}
+
+function TempBar({ min, max, rangeMin, rangeMax }: TempBarProps) {
   const range = rangeMax - rangeMin || 1
   const left = ((min - rangeMin) / range) * 100
   const width = ((max - min) / range) * 100
@@ -26,8 +29,8 @@ function TempBar({
   return (
     <div className="w-16 h-1 rounded-full bg-white/20 overflow-hidden relative">
       <div
-        className="absolute top-0 h-full rounded-full temp-bar"
-        style={{ left: `${left}%`, width: `${Math.max(width, 8)}%` }}
+        className={className('absolute top-0', tw.tempBar)}
+        style={{ left: `${left}%`, width: `${clamp(width, 8, 100)}%` }}
       />
     </div>
   )
@@ -39,16 +42,23 @@ const ForecastList = observer(() => {
 
   const { rangeMin, rangeMax } = useMemo(() => {
     if (!weatherData) return { rangeMin: 0, rangeMax: 1 }
-    const allTemps = weatherData.daily.flatMap((d) => [d.tempMin, d.tempMax])
+    const allTemps = flatten(
+      map(weatherData.daily, (d) => [d.tempMin, d.tempMax]),
+    )
     return {
-      rangeMin: Math.min(...allTemps),
-      rangeMax: Math.max(...allTemps),
+      rangeMin: min(...allTemps),
+      rangeMax: max(...allTemps),
     }
   }, [weatherData?.daily])
 
   if (!weatherData) {
     return (
-      <div className="rounded-2xl overflow-hidden glass-card opacity-30">
+      <div
+        className={className(
+          'rounded-2xl overflow-hidden opacity-30',
+          tw.glass.card,
+        )}
+      >
         {[0, 1, 2].map((i) => (
           <div
             key={i}
@@ -75,10 +85,18 @@ const ForecastList = observer(() => {
   }
 
   return (
-    <div className="rounded-2xl overflow-hidden animate-fade-in-up-delay-1 glass-card">
+    <div
+      className={className(
+        'rounded-2xl overflow-hidden',
+        tw.glass.card,
+        tw.animation.fadeInUpDelay1,
+      )}
+    >
       {weatherData.daily.map((day, i) => {
         const iconType = wmoToIcon(day.weatherCode)
-        const desc = wmoDescription(day.weatherCode, store.language)
+        const desc =
+          wmoDescription(day.weatherCode, store.language) ||
+          t('weatherCode', { code: day.weatherCode })
 
         return (
           <div

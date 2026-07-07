@@ -14,8 +14,20 @@
   "precipitation": "降水",
   "sunrise": "日出",
   "sunset": "日落",
-  "forecast": "预报",
-  "details": "详情",
   "error": "天气数据加载失败",
-  "recent": "最近"
+  "recent": "最近",
+  "weatherCode": "天气代码 {{code}}",
+  "windLevel0": "无风",
+  "windLevel1": "软风",
+  "windLevel2": "轻风",
+  "windLevel3": "微风",
+  "windLevel4": "和风",
+  "windLevel5": "清风",
+  "windLevel6": "强风",
+  "windLevel7": "疾风",
+  "windLevel8": "大风",
+  "windLevel9": "烈风",
+  "windLevel10": "狂风",
+  "windLevel11": "暴风",
+  "windLevel12": "飓风"
 }

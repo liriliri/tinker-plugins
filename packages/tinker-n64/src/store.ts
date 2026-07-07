@@ -11,9 +11,9 @@ interface FileSearchResult {
 }
 
 const ROM_EXTS = ['n64', 'v64', 'z64']
-const STORAGE_PLAY_HISTORY = 'STORAGE_PLAY_HISTORY'
-const STORAGE_KEYMAP = 'STORAGE_KEYMAP'
-const STORAGE_SIDEBAR_OPEN = 'STORAGE_SIDEBAR_OPEN'
+const STORAGE_PLAY_HISTORY = 'playHistory'
+const STORAGE_KEYMAP = 'keymap'
+const STORAGE_SIDEBAR_OPEN = 'sidebarOpen'
 const MAX_PLAY_HISTORY = 50
 
 const storage = new LocalStore('tinker-n64')

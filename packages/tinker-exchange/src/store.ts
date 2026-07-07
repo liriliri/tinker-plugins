@@ -21,18 +21,25 @@ const DEFAULT_BASE: Record<string, string> = {
 }
 const FALLBACK_BASE = 'USD'
 
+const STORAGE_RATES = 'rates'
+const STORAGE_RATES_TIME = 'ratesTime'
+const STORAGE_BASE_CURRENCY = 'baseCurrency'
+const STORAGE_BASE_AMOUNT = 'baseAmount'
+const STORAGE_SELECTED_CODES = 'selectedCodes'
+const STORAGE_DIGIT = 'digit'
+
 const storage = new LocalStore('tinker-exchange')
 
 class Store {
-  rates: Record<string, number> = storage.get('rates') ?? {}
-  ratesTime: number = storage.get('ratesTime') ?? 0
+  rates: Record<string, number> = storage.get(STORAGE_RATES) ?? {}
+  ratesTime: number = storage.get(STORAGE_RATES_TIME) ?? 0
 
   language = 'en-US'
-  baseCurrency: string = storage.get('baseCurrency') ?? FALLBACK_BASE
-  baseAmount: number = storage.get('baseAmount') ?? 1
+  baseCurrency: string = storage.get(STORAGE_BASE_CURRENCY) ?? FALLBACK_BASE
+  baseAmount: number = storage.get(STORAGE_BASE_AMOUNT) ?? 1
 
-  selectedCodes: string[] = storage.get('selectedCodes') ?? DEFAULT_CODES
-  digit: number = storage.get('digit') ?? 2
+  selectedCodes: string[] = storage.get(STORAGE_SELECTED_CODES) ?? DEFAULT_CODES
+  digit: number = storage.get(STORAGE_DIGIT) ?? 2
 
   isLoading = false
   error = ''
@@ -48,7 +55,7 @@ class Store {
   init(language: string) {
     this.language = language
     this.currencyNames = new Intl.DisplayNames([language], { type: 'currency' })
-    if (!storage.get('baseCurrency')) {
+    if (!storage.get(STORAGE_BASE_CURRENCY)) {
       this.baseCurrency = DEFAULT_BASE[language] || FALLBACK_BASE
     }
     this.fetchRates()
@@ -73,7 +80,10 @@ class Store {
         this.rates = data.rates
         this.ratesTime = data.timestamp
         this.isLoading = false
-        storage.set({ rates: data.rates, ratesTime: data.timestamp })
+        storage.set({
+          [STORAGE_RATES]: data.rates,
+          [STORAGE_RATES_TIME]: data.timestamp,
+        })
       })
     } catch (err) {
       runInAction(() => {
@@ -99,31 +109,31 @@ class Store {
 
   setBaseAmount(amount: number) {
     this.baseAmount = amount
-    storage.set('baseAmount', amount)
+    storage.set(STORAGE_BASE_AMOUNT, amount)
   }
 
   setBaseCurrency(code: string) {
     if (!contain(this.currencyCodes, code)) return
     this.baseCurrency = code
-    storage.set('baseCurrency', code)
+    storage.set(STORAGE_BASE_CURRENCY, code)
   }
 
   addCurrency(code: string) {
     if (contain(this.selectedCodes, code)) return
     this.selectedCodes.push(code)
-    storage.set('selectedCodes', [...this.selectedCodes])
+    storage.set(STORAGE_SELECTED_CODES, [...this.selectedCodes])
   }
 
   removeCurrency(code: string) {
     if (code === this.baseCurrency) return
     if (this.selectedCodes.length <= 1) return
     this.selectedCodes = this.selectedCodes.filter((c) => c !== code)
-    storage.set('selectedCodes', this.selectedCodes)
+    storage.set(STORAGE_SELECTED_CODES, this.selectedCodes)
   }
 
   setDigit(digit: number) {
     this.digit = clamp(digit, 0, 20)
-    storage.set('digit', this.digit)
+    storage.set(STORAGE_DIGIT, this.digit)
   }
 
   swapBase(code: string) {
@@ -137,9 +147,9 @@ class Store {
       this.selectedCodes.push(oldBase)
     }
     storage.set({
-      baseCurrency: this.baseCurrency,
-      baseAmount: this.baseAmount,
-      selectedCodes: [...this.selectedCodes],
+      [STORAGE_BASE_CURRENCY]: this.baseCurrency,
+      [STORAGE_BASE_AMOUNT]: this.baseAmount,
+      [STORAGE_SELECTED_CODES]: [...this.selectedCodes],
     })
   }
 

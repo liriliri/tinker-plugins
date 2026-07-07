@@ -1,9 +1,9 @@
 import { observer } from 'mobx-react-lite'
 import { useState } from 'react'
 import className from 'licia/className'
-import { ChevronDown, RefreshCw } from 'lucide-react'
+import { ChevronDown, RotateCw } from 'lucide-react'
 import store from '../store'
-import { getFlag } from '../lib/util'
+import Flag from './Flag'
 import { tw } from '../theme'
 import { useTranslation } from 'react-i18next'
 import CurrencySearchDialog from './CurrencySearchDialog'
@@ -29,7 +29,7 @@ const CurrencyInput = observer(() => {
             tw.border.primary,
           )}
         >
-          {getFlag(store.baseCurrency)} {store.baseCurrency}
+          <Flag code={store.baseCurrency} /> {store.baseCurrency}
           <ChevronDown size={14} className={tw.text.secondary} />
         </button>
         <input
@@ -55,7 +55,7 @@ const CurrencyInput = observer(() => {
               : tw.accent.hoverText,
           )}
         >
-          <RefreshCw
+          <RotateCw
             size={14}
             className={store.isLoading ? 'animate-spin' : ''}
           />

@@ -2,14 +2,22 @@ import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import { useMemo } from 'react'
 import { Loader } from 'lucide-react'
+import className from 'licia/className'
 import store from '../store'
-import { wmoDescription, wmoToIcon } from '../weather'
-import { WeatherIcon } from '../icons'
+import { wmoDescription, wmoToIcon } from '../lib/weather'
+import WeatherIcon from './WeatherIcon'
+import { tw } from '../theme'
 
 function LoadingOverlay() {
+  const { t } = useTranslation()
+
   return (
-    <div className="absolute inset-0 flex items-center justify-center">
-      <Loader className="loading-spinner opacity-60" size={32} />
+    <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
+      <Loader
+        className={className(tw.animation.spinSlow, 'opacity-60')}
+        size={32}
+      />
+      <span className="text-sm opacity-60">{t('loading')}</span>
     </div>
   )
 }
@@ -35,7 +43,13 @@ const WeatherHeader = observer(() => {
             <h2 className="text-base font-semibold tracking-tight opacity-50">
               --
             </h2>
-            <p className="text-sm opacity-40 mt-0.5">--</p>
+            <p className="text-sm opacity-40 mt-0.5">
+              {store.error ? (
+                <span className={tw.text.error}>{t('error')}</span>
+              ) : (
+                t('noCity')
+              )}
+            </p>
           </div>
           <div className="text-right text-xs opacity-40 mt-0.5">{dateStr}</div>
         </div>
@@ -56,19 +70,26 @@ const WeatherHeader = observer(() => {
     )
   }
 
-  const { current, daily } = weatherData
-  const today = daily[0]
-  const desc = wmoDescription(current.weatherCode, store.language)
+  const { current } = weatherData
+  const desc =
+    wmoDescription(current.weatherCode, store.language) ||
+    t('weatherCode', { code: current.weatherCode })
   const iconType = wmoToIcon(current.weatherCode)
 
   return (
-    <div className="pt-2 pb-1 animate-fade-in-up">
+    <div className={className('pt-2 pb-1', tw.animation.fadeInUp)}>
       <div className="flex items-start justify-between">
         <div>
           <h2 className="text-base font-semibold tracking-tight">
             {store.cityDisplayName}
           </h2>
-          <p className="text-sm opacity-80 mt-0.5">{desc}</p>
+          <p className="text-sm opacity-80 mt-0.5">
+            {store.error ? (
+              <span className={tw.text.error}>{t('error')}</span>
+            ) : (
+              desc
+            )}
+          </p>
         </div>
         <div className="text-right text-xs opacity-70 mt-0.5">{dateStr}</div>
       </div>

@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite'
 import className from 'licia/className'
 import { X } from 'lucide-react'
 import store from '../store'
-import { getFlag } from '../lib/util'
+import Flag from './Flag'
 import { tw } from '../theme'
 
 const CurrencyList = observer(() => {
@@ -20,7 +20,7 @@ const CurrencyList = observer(() => {
             )}
           >
             <span className="flex items-center shrink-0 mr-2 text-4xl">
-              {getFlag(code)}
+              <Flag code={code} />
             </span>
             <div className="flex flex-col gap-0.5 min-w-0 flex-1">
               <div className="flex items-center gap-2">

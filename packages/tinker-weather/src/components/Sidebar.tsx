@@ -3,20 +3,19 @@ import { useTranslation } from 'react-i18next'
 import { X, Search, Loader } from 'lucide-react'
 import className from 'licia/className'
 import compact from 'licia/compact'
+import trim from 'licia/trim'
 import store from '../store'
 import type { GeoResult } from '../types'
+import { tw } from '../theme'
 
-function CityItem({
-  city,
-  active,
-  onSelect,
-  onRemove,
-}: {
+interface CityItemProps {
   city: GeoResult
   active: boolean
   onSelect: () => void
   onRemove?: () => void
-}) {
+}
+
+function CityItem({ city, active, onSelect, onRemove }: CityItemProps) {
   return (
     <div
       className={className(
@@ -49,15 +48,15 @@ function CityItem({
 const Sidebar = observer(() => {
   const { t } = useTranslation()
 
-  const hasQuery = store.searchQuery.trim().length >= 2
-  const isActive = (city: GeoResult) =>
-    !!store.city &&
-    store.city.latitude === city.latitude &&
-    store.city.longitude === city.longitude &&
-    store.city.name === city.name
+  const hasQuery = trim(store.searchQuery).length >= 2
 
   return (
-    <div className="glass-card-dark rounded-2xl h-full flex flex-col overflow-hidden">
+    <div
+      className={className(
+        tw.glass.cardDark,
+        'rounded-2xl h-full flex flex-col overflow-hidden',
+      )}
+    >
       <div className="shrink-0 p-3">
         <div className="relative">
           <Search
@@ -79,7 +78,7 @@ const Sidebar = observer(() => {
           <>
             {store.isSearching ? (
               <div className="px-3 py-3 text-xs opacity-50 flex items-center gap-2">
-                <Loader className="loading-spinner" size={12} />
+                <Loader className={tw.animation.spinSlow} size={12} />
                 {t('searching')}
               </div>
             ) : store.searchResults.length === 0 ? (
@@ -91,7 +90,7 @@ const Sidebar = observer(() => {
                 <CityItem
                   key={`${city.latitude}-${city.longitude}-${i}`}
                   city={city}
-                  active={isActive(city)}
+                  active={store.isActiveCity(city)}
                   onSelect={() => store.selectCity(city)}
                 />
               ))
@@ -99,16 +98,22 @@ const Sidebar = observer(() => {
           </>
         ) : (
           <>
-            {store.recentCities.length > 0 &&
-              store.recentCities.map((city, i) => (
-                <CityItem
-                  key={`${city.latitude}-${city.longitude}-${i}`}
-                  city={city}
-                  active={isActive(city)}
-                  onSelect={() => store.selectCity(city)}
-                  onRemove={() => store.removeRecentCity(i)}
-                />
-              ))}
+            {store.recentCities.length > 0 && (
+              <>
+                <div className="px-3 pt-1 pb-0.5 text-xs font-medium opacity-50">
+                  {t('recent')}
+                </div>
+                {store.recentCities.map((city, i) => (
+                  <CityItem
+                    key={`${city.latitude}-${city.longitude}-${i}`}
+                    city={city}
+                    active={store.isActiveCity(city)}
+                    onSelect={() => store.selectCity(city)}
+                    onRemove={() => store.removeRecentCity(i)}
+                  />
+                ))}
+              </>
+            )}
           </>
         )}
       </div>

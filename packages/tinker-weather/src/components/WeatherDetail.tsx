@@ -1,8 +1,10 @@
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import { Droplets, Wind, Sun, CloudRain, Sunrise, Sunset } from 'lucide-react'
+import className from 'licia/className'
 import store from '../store'
-import { getWindLevel } from '../weather'
+import { getWindLevelIndex } from '../lib/weather'
+import { tw } from '../theme'
 
 function formatTime(iso: string): string {
   const d = new Date(iso)
@@ -21,7 +23,12 @@ interface DetailCardProps {
 
 function DetailCard({ icon, label, value, sub }: DetailCardProps) {
   return (
-    <div className="glass-card rounded-xl px-3 py-3 flex flex-col gap-1.5">
+    <div
+      className={className(
+        tw.glass.card,
+        'rounded-xl px-3 py-3 flex flex-col gap-1.5',
+      )}
+    >
       <div className="flex items-center gap-1.5">
         <span className="opacity-60">{icon}</span>
         <span className="text-xs opacity-70">{label}</span>
@@ -67,10 +74,15 @@ const WeatherDetail = observer(() => {
 
   const { current, daily } = weatherData
   const today = daily[0]
-  const windLevel = getWindLevel(current.windSpeed, store.language)
+  const windLevel = t(`windLevel${getWindLevelIndex(current.windSpeed)}`)
 
   return (
-    <div className="grid grid-cols-3 gap-2 animate-fade-in-up-delay-2">
+    <div
+      className={className(
+        'grid grid-cols-3 gap-2',
+        tw.animation.fadeInUpDelay2,
+      )}
+    >
       <DetailCard
         icon={<Droplets size={14} />}
         label={t('humidity')}

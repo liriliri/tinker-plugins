@@ -1,6 +1,6 @@
 {
   "name": "tinker-exchange",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Currency Exchange Rate Calculator Plugin for TINKER",
   "files": [
     "dist/",

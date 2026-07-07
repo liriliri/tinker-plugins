@@ -1,6 +1,6 @@
 {
   "name": "tinker-n64",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "N64 Emulator Plugin for TINKER",
   "files": [
     "dist/",

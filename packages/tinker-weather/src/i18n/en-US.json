@@ -14,9 +14,20 @@
   "precipitation": "Precip.",
   "sunrise": "Sunrise",
   "sunset": "Sunset",
-  "forecast": "Forecast",
-  "details": "Details",
   "error": "Failed to load weather data",
   "recent": "Recent",
-  "recent": "Recent"
+  "weatherCode": "Weather code {{code}}",
+  "windLevel0": "Calm",
+  "windLevel1": "Light Air",
+  "windLevel2": "Light Breeze",
+  "windLevel3": "Gentle Breeze",
+  "windLevel4": "Moderate Breeze",
+  "windLevel5": "Fresh Breeze",
+  "windLevel6": "Strong Breeze",
+  "windLevel7": "Near Gale",
+  "windLevel8": "Gale",
+  "windLevel9": "Strong Gale",
+  "windLevel10": "Storm",
+  "windLevel11": "Violent Storm",
+  "windLevel12": "Hurricane"
 }

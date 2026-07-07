@@ -2,8 +2,14 @@ import { makeAutoObservable, runInAction } from 'mobx'
 import LocalStore from 'licia/LocalStore'
 import debounce from 'licia/debounce'
 import compact from 'licia/compact'
+import isMatch from 'licia/isMatch'
+import toStr from 'licia/toStr'
+import trim from 'licia/trim'
 import type { GeoResult, WeatherData } from './types'
-import { geocode, fetchWeather } from './weather'
+import { geocode, fetchWeather } from './lib/weather'
+
+const STORAGE_CITY = 'city'
+const STORAGE_RECENT_CITIES = 'recentCities'
 
 const storage = new LocalStore('tinker-weather')
 const MAX_RECENT = 8
@@ -15,8 +21,8 @@ class Store {
   searchResults: GeoResult[] = []
   isSearching = false
 
-  city: GeoResult | null = storage.get('city') ?? null
-  recentCities: GeoResult[] = storage.get('recentCities') ?? []
+  city: GeoResult | null = storage.get(STORAGE_CITY) ?? null
+  recentCities: GeoResult[] = storage.get(STORAGE_RECENT_CITIES) ?? []
   weatherData: WeatherData | null = null
   isLoading = false
   error = ''
@@ -40,7 +46,7 @@ class Store {
   setSearchQuery(query: string) {
     this.searchQuery = query
 
-    if (query.trim().length < 2) {
+    if (trim(query).length < 2) {
       this.searchResults = []
       return
     }
@@ -68,27 +74,32 @@ class Store {
     this.city = city
     this.searchQuery = ''
     this.searchResults = []
-    storage.set('city', city)
+    storage.set(STORAGE_CITY, city)
     this.addRecentCity(city)
     await this.loadWeather()
   }
 
+  private isSameCity(a: GeoResult, b: GeoResult): boolean {
+    return isMatch(a, {
+      latitude: b.latitude,
+      longitude: b.longitude,
+      name: b.name,
+    })
+  }
+
+  isActiveCity(city: GeoResult): boolean {
+    return !!this.city && this.isSameCity(this.city, city)
+  }
+
   private addRecentCity(city: GeoResult) {
-    const filtered = this.recentCities.filter(
-      (c) =>
-        !(
-          c.latitude === city.latitude &&
-          c.longitude === city.longitude &&
-          c.name === city.name
-        ),
-    )
+    const filtered = this.recentCities.filter((c) => !this.isSameCity(c, city))
     this.recentCities = [city, ...filtered].slice(0, MAX_RECENT)
-    storage.set('recentCities', this.recentCities)
+    storage.set(STORAGE_RECENT_CITIES, this.recentCities)
   }
 
   removeRecentCity(index: number) {
     this.recentCities.splice(index, 1)
-    storage.set('recentCities', this.recentCities)
+    storage.set(STORAGE_RECENT_CITIES, this.recentCities)
   }
 
   async loadWeather() {
@@ -108,7 +119,7 @@ class Store {
       })
     } catch (err) {
       runInAction(() => {
-        this.error = String(err)
+        this.error = toStr(err)
         this.isLoading = false
       })
     }

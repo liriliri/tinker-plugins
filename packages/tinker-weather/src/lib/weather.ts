@@ -1,11 +1,23 @@
 import { pinyin } from 'pinyin'
 import Lru from 'licia/Lru'
+import contain from 'licia/contain'
+import findIdx from 'licia/findIdx'
+import flatten from 'licia/flatten'
+import map from 'licia/map'
+import now from 'licia/now'
+import reverse from 'licia/reverse'
+import safeGet from 'licia/safeGet'
+import sortBy from 'licia/sortBy'
+import toArr from 'licia/toArr'
+import trim from 'licia/trim'
+import unique from 'licia/unique'
 import type {
   GeoResult,
   WeatherData,
   CurrentWeather,
   DailyForecast,
-} from './types'
+  WeatherIconType,
+} from '../types'
 
 const WMO_ZH: Record<number, string> = {
   0: '晴',
@@ -70,75 +82,28 @@ const WMO_EN: Record<number, string> = {
 }
 
 export function wmoDescription(code: number, language: string): string {
-  if (language === 'zh-CN') {
-    return WMO_ZH[code] ?? `天气代码 ${code}`
-  }
-  return WMO_EN[code] ?? `Weather code ${code}`
+  const table = language === 'zh-CN' ? WMO_ZH : WMO_EN
+  return table[code] ?? ''
 }
-
-export type WeatherIconType =
-  | 'sun'
-  | 'cloud'
-  | 'fog'
-  | 'drizzle'
-  | 'rain'
-  | 'snow'
-  | 'thunder'
-  | 'wind'
 
 export function wmoToIcon(code: number): WeatherIconType {
   if (code === 0) return 'sun'
-  if ([1, 2, 3].includes(code)) return 'cloud'
-  if ([45, 48].includes(code)) return 'fog'
-  if ([51, 53, 55].includes(code)) return 'drizzle'
-  if ([56, 57, 61, 63, 65, 66, 67, 80, 81, 82].includes(code)) return 'rain'
-  if ([71, 73, 75, 77, 85, 86].includes(code)) return 'snow'
-  if ([95, 96, 99].includes(code)) return 'thunder'
+  if (contain([1, 2, 3], code)) return 'cloud'
+  if (contain([45, 48], code)) return 'fog'
+  if (contain([51, 53, 55], code)) return 'drizzle'
+  if (contain([56, 57, 61, 63, 65, 66, 67, 80, 81, 82], code)) return 'rain'
+  if (contain([71, 73, 75, 77, 85, 86], code)) return 'snow'
+  if (contain([95, 96, 99], code)) return 'thunder'
   return 'cloud'
 }
-
-const WIND_LEVELS_ZH = [
-  '无风',
-  '软风',
-  '轻风',
-  '微风',
-  '和风',
-  '清风',
-  '强风',
-  '疾风',
-  '大风',
-  '烈风',
-  '狂风',
-  '暴风',
-  '飓风',
-]
-
-const WIND_LEVELS_EN = [
-  'Calm',
-  'Light Air',
-  'Light Breeze',
-  'Gentle Breeze',
-  'Moderate Breeze',
-  'Fresh Breeze',
-  'Strong Breeze',
-  'Near Gale',
-  'Gale',
-  'Strong Gale',
-  'Storm',
-  'Violent Storm',
-  'Hurricane',
-]
 
 const WIND_THRESHOLDS = [
   0.3, 1.6, 3.4, 5.5, 8.0, 10.8, 13.9, 17.2, 20.8, 24.5, 28.5, 32.7,
 ]
 
-export function getWindLevel(speed: number, language: string): string {
-  const levels = language === 'zh-CN' ? WIND_LEVELS_ZH : WIND_LEVELS_EN
-  for (let i = 0; i < WIND_THRESHOLDS.length; i++) {
-    if (speed < WIND_THRESHOLDS[i]) return levels[i]
-  }
-  return levels[12]
+export function getWindLevelIndex(speed: number): number {
+  const idx = findIdx(WIND_THRESHOLDS, (t) => speed < t)
+  return idx === -1 ? 12 : idx
 }
 
 interface CacheEntry {
@@ -149,7 +114,7 @@ interface CacheEntry {
 const cache = new Lru(10)
 const CACHE_DURATION = 5 * 60 * 1000
 
-function getCacheKey(lat: number, lon: number): string {
+function coordKey(lat: number, lon: number): string {
   return `${lat.toFixed(2)},${lon.toFixed(2)}`
 }
 
@@ -171,7 +136,7 @@ async function fetchGeoResults(
   const res = await fetch(url)
   if (!res.ok) throw new Error(`Geocoding failed: ${res.status}`)
   const data = await res.json()
-  return (data.results || []).map((r: GeoApiResult) => ({
+  return map(toArr(safeGet(data, 'results')), (r: GeoApiResult) => ({
     name: r.name,
     admin1: r.admin1 || '',
     country: r.country || '',
@@ -183,13 +148,11 @@ async function fetchGeoResults(
 }
 
 function dedupeGeoResults(results: GeoResult[]): GeoResult[] {
-  const seen = new Set<string>()
-  return results.filter((r) => {
-    const key = `${r.latitude.toFixed(2)},${r.longitude.toFixed(2)}`
-    if (seen.has(key)) return false
-    seen.add(key)
-    return true
-  })
+  return unique(
+    results,
+    (a, b) =>
+      coordKey(a.latitude, a.longitude) === coordKey(b.latitude, b.longitude),
+  )
 }
 
 const hasChinese = (s: string) => /[\u4e00-\u9fff]/.test(s)
@@ -204,7 +167,7 @@ export async function geocode(
   name: string,
   language: string,
 ): Promise<GeoResult[]> {
-  const q = name.trim()
+  const q = trim(name)
   if (q.length < 2) return []
 
   const lang = language === 'zh-CN' ? 'zh' : 'en'
@@ -214,10 +177,8 @@ export async function geocode(
     queries.push(fetchGeoResults(toPinyin(q), lang))
   }
 
-  const all = (await Promise.all(queries)).flat()
-  return dedupeGeoResults(all)
-    .sort((a, b) => b.population - a.population)
-    .slice(0, 8)
+  const all = flatten(await Promise.all(queries))
+  return reverse(sortBy(dedupeGeoResults(all), (r) => r.population)).slice(0, 8)
 }
 
 export async function fetchWeather(
@@ -225,9 +186,9 @@ export async function fetchWeather(
   lon: number,
   tz: string,
 ): Promise<WeatherData> {
-  const key = getCacheKey(lat, lon)
+  const key = coordKey(lat, lon)
   const cached = cache.get(key) as CacheEntry | undefined
-  if (cached && Date.now() - cached.timestamp < CACHE_DURATION) {
+  if (cached && now() - cached.timestamp < CACHE_DURATION) {
     return cached.data
   }
 
@@ -295,6 +256,6 @@ export async function fetchWeather(
   )
 
   const result: WeatherData = { current, daily }
-  cache.set(key, { data: result, timestamp: Date.now() } as CacheEntry)
+  cache.set(key, { data: result, timestamp: now() } as CacheEntry)
   return result
 }
