@@ -3,6 +3,7 @@
   "copied": "已复制！",
   "loading": "加载中...",
   "noResults": "未找到 emoji",
+  "loadError": "加载 emoji 数据失败",
   "all": "全部",
   "smileysEmotion": "笑脸和情感",
   "peopleBody": "人类和身体",

@@ -1,6 +1,7 @@
 import { observer } from 'mobx-react-lite'
 import * as Select from '@radix-ui/react-select'
 import className from 'licia/className'
+import safeGet from 'licia/safeGet'
 import { useTranslation } from 'react-i18next'
 import { ChevronDown } from 'lucide-react'
 import { tw } from '../theme'
@@ -42,7 +43,7 @@ const CategorySelect = observer(() => {
       >
         <div className="flex items-center gap-2">
           <span className="text-sm">
-            {CATEGORY_ICONS[store.selectedCategory] || '📦'}
+            {safeGet(CATEGORY_ICONS, store.selectedCategory) ?? '📦'}
           </span>
           <Select.Value />
         </div>
@@ -60,7 +61,7 @@ const CategorySelect = observer(() => {
           sideOffset={5}
         >
           <Select.Viewport className="p-1">
-            {['all', ...store.categoryList].map((cat) => (
+            {store.categoryOptions.map((cat) => (
               <Select.Item
                 key={cat}
                 value={cat}
@@ -72,7 +73,9 @@ const CategorySelect = observer(() => {
                   tw.background.selectItemHighlight,
                 )}
               >
-                <span className="text-sm">{CATEGORY_ICONS[cat] || '📦'}</span>
+                <span className="text-sm">
+                  {safeGet(CATEGORY_ICONS, cat) ?? '📦'}
+                </span>
                 <Select.ItemText>{t(cat)}</Select.ItemText>
               </Select.Item>
             ))}

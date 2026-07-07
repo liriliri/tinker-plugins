@@ -1,6 +1,7 @@
 import { observer } from 'mobx-react-lite'
 import * as Tooltip from '@radix-ui/react-tooltip'
 import className from 'licia/className'
+import delay from 'licia/delay'
 import { useTranslation } from 'react-i18next'
 import { tw } from '../theme'
 import type { EmojiData } from '../types'
@@ -18,76 +19,74 @@ const EmojiCard = observer(({ emoji }: EmojiCardProps) => {
   const handleClick = () => {
     store.copyToClipboard(emoji.emoji)
     setCopied(true)
-    setTimeout(() => setCopied(false), 1000)
+    delay(() => setCopied(false), 1000)
   }
 
   const description =
     i18n.language === 'zh-CN' ? emoji.description.zh : emoji.description.en
 
   return (
-    <Tooltip.Provider delayDuration={400}>
-      <Tooltip.Root>
-        <Tooltip.Trigger asChild>
+    <Tooltip.Root>
+      <Tooltip.Trigger asChild>
+        <div
+          className={className(
+            'relative group cursor-pointer rounded-lg p-2.5 transition-all',
+            tw.background.hover,
+            'active:scale-95',
+            'focus:outline-none',
+            tw.accent.focusRing,
+          )}
+          onClick={handleClick}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault()
+              handleClick()
+            }
+          }}
+        >
+          <div className="text-3xl text-center mb-1.5">{emoji.emoji}</div>
+
           <div
             className={className(
-              'relative group cursor-pointer rounded-lg p-2.5 transition-all',
-              tw.background.hover,
-              'active:scale-95',
-              'focus:outline-none',
-              tw.accent.focusRing,
+              'text-[10px] text-center truncate leading-tight',
+              tw.text.muted,
             )}
-            onClick={handleClick}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault()
-                handleClick()
-              }
-            }}
           >
-            <div className="text-3xl text-center mb-1.5">{emoji.emoji}</div>
+            {description || emoji.name}
+          </div>
 
+          {copied && (
             <div
               className={className(
-                'text-[10px] text-center truncate leading-tight',
-                tw.text.muted,
+                'absolute inset-0 flex items-center justify-center rounded-lg',
+                tw.accent.bg,
+                tw.accent.text,
+                'text-xs font-medium',
               )}
             >
-              {description || emoji.name}
+              {t('copied')}
             </div>
-
-            {copied && (
-              <div
-                className={className(
-                  'absolute inset-0 flex items-center justify-center rounded-lg',
-                  tw.accent.bg,
-                  tw.accent.text,
-                  'text-xs font-medium',
-                )}
-              >
-                {t('copied')}
-              </div>
-            )}
-          </div>
-        </Tooltip.Trigger>
-        <Tooltip.Portal>
-          <Tooltip.Content
-            className={className(
-              'px-2.5 py-1.5 rounded-md shadow-lg z-50',
-              tw.tooltip.bg,
-              tw.text.white,
-              'text-xs',
-              'animate-in fade-in-0 zoom-in-95',
-            )}
-            sideOffset={5}
-          >
-            {`:${emoji.name}:`}
-            <Tooltip.Arrow className={tw.tooltip.arrow} />
-          </Tooltip.Content>
-        </Tooltip.Portal>
-      </Tooltip.Root>
-    </Tooltip.Provider>
+          )}
+        </div>
+      </Tooltip.Trigger>
+      <Tooltip.Portal>
+        <Tooltip.Content
+          className={className(
+            'px-2.5 py-1.5 rounded-md shadow-lg z-50',
+            tw.tooltip.bg,
+            tw.text.white,
+            'text-xs',
+            'animate-in fade-in-0 zoom-in-95',
+          )}
+          sideOffset={5}
+        >
+          {`:${emoji.name}:`}
+          <Tooltip.Arrow className={tw.tooltip.arrow} />
+        </Tooltip.Content>
+      </Tooltip.Portal>
+    </Tooltip.Root>
   )
 })
 

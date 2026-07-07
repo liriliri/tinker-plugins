@@ -1,5 +1,7 @@
 import { makeAutoObservable, runInAction } from 'mobx'
+import concat from 'licia/concat'
 import type { EmojiData } from './types'
+import { buildCategoryList, filterEmojis } from './lib/emoji'
 
 class Store {
   emojis: EmojiData[] = []
@@ -9,7 +11,7 @@ class Store {
   searchQuery: string = ''
 
   isLoading: boolean = true
-  error: string = ''
+  loadError: boolean = false
 
   constructor() {
     makeAutoObservable(this)
@@ -22,26 +24,12 @@ class Store {
 
       runInAction(() => {
         this.emojis = emojisModule.default as EmojiData[]
-
-        const seen = new Set<string>()
-        const categoryKeys: string[] = []
-        for (const emoji of this.emojis) {
-          if (emoji.category && !seen.has(emoji.category)) {
-            seen.add(emoji.category)
-            categoryKeys.push(emoji.category)
-          }
-        }
-        const otherIndex = categoryKeys.indexOf('other')
-        if (otherIndex !== -1) {
-          categoryKeys.splice(otherIndex, 1)
-          categoryKeys.push('other')
-        }
-        this.categoryList = categoryKeys
+        this.categoryList = buildCategoryList(this.emojis)
         this.isLoading = false
       })
     } catch (err) {
       runInAction(() => {
-        this.error = 'Failed to load emoji data'
+        this.loadError = true
         this.isLoading = false
       })
       console.error('Failed to load emoji data:', err)
@@ -56,33 +44,12 @@ class Store {
     this.searchQuery = query
   }
 
+  get categoryOptions(): string[] {
+    return concat(['all'], this.categoryList)
+  }
+
   get filteredEmojis(): EmojiData[] {
-    let result = this.emojis
-
-    if (this.selectedCategory !== 'all') {
-      result = result.filter((e) => e.category === this.selectedCategory)
-    }
-
-    if (this.searchQuery.trim()) {
-      const query = this.searchQuery.toLowerCase().trim()
-      result = result.filter((emoji) => {
-        const nameLower = emoji.name.toLowerCase()
-        const descZhLower = emoji.description.zh.toLowerCase()
-        const descEnLower = emoji.description.en.toLowerCase()
-        const keywordsZhLower = emoji.keywords.zh.map((k) => k.toLowerCase())
-        const keywordsEnLower = emoji.keywords.en.map((k) => k.toLowerCase())
-
-        return (
-          nameLower.includes(query) ||
-          descZhLower.includes(query) ||
-          descEnLower.includes(query) ||
-          keywordsZhLower.some((k) => k.includes(query)) ||
-          keywordsEnLower.some((k) => k.includes(query))
-        )
-      })
-    }
-
-    return result
+    return filterEmojis(this.emojis, this.selectedCategory, this.searchQuery)
   }
 
   copyToClipboard(emoji: string) {

@@ -3,6 +3,7 @@
   "copied": "Copied!",
   "loading": "Loading...",
   "noResults": "No emojis found",
+  "loadError": "Failed to load emoji data",
   "all": "All",
   "smileysEmotion": "Smileys & Emotion",
   "peopleBody": "People & Body",

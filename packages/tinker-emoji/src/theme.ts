@@ -10,7 +10,6 @@ export const tw = {
   },
   text: {
     primary: 'text-zinc-900 dark:text-zinc-100',
-    secondary: 'text-zinc-600 dark:text-zinc-400',
     muted: 'text-zinc-500 dark:text-zinc-400',
     icon: 'text-zinc-400 dark:text-zinc-500',
     placeholder: 'placeholder:text-zinc-400 dark:placeholder:text-zinc-500',
