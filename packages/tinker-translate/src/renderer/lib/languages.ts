@@ -1,3 +1,5 @@
+import concat from 'licia/concat'
+import invert from 'licia/invert'
 import type { Language } from '../types'
 
 const commonLanguages: Language[] = [
@@ -17,21 +19,20 @@ const commonLanguages: Language[] = [
   { code: 'vi' },
 ]
 
-export const languages: Language[] = [
-  commonLanguages[0],
-  commonLanguages[1],
+const baseLanguages = commonLanguages.slice(0, 2)
+const restLanguages = commonLanguages.slice(2)
+
+export const languages: Language[] = concat(baseLanguages, [
   { code: 'zh-CN' },
   { code: 'zh-TW' },
-  ...commonLanguages.slice(2),
-]
+  ...restLanguages,
+])
 
-export const bingLanguages: Language[] = [
-  commonLanguages[0],
-  commonLanguages[1],
+export const bingLanguages: Language[] = concat(baseLanguages, [
   { code: 'zh-Hans' },
   { code: 'zh-Hant' },
-  ...commonLanguages.slice(2),
-]
+  ...restLanguages,
+])
 
 export const services = [
   { value: 'google', label: 'Google' },
@@ -40,3 +41,18 @@ export const services = [
 ] as const
 
 export const aiService = { value: 'ai', label: 'AI' } as const
+
+const toBingLangMap = {
+  'zh-CN': 'zh-Hans',
+  'zh-TW': 'zh-Hant',
+}
+
+const fromBingLangMap = invert(toBingLangMap)
+
+export function toBingLang(lang: string) {
+  return toBingLangMap[lang as keyof typeof toBingLangMap] ?? lang
+}
+
+export function fromBingLang(lang: string) {
+  return fromBingLangMap[lang] ?? lang
+}

@@ -1,5 +1,7 @@
 import * as Select from '@radix-ui/react-select'
 import { Check, ChevronDown } from 'lucide-react'
+import className from 'licia/className'
+import filter from 'licia/filter'
 import { useTranslation } from 'react-i18next'
 import type { Language } from '../types'
 import { tw } from '../theme'
@@ -18,7 +20,7 @@ function LangSelect({
   excludeAuto,
 }: LangSelectProps) {
   const { t } = useTranslation()
-  const items = excludeAuto ? langs.filter((l) => l.code !== 'auto') : langs
+  const items = excludeAuto ? filter(langs, (l) => l.code !== 'auto') : langs
 
   return (
     <Select.Root value={value} onValueChange={onValueChange}>
@@ -35,7 +37,7 @@ function LangSelect({
 
       <Select.Portal>
         <Select.Content
-          className={`overflow-hidden rounded-xl border ${tw.select.content} shadow-[0_8px_24px_rgba(0,0,0,0.1),0_2px_6px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.5)] z-50 min-w-32.5`}
+          className={className(tw.select.dropdown, 'min-w-32.5')}
           position="popper"
           sideOffset={4}
         >
@@ -44,7 +46,7 @@ function LangSelect({
               <Select.Item
                 key={lang.code}
                 value={lang.code}
-                className={`relative flex items-center px-2 py-1.25 pl-6.5 text-[12px] rounded-md cursor-pointer outline-none ${tw.select.item} data-[state=checked]:font-semibold ${tw.select.itemChecked} transition-colors duration-75`}
+                className={tw.select.itemRow}
               >
                 <Select.ItemIndicator
                   className={`absolute left-2 flex items-center ${tw.select.itemIndicator}`}

@@ -1,17 +1,24 @@
 import { makeAutoObservable } from 'mobx'
 import LocalStore from 'licia/LocalStore'
-import i18n from './i18n'
+import concat from 'licia/concat'
+import delay from 'licia/delay'
+import isStrBlank from 'licia/isStrBlank'
+import i18n from 'i18next'
 import { type Service } from '../common/types'
-import { services, aiService } from './lib/languages'
+import { services, aiService, toBingLang, fromBingLang } from './lib/languages'
 
 const storage = new LocalStore('tinker-translate')
+
+const STORAGE_SOURCE_LANG = 'sourceLang'
+const STORAGE_TARGET_LANG = 'targetLang'
+const STORAGE_SERVICE = 'service'
 
 class Store {
   sourceText: string = ''
   translatedText: string = ''
-  sourceLang: string = storage.get('sourceLang') ?? 'auto'
-  targetLang: string = storage.get('targetLang') ?? 'zh-CN'
-  service: Service = storage.get('service') ?? 'google'
+  sourceLang: string = storage.get(STORAGE_SOURCE_LANG) ?? 'auto'
+  targetLang: string = storage.get(STORAGE_TARGET_LANG) ?? 'zh-CN'
+  service: Service = storage.get(STORAGE_SERVICE) ?? 'google'
   isTranslating: boolean = false
   toastOpen: boolean = false
   toastMsg: string = ''
@@ -36,17 +43,17 @@ class Store {
 
   setSourceLang(lang: string) {
     this.sourceLang = lang
-    storage.set('sourceLang', lang)
+    storage.set(STORAGE_SOURCE_LANG, lang)
   }
 
   setTargetLang(lang: string) {
     this.targetLang = lang
-    storage.set('targetLang', lang)
+    storage.set(STORAGE_TARGET_LANG, lang)
   }
 
   setService(service: Service) {
     this.service = service
-    storage.set('service', service)
+    storage.set(STORAGE_SERVICE, service)
   }
 
   showError(msg: string) {
@@ -68,15 +75,11 @@ class Store {
     this.setService(newService)
 
     if (toBing) {
-      if (this.sourceLang === 'zh-CN') this.setSourceLang('zh-Hans')
-      if (this.sourceLang === 'zh-TW') this.setSourceLang('zh-Hant')
-      if (this.targetLang === 'zh-CN') this.setTargetLang('zh-Hans')
-      if (this.targetLang === 'zh-TW') this.setTargetLang('zh-Hant')
+      this.setSourceLang(toBingLang(this.sourceLang))
+      this.setTargetLang(toBingLang(this.targetLang))
     } else if (fromBing) {
-      if (this.sourceLang === 'zh-Hans') this.setSourceLang('zh-CN')
-      if (this.sourceLang === 'zh-Hant') this.setSourceLang('zh-TW')
-      if (this.targetLang === 'zh-Hans') this.setTargetLang('zh-CN')
-      if (this.targetLang === 'zh-Hant') this.setTargetLang('zh-TW')
+      this.setSourceLang(fromBingLang(this.sourceLang))
+      this.setTargetLang(fromBingLang(this.targetLang))
     }
   }
 
@@ -93,7 +96,7 @@ class Store {
 
   async handlePaste() {
     const text = await navigator.clipboard.readText()
-    if (text) this.sourceText = text
+    if (!isStrBlank(text)) this.sourceText = text
   }
 
   handleClear() {
@@ -102,7 +105,7 @@ class Store {
   }
 
   async handleTranslate() {
-    if (!this.sourceText.trim()) {
+    if (isStrBlank(this.sourceText)) {
       this.showError(i18n.t('emptySourceError'))
       return
     }
@@ -130,13 +133,13 @@ class Store {
     if (!this.translatedText) return
     await navigator.clipboard.writeText(this.translatedText)
     this.copied = true
-    setTimeout(() => {
+    delay(() => {
       this.copied = false
     }, 1800)
   }
 
   get availableServices() {
-    return this.hasAI ? [...services, aiService] : [...services]
+    return this.hasAI ? concat(services, aiService) : [...services]
   }
 
   get canSwap() {
@@ -148,7 +151,7 @@ class Store {
   }
 
   get canTranslate() {
-    return !this.isTranslating && !!this.sourceText.trim()
+    return !this.isTranslating && !isStrBlank(this.sourceText)
   }
 
   get canCopy() {

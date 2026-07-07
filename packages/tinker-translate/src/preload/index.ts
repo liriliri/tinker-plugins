@@ -13,20 +13,16 @@ const translateObj = {
     to: string,
     service: Service = 'google',
   ): Promise<TranslateResult> => {
-    try {
-      if (service === 'bing') {
-        return await translateWithBing(text, from, to)
-      } else if (service === 'deepl') {
-        return await translateWithDeepL(text, from, to)
-      } else if (service === 'ai') {
-        return await translateWithAI(text, from, to)
-      } else {
-        return await translateWithGoogle(text, from, to)
-      }
-    } catch (error) {
-      console.error('Translation failed:', error)
-      throw error
+    if (service === 'bing') {
+      return await translateWithBing(text, from, to)
     }
+    if (service === 'deepl') {
+      return await translateWithDeepL(text, from, to)
+    }
+    if (service === 'ai') {
+      return await translateWithAI(text, from, to)
+    }
+    return await translateWithGoogle(text, from, to)
   },
 }
 

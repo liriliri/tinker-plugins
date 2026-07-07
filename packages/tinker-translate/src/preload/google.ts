@@ -1,3 +1,6 @@
+import reduce from 'licia/reduce'
+import safeGet from 'licia/safeGet'
+import trim from 'licia/trim'
 import { httpsRequest } from './http'
 import type { TranslateResult } from './types'
 
@@ -35,12 +38,12 @@ export async function translateWithGoogle(
   if (statusCode !== 200) throw new Error(`HTTP Error: ${statusCode}`)
 
   const result = JSON.parse(data)
-  let translatedText = ''
-  if (result[0]) {
-    for (const item of result[0]) {
-      if (item[0]) translatedText += item[0]
-    }
-  }
+  const segments = safeGet(result, '0') as unknown[] | undefined
+  const translatedText = reduce(
+    segments ?? [],
+    (acc, item) => acc + (safeGet(item, '0') ?? ''),
+    '',
+  )
 
-  return { text: translatedText.trim(), from, to }
+  return { text: trim(translatedText) }
 }

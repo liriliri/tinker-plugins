@@ -1,3 +1,5 @@
+import safeGet from 'licia/safeGet'
+import trim from 'licia/trim'
 import { httpsRequest } from './http'
 import type { TranslateResult } from './types'
 
@@ -66,9 +68,8 @@ export async function translateWithBing(
   if (statusCode !== 200) throw new Error(`HTTP Error: ${statusCode}`)
 
   const result = JSON.parse(data)
-  if (!result[0]?.translations?.[0]?.text) {
-    throw new Error('Invalid response format')
-  }
+  const translatedText = safeGet(result, '[0].translations[0].text')
+  if (!translatedText) throw new Error('Invalid response format')
 
-  return { text: result[0].translations[0].text.trim(), from, to }
+  return { text: trim(translatedText as string) }
 }

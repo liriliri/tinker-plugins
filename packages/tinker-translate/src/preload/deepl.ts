@@ -1,3 +1,7 @@
+import random from 'licia/random'
+import safeGet from 'licia/safeGet'
+import trim from 'licia/trim'
+import upperCase from 'licia/upperCase'
 import { httpsRequest } from './http'
 import type { TranslateResult } from './types'
 
@@ -15,7 +19,7 @@ function getTimestamp(iCount: number): number {
 }
 
 function getRandomId(): number {
-  return (Math.floor(Math.random() * 99999) + 100000) * 1000
+  return random(100000, 199998) * 1000
 }
 
 export async function translateWithDeepL(
@@ -32,8 +36,8 @@ export async function translateWithDeepL(
       splitting: 'newlines',
       lang: {
         source_lang_user_selected:
-          from !== 'auto' ? from.slice(0, 2).toUpperCase() : 'auto',
-        target_lang: to.slice(0, 2).toUpperCase(),
+          from !== 'auto' ? upperCase(from.slice(0, 2)) : 'auto',
+        target_lang: upperCase(to.slice(0, 2)),
       },
       texts: [{ text, requestAlternatives: 3 }],
       timestamp: getTimestamp(getICount(text)),
@@ -62,8 +66,11 @@ export async function translateWithDeepL(
   if (statusCode !== 200) throw new Error(`HTTP Error: ${statusCode}`)
 
   const result = JSON.parse(data)
-  if (result?.result?.texts?.[0]?.text) {
-    return { text: result.result.texts[0].text.trim(), from, to }
+  const translatedText = safeGet(result, 'result.texts[0].text')
+  if (translatedText) {
+    return { text: trim(translatedText as string) }
   }
-  throw new Error(result?.error?.message ?? 'Invalid response format')
+  throw new Error(
+    (safeGet(result, 'error.message') as string) ?? 'Invalid response format',
+  )
 }

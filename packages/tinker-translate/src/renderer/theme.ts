@@ -49,11 +49,10 @@ export const tw = {
     trigger:
       'text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800',
     chevron: 'text-stone-400 dark:text-stone-500',
-    content:
-      'border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800',
-    item: 'text-stone-700 dark:text-stone-300 data-highlighted:bg-stone-100 dark:data-highlighted:bg-stone-700',
-    itemChecked:
-      'data-[state=checked]:text-blue-600 dark:data-[state=checked]:text-blue-400',
+    dropdown:
+      'overflow-hidden rounded-xl border z-50 border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 shadow-[0_8px_24px_rgba(0,0,0,0.1),0_2px_6px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.5)]',
+    itemRow:
+      'relative flex items-center px-2 py-1.25 pl-6.5 text-[12px] rounded-md cursor-pointer outline-none text-stone-700 dark:text-stone-300 data-highlighted:bg-stone-100 dark:data-highlighted:bg-stone-700 data-[state=checked]:font-semibold data-[state=checked]:text-blue-600 dark:data-[state=checked]:text-blue-400 transition-colors duration-75',
     itemIndicator: 'text-blue-500 dark:text-blue-400',
   },
 

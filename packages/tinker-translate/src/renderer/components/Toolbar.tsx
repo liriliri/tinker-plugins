@@ -41,7 +41,7 @@ const Toolbar = observer(() => {
           </Select.Trigger>
           <Select.Portal>
             <Select.Content
-              className={`overflow-hidden rounded-xl border ${tw.select.content} shadow-[0_8px_24px_rgba(0,0,0,0.1),0_2px_6px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.5)] z-50`}
+              className={tw.select.dropdown}
               position="popper"
               sideOffset={4}
             >
@@ -50,7 +50,7 @@ const Toolbar = observer(() => {
                   <Select.Item
                     key={s.value}
                     value={s.value}
-                    className={`relative flex items-center px-2 py-1.25 pl-6.5 text-[12px] rounded-md cursor-pointer outline-none ${tw.select.item} data-[state=checked]:font-semibold ${tw.select.itemChecked} transition-colors duration-75`}
+                    className={tw.select.itemRow}
                   >
                     <Select.ItemIndicator
                       className={`absolute left-2 flex items-center ${tw.select.itemIndicator}`}
