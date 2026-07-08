@@ -5,5 +5,7 @@
   "add": "Add",
   "remove": "Remove",
   "selectSource": "Select a source to preview",
-  "noData": "No data"
+  "noData": "No data",
+  "dragToReorder": "Drag to reorder",
+  "fetchFailed": "Failed to fetch"
 }

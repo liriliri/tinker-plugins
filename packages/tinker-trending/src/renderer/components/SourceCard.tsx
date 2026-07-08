@@ -3,9 +3,9 @@ import { observer } from 'mobx-react-lite'
 import { RefreshCw, X, GripVertical } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import type { SourceMeta } from '../types'
-import { getColors, tw } from '../theme'
+import { getColors } from '../theme'
 import store from '../store'
-import { HottestList, TimelineList } from './NewsList'
+import { SourceNewsPanel } from './SourceNewsPanel'
 import SourceIcon from './SourceIcon'
 
 interface Props {
@@ -26,7 +26,7 @@ const SourceCardInner = forwardRef<HTMLDivElement, Props>(
     return (
       <div
         ref={ref}
-        className={`flex flex-col h-full rounded-lg overflow-hidden p-3 ${colors.cardBg} ${colors.card} transition-opacity duration-200 ${isDragging ? 'opacity-50' : 'opacity-100'}`}
+        className={`flex flex-col h-full rounded-lg overflow-hidden p-3 ${colors.cardBg} transition-opacity duration-200 ${isDragging ? 'opacity-50' : 'opacity-100'}`}
       >
         <div
           className={`flex items-center px-1 pb-2.5 border-b ${colors.headerBorder} shrink-0`}
@@ -34,7 +34,7 @@ const SourceCardInner = forwardRef<HTMLDivElement, Props>(
           <div
             ref={setHandleRef}
             className={`mr-1 p-0.5 rounded cursor-grab ${colors.refreshBtn}`}
-            title="Drag to reorder"
+            title={t('dragToReorder')}
           >
             <GripVertical className="w-3.5 h-3.5" />
           </div>
@@ -65,27 +65,14 @@ const SourceCardInner = forwardRef<HTMLDivElement, Props>(
           <div
             className={`rounded-md overflow-hidden h-full ${colors.contentBg}`}
           >
-            <div
-              className={`overflow-y-auto h-full transition-opacity duration-300 ${loading && items.length ? 'opacity-40' : 'opacity-100'}`}
-            >
-              {loading && !items.length ? (
-                <div
-                  className={`flex items-center justify-center h-full text-xs ${tw.text.muted}`}
-                >
-                  <span className="animate-pulse">{t('loading')}</span>
-                </div>
-              ) : error ? (
-                <div
-                  className={`flex items-center justify-center h-full text-xs ${tw.text.error} px-4 text-center`}
-                >
-                  {error}
-                </div>
-              ) : type === 'hottest' ? (
-                <HottestList items={items} colors={colors} />
-              ) : (
-                <TimelineList items={items} />
-              )}
-            </div>
+            <SourceNewsPanel
+              loading={loading}
+              error={error}
+              items={items}
+              type={type}
+              colors={colors}
+              dimWhileLoading
+            />
           </div>
         </div>
       </div>

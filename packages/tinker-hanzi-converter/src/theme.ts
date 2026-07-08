@@ -3,21 +3,23 @@ export const tw = {
     primary: 'bg-gray-50 dark:bg-zinc-900',
     secondary: 'bg-white dark:bg-zinc-800',
     segmented: 'bg-gray-100 dark:bg-zinc-800',
-    segmentedActive: 'bg-white dark:bg-zinc-700 shadow-sm',
   },
   text: {
     primary: 'text-zinc-900 dark:text-zinc-100',
     muted: 'text-zinc-400 dark:text-zinc-500',
     placeholder: 'placeholder:text-zinc-300 dark:placeholder:text-zinc-500',
-    inactive: 'text-zinc-500 dark:text-zinc-400',
-    inactiveHover: 'hover:text-zinc-700 dark:hover:text-zinc-300',
-    segmentedActive: 'text-zinc-900 dark:text-zinc-100',
-    segmentedOptionActive: 'text-zinc-800 dark:text-zinc-200',
     divider: 'text-zinc-300 dark:text-zinc-600',
   },
   border: {
     primary: 'border border-zinc-200 dark:border-zinc-700',
     focus: 'focus:border-vermillion-500 dark:focus:border-vermillion-400',
+  },
+  segmented: {
+    active: 'bg-white dark:bg-zinc-700 shadow-sm font-medium',
+    optionText: 'text-zinc-800 dark:text-zinc-200',
+    tabText: 'text-zinc-900 dark:text-zinc-100',
+    inactive:
+      'text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-300',
   },
   badge: {
     active:

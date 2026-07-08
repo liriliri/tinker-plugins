@@ -1,6 +1,6 @@
 {
   "name": "tinker-hanzi-converter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Chinese Character Tools Plugin for TINKER",
   "files": [
     "dist/",

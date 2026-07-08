@@ -3,7 +3,7 @@ import className from 'licia/className'
 import { useTranslation } from 'react-i18next'
 import store from './store'
 import { tw } from './theme'
-import type { PinyinStyle, ChineseMode, Tool } from './types'
+import type { PinyinStyle, ChineseMode, Tool, OptionItem } from './types'
 import { createRoot } from 'react-dom/client'
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
@@ -15,13 +15,13 @@ import FlowIndicator from './components/FlowIndicator'
 import CopyButton from './components/CopyButton'
 import './index.scss'
 
-const pinyinStyles: { key: PinyinStyle; label: string }[] = [
+const pinyinStyles: OptionItem<PinyinStyle>[] = [
   { key: 'tone', label: 'tone' },
   { key: 'toneNum', label: 'toneNum' },
   { key: 'normal', label: 'normal' },
 ]
 
-const chineseModes: { key: ChineseMode; label: string }[] = [
+const chineseModes: OptionItem<ChineseMode>[] = [
   { key: 'toTraditional', label: 'toTraditional' },
   { key: 'toSimplified', label: 'toSimplified' },
 ]
@@ -52,7 +52,7 @@ const App = observer(() => {
             <OptionButtons
               items={pinyinStyles}
               value={store.pinyinStyle}
-              onChange={(key) => store.setPinyinStyle(key as PinyinStyle)}
+              onChange={(key) => store.setPinyinStyle(key)}
             />
           )}
 
@@ -60,7 +60,7 @@ const App = observer(() => {
             <OptionButtons
               items={chineseModes}
               value={store.chineseMode}
-              onChange={(key) => store.setChineseMode(key as ChineseMode)}
+              onChange={(key) => store.setChineseMode(key)}
             />
           )}
         </div>

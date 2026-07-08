@@ -1,4 +1,3 @@
-import type { SourceId } from '../../common/types'
 import type { SourceMeta } from '../types'
 import hackernewsFavicon from '../assets/hackernews.ico'
 import githubFavicon from '../assets/github.ico'
@@ -111,7 +110,3 @@ export const SOURCES: SourceMeta[] = [
     favicon: steamFavicon,
   },
 ]
-
-export const SOURCE_MAP = Object.fromEntries(
-  SOURCES.map((s) => [s.id, s]),
-) as Record<SourceId, SourceMeta>

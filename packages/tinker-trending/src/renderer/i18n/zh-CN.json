@@ -5,5 +5,7 @@
   "add": "添加",
   "remove": "移除",
   "selectSource": "选择来源以预览",
-  "noData": "暂无数据"
+  "noData": "暂无数据",
+  "dragToReorder": "拖动以排序",
+  "fetchFailed": "获取失败"
 }

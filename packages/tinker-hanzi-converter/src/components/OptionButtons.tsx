@@ -2,17 +2,16 @@ import { observer } from 'mobx-react-lite'
 import className from 'licia/className'
 import { useTranslation } from 'react-i18next'
 import { tw } from '../theme'
+import type { OptionItem } from '../types'
+
+interface OptionButtonsProps<T extends string> {
+  items: OptionItem<T>[]
+  value: T
+  onChange: (key: T) => void
+}
 
 const OptionButtons = observer(
-  ({
-    items,
-    value,
-    onChange,
-  }: {
-    items: { key: string; label: string }[]
-    value: string
-    onChange: (key: string) => void
-  }) => {
+  <T extends string>({ items, value, onChange }: OptionButtonsProps<T>) => {
     const { t } = useTranslation()
 
     return (
@@ -29,8 +28,8 @@ const OptionButtons = observer(
             className={className(
               'px-2.5 py-1 text-xs rounded transition-all duration-200',
               value === key
-                ? `${tw.background.segmentedActive} font-medium ${tw.text.segmentedOptionActive}`
-                : `${tw.text.inactive} ${tw.text.inactiveHover}`,
+                ? `${tw.segmented.active} ${tw.segmented.optionText}`
+                : tw.segmented.inactive,
             )}
           >
             {t(label)}

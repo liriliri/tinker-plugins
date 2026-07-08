@@ -28,8 +28,8 @@ const ToolTabs = observer(() => {
           className={className(
             'relative flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm transition-all duration-200',
             store.currentTool === key
-              ? `${tw.background.segmentedActive} font-medium ${tw.text.segmentedActive}`
-              : `${tw.text.inactive} ${tw.text.inactiveHover}`,
+              ? `${tw.segmented.active} ${tw.segmented.tabText}`
+              : tw.segmented.inactive,
           )}
         >
           <span

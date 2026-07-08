@@ -6,7 +6,7 @@ import type { SourceMeta } from '../types'
 import { getColors, tw } from '../theme'
 import { SOURCES } from '../lib/sources'
 import store, { previewStore } from '../store'
-import { HottestList, TimelineList } from './NewsList'
+import { SourceNewsPanel } from './SourceNewsPanel'
 import SourceIcon from './SourceIcon'
 
 interface Props {
@@ -25,7 +25,7 @@ const CardPreview = observer(({ source, onToggle }: CardPreviewProps) => {
 
   return (
     <div
-      className={`flex flex-col rounded-lg overflow-hidden h-full ${colors.cardBg} ${colors.card}`}
+      className={`flex flex-col rounded-lg overflow-hidden h-full ${colors.cardBg}`}
     >
       <div
         className={`flex items-center px-3 py-2.5 border-b ${colors.headerBorder} shrink-0`}
@@ -69,31 +69,14 @@ const CardPreview = observer(({ source, onToggle }: CardPreviewProps) => {
         <div
           className={`rounded-md overflow-hidden h-full ${colors.contentBg}`}
         >
-          <div className="overflow-y-auto h-full">
-            {previewStore.loading ? (
-              <div
-                className={`flex items-center justify-center h-full text-xs ${tw.text.muted}`}
-              >
-                <span className="animate-pulse">{t('loading')}</span>
-              </div>
-            ) : previewStore.error ? (
-              <div
-                className={`flex items-center justify-center h-full text-xs ${tw.text.error} px-4 text-center`}
-              >
-                {previewStore.error}
-              </div>
-            ) : previewStore.items.length === 0 ? (
-              <div
-                className={`flex items-center justify-center h-full text-xs ${tw.text.muted}`}
-              >
-                {t('noData')}
-              </div>
-            ) : source.type === 'hottest' ? (
-              <HottestList items={previewStore.items} colors={colors} />
-            ) : (
-              <TimelineList items={previewStore.items} />
-            )}
-          </div>
+          <SourceNewsPanel
+            loading={previewStore.loading}
+            error={previewStore.error}
+            items={previewStore.items}
+            type={source.type}
+            colors={colors}
+            showEmpty
+          />
         </div>
       </div>
     </div>
@@ -142,7 +125,7 @@ const MoreDialog = observer(({ onClose }: Props) => {
   return (
     <div
       ref={backdropRef}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40"
+      className={`fixed inset-0 z-50 flex items-center justify-center ${tw.dialog.backdrop}`}
       onMouseDown={(e) => {
         if (e.target === backdropRef.current) onClose()
       }}
@@ -175,7 +158,7 @@ const MoreDialog = observer(({ onClose }: Props) => {
                   key={source.id}
                   onClick={() => handleSelect(source)}
                   className={`w-full flex items-center gap-2.5 px-3 py-2 text-left transition-colors duration-100 cursor-pointer ${
-                    isSelected ? tw.bg.app : tw.dialog.listItemHover
+                    isSelected ? tw.bg.app : tw.list.itemHover
                   }`}
                 >
                   <SourceIcon
