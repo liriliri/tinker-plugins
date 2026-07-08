@@ -2,5 +2,11 @@
   "inputTokens": "input tokens",
   "outputTokens": "output tokens",
   "totalTokens": "total tokens",
-  "sessionCount": "sessions"
+  "sessionCount": "sessions",
+  "errorTitle": "Error loading data",
+  "claudeCode": "Claude Code",
+  "codex": "Codex",
+  "tokens": "tokens",
+  "loading": "Loading...",
+  "unknownError": "Unknown error occurred"
 }

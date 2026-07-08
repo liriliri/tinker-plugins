@@ -1,29 +1,17 @@
 import { makeAutoObservable } from 'mobx'
 import waitUntil from 'licia/waitUntil'
 import LocalStore from 'licia/LocalStore'
+import i18n from 'i18next'
 import type { TokenUsageData, DataSource } from '../common/types'
+import { createEmptyUsageData, todayStr } from './lib/util'
 
 const storage = new LocalStore('tinker-token-usage')
-const STORAGE_KEY_DATA_SOURCE = 'dataSource'
-
-function todayStr(): string {
-  return new Date().toISOString().split('T')[0]
-}
+const STORAGE_DATA_SOURCE = 'dataSource'
 
 class Store {
   dataSource: DataSource = 'claude-code'
 
-  usageData: TokenUsageData | null = {
-    total: {
-      inputTokens: 0,
-      outputTokens: 0,
-      cacheCreationTokens: 0,
-      cacheReadTokens: 0,
-      totalTokens: 0,
-      sessionCount: 0,
-    },
-    byDay: [],
-  }
+  usageData: TokenUsageData | null = createEmptyUsageData()
   loading: boolean = false
   error: string | null = null
   dateRange: { start: string; end: string } | null = (() => {
@@ -49,7 +37,7 @@ class Store {
   }
 
   private loadFromStorage() {
-    const savedDataSource = storage.get(STORAGE_KEY_DATA_SOURCE)
+    const savedDataSource = storage.get(STORAGE_DATA_SOURCE)
     if (savedDataSource === 'claude-code' || savedDataSource === 'codex') {
       this.dataSource = savedDataSource
     }
@@ -62,7 +50,7 @@ class Store {
 
   setDataSource(source: DataSource) {
     this.dataSource = source
-    storage.set(STORAGE_KEY_DATA_SOURCE, source)
+    storage.set(STORAGE_DATA_SOURCE, source)
   }
 
   async switchDataSource(source: DataSource) {
@@ -145,20 +133,10 @@ class Store {
     } catch (error) {
       console.error('Failed to load token usage data:', error)
       this.setError(
-        error instanceof Error ? error.message : 'Unknown error occurred',
+        error instanceof Error ? error.message : i18n.t('unknownError'),
       )
       const today = todayStr()
-      this.setUsageData({
-        total: {
-          inputTokens: 0,
-          outputTokens: 0,
-          cacheCreationTokens: 0,
-          cacheReadTokens: 0,
-          totalTokens: 0,
-          sessionCount: 0,
-        },
-        byDay: [],
-      })
+      this.setUsageData(createEmptyUsageData())
       this.setDateRange(today, today)
     } finally {
       this.setLoading(false)

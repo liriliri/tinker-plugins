@@ -4,6 +4,7 @@ import { useMemo, useState, useEffect } from 'react'
 import ReactECharts from 'echarts-for-react'
 import className from 'licia/className'
 import { formatNumber, formatDate } from '../lib/format'
+import { getLocaleFromLanguage } from '../lib/util'
 import store from '../store'
 import { tw } from '../theme'
 
@@ -17,8 +18,7 @@ const DailyChart = observer(() => {
       return null
     }
 
-    // Use the current i18n language for date formatting
-    const locale = i18n.language === 'zh-CN' ? 'zh-CN' : 'en-US'
+    const locale = getLocaleFromLanguage(i18n.language)
     const dates = usageData.byDay.map((day) => formatDate(day.date, locale))
     const rawDates = usageData.byDay.map((day) => day.date)
     const inputTokens = usageData.byDay.map((day) => day.inputTokens)
@@ -36,7 +36,6 @@ const DailyChart = observer(() => {
     }
   }, [usageData, i18n.language])
 
-  // Reset zoom when data changes
   useEffect(() => {
     setZoom(null)
   }, [usageData])
@@ -53,7 +52,6 @@ const DailyChart = observer(() => {
 
     setZoom({ start, end })
 
-    // Calculate date range based on zoom percentage
     if (chartData.rawDates.length > 0) {
       const totalDays = chartData.rawDates.length
       const startIndex = Math.floor((start / 100) * totalDays)
@@ -79,7 +77,7 @@ const DailyChart = observer(() => {
           role="status"
         >
           <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
-            Loading...
+            {t('loading')}
           </span>
         </div>
       </div>
@@ -138,7 +136,7 @@ const DailyChart = observer(() => {
     yAxis: [
       {
         type: 'value',
-        name: 'tokens',
+        name: t('tokens'),
         position: 'left',
         axisLabel: {
           color: tw.chart.axis.label,

@@ -2,5 +2,11 @@
   "inputTokens": "输入 token",
   "outputTokens": "输出 token",
   "totalTokens": "总 token",
-  "sessionCount": "会话数"
+  "sessionCount": "会话数",
+  "errorTitle": "加载数据失败",
+  "claudeCode": "Claude Code",
+  "codex": "Codex",
+  "tokens": "token",
+  "loading": "加载中...",
+  "unknownError": "发生未知错误"
 }

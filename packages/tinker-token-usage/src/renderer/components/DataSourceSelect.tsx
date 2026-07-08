@@ -2,31 +2,37 @@ import { observer } from 'mobx-react-lite'
 import * as Select from '@radix-ui/react-select'
 import { Check, ChevronDown } from 'lucide-react'
 import className from 'licia/className'
+import { useTranslation } from 'react-i18next'
 import store from '../store'
 import { tw } from '../theme'
 import type { DataSource } from '../../common/types'
 
+const DATA_SOURCES: Array<{
+  value: DataSource
+  labelKey: 'claudeCode' | 'codex'
+}> = [
+  { value: 'claude-code', labelKey: 'claudeCode' },
+  { value: 'codex', labelKey: 'codex' },
+]
+
 const DataSourceSelect = observer(() => {
-  const handleValueChange = (value: DataSource) => {
-    store.switchDataSource(value)
-  }
+  const { t } = useTranslation()
 
   return (
     <Select.Root
       value={store.dataSource}
-      onValueChange={handleValueChange}
+      onValueChange={(value) => store.switchDataSource(value as DataSource)}
       disabled={store.loading}
     >
       <Select.Trigger
         className={className(
-          'inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium rounded-md border transition-colors',
-          'bg-white dark:bg-neutral-800',
+          tw.select.trigger.base,
+          tw.select.trigger.background,
           tw.text.primary,
-          'border-neutral-300 dark:border-neutral-700',
-          'hover:bg-neutral-50 dark:hover:bg-neutral-700',
+          tw.select.trigger.border,
+          tw.select.trigger.hover,
           tw.select.trigger.focus,
-          'data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed',
-          'min-w-[140px] justify-between',
+          tw.select.trigger.disabled,
         )}
       >
         <Select.Value />
@@ -38,43 +44,30 @@ const DataSourceSelect = observer(() => {
       <Select.Portal>
         <Select.Content
           className={className(
-            'overflow-hidden rounded-md border shadow-lg z-50',
-            'bg-white dark:bg-neutral-800',
-            'border-neutral-300 dark:border-neutral-700',
+            tw.select.content.base,
+            tw.select.content.background,
+            tw.select.content.border,
           )}
           position="popper"
           sideOffset={4}
         >
           <Select.Viewport className="p-1">
-            <Select.Item
-              value="claude-code"
-              className={className(
-                'relative flex items-center gap-2 px-8 py-2 text-sm rounded cursor-pointer outline-none',
-                tw.text.primary,
-                tw.select.item.highlighted,
-                'data-[state=checked]:font-medium',
-              )}
-            >
-              <Select.ItemIndicator className="absolute left-2">
-                <Check className="w-4 h-4" />
-              </Select.ItemIndicator>
-              <Select.ItemText>Claude Code</Select.ItemText>
-            </Select.Item>
-
-            <Select.Item
-              value="codex"
-              className={className(
-                'relative flex items-center gap-2 px-8 py-2 text-sm rounded cursor-pointer outline-none',
-                tw.text.primary,
-                tw.select.item.highlighted,
-                'data-[state=checked]:font-medium',
-              )}
-            >
-              <Select.ItemIndicator className="absolute left-2">
-                <Check className="w-4 h-4" />
-              </Select.ItemIndicator>
-              <Select.ItemText>Codex</Select.ItemText>
-            </Select.Item>
+            {DATA_SOURCES.map(({ value, labelKey }) => (
+              <Select.Item
+                key={value}
+                value={value}
+                className={className(
+                  tw.select.item.base,
+                  tw.text.primary,
+                  tw.select.item.highlighted,
+                )}
+              >
+                <Select.ItemIndicator className="absolute left-2">
+                  <Check className="w-4 h-4" />
+                </Select.ItemIndicator>
+                <Select.ItemText>{t(labelKey)}</Select.ItemText>
+              </Select.Item>
+            ))}
           </Select.Viewport>
         </Select.Content>
       </Select.Portal>

@@ -2,7 +2,6 @@ import { readFile, stat } from 'node:fs/promises'
 import * as path from 'node:path'
 import * as os from 'node:os'
 
-// Constants
 const CODEX_HOME_ENV = 'CODEX_HOME'
 const DEFAULT_CODEX_DIR = path.join(os.homedir(), '.codex')
 const DEFAULT_SESSION_SUBDIR = 'sessions'
@@ -112,7 +111,6 @@ function extractModel(value: unknown): string | undefined {
 
   const payload = value as Record<string, unknown>
 
-  // Check info field
   if (payload.info != null && typeof payload.info === 'object') {
     const info = payload.info as Record<string, unknown>
     const directCandidates = [info.model, info.model_name]
@@ -130,12 +128,10 @@ function extractModel(value: unknown): string | undefined {
     }
   }
 
-  // Check direct model field
   if (typeof payload.model === 'string' && payload.model.trim() !== '') {
     return payload.model.trim()
   }
 
-  // Check metadata field
   if (payload.metadata != null && typeof payload.metadata === 'object') {
     const metadata = payload.metadata as Record<string, unknown>
     if (typeof metadata.model === 'string' && metadata.model.trim() !== '') {
@@ -166,7 +162,6 @@ export async function loadCodexTokenUsageEvents(): Promise<TokenUsageEvent[]> {
       : DEFAULT_CODEX_DIR
   const sessionDir = path.join(codexHome, DEFAULT_SESSION_SUBDIR)
 
-  // Check if directory exists
   try {
     const stats = await stat(sessionDir)
     if (!stats.isDirectory()) {
@@ -189,7 +184,6 @@ export async function loadCodexTokenUsageEvents(): Promise<TokenUsageEvent[]> {
       const fileContent = await readFile(file, 'utf8')
       let previousTotals: RawUsage | null = null
       let currentModel: string | undefined
-      let currentModelIsFallback = false
 
       const lines = fileContent.split(/\r?\n/)
       for (const line of lines) {
@@ -210,19 +204,16 @@ export async function loadCodexTokenUsageEvents(): Promise<TokenUsageEvent[]> {
         const payload = entry.payload
         const timestamp = entry.timestamp
 
-        // Handle turn_context for model info
         if (entryType === 'turn_context') {
           if (payload != null && typeof payload === 'object') {
             const contextModel = extractModel(payload)
             if (contextModel != null) {
               currentModel = contextModel
-              currentModelIsFallback = false
             }
           }
           continue
         }
 
-        // Only process event_msg with token_count
         if (entryType !== 'event_msg') continue
         if (payload == null || typeof payload !== 'object') continue
 
@@ -263,14 +254,12 @@ export async function loadCodexTokenUsageEvents(): Promise<TokenUsageEvent[]> {
 
         if (extractedModel != null) {
           currentModel = extractedModel
-          currentModelIsFallback = false
         }
 
         let model = extractedModel ?? currentModel
         if (model == null) {
           model = LEGACY_FALLBACK_MODEL
           currentModel = model
-          currentModelIsFallback = true
         }
 
         const event: TokenUsageEvent = {

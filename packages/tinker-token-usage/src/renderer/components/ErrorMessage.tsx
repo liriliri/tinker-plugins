@@ -1,9 +1,12 @@
 import { observer } from 'mobx-react-lite'
 import className from 'licia/className'
+import { AlertCircle } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { tw } from '../theme'
 import store from '../store'
 
 const ErrorMessage = observer(() => {
+  const { t } = useTranslation()
   const { error } = store
 
   if (!error) return null
@@ -24,23 +27,11 @@ const ErrorMessage = observer(() => {
             tw.error.icon.border,
           )}
         >
-          <svg
-            className={className('w-5 h-5', tw.error.icon.text)}
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
+          <AlertCircle className={className('w-5 h-5', tw.error.icon.text)} />
         </div>
         <div className="flex-1">
           <h3 className={className('font-bold mb-2', tw.error.text.title)}>
-            Error loading data
+            {t('errorTitle')}
           </h3>
           <p className={className('text-sm font-mono', tw.error.text.content)}>
             {error}

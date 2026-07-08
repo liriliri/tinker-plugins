@@ -39,10 +39,21 @@ export const tw = {
 
   select: {
     trigger: {
+      base: 'inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium rounded-md border transition-colors min-w-[140px] justify-between',
+      background: 'bg-white dark:bg-neutral-800',
+      border: 'border-neutral-300 dark:border-neutral-700',
+      hover: 'hover:bg-neutral-50 dark:hover:bg-neutral-700',
       focus:
         'focus:outline-none focus:ring-2 focus:ring-[#df754f] dark:focus:ring-[#f08a65]',
+      disabled: 'data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed',
+    },
+    content: {
+      base: 'overflow-hidden rounded-md border shadow-lg z-50',
+      background: 'bg-white dark:bg-neutral-800',
+      border: 'border-neutral-300 dark:border-neutral-700',
     },
     item: {
+      base: 'relative flex items-center gap-2 px-8 py-2 text-sm rounded cursor-pointer outline-none data-[state=checked]:font-medium',
       highlighted:
         'data-[highlighted]:bg-[#df754f] dark:data-[highlighted]:bg-[#f08a65] data-[highlighted]:text-white',
     },

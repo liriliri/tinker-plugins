@@ -8,6 +8,10 @@ import {
 import { loadCodexTokenUsageEvents } from './codexLoader'
 import type { DataSource, TokenUsageData } from '../common/types'
 
+function toDateKey(timestamp: string): string {
+  return timestamp.split('T')[0]
+}
+
 const tokenUsageObj = {
   getUsage: async (
     source: DataSource = 'claude-code',
@@ -31,8 +35,7 @@ async function getClaudeCodeUsage(): Promise<TokenUsageData> {
 
   const sessionCountByDate = new Map<string, Set<string>>()
   for (const session of sessionData) {
-    // Extract date from lastActivity (YYYY-MM-DD format)
-    const date = session.lastActivity.split('T')[0]
+    const date = toDateKey(session.lastActivity)
     if (!sessionCountByDate.has(date)) {
       sessionCountByDate.set(date, new Set())
     }
@@ -112,7 +115,7 @@ async function getCodexUsage(): Promise<TokenUsageData> {
   >()
 
   for (const event of events) {
-    const date = event.timestamp.split('T')[0]
+    const date = toDateKey(event.timestamp)
     if (!dailyMap.has(date)) {
       dailyMap.set(date, {
         inputTokens: 0,
