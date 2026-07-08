@@ -1,19 +1,15 @@
 import { makeAutoObservable } from 'mobx'
 import LocalStore from 'licia/LocalStore'
-
-type Scene =
-  | 'snowy'
-  | 'rainy'
-  | 'seaside'
-  | 'fire'
-  | 'deepOcean'
-  | 'night'
+import type { Scene } from './types'
 
 const storage = new LocalStore('tinker-white-noise')
 
+const STORAGE_SCENE = 'scene'
+const STORAGE_VOLUME = 'volume'
+
 class Store {
-  scene: Scene = storage.get('scene') ?? 'snowy'
-  volume: number = storage.get('volume') ?? 1
+  scene: Scene = storage.get(STORAGE_SCENE) ?? 'snowy'
+  volume: number = storage.get(STORAGE_VOLUME) ?? 1
 
   constructor() {
     makeAutoObservable(this)
@@ -21,12 +17,12 @@ class Store {
 
   setScene(scene: Scene) {
     this.scene = scene
-    storage.set('scene', scene)
+    storage.set(STORAGE_SCENE, scene)
   }
 
   setVolume(volume: number) {
     this.volume = volume
-    storage.set('volume', volume)
+    storage.set(STORAGE_VOLUME, volume)
   }
 }
 
