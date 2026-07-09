@@ -85,12 +85,3 @@ html.dark {
 .animate-slide-in-left {
   animation: slide-in-left 0.25s ease-out both;
 }
-
-.checkerboard-bg {
-  background-image: repeating-conic-gradient(#e0e0e0 0% 25%, #f5f5f5 0% 50%);
-  background-size: 14px 14px;
-}
-
-html.dark .checkerboard-bg {
-  background-image: repeating-conic-gradient(#333 0% 25%, #2a2a2a 0% 50%);
-}

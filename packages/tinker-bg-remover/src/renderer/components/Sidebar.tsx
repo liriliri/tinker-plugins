@@ -13,10 +13,7 @@ const Sidebar = observer(() => {
       className={`w-[200px] shrink-0 ${tw.background.sidebar} flex flex-col border-r ${tw.border.sidebar}`}
     >
       <div className="flex-1 p-4 flex flex-col gap-5">
-        <div
-          className="animate-slide-in-left"
-          style={{ animationDelay: '0ms' }}
-        >
+        <div className="animate-slide-in-left [animation-delay:0ms]">
           <button
             onClick={() => store.openFile()}
             className={`w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-xs font-medium cursor-pointer transition-all duration-150 ${tw.button.secondary.default} ${tw.button.secondary.hover}`}
@@ -26,20 +23,14 @@ const Sidebar = observer(() => {
           </button>
         </div>
 
-        <div
-          className="animate-slide-in-left"
-          style={{ animationDelay: '50ms' }}
-        >
+        <div className="animate-slide-in-left [animation-delay:50ms]">
           <SectionLabel>{t('model')}</SectionLabel>
           <ModelSelector />
         </div>
 
         <div className={`h-px ${tw.divider}`} />
 
-        <div
-          className="flex flex-col gap-2 animate-slide-in-left"
-          style={{ animationDelay: '100ms' }}
-        >
+        <div className="flex flex-col gap-2 animate-slide-in-left [animation-delay:100ms]">
           <button
             onClick={() => store.removeBackground()}
             disabled={!store.canRemove}

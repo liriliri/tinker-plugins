@@ -9,7 +9,7 @@ const ProcessingOverlay = () => (
       <div
         className={`absolute inset-0 rounded-full border-2 ${tw.overlay.ring} animate-pulse-ring`}
       />
-      <Eraser className="w-5 h-5 text-white" />
+      <Eraser className={`w-5 h-5 ${tw.overlay.icon}`} />
     </div>
   </div>
 )

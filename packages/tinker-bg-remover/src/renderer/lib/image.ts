@@ -29,12 +29,8 @@ export function bytesToDataUrl(bytes: Uint8Array, name: string) {
   )
 }
 
-export function parseImageDataUrl(url: string) {
-  return dataUrl.parse(url)
-}
-
 export function toPng(inputDataUrl: string): Promise<string> {
-  const parsed = parseImageDataUrl(inputDataUrl)
+  const parsed = dataUrl.parse(inputDataUrl)
 
   if (parsed && DIRECTLY_SUPPORTED_TYPES.has(parsed.mime)) {
     return Promise.resolve(inputDataUrl)

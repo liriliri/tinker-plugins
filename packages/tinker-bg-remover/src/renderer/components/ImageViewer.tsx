@@ -1,5 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import store from '../store'
+import { tw } from '../theme'
 import ProcessingOverlay from './ProcessingOverlay'
 
 const ImageViewer = observer(() => (
@@ -9,7 +10,7 @@ const ImageViewer = observer(() => (
       src={store.displayImage || ''}
       alt=""
       className={`max-w-full max-h-full object-contain rounded-md ${
-        store.resultImage ? 'checkerboard-bg' : ''
+        store.resultImage ? tw.checkerboard : ''
       }`}
     />
   </div>

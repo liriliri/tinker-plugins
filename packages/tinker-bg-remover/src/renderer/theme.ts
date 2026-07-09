@@ -6,10 +6,7 @@ export const tw = {
   },
 
   text: {
-    primary: 'text-neutral-800 dark:text-neutral-100',
-    secondary: 'text-neutral-500 dark:text-neutral-300',
     muted: 'text-neutral-400 dark:text-neutral-400',
-    label: 'text-neutral-600 dark:text-neutral-200',
   },
 
   button: {
@@ -41,7 +38,11 @@ export const tw = {
   overlay: {
     processing: 'bg-neutral-900/30 dark:bg-black/50 backdrop-blur-sm',
     ring: 'border-teal-400/30 dark:border-teal-400/30',
+    icon: 'text-white dark:text-white',
   },
+
+  checkerboard:
+    'bg-[length:14px_14px] [background-image:repeating-conic-gradient(#e0e0e0_0%_25%,#f5f5f5_0%_50%)] dark:[background-image:repeating-conic-gradient(#333_0%_25%,#2a2a2a_0%_50%)]',
 
   dropzone: {
     default:
@@ -51,7 +52,6 @@ export const tw = {
   },
 
   accent: {
-    bg: 'bg-teal-500 dark:bg-teal-400 text-white dark:text-neutral-900',
     iconBg: 'bg-teal-100 dark:bg-teal-900/40',
     iconText: 'text-teal-500 dark:text-teal-400',
     dot: 'bg-teal-500 dark:bg-teal-400',

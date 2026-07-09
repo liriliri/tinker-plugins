@@ -1,7 +1,9 @@
 import { makeAutoObservable } from 'mobx'
 import base64 from 'licia/base64'
+import dataUrl from 'licia/dataUrl'
+import splitPath from 'licia/splitPath'
 import type { ModelSize } from '../common/types'
-import { bytesToDataUrl, parseImageDataUrl, toPng } from './lib/image'
+import { bytesToDataUrl, toPng } from './lib/image'
 
 class Store {
   originalImage: string | null = null
@@ -67,7 +69,8 @@ class Store {
     if (result.canceled || !result.filePaths.length) return
 
     const filePath = result.filePaths[0]
-    const fileName = filePath.split(/[/\\]/).pop() || ''
+    const { name, ext } = splitPath(filePath)
+    const fileName = `${name}${ext}`
     const buffer = (await tinker.readFile(filePath)) as ArrayBuffer
     this.setOriginalImage(
       bytesToDataUrl(new Uint8Array(buffer), filePath),
@@ -79,7 +82,7 @@ class Store {
     if (!this.resultImage) return
 
     const defaultName = this.originalName
-      ? this.originalName.replace(/\.[^.]+$/, '') + '.png'
+      ? `${splitPath(this.originalName).name}.png`
       : undefined
 
     const result = await tinker.showSaveDialog({
@@ -89,7 +92,7 @@ class Store {
 
     if (result.canceled || !result.filePath) return
 
-    const parsed = parseImageDataUrl(this.resultImage)
+    const parsed = dataUrl.parse(this.resultImage)
 
     if (!parsed || !parsed.base64) return
 
