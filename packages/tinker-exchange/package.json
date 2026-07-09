@@ -30,8 +30,5 @@
         "description": "货币汇率计算器"
       }
     }
-  },
-  "devDependencies": {
-    "@radix-ui/react-dialog": "^1.1.14"
   }
 }

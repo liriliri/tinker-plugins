@@ -31,11 +31,5 @@
         "description": "运行 NES 游戏，支持存档"
       }
     }
-  },
-  "devDependencies": {
-    "@radix-ui/react-toast": "^1.2.15",
-    "@zenfs/core": "^2.5.2",
-    "@zenfs/dom": "^1.2.7",
-    "@zenfs/emscripten": "^1.0.5"
   }
 }

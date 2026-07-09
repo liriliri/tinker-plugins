@@ -36,9 +36,6 @@
       }
     }
   },
-  "devDependencies": {
-    "concurrently": "^9.2.0"
-  },
   "dependencies": {
     "@imgly/background-removal-node": "^1.4.5",
     "licia": "^1.48.0"

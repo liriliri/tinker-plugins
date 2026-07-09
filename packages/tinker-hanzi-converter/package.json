@@ -34,7 +34,6 @@
   },
   "devDependencies": {
     "nzh": "^1.0.14",
-    "pinyin": "^4.0.0",
     "switch-chinese": "^1.0.16"
   }
 }

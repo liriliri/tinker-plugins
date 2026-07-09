@@ -35,11 +35,5 @@
         "description": "使用多种翻译服务翻译文本"
       }
     }
-  },
-  "devDependencies": {
-    "@radix-ui/react-select": "^2.2.6",
-    "@radix-ui/react-toast": "^1.2.15",
-    "@radix-ui/react-tooltip": "^1.2.8",
-    "concurrently": "^9.2.0"
   }
 }

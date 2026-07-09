@@ -38,8 +38,5 @@
         "description": "为编码 Agent 配置提示音"
       }
     }
-  },
-  "devDependencies": {
-    "concurrently": "^9.2.0"
   }
 }

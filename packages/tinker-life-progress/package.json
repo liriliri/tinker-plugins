@@ -30,8 +30,5 @@
         "description": "可视化人生、月份和每日进度"
       }
     }
-  },
-  "devDependencies": {
-    "@radix-ui/react-dialog": "^1.1.4"
   }
 }

@@ -32,9 +32,6 @@
     }
   },
   "devDependencies": {
-    "@radix-ui/react-select": "^2.2.6",
-    "@radix-ui/react-tooltip": "^1.2.8",
-    "lucide-react": "^0.564.0",
     "tesseract.js": "^7.0.0"
   }
 }

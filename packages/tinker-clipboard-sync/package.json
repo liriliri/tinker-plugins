@@ -35,8 +35,5 @@
         "description": "通过共享文件在宿主机和虚拟机之间同步剪贴板"
       }
     }
-  },
-  "devDependencies": {
-    "concurrently": "^9.2.0"
   }
 }

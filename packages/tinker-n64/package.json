@@ -31,9 +31,5 @@
         "description": "运行 N64 游戏，支持存档"
       }
     }
-  },
-  "devDependencies": {
-    "@radix-ui/react-scroll-area": "^1.2.10",
-    "@radix-ui/react-toast": "^1.2.15"
   }
 }

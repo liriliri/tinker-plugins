@@ -42,8 +42,6 @@
     "ccusage": "^18.0.5"
   },
   "devDependencies": {
-    "@radix-ui/react-select": "^2.2.6",
-    "concurrently": "^9.2.0",
     "echarts": "^6.0.0",
     "echarts-for-react": "^3.0.6",
     "tinyglobby": "^0.2.15"

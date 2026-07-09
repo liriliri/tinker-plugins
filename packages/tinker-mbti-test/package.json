@@ -32,6 +32,5 @@
         "description": "MBTI 十六型人格测试工具"
       }
     }
-  },
-  "devDependencies": {}
+  }
 }

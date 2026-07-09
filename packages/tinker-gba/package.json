@@ -31,11 +31,5 @@
         "description": "运行 Game Boy Advance 游戏"
       }
     }
-  },
-  "devDependencies": {
-    "@radix-ui/react-toast": "^1.2.15",
-    "@zenfs/core": "^2.5.2",
-    "@zenfs/dom": "^1.2.7",
-    "@zenfs/emscripten": "^1.0.5"
   }
 }

@@ -35,9 +35,5 @@
         "description": "搜索表情包"
       }
     }
-  },
-  "devDependencies": {
-    "@radix-ui/react-scroll-area": "^1.2.2",
-    "concurrently": "^9.2.0"
   }
 }

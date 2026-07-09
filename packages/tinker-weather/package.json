@@ -30,8 +30,5 @@
         "description": "查看实时天气和天气预报"
       }
     }
-  },
-  "devDependencies": {
-    "pinyin": "^4.0.0"
   }
 }

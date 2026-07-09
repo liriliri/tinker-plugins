@@ -31,8 +31,5 @@
         "description": "使用 FFmpeg 转换视频格式"
       }
     }
-  },
-  "devDependencies": {
-    "@radix-ui/react-dialog": "^1.1.15"
   }
 }

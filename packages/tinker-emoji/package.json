@@ -30,11 +30,5 @@
         "description": "快速搜索并复制表情符号"
       }
     }
-  },
-  "devDependencies": {
-    "@radix-ui/react-scroll-area": "^1.2.2",
-    "@radix-ui/react-select": "^2.2.6",
-    "@radix-ui/react-tabs": "^1.1.2",
-    "@radix-ui/react-tooltip": "^1.1.8"
   }
 }
