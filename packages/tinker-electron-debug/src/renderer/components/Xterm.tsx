@@ -4,12 +4,12 @@ import { FitAddon } from '@xterm/addon-fit'
 import { CanvasAddon } from '@xterm/addon-canvas'
 import '@xterm/xterm/css/xterm.css'
 
-interface Props {
+interface XtermProps {
   content: string
   theme?: { background: string; foreground: string }
 }
 
-export default function Xterm({ content, theme }: Props) {
+export default function Xterm({ content, theme }: XtermProps) {
   const domRef = useRef<HTMLDivElement>(null)
   const termRef = useRef<Terminal | null>(null)
   const fitRef = useRef<FitAddon | null>(null)

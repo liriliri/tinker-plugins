@@ -116,17 +116,6 @@ class Store {
     }
   }
 
-  setActiveSession(sessionId: string) {
-    this.activeSessionId = sessionId
-  }
-
-  stopSession(sessionId: string) {
-    electronDebug.stopApp(sessionId)
-    this.sessions.delete(sessionId)
-    this.stopPolling(sessionId)
-    if (this.activeSessionId === sessionId) this.selectFirstSession()
-  }
-
   stopAllSessions() {
     for (const sessionId of this.sessions.keys()) {
       electronDebug.stopApp(sessionId)

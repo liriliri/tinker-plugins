@@ -8,6 +8,7 @@ import store from '../store'
 import { tw, xtermTheme } from '../theme'
 import type { PageInfo } from '../types'
 import Xterm from './Xterm'
+import DotSpinner from './DotSpinner'
 
 interface PageRowProps {
   page: PageInfo
@@ -25,7 +26,7 @@ const PageRow = observer(({ page, nodePort }: PageRowProps) => {
 
   return (
     <div
-      className={`flex items-center gap-3 px-3 py-2 border-b ${tw.border.divider} last:border-b-0 hover:bg-stone-50 dark:hover:bg-stone-900/60 transition-colors duration-100 group`}
+      className={`flex items-center gap-3 px-3 py-2 border-b ${tw.border.divider} last:border-b-0 ${tw.pageRow.hover} transition-colors duration-100 group`}
     >
       <span
         className={`shrink-0 inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider ${typeStyle}`}
@@ -70,17 +71,7 @@ const DebugView = observer(() => {
           >
             {activeSession.pages.length === 0 ? (
               <div className="flex flex-col items-center justify-center gap-2 py-4">
-                <div className="flex gap-1">
-                  <span
-                    className={`w-1 h-1 rounded-full bg-stone-400 dark:bg-stone-600 animate-dot-pulse`}
-                  />
-                  <span
-                    className={`w-1 h-1 rounded-full bg-stone-400 dark:bg-stone-600 animate-dot-pulse-2`}
-                  />
-                  <span
-                    className={`w-1 h-1 rounded-full bg-stone-400 dark:bg-stone-600 animate-dot-pulse-3`}
-                  />
-                </div>
+                <DotSpinner size="sm" />
                 <span className={`text-[11px] ${tw.text.muted}`}>
                   {t('waitingForDebug')}
                 </span>
@@ -159,7 +150,7 @@ const DebugDialog = observer(() => {
                   className="w-5 h-5 object-contain"
                 />
                 <span
-                  className={`status-pulse absolute -bottom-0.5 -right-0.5 w-2 h-2 rounded-full bg-emerald-500 border ${tw.border.statusIndicator}`}
+                  className={`status-pulse absolute -bottom-0.5 -right-0.5 w-2 h-2 rounded-full ${tw.status.active} border ${tw.border.statusIndicator}`}
                 />
               </div>
             )}
@@ -169,7 +160,7 @@ const DebugDialog = observer(() => {
               {dialogApp?.name}
             </Dialog.Title>
             <Dialog.Close
-              className={`p-1 rounded bg-transparent border-none cursor-pointer ${tw.text.muted} hover:${tw.text.primary} transition-colors duration-150`}
+              className={`p-1 rounded bg-transparent border-none cursor-pointer ${tw.text.muted} ${tw.text.hoverPrimary} transition-colors duration-150`}
             >
               <X className="w-3.5 h-3.5" />
             </Dialog.Close>

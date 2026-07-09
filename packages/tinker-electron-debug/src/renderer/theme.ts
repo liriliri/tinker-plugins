@@ -14,6 +14,26 @@ export const tw = {
     primary: 'text-stone-900 dark:text-stone-100',
     secondary: 'text-stone-500 dark:text-stone-400',
     muted: 'text-stone-400 dark:text-stone-600',
+    hoverPrimary: 'hover:text-stone-900 dark:hover:text-stone-100',
+    groupHoverPrimary:
+      'group-hover:text-stone-900 dark:group-hover:text-stone-100',
+  },
+
+  loading: {
+    dot: 'bg-stone-400 dark:bg-stone-600',
+  },
+
+  appCard: {
+    hover:
+      'hover:border-stone-200 dark:hover:border-stone-700/80 hover:bg-white dark:hover:bg-stone-900',
+  },
+
+  pageRow: {
+    hover: 'hover:bg-stone-50 dark:hover:bg-stone-900/60',
+  },
+
+  status: {
+    active: 'bg-emerald-500',
   },
 
   pageType: {
