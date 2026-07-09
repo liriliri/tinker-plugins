@@ -1,6 +1,14 @@
 export const tw = {
   appBg: (isDark: boolean) =>
     isDark ? 'bg-zinc-950 text-zinc-100' : 'bg-slate-50 text-zinc-900',
+  waitingRing: 'border-cyan-400',
+  waitingRingDim: 'border-cyan-400/30',
+  waitingText: 'text-cyan-400',
+  connectHint: (isDark: boolean) =>
+    isDark ? 'text-zinc-600' : 'text-zinc-500',
+  sectionLabel: 'text-zinc-500',
+  connectedDot: 'bg-emerald-400',
+  connectedText: 'text-emerald-400',
 }
 
 export const CONNECTED_GLOW = '0 0 6px rgba(52,211,153,0.8)'

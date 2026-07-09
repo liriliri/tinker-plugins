@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { colors } from '../theme'
-import { renderPath } from '../lib/util'
-import type { StickState } from '../types'
+import { renderPath, stickVisualY } from '../lib/util'
+import type { GamepadState } from '../types'
 
 interface AxesSVGProps {
   isDark: boolean
-  left: StickState
-  right: StickState
+  state: GamepadState
 }
 
 const MAX_POINTS = 300
@@ -17,7 +16,10 @@ function useStickPath(x: number, y: number) {
   const [path, setPath] = useState<[number, number][]>([])
   useEffect(() => {
     setPath((prev) => {
-      const updated: [number, number][] = [...prev, [x * RADIUS, y * RADIUS]]
+      const updated: [number, number][] = [
+        ...prev,
+        [x * RADIUS, stickVisualY(y) * RADIUS],
+      ]
       return updated.length > MAX_POINTS ? updated.slice(-MAX_POINTS) : updated
     })
   }, [x, y])
@@ -26,7 +28,9 @@ function useStickPath(x: number, y: number) {
 
 interface StickViewProps {
   cx: number
-  stick: StickState
+  x: number
+  y: number
+  pressed: boolean
   path: [number, number][]
   accent: string
   gridColor: string
@@ -35,14 +39,16 @@ interface StickViewProps {
 
 function StickView({
   cx,
-  stick,
+  x,
+  y,
+  pressed,
   path,
   accent,
   gridColor,
   dotColor,
 }: StickViewProps) {
-  const px = stick.x * RADIUS
-  const py = stick.y * RADIUS
+  const px = x * RADIUS
+  const py = stickVisualY(y) * RADIUS
   return (
     <g transform={`translate(${cx} ${RADIUS}) scale(0.95,0.95)`}>
       <circle
@@ -51,7 +57,7 @@ function StickView({
         r={RADIUS}
         fill="none"
         stroke={gridColor}
-        strokeWidth={stick.pressed ? 3 : 1}
+        strokeWidth={pressed ? 3 : 1}
       />
       <line
         x1="0"
@@ -97,10 +103,16 @@ function StickView({
   )
 }
 
-export function AxesSVG({ isDark, left, right }: AxesSVGProps) {
+export function AxesSVG({ isDark, state }: AxesSVGProps) {
   const { t } = useTranslation()
-  const { path: leftPath, clear: clearLeft } = useStickPath(left.x, left.y)
-  const { path: rightPath, clear: clearRight } = useStickPath(right.x, right.y)
+  const { path: leftPath, clear: clearLeft } = useStickPath(
+    state.leftX,
+    state.leftY,
+  )
+  const { path: rightPath, clear: clearRight } = useStickPath(
+    state.rightX,
+    state.rightY,
+  )
   const [hovered, setHovered] = useState(false)
 
   const clearPaths = () => {
@@ -141,7 +153,9 @@ export function AxesSVG({ isDark, left, right }: AxesSVGProps) {
         </defs>
         <StickView
           cx={78.5}
-          stick={left}
+          x={state.leftX}
+          y={state.leftY}
+          pressed={state.l3Pressed}
           path={leftPath}
           accent={accent}
           gridColor={gridColor}
@@ -149,7 +163,9 @@ export function AxesSVG({ isDark, left, right }: AxesSVGProps) {
         />
         <StickView
           cx={258.5}
-          stick={right}
+          x={state.rightX}
+          y={state.rightY}
+          pressed={state.r3Pressed}
           path={rightPath}
           accent={accent}
           gridColor={gridColor}

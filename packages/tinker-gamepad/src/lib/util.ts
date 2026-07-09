@@ -1,3 +1,5 @@
+import map from 'licia/map'
+import toArr from 'licia/toArr'
 import type { GamepadState } from '../types'
 
 export function readGamepadState(gpad: Gamepad): GamepadState {
@@ -25,11 +27,15 @@ export function readGamepadState(gpad: Gamepad): GamepadState {
     optionsPressed: b[9]?.pressed ?? false,
     connected: true,
     id: gpad.id,
-    axes: Array.from(gpad.axes),
-    buttonValues: Array.from(b).map((btn) => btn.value),
+    axes: toArr(gpad.axes),
+    buttonValues: map(toArr(b), (btn) => btn.value),
   }
 }
 
 export function renderPath(points: [number, number][]) {
   return points.map(([x, y], i) => `${i === 0 ? 'M' : 'L'}${x},${y}`).join(' ')
+}
+
+export function stickVisualY(y: number) {
+  return -y
 }

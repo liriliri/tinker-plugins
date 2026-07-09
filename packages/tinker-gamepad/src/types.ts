@@ -24,9 +24,3 @@ export interface GamepadState {
   axes: number[]
   buttonValues: number[]
 }
-
-export interface StickState {
-  x: number
-  y: number
-  pressed: boolean
-}

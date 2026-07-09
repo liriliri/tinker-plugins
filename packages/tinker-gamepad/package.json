@@ -1,6 +1,6 @@
 {
   "name": "tinker-gamepad",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Gamepad Tester Plugin for TINKER",
   "files": [
     "dist/",

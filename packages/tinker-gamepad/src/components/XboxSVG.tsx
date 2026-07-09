@@ -1,3 +1,4 @@
+import { stickVisualY } from '../lib/util'
 import { colors, ABXY_COLORS } from '../theme'
 import type { GamepadState } from '../types'
 
@@ -119,7 +120,7 @@ export function XboxSVG({ isDark, state }: XboxSVGProps) {
 
           <circle
             cx={142 + leftX * 19}
-            cy={210.8 + leftY * 19}
+            cy={210.8 + stickVisualY(leftY) * 19}
             r="30"
             strokeWidth={l3Pressed ? '4' : '2'}
             stroke={l3Pressed ? accent : bodyStroke}
@@ -183,7 +184,7 @@ export function XboxSVG({ isDark, state }: XboxSVGProps) {
 
           <circle
             cx={365.2 + rightX * 19}
-            cy={300.8 + rightY * 19}
+            cy={300.8 + stickVisualY(rightY) * 19}
             r="30"
             strokeWidth={r3Pressed ? '4' : '2'}
             stroke={r3Pressed ? accent : bodyStroke}
