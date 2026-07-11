@@ -1,4 +1,10 @@
 import { Solar, Lunar, SolarMonth, HolidayUtil } from 'lunar-javascript'
+import map from 'licia/map'
+import range from 'licia/range'
+import concat from 'licia/concat'
+import contain from 'licia/contain'
+import isEmpty from 'licia/isEmpty'
+import isEqual from 'licia/isEqual'
 import type { DayCell, DateInfo, TodayRef } from '../types'
 
 const CALENDAR_CELL_COUNT = 42
@@ -16,11 +22,11 @@ function buildDayCell(
 
   const solarFestivals: string[] = solar.getFestivals()
   const lunarFestivals: string[] = lunar.getFestivals()
-  const festival = solarFestivals[0] ?? lunarFestivals[0] ?? ''
+  const festival = solarFestivals[0] || lunarFestivals[0] || ''
   const jieQi = lunar.getJieQi()
 
   let lunarLabel = festival || jieQi
-  if (!lunarLabel) {
+  if (isEmpty(lunarLabel)) {
     lunarLabel =
       lunar.getDay() === 1
         ? lunar.getMonthInChinese() + '月'
@@ -28,8 +34,8 @@ function buildDayCell(
   }
 
   const holiday = HolidayUtil.getHoliday(year, month, day)
-  const isHoliday = holiday ? !holiday.isWork() : false
-  const isWorkday = holiday ? holiday.isWork() : false
+  const isWorkday = !!(holiday && holiday.isWork())
+  const isHoliday = !!(holiday && !holiday.isWork())
 
   return {
     year,
@@ -37,18 +43,16 @@ function buildDayCell(
     day,
     lunarLabel,
     isCurrentMonth,
-    isToday: year === today.year && month === today.month && day === today.day,
-    isWeekend: weekday === 0 || weekday === 6,
+    isToday: isEqual({ year, month, day }, today),
+    isWeekend: contain([0, 6], weekday),
     isHoliday,
     isWorkday,
-    hasFestival: festival !== '' || jieQi !== '',
+    hasFestival: !isEmpty(festival) || !isEmpty(jieQi),
   }
 }
 
 export function buildMonthGrid(year: number, month: number): DayCell[] {
   const today = getTodaySolar()
-  const days: DayCell[] = []
-
   const thisMonth = SolarMonth.fromYm(year, month)
   const firstWeekday = Solar.fromYmd(year, month, 1).getWeek()
   const startOffset = firstWeekday === 0 ? 7 : firstWeekday
@@ -58,24 +62,28 @@ export function buildMonthGrid(year: number, month: number): DayCell[] {
   const prevMonth = prevMonthObj.getMonth()
   const prevMonthDays = new Date(prevYear, prevMonth, 0).getDate()
 
-  for (let i = startOffset - 1; i > 0; i--) {
-    const d = prevMonthDays - i + 1
-    days.push(buildDayCell(Solar.fromYmd(prevYear, prevMonth, d), false, today))
-  }
+  const prevCells = map(range(startOffset - 1, 0, -1), (i) =>
+    buildDayCell(
+      Solar.fromYmd(prevYear, prevMonth, prevMonthDays - i + 1),
+      false,
+      today,
+    ),
+  )
 
-  for (const solar of thisMonth.getDays()) {
-    days.push(buildDayCell(solar, true, today))
-  }
+  const currentCells = map(thisMonth.getDays(), (solar) =>
+    buildDayCell(solar, true, today),
+  )
 
   const nextMonthObj = thisMonth.next(1)
   const nextYear = nextMonthObj.getYear()
   const nextMonth = nextMonthObj.getMonth()
-  const remaining = CALENDAR_CELL_COUNT - days.length
-  for (let i = 1; i <= remaining; i++) {
-    days.push(buildDayCell(Solar.fromYmd(nextYear, nextMonth, i), false, today))
-  }
+  const remaining = CALENDAR_CELL_COUNT - prevCells.length - currentCells.length
 
-  return days
+  const nextCells = map(range(1, remaining + 1), (i) =>
+    buildDayCell(Solar.fromYmd(nextYear, nextMonth, i), false, today),
+  )
+
+  return concat(prevCells, currentCells, nextCells)
 }
 
 export function buildDateInfo(
@@ -87,7 +95,7 @@ export function buildDateInfo(
   const lunar = Lunar.fromSolar(solar)
 
   let jieQiStr = lunar.getJieQi()
-  if (!jieQiStr) {
+  if (isEmpty(jieQiStr)) {
     const prev = lunar.getPrevJieQi()
     const next = lunar.getNextJieQi()
     if (prev && next) jieQiStr = `${prev.getName()} → ${next.getName()}`

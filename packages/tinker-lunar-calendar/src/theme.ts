@@ -4,6 +4,13 @@ export const tw = {
     secondary: 'paper-card',
     cellHover: 'hover:bg-xuan-100/60 dark:hover:bg-mo-700/40',
     zodiacInner: 'bg-xuan-50/40 dark:bg-mo-700/40',
+    holidayBadge: 'bg-cui-500/90',
+    workdayBadge: 'bg-jin-500/90',
+    yiBar: 'bg-cui-500',
+    jiBar: 'bg-zhu-600',
+    divider: 'bg-jin-500/30',
+    dividerSoft: 'bg-jin-500/50',
+    navHover: 'hover:bg-zhu-500 hover:text-xuan-50 hover:border-zhu-500',
   },
   text: {
     primary: 'text-mo-500 dark:text-xuan-100',
@@ -14,6 +21,8 @@ export const tw = {
     accentSoft: 'text-zhu-500/10 dark:text-zhu-300/10',
     gold: 'text-jin-500 dark:text-jin-400',
     onSeal: 'text-xuan-50',
+    onSealMuted: 'text-xuan-100/85',
+    onWorkdayBadge: 'text-mo-700',
     cuiAccent: 'text-cui-600 dark:text-cui-400',
   },
   border: {
@@ -21,6 +30,10 @@ export const tw = {
     ring: 'ring-1 ring-zhu-500/60 dark:ring-zhu-300/50',
     zhuSoft: 'border-zhu-500/40',
     cuiSoft: 'border-cui-500/40',
+    dashed: 'border-jin-500/30',
+    zodiac: 'border-jin-500/50',
+    zodiacInner: 'border-jin-500/30',
+    divide: 'divide-jin-500/30',
   },
   accent: {
     bgStrong: 'bg-zhu-600',
@@ -30,5 +43,6 @@ export const tw = {
   },
   decoration: {
     flourish: 'text-jin-500/70 dark:text-jin-400/60',
+    frame: 'gold-frame',
   },
 }

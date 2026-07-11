@@ -1,6 +1,8 @@
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import className from 'licia/className'
+import isEqual from 'licia/isEqual'
+import map from 'licia/map'
 import store from '../store'
 import type { DayCell } from '../types'
 import { tw } from '../theme'
@@ -13,9 +15,20 @@ const CalendarGrid = observer(() => {
   const { selectedYear, selectedMonth, selectedDay } = store
 
   return (
-    <div className="gold-frame paper-card rounded-sm h-full flex flex-col p-3 overflow-hidden">
-      <div className="grid grid-cols-7 mb-2 pb-2 border-b border-dashed border-jin-500/30">
-        {WEEKDAY_KEYS.map((key, i) => (
+    <div
+      className={className(
+        'rounded-sm h-full flex flex-col p-3 overflow-hidden',
+        tw.decoration.frame,
+        tw.background.secondary,
+      )}
+    >
+      <div
+        className={className(
+          'grid grid-cols-7 mb-2 pb-2 border-b border-dashed',
+          tw.border.dashed,
+        )}
+      >
+        {map(WEEKDAY_KEYS, (key, i) => (
           <div
             key={key}
             className={className(
@@ -28,15 +41,18 @@ const CalendarGrid = observer(() => {
         ))}
       </div>
       <div className="grid grid-cols-7 grid-rows-6 flex-1 gap-px">
-        {days.map((cell) => (
+        {map(days, (cell) => (
           <DayCellView
             key={`${cell.year}-${cell.month}-${cell.day}`}
             cell={cell}
-            isSelected={
-              cell.year === selectedYear &&
-              cell.month === selectedMonth &&
-              cell.day === selectedDay
-            }
+            isSelected={isEqual(
+              { year: cell.year, month: cell.month, day: cell.day },
+              {
+                year: selectedYear,
+                month: selectedMonth,
+                day: selectedDay,
+              },
+            )}
           />
         ))}
       </div>
@@ -82,10 +98,10 @@ const DayCellView = ({ cell, isSelected }: DayCellViewProps) => {
             cell.isHoliday
               ? isSelected
                 ? `${tw.accent.overlayOnSeal} ${tw.text.onSeal}`
-                : `bg-cui-500/90 ${tw.text.onSeal}`
+                : `${tw.background.holidayBadge} ${tw.text.onSeal}`
               : isSelected
                 ? `${tw.accent.overlayOnSeal} ${tw.text.onSeal}`
-                : 'bg-jin-500/90 text-mo-700',
+                : `${tw.background.workdayBadge} ${tw.text.onWorkdayBadge}`,
           )}
         >
           {cell.isHoliday ? t('holidayMark') : t('workdayMark')}
@@ -110,7 +126,7 @@ const DayCellView = ({ cell, isSelected }: DayCellViewProps) => {
         className={className(
           'mt-0.5 font-serif text-[10px] leading-tight truncate max-w-full px-1',
           isSelected
-            ? 'text-xuan-100/85'
+            ? tw.text.onSealMuted
             : cell.hasFestival
               ? `${tw.text.accent} font-medium`
               : tw.text.muted,

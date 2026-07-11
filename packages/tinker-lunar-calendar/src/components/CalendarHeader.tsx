@@ -3,35 +3,20 @@ import { useTranslation } from 'react-i18next'
 import { ChevronLeft } from 'lucide-react'
 import className from 'licia/className'
 import store from '../store'
-import { getGanZhiYearShengXiao } from '../lib/util'
 import { tw } from '../theme'
 
-const MONTH_ZH = [
-  '一',
-  '二',
-  '三',
-  '四',
-  '五',
-  '六',
-  '七',
-  '八',
-  '九',
-  '十',
-  '冬',
-  '臘',
-]
-
 const CalendarHeader = observer(() => {
-  const { t, i18n } = useTranslation()
-  const isZh = i18n.language === 'zh-CN'
-
-  const { ganZhiYear, shengXiao } = getGanZhiYearShengXiao(
-    store.currentYear,
-    store.currentMonth,
-  )
+  const { t } = useTranslation()
+  const { ganZhiYear, shengXiao } = store.ganZhiYearShengXiao
 
   return (
-    <div className="relative gold-frame paper-card rounded-sm px-5 py-4 flex items-center justify-between gap-4">
+    <div
+      className={className(
+        'rounded-sm px-5 py-4 flex items-center justify-between gap-4',
+        tw.decoration.frame,
+        tw.background.secondary,
+      )}
+    >
       <div className="flex items-center gap-3 relative">
         <NavBtn dir="prev" onClick={() => store.prevMonth()} />
 
@@ -51,18 +36,26 @@ const CalendarHeader = observer(() => {
             </span>
           </div>
           <div className="mt-1 flex items-center gap-2">
-            <span className="inline-block h-px w-6 bg-jin-500/50" />
+            <span
+              className={className(
+                'inline-block h-px w-6',
+                tw.background.dividerSoft,
+              )}
+            />
             <span
               className={className(
                 'font-brush text-2xl leading-none',
                 tw.text.accent,
               )}
             >
-              {isZh
-                ? `${MONTH_ZH[store.currentMonth - 1]}月`
-                : `${store.currentMonth}${t('month')}`}
+              {`${t(`month${store.currentMonth}`)}${t('month')}`}
             </span>
-            <span className="inline-block h-px w-6 bg-jin-500/50" />
+            <span
+              className={className(
+                'inline-block h-px w-6',
+                tw.background.dividerSoft,
+              )}
+            />
           </div>
         </div>
 
@@ -101,7 +94,7 @@ const NavBtn = ({ dir, onClick }: NavBtnProps) => (
       'group w-9 h-9 flex items-center justify-center rounded-full transition-all duration-300',
       tw.border.primary,
       tw.text.accent,
-      'hover:bg-zhu-500 hover:text-xuan-50 hover:border-zhu-500',
+      tw.background.navHover,
     )}
     aria-label={dir}
   >

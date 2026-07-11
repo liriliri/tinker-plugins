@@ -1,9 +1,18 @@
 import { makeAutoObservable } from 'mobx'
 import { SolarMonth } from 'lunar-javascript'
-import { buildMonthGrid, buildDateInfo, getTodaySolar } from './lib/util'
+import isEqual from 'licia/isEqual'
+import {
+  buildMonthGrid,
+  buildDateInfo,
+  getTodaySolar,
+  getGanZhiYearShengXiao,
+} from './lib/util'
 import type { DayCell, DateInfo } from './types'
+import { createMcpApi } from './mcp'
 
-class Store {
+export class Store {
+  readonly mcp = createMcpApi(() => this)
+
   currentYear: number
   currentMonth: number
   selectedYear: number
@@ -17,7 +26,9 @@ class Store {
     this.selectedYear = today.year
     this.selectedMonth = today.month
     this.selectedDay = today.day
-    makeAutoObservable(this)
+    makeAutoObservable(this, {
+      mcp: false,
+    })
   }
 
   prevMonth() {
@@ -32,16 +43,16 @@ class Store {
     this.currentMonth = m.getMonth()
   }
 
-  goToday() {
-    const today = getTodaySolar()
-    this.selectDate(today.year, today.month, today.day)
-  }
-
   selectDate(year: number, month: number, day: number) {
     if (
-      year === this.selectedYear &&
-      month === this.selectedMonth &&
-      day === this.selectedDay
+      isEqual(
+        { year, month, day },
+        {
+          year: this.selectedYear,
+          month: this.selectedMonth,
+          day: this.selectedDay,
+        },
+      )
     ) {
       return
     }
@@ -64,6 +75,10 @@ class Store {
       this.selectedMonth,
       this.selectedDay,
     )
+  }
+
+  get ganZhiYearShengXiao() {
+    return getGanZhiYearShengXiao(this.currentYear, this.currentMonth)
   }
 }
 
