@@ -1,6 +1,6 @@
 {
   "name": "tinker-bilibili-downloader",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Bilibili Video Downloader Plugin for TINKER",
   "files": [
     "dist/",
@@ -35,6 +35,71 @@
       "zh-CN": {
         "name": "B站视频下载",
         "description": "下载哔哩哔哩视频，支持画质选择"
+      }
+    },
+    "mcp": {
+      "tools": {
+        "query": {
+          "description": "Parse a Bilibili video URL and return title, pages, and available quality options. Call this before download. Updates the plugin UI.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Bilibili video URL (BV/AV/EP/SS), e.g. https://www.bilibili.com/video/BVxxxxxx"
+              }
+            },
+            "required": [
+              "url"
+            ]
+          }
+        },
+        "download": {
+          "description": "Download the video previously queried via the query tool. Optionally override quality and page selection. Waits until downloads finish and returns task results. Requires download path in plugin settings.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "quality": {
+                "type": "integer",
+                "description": "Quality id from query.qualityOptions (e.g. 80 for 1080P). Defaults to the highest available from the last query."
+              },
+              "pages": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "minItems": 1,
+                "description": "Page/episode numbers to download from query.pages. Defaults to all pages from the last query."
+              }
+            }
+          }
+        },
+        "get_settings": {
+          "description": "Get current plugin settings: downloadPath and sessdata.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        "set_settings": {
+          "description": "Update plugin settings. Only provided fields are changed. Returns the settings after update.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "downloadPath": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Absolute path for downloaded videos"
+              },
+              "sessdata": {
+                "type": "string",
+                "description": "Bilibili SESSDATA cookie for higher quality / login-required videos"
+              }
+            }
+          }
+        }
       }
     }
   },

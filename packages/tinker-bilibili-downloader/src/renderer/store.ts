@@ -3,10 +3,13 @@ import LocalStore from 'licia/LocalStore'
 import { VideoData, qualityMap, userQuality } from '../common/types'
 import type { TaskData, Settings } from './types'
 import uuid from 'licia/uuid'
+import { createMcpApi } from './mcp'
 
 const storage = new LocalStore('tinker-bilibili-downloader')
 
-class Store {
+export class Store {
+  readonly mcp = createMcpApi(() => this)
+
   settings: Settings = {
     downloadPath: '',
     sessdata: '',
@@ -28,7 +31,9 @@ class Store {
   tasks: Map<string, TaskData> = new Map()
 
   constructor() {
-    makeAutoObservable(this)
+    makeAutoObservable(this, {
+      mcp: false,
+    })
     this.loadSettings()
   }
 
