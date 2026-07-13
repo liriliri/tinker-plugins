@@ -1,0 +1,10 @@
+{
+  "openWorkspace": "Open Workspace",
+  "selectModel": "Select model",
+  "error": "Error",
+  "welcomeTitle": "Coding Agent",
+  "welcomeHint": "Open a workspace, pick a model, then ask anything.",
+  "composerPlaceholder": "Ask the coding agent...",
+  "reasoning": "Reasoning",
+  "uiCrashed": "UI crashed"
+}

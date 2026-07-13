@@ -1,0 +1,10 @@
+{
+  "openWorkspace": "打开工作区",
+  "selectModel": "选择模型",
+  "error": "错误",
+  "welcomeTitle": "编程助手",
+  "welcomeHint": "打开工作区、选择模型，然后开始提问。",
+  "composerPlaceholder": "向编程助手提问...",
+  "reasoning": "思考过程",
+  "uiCrashed": "界面崩溃"
+}

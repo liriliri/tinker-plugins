@@ -1,0 +1,47 @@
+{
+  "name": "tinker-coding-agent",
+  "version": "0.1.0",
+  "description": "Coding Agent Plugin for TINKER",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:preload\"",
+    "dev:renderer": "vite build --watch",
+    "dev:preload": "vite build --watch --config vite.preload.ts",
+    "build": "concurrently \"npm run build:renderer\" \"npm run build:preload\"",
+    "build:renderer": "vite build",
+    "build:preload": "vite build --config vite.preload.ts",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "coding-agent"
+  ],
+  "tinker": {
+    "name": "Coding Agent",
+    "description": "A GUI coding agent for editing and coding tasks",
+    "main": "dist/renderer/index.html",
+    "preload": "dist/preload/index.js",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "编程助手",
+        "description": "图形化编程助手，用于编辑与编码任务"
+      }
+    }
+  },
+  "dependencies": {
+    "@earendil-works/pi-agent-core": "^0.80.6",
+    "@earendil-works/pi-ai": "^0.80.6",
+    "@earendil-works/pi-coding-agent": "^0.80.6"
+  },
+  "devDependencies": {
+    "@assistant-ui/react": "^0.14.26"
+  }
+}
