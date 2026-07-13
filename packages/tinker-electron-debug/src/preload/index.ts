@@ -71,7 +71,7 @@ function sendDevToolsCommand(
   })
 }
 
-const electronDebugObj = {
+const api = {
   isElectronApp: (appPathOrExePath: string): boolean => {
     const platform = process.platform
     if (platform === 'darwin') {
@@ -196,8 +196,8 @@ const electronDebugObj = {
   },
 }
 
-contextBridge.exposeInMainWorld('electronDebug', electronDebugObj)
+contextBridge.exposeInMainWorld('electronDebug', api)
 
 declare global {
-  const electronDebug: typeof electronDebugObj
+  const electronDebug: typeof api
 }

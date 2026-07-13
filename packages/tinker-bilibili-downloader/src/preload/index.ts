@@ -23,7 +23,7 @@ function ensureDir(dir: string): void {
   }
 }
 
-const bilibiliDownloaderObj = {
+const api = {
   request,
   checkLogin,
   checkUrl,
@@ -34,8 +34,8 @@ const bilibiliDownloaderObj = {
   ensureDir,
 }
 
-contextBridge.exposeInMainWorld('bilibiliDownloader', bilibiliDownloaderObj)
+contextBridge.exposeInMainWorld('bilibiliDownloader', api)
 
 declare global {
-  const bilibiliDownloader: typeof bilibiliDownloaderObj
+  const bilibiliDownloader: typeof api
 }

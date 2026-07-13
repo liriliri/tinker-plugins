@@ -4,13 +4,13 @@ import path from 'node:path'
 const soundsDir = path.resolve(__dirname, '..', 'sounds')
 const playScript = path.resolve(soundsDir, 'play.ps1')
 
-const agentNotificationObj = {
+const api = {
   getSoundsDir: () => soundsDir,
   getPlayScript: () => playScript,
 }
 
-contextBridge.exposeInMainWorld('agentNotification', agentNotificationObj)
+contextBridge.exposeInMainWorld('agentNotification', api)
 
 declare global {
-  const agentNotification: typeof agentNotificationObj
+  const agentNotification: typeof api
 }

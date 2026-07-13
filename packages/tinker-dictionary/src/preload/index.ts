@@ -201,7 +201,7 @@ async function extractAndLoad(
   return info
 }
 
-const dictionaryObj = {
+const api = {
   loadDictionary: async (dictPath: string): Promise<DictInfo | null> => {
     if (/\.zip$/i.test(dictPath)) {
       return loadZipDictionary(dictPath)
@@ -288,8 +288,8 @@ const dictionaryObj = {
   },
 }
 
-contextBridge.exposeInMainWorld('dictionary', dictionaryObj)
+contextBridge.exposeInMainWorld('dictionary', api)
 
 declare global {
-  const dictionary: typeof dictionaryObj
+  const dictionary: typeof api
 }

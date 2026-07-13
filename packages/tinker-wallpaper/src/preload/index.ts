@@ -204,7 +204,7 @@ async function setWallpaperFromFile(filePath: string): Promise<void> {
   }
 }
 
-const wallpaperObj = {
+const api = {
   async search(query: string, page = 1): Promise<Wallpaper[]> {
     const q = query.trim()
     const url = q
@@ -242,8 +242,8 @@ const wallpaperObj = {
   },
 }
 
-contextBridge.exposeInMainWorld('wallpaper', wallpaperObj)
+contextBridge.exposeInMainWorld('wallpaper', api)
 
 declare global {
-  const wallpaper: typeof wallpaperObj
+  const wallpaper: typeof api
 }

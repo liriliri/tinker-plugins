@@ -7,7 +7,7 @@ import type { ModelSize } from '../common/types'
 const publicPath = `file://${path.dirname(require.resolve('@imgly/background-removal-node'))}/`
 const OUTPUT_MIME = 'image/png'
 
-const bgRemoverObj = {
+const api = {
   removeBackground: async (
     inputDataUrl: string,
     model: ModelSize = 'medium',
@@ -40,8 +40,8 @@ const bgRemoverObj = {
   },
 }
 
-contextBridge.exposeInMainWorld('bgRemover', bgRemoverObj)
+contextBridge.exposeInMainWorld('bgRemover', api)
 
 declare global {
-  const bgRemover: typeof bgRemoverObj
+  const bgRemover: typeof api
 }

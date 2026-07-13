@@ -15,7 +15,7 @@ interface ClipboardSync {
   onClipboardChange(callback: (text: string) => void): void
 }
 
-const clipboardSync: ClipboardSync = {
+const api: ClipboardSync = {
   start(filePath: string, interval: number = 500) {
     this.stop()
     lastClipboardText = clipboard.readText()
@@ -65,7 +65,7 @@ const clipboardSync: ClipboardSync = {
   },
 }
 
-contextBridge.exposeInMainWorld('clipboardSync', clipboardSync)
+contextBridge.exposeInMainWorld('clipboardSync', api)
 
 declare global {
   const clipboardSync: ClipboardSync

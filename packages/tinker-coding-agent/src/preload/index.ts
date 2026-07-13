@@ -2,7 +2,7 @@ import { contextBridge } from 'electron'
 import { agentHost } from './agentHost'
 import type { CodingAgentEvent } from '../common/types'
 
-const codingAgentObj = {
+const api = {
   openWorkspace: () => agentHost.openWorkspace(),
   setWorkspace: (cwd: string) => agentHost.setWorkspace(cwd),
   getWorkspace: async () => agentHost.getWorkspace(),
@@ -18,8 +18,8 @@ const codingAgentObj = {
     agentHost.onEvent(callback),
 }
 
-contextBridge.exposeInMainWorld('codingAgent', codingAgentObj)
+contextBridge.exposeInMainWorld('codingAgent', api)
 
 declare global {
-  const codingAgent: typeof codingAgentObj
+  const codingAgent: typeof api
 }

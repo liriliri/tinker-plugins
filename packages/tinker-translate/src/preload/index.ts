@@ -6,7 +6,7 @@ import { translateWithBing } from './bing'
 import { translateWithDeepL } from './deepl'
 import { translateWithAI } from './ai'
 
-const translateObj = {
+const api = {
   translate: async (
     text: string,
     from: string,
@@ -26,8 +26,8 @@ const translateObj = {
   },
 }
 
-contextBridge.exposeInMainWorld('translate', translateObj)
+contextBridge.exposeInMainWorld('translate', api)
 
 declare global {
-  const translate: typeof translateObj
+  const translate: typeof api
 }

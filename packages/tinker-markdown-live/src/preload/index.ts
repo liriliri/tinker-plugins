@@ -7,7 +7,7 @@ import {
   renameMarkdownTreeFile,
 } from './markdownTreeOps'
 
-const markdownLiveObj = {
+const api = {
   listMarkdownFilesForPath,
   watchPaths,
   createMarkdownTreeFile,
@@ -16,8 +16,8 @@ const markdownLiveObj = {
   deleteMarkdownTreeFile,
 }
 
-contextBridge.exposeInMainWorld('markdownLive', markdownLiveObj)
+contextBridge.exposeInMainWorld('markdownLive', api)
 
 declare global {
-  const markdownLive: typeof markdownLiveObj
+  const markdownLive: typeof api
 }

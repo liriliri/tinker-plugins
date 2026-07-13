@@ -13,7 +13,7 @@ import { fetchSspai } from './sources/sspai'
 import { fetchTieba } from './sources/tieba'
 import { fetchSteam } from './sources/steam'
 
-const trendingObj = {
+const api = {
   fetch: async (source: SourceId): Promise<NewsItem[]> => {
     switch (source) {
       case 'hackernews':
@@ -45,8 +45,8 @@ const trendingObj = {
   openURL: (url: string) => shell.openExternal(url),
 }
 
-contextBridge.exposeInMainWorld('trending', trendingObj)
+contextBridge.exposeInMainWorld('trending', api)
 
 declare global {
-  const trending: typeof trendingObj
+  const trending: typeof api
 }

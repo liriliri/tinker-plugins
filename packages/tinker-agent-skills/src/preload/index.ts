@@ -69,7 +69,7 @@ async function listCanonicalSkills(): Promise<SkillInfo[]> {
   return skills.sort((a, b) => a.name.localeCompare(b.name))
 }
 
-const agentSkillsObj = {
+const api = {
   async listSkills(): Promise<SkillInfo[]> {
     await syncSkillsToAgents()
     return listCanonicalSkills()
@@ -113,8 +113,8 @@ const agentSkillsObj = {
   },
 }
 
-contextBridge.exposeInMainWorld('agentSkills', agentSkillsObj)
+contextBridge.exposeInMainWorld('agentSkills', api)
 
 declare global {
-  const agentSkills: typeof agentSkillsObj
+  const agentSkills: typeof api
 }

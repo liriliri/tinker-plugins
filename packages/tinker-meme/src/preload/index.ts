@@ -6,13 +6,13 @@ import { createImageCache } from './image'
 const cacheDir = path.join(os.tmpdir(), 'tinker-meme')
 const imageCache = createImageCache(cacheDir)
 
-const memeObj = {
+const api = {
   copyImage: imageCache.copyImage,
   saveImage: imageCache.saveImage,
 }
 
-contextBridge.exposeInMainWorld('meme', memeObj)
+contextBridge.exposeInMainWorld('meme', api)
 
 declare global {
-  const meme: typeof memeObj
+  const meme: typeof api
 }

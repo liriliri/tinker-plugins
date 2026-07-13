@@ -12,7 +12,7 @@ function toDateKey(timestamp: string): string {
   return timestamp.split('T')[0]
 }
 
-const tokenUsageObj = {
+const api = {
   getUsage: async (
     source: DataSource = 'claude-code',
   ): Promise<TokenUsageData> => {
@@ -183,8 +183,8 @@ async function getCodexUsage(): Promise<TokenUsageData> {
   }
 }
 
-contextBridge.exposeInMainWorld('tokenUsage', tokenUsageObj)
+contextBridge.exposeInMainWorld('tokenUsage', api)
 
 declare global {
-  const tokenUsage: typeof tokenUsageObj
+  const tokenUsage: typeof api
 }

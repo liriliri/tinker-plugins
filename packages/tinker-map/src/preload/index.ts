@@ -4,7 +4,7 @@ import toNum from 'licia/toNum'
 import { httpsGet } from './http'
 import type { Coords, SearchResult } from '../common/types'
 
-const mapObj = {
+const api = {
   async locate(): Promise<Coords | null> {
     try {
       const data = JSON.parse(await httpsGet('https://ipwho.is/'))
@@ -51,8 +51,8 @@ const mapObj = {
   },
 }
 
-contextBridge.exposeInMainWorld('map', mapObj)
+contextBridge.exposeInMainWorld('map', api)
 
 declare global {
-  const map: typeof mapObj
+  const map: typeof api
 }
