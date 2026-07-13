@@ -7,6 +7,7 @@ import toStr from 'licia/toStr'
 import trim from 'licia/trim'
 import type { GeoResult, WeatherData } from './types'
 import { geocode, fetchWeather } from './lib/weather'
+import { createMcpApi } from './mcp'
 
 const STORAGE_CITY = 'city'
 const STORAGE_RECENT_CITIES = 'recentCities'
@@ -14,7 +15,9 @@ const STORAGE_RECENT_CITIES = 'recentCities'
 const storage = new LocalStore('tinker-weather')
 const MAX_RECENT = 8
 
-class Store {
+export class Store {
+  readonly mcp = createMcpApi(() => this)
+
   language = 'en-US'
 
   searchQuery = ''
@@ -33,7 +36,9 @@ class Store {
   )
 
   constructor() {
-    makeAutoObservable(this)
+    makeAutoObservable(this, {
+      mcp: false,
+    })
   }
 
   init(language: string) {

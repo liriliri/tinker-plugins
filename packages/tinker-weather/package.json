@@ -1,6 +1,6 @@
 {
   "name": "tinker-weather",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Weather Plugin for TINKER",
   "files": [
     "dist/",
@@ -28,6 +28,39 @@
       "zh-CN": {
         "name": "天气",
         "description": "查看实时天气和天气预报"
+      }
+    },
+    "mcp": {
+      "tools": {
+        "search": {
+          "description": "Search cities by name. Updates the plugin UI and returns matching locations with indexes. Call query with an index to fetch weather for one of them.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "city": {
+                "type": "string",
+                "minLength": 2,
+                "description": "City name to search (e.g. Beijing, Tokyo, New York)"
+              }
+            },
+            "required": [
+              "city"
+            ]
+          }
+        },
+        "query": {
+          "description": "Fetch weather for a city from the last search results (by index), or refresh the currently selected city when index is omitted. Updates the plugin UI and returns current conditions and a short forecast.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "index": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "Index of a city from the last search results"
+              }
+            }
+          }
+        }
       }
     }
   }
