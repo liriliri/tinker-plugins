@@ -35,6 +35,70 @@
         "name": "Agent 技能",
         "description": "浏览和管理本地 Agent 技能"
       }
+    },
+    "mcp": {
+      "tools": {
+        "install_from_github": {
+          "description": "Install agent skills from a GitHub repository. Supports owner/repo shorthand, owner/repo@skill-name, and GitHub URLs with branch and subpath. Installs all discovered skills.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string",
+                "minLength": 1,
+                "description": "GitHub source, e.g. liriliri/agent-skills, liriliri/agent-skills@tinker, or https://github.com/owner/repo/tree/main/skills"
+              }
+            },
+            "required": [
+              "source"
+            ]
+          }
+        },
+        "list": {
+          "description": "List installed agent skills and their per-agent enable status. Pass skill to query a single skill.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "skill": {
+                "type": "string",
+                "description": "Optional skill folder name, display name, or path"
+              }
+            }
+          }
+        },
+        "link": {
+          "description": "Link or unlink a skill for an agent by creating or removing a symlink in the agent skills directory.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "skill": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Skill folder name, display name, or path"
+              },
+              "agent": {
+                "type": "string",
+                "enum": [
+                  "codebuddy",
+                  "claude",
+                  "codex",
+                  "opencode"
+                ],
+                "description": "Target agent"
+              },
+              "enabled": {
+                "type": "boolean",
+                "description": "true to enable, false to disable"
+              }
+            },
+            "required": [
+              "skill",
+              "agent",
+              "enabled"
+            ]
+          }
+        }
+      }
     }
   },
   "dependencies": {

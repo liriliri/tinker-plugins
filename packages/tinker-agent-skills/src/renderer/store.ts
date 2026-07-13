@@ -8,8 +8,10 @@ import type {
 } from '../common/types'
 import { filterSkills } from './lib/filterSkills'
 import { toErrorKey } from './lib/installError'
+import { createMcpApi } from './mcp'
 
-class Store {
+export class Store {
+  readonly mcp = createMcpApi(() => this)
   skills: SkillInfo[] = []
   query: string = ''
   isLoading: boolean = false
@@ -54,7 +56,9 @@ class Store {
   private debouncedMarketplaceSearch: (query: string) => void
 
   constructor() {
-    makeAutoObservable(this)
+    makeAutoObservable(this, {
+      mcp: false,
+    })
     this.debouncedMarketplaceSearch = debounce((query: string) => {
       void this.fetchMarketplace(query, false)
     }, 320)
