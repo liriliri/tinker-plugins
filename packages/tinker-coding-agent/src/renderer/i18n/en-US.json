@@ -1,10 +1,26 @@
 {
   "openWorkspace": "Open Workspace",
+  "backToWelcome": "Back to Home",
+  "newSession": "New Session",
+  "deleteSession": "Delete Session",
   "selectModel": "Select model",
   "error": "Error",
+  "welcomeEyebrow": "Workspace Agent",
   "welcomeTitle": "Coding Agent",
-  "welcomeHint": "Open a workspace, pick a model, then ask anything.",
+  "welcomeDescription": "Open a workspace folder to get started.",
+  "welcomeHint": "Pick a model, then ask anything about this workspace.",
   "composerPlaceholder": "Ask the coding agent...",
   "reasoning": "Reasoning",
-  "uiCrashed": "UI crashed"
+  "toolArguments": "Arguments",
+  "toolResult": "Result",
+  "uiCrashed": "UI crashed",
+  "folderNotFound": "Folder not found",
+  "errorNotDirectory": "Path is not a directory",
+  "errorOpenWorkspaceFirst": "Open a workspace folder first",
+  "errorSelectModelFirst": "Select a model first",
+  "errorAgentNotReady": "Agent not ready",
+  "errorTextOnly": "Only text messages are supported",
+  "open": "Open",
+  "showInFolder": "Show in Folder",
+  "removeFromRecent": "Remove from Recent"
 }

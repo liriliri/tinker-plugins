@@ -3,7 +3,7 @@ import path from 'node:path'
 import { pathToFileURL } from 'node:url'
 import type { Model } from '@earendil-works/pi-ai'
 
-function findPackageRoot(name: string): string {
+export function findPackageRoot(name: string): string {
   let current = __dirname
   for (;;) {
     const nested = path.join(current, 'node_modules', name)

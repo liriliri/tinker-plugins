@@ -1,10 +1,26 @@
 {
   "openWorkspace": "打开工作区",
+  "backToWelcome": "返回首页",
+  "newSession": "新建会话",
+  "deleteSession": "删除会话",
   "selectModel": "选择模型",
   "error": "错误",
+  "welcomeEyebrow": "工作区助手",
   "welcomeTitle": "编程助手",
-  "welcomeHint": "打开工作区、选择模型，然后开始提问。",
+  "welcomeDescription": "打开一个工作区文件夹以开始使用。",
+  "welcomeHint": "选择模型，然后围绕当前工作区提问。",
   "composerPlaceholder": "向编程助手提问...",
   "reasoning": "思考过程",
-  "uiCrashed": "界面崩溃"
+  "toolArguments": "参数",
+  "toolResult": "结果",
+  "uiCrashed": "界面崩溃",
+  "folderNotFound": "找不到该文件夹",
+  "errorNotDirectory": "路径不是文件夹",
+  "errorOpenWorkspaceFirst": "请先打开工作区文件夹",
+  "errorSelectModelFirst": "请先选择模型",
+  "errorAgentNotReady": "助手尚未就绪",
+  "errorTextOnly": "仅支持文本消息",
+  "open": "打开",
+  "showInFolder": "在文件夹中显示",
+  "removeFromRecent": "从最近记录中移除"
 }

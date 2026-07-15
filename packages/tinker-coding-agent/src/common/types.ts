@@ -3,12 +3,23 @@ export interface ModelSelection {
   model: string
 }
 
+export interface SessionInfo {
+  id: string
+  title: string
+  createdAt: number
+}
+
 export type CodingAgentEvent =
   | { type: 'messages'; messages: SerializedMessage[] }
   | { type: 'running'; running: boolean }
   | { type: 'error'; error: string }
   | { type: 'workspace'; cwd: string | null }
   | { type: 'model'; model: ModelSelection | null }
+  | {
+      type: 'sessions'
+      sessions: SessionInfo[]
+      activeSessionId: string | null
+    }
 
 export interface SerializedMessage {
   id: string

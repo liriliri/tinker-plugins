@@ -1,40 +1,63 @@
 export const tw = {
   background: {
-    app: 'bg-stone-100 dark:bg-stone-950',
-    toolbar: 'bg-white dark:bg-stone-900',
-    tool: 'bg-stone-50 dark:bg-stone-900',
+    app: 'bg-[radial-gradient(ellipse_90%_55%_at_100%_-8%,hsl(var(--glow)/0.18),transparent_55%),radial-gradient(ellipse_70%_45%_at_-5%_105%,hsl(var(--glow)/0.12),transparent_50%),hsl(var(--background))]',
+    toolbar: 'bg-card',
+    sidebar:
+      'bg-[linear-gradient(180deg,hsl(var(--sidebar))_0%,hsl(var(--background)/0.92)_100%)]',
+    welcomeAction:
+      'bg-card/80 hover:bg-accent hover:border-primary/40 dark:hover:border-primary/35',
+    welcomeRecent: 'bg-card/60 hover:bg-accent/70',
+    composer:
+      'bg-[var(--composer-bg)] border-border/80 focus-within:border-primary/45 focus-within:shadow-[0_0_0_1px_hsl(var(--primary)/0.18)] dark:border-border dark:focus-within:border-primary/40',
+    composerInput: 'placeholder:text-muted-foreground/70',
+    scrollToBottom:
+      'border-border bg-card/90 text-muted-foreground hover:bg-accent hover:text-accent-foreground dark:bg-card/80 dark:hover:bg-accent',
+    threadFooter:
+      'bg-gradient-to-t from-background via-background/85 to-transparent',
   },
   text: {
-    primary: 'text-stone-900 dark:text-stone-100',
-    muted: 'text-stone-400 dark:text-stone-500',
-    danger: 'text-red-600 dark:text-red-400',
+    primary: 'text-foreground',
+    muted: 'text-muted-foreground',
+    secondary: 'text-muted-foreground',
+    tertiary: 'text-muted-foreground',
+    accent: 'text-primary',
+    danger: 'text-destructive',
   },
   border: {
-    divider: 'border-stone-200 dark:border-stone-700',
+    divider: 'border-border',
   },
-  gradient: {
-    composerFooter:
-      'bg-gradient-to-t from-stone-100 via-stone-100 to-transparent dark:from-stone-950 dark:via-stone-950',
+  hover: {
+    recent: 'hover:bg-accent/60',
   },
-  bubble: {
-    user: 'bg-emerald-500 text-white',
+  session: {
+    item: 'bg-transparent text-muted-foreground hover:bg-accent/55 hover:text-foreground',
+    active:
+      'bg-accent text-accent-foreground border-l-2 border-l-primary rounded-l-none',
+  },
+  workspace: {
+    label:
+      'min-w-0 flex-1 bg-transparent border-none cursor-pointer px-1 py-0 text-sm font-semibold tracking-tight text-foreground text-left truncate hover:text-primary transition-colors',
   },
   select: {
-    item: 'px-2 py-1.5 text-sm rounded cursor-pointer outline-none data-[highlighted]:bg-stone-100 dark:data-[highlighted]:bg-stone-800',
+    item: 'px-2 py-1.5 text-sm rounded-sm cursor-pointer outline-none data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground',
   },
   button: {
-    icon: 'flex items-center justify-center w-8 h-8 rounded-md bg-transparent border-none cursor-pointer text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-stone-800 dark:hover:text-stone-100 transition-colors disabled:opacity-40 disabled:cursor-not-allowed',
-    primary:
-      'flex items-center justify-center gap-1.5 px-3 h-8 rounded-md bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-medium border-none cursor-pointer transition-colors disabled:opacity-40 disabled:cursor-not-allowed',
-    secondary:
-      'flex items-center justify-center gap-1.5 px-3 h-8 rounded-md bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 text-sm font-medium border-none cursor-pointer transition-colors disabled:opacity-40 disabled:cursor-not-allowed',
+    icon: 'flex items-center justify-center w-8 h-8 rounded-sm bg-transparent border-none cursor-pointer text-muted-foreground hover:bg-accent hover:text-primary transition-colors disabled:opacity-40 disabled:cursor-not-allowed',
+    send: 'flex size-8 items-center justify-center rounded-sm border-none bg-primary text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-40',
+    action:
+      'flex size-7 items-center justify-center rounded-sm border-none bg-transparent text-muted-foreground hover:bg-accent hover:text-primary',
+  },
+  message: {
+    userBubble:
+      'bg-accent text-accent-foreground rounded-md px-3.5 py-2 border border-primary/15',
+    assistant: 'text-foreground border-l-2 border-primary/25 pl-3.5 ml-0.5',
+    tool: 'border-border bg-card/70 text-muted-foreground rounded-md',
   },
   toast: {
-    root: 'bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-lg shadow-lg px-4 py-3 flex items-start gap-3',
-    title: 'text-[12.5px] font-semibold text-red-600 dark:text-red-400',
-    description: 'text-[12px] text-stone-500 dark:text-stone-400 mt-0.5',
-    close:
-      'text-stone-400 dark:text-stone-500 hover:text-stone-600 dark:hover:text-stone-300 cursor-pointer',
+    root: 'bg-popover text-popover-foreground border border-border rounded-md shadow-lg px-4 py-3 flex items-start gap-3',
+    title: 'text-[12.5px] font-semibold text-destructive',
+    description: 'text-[12px] text-muted-foreground mt-0.5',
+    close: 'text-muted-foreground hover:text-foreground cursor-pointer',
     viewport: 'fixed bottom-4 right-4 flex flex-col gap-2 w-80 z-50',
   },
 }

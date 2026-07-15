@@ -36,12 +36,10 @@
       }
     }
   },
-  "dependencies": {
+  "devDependencies": {
+    "@assistant-ui/react": "^0.14.26",
     "@earendil-works/pi-agent-core": "^0.80.6",
     "@earendil-works/pi-ai": "^0.80.6",
     "@earendil-works/pi-coding-agent": "^0.80.6"
-  },
-  "devDependencies": {
-    "@assistant-ui/react": "^0.14.26"
   }
 }

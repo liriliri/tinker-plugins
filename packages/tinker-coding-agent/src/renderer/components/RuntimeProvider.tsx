@@ -5,6 +5,8 @@ import {
   type AppendMessage,
   type ThreadMessageLike,
 } from '@assistant-ui/react'
+import find from 'licia/find'
+import map from 'licia/map'
 import type { CodingAgentEvent } from '../../common/types'
 import { toThreadMessage } from '../lib/toThreadMessage'
 
@@ -19,7 +21,7 @@ export function RuntimeProvider({ children }: RuntimeProviderProps) {
   useEffect(() => {
     let cancelled = false
     codingAgent.getMessages().then((msgs) => {
-      if (!cancelled) setMessages(msgs.map(toThreadMessage))
+      if (!cancelled) setMessages(map(msgs, toThreadMessage))
     })
     codingAgent.isRunning().then((running) => {
       if (!cancelled) setIsRunning(running)
@@ -27,7 +29,7 @@ export function RuntimeProvider({ children }: RuntimeProviderProps) {
 
     const off = codingAgent.onEvent((event: CodingAgentEvent) => {
       if (event.type === 'messages') {
-        setMessages(event.messages.map(toThreadMessage))
+        setMessages(map(event.messages, toThreadMessage))
       } else if (event.type === 'running') {
         setIsRunning(event.running)
       }
@@ -40,9 +42,9 @@ export function RuntimeProvider({ children }: RuntimeProviderProps) {
   }, [])
 
   const onNew = useCallback(async (message: AppendMessage) => {
-    const textPart = message.content.find((c) => c.type === 'text')
+    const textPart = find(message.content, (c) => c.type === 'text')
     if (!textPart || textPart.type !== 'text') {
-      throw new Error('Only text messages are supported')
+      throw new Error('errorTextOnly')
     }
 
     const userMessage: ThreadMessageLike = {

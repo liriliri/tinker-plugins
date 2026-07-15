@@ -9,8 +9,14 @@ import {
   type StopReason,
   type ToolCall,
 } from '@earendil-works/pi-ai'
+import cloneDeep from 'licia/cloneDeep'
+import isEmpty from 'licia/isEmpty'
+import isStr from 'licia/isStr'
+import map from 'licia/map'
+import startWith from 'licia/startWith'
+import { contentToText, errorMessage } from '../common/util'
 
-export interface TinkerStreamConfig {
+interface TinkerStreamConfig {
   getProvider: () => string | undefined
   getModel: () => string | undefined
 }
@@ -63,14 +69,7 @@ function toTinkerMessages(context: Context): tinker.AiMessage[] {
 
   for (const msg of context.messages) {
     if (msg.role === 'user') {
-      const content =
-        typeof msg.content === 'string'
-          ? msg.content
-          : msg.content
-              .filter((c) => c.type === 'text')
-              .map((c) => (c as { text: string }).text)
-              .join('\n')
-      messages.push({ role: 'user', content })
+      messages.push({ role: 'user', content: contentToText(msg.content) })
       continue
     }
 
@@ -104,13 +103,9 @@ function toTinkerMessages(context: Context): tinker.AiMessage[] {
     }
 
     if (msg.role === 'toolResult') {
-      const content = msg.content
-        .filter((c) => c.type === 'text')
-        .map((c) => (c as { text: string }).text)
-        .join('\n')
       messages.push({
         role: 'tool',
-        content,
+        content: contentToText(msg.content),
         toolCallId: msg.toolCallId,
         toolName: msg.toolName,
       })
@@ -121,13 +116,11 @@ function toTinkerMessages(context: Context): tinker.AiMessage[] {
 }
 
 function toTinkerTools(context: Context): tinker.AiCallOption['tools'] {
-  if (!context.tools?.length) return undefined
-  return context.tools.map((tool) => {
+  if (isEmpty(context.tools)) return undefined
+  return map(context.tools!, (tool) => {
     let parameters: JsonSchemaObject = { type: 'object', properties: {} }
     try {
-      parameters = JSON.parse(
-        JSON.stringify(tool.parameters ?? parameters),
-      ) as JsonSchemaObject
+      parameters = cloneDeep(tool.parameters ?? parameters) as JsonSchemaObject
     } catch {
       // keep fallback empty object schema
     }
@@ -145,8 +138,8 @@ function toTinkerTools(context: Context): tinker.AiCallOption['tools'] {
 function normalizeToolCalls(
   raw: tinker.AiChunk['toolCalls'],
 ): NormalizedToolCall[] {
-  if (!raw?.length) return []
-  return raw.map((item, i) => {
+  if (isEmpty(raw)) return []
+  return map(raw!, (item, i) => {
     const record = item as Record<string, unknown>
     const fn = record.function as Record<string, unknown> | undefined
     const id =
@@ -157,7 +150,7 @@ function normalizeToolCalls(
       (fn?.name as string) ||
       'unknown'
     let args = record.arguments ?? record.args ?? fn?.arguments ?? '{}'
-    if (typeof args !== 'string') args = JSON.stringify(args ?? {})
+    if (!isStr(args)) args = JSON.stringify(args ?? {})
     return { id, name, arguments: args as string }
   })
 }
@@ -346,7 +339,7 @@ export function createTinkerStreamFn(config: TinkerStreamConfig) {
               )
               block.arguments = nextArgs
               const delta =
-                tc.arguments.startsWith(prev) && prev !== '{}'
+                startWith(tc.arguments, prev) && prev !== '{}'
                   ? tc.arguments.slice(prev.length)
                   : tc.arguments
               if (delta) {
@@ -374,10 +367,7 @@ export function createTinkerStreamFn(config: TinkerStreamConfig) {
         }
       } catch (err) {
         const aborted = options?.signal?.aborted
-        fail(
-          aborted ? 'aborted' : 'error',
-          err instanceof Error ? err.message : String(err),
-        )
+        fail(aborted ? 'aborted' : 'error', errorMessage(err))
       } finally {
         options?.signal?.removeEventListener('abort', abortHandler)
       }
