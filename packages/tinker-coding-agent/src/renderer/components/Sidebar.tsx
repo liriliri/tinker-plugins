@@ -1,33 +1,18 @@
-import { useEffect, useState, type MouseEvent } from 'react'
+import type { MouseEvent } from 'react'
+import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import { Plus, MessageSquare } from 'lucide-react'
 import className from 'licia/className'
 import splitPath from 'licia/splitPath'
 import { tw } from '../theme'
+import store from '../store'
 import type { SessionInfo } from '../../common/types'
 
-export default function Sidebar() {
+const Sidebar = observer(function Sidebar() {
   const { t } = useTranslation()
-  const [workspace, setWorkspace] = useState<string | null>(null)
-  const [sessions, setSessions] = useState<SessionInfo[]>([])
-  const [activeSessionId, setActiveSessionId] = useState<string | null>(null)
 
-  useEffect(() => {
-    codingAgent.getWorkspace().then(setWorkspace)
-    codingAgent.getSessions().then(setSessions)
-    codingAgent.getActiveSessionId().then(setActiveSessionId)
-
-    return codingAgent.onEvent((event) => {
-      if (event.type === 'workspace') setWorkspace(event.cwd)
-      if (event.type === 'sessions') {
-        setSessions(event.sessions)
-        setActiveSessionId(event.activeSessionId)
-      }
-    })
-  }, [])
-
-  const workspaceLabel = workspace
-    ? splitPath(workspace).name || workspace
+  const workspaceLabel = store.workspace
+    ? splitPath(store.workspace).name || store.workspace
     : t('openWorkspace')
 
   const handleSessionContextMenu = (e: MouseEvent, session: SessionInfo) => {
@@ -36,7 +21,7 @@ export default function Sidebar() {
     tinker.showContextMenu(e.clientX, e.clientY, [
       {
         label: t('deleteSession'),
-        click: () => void codingAgent.deleteSession(session.id),
+        click: () => void store.deleteSession(session.id),
       },
     ])
   }
@@ -58,7 +43,7 @@ export default function Sidebar() {
         <button
           type="button"
           className={tw.workspace.label}
-          onClick={() => codingAgent.leaveWorkspace()}
+          onClick={() => store.leaveWorkspace()}
           title={t('backToWelcome')}
         >
           {workspaceLabel}
@@ -66,7 +51,7 @@ export default function Sidebar() {
         <button
           type="button"
           className={className(tw.button.icon, 'shrink-0')}
-          onClick={() => void codingAgent.createSession()}
+          onClick={() => void store.createSession()}
           title={t('newSession')}
         >
           <Plus className="size-4" />
@@ -75,13 +60,13 @@ export default function Sidebar() {
 
       <div className="flex-1 min-h-0 overflow-y-auto px-2 pt-2 pb-2">
         <div className="flex flex-col gap-0.5">
-          {sessions.map((session) => {
-            const active = session.id === activeSessionId
+          {store.sessions.map((session) => {
+            const active = session.id === store.activeSessionId
             return (
               <button
                 key={session.id}
                 type="button"
-                onClick={() => void codingAgent.selectSession(session.id)}
+                onClick={() => void store.selectSession(session.id)}
                 onContextMenu={(e) => handleSessionContextMenu(e, session)}
                 className={className(
                   'w-full flex items-center gap-2 px-2.5 py-2 rounded-sm border-none cursor-pointer text-left text-xs transition-colors',
@@ -104,4 +89,6 @@ export default function Sidebar() {
       </div>
     </aside>
   )
-}
+})
+
+export default Sidebar

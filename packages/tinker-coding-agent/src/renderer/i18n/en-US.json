@@ -2,14 +2,16 @@
   "openWorkspace": "Open Workspace",
   "backToWelcome": "Back to Home",
   "newSession": "New Session",
-  "deleteSession": "Delete Session",
+  "deleteSession": "Delete",
   "selectModel": "Select model",
   "error": "Error",
   "welcomeEyebrow": "Workspace Agent",
   "welcomeTitle": "Coding Agent",
   "welcomeDescription": "Open a workspace folder to get started.",
   "welcomeHint": "Pick a model, then ask anything about this workspace.",
-  "composerPlaceholder": "Ask the coding agent...",
+  "composerPlaceholder": "Ask the coding agent... (/ for skills)",
+  "noSkills": "No skills found",
+  "contextTokens": "Context tokens",
   "reasoning": "Reasoning",
   "toolArguments": "Arguments",
   "toolResult": "Result",
@@ -22,5 +24,6 @@
   "errorTextOnly": "Only text messages are supported",
   "open": "Open",
   "showInFolder": "Show in Folder",
-  "removeFromRecent": "Remove from Recent"
+  "removeFromRecent": "Remove from Recent",
+  "copy": "Copy"
 }

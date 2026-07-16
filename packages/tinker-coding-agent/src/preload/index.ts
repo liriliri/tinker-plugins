@@ -20,6 +20,8 @@ const api = {
   prompt: (text: string) => agentHost.prompt(text),
   abort: () => agentHost.abort(),
   getMessages: async () => agentHost.getMessages(),
+  getSkills: async () => agentHost.getSkills(),
+  getContextUsage: async () => agentHost.getContextUsage(),
   isRunning: async () => agentHost.isRunning(),
   onEvent: (callback: (event: CodingAgentEvent) => void) =>
     agentHost.onEvent(callback),

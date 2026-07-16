@@ -2,8 +2,14 @@ import { defineConfig, UserConfig } from 'vite'
 import { builtinModules } from 'node:module'
 import path from 'node:path'
 
-const external = builtinModules.filter((e) => !e.startsWith('_'))
-external.push('electron', ...external.map((m) => `node:${m}`))
+const builtins = builtinModules.filter((e) => !e.startsWith('_'))
+builtins.push(
+  'electron',
+  '@earendil-works/pi-agent-core',
+  '@earendil-works/pi-ai',
+  '@earendil-works/pi-coding-agent',
+  ...builtins.map((m) => `node:${m}`),
+)
 
 export default defineConfig(async (): Promise<UserConfig> => {
   const pkg = require(path.join(process.cwd(), 'package.json'))
@@ -16,18 +22,12 @@ export default defineConfig(async (): Promise<UserConfig> => {
         entry: 'src/preload/index.ts',
         name: 'Main',
         fileName: 'index',
-        formats: ['cjs'],
+        formats: ['es'],
       },
       rollupOptions: {
-        external,
-        output: {
-          inlineDynamicImports: true,
-        },
+        external: builtins,
       },
-      commonjsOptions: {
-        transformMixedEsModules: true,
-      },
-      target: 'node20',
+      target: 'node22',
     },
   }
 })

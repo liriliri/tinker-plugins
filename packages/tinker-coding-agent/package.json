@@ -27,7 +27,7 @@
     "name": "Coding Agent",
     "description": "A GUI coding agent for editing and coding tasks",
     "main": "dist/renderer/index.html",
-    "preload": "dist/preload/index.js",
+    "preload": "dist/preload/index.mjs",
     "icon": "icon.png",
     "locales": {
       "zh-CN": {
@@ -36,10 +36,14 @@
       }
     }
   },
-  "devDependencies": {
-    "@assistant-ui/react": "^0.14.26",
+  "dependencies": {
     "@earendil-works/pi-agent-core": "^0.80.6",
     "@earendil-works/pi-ai": "^0.80.6",
     "@earendil-works/pi-coding-agent": "^0.80.6"
+  },
+  "devDependencies": {
+    "@assistant-ui/react": "^0.14.26",
+    "@assistant-ui/react-markdown": "^0.14.5",
+    "remark-gfm": "^4.0.1"
   }
 }

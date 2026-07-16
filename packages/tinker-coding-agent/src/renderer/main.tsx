@@ -1,13 +1,16 @@
 import { createRoot } from 'react-dom/client'
 import i18n from 'i18next'
 import { initReactI18next, useTranslation } from 'react-i18next'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { observer } from 'mobx-react-lite'
 import * as Toast from '@radix-ui/react-toast'
 import { X } from 'lucide-react'
+import waitUntil from 'licia/waitUntil'
 import Sidebar from './components/Sidebar'
 import Welcome from './components/Welcome'
 import { Thread, ErrorBoundary } from './components/Thread'
 import { RuntimeProvider } from './components/RuntimeProvider'
+import store from './store'
 import { tw } from './theme'
 import enUS from './i18n/en-US.json'
 import zhCN from './i18n/zh-CN.json'
@@ -25,55 +28,39 @@ i18n.use(initReactI18next).init({
   },
 })
 
-function App() {
+const App = observer(function App() {
   const { t, i18n } = useTranslation()
-  const [workspace, setWorkspace] = useState<string | null>(null)
-  const [activeSessionId, setActiveSessionId] = useState<string | null>(null)
-  const [ready, setReady] = useState(false)
-  const [toastOpen, setToastOpen] = useState(false)
-  const [toastMsg, setToastMsg] = useState('')
-
-  const showError = (message: string) => {
-    setToastMsg(i18n.exists(message) ? t(message) : message)
-    setToastOpen(true)
-  }
 
   useEffect(() => {
-    codingAgent.getWorkspace().then((cwd) => {
-      setWorkspace(cwd)
-      setReady(true)
-    })
-    codingAgent.getActiveSessionId().then(setActiveSessionId)
-
-    return codingAgent.onEvent((event) => {
-      if (event.type === 'workspace') setWorkspace(event.cwd)
-      if (event.type === 'sessions') setActiveSessionId(event.activeSessionId)
-      if (event.type === 'error') showError(event.error)
-    })
+    void store.init()
   }, [])
 
-  if (!ready) return null
+  if (!store.ready) return null
+
+  const toastMsg = i18n.exists(store.toastMsg)
+    ? t(store.toastMsg)
+    : store.toastMsg
 
   return (
     <Toast.Provider duration={4000}>
-      {workspace ? (
+      {store.workspace ? (
         <div className={`h-screen flex overflow-hidden ${tw.background.app}`}>
           <Sidebar />
           <div className="flex-1 min-w-0 min-h-0 bg-transparent">
             <ErrorBoundary>
-              <RuntimeProvider key={activeSessionId ?? 'none'}>
+              <RuntimeProvider key={store.activeSessionId ?? 'none'}>
                 <Thread />
               </RuntimeProvider>
             </ErrorBoundary>
           </div>
         </div>
       ) : (
-        <Welcome onError={showError} />
+        <Welcome />
       )}
 
       <Toast.Root
-        open={toastOpen}
-        onOpenChange={setToastOpen}
+        open={store.toastOpen}
+        onOpenChange={(open) => store.setToastOpen(open)}
         className={`${tw.toast.root} data-[state=open]:animate-fade-up data-[state=closed]:opacity-0 transition-opacity`}
       >
         <div className="flex-1 min-w-0">
@@ -90,11 +77,13 @@ function App() {
       <Toast.Viewport className={tw.toast.viewport} />
     </Toast.Provider>
   )
-}
+})
 
 ;(async function () {
   const language = await tinker.getLanguage()
-  i18n.changeLanguage(language)
+  await i18n.changeLanguage(language)
+  // ESM preload is async — wait before rendering (same as tinker-token-usage).
+  await waitUntil(() => typeof codingAgent !== 'undefined')
 
   const container = document.getElementById('app') as HTMLElement
   createRoot(container).render(<App />)

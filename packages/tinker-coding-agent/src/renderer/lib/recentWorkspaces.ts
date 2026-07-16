@@ -1,4 +1,5 @@
 import LocalStore from 'licia/LocalStore'
+import concat from 'licia/concat'
 import filter from 'licia/filter'
 import isArr from 'licia/isArr'
 import isStr from 'licia/isStr'
@@ -19,7 +20,7 @@ export function getRecentWorkspaces(): string[] {
 }
 
 export function addRecentWorkspace(path: string) {
-  const next = unique([path, ...readRecent()]).slice(0, MAX_RECENT)
+  const next = unique(concat([path], readRecent())).slice(0, MAX_RECENT)
   storage.set(STORAGE_RECENT, next)
   return next
 }

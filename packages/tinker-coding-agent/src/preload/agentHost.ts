@@ -3,33 +3,117 @@ import {
   type AgentEvent,
   type AgentMessage,
 } from '@earendil-works/pi-agent-core'
-import type { SessionManager } from '@earendil-works/pi-coding-agent'
-import { existsSync, unlinkSync } from 'node:fs'
+import type { Model } from '@earendil-works/pi-ai'
+import {
+  SessionManager,
+  createBashTool,
+  createEditTool,
+  createReadTool,
+  createWriteTool,
+  estimateTokens,
+  formatSkillsForPrompt,
+  getAgentDir,
+  loadSkills,
+  parseSkillBlock,
+  stripFrontmatter,
+  type Skill,
+} from '@earendil-works/pi-coding-agent'
+import { existsSync, readFileSync, unlinkSync } from 'node:fs'
+import { homedir } from 'node:os'
+import { dirname, join, resolve } from 'node:path'
+import concat from 'licia/concat'
 import filter from 'licia/filter'
 import find from 'licia/find'
 import isEmpty from 'licia/isEmpty'
 import isErr from 'licia/isErr'
+import isStrBlank from 'licia/isStrBlank'
 import map from 'licia/map'
+import now from 'licia/now'
 import some from 'licia/some'
 import splitPath from 'licia/splitPath'
+import startWith from 'licia/startWith'
 import trim from 'licia/trim'
 import truncate from 'licia/truncate'
 import type {
   CodingAgentEvent,
+  ContextUsageInfo,
   ModelSelection,
   SerializedContentPart,
   SerializedMessage,
   SessionInfo,
+  SkillInfo,
 } from '../common/types'
 import { contentToText, errorMessage } from '../common/util'
-import { createTinkerModel, loadCodingTools } from './piLoader'
 import { getWorkspaceSessionDir } from './sessionPaths'
-import { loadSessionManagerModule } from './sessionStore'
 import { createTinkerStreamFn } from './tinkerStream'
 
 const SYSTEM_PROMPT = `You are a coding assistant running inside the Tinker Coding Agent plugin.
 You can read, edit, and write files, and run shell commands in the workspace.
-Be concise and prefer making concrete code changes when asked.`
+Be concise and prefer making concrete code changes when asked.
+
+When the user asks to use a skill by name, or a task matches an available skill's description, you MUST use the read tool to load that skill's file from its listed location and follow its instructions before proceeding.`
+
+function findGitRepoRoot(startDir: string): string | null {
+  let dir = resolve(startDir)
+  while (true) {
+    if (existsSync(join(dir, '.git'))) return dir
+    const parent = dirname(dir)
+    if (parent === dir) return null
+    dir = parent
+  }
+}
+
+/** Skill dirs under ~/.agents and project .agents (cwd up to git root). */
+function collectAgentsSkillPaths(cwd: string): string[] {
+  const userAgentsSkillsDir = join(homedir(), '.agents', 'skills')
+  const paths = [userAgentsSkillsDir]
+  const resolvedUser = resolve(userAgentsSkillsDir)
+
+  let dir = resolve(cwd)
+  const gitRoot = findGitRepoRoot(dir)
+  while (true) {
+    const agentsSkills = join(dir, '.agents', 'skills')
+    if (resolve(agentsSkills) !== resolvedUser) {
+      paths.push(agentsSkills)
+    }
+    if (gitRoot && dir === gitRoot) break
+    const parent = dirname(dir)
+    if (parent === dir) break
+    dir = parent
+  }
+
+  return paths
+}
+
+function createCodingTools(cwd: string) {
+  return [
+    createReadTool(cwd),
+    createBashTool(cwd),
+    createEditTool(cwd),
+    createWriteTool(cwd),
+  ]
+}
+
+const DEFAULT_CONTEXT_WINDOW = 128000
+
+function createTinkerModel(
+  provider: string,
+  modelId: string,
+  contextWindow = DEFAULT_CONTEXT_WINDOW,
+): Model<'openai-completions'> {
+  return {
+    id: modelId,
+    name: modelId,
+    api: 'openai-completions',
+    provider: provider as Model<'openai-completions'>['provider'],
+    baseUrl: '',
+    reasoning: false,
+    input: ['text'],
+    cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
+    contextWindow,
+    maxTokens: 8192,
+  }
+}
 
 type EventListener = (event: CodingAgentEvent) => void
 
@@ -38,6 +122,23 @@ interface ListedSession {
   title: string
   createdAt: number
   path: string
+}
+
+/** Collapse expanded skill blocks to `/name` for UI/session titles. */
+function toDisplayUserText(text: string): string {
+  const skill = parseSkillBlock(text)
+  if (skill) {
+    return skill.userMessage
+      ? `/${skill.name} ${skill.userMessage}`
+      : `/${skill.name}`
+  }
+  if (startWith(text, '/skill:')) {
+    const spaceIndex = text.indexOf(' ')
+    const name = spaceIndex === -1 ? text.slice(7) : text.slice(7, spaceIndex)
+    const args = spaceIndex === -1 ? '' : trim(text.slice(spaceIndex + 1))
+    return args ? `/${name} ${args}` : `/${name}`
+  }
+  return text
 }
 
 function serializeMessages(
@@ -56,7 +157,10 @@ function serializeMessages(
 
   const result: SerializedMessage[] = []
   const list = streaming
-    ? [...filter(messages, (m) => m !== streaming), streaming]
+    ? concat(
+        filter(messages, (m) => m !== streaming),
+        [streaming],
+      )
     : messages
 
   for (let i = 0; i < list.length; i++) {
@@ -65,7 +169,12 @@ function serializeMessages(
       result.push({
         id: `user-${i}-${msg.timestamp ?? i}`,
         role: 'user',
-        content: [{ type: 'text', text: contentToText(msg.content) }],
+        content: [
+          {
+            type: 'text',
+            text: toDisplayUserText(contentToText(msg.content)),
+          },
+        ],
       })
       continue
     }
@@ -121,7 +230,7 @@ function serializeMessages(
 
 function titleFromText(text: string): string {
   const trimmed = trim(text).replace(/\s+/g, ' ')
-  if (isEmpty(trimmed)) return ''
+  if (isStrBlank(trimmed)) return ''
   return truncate(trimmed, 40)
 }
 
@@ -134,6 +243,8 @@ export class AgentHost {
   private sessionManager: SessionManager | null = null
   private listedSessions: ListedSession[] = []
   private modelSelection: ModelSelection | null = null
+  private skills: Skill[] = []
+  private contextWindow = DEFAULT_CONTEXT_WINDOW
   private running = false
   /** When true, host keeps the workspace/agent but UI shows the welcome screen. */
   private detached = false
@@ -163,6 +274,7 @@ export class AgentHost {
   private emitMessages() {
     if (!this.agent) {
       this.emit({ type: 'messages', messages: [] })
+      this.emitContext()
       return
     }
     this.emit({
@@ -172,6 +284,11 @@ export class AgentHost {
         this.agent.state.streamingMessage ?? null,
       ),
     })
+    this.emitContext()
+  }
+
+  private emitContext() {
+    this.emit({ type: 'context', context: this.getContextUsage() })
   }
 
   private emitSessions() {
@@ -182,12 +299,60 @@ export class AgentHost {
     })
   }
 
+  private emitSkills() {
+    this.emit({ type: 'skills', skills: this.getSkills() })
+  }
+
+  private refreshSkills() {
+    if (!this.cwd) {
+      this.skills = []
+      this.emitSkills()
+      this.syncSystemPrompt()
+      return
+    }
+    const result = loadSkills({
+      cwd: this.cwd,
+      agentDir: getAgentDir(),
+      skillPaths: collectAgentsSkillPaths(this.cwd),
+      includeDefaults: false,
+    })
+    this.skills = result.skills
+    this.emitSkills()
+    this.syncSystemPrompt()
+  }
+
+  private syncSystemPrompt() {
+    if (this.agent) {
+      this.agent.state.systemPrompt = this.buildSystemPrompt()
+    }
+  }
+
   getWorkspace() {
     return this.detached ? null : this.cwd
   }
 
   getModel() {
     return this.modelSelection
+  }
+
+  getSkills(): SkillInfo[] {
+    return map(this.skills, (skill) => ({
+      name: skill.name,
+      description: skill.description,
+    }))
+  }
+
+  getContextUsage(): ContextUsageInfo {
+    let tokens = Math.ceil(this.buildSystemPrompt().length / 4)
+    if (this.agent) {
+      for (const message of this.agent.state.messages) {
+        tokens += estimateTokens(message)
+      }
+    }
+    return {
+      tokens,
+      contextWindow: this.contextWindow,
+    }
   }
 
   isRunning() {
@@ -209,7 +374,7 @@ export class AgentHost {
       sessions.unshift({
         id: activeId,
         title: this.sessionManager?.getSessionName() || '',
-        createdAt: Date.now(),
+        createdAt: now(),
       })
     }
     return sessions
@@ -243,7 +408,6 @@ export class AgentHost {
       return
     }
 
-    const { SessionManager } = await loadSessionManagerModule()
     const listed = await SessionManager.list(this.cwd, this.sessionDir)
     this.listedSessions = map(listed, (session) => ({
       id: session.id,
@@ -263,7 +427,9 @@ export class AgentHost {
       (msg) => msg.role === 'user',
     )
     if (!firstUser) return
-    const title = titleFromText(contentToText(firstUser.content))
+    const title = titleFromText(
+      toDisplayUserText(contentToText(firstUser.content)),
+    )
     if (!title) return
     this.sessionManager.appendSessionInfo(title)
     void this.refreshListedSessions()
@@ -272,11 +438,31 @@ export class AgentHost {
   async setModel(provider: string, model: string) {
     if (!provider || !model) return
     this.modelSelection = { provider, model }
+    this.contextWindow = await this.resolveContextWindow(provider, model)
     if (this.agent) {
-      this.agent.state.model = createTinkerModel(provider, model)
+      this.agent.state.model = createTinkerModel(
+        provider,
+        model,
+        this.contextWindow,
+      )
     }
     this.sessionManager?.appendModelChange(provider, model)
     this.emit({ type: 'model', model: this.modelSelection })
+    this.emitContext()
+  }
+
+  private async resolveContextWindow(provider: string, model: string) {
+    try {
+      const providers = await tinker.getAIProviders()
+      const match = find(providers, (p) => p.name === provider)
+      const info = find(match?.models ?? [], (m) => m.name === model)
+      if (info?.contextWindow && info.contextWindow > 0) {
+        return info.contextWindow
+      }
+    } catch {
+      // fall through to default
+    }
+    return DEFAULT_CONTEXT_WINDOW
   }
 
   private isModelAvailable(
@@ -323,7 +509,6 @@ export class AgentHost {
   }
 
   private async openOrCreateSession(cwd: string, sessionDir: string) {
-    const { SessionManager } = await loadSessionManagerModule()
     const listed = await SessionManager.list(cwd, sessionDir)
     if (listed[0]?.path) {
       return SessionManager.open(listed[0].path, sessionDir, cwd)
@@ -339,6 +524,10 @@ export class AgentHost {
         provider: context.model.provider,
         model: context.model.modelId,
       }
+      this.contextWindow = await this.resolveContextWindow(
+        context.model.provider,
+        context.model.modelId,
+      )
       this.emit({ type: 'model', model: this.modelSelection })
     }
     await this.recreateAgent(context.messages)
@@ -353,11 +542,13 @@ export class AgentHost {
     tinker.setTitle(name)
     this.emit({ type: 'workspace', cwd: this.cwd })
     this.emitSessions()
+    this.emitSkills()
     this.emitMessages()
     this.emit({ type: 'running', running: this.running })
     if (this.modelSelection) {
       this.emit({ type: 'model', model: this.modelSelection })
     }
+    this.emitContext()
   }
 
   async setWorkspace(cwd: string) {
@@ -376,6 +567,7 @@ export class AgentHost {
     }
 
     if (this.cwd === cwd) {
+      this.refreshSkills()
       this.showWorkspaceUi()
       return
     }
@@ -395,6 +587,7 @@ export class AgentHost {
     this.cwd = cwd
     this.sessionDir = getWorkspaceSessionDir(cwd)
     this.detached = false
+    this.refreshSkills()
 
     try {
       const sessionManager = await this.openOrCreateSession(
@@ -410,6 +603,7 @@ export class AgentHost {
       this.sessionManager = previous.sessionManager
       this.listedSessions = previous.listedSessions
       this.detached = previous.detached
+      this.refreshSkills()
       this.emit({ type: 'error', error: errorMessage(err) })
       throw err
     }
@@ -437,7 +631,6 @@ export class AgentHost {
     }
 
     this.agent?.abort()
-    const { SessionManager } = await loadSessionManagerModule()
     const sessionManager = SessionManager.create(this.cwd, this.sessionDir)
     await this.bindSession(sessionManager)
     return this.getActiveSessionId()
@@ -451,7 +644,6 @@ export class AgentHost {
     if (!sessionPath || !existsSync(sessionPath)) return
 
     this.agent?.abort()
-    const { SessionManager } = await loadSessionManagerModule()
     const sessionManager = SessionManager.open(
       sessionPath,
       this.sessionDir,
@@ -480,7 +672,6 @@ export class AgentHost {
 
     const next = this.listedSessions[0]
     if (next?.path && existsSync(next.path)) {
-      const { SessionManager } = await loadSessionManagerModule()
       const sessionManager = SessionManager.open(
         next.path,
         this.sessionDir,
@@ -490,9 +681,35 @@ export class AgentHost {
       return
     }
 
-    const { SessionManager } = await loadSessionManagerModule()
     const sessionManager = SessionManager.create(this.cwd, this.sessionDir)
     await this.bindSession(sessionManager)
+  }
+
+  private buildSystemPrompt() {
+    const skillsPrompt = formatSkillsForPrompt(this.skills)
+    return skillsPrompt ? `${SYSTEM_PROMPT}${skillsPrompt}` : SYSTEM_PROMPT
+  }
+
+  private expandSkillCommand(text: string): string {
+    if (!startWith(text, '/')) return text
+
+    const spaceIndex = text.indexOf(' ')
+    const command =
+      spaceIndex === -1 ? text.slice(1) : text.slice(1, spaceIndex)
+    const args = spaceIndex === -1 ? '' : trim(text.slice(spaceIndex + 1))
+    const skillName = startWith(command, 'skill:') ? command.slice(6) : command
+    const skill = find(this.skills, (s) => s.name === skillName)
+    if (!skill) return text
+
+    try {
+      const content = readFileSync(skill.filePath, 'utf-8')
+      const body = trim(stripFrontmatter(content))
+      const skillBlock = `<skill name="${skill.name}" location="${skill.filePath}">\nReferences are relative to ${skill.baseDir}.\n\n${body}\n</skill>`
+      return args ? `${skillBlock}\n\n${args}` : skillBlock
+    } catch (err) {
+      console.error('Failed to expand skill', err)
+      return text
+    }
   }
 
   private async recreateAgent(messages: AgentMessage[] = []) {
@@ -501,14 +718,14 @@ export class AgentHost {
     this.unsubscribe?.()
     this.agent = null
 
-    const tools = await loadCodingTools(this.cwd)
+    const tools = createCodingTools(this.cwd)
     const provider = this.modelSelection?.provider || 'tinker'
     const modelId = this.modelSelection?.model || 'default'
 
     const agent = new Agent({
       initialState: {
-        systemPrompt: SYSTEM_PROMPT,
-        model: createTinkerModel(provider, modelId),
+        systemPrompt: this.buildSystemPrompt(),
+        model: createTinkerModel(provider, modelId, this.contextWindow),
         thinkingLevel: 'off',
         tools,
         messages,
@@ -580,10 +797,11 @@ export class AgentHost {
       this.emit({ type: 'error', error: 'errorAgentNotReady' })
       throw new Error('errorAgentNotReady')
     }
+    const expanded = this.expandSkillCommand(text)
     this.running = true
     this.emit({ type: 'running', running: true })
     try {
-      await this.agent.prompt(text)
+      await this.agent.prompt(expanded)
     } catch (err) {
       this.emit({ type: 'error', error: errorMessage(err) })
       throw err
@@ -597,6 +815,10 @@ export class AgentHost {
 
   async abort() {
     this.agent?.abort()
+    if (this.running) {
+      this.running = false
+      this.emit({ type: 'running', running: false })
+    }
   }
 }
 

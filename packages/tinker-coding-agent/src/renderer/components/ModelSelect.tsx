@@ -1,60 +1,15 @@
-import { useEffect, useState } from 'react'
+import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import { ChevronDown } from 'lucide-react'
 import * as Select from '@radix-ui/react-select'
 import className from 'licia/className'
 import { tw } from '../theme'
-import type { ModelSelection } from '../../common/types'
+import store from '../store'
+import { isValidSelection, parseModelValue, toModelValue } from '../lib/model'
 
-const VALUE_SEP = ':::'
-
-function toValue(selection: ModelSelection) {
-  return `${selection.provider}${VALUE_SEP}${selection.model}`
-}
-
-function parseValue(value: string): ModelSelection | null {
-  const index = value.indexOf(VALUE_SEP)
-  if (index <= 0) return null
-  const provider = value.slice(0, index)
-  const model = value.slice(index + VALUE_SEP.length)
-  if (!provider || !model) return null
-  return { provider, model }
-}
-
-function isValidSelection(
-  selection: ModelSelection | null,
-): selection is ModelSelection {
-  return !!(selection?.provider && selection?.model)
-}
-
-export default function ModelSelect() {
+const ModelSelect = observer(function ModelSelect() {
   const { t } = useTranslation()
-  const [providers, setProviders] = useState<tinker.AiProviderInfo[]>([])
-  const [model, setModel] = useState<ModelSelection | null>(null)
-
-  useEffect(() => {
-    let cancelled = false
-
-    ;(async () => {
-      const list = await codingAgent.listProviders()
-      if (cancelled) return
-      setProviders(list)
-
-      const current = await codingAgent.ensureDefaultModel()
-      if (!cancelled) setModel(current)
-    })()
-
-    const off = codingAgent.onEvent((event) => {
-      if (event.type === 'model') {
-        setModel(isValidSelection(event.model) ? event.model : null)
-      }
-    })
-
-    return () => {
-      cancelled = true
-      off()
-    }
-  }, [])
+  const { model, providers } = store
 
   if (!isValidSelection(model) || providers.length === 0) {
     return (
@@ -74,12 +29,11 @@ export default function ModelSelect() {
 
   return (
     <Select.Root
-      value={toValue(model)}
+      value={toModelValue(model)}
       onValueChange={(value) => {
-        const next = parseValue(value)
+        const next = parseModelValue(value)
         if (!next) return
-        codingAgent.setModel(next.provider, next.model)
-        setModel(next)
+        store.setModel(next.provider, next.model)
       }}
     >
       <Select.Trigger
@@ -120,7 +74,10 @@ export default function ModelSelect() {
                 {provider.models.map((m) => (
                   <Select.Item
                     key={`${provider.name}-${m.name}`}
-                    value={toValue({ provider: provider.name, model: m.name })}
+                    value={toModelValue({
+                      provider: provider.name,
+                      model: m.name,
+                    })}
                     className={className(tw.select.item, tw.text.primary)}
                   >
                     <Select.ItemText>{m.name}</Select.ItemText>
@@ -133,4 +90,6 @@ export default function ModelSelect() {
       </Select.Portal>
     </Select.Root>
   )
-}
+})
+
+export default ModelSelect

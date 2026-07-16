@@ -13,6 +13,7 @@ import cloneDeep from 'licia/cloneDeep'
 import isEmpty from 'licia/isEmpty'
 import isStr from 'licia/isStr'
 import map from 'licia/map'
+import now from 'licia/now'
 import startWith from 'licia/startWith'
 import { contentToText, errorMessage } from '../common/util'
 
@@ -56,7 +57,7 @@ function createPartial(
     model: model.id,
     usage: emptyUsage(),
     stopReason,
-    timestamp: Date.now(),
+    timestamp: now(),
   }
 }
 
@@ -240,10 +241,19 @@ export function createTinkerStreamFn(config: TinkerStreamConfig) {
 
       const abortHandler = () => {
         currentTask?.abort()
+        fail('aborted', 'Request aborted')
       }
       options?.signal?.addEventListener('abort', abortHandler)
+      if (options?.signal?.aborted) {
+        abortHandler()
+      }
 
       try {
+        if (options?.signal?.aborted) {
+          fail('aborted', 'Request aborted')
+          return
+        }
+
         stream.push({ type: 'start', partial })
 
         const provider = config.getProvider()
@@ -261,6 +271,10 @@ export function createTinkerStreamFn(config: TinkerStreamConfig) {
         ) as tinker.AiCallOption
 
         currentTask = tinker.callAIStream(option, (chunk) => {
+          if (finalized || options?.signal?.aborted) {
+            return
+          }
+
           if (chunk.error) {
             fail('error', chunk.error)
             return
@@ -357,6 +371,11 @@ export function createTinkerStreamFn(config: TinkerStreamConfig) {
             finalize(toolCallIndexes.size > 0 ? 'toolUse' : 'stop')
           }
         })
+
+        if (options?.signal?.aborted) {
+          currentTask.abort()
+          fail('aborted', 'Request aborted')
+        }
 
         await currentTask
 

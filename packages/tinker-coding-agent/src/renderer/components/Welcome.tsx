@@ -1,59 +1,24 @@
-import { useState, type MouseEvent } from 'react'
+import type { MouseEvent } from 'react'
+import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import { FolderOpen } from 'lucide-react'
 import className from 'licia/className'
 import splitPath from 'licia/splitPath'
 import { tw } from '../theme'
-import {
-  addRecentWorkspace,
-  getRecentWorkspaces,
-  removeRecentWorkspace,
-} from '../lib/recentWorkspaces'
+import store from '../store'
 
-interface WelcomeProps {
-  onError: (message: string) => void
-}
-
-export default function Welcome({ onError }: WelcomeProps) {
+const Welcome = observer(function Welcome() {
   const { t } = useTranslation()
-  const [recentWorkspaces, setRecentWorkspaces] = useState(getRecentWorkspaces)
-
-  const rememberWorkspace = (path: string) => {
-    setRecentWorkspaces(addRecentWorkspace(path))
-  }
-
-  const handleOpenWorkspace = async () => {
-    const path = await codingAgent.openWorkspace()
-    if (path) rememberWorkspace(path)
-  }
-
-  const handleOpenRecent = async (path: string) => {
-    try {
-      const stats = await tinker.fstat(path)
-      if (!stats.isDirectory) throw new Error('not a directory')
-    } catch {
-      setRecentWorkspaces(removeRecentWorkspace(path))
-      onError(t('folderNotFound'))
-      return
-    }
-
-    try {
-      await codingAgent.setWorkspace(path)
-      rememberWorkspace(path)
-    } catch {
-      // Host already emits the error event for toast display.
-    }
-  }
 
   const handleContextMenu = (e: MouseEvent, path: string) => {
     e.preventDefault()
     tinker.showContextMenu(e.clientX, e.clientY, [
-      { label: t('open'), click: () => void handleOpenRecent(path) },
+      { label: t('open'), click: () => void store.openRecentWorkspace(path) },
       { label: t('showInFolder'), click: () => tinker.showItemInPath(path) },
       { type: 'separator' },
       {
         label: t('removeFromRecent'),
-        click: () => setRecentWorkspaces(removeRecentWorkspace(path)),
+        click: () => store.forgetRecentWorkspace(path),
       },
     ])
   }
@@ -83,7 +48,7 @@ export default function Welcome({ onError }: WelcomeProps) {
         <div className="space-y-3 mb-8">
           <button
             type="button"
-            onClick={() => void handleOpenWorkspace()}
+            onClick={() => void store.openWorkspace()}
             className={className(
               'w-full flex items-center gap-3 px-4 py-3 rounded-md border transition-colors cursor-pointer',
               tw.background.welcomeAction,
@@ -99,18 +64,18 @@ export default function Welcome({ onError }: WelcomeProps) {
           </button>
         </div>
 
-        {recentWorkspaces.length > 0 && (
+        {store.recentWorkspaces.length > 0 && (
           <div
             className={className(
               'border rounded-md overflow-hidden',
               tw.border.divider,
             )}
           >
-            {recentWorkspaces.map((path) => (
+            {store.recentWorkspaces.map((path) => (
               <button
                 key={path}
                 type="button"
-                onClick={() => void handleOpenRecent(path)}
+                onClick={() => void store.openRecentWorkspace(path)}
                 onContextMenu={(e) => handleContextMenu(e, path)}
                 className={className(
                   'w-full text-left px-3 py-2.5 border-none cursor-pointer transition-colors',
@@ -137,4 +102,6 @@ export default function Welcome({ onError }: WelcomeProps) {
       </div>
     </div>
   )
-}
+})
+
+export default Welcome

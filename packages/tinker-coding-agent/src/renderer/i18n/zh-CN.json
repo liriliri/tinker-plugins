@@ -2,14 +2,16 @@
   "openWorkspace": "打开工作区",
   "backToWelcome": "返回首页",
   "newSession": "新建会话",
-  "deleteSession": "删除会话",
+  "deleteSession": "删除",
   "selectModel": "选择模型",
   "error": "错误",
   "welcomeEyebrow": "工作区助手",
   "welcomeTitle": "编程助手",
   "welcomeDescription": "打开一个工作区文件夹以开始使用。",
   "welcomeHint": "选择模型，然后围绕当前工作区提问。",
-  "composerPlaceholder": "向编程助手提问...",
+  "composerPlaceholder": "向编程助手提问...（输入 / 选择 skill）",
+  "noSkills": "未找到 skill",
+  "contextTokens": "上下文 Token",
   "reasoning": "思考过程",
   "toolArguments": "参数",
   "toolResult": "结果",
@@ -22,5 +24,6 @@
   "errorTextOnly": "仅支持文本消息",
   "open": "打开",
   "showInFolder": "在文件夹中显示",
-  "removeFromRecent": "从最近记录中移除"
+  "removeFromRecent": "从最近记录中移除",
+  "copy": "复制"
 }

@@ -1,4 +1,5 @@
 import { Component, type CSSProperties, type FC, type ReactNode } from 'react'
+import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import {
   ActionBarPrimitive,
@@ -19,10 +20,15 @@ import {
 } from 'lucide-react'
 import className from 'licia/className'
 import isStr from 'licia/isStr'
+import isStrBlank from 'licia/isStrBlank'
 import trim from 'licia/trim'
 import truncate from 'licia/truncate'
+import { formatTokens } from '../../common/util'
 import { tw } from '../theme'
+import store from '../store'
 import ModelSelect from './ModelSelect'
+import { SkillSlashPopover } from './SkillSlashPopover'
+import { MarkdownText } from './MarkdownText'
 
 interface TextLikePartProps {
   text?: string
@@ -103,7 +109,7 @@ export const Thread: FC = () => {
             </div>
           </AuiIf>
 
-          <div className="mb-14 flex flex-col gap-y-5 empty:hidden">
+          <div className="mb-14 flex flex-col gap-y-3 empty:hidden">
             <ThreadPrimitive.Messages>
               {({ message }) =>
                 message.role === 'user' ? <UserMessage /> : <AssistantMessage />
@@ -153,7 +159,9 @@ const UserMessage: FC = () => (
 )
 
 const hasCopyableText = (s: AssistantState) =>
-  s.message.content.some((part) => part.type === 'text' && !!part.text?.trim())
+  s.message.content.some(
+    (part) => part.type === 'text' && !!part.text && !isStrBlank(part.text),
+  )
 
 const AssistantMessage: FC = () => {
   const showCopy = useAuiState(hasCopyableText)
@@ -161,7 +169,7 @@ const AssistantMessage: FC = () => {
   return (
     <MessagePrimitive.Root
       data-role="assistant"
-      className="animate-fade-up group relative"
+      className="animate-fade-up relative"
     >
       <div
         className={className(
@@ -172,11 +180,11 @@ const AssistantMessage: FC = () => {
         <MessagePrimitive.Parts components={MESSAGE_PARTS} />
       </div>
       {showCopy && (
-        <div className="ms-1 mt-1.5 flex min-h-7 items-center">
+        <div className="ms-1 mt-0.5 flex items-center">
           <ActionBarPrimitive.Root
             hideWhenRunning
-            autohide="not-last"
-            className="flex gap-1 opacity-0 transition-opacity group-hover:opacity-100 data-[floating]:opacity-100"
+            autohide="never"
+            className="flex gap-1"
           >
             <ActionBarPrimitive.Copy className={tw.button.action}>
               <AuiIf condition={(s) => s.message.isCopied}>
@@ -192,12 +200,6 @@ const AssistantMessage: FC = () => {
     </MessagePrimitive.Root>
   )
 }
-
-const TextPart: FC<TextLikePartProps> = ({ text }) => (
-  <p className="m-0 whitespace-pre-wrap text-[15px] leading-relaxed">
-    {text ?? ''}
-  </p>
-)
 
 const ReasoningPart: FC<TextLikePartProps> = ({ text }) => {
   const { t } = useTranslation()
@@ -227,7 +229,7 @@ const ToolFallback: FC<ToolFallbackProps> = ({
   return (
     <details
       className={className(
-        'group/tool my-2 w-full border text-xs font-mono open:pb-2.5',
+        'group/tool my-1 w-full border text-xs font-mono open:pb-2 first:mt-0 last:mb-0',
         tw.message.tool,
       )}
     >
@@ -284,47 +286,64 @@ const ToolFallback: FC<ToolFallbackProps> = ({
   )
 }
 
-const Composer: FC = () => {
+const Composer: FC = observer(function Composer() {
   const { t } = useTranslation()
+  const contextLabel = store.context ? formatTokens(store.context.tokens) : null
 
   return (
-    <ComposerPrimitive.Root className="relative flex w-full flex-col">
-      <div
-        className={className(
-          'flex w-full flex-col gap-2 border p-[var(--composer-padding)] shadow-sm transition-[border-color,box-shadow]',
-          'rounded-[var(--composer-radius)]',
-          tw.background.composer,
-        )}
-      >
-        <ComposerPrimitive.Input
-          placeholder={t('composerPlaceholder')}
-          rows={1}
+    <ComposerPrimitive.Unstable_TriggerPopoverRoot>
+      <ComposerPrimitive.Root className="relative flex w-full flex-col">
+        <div
           className={className(
-            'max-h-32 min-h-10 w-full resize-none bg-transparent px-2 py-1 text-[15px] outline-none',
-            tw.background.composerInput,
-            tw.text.primary,
+            'flex w-full flex-col gap-2 border p-[var(--composer-padding)] shadow-sm transition-[border-color,box-shadow]',
+            'rounded-[var(--composer-radius)]',
+            tw.background.composer,
           )}
-          autoFocus
-        />
-        <div className="relative flex items-center justify-between gap-2">
-          <ModelSelect />
-          <div className="flex items-center gap-1.5">
-            <AuiIf condition={(s) => !s.thread.isRunning}>
-              <ComposerPrimitive.Send className={tw.button.send}>
-                <ArrowUpIcon className="size-4" />
-              </ComposerPrimitive.Send>
-            </AuiIf>
-            <AuiIf condition={(s) => s.thread.isRunning}>
-              <ComposerPrimitive.Cancel className={tw.button.send}>
-                <SquareIcon className="size-3.5 fill-current" />
-              </ComposerPrimitive.Cancel>
-            </AuiIf>
+        >
+          <ComposerPrimitive.Input
+            placeholder={t('composerPlaceholder')}
+            rows={1}
+            className={className(
+              'max-h-32 min-h-10 w-full resize-none bg-transparent px-2 py-1 text-[15px] outline-none',
+              tw.background.composerInput,
+              tw.text.primary,
+            )}
+            autoFocus
+          />
+          <div className="relative flex items-center justify-between gap-2">
+            <div className="flex min-w-0 items-center gap-2">
+              <ModelSelect />
+              {contextLabel && (
+                <span
+                  className={className(
+                    'shrink-0 text-[11px] tabular-nums',
+                    tw.text.muted,
+                  )}
+                  title={t('contextTokens')}
+                >
+                  {contextLabel}
+                </span>
+              )}
+            </div>
+            <div className="flex items-center gap-1.5">
+              <AuiIf condition={(s) => !s.thread.isRunning}>
+                <ComposerPrimitive.Send className={tw.button.send}>
+                  <ArrowUpIcon className="size-4" />
+                </ComposerPrimitive.Send>
+              </AuiIf>
+              <AuiIf condition={(s) => s.thread.isRunning}>
+                <ComposerPrimitive.Cancel className={tw.button.send}>
+                  <SquareIcon className="size-3.5 fill-current" />
+                </ComposerPrimitive.Cancel>
+              </AuiIf>
+            </div>
           </div>
         </div>
-      </div>
-    </ComposerPrimitive.Root>
+        <SkillSlashPopover />
+      </ComposerPrimitive.Root>
+    </ComposerPrimitive.Unstable_TriggerPopoverRoot>
   )
-}
+})
 
 export class ErrorBoundary extends Component<
   ErrorBoundaryProps,
@@ -345,7 +364,7 @@ export class ErrorBoundary extends Component<
 }
 
 const MESSAGE_PARTS = {
-  Text: TextPart,
+  Text: MarkdownText,
   Reasoning: ReasoningPart,
   tools: { Fallback: ToolFallback },
 }
