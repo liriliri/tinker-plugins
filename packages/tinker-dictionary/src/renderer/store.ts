@@ -33,7 +33,7 @@ class Store {
   constructor() {
     makeAutoObservable(this, {
       dictsLoading: false,
-    })
+    } as Record<string, false>)
     this.initTheme()
   }
 

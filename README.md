@@ -128,5 +128,13 @@ All plugins in the list can be installed to TINKER by running `npm i -g tinker-x
       <th><img src="./packages/tinker-clipboard-sync/screenshot.png"/></th>
       <th><img src="./packages/tinker-agent-skills/screenshot.png"/></th>
     </tr>
+    <tr>
+      <th><a href="./packages/tinker-coding-agent/">tinker-coding-agent</a></th>
+      <th><a href="./packages/tinker-mouse-tester/">tinker-mouse-tester</a></th>
+    </tr>
+    <tr>
+      <th><img src="./packages/tinker-coding-agent/screenshot.png"/></th>
+      <th><img src="./packages/tinker-mouse-tester/screenshot.png"/></th>
+    </tr>
   </tbody>
 </table>

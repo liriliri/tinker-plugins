@@ -1,0 +1,34 @@
+{
+  "name": "tinker-mouse-tester",
+  "version": "0.1.0",
+  "description": "Mouse Tester Plugin for TINKER",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "mouse-tester"
+  ],
+  "tinker": {
+    "name": "Mouse Tester",
+    "description": "Test and visualize mouse inputs",
+    "main": "dist/index.html",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "鼠标测试",
+        "description": "测试并可视化鼠标输入"
+      }
+    }
+  }
+}

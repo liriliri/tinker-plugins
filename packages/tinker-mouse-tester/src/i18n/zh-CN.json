@@ -1,0 +1,19 @@
+{
+  "lastButton": "按键",
+  "movement": "位移",
+  "scroll": "滚轮",
+  "doubleClick": "双击",
+  "detected": "是",
+  "scrollUp": "上",
+  "scrollDown": "下",
+  "leftClick": "左键",
+  "middleClick": "中键",
+  "rightClick": "右键",
+  "backButton": "后退",
+  "forwardButton": "前进",
+  "buttonN": "按键 {{n}}",
+  "none": "—",
+  "sensor": "传感器",
+  "tracking": "追踪中",
+  "idle": "待机"
+}

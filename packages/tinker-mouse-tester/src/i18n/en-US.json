@@ -1,0 +1,19 @@
+{
+  "lastButton": "Button",
+  "movement": "Delta",
+  "scroll": "Wheel",
+  "doubleClick": "Double-click",
+  "detected": "Yes",
+  "scrollUp": "Up",
+  "scrollDown": "Down",
+  "leftClick": "Left",
+  "middleClick": "Middle",
+  "rightClick": "Right",
+  "backButton": "Back",
+  "forwardButton": "Forward",
+  "buttonN": "Btn {{n}}",
+  "none": "—",
+  "sensor": "Sensor",
+  "tracking": "Tracking",
+  "idle": "Idle"
+}
