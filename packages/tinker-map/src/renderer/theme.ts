@@ -5,11 +5,13 @@ const text = {
   danger: 'text-red-500 dark:text-red-400',
 }
 
+export const markerColor = {
+  default: '#3b82f6',
+  selected: '#ef4444',
+  bookmark: '#ef4444',
+}
+
 export const tw = {
-  app: {
-    bg: 'bg-zinc-50 dark:bg-zinc-900',
-    border: 'border-zinc-200 dark:border-zinc-700/60',
-  },
   sidebar: {
     bg: 'bg-white/70 dark:bg-zinc-900/70 backdrop-blur-2xl border border-white/30 dark:border-zinc-600/30 shadow-xl shadow-black/5 dark:shadow-black/20',
   },
@@ -64,6 +66,8 @@ export const tw = {
     iconBg: 'bg-red-50 dark:bg-red-900/30',
     iconColor: text.danger,
     cancelBtn: `${text.muted} hover:bg-zinc-100 dark:hover:bg-zinc-700/60`,
+    submit:
+      'bg-blue-600 text-white hover:bg-blue-700 shadow-sm shadow-blue-600/20 active:scale-95',
     submitDisabled:
       'bg-zinc-100 text-zinc-400 dark:bg-zinc-700 dark:text-zinc-500 cursor-not-allowed',
   },

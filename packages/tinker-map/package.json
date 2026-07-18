@@ -1,6 +1,6 @@
 {
   "name": "tinker-map",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Map Plugin for TINKER",
   "files": [
     "dist/",
@@ -25,21 +25,100 @@
   ],
   "tinker": {
     "name": "Map",
-    "description": "Explore maps, search locations and manage bookmarks",
+    "description": "Search places, get current location and manage bookmarks",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",
     "locales": {
       "zh-CN": {
         "name": "地图",
-        "description": "浏览地图、搜索地点和管理标注"
+        "description": "搜索地点、获取当前位置和管理标注"
+      }
+    },
+    "mcp": {
+      "tools": {
+        "search": {
+          "description": "Search places by name. Updates the plugin UI and returns matching locations with name, description, and coordinates.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "query": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Place name or address to search (e.g. Tiananmen, Tokyo Tower)"
+              }
+            },
+            "required": [
+              "query"
+            ]
+          }
+        },
+        "locate": {
+          "description": "Get the current location via IP geolocation. Returns latitude and longitude.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        "list_bookmarks": {
+          "description": "List saved bookmarks with id, name, and coordinates.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        "add_bookmark": {
+          "description": "Add a bookmark at the given coordinates. Returns the updated bookmark list.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Bookmark display name"
+              },
+              "lat": {
+                "type": "number",
+                "minimum": -90,
+                "maximum": 90,
+                "description": "Latitude"
+              },
+              "lng": {
+                "type": "number",
+                "minimum": -180,
+                "maximum": 180,
+                "description": "Longitude"
+              }
+            },
+            "required": [
+              "name",
+              "lat",
+              "lng"
+            ]
+          }
+        },
+        "remove_bookmark": {
+          "description": "Remove a bookmark by id. Returns the remaining bookmarks.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Bookmark id from list_bookmarks"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          }
+        }
       }
     }
   },
   "devDependencies": {
     "@types/leaflet": "^1.9.8",
     "leaflet": "^1.9.4",
-    "leaflet.chinatmsproviders": "^3.0.6",
     "react-leaflet": "^5.0.0"
   }
 }

@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next'
 import { MapPin } from 'lucide-react'
 import store from '../store'
 import { tw } from '../theme'
+import { formatCoord } from '../lib/util'
 
 const BookmarkDialog = observer(() => {
   const { t } = useTranslation()
@@ -56,7 +57,7 @@ const BookmarkDialog = observer(() => {
           <Dialog.Description
             className={`text-xs mb-3 font-mono ml-8 ${tw.dialog.description}`}
           >
-            {coords ? `${coords.lat.toFixed(6)}, ${coords.lng.toFixed(6)}` : ''}
+            {coords ? formatCoord(coords.lat, coords.lng, 6) : ''}
           </Dialog.Description>
           <form onSubmit={handleSubmit}>
             <input
@@ -90,7 +91,7 @@ const BookmarkDialog = observer(() => {
                 className={className(
                   'px-3 py-1 text-sm rounded-lg transition-all duration-150',
                   !isStrBlank(name)
-                    ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-sm shadow-blue-600/20 active:scale-95'
+                    ? tw.dialog.submit
                     : tw.dialog.submitDisabled,
                 )}
               >

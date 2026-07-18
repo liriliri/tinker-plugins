@@ -8,13 +8,14 @@ import {
   useMapEvents,
   ScaleControl,
 } from 'react-leaflet'
+import btoa from 'licia/btoa'
 import className from 'licia/className'
 import L from 'leaflet'
 import { useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Crosshair, Map as MapIcon, Satellite } from 'lucide-react'
 import store from '../store'
-import { tw } from '../theme'
+import { markerColor, tw } from '../theme'
 import { formatCoord } from '../lib/util'
 import '../lib/mapCorrection'
 import type { MapLocation, MapLayer, Bookmark } from '../types'
@@ -71,14 +72,14 @@ function markerSvg(color: string) {
 }
 
 const defaultIcon = L.icon({
-  iconUrl: markerSvg('#3b82f6'),
+  iconUrl: markerSvg(markerColor.default),
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
 })
 
 const selectedIcon = L.icon({
-  iconUrl: markerSvg('#ef4444'),
+  iconUrl: markerSvg(markerColor.selected),
   iconSize: [30, 49],
   iconAnchor: [15, 49],
   popupAnchor: [1, -40],
@@ -146,7 +147,7 @@ function LocationMarker({ location }: LocationMarkerProps) {
 }
 
 const bookmarkIcon = L.icon({
-  iconUrl: markerSvg('#ef4444'),
+  iconUrl: markerSvg(markerColor.bookmark),
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],

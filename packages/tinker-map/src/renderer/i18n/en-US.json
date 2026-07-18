@@ -4,7 +4,6 @@
   "locations": "Results",
   "road": "Road",
   "satellite": "Satellite",
-  "appTitle": "Map",
   "locationCount": "{{count}} places",
   "searching": "Searching...",
   "searchHint": "Search for any place",

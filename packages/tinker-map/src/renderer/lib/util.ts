@@ -1,3 +1,3 @@
-export function formatCoord(lat: number, lng: number) {
-  return `${lat.toFixed(4)}, ${lng.toFixed(4)}`
+export function formatCoord(lat: number, lng: number, digits = 4) {
+  return `${lat.toFixed(digits)}, ${lng.toFixed(digits)}`
 }

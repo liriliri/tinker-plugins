@@ -1,6 +1,9 @@
 import { contextBridge } from 'electron'
-import trim from 'licia/trim'
+import mapFn from 'licia/map'
+import safeGet from 'licia/safeGet'
 import toNum from 'licia/toNum'
+import toStr from 'licia/toStr'
+import trim from 'licia/trim'
 import { httpsGet } from './http'
 import type { Coords, SearchResult } from '../common/types'
 
@@ -8,8 +11,10 @@ const api = {
   async locate(): Promise<Coords | null> {
     try {
       const data = JSON.parse(await httpsGet('https://ipwho.is/'))
-      if (data.success && data.latitude && data.longitude) {
-        return { lat: data.latitude, lng: data.longitude }
+      const lat = safeGet(data, 'latitude')
+      const lng = safeGet(data, 'longitude')
+      if (safeGet(data, 'success') && lat && lng) {
+        return { lat, lng }
       }
       return null
     } catch {
@@ -30,20 +35,23 @@ const api = {
         headers: { 'User-Agent': 'TinkerMap/1.0' },
       })
       const data = JSON.parse(raw)
-      return data.map(
+      return mapFn(
+        data,
         (item: {
           place_id: number
           display_name: string
-          type: string
           lat: string
           lon: string
-        }) => ({
-          id: String(item.place_id),
-          name: trim(item.display_name.split(',')[0]),
-          description: trim(item.display_name.split(',').slice(1).join(',')),
-          lat: toNum(item.lat),
-          lng: toNum(item.lon),
-        }),
+        }) => {
+          const parts = item.display_name.split(',')
+          return {
+            id: toStr(item.place_id),
+            name: trim(parts[0]),
+            description: trim(parts.slice(1).join(',')),
+            lat: toNum(item.lat),
+            lng: toNum(item.lon),
+          }
+        },
       )
     } catch {
       return []
