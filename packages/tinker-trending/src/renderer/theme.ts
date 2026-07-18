@@ -7,7 +7,7 @@ export interface SourceColorTokens {
   contentBg: string
 }
 
-export const SOURCE_COLORS: Record<string, SourceColorTokens> = {
+const SOURCE_COLORS: Record<string, SourceColorTokens> = {
   orange: {
     cardBg: 'bg-orange-400/40 dark:bg-orange-500/25',
     headerBorder: 'border-black/[.08] dark:border-white/[.08]',

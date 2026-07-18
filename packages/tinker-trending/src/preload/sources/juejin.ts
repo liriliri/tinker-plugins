@@ -1,5 +1,6 @@
 import type { NewsItem } from '../../common/types'
 import { httpsGet } from '../http'
+import map from 'licia/map'
 
 interface JuejinItem {
   content: {
@@ -17,7 +18,7 @@ export async function fetchJuejin(): Promise<NewsItem[]> {
     'https://api.juejin.cn/content_api/v1/content/article_rank?category_id=1&type=hot&spider=0',
   )
   const json = JSON.parse(data) as JuejinResponse
-  return json.data.map((k) => ({
+  return map(json.data, (k) => ({
     id: k.content.content_id,
     title: k.content.title,
     url: `https://juejin.cn/post/${k.content.content_id}`,

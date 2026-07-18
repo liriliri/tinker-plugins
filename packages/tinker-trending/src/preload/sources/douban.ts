@@ -1,5 +1,6 @@
 import type { NewsItem } from '../../common/types'
 import { httpsGet } from '../http'
+import map from 'licia/map'
 
 interface DoubanMovieItem {
   id: string
@@ -17,13 +18,12 @@ export async function fetchDouban(): Promise<NewsItem[]> {
     { Referer: 'https://movie.douban.com/' },
   )
   const json = JSON.parse(data) as DoubanResponse
-  return json.items.map((movie) => ({
+  return map(json.items, (movie) => ({
     id: movie.id,
     title: movie.title,
     url: `https://movie.douban.com/subject/${movie.id}`,
     extra: {
       info: movie.card_subtitle.split(' / ').slice(0, 3).join(' / '),
-      hover: movie.card_subtitle,
     },
   }))
 }

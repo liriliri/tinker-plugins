@@ -1,5 +1,6 @@
 import type { NewsItem } from '../../common/types'
 import { httpsGet } from '../http'
+import map from 'licia/map'
 
 interface ToutiaoItem {
   ClusterIdStr: string
@@ -16,7 +17,7 @@ export async function fetchToutiao(): Promise<NewsItem[]> {
     { Referer: 'https://www.toutiao.com/' },
   )
   const json = JSON.parse(data) as ToutiaoResponse
-  return json.data.map((k) => ({
+  return map(json.data, (k) => ({
     id: k.ClusterIdStr,
     title: k.Title,
     url: `https://www.toutiao.com/trending/${k.ClusterIdStr}/`,

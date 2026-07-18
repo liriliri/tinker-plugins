@@ -24,6 +24,8 @@ const SOURCE_GRID_STYLE = {
   gridAutoRows: '380px',
 }
 
+const DRAG_OVERLAY_STYLE = { height: '380px' }
+
 i18n.use(initReactI18next).init({
   resources: {
     'en-US': { translation: enUS },
@@ -57,7 +59,7 @@ function SortableCard({ source }: SortableCardProps) {
         createPortal(
           <div
             className={`flex flex-col rounded-lg overflow-hidden p-3 ${colors.cardBg} opacity-90`}
-            style={{ height: '380px' }}
+            style={DRAG_OVERLAY_STYLE}
           >
             <div
               className={`flex items-center px-1 pb-2.5 border-b ${colors.headerBorder} shrink-0`}

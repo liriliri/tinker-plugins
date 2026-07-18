@@ -1,9 +1,18 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 import LocalStore from 'licia/LocalStore'
+import compact from 'licia/compact'
+import contain from 'licia/contain'
+import each from 'licia/each'
+import filter from 'licia/filter'
+import find from 'licia/find'
+import idxOf from 'licia/idxOf'
+import isErr from 'licia/isErr'
+import map from 'licia/map'
 import i18n from 'i18next'
 import type { NewsItem, SourceId } from '../common/types'
 import { SOURCES } from './lib/sources'
 import type { SourceMeta } from './types'
+import { createMcpApi } from './mcp'
 
 interface CacheEntry {
   items: NewsItem[]
@@ -11,7 +20,7 @@ interface CacheEntry {
 }
 
 function getFetchError(err: unknown): string {
-  return err instanceof Error ? err.message : i18n.t('fetchFailed')
+  return isErr(err) ? err.message : i18n.t('fetchFailed')
 }
 
 const storage = new LocalStore('tinker-trending')
@@ -28,34 +37,40 @@ const DEFAULT_SOURCE_IDS: SourceId[] = [
   'v2ex',
 ]
 
-class Store {
-  items = Object.fromEntries(
-    SOURCES.map((s) => [s.id, []]),
-  ) as unknown as Record<SourceId, NewsItem[]>
-  loading = Object.fromEntries(
-    SOURCES.map((s) => [s.id, false]),
-  ) as unknown as Record<SourceId, boolean>
-  errors = Object.fromEntries(
-    SOURCES.map((s) => [s.id, '']),
-  ) as unknown as Record<SourceId, string>
+function initBySource<T>(factory: () => T): Record<SourceId, T> {
+  const result = {} as Record<SourceId, T>
+  each(SOURCES, (s) => {
+    result[s.id] = factory()
+  })
+  return result
+}
+
+export class Store {
+  readonly mcp = createMcpApi(() => this)
+
+  items = initBySource<NewsItem[]>(() => [])
+  loading = initBySource(() => false)
+  errors = initBySource(() => '')
   activeSourceIds: SourceId[] =
     (storage.get(STORAGE_ACTIVE_SOURCE_IDS) as SourceId[] | null) ??
     DEFAULT_SOURCE_IDS
 
   constructor() {
-    makeAutoObservable(this)
+    makeAutoObservable(this, {
+      mcp: false,
+    })
     this.loadCache()
     this.autoRefreshIfNeeded()
   }
 
   get activeSources(): SourceMeta[] {
-    return this.activeSourceIds
-      .map((id) => SOURCES.find((s) => s.id === id))
-      .filter((s): s is SourceMeta => s !== undefined)
+    return compact(
+      map(this.activeSourceIds, (id) => find(SOURCES, (s) => s.id === id)),
+    )
   }
 
   addSource(id: SourceId) {
-    if (!this.activeSourceIds.includes(id)) {
+    if (!contain(this.activeSourceIds, id)) {
       this.activeSourceIds.push(id)
       storage.set(STORAGE_ACTIVE_SOURCE_IDS, this.activeSourceIds)
       this.refresh(id)
@@ -63,14 +78,14 @@ class Store {
   }
 
   removeSource(id: SourceId) {
-    this.activeSourceIds = this.activeSourceIds.filter((x) => x !== id)
+    this.activeSourceIds = filter(this.activeSourceIds, (x) => x !== id)
     storage.set(STORAGE_ACTIVE_SOURCE_IDS, this.activeSourceIds)
   }
 
   moveSource(fromId: SourceId, toId: SourceId) {
     const ids = [...this.activeSourceIds]
-    const from = ids.indexOf(fromId)
-    const to = ids.indexOf(toId)
+    const from = idxOf(ids, fromId)
+    const to = idxOf(ids, toId)
     if (from === -1 || to === -1) return
     ids.splice(from, 1)
     ids.splice(to, 0, fromId)
@@ -79,7 +94,7 @@ class Store {
   }
 
   private loadCache() {
-    SOURCES.forEach((s) => {
+    each(SOURCES, (s) => {
       const cached = storage.get(
         `${STORAGE_CACHE_PREFIX}${s.id}`,
       ) as CacheEntry | null
@@ -94,7 +109,7 @@ class Store {
     const lastDate = storage.get(STORAGE_LAST_REFRESH_DATE) as string | null
     if (lastDate !== today) {
       storage.set(STORAGE_LAST_REFRESH_DATE, today)
-      this.activeSourceIds.forEach((id) => this.refresh(id))
+      each(this.activeSourceIds, (id) => this.refresh(id))
     }
   }
 
@@ -120,7 +135,7 @@ class Store {
   }
 
   refreshAll() {
-    this.activeSourceIds.forEach((id) => this.refresh(id))
+    each(this.activeSourceIds, (id) => this.refresh(id))
   }
 }
 

@@ -1,5 +1,7 @@
 import type { NewsItem } from '../../common/types'
 import { httpsGet } from '../http'
+import map from 'licia/map'
+import toStr from 'licia/toStr'
 
 interface HnHit {
   objectID: string
@@ -16,8 +18,8 @@ export async function fetchHackerNews(): Promise<NewsItem[]> {
     'https://hn.algolia.com/api/v1/search?tags=front_page&hitsPerPage=30',
   )
   const json = JSON.parse(data) as HnResponse
-  return json.hits.map((hit) => ({
-    id: String(hit.objectID),
+  return map(json.hits, (hit) => ({
+    id: toStr(hit.objectID),
     title: hit.title,
     url: `https://news.ycombinator.com/item?id=${hit.objectID}`,
     extra: { info: `${hit.points} pts` },

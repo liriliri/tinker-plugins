@@ -1,6 +1,6 @@
 {
   "name": "tinker-trending",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Trending Hot Search Plugin for TINKER",
   "files": [
     "dist/",
@@ -33,6 +33,104 @@
       "zh-CN": {
         "name": "热搜榜",
         "description": "浏览多个平台的热搜榜"
+      }
+    },
+    "mcp": {
+      "tools": {
+        "list_sources": {
+          "description": "List all available trending sources and which ones are currently active in the plugin UI.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        "get_trending": {
+          "description": "Refresh and return trending items for a source. Updates the plugin UI cache and returns title, url, and optional extra fields.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string",
+                "enum": [
+                  "hackernews",
+                  "github",
+                  "zhihu",
+                  "weibo",
+                  "v2ex",
+                  "bilibili",
+                  "douban",
+                  "juejin",
+                  "toutiao",
+                  "sspai",
+                  "tieba",
+                  "steam"
+                ],
+                "description": "Source id from list_sources"
+              }
+            },
+            "required": [
+              "source"
+            ]
+          }
+        },
+        "add_source": {
+          "description": "Add a source to the active list, refresh it, and return the updated source list.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string",
+                "enum": [
+                  "hackernews",
+                  "github",
+                  "zhihu",
+                  "weibo",
+                  "v2ex",
+                  "bilibili",
+                  "douban",
+                  "juejin",
+                  "toutiao",
+                  "sspai",
+                  "tieba",
+                  "steam"
+                ],
+                "description": "Source id from list_sources"
+              }
+            },
+            "required": [
+              "source"
+            ]
+          }
+        },
+        "remove_source": {
+          "description": "Remove a source from the active list and return the updated source list.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string",
+                "enum": [
+                  "hackernews",
+                  "github",
+                  "zhihu",
+                  "weibo",
+                  "v2ex",
+                  "bilibili",
+                  "douban",
+                  "juejin",
+                  "toutiao",
+                  "sspai",
+                  "tieba",
+                  "steam"
+                ],
+                "description": "Active source id to remove"
+              }
+            },
+            "required": [
+              "source"
+            ]
+          }
+        }
       }
     }
   },

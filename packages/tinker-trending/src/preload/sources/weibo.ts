@@ -1,5 +1,7 @@
 import type { NewsItem } from '../../common/types'
 import { httpsGet } from '../http'
+import map from 'licia/map'
+import toStr from 'licia/toStr'
 
 interface WeiboHotItem {
   word: string
@@ -17,10 +19,10 @@ export async function fetchWeibo(): Promise<NewsItem[]> {
     Referer: 'https://weibo.com/',
   })
   const json = JSON.parse(data) as WeiboResponse
-  return json.data.realtime.map((item) => ({
+  return map(json.data.realtime, (item) => ({
     id: item.word,
     title: item.word,
     url: `https://s.weibo.com/weibo?q=${encodeURIComponent(item.word)}`,
-    extra: { info: item.raw_hot > 0 ? String(item.raw_hot) : undefined },
+    extra: { info: item.raw_hot > 0 ? toStr(item.raw_hot) : undefined },
   }))
 }

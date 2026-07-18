@@ -1,5 +1,6 @@
 import type { NewsItem } from '../../common/types'
 import { httpsGet } from '../http'
+import map from 'licia/map'
 
 interface ZhihuHotItem {
   target: {
@@ -20,13 +21,12 @@ export async function fetchZhihu(): Promise<NewsItem[]> {
     { Referer: 'https://www.zhihu.com/' },
   )
   const json = JSON.parse(data) as ZhihuResponse
-  return json.data.map((k) => ({
+  return map(json.data, (k) => ({
     id: k.target.link.url.match(/(\d+)$/)?.[1] ?? k.target.link.url,
     title: k.target.title_area.text,
     url: k.target.link.url,
     extra: {
       info: k.target.metrics_area.text,
-      hover: k.target.excerpt_area.text || undefined,
     },
   }))
 }

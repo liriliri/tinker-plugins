@@ -5,7 +5,6 @@ export interface NewsItem {
   extra?: {
     info?: string
     date?: string
-    hover?: string
   }
 }
 

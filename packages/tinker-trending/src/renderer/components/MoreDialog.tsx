@@ -2,6 +2,9 @@ import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { X, RefreshCw, Check, Plus, Search } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { observer } from 'mobx-react-lite'
+import contain from 'licia/contain'
+import filter from 'licia/filter'
+import lowerCase from 'licia/lowerCase'
 import type { SourceMeta } from '../types'
 import { getColors, tw } from '../theme'
 import { SOURCES } from '../lib/sources'
@@ -21,7 +24,7 @@ interface CardPreviewProps {
 const CardPreview = observer(({ source, onToggle }: CardPreviewProps) => {
   const { t } = useTranslation()
   const colors = getColors(source.color)
-  const isActive = store.activeSourceIds.includes(source.id)
+  const isActive = contain(store.activeSourceIds, source.id)
 
   return (
     <div
@@ -90,9 +93,9 @@ const MoreDialog = observer(({ onClose }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null)
   const backdropRef = useRef<HTMLDivElement>(null)
 
-  const queryLower = query.toLowerCase()
+  const queryLower = lowerCase(query)
   const filtered = useMemo(
-    () => SOURCES.filter((s) => s.name.toLowerCase().includes(queryLower)),
+    () => filter(SOURCES, (s) => contain(lowerCase(s.name), queryLower)),
     [queryLower],
   )
 
@@ -103,7 +106,7 @@ const MoreDialog = observer(({ onClose }: Props) => {
 
   const handleToggle = useCallback(() => {
     if (!selected) return
-    if (store.activeSourceIds.includes(selected.id)) {
+    if (contain(store.activeSourceIds, selected.id)) {
       store.removeSource(selected.id)
     } else {
       store.addSource(selected.id)
@@ -150,7 +153,7 @@ const MoreDialog = observer(({ onClose }: Props) => {
           </div>
           <div className="flex-1 overflow-y-auto py-1">
             {filtered.map((source) => {
-              const isActive = store.activeSourceIds.includes(source.id)
+              const isActive = contain(store.activeSourceIds, source.id)
               const isSelected = selected?.id === source.id
               const colors = getColors(source.color)
               return (
