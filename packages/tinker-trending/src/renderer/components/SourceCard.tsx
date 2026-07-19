@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 import { observer } from 'mobx-react-lite'
-import { RefreshCw, X, GripVertical } from 'lucide-react'
+import { RotateCw, X, GripVertical } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import type { SourceMeta } from '../types'
 import { getColors } from '../theme'
@@ -49,9 +49,7 @@ const SourceCardInner = forwardRef<HTMLDivElement, Props>(
             disabled={loading}
             className={`p-1.5 rounded-md transition-colors duration-150 disabled:opacity-40 cursor-pointer ${colors.refreshBtn}`}
           >
-            <RefreshCw
-              className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`}
-            />
+            <RotateCw className="w-3.5 h-3.5" />
           </button>
           <button
             onClick={() => store.removeSource(id)}

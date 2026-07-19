@@ -21,3 +21,4 @@ export type SourceId =
   | 'sspai'
   | 'tieba'
   | 'steam'
+  | 'tencent'

@@ -12,6 +12,7 @@ import { fetchToutiao } from './sources/toutiao'
 import { fetchSspai } from './sources/sspai'
 import { fetchTieba } from './sources/tieba'
 import { fetchSteam } from './sources/steam'
+import { fetchTencent } from './sources/tencent'
 
 const api = {
   fetch: async (source: SourceId): Promise<NewsItem[]> => {
@@ -40,6 +41,8 @@ const api = {
         return fetchTieba()
       case 'steam':
         return fetchSteam()
+      case 'tencent':
+        return fetchTencent()
     }
   },
   openURL: (url: string) => shell.openExternal(url),

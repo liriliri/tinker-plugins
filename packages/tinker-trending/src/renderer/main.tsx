@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { observer } from 'mobx-react-lite'
-import { RefreshCw, Plus, TrendingUp } from 'lucide-react'
+import { RotateCw, Plus, TrendingUp } from 'lucide-react'
 import { createPortal } from 'react-dom'
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
@@ -115,9 +115,7 @@ const Trending = observer(() => {
             disabled={allLoading}
             className={tw.button.icon}
           >
-            <RefreshCw
-              className={`w-3.5 h-3.5 transition-transform ${allLoading ? 'animate-spin' : ''}`}
-            />
+            <RotateCw className="w-3.5 h-3.5" />
           </button>
           <button
             onClick={() => setDialogOpen(true)}

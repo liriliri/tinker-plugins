@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
-import { X, RefreshCw, Check, Plus, Search } from 'lucide-react'
+import { X, RotateCw, Check, Plus, Search } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { observer } from 'mobx-react-lite'
 import contain from 'licia/contain'
@@ -44,9 +44,7 @@ const CardPreview = observer(({ source, onToggle }: CardPreviewProps) => {
           disabled={previewStore.loading}
           className={`p-1.5 rounded-md transition-colors duration-150 disabled:opacity-40 cursor-pointer ${colors.refreshBtn}`}
         >
-          <RefreshCw
-            className={`w-3 h-3 ${previewStore.loading ? 'animate-spin' : ''}`}
-          />
+          <RotateCw className="w-3 h-3" />
         </button>
         <button
           onClick={onToggle}

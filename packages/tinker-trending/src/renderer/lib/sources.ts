@@ -11,6 +11,7 @@ import sspaiFavicon from '../assets/sspai.ico'
 import tiebaFavicon from '../assets/tieba.ico'
 import v2exFavicon from '../assets/v2ex.ico'
 import steamFavicon from '../assets/steam.ico'
+import tencentFavicon from '../assets/tencent.ico'
 
 export const SOURCES: SourceMeta[] = [
   {
@@ -108,5 +109,13 @@ export const SOURCES: SourceMeta[] = [
     type: 'hottest',
     home: 'https://store.steampowered.com',
     favicon: steamFavicon,
+  },
+  {
+    id: 'tencent',
+    name: '腾讯新闻',
+    color: 'blue',
+    type: 'hottest',
+    home: 'https://news.qq.com',
+    favicon: tencentFavicon,
   },
 ]
