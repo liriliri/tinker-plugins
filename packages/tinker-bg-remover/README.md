@@ -10,7 +10,6 @@ A background removal plugin for [TINKER](https://github.com/liriliri/tinker), po
 - **Small & Medium** model sizes
 - **Drag & drop** or file picker to load images
 - **PNG export** for transparent results
-- **i18n** support for English and Chinese
 
 ## Installation
 

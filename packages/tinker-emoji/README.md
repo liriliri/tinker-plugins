@@ -9,7 +9,6 @@ An emoji picker plugin for [TINKER](https://github.com/liriliri/tinker), support
 - **1700+ Emojis** with categories
 - **Search** by name, description, or keywords (bilingual)
 - **Click to Copy** to clipboard
-- **Dark Mode** support
 
 ## Installation
 

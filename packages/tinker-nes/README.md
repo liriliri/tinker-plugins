@@ -11,7 +11,6 @@ A NES emulator plugin for [TINKER](https://github.com/liriliri/tinker), supporti
 - **Pause / Resume** and **Reset** support
 - **Mute / Unmute** audio toggle
 - **Fullscreen** mode
-- **Dark Mode** support
 
 ## Installation
 

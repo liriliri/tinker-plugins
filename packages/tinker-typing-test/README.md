@@ -8,9 +8,8 @@ A typing speed test plugin for [TINKER](https://github.com/liriliri/tinker), wit
 
 - **WPM & CPM** real-time speed tracking
 - **Accuracy** monitoring with error highlighting
-- **Bilingual** support for English and Chinese articles
+- **English & Chinese** practice articles
 - **60-second** timed test with visual countdown
-- **Dark Mode** support
 
 ## Installation
 

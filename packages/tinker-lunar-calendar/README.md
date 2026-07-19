@@ -10,7 +10,6 @@ A perpetual calendar plugin for [TINKER](https://github.com/liriliri/tinker), su
 - **Solar Terms & Festivals** highlighted on each day
 - **Holiday & Workday** marks for Chinese statutory holidays
 - **Almanac Details** including Gan Zhi, zodiac, constellation, Yi/Ji, Chong, Sha, and Peng Zu
-- **Dark Mode** support
 
 ## Installation
 

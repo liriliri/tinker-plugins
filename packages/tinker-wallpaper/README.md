@@ -11,7 +11,6 @@ A wallpaper plugin for [TINKER](https://github.com/liriliri/tinker), supporting 
 - **Resolution selection** with auto best-match for current screen
 - **Save wallpaper** to local disk
 - **Set as desktop wallpaper** directly
-- **i18n** support for English and Chinese
 
 ## Installation
 

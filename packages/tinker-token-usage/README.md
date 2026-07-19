@@ -8,7 +8,6 @@ A token usage statistics plugin for [TINKER](https://github.com/liriliri/tinker)
 
 - **Claude Code & Codex** token usage statistics
 - **ccusage integration** for data collection
-- **Modern UI**
 
 ## Installation
 

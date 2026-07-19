@@ -16,7 +16,6 @@ A video format converter plugin for [TINKER](https://github.com/liriliri/tinker)
 - **Batch queue** for converting multiple files sequentially
 - **FFmpeg command preview** to inspect and copy the generated command
 - **Global presets** for quick configuration
-- **i18n** support for English and Chinese
 
 ## Installation
 

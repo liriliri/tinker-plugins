@@ -9,9 +9,7 @@ A dictionary plugin for [TINKER](https://github.com/liriliri/tinker), supporting
 - **MDX & ZIP** dictionary format support
 - **Multi-dictionary** management with sidebar panel
 - **Prefix search** with autocomplete suggestions
-- **Dark mode** support via DarkReader for definition rendering
 - **Resource embedding** for CSS, images within dictionaries
-- **i18n** support for English and Chinese
 
 ## Installation
 

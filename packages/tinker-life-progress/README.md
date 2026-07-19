@@ -10,7 +10,6 @@ A life progress visualization plugin for [TINKER](https://github.com/liriliri/ti
 - **Year / Month / Week / Day** progress tracking with remaining time
 - **Animated Progress Bars** with shimmer and glow effects
 - **Configurable Birthday & Lifespan** via settings dialog
-- **Dark Mode** support
 
 ## Installation
 

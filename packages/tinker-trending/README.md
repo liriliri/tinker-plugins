@@ -10,7 +10,6 @@ A trending hot search plugin for [TINKER](https://github.com/liriliri/tinker), a
 - **Hottest & Realtime** modes depending on the source
 - **Add / Remove / Reorder** sources via the manage dialog
 - **Auto Refresh** once per day with manual refresh support
-- **Dark Mode** support
 
 ## Installation
 

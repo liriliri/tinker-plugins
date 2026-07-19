@@ -9,7 +9,6 @@ A currency exchange rate calculator plugin for [TINKER](https://github.com/liril
 - **150+ Currencies** with real-time exchange rates
 - **Search** currencies by code or name
 - **Custom currency list** to track your frequently used currencies
-- **Dark Mode** support
 
 ## Installation
 

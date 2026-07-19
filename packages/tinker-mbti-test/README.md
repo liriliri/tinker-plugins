@@ -9,9 +9,7 @@ An MBTI personality type test plugin for [TINKER](https://github.com/liriliri/ti
 - **70 Questions** covering E/I, S/N, T/F, J/P four dimensions
 - **16 Personality Types** with portrait images, descriptions, strengths, weaknesses, and career suggestions
 - **Dimension Scores** visual bar chart showing your scores across each dimension
-- **Bilingual** support for English and Chinese
 - **Progress Bar** during the test
-- **Dark Mode** support
 
 ## Installation
 

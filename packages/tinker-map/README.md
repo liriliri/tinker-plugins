@@ -9,8 +9,6 @@ A map plugin for [TINKER](https://github.com/liriliri/tinker), providing an inte
 - **Interactive Map** powered by Leaflet
 - **Location Search** by name or description
 - **Location List** sidebar with click-to-focus
-- **Dark Mode** support
-- **i18n** support for English and Chinese
 
 ## Installation
 

@@ -10,7 +10,6 @@ A mouse tester plugin for [TINKER](https://github.com/liriliri/tinker), with rea
 - **Scroll Wheel** up/down feedback on the mouse diagram
 - **Live Telemetry** for cursor position, movement deltas, and double-click detection
 - **Optical Pad** UI with sensor tracking indicator
-- **Dark Mode** support
 
 ## Installation
 

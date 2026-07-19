@@ -9,7 +9,6 @@ A translation plugin for [TINKER](https://github.com/liriliri/tinker), supportin
 - **Google, Bing & DeepL** translation services
 - **16+ languages** support
 - **Auto-detect** source language
-- **i18n** support for English and Chinese
 
 ## Installation
 

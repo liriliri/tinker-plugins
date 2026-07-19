@@ -11,8 +11,6 @@ A meme search plugin for [TINKER](https://github.com/liriliri/tinker), supportin
 - **Infinite scroll** to load more results
 - **Click to copy** image to clipboard
 - **Right-click to save** image to local disk
-- **Dark mode** support
-- **i18n** support for English and Chinese
 
 ## Installation
 

@@ -13,7 +13,6 @@ A GBA emulator plugin for [TINKER](https://github.com/liriliri/tinker), supporti
 - **Mute / Unmute** audio toggle
 - **Fullscreen** mode
 - **Custom Key Mapping** for keyboard and gamepad
-- **Dark Mode** support
 
 ## Installation
 

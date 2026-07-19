@@ -10,7 +10,6 @@ A weather plugin for [TINKER](https://github.com/liriliri/tinker), providing rea
 - **3-Day Forecast** with temperature range bars
 - **City Search** with pinyin support for Chinese input
 - **Recent Cities** for quick switching
-- **Dark Mode** support
 
 ## Installation
 

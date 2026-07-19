@@ -12,7 +12,6 @@ A GUI coding agent plugin for [TINKER](https://github.com/liriliri/tinker), for 
 - **Agent skills** via `/` slash commands from `~/.agents/skills` and project skills
 - **Multi-session** sidebar with recent workspaces
 - **Streaming replies** with tool call details and context token usage
-- **i18n** support for English and Chinese
 
 ## Installation
 

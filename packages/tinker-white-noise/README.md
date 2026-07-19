@@ -11,7 +11,6 @@ A white noise plugin for [TINKER](https://github.com/liriliri/tinker), featuring
 - **Looping Audio** for each scene
 - **Volume Control** with mute option
 - **Fullscreen** support
-- **i18n** support for English and Chinese
 
 ## Installation
 

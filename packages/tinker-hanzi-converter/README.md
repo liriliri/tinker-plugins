@@ -10,7 +10,6 @@ A Chinese character tools plugin for [TINKER](https://github.com/liriliri/tinker
 - **RMB Uppercase** converts numbers to Chinese financial uppercase
 - **SC/TC Conversion** between simplified and traditional Chinese
 - **Click to Copy** result to clipboard
-- **Dark Mode** support
 
 ## Installation
 

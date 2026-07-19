@@ -10,7 +10,6 @@ A clipboard sync plugin for [TINKER](https://github.com/liriliri/tinker), enabli
 - **File-based** approach works reliably across different VM environments (UTM, Parallels, etc.)
 - **Real-time polling** detects clipboard and file changes automatically
 - **Auto sync** option to start syncing on plugin launch
-- **i18n** support for English and Chinese
 
 ## Installation
 

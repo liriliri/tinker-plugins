@@ -10,7 +10,6 @@ A JS13K games plugin for [TINKER](https://github.com/liriliri/tinker), featuring
 - **Search** games by name, author, or description
 - **Responsive Grid** layout adapting to window size
 - **In-app Playback** with fullscreen support
-- **Dark Mode** support
 
 ## Installation
 

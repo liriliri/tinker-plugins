@@ -13,8 +13,6 @@ A WYSIWYG markdown editor plugin for [TINKER](https://github.com/liriliri/tinker
 - **File management** to create, rename, and delete files and folders
 - **Document outline** to jump between headings in the current file
 - **Auto-refresh** file list when the folder changes on disk
-- **Dark mode** support
-- **i18n** support for English and Chinese
 
 ## Installation
 

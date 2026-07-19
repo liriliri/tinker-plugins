@@ -14,7 +14,6 @@ A N64 emulator plugin for [TINKER](https://github.com/liriliri/tinker), supporti
 - **Fullscreen** mode
 - **Custom Key Mapping** for keyboard and gamepad, including analog stick axes
 - **Play History** sidebar with ROM search
-- **Dark Mode** support
 
 ## Installation
 
