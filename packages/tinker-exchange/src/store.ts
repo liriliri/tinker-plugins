@@ -1,17 +1,12 @@
 import { makeAutoObservable, runInAction } from 'mobx'
-import clamp from 'licia/clamp'
 import isEmpty from 'licia/isEmpty'
 import LocalStore from 'licia/LocalStore'
 import contain from 'licia/contain'
+import filter from 'licia/filter'
 import allCurrencyCodes from './currencies.json'
+import { fetchRatesWithFallback } from './lib/rates'
+import { createMcpApi } from './mcp'
 
-interface RatesCache {
-  rates: Record<string, number>
-  timestamp: number
-}
-
-const API_URL = 'https://www.xe.com/api/protected/midmarket-converter/'
-const AUTH = 'Basic bG9kZXN0YXI6cHVnc25heA=='
 const CACHE_TTL = 50 * 1000
 
 const DEFAULT_CODES = ['CNY', 'USD', 'EUR', 'JPY', 'GBP', 'HKD', 'KRW']
@@ -30,7 +25,9 @@ const STORAGE_DIGIT = 'digit'
 
 const storage = new LocalStore('tinker-exchange')
 
-class Store {
+export class Store {
+  readonly mcp = createMcpApi(() => this)
+
   rates: Record<string, number> = storage.get(STORAGE_RATES) ?? {}
   ratesTime: number = storage.get(STORAGE_RATES_TIME) ?? 0
 
@@ -49,7 +46,9 @@ class Store {
   private currencyNames: Intl.DisplayNames | null = null
 
   constructor() {
-    makeAutoObservable(this)
+    makeAutoObservable(this, {
+      mcp: false,
+    })
   }
 
   init(language: string) {
@@ -61,8 +60,12 @@ class Store {
     this.fetchRates()
   }
 
-  async fetchRates() {
-    if (!isEmpty(this.rates) && Date.now() - this.ratesTime < CACHE_TTL) {
+  async fetchRates(force = false) {
+    if (
+      !force &&
+      !isEmpty(this.rates) &&
+      Date.now() - this.ratesTime < CACHE_TTL
+    ) {
       return
     }
 
@@ -70,11 +73,7 @@ class Store {
     this.error = ''
 
     try {
-      const res = await fetch(API_URL, {
-        headers: { Authorization: AUTH },
-      })
-      if (!res.ok) throw new Error(`HTTP ${res.status}`)
-      const data: RatesCache = await res.json()
+      const data = await fetchRatesWithFallback()
 
       runInAction(() => {
         this.rates = data.rates
@@ -94,17 +93,15 @@ class Store {
   }
 
   convert(targetCode: string): number {
-    const baseRate = this.rates[this.baseCurrency]
-    const targetRate = this.rates[targetCode]
-    if (!baseRate || !targetRate) return 0
-    return (this.baseAmount / baseRate) * targetRate
+    const rates = this.getRatePair(targetCode)
+    if (!rates) return 0
+    return (this.baseAmount / rates.baseRate) * rates.targetRate
   }
 
   reverseConvert(targetCode: string): number {
-    const baseRate = this.rates[this.baseCurrency]
-    const targetRate = this.rates[targetCode]
-    if (!baseRate || !targetRate) return 0
-    return (this.baseAmount / targetRate) * baseRate
+    const rates = this.getRatePair(targetCode)
+    if (!rates) return 0
+    return (this.baseAmount / rates.targetRate) * rates.baseRate
   }
 
   setBaseAmount(amount: number) {
@@ -127,13 +124,8 @@ class Store {
   removeCurrency(code: string) {
     if (code === this.baseCurrency) return
     if (this.selectedCodes.length <= 1) return
-    this.selectedCodes = this.selectedCodes.filter((c) => c !== code)
+    this.selectedCodes = filter(this.selectedCodes, (c) => c !== code)
     storage.set(STORAGE_SELECTED_CODES, this.selectedCodes)
-  }
-
-  setDigit(digit: number) {
-    this.digit = clamp(digit, 0, 20)
-    storage.set(STORAGE_DIGIT, this.digit)
   }
 
   swapBase(code: string) {
@@ -154,7 +146,7 @@ class Store {
   }
 
   get targetCodes(): string[] {
-    return this.selectedCodes.filter((code) => code !== this.baseCurrency)
+    return filter(this.selectedCodes, (code) => code !== this.baseCurrency)
   }
 
   formatAmount(amount: number): string {
@@ -170,6 +162,13 @@ class Store {
     } catch {
       return code
     }
+  }
+
+  private getRatePair(targetCode: string) {
+    const baseRate = this.rates[this.baseCurrency]
+    const targetRate = this.rates[targetCode]
+    if (!baseRate || !targetRate) return null
+    return { baseRate, targetRate }
   }
 }
 

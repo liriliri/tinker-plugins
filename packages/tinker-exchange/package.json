@@ -1,6 +1,6 @@
 {
   "name": "tinker-exchange",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Currency Exchange Rate Calculator Plugin for TINKER",
   "files": [
     "dist/",
@@ -28,6 +28,80 @@
       "zh-CN": {
         "name": "汇率换算",
         "description": "货币汇率计算器"
+      }
+    },
+    "mcp": {
+      "tools": {
+        "convert": {
+          "description": "Convert an amount from a base currency to target currencies. Updates the plugin UI and returns converted amounts. If to is omitted, converts to all currencies currently in the list.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "amount": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Amount in the base currency"
+              },
+              "from": {
+                "type": "string",
+                "minLength": 3,
+                "maxLength": 3,
+                "description": "ISO 4217 base currency code (e.g. USD, CNY, EUR)"
+              },
+              "to": {
+                "type": "string",
+                "minLength": 3,
+                "maxLength": 3,
+                "description": "Optional target currency code. Added to the list if missing."
+              }
+            },
+            "required": [
+              "amount",
+              "from"
+            ]
+          }
+        },
+        "refresh_rates": {
+          "description": "Force-refresh mid-market exchange rates and return the update timestamp.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        "add_currency": {
+          "description": "Add a currency to the conversion list and return the updated list.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "currency": {
+                "type": "string",
+                "minLength": 3,
+                "maxLength": 3,
+                "description": "ISO 4217 currency code to add (e.g. JPY)"
+              }
+            },
+            "required": [
+              "currency"
+            ]
+          }
+        },
+        "remove_currency": {
+          "description": "Remove a currency from the conversion list and return the updated list. Cannot remove the base currency or the last item.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "currency": {
+                "type": "string",
+                "minLength": 3,
+                "maxLength": 3,
+                "description": "ISO 4217 currency code to remove"
+              }
+            },
+            "required": [
+              "currency"
+            ]
+          }
+        }
       }
     }
   }

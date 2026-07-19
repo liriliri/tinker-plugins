@@ -2,6 +2,7 @@ import { observer } from 'mobx-react-lite'
 import { useState, useEffect } from 'react'
 import className from 'licia/className'
 import contain from 'licia/contain'
+import filter from 'licia/filter'
 import * as Dialog from '@radix-ui/react-dialog'
 import { Search, X } from 'lucide-react'
 import store from '../store'
@@ -32,7 +33,7 @@ const CurrencySearchDialog = observer(
       if (open) setSearch('')
     }, [open])
 
-    const filtered = store.currencyCodes.filter((code) => {
+    const filtered = filter(store.currencyCodes, (code) => {
       if (contain(excludeCodes, code)) return false
       if (!search) return true
       const q = search.toLowerCase()
@@ -43,7 +44,7 @@ const CurrencySearchDialog = observer(
     return (
       <Dialog.Root open={open} onOpenChange={onOpenChange}>
         <Dialog.Portal>
-          <Dialog.Overlay className="fixed inset-0 bg-black/50" />
+          <Dialog.Overlay className={className('fixed inset-0', tw.overlay)} />
           <Dialog.Content
             className={className(
               'fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',

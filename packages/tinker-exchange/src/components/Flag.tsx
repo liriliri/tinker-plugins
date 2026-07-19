@@ -1,3 +1,5 @@
+import map from 'licia/map'
+
 // Currencies whose country code is not the first 2 letters of the ISO code.
 const CURRENCY_COUNTRY: Record<string, string> = {
   EUR: 'EU',
@@ -14,7 +16,7 @@ function getCountryCode(code: string): string {
 function toFlagEmoji(country: string): string {
   if (country.length < 2) return ''
   return String.fromCodePoint(
-    ...[...country].map((c) => 0x1f1e6 + c.charCodeAt(0) - 65),
+    ...map([...country], (c) => 0x1f1e6 + c.charCodeAt(0) - 65),
   )
 }
 
