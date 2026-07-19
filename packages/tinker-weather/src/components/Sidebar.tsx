@@ -1,5 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
+import * as ScrollArea from '@radix-ui/react-scroll-area'
 import { X, Search, Loader } from 'lucide-react'
 import className from 'licia/className'
 import compact from 'licia/compact'
@@ -73,50 +74,58 @@ const Sidebar = observer(() => {
         </div>
       </div>
 
-      <div className="flex-1 min-h-0 overflow-auto px-3 pb-2 space-y-1">
-        {hasQuery ? (
-          <>
-            {store.isSearching ? (
-              <div className="px-3 py-3 text-xs opacity-50 flex items-center gap-2">
-                <Loader className={tw.animation.spinSlow} size={12} />
-                {t('searching')}
-              </div>
-            ) : store.searchResults.length === 0 ? (
-              <div className="px-3 py-3 text-xs opacity-50">
-                {t('noResults')}
-              </div>
-            ) : (
-              store.searchResults.map((city, i) => (
-                <CityItem
-                  key={`${city.latitude}-${city.longitude}-${i}`}
-                  city={city}
-                  active={store.isActiveCity(city)}
-                  onSelect={() => store.selectCity(city)}
-                />
-              ))
-            )}
-          </>
-        ) : (
-          <>
-            {store.recentCities.length > 0 && (
+      <ScrollArea.Root type="hover" className={tw.scrollArea.root}>
+        <ScrollArea.Viewport className={tw.scrollArea.viewport}>
+          <div className="px-3 pb-2 space-y-1">
+            {hasQuery ? (
               <>
-                <div className="px-3 pt-1 pb-0.5 text-xs font-medium opacity-50">
-                  {t('recent')}
-                </div>
-                {store.recentCities.map((city, i) => (
-                  <CityItem
-                    key={`${city.latitude}-${city.longitude}-${i}`}
-                    city={city}
-                    active={store.isActiveCity(city)}
-                    onSelect={() => store.selectCity(city)}
-                    onRemove={() => store.removeRecentCity(i)}
-                  />
-                ))}
+                {store.isSearching ? (
+                  <div className="px-3 py-3 text-xs opacity-50 flex items-center gap-2">
+                    <Loader className={tw.animation.spinSlow} size={12} />
+                    {t('searching')}
+                  </div>
+                ) : store.searchResults.length === 0 ? (
+                  <div className="px-3 py-3 text-xs opacity-50">
+                    {t('noResults')}
+                  </div>
+                ) : (
+                  store.searchResults.map((city, i) => (
+                    <CityItem
+                      key={`${city.latitude}-${city.longitude}-${i}`}
+                      city={city}
+                      active={store.isActiveCity(city)}
+                      onSelect={() => store.selectCity(city)}
+                    />
+                  ))
+                )}
               </>
+            ) : (
+              store.recentCities.length > 0 && (
+                <>
+                  <div className="px-3 pt-1 pb-0.5 text-xs font-medium opacity-50">
+                    {t('recent')}
+                  </div>
+                  {store.recentCities.map((city, i) => (
+                    <CityItem
+                      key={`${city.latitude}-${city.longitude}-${i}`}
+                      city={city}
+                      active={store.isActiveCity(city)}
+                      onSelect={() => store.selectCity(city)}
+                      onRemove={() => store.removeRecentCity(i)}
+                    />
+                  ))}
+                </>
+              )
             )}
-          </>
-        )}
-      </div>
+          </div>
+        </ScrollArea.Viewport>
+        <ScrollArea.Scrollbar
+          orientation="vertical"
+          className={tw.scrollArea.scrollbar}
+        >
+          <ScrollArea.Thumb className={tw.scrollArea.thumb} />
+        </ScrollArea.Scrollbar>
+      </ScrollArea.Root>
     </div>
   )
 })

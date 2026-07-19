@@ -35,6 +35,13 @@ export const tw = {
     cardDark:
       'bg-black/20 backdrop-blur-xl border border-white/15 dark:bg-black/30 dark:border-white/10',
   },
+  scrollArea: {
+    root: 'min-h-0 flex-1 overflow-hidden',
+    viewport: 'h-full w-full [&>div]:!block',
+    scrollbar:
+      'flex touch-none select-none p-0.5 transition-colors data-[orientation=vertical]:w-1.5',
+    thumb: 'relative flex-1 rounded-full bg-white/25 hover:bg-white/40',
+  },
   text: {
     onHeader: 'text-white',
     onHeaderLight: 'text-zinc-800 dark:text-white',
