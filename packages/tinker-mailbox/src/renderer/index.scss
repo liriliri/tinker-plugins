@@ -7,11 +7,10 @@
   --mb-red-bright: #fb7185;
   --mb-red-soft: #fff1f2;
   --mb-red-soft-dark: rgba(190, 18, 60, 0.18);
-  --mb-paper: #f3f1ef;
-  --mb-wash: #ebe8e4;
-  --mb-panel: #fffcfa;
-  --mb-panel-dark: #18181b;
-  --mb-ink: #0c0a09;
+  --mb-paper: #fafafa;
+  --mb-rail: #fafafa;
+  --mb-panel: #ffffff;
+  --mb-reader: #ffffff;
   --mb-display:
     'Fraunces', 'Iowan Old Style', 'Palatino Linotype', Palatino, serif;
   --mb-sans: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
@@ -26,16 +25,18 @@ html {
 html.dark {
   color-scheme: dark;
   --mb-paper: #09090b;
-  --mb-wash: #0c0a09;
-  --mb-panel: #18181b;
+  --mb-rail: #27272a;
+  --mb-panel: #2e2e33;
+  --mb-reader: #1c1c1f;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;
     --mb-paper: #09090b;
-    --mb-wash: #0c0a09;
-    --mb-panel: #18181b;
+    --mb-rail: #27272a;
+    --mb-panel: #2e2e33;
+    --mb-reader: #1c1c1f;
   }
 }
 
@@ -46,39 +47,16 @@ html.dark {
 body {
   margin: 0;
   min-height: 100vh;
-  background:
-    radial-gradient(
-      1200px 480px at 0% -10%,
-      rgba(200, 30, 30, 0.08),
-      transparent 55%
-    ),
-    radial-gradient(
-      900px 420px at 100% 0%,
-      rgba(24, 24, 27, 0.04),
-      transparent 50%
-    ),
-    var(--mb-paper);
+  background: var(--mb-paper);
 }
 
 html.dark body {
-  background:
-    radial-gradient(
-      1000px 420px at 0% -10%,
-      rgba(251, 113, 133, 0.12),
-      transparent 55%
-    ),
-    var(--mb-ink);
+  background: var(--mb-paper);
 }
 
 @media (prefers-color-scheme: dark) {
   body {
-    background:
-      radial-gradient(
-        1000px 420px at 0% -10%,
-        rgba(251, 113, 133, 0.12),
-        transparent 55%
-      ),
-      var(--mb-ink);
+    background: var(--mb-paper);
   }
 }
 
@@ -109,5 +87,49 @@ html.dark ::-webkit-scrollbar-thumb {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+.ProseMirror {
+  outline: none;
+  min-height: 100%;
+
+  p {
+    margin: 0;
+    min-height: 1.5em;
+  }
+
+  ul {
+    list-style: disc;
+    padding-left: 1.25rem;
+    margin: 0;
+  }
+
+  ol {
+    list-style: decimal;
+    padding-left: 1.25rem;
+    margin: 0;
+  }
+
+  li {
+    margin: 0.125rem 0;
+  }
+
+  p.is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    float: left;
+    height: 0;
+    pointer-events: none;
+    color: #a1a1aa;
+  }
+}
+
+html.dark .ProseMirror p.is-editor-empty:first-child::before {
+  color: #71717a;
+}
+
+@media (prefers-color-scheme: dark) {
+  .ProseMirror p.is-editor-empty:first-child::before {
+    color: #71717a;
   }
 }

@@ -35,6 +35,113 @@
         "name": "邮箱",
         "description": "用于收发邮件的邮箱客户端"
       }
+    },
+    "mcp": {
+      "tools": {
+        "list_accounts": {
+          "description": "List configured email accounts (id, name, address). Does not include passwords.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        "select_account": {
+          "description": "Switch the active account by id or email address, then sync folders.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "account": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Account id or email address"
+              }
+            },
+            "required": [
+              "account"
+            ]
+          }
+        },
+        "list_folders": {
+          "description": "List folders for the active account. Refreshes folder list from the server.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        "list_messages": {
+          "description": "Open a folder and return recent message headers (uid, subject, from, date, unseen).",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "folder": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Folder path, role (inbox/sent/drafts/trash/junk/archive/all), or display name"
+              }
+            },
+            "required": [
+              "folder"
+            ]
+          }
+        },
+        "read_message": {
+          "description": "Open a message by uid in the current (or specified) folder and return its content.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "uid": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "Message UID from list_messages"
+              },
+              "folder": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Optional folder path/role/name if not already selected"
+              }
+            },
+            "required": [
+              "uid"
+            ]
+          }
+        },
+        "refresh_messages": {
+          "description": "Force-refresh messages in the current folder and return the updated list.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        "send_mail": {
+          "description": "Send an email from the active account.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "to": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Recipient email address(es)"
+              },
+              "subject": {
+                "type": "string",
+                "description": "Email subject"
+              },
+              "text": {
+                "type": "string",
+                "description": "Plain-text body"
+              },
+              "cc": {
+                "type": "string",
+                "description": "Optional Cc address(es)"
+              }
+            },
+            "required": [
+              "to",
+              "text"
+            ]
+          }
+        }
+      }
     }
   },
   "dependencies": {
@@ -43,8 +150,15 @@
     "nodemailer": "^7.0.13"
   },
   "devDependencies": {
+    "@tiptap/extension-placeholder": "^3.28.0",
+    "@tiptap/extension-text-style": "^3.28.0",
+    "@tiptap/extension-underline": "^3.28.0",
+    "@tiptap/pm": "^3.28.0",
+    "@tiptap/react": "^3.28.0",
+    "@tiptap/starter-kit": "^3.28.0",
     "@types/mailparser": "^3.4.6",
     "@types/nodemailer": "^8.0.1",
+    "darkreader": "^4.9.128",
     "idb": "^8.0.3"
   }
 }

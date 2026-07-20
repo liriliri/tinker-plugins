@@ -1,0 +1,5 @@
+export { connect, disconnect, testAccount } from './session'
+export { listFolders } from './folders'
+export { syncFolder } from './sync'
+export { getMessage, deleteMessage, moveMessage } from './messages'
+export { sendMail } from './send'

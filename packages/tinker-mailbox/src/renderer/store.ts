@@ -27,14 +27,24 @@ import {
   putMessages,
   putSession,
   pruneFolderMessages,
+  removeMessage,
   replaceFolderMessages,
   updateMessageFlags,
 } from './lib/db'
-import { emptySettings, mergeByUid, pickDefaultFolder } from './lib/mail'
+import {
+  emptySettings,
+  isTrashFolderPath,
+  mergeByUid,
+  pickDefaultFolder,
+  pickSentFolder,
+} from './lib/mail'
+import { createMcpApi } from './mcp'
 
 const MESSAGE_LIMIT = 50
 
-class Store {
+export class Store {
+  readonly mcp = createMcpApi(() => this)
+
   accounts: Account[] = []
   account: Account | null = null
   folders: FolderInfo[] = []
@@ -57,9 +67,26 @@ class Store {
   toastOpen = false
   toastMsg = ''
   toastKind: 'error' | 'success' = 'error'
+  isDark = false
 
   constructor() {
-    makeAutoObservable(this)
+    makeAutoObservable(this, {
+      mcp: false,
+    })
+    void this.initTheme()
+  }
+
+  private async initTheme() {
+    const theme = await tinker.getTheme()
+    runInAction(() => {
+      this.isDark = theme === 'dark'
+    })
+    tinker.on('changeTheme', async () => {
+      const next = await tinker.getTheme()
+      runInAction(() => {
+        this.isDark = next === 'dark'
+      })
+    })
   }
 
   setToastOpen(open: boolean) {
@@ -101,6 +128,11 @@ class Store {
   }
 
   closeCompose() {
+    const inbox = pickDefaultFolder(this.folders)
+    if (inbox) {
+      void this.selectFolder(inbox)
+      return
+    }
     this.showCompose = false
   }
 
@@ -211,8 +243,8 @@ class Store {
   async selectFolder(
     path: string,
     opts?: { background?: boolean; force?: boolean },
-  ) {
-    if (!this.account) return
+  ): Promise<boolean> {
+    if (!this.account) return false
     const accountId = this.account.id
     const switched = this.currentFolder !== path
     const force = opts?.force ?? false
@@ -241,8 +273,10 @@ class Store {
 
     try {
       await this.syncFolderMessages(path, { force })
+      return true
     } catch (err) {
       this.showToast(String(err))
+      return false
     } finally {
       runInAction(() => {
         this.loadingMessages = false
@@ -254,9 +288,11 @@ class Store {
     if (!this.account) return
     const accountId = this.account.id
     const cursor = (await getFolderSync(accountId, path)) || null
+    // Older cursors lack `exists`; one full refresh backfills it and clears stale rows.
+    const force = opts?.force || cursor?.exists === undefined
     const result = await mailbox.syncFolder(path, cursor, {
       limit: MESSAGE_LIMIT,
-      force: opts?.force,
+      force,
     })
 
     if (result.kind === 'replace') {
@@ -270,6 +306,7 @@ class Store {
         uidValidity: result.uidValidity,
         uidNext: result.uidNext,
         highestModseq: result.highestModseq,
+        exists: result.exists,
       })
       if (this.currentFolder === path && this.account?.id === accountId) {
         runInAction(() => {
@@ -283,6 +320,7 @@ class Store {
       uidValidity: result.uidValidity,
       uidNext: result.uidNext,
       highestModseq: result.highestModseq,
+      exists: result.exists,
     })
 
     if (result.kind === 'noop' || result.messages.length === 0) {
@@ -303,7 +341,71 @@ class Store {
 
   async refreshMessages() {
     if (!this.currentFolder) return
-    await this.selectFolder(this.currentFolder, { force: true })
+    const ok = await this.selectFolder(this.currentFolder, { force: true })
+    if (ok) this.showToast('refreshSuccess', 'success')
+  }
+
+  async deleteMessage(uid: number) {
+    if (!this.currentFolder || !this.account) return
+    const accountId = this.account.id
+    const folderPath = this.currentFolder
+    try {
+      await mailbox.deleteMessage(folderPath, uid)
+      await this.removeMessageLocally(accountId, folderPath, uid)
+      this.showToast(
+        isTrashFolderPath(this.folders, folderPath)
+          ? 'messageDeleted'
+          : 'messageMovedToTrash',
+        'success',
+      )
+    } catch (err) {
+      const message = String(err)
+      if (/not found/i.test(message)) {
+        await this.removeMessageLocally(accountId, folderPath, uid)
+        await this.selectFolder(folderPath, { force: true })
+        this.showToast('messageGone', 'success')
+        return
+      }
+      this.showToast(message)
+    }
+  }
+
+  async moveMessage(uid: number, destination: string) {
+    if (!this.currentFolder || !this.account) return
+    if (this.currentFolder === destination) return
+    const accountId = this.account.id
+    const folderPath = this.currentFolder
+    try {
+      await mailbox.moveMessage(folderPath, uid, destination)
+      await this.removeMessageLocally(accountId, folderPath, uid)
+      this.showToast('messageMoved', 'success')
+    } catch (err) {
+      const message = String(err)
+      if (/not found/i.test(message)) {
+        await this.removeMessageLocally(accountId, folderPath, uid)
+        await this.selectFolder(folderPath, { force: true })
+        this.showToast('messageGone', 'success')
+        return
+      }
+      this.showToast(message)
+    }
+  }
+
+  private async removeMessageLocally(
+    accountId: string,
+    folderPath: string,
+    uid: number,
+  ) {
+    await removeMessage(accountId, folderPath, uid)
+    if (this.currentFolder === folderPath && this.account?.id === accountId) {
+      runInAction(() => {
+        this.messages = filter(this.messages, (m) => m.uid !== uid)
+        if (this.selectedUid === uid) {
+          this.selectedUid = null
+          this.message = null
+        }
+      })
+    }
   }
 
   async selectMessage(uid: number) {
@@ -427,20 +529,29 @@ class Store {
     }
   }
 
-  async send(payload: ComposePayload) {
+  async send(payload: ComposePayload): Promise<boolean> {
     this.sending = true
     try {
       await mailbox.sendMail(payload)
       runInAction(() => {
         this.showCompose = false
-      })
-      this.showToast('messageSent', 'success')
-    } catch (err) {
-      this.showToast(String(err))
-    } finally {
-      runInAction(() => {
         this.sending = false
       })
+      this.showToast('messageSent', 'success')
+      const sent = pickSentFolder(this.folders)
+      if (sent) {
+        await this.selectFolder(sent, { force: true })
+      }
+      return true
+    } catch (err) {
+      this.showToast(String(err))
+      return false
+    } finally {
+      if (this.sending) {
+        runInAction(() => {
+          this.sending = false
+        })
+      }
     }
   }
 }

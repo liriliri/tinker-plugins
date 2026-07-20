@@ -6,6 +6,7 @@ import { MailOpen } from 'lucide-react'
 import type { MailAddress } from '../../common/types'
 import store from '../store'
 import { tw } from '../theme'
+import EmailFrame from './EmailFrame'
 
 function formatAddresses(list: MailAddress[]): string {
   return map(list, (a) =>
@@ -39,14 +40,13 @@ const MessageView = observer(() => {
   return (
     <article
       key={msg.uid}
-      className={`flex-1 min-w-0 flex flex-col ${tw.background.muted} animate-fade-up`}
+      className={`flex-1 min-w-0 flex flex-col ${tw.background.muted}`}
     >
       <header
-        className={`px-6 py-5 border-b ${tw.border.divider} ${tw.background.panel}`}
+        className={`px-6 py-5 border-b ${tw.border.divider} ${tw.background.muted}`}
       >
-        <div className={tw.subjectRule} aria-hidden />
         <h1
-          className={`text-[1.35rem] leading-snug font-semibold ${tw.text.display}`}
+          className={`text-[1.35rem] leading-snug font-semibold ${tw.text.primary}`}
         >
           {msg.subject || t('noSubject')}
         </h1>
@@ -80,12 +80,7 @@ const MessageView = observer(() => {
       </header>
       <div className="flex-1 overflow-y-auto px-6 py-5">
         {msg.html ? (
-          <iframe
-            title={msg.subject || t('noSubject')}
-            sandbox=""
-            className={tw.readerFrame}
-            srcDoc={msg.html}
-          />
+          <EmailFrame html={msg.html} title={msg.subject || t('noSubject')} />
         ) : (
           <pre className={tw.bodyText}>{msg.text || ''}</pre>
         )}

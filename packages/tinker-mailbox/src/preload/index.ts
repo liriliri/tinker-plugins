@@ -1,14 +1,16 @@
-import { contextBridge } from 'electron'
+import { contextBridge, shell } from 'electron'
 import { loadAccounts, saveAccounts } from './accountStore'
 import {
   connect,
+  deleteMessage,
   disconnect,
   getMessage,
   listFolders,
+  moveMessage,
   sendMail,
   syncFolder,
   testAccount,
-} from './mailClient'
+} from './mail'
 import type {
   Account,
   ComposePayload,
@@ -32,7 +34,15 @@ const api = {
   ): Promise<FolderSyncResult> => syncFolder(folderPath, cursor, opts),
   getMessage: (folderPath: string, uid: number): Promise<MessageDetail> =>
     getMessage(folderPath, uid),
+  deleteMessage: (folderPath: string, uid: number): Promise<void> =>
+    deleteMessage(folderPath, uid),
+  moveMessage: (
+    folderPath: string,
+    uid: number,
+    destination: string,
+  ): Promise<void> => moveMessage(folderPath, uid, destination),
   sendMail: (payload: ComposePayload): Promise<void> => sendMail(payload),
+  openURL: (url: string): Promise<void> => shell.openExternal(url),
 }
 
 contextBridge.exposeInMainWorld('mailbox', api)

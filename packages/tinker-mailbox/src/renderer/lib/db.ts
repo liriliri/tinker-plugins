@@ -178,6 +178,7 @@ export async function getFolderSync(
     uidValidity: row.uidValidity,
     uidNext: row.uidNext,
     highestModseq: row.highestModseq,
+    exists: row.exists,
   }
 }
 
@@ -286,6 +287,19 @@ export async function updateMessageFlags(
   const row = await db.get('messages', id)
   if (!row) return
   await db.put('messages', { ...row, ...patch })
+}
+
+export async function removeMessage(
+  accountId: string,
+  folderPath: string,
+  uid: number,
+): Promise<void> {
+  const db = await getDB()
+  const id = messageKey(accountId, folderPath, uid)
+  const tx = db.transaction(['messages', 'bodies'], 'readwrite')
+  await tx.objectStore('messages').delete(id)
+  await tx.objectStore('bodies').delete(id)
+  await tx.done
 }
 
 export async function clearFolderCache(

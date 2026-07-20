@@ -6,6 +6,8 @@ import type {
   MessageHeader,
 } from '../../common/types'
 import { sortMessagesByDateDesc } from '../../common/messages'
+import { pickSentFolderPath } from '../../common/sentFolder'
+import { isTrashFolder, pickTrashFolderPath } from '../../common/trashFolder'
 
 export function emptySettings(): AccountSettings {
   return {
@@ -28,6 +30,23 @@ export function pickDefaultFolder(folders: FolderInfo[]): string | null {
     find(folders, (f) => f.path.toUpperCase() === 'INBOX') ||
     folders[0]
   return inbox?.path ?? null
+}
+
+export function pickSentFolder(folders: FolderInfo[]): string | null {
+  return pickSentFolderPath(folders)
+}
+
+export function pickTrashFolder(folders: FolderInfo[]): string | null {
+  return pickTrashFolderPath(folders)
+}
+
+export function isTrashFolderPath(
+  folders: FolderInfo[],
+  folderPath: string,
+): boolean {
+  const folder = find(folders, (f) => f.path === folderPath)
+  if (folder) return isTrashFolder(folder)
+  return isTrashFolder({ path: folderPath })
 }
 
 export function mergeByUid(
