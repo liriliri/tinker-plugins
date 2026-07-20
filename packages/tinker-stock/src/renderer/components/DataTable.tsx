@@ -1,4 +1,5 @@
 import className from 'licia/className'
+import isFinite from 'licia/isFinite'
 import map from 'licia/map'
 import { useTranslation } from 'react-i18next'
 import { tw } from '../theme'
@@ -108,7 +109,7 @@ function formatCell(
   if (format === 'text') {
     const num = parseNumber(value)
     if (
-      Number.isFinite(num) &&
+      isFinite(num) &&
       Math.abs(num) >= 1e4 &&
       !/Date|Year|Period|Currency|Type|Mark|Code|Unit|Flag/i.test(key)
     ) {
@@ -118,7 +119,7 @@ function formatCell(
   }
 
   const num = parseNumber(value)
-  if (!Number.isFinite(num)) return { text: value }
+  if (!isFinite(num)) return { text: value }
 
   if (format === 'signedMoney') {
     return {

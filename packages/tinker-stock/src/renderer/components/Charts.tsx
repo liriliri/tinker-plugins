@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import {
   dispose,
   init,
@@ -14,13 +15,9 @@ import isEmpty from 'licia/isEmpty'
 import isNaN from 'licia/isNaN'
 import map from 'licia/map'
 import sortBy from 'licia/sortBy'
-import { tw } from '../theme'
+import { chartColors, tw, type ChartColors } from '../theme'
 import type { KlineBar, KlinePeriod, MinutePoint } from '../../common/types'
 
-const UP = '#d12b3a'
-const DOWN = '#0d8a6a'
-const FLAT = '#737373'
-const BRASS = '#2f5bd8'
 const MINUTE_PERIOD: Period = { span: 1, type: 'minute' }
 
 const PERIOD_MAP: Record<KlinePeriod, Period> = {
@@ -84,31 +81,27 @@ function isDarkTheme(): boolean {
 }
 
 function buildStyles(
-  dark: boolean,
+  colors: ChartColors,
   candleType: CandleType,
   areaColor: string,
 ): DeepPartial<Styles> {
-  const grid = dark ? '#2c2c2c' : '#e4e4e4'
-  const text = dark ? '#969696' : '#737373'
-  const axis = dark ? '#2c2c2c' : '#e4e4e4'
-  const tooltipBg = dark ? '#1f1f1f' : '#ffffff'
   return {
     grid: {
-      horizontal: { color: grid },
-      vertical: { color: grid },
+      horizontal: { color: colors.grid },
+      vertical: { color: colors.grid },
     },
     candle: {
       type: candleType,
       bar: {
-        upColor: UP,
-        downColor: DOWN,
-        noChangeColor: FLAT,
-        upBorderColor: UP,
-        downBorderColor: DOWN,
-        noChangeBorderColor: FLAT,
-        upWickColor: UP,
-        downWickColor: DOWN,
-        noChangeWickColor: FLAT,
+        upColor: colors.up,
+        downColor: colors.down,
+        noChangeColor: colors.flat,
+        upBorderColor: colors.up,
+        downBorderColor: colors.down,
+        noChangeBorderColor: colors.flat,
+        upWickColor: colors.up,
+        downWickColor: colors.down,
+        noChangeWickColor: colors.flat,
       },
       area: {
         lineSize: 1.75,
@@ -125,42 +118,42 @@ function buildStyles(
         },
       },
       priceMark: {
-        high: { color: text },
-        low: { color: text },
+        high: { color: colors.text },
+        low: { color: colors.text },
         last: {
-          upColor: UP,
-          downColor: DOWN,
-          noChangeColor: FLAT,
+          upColor: colors.up,
+          downColor: colors.down,
+          noChangeColor: colors.flat,
         },
       },
       tooltip: {
         rect: {
-          color: tooltipBg,
-          borderColor: grid,
+          color: colors.tooltipBg,
+          borderColor: colors.grid,
         },
-        title: { color: text },
-        legend: { color: text },
+        title: { color: colors.text },
+        legend: { color: colors.text },
       },
     },
     xAxis: {
-      axisLine: { color: axis },
-      tickText: { color: text },
-      tickLine: { color: axis },
+      axisLine: { color: colors.axis },
+      tickText: { color: colors.text },
+      tickLine: { color: colors.axis },
     },
     yAxis: {
-      axisLine: { color: axis },
-      tickText: { color: text },
-      tickLine: { color: axis },
+      axisLine: { color: colors.axis },
+      tickText: { color: colors.text },
+      tickLine: { color: colors.axis },
     },
-    separator: { color: axis },
+    separator: { color: colors.axis },
     crosshair: {
       horizontal: {
-        line: { color: text },
-        text: { borderColor: text, backgroundColor: text },
+        line: { color: colors.text },
+        text: { borderColor: colors.text, backgroundColor: colors.text },
       },
       vertical: {
-        line: { color: text },
-        text: { borderColor: text, backgroundColor: text },
+        line: { color: colors.text },
+        text: { borderColor: colors.text, backgroundColor: colors.text },
       },
     },
   }
@@ -180,9 +173,10 @@ function ChartCanvas({
   symbol,
   period,
   candleType,
-  areaColor = UP,
+  areaColor,
   prevClose,
 }: ChartCanvasProps) {
+  const { i18n } = useTranslation()
   const containerRef = useRef<HTMLDivElement>(null)
   const chartRef = useRef<Chart | null>(null)
   const dataRef = useRef(data)
@@ -195,10 +189,11 @@ function ChartCanvas({
     const el = containerRef.current
     if (!el) return
 
+    const colors = chartColors(isDarkTheme())
     const chart = init(el, {
-      locale: 'zh-CN',
+      locale: i18n.language === 'zh-CN' ? 'zh-CN' : 'en-US',
       timezone: 'Asia/Shanghai',
-      styles: buildStyles(isDarkTheme(), candleType, areaColor),
+      styles: buildStyles(colors, candleType, areaColor || colors.up),
       layout: {
         barSpaceLimit: { min: 1, max: 36 },
       },
@@ -223,7 +218,8 @@ function ChartCanvas({
 
     const syncTheme = () => {
       const { candleType: type, areaColor: color } = styleRef.current
-      chart.setStyles(buildStyles(isDarkTheme(), type, color))
+      const next = chartColors(isDarkTheme())
+      chart.setStyles(buildStyles(next, type, color || next.up))
     }
     const mo = new MutationObserver(syncTheme)
     mo.observe(document.documentElement, {
@@ -257,8 +253,9 @@ function ChartCanvas({
   }, [period])
 
   useEffect(() => {
+    const colors = chartColors(isDarkTheme())
     chartRef.current?.setStyles(
-      buildStyles(isDarkTheme(), candleType, areaColor),
+      buildStyles(colors, candleType, areaColor || colors.up),
     )
   }, [candleType, areaColor])
 
@@ -274,21 +271,22 @@ function ChartCanvas({
       overlayIdRef.current = null
     }
     if (!prevClose || isEmpty(data)) return
+    const colors = chartColors(isDarkTheme())
     const id = chart.createOverlay({
       name: 'priceLine',
       lock: true,
       points: [{ timestamp: data[0].timestamp, value: prevClose }],
       styles: {
         line: {
-          color: BRASS,
+          color: colors.brass,
           style: 'dashed',
           size: 1,
           dashedValue: [4, 4],
         },
         text: {
-          color: '#ffffff',
-          backgroundColor: FLAT,
-          borderColor: FLAT,
+          color: colors.overlayText,
+          backgroundColor: colors.flat,
+          borderColor: colors.flat,
         },
       },
     })
@@ -321,9 +319,10 @@ export function MinuteChart({
 }: MinuteChartProps) {
   const data = useMemo(() => pointsToData(points), [points])
   const areaColor = useMemo(() => {
+    const colors = chartColors(isDarkTheme())
     const last = data[data.length - 1]?.close
-    if (!prevClose || isNaN(prevClose) || last == null) return UP
-    return last >= prevClose ? UP : DOWN
+    if (!prevClose || isNaN(prevClose) || last == null) return colors.up
+    return last >= prevClose ? colors.up : colors.down
   }, [data, prevClose])
 
   if (isEmpty(data)) return <EmptyChart />

@@ -8,6 +8,7 @@ import isEmpty from 'licia/isEmpty'
 import isErr from 'licia/isErr'
 import map from 'licia/map'
 import safeDel from 'licia/safeDel'
+import sortBy from 'licia/sortBy'
 import trim from 'licia/trim'
 import i18n from 'i18next'
 import { supportsChip } from '../common/market'
@@ -25,6 +26,7 @@ import type {
   TableSection,
   WatchItem,
 } from '../common/types'
+import { createMcpApi } from './mcp'
 
 type View = 'market' | 'detail'
 type ChartMode = 'minute' | 'kline'
@@ -44,7 +46,9 @@ function errMsg(err: unknown): string {
   return isErr(err) ? err.message : i18n.t('error')
 }
 
-class Store {
+export class Store {
+  readonly mcp = createMcpApi(() => this)
+
   view: View = 'market'
   marketTab: MarketTab = 'hot'
   detailTab: DetailTab = 'overview'
@@ -85,7 +89,9 @@ class Store {
   private debouncedSearch: (keyword: string) => void
 
   constructor() {
-    makeAutoObservable(this)
+    makeAutoObservable(this, {
+      mcp: false,
+    })
     this.debouncedSearch = debounce((keyword: string) => {
       void this.runSearch(keyword)
     }, 350)
@@ -93,6 +99,13 @@ class Store {
 
   get selectedSnapshot(): QuoteSnapshot | null {
     return this.snapshots[this.selectedCode] || null
+  }
+
+  get sortedWatchlist(): WatchItem[] {
+    return sortBy(this.watchlist, (item) => {
+      const snap = this.snapshots[item.code]
+      return snap ? -snap.changePct : Number.POSITIVE_INFINITY
+    })
   }
 
   get isWatching(): boolean {
@@ -126,23 +139,36 @@ class Store {
     this.debouncedSearch(keyword)
   }
 
-  setMarketTab(tab: MarketTab) {
-    this.marketTab = tab
-    void this.loadMarketTab()
+  async searchWith(keyword: string) {
+    const value = trim(keyword)
+    this.query = value
+    if (!value) {
+      this.searchResults = []
+      this.searchError = ''
+      this.searching = false
+      return
+    }
+    this.searching = true
+    await this.runSearch(value)
   }
 
-  setDetailTab(tab: DetailTab) {
+  async setMarketTab(tab: MarketTab) {
+    this.marketTab = tab
+    await this.loadMarketTab()
+  }
+
+  async setDetailTab(tab: DetailTab) {
     this.detailTab = tab
-    void this.loadDetailTab()
+    await this.loadDetailTab()
   }
 
   setChartMode(mode: ChartMode) {
     this.chartMode = mode
   }
 
-  setKlinePeriod(period: KlinePeriod) {
+  async setKlinePeriod(period: KlinePeriod) {
     this.klinePeriod = period
-    void this.loadKline()
+    await this.loadKline()
   }
 
   backToMarket() {
@@ -183,11 +209,11 @@ class Store {
     }
   }
 
-  addWatch(code: string, name: string) {
+  async addWatch(code: string, name: string) {
     if (find(this.watchlist, (item) => item.code === code)) return
     this.watchlist = [...this.watchlist, { code, name }]
     storage.set(STORAGE_WATCHLIST, this.watchlist)
-    void this.refreshWatchlist()
+    await this.refreshWatchlist()
   }
 
   removeWatch(code: string) {
@@ -207,7 +233,7 @@ class Store {
     }
   }
 
-  openStock(code: string, name = '') {
+  async openStock(code: string, name = '') {
     this.view = 'detail'
     this.selectedCode = code
     this.selectedName = name
@@ -223,7 +249,7 @@ class Store {
     this.shareholderSections = []
     this.dividendSections = []
     this.detailError = ''
-    void this.loadDetail()
+    await this.loadDetail()
   }
 
   private async runSearch(keyword: string) {

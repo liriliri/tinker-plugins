@@ -1,4 +1,6 @@
 import i18n from 'i18next'
+import contain from 'licia/contain'
+import filter from 'licia/filter'
 
 const HIDDEN = new Set([
   'code',
@@ -135,7 +137,7 @@ function humanizeKey(key: string): string {
     .replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2')
 }
 
-export function isHiddenColumn(key: string): boolean {
+function isHiddenColumn(key: string): boolean {
   return HIDDEN.has(key) || HIDDEN.has(stripPrefix(key))
 }
 
@@ -166,7 +168,7 @@ export function visibleColumns(
     maxCols?: number
   },
 ): string[] {
-  const filtered = columns.filter((col) => !isHiddenColumn(col))
+  const filtered = filter(columns, (col) => !isHiddenColumn(col))
   const prefer =
     options?.prefer === 'fund'
       ? FUND_PRIORITY
@@ -179,8 +181,8 @@ export function visibleColumns(
   let ordered = filtered
   if (prefer) {
     const set = new Set(filtered)
-    const head = prefer.filter((col) => set.has(col))
-    const rest = filtered.filter((col) => !prefer.includes(col))
+    const head = filter(prefer, (col) => set.has(col))
+    const rest = filter(filtered, (col) => !contain(prefer, col))
     ordered = [...head, ...rest]
   }
 

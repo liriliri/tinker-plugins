@@ -34,6 +34,150 @@
         "name": "股票",
         "description": "查看股票实时信息"
       }
+    },
+    "mcp": {
+      "tools": {
+        "search": {
+          "description": "Search stocks by keyword. Updates the plugin UI and returns matching symbols with code, name, and type.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "keyword": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Stock name or code keyword (e.g. 茅台, 600519, AAPL)"
+              }
+            },
+            "required": [
+              "keyword"
+            ]
+          }
+        },
+        "open_stock": {
+          "description": "Open a stock detail view by code. Updates the plugin UI and returns quote snapshot, profile, intraday points, and daily K-line.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Stock code (e.g. sh600519, hk00700, usAAPL)"
+              },
+              "name": {
+                "type": "string",
+                "description": "Optional display name"
+              }
+            },
+            "required": [
+              "code"
+            ]
+          }
+        },
+        "get_market": {
+          "description": "Switch market tab and return data: hot stocks, hot ETFs, sector boards, or IPO calendar.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "tab": {
+                "type": "string",
+                "enum": [
+                  "hot",
+                  "etf",
+                  "board",
+                  "ipo"
+                ],
+                "description": "Market tab to load"
+              }
+            },
+            "required": [
+              "tab"
+            ]
+          }
+        },
+        "get_watchlist": {
+          "description": "Refresh and return the watchlist with latest quote snapshots.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        "add_watch": {
+          "description": "Add a symbol to the watchlist, refresh snapshots, and return the updated list.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Stock code to watch (e.g. sh600519)"
+              },
+              "name": {
+                "type": "string",
+                "description": "Optional display name"
+              }
+            },
+            "required": [
+              "code"
+            ]
+          }
+        },
+        "remove_watch": {
+          "description": "Remove a symbol from the watchlist and return the updated list.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Stock code to remove"
+              }
+            },
+            "required": [
+              "code"
+            ]
+          }
+        },
+        "get_detail": {
+          "description": "Switch detail tab for the currently open stock and return that tab's data. Call open_stock first.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "tab": {
+                "type": "string",
+                "enum": [
+                  "overview",
+                  "fund",
+                  "chip",
+                  "finance",
+                  "shareholder",
+                  "dividend"
+                ],
+                "description": "Detail tab to load"
+              }
+            },
+            "required": [
+              "tab"
+            ]
+          }
+        },
+        "get_kline": {
+          "description": "Load K-line bars for the currently open stock. Updates the plugin UI and returns OHLCV data. Call open_stock first.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "period": {
+                "type": "string",
+                "enum": [
+                  "day",
+                  "week",
+                  "month"
+                ],
+                "description": "K-line period (default day)"
+              }
+            }
+          }
+        }
+      }
     }
   },
   "dependencies": {

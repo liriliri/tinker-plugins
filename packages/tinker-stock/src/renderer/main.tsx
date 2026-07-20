@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { createRoot } from 'react-dom/client'
 import { observer } from 'mobx-react-lite'
-import { LoaderCircle, RotateCw } from 'lucide-react'
+import { RotateCw } from 'lucide-react'
 import i18n from 'i18next'
 import { initReactI18next, useTranslation } from 'react-i18next'
 import className from 'licia/className'
@@ -42,41 +42,38 @@ const App = observer(() => {
     >
       <div className="relative z-10 flex flex-col h-full min-h-0">
         <header className={`shrink-0 ${tw.bg.header}`}>
-          <div className="flex items-center gap-2 px-3 py-1">
-            <div className="w-48 shrink-0">
+          <div className="relative flex items-center px-3 py-1">
+            <div className="relative z-10 w-48 shrink-0">
               <SearchBar />
             </div>
 
-            <div className="flex items-center gap-0.5 min-w-0">
-              {map(MARKET_TAB_IDS, (tab) => (
-                <button
-                  key={tab}
-                  type="button"
-                  onClick={() => {
-                    store.backToMarket()
-                    store.setMarketTab(tab)
-                  }}
-                  className={className(
-                    tw.button.tab,
-                    'whitespace-nowrap',
-                    store.view === 'market' && store.marketTab === tab
-                      ? tw.button.tabActive
-                      : tw.button.tabIdle,
-                  )}
-                >
-                  {t(MARKET_TAB_LABEL_KEYS[tab])}
-                </button>
-              ))}
-              {store.view === 'market' && store.marketLoading ? (
-                <LoaderCircle
-                  className={`w-3.5 h-3.5 ml-1 animate-spin ${tw.text.muted}`}
-                />
-              ) : null}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="flex items-center gap-0.5 pointer-events-auto">
+                {map(MARKET_TAB_IDS, (tab) => (
+                  <button
+                    key={tab}
+                    type="button"
+                    onClick={() => {
+                      store.backToMarket()
+                      void store.setMarketTab(tab)
+                    }}
+                    className={className(
+                      tw.button.tab,
+                      'whitespace-nowrap',
+                      store.view === 'market' && store.marketTab === tab
+                        ? tw.button.tabActive
+                        : tw.button.tabIdle,
+                    )}
+                  >
+                    {t(MARKET_TAB_LABEL_KEYS[tab])}
+                  </button>
+                ))}
+              </div>
             </div>
 
             <button
               type="button"
-              className={`${tw.button.ghost} ml-auto shrink-0`}
+              className={`relative z-10 ${tw.button.ghost} ml-auto shrink-0`}
               title={t('refresh')}
               onClick={() => {
                 void store.refreshWatchlist()

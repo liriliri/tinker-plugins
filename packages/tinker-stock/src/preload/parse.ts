@@ -11,8 +11,9 @@ import trim from 'licia/trim'
 import type { TableSection } from '../common/types'
 
 function splitCells(line: string): string[] {
-  const raw = trim(line)
-  const body = startWith(raw, '|') && endWith(raw, '|') ? raw.slice(1, -1) : raw
+  let body = trim(line)
+  if (startWith(body, '|')) body = body.slice(1)
+  if (endWith(body, '|')) body = body.slice(0, -1)
   return map(body.split('|'), (cell) => trim(cell))
 }
 
@@ -25,6 +26,22 @@ function isSeparator(line: string): boolean {
 function isTableRow(line: string): boolean {
   const t = trim(line)
   return startWith(t, '|') && contain(t.slice(1), '|')
+}
+
+function readTableRow(
+  lines: string[],
+  start: number,
+): { cells: string[]; next: number } | null {
+  if (start >= lines.length || !isTableRow(lines[start])) return null
+
+  let raw = trim(lines[start])
+  let i = start + 1
+  while (!endWith(raw, '|') && i < lines.length) {
+    raw += `\n${lines[i]}`
+    i += 1
+  }
+
+  return { cells: splitCells(raw), next: i }
 }
 
 function parseTitle(line: string): string {
@@ -53,32 +70,34 @@ export function parseSections(text: string): TableSection[] {
     }
 
     if (!isTableRow(trimmed)) {
-      if (
-        startWith(trimmed, '**') ||
-        startWith(trimmed, '#') ||
-        startWith(trimmed, '####')
-      ) {
+      if (startWith(trimmed, '**') || startWith(trimmed, '#')) {
         title = parseTitle(trimmed)
       }
       i += 1
       continue
     }
 
-    const header = splitCells(trimmed)
-    i += 1
+    const headerRow = readTableRow(lines, i)
+    if (!headerRow) {
+      i += 1
+      continue
+    }
+    const header = headerRow.cells
+    i = headerRow.next
     if (i < lines.length && isSeparator(lines[i])) {
       i += 1
     }
 
     const rows: Record<string, string>[] = []
     while (i < lines.length && isTableRow(lines[i]) && !isSeparator(lines[i])) {
-      const cells = splitCells(lines[i])
+      const dataRow = readTableRow(lines, i)
+      if (!dataRow) break
       const row: Record<string, string> = {}
       for (let c = 0; c < header.length; c += 1) {
-        row[header[c]] = cells[c] ?? ''
+        row[header[c]] = dataRow.cells[c] ?? ''
       }
       rows.push(row)
-      i += 1
+      i = dataRow.next
     }
 
     sections.push({

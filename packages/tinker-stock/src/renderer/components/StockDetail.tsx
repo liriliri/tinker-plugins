@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite'
-import { ArrowLeft, LoaderCircle, Star } from 'lucide-react'
+import { LoaderCircle, Star } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import className from 'licia/className'
 import map from 'licia/map'
@@ -31,14 +31,6 @@ const StockDetail = observer(() => {
         <div className="flex items-start gap-2">
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-2 flex-wrap">
-              <button
-                type="button"
-                className={tw.button.ghost}
-                onClick={() => store.backToMarket()}
-                title={t('back')}
-              >
-                <ArrowLeft className="w-4 h-4" />
-              </button>
               <h2
                 className={`font-display text-[22px] font-bold tracking-[-0.03em] leading-none ${tw.text.primary}`}
               >
@@ -82,7 +74,7 @@ const StockDetail = observer(() => {
               title={store.isWatching ? t('removeWatch') : t('addWatch')}
             >
               <Star
-                className={`w-4 h-4 ${store.isWatching ? 'text-[#e8b923]' : ''}`}
+                className={`w-4 h-4 ${store.isWatching ? tw.text.star : ''}`}
                 fill={store.isWatching ? 'currentColor' : 'none'}
               />
             </button>

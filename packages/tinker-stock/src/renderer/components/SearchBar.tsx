@@ -16,14 +16,14 @@ const SearchBar = observer(() => {
   return (
     <div className="relative">
       <div
-        className={`group flex items-center gap-1.5 h-7 px-2 rounded-sm border ${tw.border.default} ${tw.bg.input} focus-within:border-[var(--brass)] transition-colors`}
+        className={`group flex items-center gap-1.5 h-7 px-2 rounded-sm border ${tw.border.default} ${tw.bg.input} ${tw.border.focus} transition-colors`}
       >
         <Search className={`w-3.5 h-3.5 shrink-0 ${tw.text.muted}`} />
         <input
           value={store.query}
           onChange={(e) => store.setQuery(e.target.value)}
           placeholder={t('searchPlaceholder')}
-          className={`flex-1 min-w-0 bg-transparent outline-none text-xs leading-none ${tw.text.primary} placeholder:text-[color-mix(in_srgb,var(--mist)_70%,transparent)]`}
+          className={`flex-1 min-w-0 bg-transparent outline-none text-xs leading-none ${tw.text.primary} ${tw.text.placeholder}`}
         />
         {store.searching ? (
           <LoaderCircle className={`w-3 h-3 animate-spin ${tw.text.muted}`} />

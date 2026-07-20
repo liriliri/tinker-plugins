@@ -1,6 +1,6 @@
 import startWith from 'licia/startWith'
 
-export function isAShare(code: string): boolean {
+function isAShare(code: string): boolean {
   return startWith(code, 'sh') || startWith(code, 'sz') || startWith(code, 'bj')
 }
 

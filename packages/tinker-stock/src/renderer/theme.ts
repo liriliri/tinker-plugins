@@ -6,7 +6,6 @@ export const tw = {
     header: 'bg-[var(--header)]',
     panel: 'bg-[var(--panel)]',
     rail: 'bg-[var(--rail)]',
-    muted: 'bg-[color-mix(in_srgb,var(--mist)_10%,transparent)]',
     hover: 'hover:bg-[color-mix(in_srgb,var(--brass)_7%,transparent)]',
     active:
       'shadow-[inset_2px_0_0_var(--brass)] bg-[color-mix(in_srgb,var(--brass)_8%,transparent)]',
@@ -17,26 +16,22 @@ export const tw = {
     secondary: 'text-[var(--mist)]',
     muted: 'text-[color-mix(in_srgb,var(--mist)_80%,transparent)]',
     brass: 'text-[var(--brass)]',
+    placeholder:
+      'placeholder:text-[color-mix(in_srgb,var(--mist)_70%,transparent)]',
+    star: 'text-[var(--star)]',
   },
   border: {
     default: 'border-[var(--line)]',
-    brass: 'border-[var(--brass)]',
-  },
-  accent: {
-    bg: 'bg-[var(--brass-soft)]',
-    text: 'text-[var(--brass)]',
+    focus: 'focus-within:border-[var(--brass)]',
   },
   up: {
     text: 'text-[var(--up)]',
-    bg: 'bg-[color-mix(in_srgb,var(--up)_12%,transparent)]',
   },
   down: {
     text: 'text-[var(--down)]',
-    bg: 'bg-[color-mix(in_srgb,var(--down)_12%,transparent)]',
   },
   flat: {
     text: 'text-[var(--flat)]',
-    bg: 'bg-[color-mix(in_srgb,var(--flat)_12%,transparent)]',
   },
   button: {
     ghost:
@@ -64,11 +59,59 @@ export const tw = {
       'border-[var(--line)] text-[var(--mist)] bg-[color-mix(in_srgb,var(--mist)_8%,transparent)]',
   },
   listRow:
-    'w-full flex items-center gap-2 h-14 px-3 text-left cursor-pointer transition-colors duration-150 border-b border-[var(--line)]',
+    'w-full flex items-center gap-2 h-[52px] px-3 text-left cursor-pointer transition-colors duration-150 border-b border-[var(--line)]',
+  scrollArea: {
+    root: 'min-h-0 flex-1 overflow-hidden',
+    viewport: 'h-full w-full [&>div]:!block',
+    scrollbar:
+      'flex touch-none select-none p-0.5 transition-colors data-[orientation=vertical]:w-1.5',
+    thumb:
+      'relative flex-1 rounded-full bg-[color-mix(in_srgb,var(--mist)_45%,transparent)] hover:bg-[color-mix(in_srgb,var(--mist)_70%,transparent)]',
+  },
   ledPrice: 'tracking-[-0.04em] [font-feature-settings:"tnum"_1]',
   label: 'text-[10px] font-semibold tracking-[0.08em] text-[var(--mist)]',
   empty:
     'flex h-full w-full items-center justify-center text-center text-sm px-4 text-[var(--mist)]',
+}
+
+export interface ChartColors {
+  up: string
+  down: string
+  flat: string
+  brass: string
+  grid: string
+  text: string
+  axis: string
+  tooltipBg: string
+  overlayText: string
+}
+
+const chartLight: ChartColors = {
+  up: '#d12b3a',
+  down: '#0d8a6a',
+  flat: '#737373',
+  brass: '#2f5bd8',
+  grid: '#e4e4e4',
+  text: '#737373',
+  axis: '#e4e4e4',
+  tooltipBg: '#ffffff',
+  overlayText: '#ffffff',
+}
+
+const chartDark: ChartColors = {
+  up: '#e84552',
+  down: '#2bb89a',
+  flat: '#969696',
+  brass: '#6b8cff',
+  grid: '#2c2c2c',
+  text: '#969696',
+  axis: '#2c2c2c',
+  tooltipBg: '#1f1f1f',
+  overlayText: '#ffffff',
+}
+
+export function chartColors(dark: boolean): ChartColors {
+  return dark ? chartDark : chartLight
 }
 
 export function marketChip(code: string): string {

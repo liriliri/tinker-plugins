@@ -8,7 +8,7 @@ import { tw } from '../theme'
 import { changeTone, formatPct, formatPrice } from '../lib/format'
 import { sectionLabel } from '../lib/columns'
 import DataTable from './DataTable'
-import type { HotItem } from '../../common/types'
+import type { BoardRow, HotItem } from '../../common/types'
 
 interface HotRowProps {
   item: HotItem
@@ -25,7 +25,7 @@ const HotRow = observer(({ item, index }: HotRowProps) => {
       className={`group ${tw.listRow} ${tw.bg.hover}`}
     >
       <div className="min-w-0 flex-1">
-        <div className="flex items-center gap-1.5 mb-0.5">
+        <div className="flex items-center gap-1.5">
           <span
             className={`font-display text-[11px] font-bold tabular-nums leading-none ${tw.text.brass}`}
           >
@@ -64,6 +64,24 @@ const HotRow = observer(({ item, index }: HotRowProps) => {
   )
 })
 
+interface HotListProps {
+  items: HotItem[]
+}
+
+const HotList = observer(({ items }: HotListProps) => {
+  const { t } = useTranslation()
+  return (
+    <div className="h-full">
+      {map(items, (item, index) => (
+        <HotRow key={item.code} item={item} index={index} />
+      ))}
+      {!store.marketLoading && items.length === 0 ? (
+        <div className={tw.empty}>{t('empty')}</div>
+      ) : null}
+    </div>
+  )
+})
+
 const MarketHome = observer(() => {
   const { t, i18n } = useTranslation()
 
@@ -76,27 +94,9 @@ const MarketHome = observer(() => {
           </div>
         ) : null}
 
-        {store.marketTab === 'hot' ? (
-          <div className="h-full">
-            {map(store.hotStocks, (item, index) => (
-              <HotRow key={item.code} item={item} index={index} />
-            ))}
-            {!store.marketLoading && store.hotStocks.length === 0 ? (
-              <div className={tw.empty}>{t('empty')}</div>
-            ) : null}
-          </div>
-        ) : null}
+        {store.marketTab === 'hot' ? <HotList items={store.hotStocks} /> : null}
 
-        {store.marketTab === 'etf' ? (
-          <div className="h-full">
-            {map(store.hotEtfs, (item, index) => (
-              <HotRow key={item.code} item={item} index={index} />
-            ))}
-            {!store.marketLoading && store.hotEtfs.length === 0 ? (
-              <div className={tw.empty}>{t('empty')}</div>
-            ) : null}
-          </div>
-        ) : null}
+        {store.marketTab === 'etf' ? <HotList items={store.hotEtfs} /> : null}
 
         {store.marketTab === 'board' && store.board ? (
           <div className="p-4 space-y-6">
@@ -136,12 +136,7 @@ const MarketHome = observer(() => {
 
 interface BoardSectionProps {
   title: string
-  rows: {
-    name: string
-    changePct: number
-    leadStock: string
-    mainNetInflow?: number
-  }[]
+  rows: BoardRow[]
   showInflow?: boolean
 }
 
@@ -179,7 +174,7 @@ const BoardSection = observer(
                     className={`text-[11px] font-mono tabular-nums min-w-16 text-right ${tw.text.secondary}`}
                   >
                     {isFinite(row.mainNetInflow)
-                      ? `${row.mainNetInflow!.toFixed(2)}万`
+                      ? `${row.mainNetInflow!.toFixed(2)}${t('unitWan')}`
                       : '--'}
                   </div>
                 ) : null}
