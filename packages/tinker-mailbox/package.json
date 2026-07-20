@@ -1,0 +1,50 @@
+{
+  "name": "tinker-mailbox",
+  "version": "0.1.0",
+  "description": "Mailbox Plugin for TINKER",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:preload\"",
+    "dev:renderer": "vite build --watch",
+    "dev:preload": "vite build --watch --config vite.preload.ts",
+    "build": "concurrently \"npm run build:renderer\" \"npm run build:preload\"",
+    "build:renderer": "vite build",
+    "build:preload": "vite build --config vite.preload.ts",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "mailbox",
+    "email"
+  ],
+  "tinker": {
+    "name": "Mailbox",
+    "description": "Email client for reading and sending mail",
+    "main": "dist/renderer/index.html",
+    "preload": "dist/preload/index.js",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "邮箱",
+        "description": "用于收发邮件的邮箱客户端"
+      }
+    }
+  },
+  "dependencies": {
+    "imapflow": "1.4.7",
+    "mailparser": "^3.9.1",
+    "nodemailer": "^7.0.13"
+  },
+  "devDependencies": {
+    "@types/mailparser": "^3.4.6",
+    "@types/nodemailer": "^8.0.1",
+    "idb": "^8.0.3"
+  }
+}
