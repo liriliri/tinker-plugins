@@ -1,5 +1,4 @@
-import { makeAutoObservable, runInAction } from 'mobx'
-import cloneDeep from 'licia/cloneDeep'
+import { makeAutoObservable, runInAction, toJS } from 'mobx'
 import filter from 'licia/filter'
 import find from 'licia/find'
 import isEmpty from 'licia/isEmpty'
@@ -10,12 +9,15 @@ import type {
   Account,
   ComposePayload,
   FolderInfo,
+  FolderSyncCursor,
+  MailboxIdleChange,
   MessageDetail,
   MessageHeader,
 } from '../common/types'
 import {
   clearAccountCache,
   clearFolderCache,
+  countMessages,
   getBody,
   getFolderSync,
   getFolders,
@@ -37,10 +39,12 @@ import {
   mergeByUid,
   pickDefaultFolder,
   pickSentFolder,
+  sameMailboxPath,
 } from './lib/mail'
 import { createMcpApi } from './mcp'
 
-const MESSAGE_LIMIT = 50
+const MESSAGE_PAGE = 50
+const MESSAGE_CACHE_KEEP = 2000
 
 export class Store {
   readonly mcp = createMcpApi(() => this)
@@ -52,6 +56,10 @@ export class Store {
   messages: MessageHeader[] = []
   selectedUid: number | null = null
   message: MessageDetail | null = null
+
+  oldestSeq = 1
+  hasMoreMessages = false
+  loadingMore = false
 
   connecting = false
   loadingFolders = false
@@ -69,11 +77,59 @@ export class Store {
   toastKind: 'error' | 'success' = 'error'
   isDark = false
 
+  private idleSyncTimer: ReturnType<typeof setTimeout> | null = null
+  private unsubIdle: (() => void) | null = null
+  private folderSyncTail: Promise<void> = Promise.resolve()
+
   constructor() {
     makeAutoObservable(this, {
       mcp: false,
     })
     void this.initTheme()
+    this.unsubIdle = mailbox.onMailboxChange((change) => {
+      this.scheduleIdleSync(change)
+    })
+    if (typeof document !== 'undefined') {
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState !== 'visible') return
+        if (!this.currentFolder || this.showCompose || this.loadingMessages) {
+          return
+        }
+        void this.syncFolderMessages(this.currentFolder).catch(() => {})
+      })
+    }
+  }
+
+  private scheduleIdleSync(change: MailboxIdleChange) {
+    if (
+      this.showCompose ||
+      !this.currentFolder ||
+      this.loadingMessages ||
+      this.loadingMore
+    ) {
+      return
+    }
+    if (change.path && !sameMailboxPath(change.path, this.currentFolder)) {
+      return
+    }
+    const force =
+      change.type === 'expunge' ||
+      (change.type === 'exists' && change.count < change.prevCount)
+    if (this.idleSyncTimer) clearTimeout(this.idleSyncTimer)
+    const path = this.currentFolder
+    this.idleSyncTimer = setTimeout(() => {
+      this.idleSyncTimer = null
+      if (
+        this.currentFolder !== path ||
+        this.showCompose ||
+        this.loadingMessages
+      ) {
+        return
+      }
+      void this.syncFolderMessages(path, { force }).catch((err) => {
+        this.showToast(String(err))
+      })
+    }, 300)
   }
 
   private async initTheme() {
@@ -104,7 +160,7 @@ export class Store {
 
   openSetup(account?: Account | null) {
     this.setupDraft = account
-      ? cloneDeep(account)
+      ? toJS(account)
       : {
           id: crypto.randomUUID(),
           name: '',
@@ -123,6 +179,8 @@ export class Store {
     this.showCompose = true
     this.currentFolder = null
     this.messages = []
+    this.oldestSeq = 1
+    this.hasMoreMessages = false
     this.message = null
     this.selectedUid = null
   }
@@ -167,15 +225,38 @@ export class Store {
       (folderPath && folders.some((f) => f.path === folderPath)
         ? folderPath
         : null) || pickDefaultFolder(folders)
-    const messages = preferred
-      ? await getMessages(account.id, preferred, MESSAGE_LIMIT)
-      : []
+
+    if (!preferred) {
+      runInAction(() => {
+        this.account = account
+        this.folders = folders
+        this.currentFolder = null
+        this.messages = []
+        this.oldestSeq = 1
+        this.hasMoreMessages = false
+        this.message = null
+        this.selectedUid = null
+      })
+      return
+    }
+
+    const cachedCount = await countMessages(account.id, preferred)
+    const messages = await getMessages(account.id, preferred, MESSAGE_PAGE)
+    const sync = await getFolderSync(account.id, preferred)
+    const oldestSeq =
+      sync?.oldestSeq ??
+      Math.max(1, (sync?.exists ?? cachedCount) - cachedCount + 1)
 
     runInAction(() => {
       this.account = account
       this.folders = folders
       this.currentFolder = preferred
       this.messages = messages
+      this.oldestSeq = oldestSeq
+      this.hasMoreMessages =
+        cachedCount > messages.length ||
+        oldestSeq > 1 ||
+        (!!sync?.exists && cachedCount < sync.exists)
       this.message = null
       this.selectedUid = null
     })
@@ -184,7 +265,7 @@ export class Store {
   async syncAccount(account: Account) {
     this.connecting = true
     try {
-      await mailbox.connect(account)
+      await mailbox.connect(toJS(account))
       runInAction(() => {
         this.account = account
       })
@@ -260,19 +341,43 @@ export class Store {
 
     void putSession(accountId, path)
 
+    if (this.idleSyncTimer) {
+      clearTimeout(this.idleSyncTimer)
+      this.idleSyncTimer = null
+    }
+
+    const cachedCount = await countMessages(accountId, path)
+    const syncMeta = (await getFolderSync(accountId, path)) || null
+    const staleLocal =
+      typeof syncMeta?.exists === 'number' && cachedCount > syncMeta.exists
+    const shouldForce = force || staleLocal
+
     if (switched || this.messages.length === 0) {
-      const cached = await getMessages(accountId, path, MESSAGE_LIMIT)
+      const page = await getMessages(accountId, path, MESSAGE_PAGE)
+      const oldestSeq =
+        syncMeta?.oldestSeq ??
+        Math.max(1, (syncMeta?.exists ?? cachedCount) - cachedCount + 1)
       runInAction(() => {
-        this.messages = cached
+        this.messages = page
+        this.oldestSeq = oldestSeq
+        this.hasMoreMessages =
+          cachedCount > page.length ||
+          oldestSeq > 1 ||
+          (!!syncMeta?.exists && cachedCount < syncMeta.exists)
       })
     }
 
-    if (!opts?.background) {
+    if (!opts?.background && this.messages.length === 0) {
       this.loadingMessages = true
     }
 
     try {
-      await this.syncFolderMessages(path, { force })
+      await this.syncFolderMessages(path, { force: shouldForce })
+      try {
+        await mailbox.watchFolder(path)
+      } catch {
+        /* ignore */
+      }
       return true
     } catch (err) {
       this.showToast(String(err))
@@ -284,35 +389,126 @@ export class Store {
     }
   }
 
+  private applyFolderCursor(
+    cursor: {
+      oldestSeq?: number
+      exists?: number
+    },
+    visibleCount: number,
+    cachedCount = visibleCount,
+  ) {
+    const oldestSeq =
+      cursor.oldestSeq ??
+      Math.max(1, (cursor.exists ?? cachedCount) - cachedCount + 1)
+    this.oldestSeq = oldestSeq
+    this.hasMoreMessages =
+      visibleCount < cachedCount ||
+      oldestSeq > 1 ||
+      (!!cursor.exists && cachedCount < cursor.exists)
+  }
+
+  private async ensureOldestSeq(
+    accountId: string,
+    path: string,
+    cursor: FolderSyncCursor,
+  ): Promise<FolderSyncCursor> {
+    if (cursor.oldestSeq != null) return cursor
+    const cachedCount = await countMessages(accountId, path)
+    const oldestSeq = Math.max(
+      1,
+      (cursor.exists ?? cachedCount) - cachedCount + 1,
+    )
+    const next = { ...cursor, oldestSeq }
+    await putFolderSync(accountId, path, next)
+    return next
+  }
+
   private async syncFolderMessages(path: string, opts?: { force?: boolean }) {
+    const run = () => this.syncFolderMessagesLocked(path, opts)
+    const next = this.folderSyncTail.then(run, run)
+    this.folderSyncTail = next.then(
+      () => undefined,
+      () => undefined,
+    )
+    return next
+  }
+
+  private async syncFolderMessagesLocked(
+    path: string,
+    opts?: { force?: boolean },
+  ) {
     if (!this.account) return
     const accountId = this.account.id
-    const cursor = (await getFolderSync(accountId, path)) || null
-    // Older cursors lack `exists`; one full refresh backfills it and clears stale rows.
+    let cursor = (await getFolderSync(accountId, path)) || null
+    if (cursor?.exists != null && cursor.oldestSeq == null) {
+      cursor = await this.ensureOldestSeq(accountId, path, cursor)
+    }
     const force = opts?.force || cursor?.exists === undefined
     const result = await mailbox.syncFolder(path, cursor, {
-      limit: MESSAGE_LIMIT,
+      limit: MESSAGE_PAGE,
       force,
     })
 
     if (result.kind === 'replace') {
       const validityChanged =
         !cursor || cursor.uidValidity !== result.uidValidity
+      let nextMessages = result.messages
+      let nextOldest = result.oldestSeq ?? 1
+
       if (validityChanged) {
         await clearFolderCache(accountId, path)
+        await replaceFolderMessages(accountId, path, result.messages)
+      } else {
+        const existing = await getMessages(accountId, path)
+        const fetchedUids = new Set(map(result.messages, (m) => m.uid))
+        const minFetchedUid = result.messages.reduce(
+          (min, m) => Math.min(min, m.uid),
+          Number.POSITIVE_INFINITY,
+        )
+        let older = filter(
+          existing,
+          (m) => !fetchedUids.has(m.uid) && m.uid < minFetchedUid,
+        )
+
+        if (
+          typeof result.exists === 'number' &&
+          result.messages.length + older.length > result.exists &&
+          older.length > 0
+        ) {
+          try {
+            const still = new Set(
+              await mailbox.filterExistingUids(
+                path,
+                map(older, (m) => m.uid),
+              ),
+            )
+            older = filter(older, (m) => still.has(m.uid))
+          } catch {
+            /* ignore */
+          }
+        }
+
+        nextMessages = mergeByUid(result.messages, older)
+        nextOldest =
+          older.length > 0 && cursor?.oldestSeq != null
+            ? Math.min(cursor.oldestSeq, result.oldestSeq ?? cursor.oldestSeq)
+            : (result.oldestSeq ?? 1)
+        await replaceFolderMessages(accountId, path, nextMessages)
+        await pruneFolderMessages(accountId, path, MESSAGE_CACHE_KEEP)
       }
-      await replaceFolderMessages(accountId, path, result.messages)
+
       await putFolderSync(accountId, path, {
         uidValidity: result.uidValidity,
         uidNext: result.uidNext,
         highestModseq: result.highestModseq,
         exists: result.exists,
+        oldestSeq: nextOldest,
       })
-      if (this.currentFolder === path && this.account?.id === accountId) {
-        runInAction(() => {
-          this.messages = result.messages.slice(0, MESSAGE_LIMIT)
-        })
-      }
+      await this.applyVisibleMessages(accountId, path, {
+        oldestSeq: nextOldest,
+        exists: result.exists,
+        resetPage: force,
+      })
       return
     }
 
@@ -321,20 +517,167 @@ export class Store {
       uidNext: result.uidNext,
       highestModseq: result.highestModseq,
       exists: result.exists,
+      oldestSeq: result.oldestSeq ?? cursor?.oldestSeq,
     })
 
-    if (result.kind === 'noop' || result.messages.length === 0) {
+    if (result.kind === 'noop') {
+      const localCount = await countMessages(accountId, path)
+      if (
+        typeof result.exists === 'number' &&
+        localCount > result.exists &&
+        !opts?.force
+      ) {
+        await this.syncFolderMessagesLocked(path, { force: true })
+        return
+      }
+      if (this.currentFolder === path && this.account?.id === accountId) {
+        runInAction(() => {
+          this.applyFolderCursor(
+            {
+              oldestSeq: result.oldestSeq ?? cursor?.oldestSeq,
+              exists: result.exists,
+            },
+            this.messages.length,
+            localCount,
+          )
+        })
+      }
+      return
+    }
+
+    if (result.messages.length === 0) {
       return
     }
 
     await putMessages(accountId, path, result.messages)
-    await pruneFolderMessages(accountId, path, MESSAGE_LIMIT * 4)
+    await pruneFolderMessages(accountId, path, MESSAGE_CACHE_KEEP)
     if (this.currentFolder === path && this.account?.id === accountId) {
+      const keep = Math.max(MESSAGE_PAGE, this.messages.length)
       runInAction(() => {
         this.messages = mergeByUid(this.messages, result.messages).slice(
           0,
-          MESSAGE_LIMIT,
+          keep,
         )
+        this.applyFolderCursor(
+          {
+            oldestSeq: result.oldestSeq ?? cursor?.oldestSeq,
+            exists: result.exists,
+          },
+          this.messages.length,
+          this.messages.length,
+        )
+      })
+      void countMessages(accountId, path).then((cachedCount) => {
+        if (this.currentFolder !== path) return
+        runInAction(() => {
+          this.applyFolderCursor(
+            {
+              oldestSeq: result.oldestSeq ?? cursor?.oldestSeq,
+              exists: result.exists,
+            },
+            this.messages.length,
+            cachedCount,
+          )
+        })
+      })
+    }
+  }
+
+  private async applyVisibleMessages(
+    accountId: string,
+    path: string,
+    cursor: { oldestSeq?: number; exists?: number; resetPage?: boolean },
+  ) {
+    if (this.currentFolder !== path || this.account?.id !== accountId) return
+    const all = await getMessages(accountId, path)
+    const keep = cursor.resetPage
+      ? MESSAGE_PAGE
+      : Math.max(MESSAGE_PAGE, this.messages.length)
+    const visible = all.slice(0, Math.min(all.length, keep))
+    runInAction(() => {
+      this.messages = visible
+      this.applyFolderCursor(cursor, visible.length, all.length)
+    })
+  }
+
+  async loadMoreMessages() {
+    if (
+      !this.account ||
+      !this.currentFolder ||
+      !this.hasMoreMessages ||
+      this.loadingMore ||
+      this.loadingMessages
+    ) {
+      return
+    }
+
+    const accountId = this.account.id
+    const path = this.currentFolder
+    this.loadingMore = true
+
+    try {
+      const cached = await getMessages(accountId, path)
+      if (cached.length > this.messages.length) {
+        const nextLen = Math.min(
+          cached.length,
+          this.messages.length + MESSAGE_PAGE,
+        )
+        const sync = (await getFolderSync(accountId, path)) || null
+        runInAction(() => {
+          this.messages = cached.slice(0, nextLen)
+          this.applyFolderCursor(
+            {
+              oldestSeq: sync?.oldestSeq ?? this.oldestSeq,
+              exists: sync?.exists,
+            },
+            nextLen,
+            cached.length,
+          )
+        })
+        if (nextLen < cached.length) return
+        if (this.oldestSeq <= 1) return
+      }
+
+      if (this.oldestSeq <= 1) {
+        runInAction(() => {
+          this.hasMoreMessages = false
+        })
+        return
+      }
+
+      const prev = await getFolderSync(accountId, path)
+      if (!prev) return
+
+      const result = await mailbox.fetchOlderMessages(path, this.oldestSeq, {
+        limit: MESSAGE_PAGE,
+      })
+      if (result.messages.length > 0) {
+        await putMessages(accountId, path, result.messages)
+        await pruneFolderMessages(accountId, path, MESSAGE_CACHE_KEEP)
+      }
+      await putFolderSync(accountId, path, {
+        uidValidity: prev.uidValidity,
+        uidNext: prev.uidNext,
+        highestModseq: prev.highestModseq,
+        exists: result.exists,
+        oldestSeq: result.oldestSeq,
+      })
+
+      if (this.currentFolder === path && this.account?.id === accountId) {
+        const all = await getMessages(accountId, path)
+        const keep = Math.min(all.length, this.messages.length + MESSAGE_PAGE)
+        const visible = all.slice(0, keep)
+        runInAction(() => {
+          this.messages = visible
+          this.oldestSeq = result.oldestSeq
+          this.hasMoreMessages = visible.length < all.length || result.hasMore
+        })
+      }
+    } catch (err) {
+      this.showToast(String(err))
+    } finally {
+      runInAction(() => {
+        this.loadingMore = false
       })
     }
   }
@@ -484,12 +827,12 @@ export class Store {
           smtpHost: trim(account.settings.smtpHost),
         },
       }
-      await mailbox.testAccount(normalized)
+      await mailbox.testAccount(toJS(normalized))
       const next = [
         ...filter(this.accounts, (a) => a.id !== normalized.id),
         normalized,
       ]
-      await mailbox.saveAccounts(next)
+      await mailbox.saveAccounts(toJS(next))
       runInAction(() => {
         this.accounts = next
         this.closeSetup()
@@ -507,7 +850,7 @@ export class Store {
 
   async removeAccount(id: string) {
     const next = filter(this.accounts, (a) => a.id !== id)
-    await mailbox.saveAccounts(next)
+    await mailbox.saveAccounts(toJS(next))
     await clearAccountCache(id)
     runInAction(() => {
       this.accounts = next
@@ -518,6 +861,8 @@ export class Store {
         this.account = null
         this.folders = []
         this.messages = []
+        this.oldestSeq = 1
+        this.hasMoreMessages = false
         this.message = null
         this.currentFolder = null
       })

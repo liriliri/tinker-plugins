@@ -1,10 +1,10 @@
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
-import dateFormat from 'licia/dateFormat'
 import map from 'licia/map'
 import { MailOpen } from 'lucide-react'
 import type { MailAddress } from '../../common/types'
 import store from '../store'
+import { formatMessageDate, fullTimeString } from '../lib/dateFormat'
 import { tw } from '../theme'
 import EmailFrame from './EmailFrame'
 
@@ -72,8 +72,11 @@ const MessageView = observer(() => {
             </div>
           )}
           {msg.date && (
-            <div className={`mt-1 text-[11.5px] tabular-nums ${tw.text.muted}`}>
-              {dateFormat(new Date(msg.date), 'yyyy-mm-dd HH:MM')}
+            <div
+              className={`mt-1 text-[11.5px] tabular-nums ${tw.text.muted}`}
+              title={fullTimeString(new Date(msg.date))}
+            >
+              {formatMessageDate(msg.date, 'medium')}
             </div>
           )}
         </div>

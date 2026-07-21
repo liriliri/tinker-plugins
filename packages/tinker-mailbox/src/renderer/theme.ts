@@ -20,13 +20,13 @@ export const tw = {
   input: {
     base: 'w-full bg-zinc-100/80 dark:bg-zinc-800/80 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-500 rounded-lg px-3 h-9 text-sm outline-none border border-transparent focus:border-[var(--mb-red)] focus:bg-white dark:focus:bg-zinc-900 transition-colors',
     select:
-      'w-full bg-zinc-100/80 dark:bg-zinc-800/80 text-zinc-900 dark:text-zinc-100 rounded-lg px-3 h-9 text-sm outline-none border border-transparent focus:border-[var(--mb-red)] transition-colors',
+      'w-full bg-zinc-100/80 dark:bg-zinc-800/80 text-zinc-900 dark:text-zinc-100 rounded-lg px-3 h-9 text-sm outline-none border border-transparent focus:outline-none focus:ring-0 focus-visible:outline-none focus:border-[var(--mb-red)] transition-colors',
     compose:
       'w-full bg-transparent text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-500 rounded-none px-0 h-9 text-sm outline-none border-0 focus:outline-none',
     composeEditor:
       'w-full h-full min-h-full bg-transparent text-zinc-900 dark:text-zinc-100 text-sm leading-6 outline-none border-0 py-3 px-4',
     composeFontSize:
-      'h-7 px-1.5 rounded-md text-xs font-medium bg-transparent border border-zinc-200/90 dark:border-zinc-600 text-zinc-600 dark:text-zinc-300 outline-none cursor-pointer hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:border-[var(--mb-red)] dark:focus:border-[var(--mb-red-bright)]',
+      'h-7 px-1.5 rounded-md text-xs font-medium bg-transparent border border-zinc-200/90 dark:border-zinc-600 text-zinc-600 dark:text-zinc-300 outline-none cursor-pointer hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none focus:ring-0 focus-visible:outline-none focus:border-[var(--mb-red)] dark:focus:border-[var(--mb-red-bright)]',
   },
   button: {
     icon: 'flex items-center justify-center w-8 h-8 rounded-lg bg-transparent border-none cursor-pointer text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-[var(--mb-red)] dark:hover:text-[var(--mb-red-bright)] transition-colors disabled:opacity-40 disabled:cursor-not-allowed',
@@ -91,8 +91,17 @@ export const tw = {
   },
   bodyText:
     'whitespace-pre-wrap break-words text-[13.5px] leading-7 text-zinc-900 dark:text-zinc-100 font-[family-name:var(--mb-sans)]',
-  dialogTitle:
-    'font-[family-name:var(--mb-display)] text-lg font-semibold mb-4 text-zinc-900 dark:text-zinc-50 tracking-tight',
+  dialogTitle: 'text-base font-semibold mb-4 text-zinc-900 dark:text-zinc-50',
+  dropdown: {
+    content:
+      'z-50 min-w-[14rem] max-w-[20rem] rounded-lg border border-zinc-200 dark:border-zinc-700 bg-[var(--mb-panel)] dark:bg-zinc-900 p-1 shadow-[0_12px_40px_rgba(24,24,27,0.14)]',
+    item: 'flex w-full cursor-pointer select-none flex-col gap-0.5 rounded-md px-3 py-2 text-left outline-none border-none bg-transparent data-[highlighted]:bg-zinc-100 dark:data-[highlighted]:bg-zinc-800',
+    itemActive:
+      'bg-[var(--mb-red-soft)] dark:bg-[var(--mb-red-soft-dark)] data-[highlighted]:bg-[var(--mb-red-soft)] dark:data-[highlighted]:bg-[var(--mb-red-soft-dark)]',
+    itemName:
+      'truncate text-[12.5px] font-medium text-zinc-900 dark:text-zinc-100',
+    itemEmail: 'truncate text-[11px] text-zinc-500 dark:text-zinc-400',
+  },
   tabs: {
     list: 'flex gap-1 p-1 rounded-xl bg-zinc-100/90 dark:bg-zinc-800/80 mb-3',
     trigger:

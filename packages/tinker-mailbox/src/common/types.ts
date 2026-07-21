@@ -36,8 +36,8 @@ export interface FolderSyncCursor {
   uidValidity: string
   uidNext: number
   highestModseq?: string
-  /** Message count in mailbox; used to detect remote deletions. */
   exists?: number
+  oldestSeq?: number
 }
 
 export interface MailAddress {
@@ -80,5 +80,25 @@ export interface FolderSyncResult {
   uidNext: number
   highestModseq?: string
   exists?: number
+  oldestSeq?: number
   messages: MessageHeader[]
 }
+
+export interface OlderMessagesResult {
+  messages: MessageHeader[]
+  oldestSeq: number
+  exists: number
+  hasMore: boolean
+}
+
+export type MailboxIdleChange =
+  | {
+      type: 'exists'
+      path: string
+      count: number
+      prevCount: number
+    }
+  | {
+      type: 'expunge'
+      path: string
+    }

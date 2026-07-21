@@ -4,12 +4,14 @@ import type {
   FolderSyncCursor,
   FolderSyncResult,
   MessageHeader,
+  OlderMessagesResult,
 } from '../../common/types'
 import { toErrorMessage } from './errors'
 import { headerFromFetched } from './parse'
 import { ensureClient } from './session'
 
 const TEXT_PEEK_BYTES = 800
+const UID_VERIFY_CHUNK = 200
 
 function mailboxCursor(c: ImapFlow): FolderSyncCursor {
   const box = c.mailbox
@@ -36,6 +38,7 @@ async function fetchHeadersByRange(
       range,
       {
         envelope: true,
+        internalDate: true,
         flags: true,
         uid: true,
         ...(withSnippet
@@ -63,12 +66,13 @@ async function fetchHeadersByRange(
 async function fetchRecentHeaders(
   c: ImapFlow,
   limit: number,
-): Promise<MessageHeader[]> {
+): Promise<{ messages: MessageHeader[]; oldestSeq: number }> {
   const exists = c.mailbox && 'exists' in c.mailbox ? c.mailbox.exists : 0
-  if (!exists) return []
+  if (!exists) return { messages: [], oldestSeq: 1 }
   const take = Math.min(limit, exists)
   const start = Math.max(1, exists - take + 1)
-  return fetchHeadersByRange(c, `${start}:${exists}`, false)
+  const messages = await fetchHeadersByRange(c, `${start}:${exists}`, false)
+  return { messages, oldestSeq: start }
 }
 
 export async function syncFolder(
@@ -91,10 +95,11 @@ export async function syncFolder(
       nextCursor.exists < cursor.exists
 
     if (force || validityChanged || shrinkDetected) {
-      const messages = await fetchRecentHeaders(c, limit)
+      const { messages, oldestSeq } = await fetchRecentHeaders(c, limit)
       return {
         kind: 'replace',
         ...nextCursor,
+        oldestSeq,
         messages,
       }
     }
@@ -103,6 +108,7 @@ export async function syncFolder(
       return {
         kind: 'noop',
         ...nextCursor,
+        oldestSeq: cursor.oldestSeq,
         messages: [],
       }
     }
@@ -111,8 +117,69 @@ export async function syncFolder(
     return {
       kind: 'append',
       ...nextCursor,
+      oldestSeq: cursor.oldestSeq,
       messages,
     }
+  } catch (err) {
+    throw new Error(toErrorMessage(err))
+  } finally {
+    lock.release()
+  }
+}
+
+export async function fetchOlderMessages(
+  folderPath: string,
+  oldestSeq: number,
+  opts?: { limit?: number },
+): Promise<OlderMessagesResult> {
+  const limit = opts?.limit ?? 50
+  const c = await ensureClient()
+  const lock = await c.getMailboxLock(folderPath)
+  try {
+    const exists =
+      c.mailbox && 'exists' in c.mailbox ? (c.mailbox.exists as number) : 0
+    if (oldestSeq <= 1 || !exists) {
+      return {
+        messages: [],
+        oldestSeq: Math.max(1, oldestSeq),
+        exists,
+        hasMore: false,
+      }
+    }
+    const take = Math.min(limit, oldestSeq - 1)
+    const start = oldestSeq - take
+    const end = oldestSeq - 1
+    const messages = await fetchHeadersByRange(c, `${start}:${end}`, false)
+    return {
+      messages,
+      oldestSeq: start,
+      exists,
+      hasMore: start > 1,
+    }
+  } catch (err) {
+    throw new Error(toErrorMessage(err))
+  } finally {
+    lock.release()
+  }
+}
+
+export async function filterExistingUids(
+  folderPath: string,
+  uids: number[],
+): Promise<number[]> {
+  if (uids.length === 0) return []
+  const c = await ensureClient()
+  const lock = await c.getMailboxLock(folderPath)
+  try {
+    const found: number[] = []
+    for (let i = 0; i < uids.length; i += UID_VERIFY_CHUNK) {
+      const chunk = uids.slice(i, i + UID_VERIFY_CHUNK)
+      const result = await c.search({ uid: chunk.join(',') }, { uid: true })
+      if (Array.isArray(result)) {
+        for (const uid of result) found.push(uid)
+      }
+    }
+    return found
   } catch (err) {
     throw new Error(toErrorMessage(err))
   } finally {

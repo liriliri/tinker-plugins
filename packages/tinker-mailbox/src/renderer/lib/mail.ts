@@ -58,3 +58,11 @@ export function mergeByUid(
   each(incoming, (msg) => byUid.set(msg.uid, msg))
   return sortMessagesByDateDesc([...byUid.values()])
 }
+
+export function sameMailboxPath(a: string, b: string): boolean {
+  if (a === b) return true
+  const au = a.toUpperCase()
+  const bu = b.toUpperCase()
+  if (au === 'INBOX' && bu === 'INBOX') return true
+  return au === bu
+}

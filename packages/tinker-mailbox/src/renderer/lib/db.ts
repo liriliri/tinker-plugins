@@ -179,6 +179,7 @@ export async function getFolderSync(
     uidNext: row.uidNext,
     highestModseq: row.highestModseq,
     exists: row.exists,
+    oldestSeq: row.oldestSeq,
   }
 }
 
@@ -199,14 +200,27 @@ export async function putFolderSync(
 export async function getMessages(
   accountId: string,
   folderPath: string,
-  limit = 50,
+  limit?: number,
 ): Promise<MessageHeader[]> {
   const db = await getDB()
   const rows = await db.getAllFromIndex('messages', 'byFolder', [
     accountId,
     folderPath,
   ])
-  return sortMessagesByDateDesc(map(rows, toHeader)).slice(0, limit)
+  const sorted = sortMessagesByDateDesc(map(rows, toHeader))
+  return limit == null ? sorted : sorted.slice(0, limit)
+}
+
+export async function countMessages(
+  accountId: string,
+  folderPath: string,
+): Promise<number> {
+  const db = await getDB()
+  const rows = await db.getAllFromIndex('messages', 'byFolder', [
+    accountId,
+    folderPath,
+  ])
+  return rows.length
 }
 
 export async function putMessages(

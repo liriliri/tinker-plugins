@@ -21,6 +21,7 @@ export function imapOptions(settings: AccountSettings) {
       pass: settings.imapPassword,
     },
     logger: false as const,
+    maxIdleTime: 5 * 60 * 1000,
   }
 }
 

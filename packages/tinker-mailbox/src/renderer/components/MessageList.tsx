@@ -1,11 +1,12 @@
 import { observer } from 'mobx-react-lite'
+import { useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import * as ScrollArea from '@radix-ui/react-scroll-area'
-import dateFormat from 'licia/dateFormat'
 import filter from 'licia/filter'
 import { Inbox } from 'lucide-react'
 import type { FolderInfo, MailAddress } from '../../common/types'
 import store from '../store'
+import { formatMessageDate } from '../lib/dateFormat'
 import { isTrashFolderPath } from '../lib/mail'
 import { tw } from '../theme'
 
@@ -15,17 +16,6 @@ function formatSender(from: MailAddress[]): string {
   return first.name || first.address
 }
 
-function formatDate(iso: string | null): string {
-  if (!iso) return ''
-  const d = new Date(iso)
-  const now = new Date()
-  if (d.toDateString() === now.toDateString()) {
-    return dateFormat(d, 'HH:MM')
-  }
-  return dateFormat(d, 'mm/dd')
-}
-
-/** Mailspring-style: hide drafts/sent and the folder currently open. */
 function moveTargetFolders(
   folders: FolderInfo[],
   currentFolder: string | null,
@@ -42,6 +32,28 @@ function folderLabel(folder: FolderInfo, t: (key: string) => string): string {
 
 const MessageList = observer(() => {
   const { t } = useTranslation()
+  const viewportRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (
+      !store.hasMoreMessages ||
+      store.loadingMore ||
+      store.loadingMessages ||
+      store.messages.length === 0
+    ) {
+      return
+    }
+    const el = viewportRef.current
+    if (!el) return
+    if (el.scrollHeight <= el.clientHeight + 4) {
+      void store.loadMoreMessages()
+    }
+  }, [
+    store.messages.length,
+    store.hasMoreMessages,
+    store.loadingMore,
+    store.loadingMessages,
+  ])
 
   return (
     <section className={tw.shell.messages}>
@@ -58,7 +70,15 @@ const MessageList = observer(() => {
         </div>
       ) : (
         <ScrollArea.Root type="hover" className={tw.scrollArea.root}>
-          <ScrollArea.Viewport className={tw.scrollArea.viewport}>
+          <ScrollArea.Viewport
+            ref={viewportRef}
+            className={tw.scrollArea.viewport}
+            onScroll={(e) => {
+              const el = e.currentTarget
+              if (el.scrollHeight - el.scrollTop - el.clientHeight > 80) return
+              void store.loadMoreMessages()
+            }}
+          >
             {store.messages.map((msg) => {
               const active = store.selectedUid === msg.uid
               return (
@@ -124,7 +144,7 @@ const MessageList = observer(() => {
                           msg.unseen ? tw.text.accent : tw.text.muted
                         }`}
                       >
-                        {formatDate(msg.date)}
+                        {formatMessageDate(msg.date)}
                       </span>
                     </div>
                     <div
@@ -138,6 +158,17 @@ const MessageList = observer(() => {
                 </button>
               )
             })}
+            {(store.loadingMore || store.hasMoreMessages) && (
+              <div
+                className={`flex items-center justify-center h-10 text-[11px] ${tw.text.muted}`}
+              >
+                {store.loadingMore ? (
+                  <div className={tw.spinner} />
+                ) : (
+                  t('loadingMore')
+                )}
+              </div>
+            )}
           </ScrollArea.Viewport>
           <ScrollArea.Scrollbar
             orientation="vertical"

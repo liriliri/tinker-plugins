@@ -14,6 +14,7 @@ import {
   fromAddressObject,
   makeSnippet,
   mapAddresses,
+  toIsoDate,
 } from './parse'
 import { ensureClient } from './session'
 
@@ -26,7 +27,13 @@ export async function getMessage(
   try {
     const msg = await c.fetchOne(
       String(uid),
-      { source: true, envelope: true, flags: true, uid: true },
+      {
+        source: true,
+        envelope: true,
+        flags: true,
+        uid: true,
+        internalDate: true,
+      },
       { uid: true },
     )
     if (!msg || !msg.source) {
@@ -57,11 +64,7 @@ export async function getMessage(
         : toParsed,
       cc: fromAddressObject(parsed.cc),
       bcc: fromAddressObject(parsed.bcc),
-      date: parsed.date
-        ? parsed.date.toISOString()
-        : msg.envelope?.date
-          ? new Date(msg.envelope.date).toISOString()
-          : null,
+      date: toIsoDate(parsed.date, msg.envelope?.date, msg.internalDate),
       flags,
       unseen: false,
       snippet: makeSnippet(text || html),
@@ -138,7 +141,6 @@ export async function moveMessage(
   }
 }
 
-/** MOVE → COPY+delete → fetch/append+delete. */
 async function moveMessageToFolder(
   c: ImapFlow,
   range: string,

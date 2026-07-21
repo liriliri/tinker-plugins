@@ -60,6 +60,17 @@ export function makeSnippet(raw: string | undefined): string | undefined {
   return truncate(text, SNIPPET_MAX, { ellipsis: '…', separator: ' ' })
 }
 
+export function toIsoDate(
+  ...candidates: Array<Date | string | null | undefined>
+): string | null {
+  for (const raw of candidates) {
+    if (!raw) continue
+    const date = raw instanceof Date ? raw : new Date(raw)
+    if (!Number.isNaN(date.getTime())) return date.toISOString()
+  }
+  return null
+}
+
 export function headerFromFetched(msg: {
   uid: number
   flags?: Set<string> | string[]
@@ -69,6 +80,7 @@ export function headerFromFetched(msg: {
     to?: { name?: string; address?: string }[]
     date?: Date
   }
+  internalDate?: Date | string
   bodyParts?: Map<string, Buffer>
 }): MessageHeader {
   const flags = flagsToArray(msg.flags)
@@ -78,7 +90,7 @@ export function headerFromFetched(msg: {
     subject: msg.envelope?.subject || '',
     from: mapAddresses(msg.envelope?.from),
     to: mapAddresses(msg.envelope?.to),
-    date: msg.envelope?.date ? new Date(msg.envelope.date).toISOString() : null,
+    date: toIsoDate(msg.envelope?.date, msg.internalDate),
     flags,
     unseen: !contain(flags, '\\Seen'),
     snippet: makeSnippet(textPart?.toString('utf8')),
