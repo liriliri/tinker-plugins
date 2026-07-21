@@ -78,7 +78,6 @@ export class Store {
   isDark = false
 
   private idleSyncTimer: ReturnType<typeof setTimeout> | null = null
-  private unsubIdle: (() => void) | null = null
   private folderSyncTail: Promise<void> = Promise.resolve()
 
   constructor() {
@@ -86,7 +85,7 @@ export class Store {
       mcp: false,
     })
     void this.initTheme()
-    this.unsubIdle = mailbox.onMailboxChange((change) => {
+    mailbox.onMailboxChange((change) => {
       this.scheduleIdleSync(change)
     })
     if (typeof document !== 'undefined') {
@@ -702,14 +701,7 @@ export class Store {
         'success',
       )
     } catch (err) {
-      const message = String(err)
-      if (/not found/i.test(message)) {
-        await this.removeMessageLocally(accountId, folderPath, uid)
-        await this.selectFolder(folderPath, { force: true })
-        this.showToast('messageGone', 'success')
-        return
-      }
-      this.showToast(message)
+      await this.handleMessageMutationError(err, accountId, folderPath, uid)
     }
   }
 
@@ -723,15 +715,24 @@ export class Store {
       await this.removeMessageLocally(accountId, folderPath, uid)
       this.showToast('messageMoved', 'success')
     } catch (err) {
-      const message = String(err)
-      if (/not found/i.test(message)) {
-        await this.removeMessageLocally(accountId, folderPath, uid)
-        await this.selectFolder(folderPath, { force: true })
-        this.showToast('messageGone', 'success')
-        return
-      }
-      this.showToast(message)
+      await this.handleMessageMutationError(err, accountId, folderPath, uid)
     }
+  }
+
+  private async handleMessageMutationError(
+    err: unknown,
+    accountId: string,
+    folderPath: string,
+    uid: number,
+  ) {
+    const message = String(err)
+    if (/not found/i.test(message)) {
+      await this.removeMessageLocally(accountId, folderPath, uid)
+      await this.selectFolder(folderPath, { force: true })
+      this.showToast('messageGone', 'success')
+      return
+    }
+    this.showToast(message)
   }
 
   private async removeMessageLocally(

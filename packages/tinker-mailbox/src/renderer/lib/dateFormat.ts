@@ -8,7 +8,7 @@ function hourCycle(): 'h23' | 'h12' {
   return locale().toLowerCase().startsWith('zh') ? 'h23' : 'h12'
 }
 
-export function shortTimeString(datetime: Date): string {
+function shortTimeString(datetime: Date): string {
   const now = Date.now()
   const diffDays = (now - datetime.getTime()) / 86400000
   const sameDay = datetime.toDateString() === new Date(now).toDateString()
@@ -38,7 +38,7 @@ export function shortTimeString(datetime: Date): string {
   return datetime.toLocaleDateString(locale(), opts)
 }
 
-export function mediumTimeString(datetime: Date): string {
+function mediumTimeString(datetime: Date): string {
   return datetime.toLocaleString(locale(), {
     hourCycle: hourCycle(),
     year: 'numeric',

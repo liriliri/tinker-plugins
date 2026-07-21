@@ -12,10 +12,6 @@ export function getActiveAccount(): Account | null {
   return activeAccount
 }
 
-export function getWatchedPath(): string | null {
-  return watchedPath
-}
-
 export async function ensureClient(): Promise<ImapFlow> {
   if (!client || !activeAccount) {
     throw new Error('Not connected')

@@ -7,7 +7,7 @@ import type {
 } from '../../common/types'
 import { sortMessagesByDateDesc } from '../../common/messages'
 import { pickSentFolderPath } from '../../common/sentFolder'
-import { isTrashFolder, pickTrashFolderPath } from '../../common/trashFolder'
+import { isTrashFolder } from '../../common/trashFolder'
 
 export function emptySettings(): AccountSettings {
   return {
@@ -36,10 +36,6 @@ export function pickSentFolder(folders: FolderInfo[]): string | null {
   return pickSentFolderPath(folders)
 }
 
-export function pickTrashFolder(folders: FolderInfo[]): string | null {
-  return pickTrashFolderPath(folders)
-}
-
 export function isTrashFolderPath(
   folders: FolderInfo[],
   folderPath: string,
@@ -47,6 +43,13 @@ export function isTrashFolderPath(
   const folder = find(folders, (f) => f.path === folderPath)
   if (folder) return isTrashFolder(folder)
   return isTrashFolder({ path: folderPath })
+}
+
+export function folderLabel(
+  folder: FolderInfo,
+  t: (key: string) => string,
+): string {
+  return folder.role ? t(folder.role) : folder.name
 }
 
 export function mergeByUid(

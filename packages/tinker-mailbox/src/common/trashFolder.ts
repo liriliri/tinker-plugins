@@ -1,14 +1,7 @@
 import find from 'licia/find'
+import type { SpecialFolderLike } from './types'
 
-/** Shared shape for matching a Trash folder by role or common display names. */
-export interface TrashFolderLike {
-  path: string
-  name?: string
-  role?: string
-  specialUse?: string | false
-}
-
-export function isTrashFolderName(nameOrPath: string) {
+function isTrashFolderName(nameOrPath: string) {
   const name = nameOrPath.toLowerCase()
   return (
     name === 'trash' ||
@@ -23,7 +16,7 @@ export function isTrashFolderName(nameOrPath: string) {
   )
 }
 
-export function isTrashFolder(folder: TrashFolderLike) {
+export function isTrashFolder(folder: SpecialFolderLike) {
   return (
     folder.role === 'trash' ||
     folder.specialUse === '\\Trash' ||
@@ -31,7 +24,9 @@ export function isTrashFolder(folder: TrashFolderLike) {
   )
 }
 
-export function pickTrashFolderPath(folders: TrashFolderLike[]): string | null {
+export function pickTrashFolderPath(
+  folders: SpecialFolderLike[],
+): string | null {
   const byRole = find(
     folders,
     (f) => f.role === 'trash' || f.specialUse === '\\Trash',

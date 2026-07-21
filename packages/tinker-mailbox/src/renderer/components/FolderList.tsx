@@ -12,6 +12,7 @@ import {
   Trash2,
 } from 'lucide-react'
 import type { FolderRole } from '../../common/types'
+import { folderLabel } from '../lib/mail'
 import store from '../store'
 import { tw } from '../theme'
 
@@ -59,28 +60,30 @@ const FolderList = observer(() => {
                 <div className={tw.spinner} />
               </div>
             ) : (
-              store.folders.map((folder) => {
-                const Icon = folderIcon(folder.role)
-                const active = store.currentFolder === folder.path
-                const label = folder.role ? t(folder.role) : folder.name
-                return (
-                  <button
-                    key={folder.path}
-                    type="button"
-                    className={`${tw.list.item} rounded-lg flex items-center gap-2 text-[13px] ${
-                      active ? tw.list.itemActive : tw.list.itemIdle
-                    }`}
-                    onClick={() => store.selectFolder(folder.path)}
-                  >
-                    <Icon
-                      className={`w-3.5 h-3.5 shrink-0 ${
-                        active ? 'opacity-100' : 'opacity-55'
+              <div className="flex flex-col gap-1">
+                {store.folders.map((folder) => {
+                  const Icon = folderIcon(folder.role)
+                  const active = store.currentFolder === folder.path
+                  const label = folderLabel(folder, t)
+                  return (
+                    <button
+                      key={folder.path}
+                      type="button"
+                      className={`${tw.list.item} rounded-lg flex items-center gap-2 text-[13px] ${
+                        active ? tw.list.itemActive : tw.list.itemIdle
                       }`}
-                    />
-                    <span className="truncate font-medium">{label}</span>
-                  </button>
-                )
-              })
+                      onClick={() => store.selectFolder(folder.path)}
+                    >
+                      <Icon
+                        className={`w-3.5 h-3.5 shrink-0 ${
+                          active ? 'opacity-100' : 'opacity-55'
+                        }`}
+                      />
+                      <span className="truncate font-medium">{label}</span>
+                    </button>
+                  )
+                })}
+              </div>
             )}
           </div>
         </ScrollArea.Viewport>

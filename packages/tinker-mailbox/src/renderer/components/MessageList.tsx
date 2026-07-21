@@ -7,7 +7,7 @@ import { Inbox } from 'lucide-react'
 import type { FolderInfo, MailAddress } from '../../common/types'
 import store from '../store'
 import { formatMessageDate } from '../lib/dateFormat'
-import { isTrashFolderPath } from '../lib/mail'
+import { folderLabel, isTrashFolderPath } from '../lib/mail'
 import { tw } from '../theme'
 
 function formatSender(from: MailAddress[]): string {
@@ -24,10 +24,6 @@ function moveTargetFolders(
     folders,
     (f) => f.path !== currentFolder && f.role !== 'drafts' && f.role !== 'sent',
   )
-}
-
-function folderLabel(folder: FolderInfo, t: (key: string) => string): string {
-  return folder.role ? t(folder.role) : folder.name
 }
 
 const MessageList = observer(() => {

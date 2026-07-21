@@ -32,6 +32,14 @@ export interface FolderInfo {
   delimiter?: string
 }
 
+/** Loose folder shape for matching by role, specialUse, or display name. */
+export interface SpecialFolderLike {
+  path: string
+  name?: string
+  role?: string
+  specialUse?: string | false
+}
+
 export interface FolderSyncCursor {
   uidValidity: string
   uidNext: number

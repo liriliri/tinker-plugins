@@ -44,7 +44,7 @@ const ComposePanel = observer(() => {
     <section className={`flex-1 min-w-0 flex flex-col ${tw.background.rail}`}>
       <header className={tw.shell.composeBar}>
         <input
-          className={`${tw.input.compose} flex-1 min-w-0 font-medium`}
+          className={`${tw.input.compose} flex-1 min-w-0 !text-lg font-semibold`}
           value={subject}
           onChange={(e) => setSubject(e.target.value)}
           placeholder={t('subject')}
