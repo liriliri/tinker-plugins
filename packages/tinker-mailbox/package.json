@@ -1,6 +1,6 @@
 {
   "name": "tinker-mailbox",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Mailbox Plugin for TINKER",
   "files": [
     "dist/",
