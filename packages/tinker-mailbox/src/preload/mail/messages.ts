@@ -70,6 +70,7 @@ export async function getMessage(
       snippet: makeSnippet(text || html),
       text,
       html,
+      size: msg.source.length,
     }
   } catch (err) {
     throw new Error(toErrorMessage(err))

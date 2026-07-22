@@ -364,6 +364,7 @@ export async function getBody(
     'snippet',
     'text',
     'html',
+    'size',
   ]) as MessageDetail
 }
 

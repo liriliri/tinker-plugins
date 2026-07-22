@@ -69,6 +69,7 @@ export interface MessageDetail extends MessageHeader {
   bcc: MailAddress[]
   text: string
   html: string
+  size?: number
 }
 
 export interface ComposePayload {

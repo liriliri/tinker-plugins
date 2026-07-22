@@ -141,6 +141,7 @@ async function readMessage(
     to: msg.to,
     cc: msg.cc,
     date: msg.date,
+    size: msg.size,
     text: msg.text,
     html: msg.html,
   }
