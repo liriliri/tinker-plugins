@@ -1,0 +1,84 @@
+{
+  "name": "tinker-avd",
+  "version": "0.1.0",
+  "description": "Manage Android Virtual Devices: list, start, and stop local AVDs",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:preload\"",
+    "dev:renderer": "vite build --watch",
+    "dev:preload": "vite build --watch --config vite.preload.ts",
+    "build": "concurrently \"npm run build:renderer\" \"npm run build:preload\"",
+    "build:renderer": "vite build",
+    "build:preload": "vite build --config vite.preload.ts",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "avd",
+    "android",
+    "emulator"
+  ],
+  "tinker": {
+    "name": "AVD",
+    "description": "List, start and stop local Android Virtual Devices",
+    "main": "dist/renderer/index.html",
+    "preload": "dist/preload/index.js",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "AVD 管理",
+        "description": "查找、启动和关闭本机 Android 虚拟设备"
+      }
+    },
+    "mcp": {
+      "tools": {
+        "list_avds": {
+          "description": "List local Android Virtual Devices and their running status. Updates the plugin UI and returns the AVD list.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        "start_avd": {
+          "description": "Start an Android Virtual Device emulator by id or display name.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "avd_id": {
+                "type": "string",
+                "minLength": 1,
+                "description": "AVD id or display name (e.g. Android_15)"
+              }
+            },
+            "required": [
+              "avd_id"
+            ]
+          }
+        },
+        "stop_avd": {
+          "description": "Stop a running Android Virtual Device emulator by id or display name.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "avd_id": {
+                "type": "string",
+                "minLength": 1,
+                "description": "AVD id or display name (e.g. Android_15)"
+              }
+            },
+            "required": [
+              "avd_id"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

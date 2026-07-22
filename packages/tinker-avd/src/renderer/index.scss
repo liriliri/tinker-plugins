@@ -1,0 +1,77 @@
+@use 'tailwindcss';
+@config "../../tailwind.config.js";
+
+:root {
+  --window: #ffffff;
+  --toolbar: #f6f6f6;
+  --header: #f0f0f0;
+  --ink: #1a1a1a;
+  --muted: #6b6b6b;
+  --line: #d4d4d4;
+  --hover: #f0f0f0;
+  --select: #3ddc84;
+  --select-text: #0f1f14;
+  --select-muted: rgba(15, 31, 20, 0.7);
+  --danger: #c62828;
+  --danger-text: #ffffff;
+  --input: #ffffff;
+  color-scheme: light;
+}
+
+html.dark {
+  --window: #1e1e1e;
+  --toolbar: #2a2a2a;
+  --header: #252525;
+  --ink: #e8e8e8;
+  --muted: #9a9a9a;
+  --line: #3a3a3a;
+  --hover: #2f2f2f;
+  --select: #3ddc84;
+  --select-text: #0f1f14;
+  --select-muted: rgba(15, 31, 20, 0.7);
+  --danger: #ff6b6b;
+  --danger-text: #1a1a1a;
+  --input: #1e1e1e;
+  color-scheme: dark;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  font-size: 12px;
+  color: var(--ink);
+  background: var(--window);
+  -webkit-font-smoothing: antialiased;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--muted) 40%, transparent);
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--muted) 60%, transparent);
+  background-clip: content-box;
+  border: 2px solid transparent;
+}
