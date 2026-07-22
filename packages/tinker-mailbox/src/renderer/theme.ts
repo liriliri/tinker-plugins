@@ -30,6 +30,8 @@ export const tw = {
   },
   button: {
     icon: 'flex items-center justify-center w-8 h-8 rounded-lg bg-transparent border-none cursor-pointer text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-[var(--mb-red)] dark:hover:text-[var(--mb-red-bright)] transition-colors disabled:opacity-40 disabled:cursor-not-allowed',
+    iconActive:
+      'bg-[var(--mb-red-soft)] dark:bg-[var(--mb-red-soft-dark)] text-[var(--mb-red)] dark:text-[var(--mb-red-bright)]',
     format:
       'flex items-center justify-center w-7 h-7 rounded-md bg-transparent border-none cursor-pointer text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-800 dark:hover:text-zinc-200 transition-colors',
     formatActive:
@@ -90,7 +92,9 @@ export const tw = {
     dark: '#1c1c1f',
   },
   bodyText:
-    'whitespace-pre-wrap break-words text-[13.5px] leading-7 text-zinc-900 dark:text-zinc-100 font-[family-name:var(--mb-sans)]',
+    'whitespace-pre-wrap break-words text-[13.5px] leading-7 font-[family-name:var(--mb-sans)]',
+  bodyTextLight: 'text-zinc-900',
+  bodyTextDark: 'text-zinc-100',
   dialogTitle: 'text-base font-semibold mb-4 text-zinc-900 dark:text-zinc-50',
   dropdown: {
     content:

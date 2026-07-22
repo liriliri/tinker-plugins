@@ -13,6 +13,8 @@
   "missingFields": "Please fill in email and IMAP host",
   "refresh": "Refresh",
   "refreshSuccess": "Messages refreshed",
+  "readerDarkMode": "Dark message body",
+  "readerLightMode": "Light message body",
   "compose": "Compose",
   "settings": "Account settings",
   "addAccount": "Add account",

@@ -3,6 +3,7 @@ import filter from 'licia/filter'
 import find from 'licia/find'
 import isEmpty from 'licia/isEmpty'
 import isStrBlank from 'licia/isStrBlank'
+import LocalStore from 'licia/LocalStore'
 import map from 'licia/map'
 import trim from 'licia/trim'
 import type {
@@ -45,6 +46,9 @@ import { createMcpApi } from './mcp'
 
 const MESSAGE_PAGE = 50
 const MESSAGE_CACHE_KEEP = 2000
+const STORAGE_READER_DARK = 'readerDark'
+
+const storage = new LocalStore('tinker-mailbox')
 
 export class Store {
   readonly mcp = createMcpApi(() => this)
@@ -75,7 +79,7 @@ export class Store {
   toastOpen = false
   toastMsg = ''
   toastKind: 'error' | 'success' = 'error'
-  isDark = false
+  readerDark = false
 
   private idleSyncTimer: ReturnType<typeof setTimeout> | null = null
   private folderSyncTail: Promise<void> = Promise.resolve()
@@ -84,7 +88,7 @@ export class Store {
     makeAutoObservable(this, {
       mcp: false,
     })
-    void this.initTheme()
+    void this.initReaderTheme()
     mailbox.onMailboxChange((change) => {
       this.scheduleIdleSync(change)
     })
@@ -131,17 +135,30 @@ export class Store {
     }, 300)
   }
 
-  private async initTheme() {
-    const theme = await tinker.getTheme()
-    runInAction(() => {
-      this.isDark = theme === 'dark'
-    })
+  private async initReaderTheme() {
+    const saved = storage.get(STORAGE_READER_DARK) as boolean | undefined
+    if (saved != null) {
+      runInAction(() => {
+        this.readerDark = saved
+      })
+    } else {
+      const theme = await tinker.getTheme()
+      runInAction(() => {
+        this.readerDark = theme === 'dark'
+      })
+    }
     tinker.on('changeTheme', async () => {
+      if (storage.get(STORAGE_READER_DARK) != null) return
       const next = await tinker.getTheme()
       runInAction(() => {
-        this.isDark = next === 'dark'
+        this.readerDark = next === 'dark'
       })
     })
+  }
+
+  toggleReaderDark() {
+    this.readerDark = !this.readerDark
+    storage.set(STORAGE_READER_DARK, this.readerDark)
   }
 
   setToastOpen(open: boolean) {

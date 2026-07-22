@@ -126,7 +126,7 @@ ${isDark ? `<script>${darkScript(bg)}<\/script>` : ''}
 const EmailFrame = observer(({ html, title }: EmailFrameProps) => {
   const iframeRef = useRef<HTMLIFrameElement>(null)
   const [height, setHeight] = useState(0)
-  const frameBg = store.isDark ? tw.readerBg.dark : tw.readerBg.light
+  const frameBg = store.readerDark ? tw.readerBg.dark : tw.readerBg.light
 
   useEffect(() => {
     const handleMessage = (e: MessageEvent) => {
@@ -146,9 +146,13 @@ const EmailFrame = observer(({ html, title }: EmailFrameProps) => {
   }, [])
 
   const srcDoc = useMemo(
-    () => buildSrcdoc(html, store.isDark),
-    [html, store.isDark],
+    () => buildSrcdoc(html, store.readerDark),
+    [html, store.readerDark],
   )
+
+  useEffect(() => {
+    setHeight(0)
+  }, [srcDoc])
 
   return (
     <div
@@ -163,7 +167,7 @@ const EmailFrame = observer(({ html, title }: EmailFrameProps) => {
         style={{
           height: height > 0 ? height : 0,
           background: frameBg,
-          colorScheme: store.isDark ? 'dark' : 'light',
+          colorScheme: store.readerDark ? 'dark' : 'light',
         }}
         srcDoc={srcDoc}
       />

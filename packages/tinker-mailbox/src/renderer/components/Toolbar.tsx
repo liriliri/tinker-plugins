@@ -1,6 +1,14 @@
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
-import { Check, ChevronDown, Pencil, RotateCw, UserPlus } from 'lucide-react'
+import {
+  Check,
+  ChevronDown,
+  Moon,
+  Pencil,
+  RotateCw,
+  Sun,
+  UserPlus,
+} from 'lucide-react'
 import type { ReactNode } from 'react'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import * as Tooltip from '@radix-ui/react-tooltip'
@@ -10,6 +18,7 @@ import { tw } from '../theme'
 interface ToolbarIconButtonProps {
   label: string
   disabled?: boolean
+  active?: boolean
   onClick: () => void
   children: ReactNode
 }
@@ -17,6 +26,7 @@ interface ToolbarIconButtonProps {
 function ToolbarIconButton({
   label,
   disabled,
+  active,
   onClick,
   children,
 }: ToolbarIconButtonProps) {
@@ -25,7 +35,7 @@ function ToolbarIconButton({
       <Tooltip.Trigger asChild>
         <button
           type="button"
-          className={tw.button.icon}
+          className={`${tw.button.icon} ${active ? tw.button.iconActive : ''}`}
           disabled={disabled}
           onClick={onClick}
         >
@@ -140,6 +150,18 @@ const Toolbar = observer(() => {
           <UserPlus className="w-4 h-4" />
         </ToolbarIconButton>
         <div className="flex-1" />
+        <ToolbarIconButton
+          label={store.readerDark ? t('readerLightMode') : t('readerDarkMode')}
+          active={store.readerDark}
+          onClick={() => store.toggleReaderDark()}
+        >
+          {store.readerDark ? (
+            <Sun className="w-4 h-4" />
+          ) : (
+            <Moon className="w-4 h-4" />
+          )}
+        </ToolbarIconButton>
+        <span className={tw.shell.composeToolbarDivider} />
         <ToolbarIconButton
           label={t('refresh')}
           disabled={!store.account || store.loadingMessages}

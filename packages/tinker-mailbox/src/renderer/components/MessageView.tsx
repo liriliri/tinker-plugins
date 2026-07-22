@@ -81,11 +81,22 @@ const MessageView = observer(() => {
           )}
         </div>
       </header>
-      <div className="flex-1 overflow-y-auto px-6 py-5">
+      <div
+        className="flex-1 overflow-y-auto px-6 py-5"
+        style={{
+          background: store.readerDark ? tw.readerBg.dark : tw.readerBg.light,
+        }}
+      >
         {msg.html ? (
           <EmailFrame html={msg.html} title={msg.subject || t('noSubject')} />
         ) : (
-          <pre className={tw.bodyText}>{msg.text || ''}</pre>
+          <pre
+            className={`${tw.bodyText} ${
+              store.readerDark ? tw.bodyTextDark : tw.bodyTextLight
+            }`}
+          >
+            {msg.text || ''}
+          </pre>
         )}
       </div>
     </article>
