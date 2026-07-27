@@ -11,8 +11,6 @@ An email client plugin for [TINKER](https://github.com/liriliri/tinker), with IM
 - **Message reading** for plain text and HTML mail
 - **Compose & send** with rich-text formatting (bold, lists, font size, etc.)
 - **Move & delete** messages via context menu (trash or permanent delete)
-- **MCP Tools** for listing accounts/folders/messages, reading mail, and sending from the CLI
-
 ## Installation
 
 Download and install TINKER from `https://tinker.liriliri.io/`, then run `npm i -g tinker-mailbox`.

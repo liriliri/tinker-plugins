@@ -10,7 +10,6 @@ An Android Virtual Device manager plugin for [TINKER](https://github.com/lirilir
 - **Start / Stop** emulators from the toolbar or by double-clicking a row
 - **Wipe Data** to clear snapshots and userdata
 - **Open Directory** to reveal the AVD folder in Finder / Explorer
-- **MCP Tools** for `list_avds`, `start_avd`, and `stop_avd` via the CLI
 
 ## Installation
 

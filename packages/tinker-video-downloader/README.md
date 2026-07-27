@@ -11,7 +11,6 @@ A multi-site video downloader plugin for [TINKER](https://github.com/liriliri/ti
 - **Download progress** with task list, including merge status
 - **Cookies** via manual entries or `cookies.txt` import (helpful for login-required videos)
 - **Custom yt-dlp path** when the binary is not on `PATH`
-- **MCP Tools** for `query`, `download`, and `get_progress` via the CLI
 
 ## Installation
 

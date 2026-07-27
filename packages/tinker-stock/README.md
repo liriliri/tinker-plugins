@@ -10,8 +10,6 @@ A stock data browser plugin for [TINKER](https://github.com/liriliri/tinker), co
 - **Watchlist** with latest daily snapshots, sorted by change
 - **Market Boards** for hot stocks, hot ETFs, sectors, and IPO calendar
 - **Symbol Detail** with overview, intraday / K-line, fund flow, chips, financials, shareholders, and dividends
-- **MCP Tools** for search, open symbol, market tabs, watchlist, and detail data from the CLI
-
 ## Installation
 
 Download and install TINKER from `https://tinker.liriliri.io/`, then run `npm i -g tinker-stock`.
