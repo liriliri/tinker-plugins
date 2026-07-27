@@ -1,4 +1,8 @@
 import type { Store } from './store'
+import type { TaskData } from './types'
+import map from 'licia/map'
+import filter from 'licia/filter'
+import trim from 'licia/trim'
 
 export function createMcpApi(getStore: () => Store) {
   const callTool = (name: string, args: Record<string, unknown>) => {
@@ -8,20 +12,11 @@ export function createMcpApi(getStore: () => Store) {
     if (name === 'download') {
       return download(
         getStore(),
-        args as { quality?: number; pages?: number[] },
+        args as { quality?: number; pages?: number[]; downloadPath?: string },
       )
     }
-    if (name === 'get_settings') {
-      return getSettings(getStore())
-    }
-    if (name === 'set_settings') {
-      return setSettings(
-        getStore(),
-        args as {
-          downloadPath?: string
-          sessdata?: string
-        },
-      )
+    if (name === 'get_progress') {
+      return getProgress(getStore(), args as { taskId?: string })
     }
     throw new Error(`Unknown tool "${name}"`)
   }
@@ -34,7 +29,7 @@ export function createMcpApi(getStore: () => Store) {
 async function query(store: Store, args: { url: string }) {
   const prev = store.videoInfo
   store.setShowVideoModal(false)
-  store.setUrlInput(args.url.trim())
+  store.setUrlInput(trim(args.url))
   await store.parseUrl()
 
   const info = store.videoInfo
@@ -57,13 +52,17 @@ async function query(store: Store, args: { url: string }) {
 
 async function download(
   store: Store,
-  args: { quality?: number; pages?: number[] },
+  args: { quality?: number; pages?: number[]; downloadPath?: string },
 ) {
   if (!store.videoInfo) {
     throw new Error('No video queried. Call query first.')
   }
-  if (!store.settings.downloadPath) {
-    throw new Error('Please set a download path in settings first.')
+
+  const downloadPath = trim(args.downloadPath || '')
+  if (!downloadPath && !store.settings.downloadPath) {
+    throw new Error(
+      'downloadPath is required when no download directory is set in the UI.',
+    )
   }
 
   if (args.quality != null) {
@@ -82,51 +81,53 @@ async function download(
   }
 
   const beforeIds = new Set(store.tasks.keys())
-  await store.startDownload()
+  await store.startDownload({
+    downloadPath: downloadPath || undefined,
+  })
 
-  const newIds = [...store.tasks.keys()].filter((id) => !beforeIds.has(id))
+  const newIds = filter([...store.tasks.keys()], (id) => !beforeIds.has(id))
   if (newIds.length === 0) {
     throw new Error('No download tasks were created')
   }
 
-  await waitForTasks(store, newIds)
-
-  return {
-    tasks: newIds.map((id) => store.tasks.get(id)),
-  }
-}
-
-function getSettings(store: Store) {
-  return {
-    downloadPath: store.settings.downloadPath,
-    sessdata: store.settings.sessdata,
-  }
-}
-
-function setSettings(
-  store: Store,
-  args: {
-    downloadPath?: string
-    sessdata?: string
-  },
-) {
-  store.updateSettings(args)
-  return getSettings(store)
-}
-
-function waitForTasks(store: Store, ids: string[]) {
-  return new Promise<void>((resolve) => {
-    const tick = () => {
-      const pending = ids.some((id) => {
-        const t = store.tasks.get(id)
-        return t && t.status !== 'done' && t.status !== 'error'
-      })
-      if (!pending) {
-        resolve()
-        return
-      }
-      setTimeout(tick, 300)
-    }
-    tick()
+  const tasks = map(newIds, (id) => {
+    const task = store.tasks.get(id)!
+    return serializeTask(task)
   })
+
+  return {
+    taskIds: newIds,
+    tasks,
+  }
+}
+
+function serializeTask(task: TaskData) {
+  return {
+    taskId: task.id,
+    title: task.title,
+    status: task.status,
+    progress: task.progress,
+    outputPath: task.outputPath,
+    qualityLabel: task.qualityLabel,
+    bvid: task.bvid,
+    error: task.error,
+  }
+}
+
+function getProgress(store: Store, args: { taskId?: string }) {
+  const taskId = trim(args.taskId || '')
+  if (taskId) {
+    const task = store.tasks.get(taskId)
+    if (!task) {
+      throw new Error(`Unknown taskId: ${taskId}`)
+    }
+    return serializeTask(task)
+  }
+
+  const tasks = map(
+    [...store.tasks.values()].sort((a, b) => b.createdTime - a.createdTime),
+    serializeTask,
+  )
+
+  return { tasks }
 }

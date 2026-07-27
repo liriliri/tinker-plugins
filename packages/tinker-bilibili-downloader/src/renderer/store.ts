@@ -3,6 +3,7 @@ import LocalStore from 'licia/LocalStore'
 import { VideoData, qualityMap, userQuality } from '../common/types'
 import type { TaskData, Settings } from './types'
 import uuid from 'licia/uuid'
+import trim from 'licia/trim'
 import { createMcpApi } from './mcp'
 
 const storage = new LocalStore('tinker-bilibili-downloader')
@@ -177,9 +178,12 @@ export class Store {
     }
   }
 
-  async startDownload() {
+  async startDownload(options?: { downloadPath?: string }) {
     if (!this.videoInfo) return
-    if (!this.settings.downloadPath) {
+
+    const basePath =
+      trim(options?.downloadPath || '') || this.settings.downloadPath
+    if (!basePath) {
       alert('Please set a download path in settings first.')
       return
     }
@@ -201,8 +205,8 @@ export class Store {
         .slice(0, 60)
       const fileName = `${safeTitle}-${pageInfo.bvid}`
       const outputDir = this.settings.isFolder
-        ? `${this.settings.downloadPath}/${fileName}`
-        : this.settings.downloadPath
+        ? `${basePath}/${fileName}`
+        : basePath
       const outputPath = `${outputDir}/${fileName}.mp4`
       bilibiliDownloader.ensureDir(outputDir)
       const videoTmpPath = `${tmpBase}/${taskId}-video.m4s`

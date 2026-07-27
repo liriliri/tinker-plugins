@@ -11,6 +11,7 @@ A Bilibili video downloader plugin for [TINKER](https://github.com/liriliri/tink
 - **Multi-page support** for series and episode videos
 - **Download progress** tracking with task list
 - **SESSDATA** cookie support for higher quality access
+- **MCP Tools** for `query`, `download`, and `get_progress` via the CLI
 
 ## Installation
 

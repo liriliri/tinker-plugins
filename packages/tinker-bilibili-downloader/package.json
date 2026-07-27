@@ -1,6 +1,6 @@
 {
   "name": "tinker-bilibili-downloader",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Bilibili Video Downloader Plugin for TINKER",
   "files": [
     "dist/",
@@ -56,13 +56,13 @@
           }
         },
         "download": {
-          "description": "Download the video previously queried via the query tool. Optionally override quality and page selection. Waits until downloads finish and returns task results. Requires download path in plugin settings.",
+          "description": "Start downloading the video previously queried via query. Returns immediately with taskIds; use get_progress to poll status. Optionally set quality, pages, and downloadPath.",
           "inputSchema": {
             "type": "object",
             "properties": {
               "quality": {
                 "type": "integer",
-                "description": "Quality id from query.qualityOptions (e.g. 80 for 1080P). Defaults to the highest available from the last query."
+                "description": "Quality id from query.qualityOptions (e.g. 80 for 1080P). Defaults to the currently selected quality."
               },
               "pages": {
                 "type": "array",
@@ -71,31 +71,24 @@
                   "minimum": 1
                 },
                 "minItems": 1,
-                "description": "Page/episode numbers to download from query.pages. Defaults to all pages from the last query."
+                "description": "Page/episode numbers to download from query.pages. Defaults to the currently selected pages."
+              },
+              "downloadPath": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Absolute directory for this download. Falls back to the path set in the plugin UI when omitted."
               }
             }
           }
         },
-        "get_settings": {
-          "description": "Get current plugin settings: downloadPath and sessdata.",
-          "inputSchema": {
-            "type": "object",
-            "properties": {}
-          }
-        },
-        "set_settings": {
-          "description": "Update plugin settings. Only provided fields are changed. Returns the settings after update.",
+        "get_progress": {
+          "description": "Get download progress. Pass taskId for one task, or omit it to list all tasks.",
           "inputSchema": {
             "type": "object",
             "properties": {
-              "downloadPath": {
+              "taskId": {
                 "type": "string",
-                "minLength": 1,
-                "description": "Absolute path for downloaded videos"
-              },
-              "sessdata": {
-                "type": "string",
-                "description": "Bilibili SESSDATA cookie for higher quality / login-required videos"
+                "description": "Task id returned by download. Omit to list all tasks."
               }
             }
           }
