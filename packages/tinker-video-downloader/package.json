@@ -1,0 +1,93 @@
+{
+  "name": "tinker-video-downloader",
+  "version": "0.1.0",
+  "description": "Video Downloader Plugin for TINKER (based on yt-dlp)",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:preload\"",
+    "dev:renderer": "vite build --watch",
+    "dev:preload": "vite build --watch --config vite.preload.ts",
+    "build": "concurrently \"npm run build:renderer\" \"npm run build:preload\"",
+    "build:renderer": "vite build",
+    "build:preload": "vite build --config vite.preload.ts",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "video",
+    "downloader",
+    "yt-dlp"
+  ],
+  "tinker": {
+    "name": "Video Downloader",
+    "description": "Download videos with yt-dlp",
+    "main": "dist/renderer/index.html",
+    "preload": "dist/preload/index.js",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "视频下载",
+        "description": "使用 yt-dlp 下载视频（需自行安装 yt-dlp）"
+      }
+    },
+    "mcp": {
+      "tools": {
+        "query": {
+          "description": "Parse a video URL with yt-dlp and return title, formats, and metadata. Call this before download. Updates the plugin UI.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Video URL supported by yt-dlp, e.g. https://www.youtube.com/watch?v=..."
+              }
+            },
+            "required": [
+              "url"
+            ]
+          }
+        },
+        "download": {
+          "description": "Start downloading the video previously queried via query. Returns immediately with taskId; use get_progress to poll status. Optionally set formatId and downloadPath.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "formatId": {
+                "type": "string",
+                "description": "formatId from query.formats. Defaults to the currently selected format."
+              },
+              "downloadPath": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Absolute directory for this download. Falls back to the path set in the plugin UI when omitted."
+              }
+            }
+          }
+        },
+        "get_progress": {
+          "description": "Get download progress. Pass taskId for one task, or omit it to list all tasks.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "taskId": {
+                "type": "string",
+                "description": "Task id returned by download. Omit to list all tasks."
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "devDependencies": {
+    "@radix-ui/react-progress": "^1.1.7"
+  }
+}

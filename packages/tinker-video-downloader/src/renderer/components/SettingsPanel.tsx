@@ -1,0 +1,154 @@
+import { observer } from 'mobx-react-lite'
+import { useTranslation } from 'react-i18next'
+import * as Dialog from '@radix-ui/react-dialog'
+import className from 'licia/className'
+import store from '../store'
+import { tw } from '../theme'
+
+const SettingsPanel = observer(() => {
+  const { t } = useTranslation()
+  const { settings } = store
+
+  const handleSelectFolder = async () => {
+    const result = await tinker.showOpenDialog({
+      properties: ['openDirectory'],
+    })
+    if (result?.filePaths?.[0]) {
+      store.updateSettings({ downloadPath: result.filePaths[0] })
+    }
+  }
+
+  const handleSelectYtDlp = async () => {
+    const result = await tinker.showOpenDialog({
+      properties: ['openFile'],
+    })
+    if (result?.filePaths?.[0]) {
+      store.updateSettings({ ytDlpPath: result.filePaths[0] })
+    }
+  }
+
+  return (
+    <Dialog.Root open onOpenChange={() => store.setShowSettings(false)}>
+      <Dialog.Portal>
+        <Dialog.Overlay
+          className={className('fixed inset-0 z-50', tw.overlay)}
+        />
+        <Dialog.Content
+          className={className(
+            'fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2',
+            'z-50 w-[460px] max-w-[calc(100vw-2rem)] max-h-[calc(100vh-2rem)] overflow-auto',
+            tw.modal.shell,
+            tw.background.card,
+          )}
+          aria-describedby={undefined}
+        >
+          <div className={className('px-4 py-3 border-b', tw.border.divider)}>
+            <Dialog.Title
+              className={className(
+                'text-xs font-semibold uppercase tracking-[0.1em]',
+                tw.text.primary,
+              )}
+            >
+              {t('settings')}
+            </Dialog.Title>
+          </div>
+
+          <div className="p-4 space-y-4">
+            <div>
+              <label className={className(tw.label.section, 'block mb-1.5')}>
+                {t('downloadPath')}
+              </label>
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={settings.downloadPath}
+                  readOnly
+                  className={className(
+                    tw.input.base,
+                    tw.input.focus,
+                    'flex-1 cursor-default font-mono text-xs',
+                  )}
+                />
+                <button
+                  onClick={() => void handleSelectFolder()}
+                  className={className(
+                    tw.button.secondary.base,
+                    tw.button.secondary.hover,
+                    tw.button.secondary.transition,
+                    'whitespace-nowrap flex-shrink-0',
+                  )}
+                >
+                  {t('selectFolder')}
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <label className={className(tw.label.section, 'block mb-1.5')}>
+                {t('ytDlpPath')}
+              </label>
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={settings.ytDlpPath}
+                  readOnly
+                  placeholder="yt-dlp"
+                  className={className(
+                    tw.input.base,
+                    tw.input.focus,
+                    'flex-1 cursor-default font-mono text-xs',
+                  )}
+                />
+                <button
+                  onClick={() => void handleSelectYtDlp()}
+                  className={className(
+                    tw.button.secondary.base,
+                    tw.button.secondary.hover,
+                    tw.button.secondary.transition,
+                    'whitespace-nowrap flex-shrink-0',
+                  )}
+                >
+                  {t('selectFile')}
+                </button>
+                {settings.ytDlpPath && (
+                  <button
+                    onClick={() => store.updateSettings({ ytDlpPath: '' })}
+                    className={className(
+                      tw.button.secondary.base,
+                      tw.button.secondary.hover,
+                      tw.button.secondary.transition,
+                      'whitespace-nowrap flex-shrink-0',
+                    )}
+                  >
+                    {t('clear')}
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
+
+          <div
+            className={className(
+              'px-4 py-3 border-t flex justify-end',
+              tw.border.divider,
+            )}
+          >
+            <Dialog.Close asChild>
+              <button
+                className={className(
+                  tw.button.primary.base,
+                  tw.button.primary.hover,
+                  tw.button.primary.transition,
+                )}
+              >
+                {t('confirm')}
+              </button>
+            </Dialog.Close>
+          </div>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
+  )
+})
+
+export default SettingsPanel

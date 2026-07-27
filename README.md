@@ -144,5 +144,13 @@ All plugins in the list can be installed to TINKER by running `npm i -g tinker-x
       <th><img src="./packages/tinker-stock/screenshot.png"/></th>
       <th><img src="./packages/tinker-mailbox/screenshot.png"/></th>
     </tr>
+    <tr>
+      <th><a href="./packages/tinker-avd/">tinker-avd</a></th>
+      <th><a href="./packages/tinker-video-downloader/">tinker-video-downloader</a></th>
+    </tr>
+    <tr>
+      <th><img src="./packages/tinker-avd/screenshot.png"/></th>
+      <th><img src="./packages/tinker-video-downloader/screenshot.png"/></th>
+    </tr>
   </tbody>
 </table>
