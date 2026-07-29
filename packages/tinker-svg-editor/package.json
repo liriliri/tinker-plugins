@@ -1,0 +1,106 @@
+{
+  "name": "tinker-svg-editor",
+  "version": "0.1.0",
+  "description": "SVG Editor Plugin for TINKER",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "svg",
+    "editor"
+  ],
+  "tinker": {
+    "name": "SVG Editor",
+    "description": "Draw and edit SVG vector graphics, with PNG export",
+    "main": "dist/index.html",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "SVG 编辑",
+        "description": "绘制与编辑 SVG 矢量图，支持导出 PNG"
+      }
+    },
+    "mcp": {
+      "tools": {
+        "open": {
+          "description": "Open an SVG file in the editor. Same as opening a file in the UI. Call this before editing an existing file.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Absolute path to an SVG file"
+              }
+            },
+            "required": [
+              "path"
+            ]
+          }
+        },
+        "get": {
+          "description": "Get the current SVG content, file path, canvas size, tool mode, selection state, and undo/redo availability."
+        },
+        "set": {
+          "description": "Replace the SVG content in the editor. Changes apply immediately. Call save afterward to write to disk.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "content": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Full SVG document string"
+              }
+            },
+            "required": [
+              "content"
+            ]
+          }
+        },
+        "save": {
+          "description": "Save the current SVG content to disk. Uses the open file path by default. When no file is open, path is required.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Absolute path to save to. Required when no file is open; optional to save-as to a new path."
+              }
+            }
+          }
+        },
+        "export_png": {
+          "description": "Rasterize the current SVG to a PNG file at the canvas resolution.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Absolute path for the PNG output"
+              }
+            },
+            "required": [
+              "path"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "devDependencies": {
+    "@svgedit/svgcanvas": "^7.4.2"
+  }
+}

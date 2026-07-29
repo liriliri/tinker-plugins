@@ -1,0 +1,335 @@
+@use 'tailwindcss';
+@config "../tailwind.config.js";
+
+/* Theme tokens + canvas/svgcanvas/ruler/color-chip overrides.
+   App chrome UI lives in theme.ts (Tailwind). */
+
+:root {
+  --chrome: #2a2a2a;
+  --chrome-raised: #343434;
+  --chrome-hover: #404040;
+  --panel: #222222;
+  --panel-raised: #303030;
+  --well: #1a1a1a;
+  --well-dot: rgba(255, 255, 255, 0.045);
+  --line: #454545;
+  --line-soft: #383838;
+  --ink: #f2f2f2;
+  --ink-secondary: #b0b0b0;
+  --ink-muted: #808080;
+  --accent: #ff5c5c;
+  --accent-soft: #ff8a6a;
+  --accent-ink: #ffffff;
+  --danger: #ff5c5c;
+  --focus-ring: rgba(255, 92, 92, 0.42);
+  --shadow-tool: 0 1px 2px rgba(0, 0, 0, 0.28);
+  --shadow-chip: 0 2px 6px rgba(0, 0, 0, 0.35);
+
+  --toolbar-h: 40px;
+  --tools-w: 48px;
+  --palette-h: 30px;
+  --radius: 7px;
+  --radius-sm: 5px;
+
+  --font-ui:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --font-mono:
+    ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+}
+
+html.inverted {
+  --chrome: #ececec;
+  --chrome-raised: #f7f7f7;
+  --chrome-hover: #e0e0e0;
+  --panel: #e4e4e4;
+  --panel-raised: #ffffff;
+  --well: #c4c4c4;
+  --well-dot: rgba(0, 0, 0, 0.07);
+  --line: #c8c8c8;
+  --line-soft: #d6d6d6;
+  --ink: #1f1f1f;
+  --ink-secondary: #555555;
+  --ink-muted: #808080;
+  --accent: #e83d3d;
+  --accent-soft: #ff6b4a;
+  --accent-ink: #ffffff;
+  --danger: #d93636;
+  --focus-ring: rgba(232, 61, 61, 0.35);
+  --shadow-tool: 0 1px 2px rgba(0, 0, 0, 0.08);
+  --shadow-chip: 0 2px 5px rgba(0, 0, 0, 0.14);
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: var(--chrome);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: 12.5px;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+}
+
+/* Overlapping color chips */
+#color_tools {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  margin: 18px auto 8px;
+  flex-shrink: 0;
+}
+
+#tool_switch {
+  position: absolute;
+  top: -8px;
+  right: -4px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink-secondary);
+  cursor: pointer;
+  line-height: 0;
+  transition:
+    color 140ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    background 140ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+#tool_switch:hover {
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.color_chip {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  padding: 2px;
+  box-sizing: border-box;
+  background: var(--panel-raised);
+  border: 1.5px solid var(--ink);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.color_chip input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  z-index: 2;
+}
+
+.color_chip_paint {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-radius: 3px;
+}
+
+.color_chip_fill {
+  left: 3px;
+  top: 3px;
+  z-index: 2;
+  box-shadow: var(--shadow-chip);
+}
+
+.color_chip_stroke {
+  left: 15px;
+  top: 15px;
+  z-index: 1;
+  box-shadow: var(--shadow-chip);
+}
+
+.color_chip.active {
+  z-index: 3;
+}
+
+/* Workspace + rulers */
+#workspace {
+  grid-area: workarea;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--well);
+}
+
+#workspace.with-rulers {
+  grid-template-columns: 16px 1fr;
+  grid-template-rows: 16px 1fr;
+  grid-template-areas:
+    'corner rulerx'
+    'rulery work';
+}
+
+#ruler_corner {
+  display: none;
+  grid-area: corner;
+  background: var(--panel);
+  border-right: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+  z-index: 2;
+}
+
+#ruler_x,
+#ruler_y {
+  display: none;
+  overflow: hidden;
+  background: var(--panel);
+  z-index: 1;
+}
+
+#ruler_x {
+  grid-area: rulerx;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+#ruler_y {
+  grid-area: rulery;
+  border-right: 1px solid var(--line-soft);
+}
+
+#workspace.with-rulers #ruler_corner,
+#workspace.with-rulers #ruler_x,
+#workspace.with-rulers #ruler_y {
+  display: block;
+}
+
+.ruler_canvas_wrap {
+  position: relative;
+}
+
+#ruler_x .ruler_canvas_wrap {
+  height: 16px;
+}
+
+#ruler_y .ruler_canvas_wrap {
+  width: 16px;
+}
+
+#ruler_x canvas,
+#ruler_y canvas {
+  display: block;
+}
+
+/* Workarea (recessed well) + svgcanvas */
+#workarea {
+  grid-area: 1 / 1;
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  background-color: var(--well);
+  background-image: radial-gradient(var(--well-dot) 1px, transparent 1px);
+  background-size: 16px 16px;
+  overflow: auto;
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.32);
+}
+
+#workspace.with-rulers #workarea {
+  grid-area: work;
+}
+
+html.inverted #workarea {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.14);
+}
+
+#svgcanvas {
+  background: transparent;
+  display: block;
+}
+
+#text {
+  position: fixed;
+  left: -9999px;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+}
+
+#svgroot {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  display: block;
+  overflow: hidden;
+}
+
+#workarea.rect,
+#workarea.line,
+#workarea.ellipse,
+#workarea.path,
+#workarea.fhpath {
+  cursor: crosshair;
+}
+
+#workarea.text {
+  cursor: text;
+}
+
+#workarea.zoom {
+  cursor: zoom-in;
+}
+
+#workarea.zoom.out {
+  cursor: zoom-out;
+}
+
+#workarea.pan {
+  cursor: grab;
+}
+
+#workarea.pan.dragging {
+  cursor: grabbing;
+}
+
+.palette-transparent {
+  background-color: #fff;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAVdEVYdENyZWF0aW9uIFRpbWUAOC8yMi8xMg1cp6sAAABESURBVBiVjdBBCgAgCETRr/e/87SJKFPLnfIcQRMIwMBIShIAvgZzoSrfkzrs8WyF1+kX9r3p8AE7nL7kSpSshN+JEQ8GixkF0mSevgAAAABJRU5ErkJggg==');
+  background-repeat: repeat;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: color-mix(in srgb, var(--line) 80%, var(--accent) 20%);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--well);
+}
