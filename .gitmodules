@@ -1,3 +1,6 @@
 [submodule "packages/tinker-whois"]
 	path = packages/tinker-whois
 	url = https://github.com/liriliri/tinker-whois.git
+[submodule "packages/tinker-office"]
+	path = packages/tinker-office
+	url = https://github.com/liriliri/tinker-office.git

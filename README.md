@@ -152,5 +152,13 @@ All plugins in the list can be installed to TINKER by running `npm i -g tinker-x
       <th><img src="./packages/tinker-avd/screenshot.png"/></th>
       <th><img src="./packages/tinker-video-downloader/screenshot.png"/></th>
     </tr>
+    <tr>
+      <th><a href="./packages/tinker-svg-editor/">tinker-svg-editor</a></th>
+      <th><a href="https://github.com/liriliri/tinker-office">tinker-office</a></th>
+    </tr>
+    <tr>
+      <th><img src="./packages/tinker-svg-editor/screenshot.png"/></th>
+      <th><img src="https://raw.githubusercontent.com/liriliri/tinker-office/master/screenshot.png"/></th>
+    </tr>
   </tbody>
 </table>
