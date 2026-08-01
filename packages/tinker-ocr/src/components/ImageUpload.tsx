@@ -72,7 +72,6 @@ const ImageUpload = observer(() => {
     >
       {input}
 
-      {/* Corner brackets */}
       <div className="absolute inset-5 pointer-events-none">
         {(['tl', 'tr', 'bl', 'br'] as const).map((corner) => (
           <div

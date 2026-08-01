@@ -1,6 +1,6 @@
 {
   "name": "tinker-ocr",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "OCR Plugin for TINKER",
   "files": [
     "dist/",
@@ -28,6 +28,39 @@
       "zh-CN": {
         "name": "OCR 识别",
         "description": "使用 Tesseract.js 识别图片中的文字"
+      }
+    },
+    "mcp": {
+      "tools": {
+        "recognize": {
+          "description": "Recognize text from a local image file using OCR. Updates the plugin UI and returns the extracted text.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Absolute path to an image file (png, jpg, jpeg, webp, bmp, etc.)"
+              },
+              "lang": {
+                "type": "string",
+                "enum": [
+                  "chi_sim+eng",
+                  "chi_sim",
+                  "eng"
+                ],
+                "description": "OCR language. Defaults to the plugin's current language setting."
+              },
+              "strip_newlines": {
+                "type": "boolean",
+                "description": "If true, remove newlines from the result. Defaults to the plugin's current setting."
+              }
+            },
+            "required": [
+              "path"
+            ]
+          }
+        }
       }
     }
   },

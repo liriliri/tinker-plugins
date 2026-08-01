@@ -1,7 +1,10 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 import { createWorker } from 'tesseract.js'
 import LocalStore from 'licia/LocalStore'
+import mime from 'licia/mime'
+import trim from 'licia/trim'
 import type { OcrLang } from './types'
+import { createMcpApi } from './mcp'
 
 const LANG_OPTIONS: { value: OcrLang; labelKey: string }[] = [
   { value: 'chi_sim+eng', labelKey: 'langChiSimEng' },
@@ -11,7 +14,9 @@ const LANG_OPTIONS: { value: OcrLang; labelKey: string }[] = [
 
 const storage = new LocalStore('tinker-ocr')
 
-class Store {
+export class Store {
+  readonly mcp = createMcpApi(() => this)
+
   imageUrl: string = ''
   result: string = ''
   isRecognizing: boolean = false
@@ -20,7 +25,9 @@ class Store {
   stripNewlines: boolean = storage.get('stripNewlines') ?? false
 
   constructor() {
-    makeAutoObservable(this)
+    makeAutoObservable(this, {
+      mcp: false,
+    })
   }
 
   get displayResult() {
@@ -38,14 +45,33 @@ class Store {
     storage.set('lang', lang)
   }
 
-  toggleStripNewlines() {
-    this.stripNewlines = !this.stripNewlines
-    storage.set('stripNewlines', this.stripNewlines)
+  setStripNewlines(value: boolean) {
+    this.stripNewlines = value
+    storage.set('stripNewlines', value)
   }
 
-  reset() {
-    this.imageUrl = ''
-    this.result = ''
+  toggleStripNewlines() {
+    this.setStripNewlines(!this.stripNewlines)
+  }
+
+  async recognizeFromPath(
+    path: string,
+    options?: { lang?: OcrLang; stripNewlines?: boolean },
+  ) {
+    const filePath = trim(path)
+    if (!filePath) throw new Error('Image path is required')
+
+    if (options?.lang) this.setLang(options.lang)
+    if (options?.stripNewlines != null) {
+      this.setStripNewlines(options.stripNewlines)
+    }
+
+    const buffer = await tinker.readFile(filePath)
+    const mimeType = mime(filePath) || 'image/*'
+    const url = URL.createObjectURL(new Blob([buffer], { type: mimeType }))
+    this.setImage(url)
+    await this.recognize()
+    return filePath
   }
 
   async recognize() {
