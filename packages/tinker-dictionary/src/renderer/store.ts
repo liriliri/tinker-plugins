@@ -2,8 +2,10 @@ import { makeAutoObservable, runInAction } from 'mobx'
 import LocalStore from 'licia/LocalStore'
 import debounce from 'licia/debounce'
 import mime from 'licia/mime'
+import trim from 'licia/trim'
 import { getAllDicts, putDict, removeDict } from './lib/db'
 import type { WordEntry, DictInfo } from '../common/types'
+import { createMcpApi } from './mcp'
 
 const storage = new LocalStore('tinker-dictionary')
 
@@ -14,7 +16,9 @@ interface DefinitionEntry {
   extraCss?: string
 }
 
-class Store {
+export class Store {
+  readonly mcp = createMcpApi(() => this)
+
   dictList: DictInfo[] = []
   searchText: string = ''
   suggestions: WordEntry[] = []
@@ -32,8 +36,9 @@ class Store {
 
   constructor() {
     makeAutoObservable(this, {
+      mcp: false,
       dictsLoading: false,
-    } as Record<string, false>)
+    })
     this.initTheme()
   }
 
@@ -178,6 +183,20 @@ class Store {
         this.definitions = []
       }
     })
+  }
+
+  async lookupWith(word: string) {
+    const text = trim(word)
+    this.searchText = text
+    if (!text) {
+      this.suggestions = []
+      this.selectedWord = ''
+      this.definitions = []
+      this.dropdownOpen = false
+      return
+    }
+    await this.search(text, true)
+    await this.selectWord(this.selectedWord || text)
   }
 
   async selectWord(word: string) {

@@ -1,6 +1,6 @@
 {
   "name": "tinker-dictionary",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Dictionary Plugin for TINKER",
   "files": [
     "dist/",
@@ -33,6 +33,45 @@
       "zh-CN": {
         "name": "词典",
         "description": "查询单词定义和翻译"
+      }
+    },
+    "mcp": {
+      "tools": {
+        "lookup": {
+          "description": "Look up a word in the loaded dictionaries. Updates the plugin UI and returns matching suggestions and definitions.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "word": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Word or phrase to look up"
+              }
+            },
+            "required": [
+              "word"
+            ]
+          }
+        },
+        "list_dictionaries": {
+          "description": "List loaded dictionaries and the currently selected dictionary filter.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        "select_dictionary": {
+          "description": "Select a dictionary to search in, or clear the filter to search all. Pass path from list_dictionaries; omit path to search all.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "description": "Absolute path of the dictionary to select. Omit to search all dictionaries."
+              }
+            }
+          }
+        }
       }
     }
   },
