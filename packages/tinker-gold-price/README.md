@@ -2,6 +2,8 @@
 
 A gold price plugin for [TINKER](https://github.com/liriliri/tinker), showing Shanghai Gold Exchange Au9999 quotes with intraday chart.
 
+![Screenshot](https://raw.githubusercontent.com/liriliri/tinker-plugins/master/packages/tinker-gold-price/screenshot.png)
+
 ## Features
 
 - **Au9999 Quote** with latest price, change, and OHLC
