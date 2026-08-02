@@ -1,0 +1,16 @@
+{
+  "title": "Gold Price",
+  "unit": "CNY/g",
+  "code": "AU9999",
+  "open": "Open",
+  "high": "High",
+  "low": "Low",
+  "preClose": "Prev Close",
+  "realtime": "Intraday",
+  "loading": "Loading...",
+  "refresh": "Refresh",
+  "error": "Failed to load gold price",
+  "chartError": "Failed to load chart",
+  "noData": "No chart data",
+  "updatedAt": "Updated {{time}}"
+}

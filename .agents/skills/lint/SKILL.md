@@ -84,18 +84,24 @@ Go through each category below and report violations with file path and line num
 - Application styles must use Tailwind CSS classes
 - Hardcoded colors inside third-party library style overrides in SCSS are allowed
 
-### 10. Icons
+### 10. Fonts
+
+- Do not load fonts from external URLs (e.g. Google Fonts, Adobe Fonts, CDN `@import url(...)`, `<link>` to remote stylesheets)
+- Use system font stacks only (e.g. `-apple-system`, `BlinkMacSystemFont`, `Segoe UI`, `PingFang SC`, `ui-monospace`, `SFMono-Regular`)
+- Bundling local font files inside the plugin is allowed when needed; remote font hosting is not
+
+### 11. Icons
 
 - Use `lucide-react` for icons: `import { Copy } from 'lucide-react'`
 - Custom SVG: `import Icon from '../assets/icon.svg?react'`
 
-### 11. External UI Libraries
+### 12. External UI Libraries
 
 - When a UI component library is needed, prefer `@radix-ui/*` packages
 - All UI library dependencies (e.g. `@radix-ui/*`, `lucide-react`) must be listed under `devDependencies` in `package.json`, not `dependencies`
 - If a dependency is already installed at the monorepo root level, do NOT add it to the plugin's `package.json` — only add dependencies that are specific to this plugin
 
-### 12. Use licia Utilities
+### 13. Use licia Utilities
 
 - Prefer functions from the `licia` utility library over hand-rolled implementations (e.g. use `licia/map`, `licia/each`, `licia/isStr`, `licia/trim`, etc.)
 - Common candidates: string manipulation, type checking, array/object helpers, async utilities, DOM helpers
@@ -116,6 +122,7 @@ Example:
 [Naming] src/components/toolbar.tsx — component file should be PascalCase: Toolbar.tsx
 [Store] src/store.ts:5 — Store must not extend any base class, use plain class Store
 [Comments] src/App.tsx:34 — comment in Chinese, must use English
+[Fonts] src/index.scss:4 — external font URL `fonts.googleapis.com`, use system font stacks instead
 ```
 
 If no violations are found, report: **No violations found.**

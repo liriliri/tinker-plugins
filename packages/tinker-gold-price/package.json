@@ -1,0 +1,46 @@
+{
+  "name": "tinker-gold-price",
+  "version": "0.1.0",
+  "description": "Gold Price Plugin for TINKER",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "gold",
+    "price"
+  ],
+  "tinker": {
+    "name": "Gold Price",
+    "description": "Query gold prices",
+    "main": "dist/index.html",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "金价",
+        "description": "查询黄金价格"
+      }
+    },
+    "mcp": {
+      "tools": {
+        "query": {
+          "description": "Fetch the latest Shanghai Gold Exchange Au9999 quote and intraday chart. Updates the plugin UI and returns current price, change, OHLC, and chart points.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      }
+    }
+  }
+}
