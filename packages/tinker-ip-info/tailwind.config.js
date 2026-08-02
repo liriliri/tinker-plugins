@@ -5,20 +5,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: [
-          'IBM Plex Sans',
-          'system-ui',
-          '-apple-system',
-          'Segoe UI',
-          'sans-serif',
-        ],
-        mono: [
-          'IBM Plex Mono',
-          'ui-monospace',
-          'Menlo',
-          'Consolas',
-          'monospace',
-        ],
+        sans: ['system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
+        mono: ['ui-monospace', 'Menlo', 'Consolas', 'monospace'],
       },
     },
   },

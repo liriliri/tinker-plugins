@@ -1,8 +1,6 @@
 @use 'tailwindcss';
 @config "../../tailwind.config.js";
 
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
-
 html.dark {
   color-scheme: dark;
 }
@@ -16,7 +14,6 @@ body,
 
 body {
   font-family:
-    'IBM Plex Sans',
     system-ui,
     -apple-system,
     'Segoe UI',
