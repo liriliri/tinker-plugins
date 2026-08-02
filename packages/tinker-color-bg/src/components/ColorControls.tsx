@@ -1,5 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
+import className from 'licia/className'
 import { tw } from '../theme'
 import store from '../store'
 import { PALETTE_KEYS, PALETTES } from '../lib/backgrounds'
@@ -15,19 +16,19 @@ const ColorControls = observer(() => {
             key={key}
             type="button"
             onClick={() => store.setPalette(key)}
-            className="cb-palette-row"
+            className={tw.paletteRow}
             title={t(`palette.${key}`)}
           >
             <div className="flex gap-1 flex-1 min-w-0">
               {PALETTES[key].slice(0, 5).map((hex, i) => (
                 <span
                   key={`${key}-${i}`}
-                  className="cb-swatch shrink-0"
+                  className={className(tw.swatch, 'shrink-0')}
                   style={{ backgroundColor: hex }}
                 />
               ))}
             </div>
-            <span className={`text-[10px] shrink-0 ${tw.text.muted}`}>
+            <span className={className('text-[10px] shrink-0', tw.text.muted)}>
               {t(`palette.${key}`)}
             </span>
           </button>
@@ -36,7 +37,7 @@ const ColorControls = observer(() => {
 
       <div className="flex flex-wrap gap-2 px-1">
         {store.colors.map((color, index) => (
-          <label key={index} className="cb-color-dot" title={color}>
+          <label key={index} className={tw.colorDot} title={color}>
             <span
               className="absolute inset-0"
               style={{ backgroundColor: color }}

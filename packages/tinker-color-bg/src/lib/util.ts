@@ -1,9 +1,15 @@
 import base64 from 'licia/base64'
+import clamp from 'licia/clamp'
 import dataUrl from 'licia/dataUrl'
-import now from 'licia/now'
 import extend from 'licia/extend'
+import now from 'licia/now'
+import toInt from 'licia/toInt'
 import { createBg, destroyBg, waitFrames } from './backgrounds'
 import type { BgConfig } from '../types'
+
+export function toPositiveInt(value: number) {
+  return clamp(toInt(value) || 1, 1, Number.MAX_SAFE_INTEGER)
+}
 
 function dataUrlToBytes(url: string): Uint8Array {
   const parsed = dataUrl.parse(url)

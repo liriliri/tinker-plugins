@@ -95,10 +95,11 @@ Go through each category below and report violations with file path and line num
 - Use `lucide-react` for icons: `import { Copy } from 'lucide-react'`
 - Custom SVG: `import Icon from '../assets/icon.svg?react'`
 
-### 12. External UI Libraries
+### 12. External UI Libraries & Dependencies
 
 - When a UI component library is needed, prefer `@radix-ui/*` packages
-- All UI library dependencies (e.g. `@radix-ui/*`, `lucide-react`) must be listed under `devDependencies` in `package.json`, not `dependencies`
+- Pure frontend dependencies (bundled into `dist/` by Vite — UI libraries like `@radix-ui/*` / `lucide-react`, and any other renderer-only packages) must be listed under `devDependencies` in `package.json`, not `dependencies`
+- Reserve `dependencies` for runtime packages that must ship with the plugin outside the Vite bundle (rare for typical plugins)
 - If a dependency is already installed at the monorepo root level, do NOT add it to the plugin's `package.json` — only add dependencies that are specific to this plugin
 
 ### 13. Use licia Utilities

@@ -3,22 +3,19 @@ import LocalStore from 'licia/LocalStore'
 import clone from 'licia/clone'
 import extend from 'licia/extend'
 import random from 'licia/random'
-import clamp from 'licia/clamp'
-import toInt from 'licia/toInt'
 import isArr from 'licia/isArr'
 import isNum from 'licia/isNum'
 import isBool from 'licia/isBool'
 import isStr from 'licia/isStr'
 import isObj from 'licia/isObj'
 import every from 'licia/every'
-import find from 'licia/find'
 import {
-  BG_STYLES,
   defaultPaletteForStyle,
   getDefaultOptions,
+  isBgStyle,
   PALETTES,
 } from './lib/backgrounds'
-import { exportPng } from './lib/export'
+import { exportPng, toPositiveInt } from './lib/util'
 import type { BgStyle, PaletteKey } from './types'
 
 const storage = new LocalStore('tinker-color-bg')
@@ -32,14 +29,6 @@ interface SavedSettings {
   options: Record<string, number>
   exportWidth: number
   exportHeight: number
-}
-
-function toPositiveInt(value: number) {
-  return clamp(toInt(value) || 1, 1, Number.MAX_SAFE_INTEGER)
-}
-
-function isBgStyle(value: unknown): value is BgStyle {
-  return isStr(value) && !!find(BG_STYLES, (item) => item.id === value)
 }
 
 class Store {

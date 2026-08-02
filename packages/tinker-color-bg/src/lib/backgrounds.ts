@@ -19,6 +19,7 @@ import clone from 'licia/clone'
 import keys from 'licia/keys'
 import find from 'licia/find'
 import noop from 'licia/noop'
+import isStr from 'licia/isStr'
 import type { BgStyle, PaletteKey, RangeOption, BgConfig } from '../types'
 
 import abstractShapeImg from '../assets/abstract-shape.jpg'
@@ -296,6 +297,10 @@ export function waitFrames(count = 2): Promise<void> {
     }
     requestAnimationFrame(tick)
   })
+}
+
+export function isBgStyle(value: unknown): value is BgStyle {
+  return isStr(value) && !!find(BG_STYLES, (item) => item.id === value)
 }
 
 export function styleLabelKey(style: BgStyle): string {

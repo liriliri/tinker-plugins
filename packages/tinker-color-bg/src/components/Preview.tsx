@@ -49,7 +49,7 @@ const Preview = observer(() => {
   }, [store.options])
 
   return (
-    <div className="cb-preview">
+    <div className="absolute inset-0">
       <div ref={containerRef} className="absolute inset-0 overflow-hidden" />
     </div>
   )

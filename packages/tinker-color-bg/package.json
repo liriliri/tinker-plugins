@@ -1,6 +1,6 @@
 {
   "name": "tinker-color-bg",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Color Background Generator Plugin for TINKER",
   "files": [
     "dist/",
@@ -32,7 +32,7 @@
       }
     }
   },
-  "dependencies": {
+  "devDependencies": {
     "color4bg": "^0.1.1"
   }
 }
