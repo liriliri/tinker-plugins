@@ -160,5 +160,13 @@ All plugins in the list can be installed to TINKER by running `npm i -g tinker-x
       <th><img src="./packages/tinker-svg-editor/screenshot.png"/></th>
       <th><img src="https://raw.githubusercontent.com/liriliri/tinker-office/master/screenshot.png"/></th>
     </tr>
+    <tr>
+      <th><a href="./packages/tinker-ip-info/">tinker-ip-info</a></th>
+      <th><a href="./packages/tinker-color-bg/">tinker-color-bg</a></th>
+    </tr>
+    <tr>
+      <th><img src="./packages/tinker-ip-info/screenshot.png"/></th>
+      <th><img src="./packages/tinker-color-bg/screenshot.png"/></th>
+    </tr>
   </tbody>
 </table>

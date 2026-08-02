@@ -1,0 +1,38 @@
+{
+  "name": "tinker-color-bg",
+  "version": "0.1.0",
+  "description": "Color Background Generator Plugin for TINKER",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "color-bg",
+    "background"
+  ],
+  "tinker": {
+    "name": "Color Background",
+    "description": "Generate colorful abstract backgrounds",
+    "main": "dist/index.html",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "炫彩背景",
+        "description": "生成彩色抽象背景图"
+      }
+    }
+  },
+  "dependencies": {
+    "color4bg": "^0.1.1"
+  }
+}
