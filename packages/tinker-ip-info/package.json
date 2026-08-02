@@ -1,0 +1,44 @@
+{
+  "name": "tinker-ip-info",
+  "version": "0.1.0",
+  "description": "IP Info Plugin for TINKER",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:preload\"",
+    "dev:renderer": "vite build --watch",
+    "dev:preload": "vite build --watch --config vite.preload.ts",
+    "build": "concurrently \"npm run build:renderer\" \"npm run build:preload\"",
+    "build:renderer": "vite build",
+    "build:preload": "vite build --config vite.preload.ts",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "ip",
+    "ip-info"
+  ],
+  "tinker": {
+    "name": "IP Info",
+    "description": "View LAN/public IP, latency and DNS exits",
+    "main": "dist/renderer/index.html",
+    "preload": "dist/preload/index.js",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "IP 信息",
+        "description": "查看本机/公网 IP、延迟与 DNS 出口"
+      }
+    }
+  },
+  "dependencies": {
+    "internal-ip": "^9.0.0",
+    "public-ip": "^8.0.0"
+  }
+}
