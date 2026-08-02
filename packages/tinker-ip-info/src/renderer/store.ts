@@ -15,8 +15,11 @@ import type {
 import { EMPTY_PUBLIC, fetchDomesticIp, fetchOverseasIp } from './lib/publicIp'
 import { queryDnsExits } from './lib/dnsExit'
 import { getSpeedTestTargets, runSpeedTests } from './lib/speedTest'
+import { createMcpApi } from './mcp'
 
-class Store {
+export class Store {
+  readonly mcp = createMcpApi(() => this)
+
   lanInterfaces: LanInterface[] = []
 
   domestic: PublicIpInfo = EMPTY_PUBLIC
@@ -37,7 +40,9 @@ class Store {
   copiedKey: string = ''
 
   constructor() {
-    makeAutoObservable(this)
+    makeAutoObservable(this, {
+      mcp: false,
+    })
   }
 
   setLanguage(language: string) {

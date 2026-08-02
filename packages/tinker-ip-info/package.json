@@ -1,6 +1,6 @@
 {
   "name": "tinker-ip-info",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "IP Info Plugin for TINKER",
   "files": [
     "dist/",
@@ -34,6 +34,24 @@
       "zh-CN": {
         "name": "IP 信息",
         "description": "查看本机/公网 IP、延迟与 DNS 出口"
+      }
+    },
+    "mcp": {
+      "tools": {
+        "get_info": {
+          "description": "Get current LAN/public IP, website latency, and DNS exits from the plugin. Waits until the latest load finishes, then returns the snapshot.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        "refresh": {
+          "description": "Refresh all IP info (same as the Refresh button), then return LAN/public IP, latency, and DNS exits.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
       }
     }
   },
