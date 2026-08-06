@@ -13,10 +13,6 @@ const DnsExit = observer(() => {
   const { t } = useTranslation()
   const showPlaceholders = store.dnsLoading && store.dnsExits.length === 0
   const showEmpty = !store.dnsLoading && store.dnsExits.length === 0
-  const padCount =
-    showPlaceholders || showEmpty
-      ? 0
-      : Math.max(0, MIN_ROWS - store.dnsExits.length)
 
   return (
     <section>
@@ -57,7 +53,7 @@ const DnsExit = observer(() => {
         {showEmpty && (
           <li
             className={className(
-              'flex h-10 items-center px-3 text-[12px]',
+              'flex min-h-[7.5rem] items-center justify-center px-3 text-[12px]',
               tw.text.muted,
             )}
           >
@@ -120,16 +116,6 @@ const DnsExit = observer(() => {
               </li>
             )
           })}
-
-        {!showPlaceholders &&
-          padCount > 0 &&
-          range(padCount).map((index) => (
-            <li
-              key={`pad-${index}`}
-              className={className('h-10 border-b', tw.border.row)}
-              aria-hidden
-            />
-          ))}
       </ul>
     </section>
   )
