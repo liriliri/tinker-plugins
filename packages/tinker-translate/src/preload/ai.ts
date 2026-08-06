@@ -1,4 +1,4 @@
-import safeGet from 'licia/safeGet'
+import isStr from 'licia/isStr'
 import trim from 'licia/trim'
 import type { TranslateResult } from './types'
 
@@ -17,10 +17,9 @@ export async function translateWithAI(
     ],
   })
 
-  const content = safeGet(result, 'data.content')
-  if (!result.success || !content) {
-    throw new Error(result.error ?? 'Invalid AI response')
+  if (!isStr(result.content) || !result.content) {
+    throw new Error('Invalid AI response')
   }
 
-  return { text: trim(content as string) }
+  return { text: trim(result.content) }
 }

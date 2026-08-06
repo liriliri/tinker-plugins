@@ -1,6 +1,6 @@
 {
   "name": "tinker-translate",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Translation Plugin for TINKER",
   "files": [
     "dist/",
