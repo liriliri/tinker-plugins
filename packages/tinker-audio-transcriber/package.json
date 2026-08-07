@@ -1,0 +1,42 @@
+{
+  "name": "tinker-audio-transcriber",
+  "version": "0.1.0",
+  "description": "Audio Transcriber Plugin for TINKER",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:preload\"",
+    "dev:renderer": "vite build --watch",
+    "dev:preload": "vite build --watch --config vite.preload.ts",
+    "build": "concurrently \"npm run build:renderer\" \"npm run build:preload\"",
+    "build:renderer": "vite build",
+    "build:preload": "vite build --config vite.preload.ts",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "audio-transcriber"
+  ],
+  "tinker": {
+    "name": "Audio Transcriber",
+    "description": "Transcribe audio from long media files",
+    "main": "dist/renderer/index.html",
+    "preload": "dist/preload/index.js",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "音频转录",
+        "description": "将超长音频/影片音轨转写为文本"
+      }
+    }
+  },
+  "dependencies": {
+    "sherpa-onnx-node": "^1.13.4"
+  }
+}

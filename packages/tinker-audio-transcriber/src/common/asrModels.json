@@ -1,0 +1,262 @@
+{
+  "schema_version": 1,
+  "models": [
+    {
+      "id": "sensevoice-small-int8-zh-en-ja-ko-yue-2024-07-17",
+      "name": "SenseVoice Small INT8",
+      "family": "sense_voice",
+      "recommended": true,
+      "sizeMb": 228.5,
+      "relativeDir": "sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2024-07-17",
+      "baseUrl": "https://huggingface.co/csukuangfj/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2024-07-17/resolve/main/",
+      "recognizer": {
+        "model_type": "sense_voice",
+        "sense_voice_model": "model.int8.onnx",
+        "tokens": "tokens.txt",
+        "language": "auto",
+        "use_itn": true,
+        "sample_rate": 16000,
+        "feature_dim": 80,
+        "num_threads": 2
+      }
+    },
+    {
+      "id": "sensevoice-small-fp32-zh-en-ja-ko-yue-2024-07-17",
+      "name": "SenseVoice Small FP32",
+      "family": "sense_voice",
+      "recommended": false,
+      "sizeMb": 894.5,
+      "relativeDir": "sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2024-07-17",
+      "baseUrl": "https://huggingface.co/csukuangfj/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2024-07-17/resolve/main/",
+      "recognizer": {
+        "model_type": "sense_voice",
+        "sense_voice_model": "model.onnx",
+        "tokens": "tokens.txt",
+        "language": "auto",
+        "use_itn": true,
+        "sample_rate": 16000,
+        "feature_dim": 80,
+        "num_threads": 2
+      }
+    },
+    {
+      "id": "sensevoice-small-yue-int8-2025-09-09",
+      "name": "SenseVoice Small 粤语增强 INT8",
+      "family": "sense_voice",
+      "recommended": false,
+      "sizeMb": 226.4,
+      "relativeDir": "sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09",
+      "baseUrl": "https://huggingface.co/csukuangfj/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09/resolve/main/",
+      "recognizer": {
+        "model_type": "sense_voice",
+        "sense_voice_model": "model.int8.onnx",
+        "tokens": "tokens.txt",
+        "language": "auto",
+        "use_itn": true,
+        "sample_rate": 16000,
+        "feature_dim": 80,
+        "num_threads": 2
+      }
+    },
+    {
+      "id": "whisper-tiny-en",
+      "name": "Whisper Tiny English",
+      "family": "whisper",
+      "recommended": false,
+      "sizeMb": 98.8,
+      "relativeDir": "sherpa-onnx-whisper-tiny.en",
+      "baseUrl": "https://huggingface.co/csukuangfj/sherpa-onnx-whisper-tiny.en/resolve/main/",
+      "recognizer": {
+        "model_type": "whisper",
+        "whisper_encoder": "tiny.en-encoder.int8.onnx",
+        "whisper_decoder": "tiny.en-decoder.int8.onnx",
+        "tokens": "tiny.en-tokens.txt",
+        "language": "en",
+        "task": "transcribe",
+        "sample_rate": 16000,
+        "feature_dim": 80,
+        "num_threads": 2
+      }
+    },
+    {
+      "id": "whisper-base-en",
+      "name": "Whisper Base English",
+      "family": "whisper",
+      "recommended": false,
+      "sizeMb": 153.2,
+      "relativeDir": "sherpa-onnx-whisper-base.en",
+      "baseUrl": "https://huggingface.co/csukuangfj/sherpa-onnx-whisper-base.en/resolve/main/",
+      "recognizer": {
+        "model_type": "whisper",
+        "whisper_encoder": "base.en-encoder.int8.onnx",
+        "whisper_decoder": "base.en-decoder.int8.onnx",
+        "tokens": "base.en-tokens.txt",
+        "language": "en",
+        "task": "transcribe",
+        "sample_rate": 16000,
+        "feature_dim": 80,
+        "num_threads": 2
+      }
+    },
+    {
+      "id": "whisper-small-en",
+      "name": "Whisper Small English",
+      "family": "whisper",
+      "recommended": true,
+      "sizeMb": 358.1,
+      "relativeDir": "sherpa-onnx-whisper-small.en",
+      "baseUrl": "https://huggingface.co/csukuangfj/sherpa-onnx-whisper-small.en/resolve/main/",
+      "recognizer": {
+        "model_type": "whisper",
+        "whisper_encoder": "small.en-encoder.int8.onnx",
+        "whisper_decoder": "small.en-decoder.int8.onnx",
+        "tokens": "small.en-tokens.txt",
+        "language": "en",
+        "task": "transcribe",
+        "sample_rate": 16000,
+        "feature_dim": 80,
+        "num_threads": 2
+      }
+    },
+    {
+      "id": "whisper-medium-en",
+      "name": "Whisper Medium English",
+      "family": "whisper",
+      "recommended": false,
+      "sizeMb": 902.3,
+      "relativeDir": "sherpa-onnx-whisper-medium.en",
+      "baseUrl": "https://huggingface.co/csukuangfj/sherpa-onnx-whisper-medium.en/resolve/main/",
+      "recognizer": {
+        "model_type": "whisper",
+        "whisper_encoder": "medium.en-encoder.int8.onnx",
+        "whisper_decoder": "medium.en-decoder.int8.onnx",
+        "tokens": "medium.en-tokens.txt",
+        "language": "en",
+        "task": "transcribe",
+        "sample_rate": 16000,
+        "feature_dim": 80,
+        "num_threads": 2
+      }
+    },
+    {
+      "id": "whisper-distil-small-en",
+      "name": "Whisper Distil Small English",
+      "family": "whisper",
+      "recommended": false,
+      "sizeMb": 285,
+      "relativeDir": "sherpa-onnx-whisper-distil-small.en",
+      "baseUrl": "https://huggingface.co/csukuangfj/sherpa-onnx-whisper-distil-small.en/resolve/main/",
+      "recognizer": {
+        "model_type": "whisper",
+        "whisper_encoder": "distil-small.en-encoder.int8.onnx",
+        "whisper_decoder": "distil-small.en-decoder.int8.onnx",
+        "tokens": "distil-small.en-tokens.txt",
+        "language": "en",
+        "task": "transcribe",
+        "sample_rate": 16000,
+        "feature_dim": 80,
+        "num_threads": 2
+      }
+    },
+    {
+      "id": "whisper-distil-medium-en",
+      "name": "Whisper Distil Medium English",
+      "family": "whisper",
+      "recommended": false,
+      "sizeMb": 546.9,
+      "relativeDir": "sherpa-onnx-whisper-distil-medium.en",
+      "baseUrl": "https://huggingface.co/csukuangfj/sherpa-onnx-whisper-distil-medium.en/resolve/main/",
+      "recognizer": {
+        "model_type": "whisper",
+        "whisper_encoder": "distil-medium.en-encoder.int8.onnx",
+        "whisper_decoder": "distil-medium.en-decoder.int8.onnx",
+        "tokens": "distil-medium.en-tokens.txt",
+        "language": "en",
+        "task": "transcribe",
+        "sample_rate": 16000,
+        "feature_dim": 80,
+        "num_threads": 2
+      }
+    },
+    {
+      "id": "whisper-tiny-multilingual",
+      "name": "Whisper Tiny Multilingual",
+      "family": "whisper",
+      "recommended": false,
+      "sizeMb": 98.8,
+      "relativeDir": "sherpa-onnx-whisper-tiny",
+      "baseUrl": "https://huggingface.co/csukuangfj/sherpa-onnx-whisper-tiny/resolve/main/",
+      "recognizer": {
+        "model_type": "whisper",
+        "whisper_encoder": "tiny-encoder.int8.onnx",
+        "whisper_decoder": "tiny-decoder.int8.onnx",
+        "tokens": "tiny-tokens.txt",
+        "language": "auto",
+        "task": "transcribe",
+        "sample_rate": 16000,
+        "feature_dim": 80,
+        "num_threads": 2
+      }
+    },
+    {
+      "id": "whisper-base-multilingual",
+      "name": "Whisper Base Multilingual",
+      "family": "whisper",
+      "recommended": false,
+      "sizeMb": 153.2,
+      "relativeDir": "sherpa-onnx-whisper-base",
+      "baseUrl": "https://huggingface.co/csukuangfj/sherpa-onnx-whisper-base/resolve/main/",
+      "recognizer": {
+        "model_type": "whisper",
+        "whisper_encoder": "base-encoder.int8.onnx",
+        "whisper_decoder": "base-decoder.int8.onnx",
+        "tokens": "base-tokens.txt",
+        "language": "auto",
+        "task": "transcribe",
+        "sample_rate": 16000,
+        "feature_dim": 80,
+        "num_threads": 2
+      }
+    },
+    {
+      "id": "whisper-small-multilingual",
+      "name": "Whisper Small Multilingual",
+      "family": "whisper",
+      "recommended": false,
+      "sizeMb": 358.1,
+      "relativeDir": "sherpa-onnx-whisper-small",
+      "baseUrl": "https://huggingface.co/csukuangfj/sherpa-onnx-whisper-small/resolve/main/",
+      "recognizer": {
+        "model_type": "whisper",
+        "whisper_encoder": "small-encoder.int8.onnx",
+        "whisper_decoder": "small-decoder.int8.onnx",
+        "tokens": "small-tokens.txt",
+        "language": "auto",
+        "task": "transcribe",
+        "sample_rate": 16000,
+        "feature_dim": 80,
+        "num_threads": 2
+      }
+    },
+    {
+      "id": "whisper-medium-multilingual",
+      "name": "Whisper Medium Multilingual",
+      "family": "whisper",
+      "recommended": false,
+      "sizeMb": 902.2,
+      "relativeDir": "sherpa-onnx-whisper-medium",
+      "baseUrl": "https://huggingface.co/csukuangfj/sherpa-onnx-whisper-medium/resolve/main/",
+      "recognizer": {
+        "model_type": "whisper",
+        "whisper_encoder": "medium-encoder.int8.onnx",
+        "whisper_decoder": "medium-decoder.int8.onnx",
+        "tokens": "medium-tokens.txt",
+        "language": "auto",
+        "task": "transcribe",
+        "sample_rate": 16000,
+        "feature_dim": 80,
+        "num_threads": 2
+      }
+    }
+  ]
+}

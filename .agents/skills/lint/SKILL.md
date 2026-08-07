@@ -51,10 +51,11 @@ Go through each category below and report violations with file path and line num
 
 ### 5. Library and Utilities (`lib/` directory)
 
-- External wrappers, utility functions, business logic must live in `src/lib/`
+- External wrappers, utility functions, business logic must live in `src/lib/` (plugins with `src/renderer/`: use `src/renderer/lib/`)
 - Forbidden directory names for utilities: `src/utils/`, `src/helpers/`
 - Logic in `store.ts` that has no dependency on store state or MobX should be extracted to `src/lib/`. Candidates: pure functions, data transformation, algorithm helpers, API wrappers
-- Never create `src/lib/index.ts` as a catch-all. Name files by their purpose (e.g. `util.ts`, `math.ts`). When unsure of the name, use `lib/util.ts`
+- Never create `src/lib/index.ts` as a catch-all. Name files by their purpose (e.g. `util.ts`, `math.ts`, `format.ts`). When unsure of the name, use `lib/util.ts`
+- Do **not** create a separate file for a single small helper (e.g. `errorLabel.ts`, `media.ts` with only a few short functions). Put those in `lib/util.ts` instead. Only split out a dedicated file when the module has a clear domain and enough code to stand alone (e.g. SRT/timestamp formatting in `format.ts`)
 
 ### 6. TypeScript
 

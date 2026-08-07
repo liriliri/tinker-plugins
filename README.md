@@ -168,5 +168,13 @@ All plugins in the list can be installed to TINKER by running `npm i -g tinker-x
       <th><img src="./packages/tinker-ip-info/screenshot.png"/></th>
       <th><img src="./packages/tinker-color-bg/screenshot.png"/></th>
     </tr>
+    <tr>
+      <th><a href="./packages/tinker-gold-price/">tinker-gold-price</a></th>
+      <th><a href="./packages/tinker-audio-transcriber/">tinker-audio-transcriber</a></th>
+    </tr>
+    <tr>
+      <th><img src="./packages/tinker-gold-price/screenshot.png"/></th>
+      <th><img src="./packages/tinker-audio-transcriber/screenshot.png"/></th>
+    </tr>
   </tbody>
 </table>
