@@ -1,8 +1,11 @@
 import { makeAutoObservable } from 'mobx'
 import { convertChinese, toPinyin, toRmb } from './lib/convert'
 import type { PinyinStyle, ChineseMode, Tool } from './types'
+import { createMcpApi } from './mcp'
 
-class Store {
+export class Store {
+  readonly mcp = createMcpApi(() => this)
+
   currentTool: Tool = 'pinyin'
   input: string = ''
   pinyinStyle: PinyinStyle = 'tone'
@@ -10,7 +13,9 @@ class Store {
   copied: boolean = false
 
   constructor() {
-    makeAutoObservable(this)
+    makeAutoObservable(this, {
+      mcp: false,
+    })
   }
 
   setCurrentTool(tool: Tool) {

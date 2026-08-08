@@ -1,6 +1,6 @@
 {
   "name": "tinker-hanzi-converter",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Chinese Character Tools Plugin for TINKER",
   "files": [
     "dist/",
@@ -29,6 +29,62 @@
       "zh-CN": {
         "name": "汉字转换",
         "description": "汉字拼音、大写金额、简繁转换工具"
+      }
+    },
+    "mcp": {
+      "tools": {
+        "to_pinyin": {
+          "description": "Convert Chinese text to pinyin. Updates the plugin UI and returns the pinyin result.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Chinese text to convert to pinyin"
+              },
+              "style": {
+                "type": "string",
+                "enum": ["tone", "toneNum", "normal"],
+                "description": "Pinyin style: tone marks (tone), tone numbers (toneNum), or plain (normal). Defaults to the plugin's current setting."
+              }
+            },
+            "required": ["text"]
+          }
+        },
+        "to_rmb": {
+          "description": "Convert a number to Chinese uppercase RMB amount (大写金额). Updates the plugin UI and returns the result.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "amount": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Numeric amount string to convert (e.g. 123.45)"
+              }
+            },
+            "required": ["amount"]
+          }
+        },
+        "convert_chinese": {
+          "description": "Convert between simplified and traditional Chinese. Updates the plugin UI and returns the converted text.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Chinese text to convert"
+              },
+              "mode": {
+                "type": "string",
+                "enum": ["toTraditional", "toSimplified"],
+                "description": "Conversion direction. Defaults to the plugin's current setting."
+              }
+            },
+            "required": ["text"]
+          }
+        }
       }
     }
   },
