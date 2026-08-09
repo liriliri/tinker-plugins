@@ -1,12 +1,11 @@
 import isStr from 'licia/isStr'
 import trim from 'licia/trim'
-import type { TranslateResult } from './types'
 
 export async function translateWithAI(
   text: string,
   from: string,
   to: string,
-): Promise<TranslateResult> {
+): Promise<string> {
   const fromLabel = from === 'auto' ? 'auto-detected' : from
   const systemPrompt = `You are a professional translator. Translate the user's text from ${fromLabel} to ${to}. Output only the translated text without any explanation or extra content.`
 
@@ -21,5 +20,5 @@ export async function translateWithAI(
     throw new Error('Invalid AI response')
   }
 
-  return { text: trim(result.content) }
+  return trim(result.content)
 }

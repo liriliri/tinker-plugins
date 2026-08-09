@@ -5,6 +5,7 @@ import delay from 'licia/delay'
 import isStrBlank from 'licia/isStrBlank'
 import i18n from 'i18next'
 import { type Service } from '../common/types'
+import { translateWithAI } from './lib/ai'
 import { services, aiService, toBingLang, fromBingLang } from './lib/languages'
 
 const storage = new LocalStore('tinker-translate')
@@ -114,13 +115,21 @@ class Store {
     this.translatedText = ''
 
     try {
-      const result = await translate.translate(
-        this.sourceText,
-        this.sourceLang,
-        this.targetLang,
-        this.service,
-      )
-      this.translatedText = result.text
+      if (this.service === 'ai') {
+        this.translatedText = await translateWithAI(
+          this.sourceText,
+          this.sourceLang,
+          this.targetLang,
+        )
+      } else {
+        const result = await translate.translate(
+          this.sourceText,
+          this.sourceLang,
+          this.targetLang,
+          this.service,
+        )
+        this.translatedText = result.text
+      }
     } catch (err) {
       this.showError(i18n.t('translateFailed'))
       console.error(err)

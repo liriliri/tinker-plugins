@@ -4,7 +4,6 @@ import type { TranslateResult } from './types'
 import { translateWithGoogle } from './google'
 import { translateWithBing } from './bing'
 import { translateWithDeepL } from './deepl'
-import { translateWithAI } from './ai'
 
 const api = {
   translate: async (
@@ -18,9 +17,6 @@ const api = {
     }
     if (service === 'deepl') {
       return await translateWithDeepL(text, from, to)
-    }
-    if (service === 'ai') {
-      return await translateWithAI(text, from, to)
     }
     return await translateWithGoogle(text, from, to)
   },
