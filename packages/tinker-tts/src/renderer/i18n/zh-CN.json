@@ -1,0 +1,23 @@
+{
+  "generate": "生成",
+  "stop": "停止",
+  "play": "播放",
+  "pause": "暂停",
+  "save": "保存 MP3",
+  "clear": "清空文本",
+  "paste": "粘贴",
+  "charCount": "字数",
+  "placeholder": "粘贴或输入要朗读的文稿…",
+  "textHint": "Edge TTS",
+  "noAudio": "暂无音频",
+  "emptyText": "请输入文本",
+  "voiceRequired": "请选择音色",
+  "locale": "语言",
+  "voice": "音色",
+  "selectVoice": "选择音色",
+  "rate": "语速",
+  "pitch": "音调",
+  "volume": "音量",
+  "error": "错误",
+  "close": "关闭"
+}

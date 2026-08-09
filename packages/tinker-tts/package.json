@@ -1,0 +1,42 @@
+{
+  "name": "tinker-tts",
+  "version": "0.1.0",
+  "description": "Edge TTS plugin for TINKER",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:preload\"",
+    "dev:renderer": "vite build --watch",
+    "dev:preload": "vite build --watch --config vite.preload.ts",
+    "build": "concurrently \"npm run build:renderer\" \"npm run build:preload\"",
+    "build:renderer": "vite build",
+    "build:preload": "vite build --config vite.preload.ts",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "tts"
+  ],
+  "tinker": {
+    "name": "Text to Speech",
+    "description": "Convert text to speech with Microsoft Edge TTS",
+    "main": "dist/renderer/index.html",
+    "preload": "dist/preload/index.js",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "语音合成",
+        "description": "使用 Microsoft Edge TTS 将文本合成为语音"
+      }
+    }
+  },
+  "dependencies": {
+    "msedge-tts": "^2.0.7"
+  }
+}

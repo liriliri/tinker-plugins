@@ -1,0 +1,23 @@
+{
+  "generate": "Generate",
+  "stop": "Stop",
+  "play": "Play",
+  "pause": "Pause",
+  "save": "Save MP3",
+  "clear": "Clear text",
+  "paste": "Paste",
+  "charCount": "Characters",
+  "placeholder": "Paste or type the script you want spoken…",
+  "textHint": "Edge TTS",
+  "noAudio": "No audio yet",
+  "emptyText": "Please enter some text",
+  "voiceRequired": "Please select a voice",
+  "locale": "Language",
+  "voice": "Voice",
+  "selectVoice": "Select voice",
+  "rate": "Rate",
+  "pitch": "Pitch",
+  "volume": "Volume",
+  "error": "Error",
+  "close": "Close"
+}
