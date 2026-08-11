@@ -1,5 +1,5 @@
 {
-  "name": "tinker-model-viewer",
+  "name": "tinker-3d-viewer",
   "version": "0.1.0",
   "description": "3D Model Viewer Plugin for TINKER",
   "files": [
@@ -21,18 +21,18 @@
   },
   "keywords": [
     "tinker",
-    "model-viewer",
+    "3d-viewer",
     "3d"
   ],
   "tinker": {
-    "name": "Model Viewer",
+    "name": "3D Viewer",
     "description": "Preview 3D models",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",
     "locales": {
       "zh-CN": {
-        "name": "模型预览",
+        "name": "3D 预览",
         "description": "预览 3D 模型"
       }
     }

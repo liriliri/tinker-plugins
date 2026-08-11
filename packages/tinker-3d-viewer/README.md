@@ -1,6 +1,8 @@
-# tinker-model-viewer
+# tinker-3d-viewer
 
 A 3D model preview plugin for [TINKER](https://github.com/liriliri/tinker), powered by [Google `<model-viewer>`](https://modelviewer.dev/) and [three.js](https://threejs.org/).
+
+![Screenshot](https://raw.githubusercontent.com/liriliri/tinker-plugins/master/packages/tinker-3d-viewer/screenshot.png)
 
 ## Features
 
@@ -13,7 +15,7 @@ A 3D model preview plugin for [TINKER](https://github.com/liriliri/tinker), powe
 
 ## Installation
 
-Download and install TINKER from `https://tinker.liriliri.io/`, then run `npm i -g tinker-model-viewer`.
+Download and install TINKER from `https://tinker.liriliri.io/`, then run `npm i -g tinker-3d-viewer`.
 
 ## Usage
 

@@ -2,6 +2,7 @@ import className from 'licia/className'
 import fullscreen from 'licia/fullscreen'
 import {
   FolderOpen,
+  Layers,
   Maximize,
   Orbit,
   Pause,
@@ -88,6 +89,14 @@ const Toolbar = observer(function Toolbar({
           ) : (
             <PersonStanding className="w-3.5 h-3.5" />
           )}
+        </IconButton>
+
+        <IconButton
+          title={t('inspector')}
+          active={store.inspectorOpen}
+          onClick={() => store.toggleInspector()}
+        >
+          <Layers className="w-3.5 h-3.5" />
         </IconButton>
 
         <IconButton

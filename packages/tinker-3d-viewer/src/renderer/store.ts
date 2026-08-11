@@ -17,11 +17,13 @@ import {
   OPEN_DIALOG_EXTENSIONS,
 } from './lib/formats'
 import { filesFromPath, hasModelFile, mergeFilesByName } from './lib/sidecars'
-import type { LoadStatus, ModelInfo, ViewMode } from './types'
+import type { DisplayMode, LoadStatus, ModelInfo, ViewMode } from './types'
+import { DEFAULT_WIREFRAME_COLOR } from './types'
 
-const storage = new LocalStore('tinker-model-viewer')
+const storage = new LocalStore('tinker-3d-viewer')
 const STORAGE_AUTO_ROTATE = 'autoRotate'
 const STORAGE_VIEW_MODE = 'viewMode'
+const STORAGE_WIREFRAME_COLOR = 'wireframeColor'
 
 function loadAutoRotate(): boolean {
   const saved = storage.get(STORAGE_AUTO_ROTATE)
@@ -33,6 +35,13 @@ function loadViewMode(): ViewMode {
   return saved === 'firstPerson' ? 'firstPerson' : 'orbit'
 }
 
+function loadWireframeColor(): string {
+  const saved = storage.get(STORAGE_WIREFRAME_COLOR)
+  return typeof saved === 'string' && /^#[0-9A-Fa-f]{6}$/.test(saved)
+    ? saved
+    : DEFAULT_WIREFRAME_COLOR
+}
+
 class Store {
   status: LoadStatus = 'idle'
   srcUrl: string | null = null
@@ -40,6 +49,9 @@ class Store {
   autoRotate = loadAutoRotate()
   autoPlay = true
   viewMode: ViewMode = loadViewMode()
+  inspectorOpen = false
+  displayMode: DisplayMode = 'shaded'
+  wireframeColor = loadWireframeColor()
   toastOpen = false
   toastMsg = ''
   toastTitle = 'error'
@@ -75,6 +87,23 @@ class Store {
 
   toggleViewMode() {
     this.setViewMode(this.viewMode === 'orbit' ? 'firstPerson' : 'orbit')
+  }
+
+  setInspectorOpen(open: boolean) {
+    this.inspectorOpen = open
+  }
+
+  toggleInspector() {
+    this.inspectorOpen = !this.inspectorOpen
+  }
+
+  setDisplayMode(mode: DisplayMode) {
+    this.displayMode = mode
+  }
+
+  setWireframeColor(color: string) {
+    this.wireframeColor = color
+    storage.set(STORAGE_WIREFRAME_COLOR, color)
   }
 
   showError(msg: string, title = 'error') {
@@ -154,17 +183,20 @@ class Store {
       const mainFile =
         find(files, (file) => isModelFileName(file.name)) || files[0]
 
+      const fileName = getBaseName(mainFile.name)
       runInAction(() => {
         this.revokeSrc()
         this.revokePrepared = prepared.revoke
         this.srcUrl = prepared.srcUrl
         this.info = {
-          fileName: getBaseName(mainFile.name),
+          fileName,
           sourceFormat: sourceFormatLabel(files),
           byteLength: prepared.glbBuffer?.byteLength ?? mainFile.size,
         }
+        this.displayMode = 'shaded'
         this.status = 'ready'
       })
+      tinker.setTitle(fileName)
 
       if (!isEmpty(prepared.warnings)) {
         this.showError(prepared.warnings[0], 'warning')

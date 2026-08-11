@@ -12,8 +12,10 @@ import {
   stepFirstPerson,
   type FirstPersonState,
 } from '../lib/firstPerson'
+import { createDisplayModeController } from '../lib/displayMode'
 import store from '../store'
 import { tw } from '../theme'
+import InspectorPanel from './InspectorPanel'
 import Toolbar from './Toolbar'
 
 function suppressFocusOutline(el: ModelViewerElement) {
@@ -29,11 +31,22 @@ const ModelStage = observer(function ModelStage() {
   const { t } = useTranslation()
   const viewerRef = useRef<ModelViewerElement | null>(null)
   const fpStateRef = useRef<FirstPersonState | null>(null)
+  const displayControllerRef = useRef<ReturnType<
+    typeof createDisplayModeController
+  > | null>(null)
   const keysRef = useRef(new Set<string>())
   const draggingRef = useRef(false)
   const lookDeltaRef = useRef({ x: 0, y: 0 })
   const [hasAnimation, setHasAnimation] = useState(false)
   const isFirstPerson = store.viewMode === 'firstPerson'
+
+  const syncDisplayMode = () => {
+    const el = viewerRef.current
+    if (!el?.loaded) return
+    displayControllerRef.current?.dispose()
+    displayControllerRef.current = createDisplayModeController(el)
+    displayControllerRef.current?.apply(store.displayMode, store.wireframeColor)
+  }
 
   const resetOrbitCamera = () => {
     const el = viewerRef.current
@@ -81,11 +94,14 @@ const ModelStage = observer(function ModelStage() {
       } else {
         resetOrbitCamera()
       }
+      syncDisplayMode()
     }
 
     el.addEventListener('load', onLoad)
     return () => {
       el.removeEventListener('load', onLoad)
+      displayControllerRef.current?.dispose()
+      displayControllerRef.current = null
     }
   }, [store.srcUrl])
 
@@ -128,6 +144,11 @@ const ModelStage = observer(function ModelStage() {
       el.pause()
     }
   }, [store.autoPlay, hasAnimation, store.srcUrl])
+
+  useEffect(() => {
+    if (!displayControllerRef.current) return
+    displayControllerRef.current.apply(store.displayMode, store.wireframeColor)
+  }, [store.displayMode, store.wireframeColor])
 
   useEffect(() => {
     if (!isFirstPerson) return
@@ -261,6 +282,7 @@ const ModelStage = observer(function ModelStage() {
       {store.srcUrl && (
         <>
           <Toolbar onResetCamera={resetCamera} hasAnimation={hasAnimation} />
+          <InspectorPanel />
           <model-viewer
             ref={viewerRef}
             className="model-stage-viewer"

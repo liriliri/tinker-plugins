@@ -2,6 +2,7 @@ export const tw = {
   background: {
     app: 'bg-[var(--window)]',
     toolbar: 'bg-[var(--window)]/92 backdrop-blur-sm',
+    panel: 'bg-[var(--window)]/95 backdrop-blur-sm',
     well: 'bg-[var(--well)] bg-[length:14px_14px] bg-[position:0_0] [background-image:radial-gradient(var(--grid-dot)_1px,transparent_1px)]',
   },
   text: {
@@ -18,6 +19,18 @@ export const tw = {
       'flex items-center justify-center w-6 h-6 rounded-sm border-none cursor-default bg-[var(--select-soft)] text-[var(--select)] hover:bg-[var(--select-soft)] active:brightness-95 disabled:opacity-40 disabled:cursor-default',
     primary:
       'inline-flex items-center gap-1.5 h-6 px-2.5 rounded-sm text-[12px] border border-transparent cursor-default bg-[var(--select)] text-[var(--select-text)] hover:brightness-110 active:brightness-95',
+    panelItem:
+      'w-full text-left text-[12px] px-2 py-1.5 rounded-sm border-none cursor-default bg-transparent text-[var(--ink)] hover:bg-[var(--hover)]',
+    panelItemActive:
+      'w-full text-left text-[12px] px-2 py-1.5 rounded-sm border-none cursor-default bg-[var(--select-soft)] text-[var(--select)]',
+  },
+  swatch: {
+    default:
+      'w-5 h-5 rounded-sm border border-[var(--line)] cursor-default hover:brightness-110 p-0',
+    active:
+      'w-5 h-5 rounded-sm border-2 border-[var(--select)] cursor-default p-0',
+    custom:
+      'relative w-5 h-5 rounded-sm border border-dashed border-[var(--muted)] cursor-default overflow-hidden bg-[conic-gradient(red,yellow,lime,aqua,blue,magenta,red)]',
   },
   toast: {
     root: 'bg-[var(--window)] border border-[var(--line)] rounded-sm shadow-md px-3 py-2 flex items-start gap-2',

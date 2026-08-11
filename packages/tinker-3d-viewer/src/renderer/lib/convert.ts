@@ -204,7 +204,7 @@ async function convertForeignToGlb(
 
   const manager = new THREE.LoadingManager()
   manager.onError = (url) => {
-    console.warn('[tinker-model-viewer] failed to load resource:', url)
+    console.warn('[tinker-3d-viewer] failed to load resource:', url)
   }
   manager.setURLModifier((url) => {
     // Embedded FBX textures arrive as blob:/data: — never remap those.
