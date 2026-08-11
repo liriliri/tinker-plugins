@@ -81,9 +81,11 @@ Go through each category below and report violations with file path and line num
 
 ### 9. SCSS Usage
 
-- SCSS (`index.scss`) should only be used for third-party library style overrides
-- Application styles must use Tailwind CSS classes
+- SCSS (`index.scss`) should only be used for third-party library style overrides, CSS custom properties (theme tokens under `:root` / `html.dark`), and minimal `@layer base` resets that cannot live on a component
+- Application styles must use Tailwind CSS classes (via JSX / `theme.ts` `tw.*` tokens)
+- If a rule in `index.scss` can be expressed with Tailwind (including `@apply` in `@layer base`, or utility classes in `theme.ts`), prefer Tailwind — do not keep a hand-written CSS class for layout, typography, backgrounds, grids, or similar when utilities suffice
 - Hardcoded colors inside third-party library style overrides in SCSS are allowed
+- Theme token hex values in `:root` / `html.dark` CSS variables are allowed; do not hardcode those same colors in component JSX
 
 ### 10. Fonts
 
@@ -100,8 +102,9 @@ Go through each category below and report violations with file path and line num
 
 - When a UI component library is needed, prefer `@radix-ui/*` packages
 - Pure frontend dependencies (bundled into `dist/` by Vite — UI libraries like `@radix-ui/*` / `lucide-react`, and any other renderer-only packages) must be listed under `devDependencies` in `package.json`, not `dependencies`
-- Reserve `dependencies` for runtime packages that must ship with the plugin outside the Vite bundle (rare for typical plugins)
+- Reserve `dependencies` for runtime packages that must ship with the plugin outside the Vite bundle (typically Node-only modules used from `preload/`)
 - If a dependency is already installed at the monorepo root level, do NOT add it to the plugin's `package.json` — only add dependencies that are specific to this plugin
+- Preload runtime deps: list them under `dependencies`, and **do not bundle them** into the preload build. In `vite.preload.ts`, add each package name **explicitly** to the Rollup `external` array alongside `electron` and Node builtins (same pattern as other plugins: `external.push('electron', 'pkg-name', ...)`). Do not auto-collect from `Object.keys(pkg.dependencies)` unless the rest of the repo adopts that pattern — prefer the explicit list
 
 ### 13. Use licia Utilities
 

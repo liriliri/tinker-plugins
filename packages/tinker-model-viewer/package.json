@@ -1,0 +1,51 @@
+{
+  "name": "tinker-model-viewer",
+  "version": "0.1.0",
+  "description": "3D Model Viewer Plugin for TINKER",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:preload\"",
+    "dev:renderer": "vite build --watch",
+    "dev:preload": "vite build --watch --config vite.preload.ts",
+    "build": "concurrently \"npm run build:renderer\" \"npm run build:preload\"",
+    "build:renderer": "vite build",
+    "build:preload": "vite build --config vite.preload.ts",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "model-viewer",
+    "3d"
+  ],
+  "tinker": {
+    "name": "Model Viewer",
+    "description": "Preview 3D models",
+    "main": "dist/renderer/index.html",
+    "preload": "dist/preload/index.js",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "模型预览",
+        "description": "预览 3D 模型"
+      }
+    }
+  },
+  "dependencies": {
+    "@gltf-transform/core": "^4.4.2",
+    "@gltf-transform/extensions": "^4.4.2",
+    "@gltf-transform/functions": "^4.4.2"
+  },
+  "devDependencies": {
+    "@google/model-viewer": "^4.3.1",
+    "@types/three": "^0.185.4",
+    "fflate": "^0.8.3",
+    "three": "^0.183.2"
+  }
+}
