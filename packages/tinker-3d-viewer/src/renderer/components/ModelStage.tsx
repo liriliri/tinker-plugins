@@ -45,7 +45,13 @@ const ModelStage = observer(function ModelStage() {
     if (!el?.loaded) return
     displayControllerRef.current?.dispose()
     displayControllerRef.current = createDisplayModeController(el)
-    displayControllerRef.current?.apply(store.displayMode, store.wireframeColor)
+    const controller = displayControllerRef.current
+    store.setHasSkeleton(controller?.hasSkeleton ?? false)
+    controller?.apply(
+      store.displayMode,
+      store.wireframeColor,
+      store.matcapPreset,
+    )
   }
 
   const resetOrbitCamera = () => {
@@ -147,8 +153,12 @@ const ModelStage = observer(function ModelStage() {
 
   useEffect(() => {
     if (!displayControllerRef.current) return
-    displayControllerRef.current.apply(store.displayMode, store.wireframeColor)
-  }, [store.displayMode, store.wireframeColor])
+    displayControllerRef.current.apply(
+      store.displayMode,
+      store.wireframeColor,
+      store.matcapPreset,
+    )
+  }, [store.displayMode, store.wireframeColor, store.matcapPreset])
 
   useEffect(() => {
     if (!isFirstPerson) return

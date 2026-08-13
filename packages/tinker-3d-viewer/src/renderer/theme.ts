@@ -30,7 +30,13 @@ export const tw = {
     active:
       'w-5 h-5 rounded-sm border-2 border-[var(--select)] cursor-default p-0',
     custom:
-      'relative w-5 h-5 rounded-sm border border-dashed border-[var(--muted)] cursor-default overflow-hidden bg-[conic-gradient(red,yellow,lime,aqua,blue,magenta,red)]',
+      'relative w-5 h-5 rounded-sm border border-[var(--line)] cursor-default hover:brightness-110 overflow-hidden bg-[conic-gradient(from_0.25turn,#F87171,#FBBF24,#4ADE80,#38BDF8,#818CF8,#F472B6,#F87171)]',
+    customActive:
+      'relative w-5 h-5 rounded-sm border-2 border-[var(--select)] cursor-default overflow-hidden bg-[conic-gradient(from_0.25turn,#F87171,#FBBF24,#4ADE80,#38BDF8,#818CF8,#F472B6,#F87171)]',
+    matcap:
+      'w-full aspect-square rounded-sm border border-[var(--line)] cursor-default hover:brightness-110 p-0',
+    matcapActive:
+      'w-full aspect-square rounded-sm border-2 border-[var(--select)] cursor-default p-0',
   },
   toast: {
     root: 'bg-[var(--window)] border border-[var(--line)] rounded-sm shadow-md px-3 py-2 flex items-start gap-2',

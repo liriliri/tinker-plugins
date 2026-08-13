@@ -7,6 +7,7 @@ import isEmpty from 'licia/isEmpty'
 import isErr from 'licia/isErr'
 import LocalStore from 'licia/LocalStore'
 import map from 'licia/map'
+import some from 'licia/some'
 import toArr from 'licia/toArr'
 import i18n from 'i18next'
 import { prepareModel, sourceFormatLabel } from './lib/convert'
@@ -17,13 +18,22 @@ import {
   OPEN_DIALOG_EXTENSIONS,
 } from './lib/formats'
 import { filesFromPath, hasModelFile, mergeFilesByName } from './lib/sidecars'
-import type { DisplayMode, LoadStatus, ModelInfo, ViewMode } from './types'
-import { DEFAULT_WIREFRAME_COLOR } from './types'
+import {
+  DEFAULT_MATCAP_PRESET,
+  DEFAULT_WIREFRAME_COLOR,
+  MATCAP_PRESETS,
+  type DisplayMode,
+  type LoadStatus,
+  type MatcapPresetId,
+  type ModelInfo,
+  type ViewMode,
+} from './types'
 
 const storage = new LocalStore('tinker-3d-viewer')
 const STORAGE_AUTO_ROTATE = 'autoRotate'
 const STORAGE_VIEW_MODE = 'viewMode'
 const STORAGE_WIREFRAME_COLOR = 'wireframeColor'
+const STORAGE_MATCAP_PRESET = 'matcapPreset'
 
 function loadAutoRotate(): boolean {
   const saved = storage.get(STORAGE_AUTO_ROTATE)
@@ -42,6 +52,13 @@ function loadWireframeColor(): string {
     : DEFAULT_WIREFRAME_COLOR
 }
 
+function loadMatcapPreset(): MatcapPresetId {
+  const saved = storage.get(STORAGE_MATCAP_PRESET)
+  return some(MATCAP_PRESETS, (preset) => preset.id === saved)
+    ? (saved as MatcapPresetId)
+    : DEFAULT_MATCAP_PRESET
+}
+
 class Store {
   status: LoadStatus = 'idle'
   srcUrl: string | null = null
@@ -51,7 +68,9 @@ class Store {
   viewMode: ViewMode = loadViewMode()
   inspectorOpen = false
   displayMode: DisplayMode = 'shaded'
+  hasSkeleton = false
   wireframeColor = loadWireframeColor()
+  matcapPreset = loadMatcapPreset()
   toastOpen = false
   toastMsg = ''
   toastTitle = 'error'
@@ -101,9 +120,21 @@ class Store {
     this.displayMode = mode
   }
 
+  setHasSkeleton(value: boolean) {
+    this.hasSkeleton = value
+    if (!value && this.displayMode === 'skeleton') {
+      this.displayMode = 'shaded'
+    }
+  }
+
   setWireframeColor(color: string) {
     this.wireframeColor = color
     storage.set(STORAGE_WIREFRAME_COLOR, color)
+  }
+
+  setMatcapPreset(preset: MatcapPresetId) {
+    this.matcapPreset = preset
+    storage.set(STORAGE_MATCAP_PRESET, preset)
   }
 
   showError(msg: string, title = 'error') {
@@ -194,6 +225,7 @@ class Store {
           byteLength: prepared.glbBuffer?.byteLength ?? mainFile.size,
         }
         this.displayMode = 'shaded'
+        this.hasSkeleton = false
         this.status = 'ready'
       })
       tinker.setTitle(fileName)

@@ -11,6 +11,7 @@ A 3D model preview plugin for [TINKER](https://github.com/liriliri/tinker), powe
 - **Auto conversion** of non-GLB sources to GLB via three.js loaders
 - **Orbit view** with auto-rotate, animation playback, and camera reset
 - **First-person view** with WASD movement and mouse look (click to lock pointer)
+- **Display modes** for shaded, matcap, wireframe, and shaded wireframe views
 - **Persistent view mode** remembered across sessions
 
 ## Installation
