@@ -1,0 +1,57 @@
+@use 'tailwindcss';
+@config "../tailwind.config.js";
+
+:root {
+  --scrollbar-thumb: #cdcdd5;
+}
+
+html.dark {
+  color-scheme: dark;
+  --scrollbar-thumb: #3a3a42;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+@layer base {
+  body {
+    @apply font-sans antialiased;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.game-viewport:fullscreen,
+.game-viewport:-webkit-full-screen {
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

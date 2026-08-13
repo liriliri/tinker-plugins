@@ -1,0 +1,15 @@
+{
+  "sidebar": "侧边栏",
+  "emptyHistory": "暂无历史记录",
+  "openProgram": "打开程序",
+  "run": "运行",
+  "showInFolder": "在文件夹中显示",
+  "reset": "重置",
+  "fullscreen": "全屏",
+  "loading": "加载中",
+  "error": "错误",
+  "fileNotFound": "文件不存在：{{name}}",
+  "noExecutable": "压缩包中未找到可执行文件（.exe / .com / .bat）",
+  "loadFailed": "加载失败",
+  "deleteHistory": "从列表中移除"
+}

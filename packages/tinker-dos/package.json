@@ -1,0 +1,40 @@
+{
+  "name": "tinker-dos",
+  "version": "0.1.0",
+  "description": "DOS Emulator Plugin for TINKER",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "dos",
+    "dosbox",
+    "emulator"
+  ],
+  "tinker": {
+    "name": "DOS",
+    "description": "Run DOS programs and games",
+    "main": "dist/index.html",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "DOS",
+        "description": "运行 DOS 程序与游戏"
+      }
+    }
+  },
+  "devDependencies": {
+    "browserfs": "^1.4.3",
+    "fflate": "^0.8.3"
+  }
+}

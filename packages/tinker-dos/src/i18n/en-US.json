@@ -1,0 +1,15 @@
+{
+  "sidebar": "Sidebar",
+  "emptyHistory": "No history yet",
+  "openProgram": "Open program",
+  "run": "Run",
+  "showInFolder": "Show in folder",
+  "reset": "Reset",
+  "fullscreen": "Fullscreen",
+  "loading": "Loading",
+  "error": "Error",
+  "fileNotFound": "File not found: {{name}}",
+  "noExecutable": "No executable (.exe / .com / .bat) found in zip",
+  "loadFailed": "Failed to load",
+  "deleteHistory": "Remove from list"
+}
