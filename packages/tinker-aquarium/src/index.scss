@@ -11,3 +11,63 @@
     overflow: hidden;
   }
 }
+
+.aq-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 3px;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  outline: none;
+}
+
+.aq-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  border: 0;
+  background: rgba(226, 232, 240, 0.9);
+}
+
+.aq-slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  border: 0;
+  background: rgba(226, 232, 240, 0.9);
+}
+
+.aq-slider:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px rgba(125, 211, 252, 0.35);
+}
+
+.aq-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+}
+
+.aq-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.aq-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.aq-scroll::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.aq-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -8,5 +8,14 @@
   "close": "Close",
   "openSettings": "Open settings",
   "views": "Views",
-  "view": "View {{n}}"
+  "view": "View {{n}}",
+  "goldfish": "Goldfish",
+  "guppy": "Guppy",
+  "count": "Count",
+  "lighting": "Lighting",
+  "lightHue": "Hue",
+  "lightSaturation": "Saturation",
+  "brightness": "Brightness",
+  "display": "Display",
+  "showFps": "Show frame rate"
 }

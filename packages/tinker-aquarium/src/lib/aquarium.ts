@@ -6,11 +6,21 @@ import clamp from 'licia/clamp'
 import each from 'licia/each'
 import toArr from 'licia/toArr'
 import { createBubbles } from './bubbles'
+import {
+  createGoldfishSchool,
+  createGuppySchool,
+  DEFAULT_FISH_COUNT,
+  DEFAULT_GUPPY_COUNT,
+} from './fish'
 import { createGlassDirt } from './glassDirt'
 import { createReef } from './reef'
 import { DEFAULT_REEF, type ReefOptions } from './reef/types'
 import { createWaterSystem } from './water'
-import type { CameraView } from '../types'
+import {
+  DEFAULT_LIGHTING,
+  type CameraView,
+  type LightingOptions,
+} from '../types'
 
 const TANK = {
   width: 18,
@@ -123,6 +133,9 @@ function createGlassShell(thickness: number, envMap: THREE.Texture) {
 
 export interface Aquarium {
   setReef: (options: ReefOptions) => void
+  setFishCount: (count: number) => void
+  setGuppyCount: (count: number) => void
+  setLighting: (lighting: LightingOptions) => void
   setView: (view: CameraView) => void
   dispose: () => void
 }
@@ -130,8 +143,12 @@ export interface Aquarium {
 export function createAquarium(
   canvas: HTMLCanvasElement,
   reefOptions: ReefOptions = DEFAULT_REEF,
+  fishCount = DEFAULT_FISH_COUNT,
+  guppyCount = DEFAULT_GUPPY_COUNT,
+  lighting: LightingOptions = DEFAULT_LIGHTING,
   view?: CameraView | null,
   onViewChange?: (view: CameraView) => void,
+  onFps?: (fps: number) => void,
 ): Aquarium {
   const renderer = new THREE.WebGLRenderer({
     canvas,
@@ -181,10 +198,15 @@ export function createAquarium(
 
   // The fill is all that survives inside a shadow, so a cyan tint here turns every
   // shadowed patch of warm sand olive. A blue-grey bounce keeps them as cool shade.
-  scene.add(new THREE.HemisphereLight(0xe6eeff, 0x232c46, 1))
-  // A grazing key light is what makes the sand's normal map read as relief;
-  // a steep one flattens it because N·L barely changes.
-  const keyLight = new THREE.DirectionalLight(0xf4f9ff, 2.6)
+  const KEY_INTENSITY = 2.6
+  const HEMI_INTENSITY = 1
+  const hemiLight = new THREE.HemisphereLight(
+    0xe6eeff,
+    0x232c46,
+    HEMI_INTENSITY,
+  )
+  scene.add(hemiLight)
+  const keyLight = new THREE.DirectionalLight(0xf4f9ff, KEY_INTENSITY)
   keyLight.position.set(-8, 7.5, 9)
   keyLight.castShadow = true
   keyLight.shadow.mapSize.set(2048, 2048)
@@ -203,6 +225,22 @@ export function createAquarium(
   keyLight.shadow.normalBias = 0.02
   keyLight.shadow.bias = -0.0002
   scene.add(keyLight)
+
+  const skyTint = new THREE.Color()
+  const applyLighting = (next: LightingOptions) => {
+    const sat = next.saturation
+    const bright = next.brightness
+    keyLight.color.setHSL(next.hue, sat, 0.52 + (1 - sat) * 0.38)
+    keyLight.intensity = KEY_INTENSITY * bright
+    skyTint.setHSL(next.hue, sat * 0.42, 0.78)
+    hemiLight.color.copy(skyTint)
+    hemiLight.intensity = HEMI_INTENSITY * (0.4 + bright * 0.6)
+    renderer.toneMappingExposure = 0.48 + bright * 0.72
+    if (scene.fog instanceof THREE.FogExp2) {
+      scene.fog.color.setHSL(next.hue, sat * 0.22, 0.08)
+    }
+  }
+  applyLighting(lighting)
 
   const tank = new THREE.Group()
   scene.add(tank)
@@ -371,6 +409,30 @@ export function createAquarium(
   )
   tank.add(bubbles.mesh)
 
+  const fishBounds = {
+    min: new THREE.Vector3(
+      -TANK.width / 2 + 0.8,
+      SAND_TOP_Y + 0.55,
+      -TANK.depth / 2 + 0.8,
+    ),
+    max: new THREE.Vector3(
+      TANK.width / 2 - 0.8,
+      TANK.waterY - 0.32,
+      TANK.depth / 2 - 0.8,
+    ),
+  }
+  const goldfish = createGoldfishSchool(fishBounds, fishCount, (material) =>
+    water.applyCaustics(material),
+  )
+  tank.add(goldfish.group)
+  goldfish.setObstacles(coral.obstacles)
+
+  const guppies = createGuppySchool(fishBounds, guppyCount, (material) =>
+    water.applyCaustics(material),
+  )
+  tank.add(guppies.group)
+  guppies.setObstacles(coral.obstacles)
+
   const raycaster = new THREE.Raycaster()
   const pointer = new THREE.Vector2()
   const waterPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), -TANK.waterY)
@@ -442,12 +504,25 @@ export function createAquarium(
   resize()
 
   const clock = new THREE.Clock()
+  let fpsFrames = 0
+  let fpsStamp = performance.now()
   renderer.setAnimationLoop(() => {
+    const dt = clock.getDelta()
+    goldfish.update(dt)
+    guppies.update(dt)
     bubbles.update(clock.getElapsedTime())
     water.update(camera, scene)
     controls.update()
     if (suppressViewPersist > 0) suppressViewPersist -= 1
     renderer.render(scene, camera)
+    fpsFrames += 1
+    const now = performance.now()
+    const elapsed = now - fpsStamp
+    if (elapsed >= 500) {
+      onFps?.(Math.round((fpsFrames * 1000) / elapsed))
+      fpsFrames = 0
+      fpsStamp = now
+    }
   })
 
   return {
@@ -455,7 +530,18 @@ export function createAquarium(
       tank.remove(coral.group)
       coral.dispose()
       coral = buildReef(options)
+      goldfish.setObstacles(coral.obstacles)
+      guppies.setObstacles(coral.obstacles)
       water.invalidateCapture()
+    },
+    setFishCount(count) {
+      goldfish.setCount(count)
+    },
+    setGuppyCount(count) {
+      guppies.setCount(count)
+    },
+    setLighting(next) {
+      applyLighting(next)
     },
     setView(next) {
       suppressViewPersist = 12
@@ -478,12 +564,16 @@ export function createAquarium(
       controls.dispose()
       water.dispose()
       coral.dispose()
+      goldfish.dispose()
+      guppies.dispose()
       bubbles.dispose()
       glassDirt.dispose()
       envMap.dispose()
       each(sandTextures, (texture) => texture.dispose())
       tank.remove(water.group)
       tank.remove(coral.group)
+      tank.remove(goldfish.group)
+      tank.remove(guppies.group)
       tank.remove(bubbles.mesh)
       scene.traverse((object) => {
         if (!(

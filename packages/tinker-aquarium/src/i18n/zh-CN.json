@@ -8,5 +8,14 @@
   "close": "关闭",
   "openSettings": "打开设置",
   "views": "视角",
-  "view": "视角 {{n}}"
+  "view": "视角 {{n}}",
+  "goldfish": "金鱼",
+  "guppy": "孔雀鱼",
+  "count": "数量",
+  "lighting": "光照",
+  "lightHue": "色相",
+  "lightSaturation": "饱和度",
+  "brightness": "亮度",
+  "display": "显示",
+  "showFps": "显示帧率"
 }

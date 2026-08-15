@@ -20,7 +20,7 @@ export default function SliderField({
   onChange,
 }: Props) {
   return (
-    <label className="flex flex-col gap-2">
+    <label className="flex flex-col gap-1.5">
       <span className={tw.fieldLabel}>
         {label}
         <span className={tw.fieldValue}>{format(value)}</span>

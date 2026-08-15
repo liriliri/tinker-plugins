@@ -13,8 +13,12 @@ export default function AquariumView() {
     const aquarium: Aquarium = createAquarium(
       canvasRef.current,
       store.reef,
+      store.fishCount,
+      store.guppyCount,
+      store.lighting,
       store.view,
       (view) => store.setView(view),
+      (fps) => store.setFps(fps),
     )
     let timer = 0
 
@@ -36,10 +40,30 @@ export default function AquariumView() {
       () => store.viewEpoch,
       () => aquarium.setView(store.view),
     )
+    const disposeFish = reaction(
+      () => store.fishCount,
+      (count) => aquarium.setFishCount(count),
+    )
+    const disposeGuppy = reaction(
+      () => store.guppyCount,
+      (count) => aquarium.setGuppyCount(count),
+    )
+    const disposeLighting = reaction(
+      () => [
+        store.lighting.hue,
+        store.lighting.saturation,
+        store.lighting.brightness,
+      ],
+      ([hue, saturation, brightness]) =>
+        aquarium.setLighting({ hue, saturation, brightness }),
+    )
 
     return () => {
       disposeReef()
       disposeView()
+      disposeFish()
+      disposeGuppy()
+      disposeLighting()
       window.clearTimeout(timer)
       aquarium.dispose()
     }

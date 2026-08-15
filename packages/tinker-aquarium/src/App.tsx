@@ -20,6 +20,12 @@ const App = observer(() => {
     >
       <AquariumView />
 
+      {store.showFps && (
+        <div className="pointer-events-none absolute left-3 top-3 z-10 font-mono text-[11px] tabular-nums text-white/70">
+          {store.fps} FPS
+        </div>
+      )}
+
       <button
         type="button"
         className={`${tw.cornerBtn} ${

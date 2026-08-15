@@ -7,6 +7,7 @@ export default defineConfig(() => {
 
   return {
     base: '',
+    publicDir: 'public',
     plugins: [react()],
     build: {
       outDir: path.dirname(pkg.tinker.main),

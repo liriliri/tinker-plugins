@@ -11,7 +11,7 @@ import {
   RUBBLE_TYPE_INDEX,
   STONE_PALETTE,
 } from './catalog'
-import type { Random, Spot } from './types'
+import { REEF_DENSITY_RANGE, type Random, type Spot } from './types'
 import { lerp, pick, sizeVariation } from './util'
 
 /**
@@ -28,6 +28,13 @@ export function layoutReef(
   halfDepth: number,
   inset: number,
 ): Spot[] {
+  const t = clamp(
+    (count - REEF_DENSITY_RANGE[0]) /
+      (REEF_DENSITY_RANGE[1] - REEF_DENSITY_RANGE[0]),
+    0,
+    1,
+  )
+  const pack = lerp(1.05, 0.32, t)
   const spots: Spot[] = []
   const spanX = halfWidth - inset
   const spanZ = halfDepth - inset
@@ -37,7 +44,7 @@ export function layoutReef(
     !some(spots, (spot) => {
       const dx = spot.x - x
       const dz = spot.z - z
-      const reach = (spot.radius + radius) * 0.62
+      const reach = (spot.radius + radius) * pack
       return dx * dx + dz * dz < reach * reach
     })
 
@@ -100,8 +107,8 @@ export function layoutReef(
 
   let coralCount = 0
   let plantCount = 0
-  const coralTarget = toInt(count * 0.75)
-  const plantTarget = toInt(count * 1.2)
+  const coralTarget = Math.max(4, toInt(lerp(5, 108, t)))
+  const plantTarget = Math.max(3, toInt(lerp(4, 86, t)))
   // The bed saturates well before a high count is reached, and every candidate can
   // then be rejected, so colony attempts are capped rather than looping on hope.
   const maxColonies = coralTarget * 4
@@ -126,7 +133,7 @@ export function layoutReef(
       const scale = sizeVariation(random, 0.42, 2.15)
       // Spacing tracks the drawn size, so a giant claims room and a runt can
       // tuck into a gap the old fixed radius would have rejected.
-      const radius = lerp(0.6, 1.1, random()) * scale
+      const radius = lerp(0.55, 1.05, random()) * scale * lerp(1.08, 0.7, t)
       if (!fits(x, z, radius)) continue
       spots.push({
         x,
@@ -163,7 +170,7 @@ export function layoutReef(
 
     // Green plants around the same centre; taller kelp leans farther out than
     // the grass tufts that tuck into the near gaps.
-    const plantTries = 3 + toInt(random() * 3)
+    const plantTries = 1 + toInt(lerp(1, 5, t))
     for (let i = 0; i < plantTries; i += 1) {
       const angle = random() * Math.PI * 2
       const spread = 0.7 + random() * 1.8

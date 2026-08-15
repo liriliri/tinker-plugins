@@ -7,7 +7,12 @@ import { REEF_TYPES } from './catalog'
 import { layoutReef } from './layout'
 import { shadeGeometry } from './shapes'
 import { loadCoralSurface, loadRockSurface } from './surfaces'
-import { DEFAULT_REEF, type Reef, type ReefBuildOptions } from './types'
+import {
+  DEFAULT_REEF,
+  type Reef,
+  type ReefBuildOptions,
+  type ReefObstacle,
+} from './types'
 import {
   Y_AXIS,
   lerp,
@@ -105,6 +110,7 @@ export function createReef({
   })
 
   const placed = fill(new Array(REEF_TYPES.length), 0)
+  const obstacles: ReefObstacle[] = []
   for (const spot of spots) {
     const type = REEF_TYPES[spot.type]
     const mesh = meshes[spot.type]
@@ -139,6 +145,14 @@ export function createReef({
     tmpMatrix.compose(tmpPosition, tmpQuaternion, tmpScale)
     mesh.setMatrixAt(index, tmpMatrix)
     mesh.setColorAt(index, type.kind === 'rubble' ? tmpWhite : spot.color)
+    if (type.kind !== 'plant') {
+      obstacles.push({
+        x: spot.x,
+        z: spot.z,
+        radius: Math.max(spot.radius * 0.72, size * girth * 0.34) + 0.22,
+        topY: floorY + size * height * (1 - type.sink) * 0.9,
+      })
+    }
   }
 
   each(meshes, (mesh, i) => {
@@ -150,6 +164,7 @@ export function createReef({
   return {
     group,
     materials,
+    obstacles,
     dispose() {
       group.clear()
       each(meshes, (mesh) => mesh.geometry.dispose())

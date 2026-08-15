@@ -997,7 +997,12 @@ export function createWaterSystem(
       captureDirty = true
     },
     applyCaustics(material) {
-      material.onBeforeCompile = (shader) => {
+      const previousOnBeforeCompile = material.onBeforeCompile
+      const previousCacheKey = material.customProgramCacheKey
+      material.customProgramCacheKey = () =>
+        `${previousCacheKey?.call(material) ?? ''}|caustics`
+      material.onBeforeCompile = (shader, renderer) => {
+        previousOnBeforeCompile?.call(material, shader, renderer)
         shader.uniforms.causticTex = { value: causticsTarget.texture }
         shader.uniforms.causticLight = { value: light }
         shader.uniforms.causticPool = {
@@ -1036,8 +1041,6 @@ export function createWaterSystem(
              uniform float causticDepth;
              ${causticLookupChunk}`,
           )
-          // Scaling the albedo rather than the lit result keeps the bands from
-          // blowing out the sand's specular highlights.
           .replace(
             '#include <map_fragment>',
             `#include <map_fragment>
@@ -1049,11 +1052,15 @@ export function createWaterSystem(
                ) / causticDepth;
                vec3 refractedLight =
                  -refract(-causticLight, vec3(0.0, 1.0, 0.0), 1.0 / 1.333);
-               vec4 caustic = texture2D(
-                 causticTex,
-                 causticUv(tankPoint, refractedLight, causticPool)
+               vec2 uv = causticUv(tankPoint, refractedLight, causticPool);
+               vec2 edge = min(uv, 1.0 - uv);
+               float coverage = smoothstep(0.0, 0.06, min(edge.x, edge.y));
+               vec4 caustic = texture2D(causticTex, uv);
+               diffuseColor.rgb *= mix(
+                 1.0,
+                 0.72 + caustic.r * caustic.g * 2.2,
+                 coverage
                );
-               diffuseColor.rgb *= 0.72 + caustic.r * caustic.g * 2.2;
              }`,
           )
       }

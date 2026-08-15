@@ -3,6 +3,7 @@ import type * as THREE from 'three'
 export interface Reef {
   group: THREE.Group
   materials: THREE.Material[]
+  obstacles: ReefObstacle[]
   dispose: () => void
 }
 
@@ -17,11 +18,13 @@ export interface ReefOptions {
 }
 
 export const DEFAULT_REEF: ReefOptions = {
-  count: 120,
+  count: 96,
   size: 1,
   vibrance: 1,
   seed: 73,
 }
+
+export const REEF_DENSITY_RANGE = [8, 160] as const
 
 export interface ReefBuildOptions extends Partial<ReefOptions> {
   floorY: number
@@ -55,4 +58,12 @@ export interface Spot {
   scale: number
   type: number
   color: THREE.Color
+}
+
+/** Vertical cylinder the fish steer around. Plants are left out. */
+export interface ReefObstacle {
+  x: number
+  z: number
+  radius: number
+  topY: number
 }

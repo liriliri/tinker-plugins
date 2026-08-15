@@ -1,12 +1,12 @@
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
+import { REEF_DENSITY_RANGE } from '../lib/reef/types'
 import store from '../store'
 import { tw } from '../theme'
 import SliderField from './SliderField'
 
 const SLIDER_MIN = 0
 const SLIDER_MAX = 100
-const DENSITY_RANGE = [20, 220] as const
 const SIZE_RANGE = [0.6, 1.6] as const
 const VIBRANCE_RANGE = [0, 1.6] as const
 
@@ -32,14 +32,15 @@ const ReefSection = observer(() => {
 
       <SliderField
         label={t('density')}
-        value={normalize(reef.count, ...DENSITY_RANGE)}
+        value={normalize(reef.count, ...REEF_DENSITY_RANGE)}
         min={SLIDER_MIN}
         max={SLIDER_MAX}
         step={1}
         format={formatPercent}
         onChange={(value) =>
           store.setReef({
-            count: Math.round(denormalize(value, ...DENSITY_RANGE) / 5) * 5,
+            count:
+              Math.round(denormalize(value, ...REEF_DENSITY_RANGE) / 4) * 4,
           })
         }
       />
