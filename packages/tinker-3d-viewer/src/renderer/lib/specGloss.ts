@@ -1,12 +1,13 @@
 import contain from 'licia/contain'
 import lowerCase from 'licia/lowerCase'
+import map from 'licia/map'
 import startWith from 'licia/startWith'
 import { getBaseName } from './formats'
 
 const SPEC_GLOSS = 'KHR_materials_pbrSpecularGlossiness'
 const JSON_CHUNK = 0x4e4f534a // 'JSON'
 
-type GltfJson = {
+export type GltfJson = {
   extensionsUsed?: string[]
   extensionsRequired?: string[]
   buffers?: { uri?: string }[]
@@ -46,16 +47,25 @@ function readGlbJson(buffer: ArrayBuffer): GltfJson | null {
   return null
 }
 
-/** Convert multi-file Spec-Gloss glTF package via preload. */
-export async function convertSpecGlossGltfPackage(
+export interface GltfPackage {
+  gltfJson: string
+  resources: Record<string, ArrayBuffer>
+}
+
+export async function collectGltfPackage(
   files: File[],
   gltfFile: File,
-): Promise<ArrayBuffer> {
-  const text = new TextDecoder().decode(await gltfFile.arrayBuffer())
-  const json = JSON.parse(text) as GltfJson
+): Promise<GltfPackage> {
+  const gltfJson = new TextDecoder().decode(await gltfFile.arrayBuffer())
+  let json: GltfJson
+  try {
+    json = JSON.parse(gltfJson) as GltfJson
+  } catch {
+    throw new Error('loadFileFailed')
+  }
   const resources: Record<string, ArrayBuffer> = {}
   const byBase = new Map(
-    files.map((file) => [lowerCase(getBaseName(file.name)), file] as const),
+    map(files, (file) => [lowerCase(getBaseName(file.name)), file] as const),
   )
 
   const uris = [
@@ -72,7 +82,7 @@ export async function convertSpecGlossGltfPackage(
     resources[uri] = await file.arrayBuffer()
   }
 
-  return modelViewer.convertSpecGlossGltfPackage({ gltfJson: text, resources })
+  return { gltfJson, resources }
 }
 
 export async function prepareCompatibleGlb(

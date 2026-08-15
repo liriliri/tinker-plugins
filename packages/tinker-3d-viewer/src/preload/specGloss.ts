@@ -6,15 +6,30 @@ import { metalRough, prune } from '@gltf-transform/functions'
 /** model-viewer handles plain metal/rough better than extreme SpecGloss leftovers. */
 const MIN_ROUGHNESS = 0.2
 
-function toArrayBuffer(bytes: Uint8Array): ArrayBuffer {
+export function toArrayBuffer(bytes: Uint8Array): ArrayBuffer {
   return bytes.buffer.slice(
     bytes.byteOffset,
     bytes.byteOffset + bytes.byteLength,
   ) as ArrayBuffer
 }
 
-function createIo() {
+export function createIo() {
   return new NodeIO().registerExtensions(KHRONOS_EXTENSIONS)
+}
+
+export async function readGltfPackageDocument(payload: {
+  gltfJson: string
+  resources: Record<string, ArrayBuffer>
+}) {
+  const json = JSON.parse(payload.gltfJson)
+  const resources: Record<string, Uint8Array> = {}
+  for (const [uri, buffer] of Object.entries(payload.resources)) {
+    resources[uri] = new Uint8Array(buffer)
+  }
+  return createIo().readJSON({
+    json,
+    resources: resources as Record<string, Uint8Array<ArrayBuffer>>,
+  })
 }
 
 /**
@@ -71,15 +86,5 @@ export async function convertSpecGlossGltfPackage(payload: {
   gltfJson: string
   resources: Record<string, ArrayBuffer>
 }): Promise<ArrayBuffer> {
-  const io = createIo()
-  const json = JSON.parse(payload.gltfJson)
-  const resources: Record<string, Uint8Array> = {}
-  for (const [uri, buffer] of Object.entries(payload.resources)) {
-    resources[uri] = new Uint8Array(buffer)
-  }
-  const document = await io.readJSON({
-    json,
-    resources: resources as Record<string, Uint8Array<ArrayBuffer>>,
-  })
-  return convertDocument(document)
+  return convertDocument(await readGltfPackageDocument(payload))
 }

@@ -8,16 +8,20 @@ import isErr from 'licia/isErr'
 import LocalStore from 'licia/LocalStore'
 import map from 'licia/map'
 import some from 'licia/some'
+import splitPath from 'licia/splitPath'
 import toArr from 'licia/toArr'
 import i18n from 'i18next'
 import { prepareModel, sourceFormatLabel } from './lib/convert'
 import {
   getBaseName,
+  getExtension,
+  getStemName,
   isLoadableFileName,
   isModelFileName,
   OPEN_DIALOG_EXTENSIONS,
 } from './lib/formats'
 import { filesFromPath, hasModelFile, mergeFilesByName } from './lib/sidecars'
+import type { GltfPackage } from './lib/specGloss'
 import {
   DEFAULT_MATCAP_PRESET,
   DEFAULT_WIREFRAME_COLOR,
@@ -74,13 +78,22 @@ class Store {
   toastOpen = false
   toastMsg = ''
   toastTitle = 'error'
+  isSaving = false
 
   private revokePrepared: (() => void) | null = null
+  private glbBuffer: ArrayBuffer | null = null
+  private gltfPackage: GltfPackage | null = null
 
   constructor() {
     makeAutoObservable(this, {
       revokePrepared: false,
+      glbBuffer: false,
+      gltfPackage: false,
     } as Record<string, false>)
+  }
+
+  get canSave() {
+    return this.status === 'ready' && (!!this.glbBuffer || !!this.gltfPackage)
   }
 
   get isLoading() {
@@ -106,10 +119,6 @@ class Store {
 
   toggleViewMode() {
     this.setViewMode(this.viewMode === 'orbit' ? 'firstPerson' : 'orbit')
-  }
-
-  setInspectorOpen(open: boolean) {
-    this.inspectorOpen = open
   }
 
   toggleInspector() {
@@ -218,6 +227,8 @@ class Store {
       runInAction(() => {
         this.revokeSrc()
         this.revokePrepared = prepared.revoke
+        this.glbBuffer = prepared.glbBuffer
+        this.gltfPackage = prepared.gltfPackage
         this.srcUrl = prepared.srcUrl
         this.info = {
           fileName,
@@ -241,7 +252,53 @@ class Store {
     }
   }
 
+  async saveModel() {
+    if (!this.canSave || this.isSaving) return
+
+    const baseName = getStemName(this.info?.fileName || 'model') || 'model'
+    const result = await tinker.showSaveDialog({
+      defaultPath: `${baseName}.glb`,
+      filters: [
+        { name: i18n.t('filterGlb'), extensions: ['glb'] },
+        { name: i18n.t('filterGltf'), extensions: ['gltf'] },
+      ],
+    })
+    if (result.canceled || !result.filePath) return
+
+    this.isSaving = true
+    try {
+      const glb = await this.getGlbBuffer()
+      if (getExtension(result.filePath) === 'gltf') {
+        const { dir, name } = splitPath(result.filePath)
+        const outDir = `${dir}${getStemName(name)}`
+        const gltfPath = await modelViewer.writeGltfDirectory(outDir, glb)
+        tinker.showItemInPath(gltfPath)
+        return
+      }
+      await tinker.writeFile(result.filePath, new Uint8Array(glb))
+      tinker.showItemInPath(result.filePath)
+    } catch {
+      this.showError('saveFailed')
+    } finally {
+      runInAction(() => {
+        this.isSaving = false
+      })
+    }
+  }
+
+  private async getGlbBuffer(): Promise<ArrayBuffer> {
+    if (this.glbBuffer) return this.glbBuffer
+    if (!this.gltfPackage) {
+      throw new Error('saveFailed')
+    }
+    const packed = await modelViewer.packGltfPackageToGlb(this.gltfPackage)
+    this.glbBuffer = packed
+    return packed
+  }
+
   private revokeSrc() {
+    this.glbBuffer = null
+    this.gltfPackage = null
     if (this.revokePrepared) {
       this.revokePrepared()
       this.revokePrepared = null

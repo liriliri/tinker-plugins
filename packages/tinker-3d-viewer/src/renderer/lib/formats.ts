@@ -46,6 +46,12 @@ export function getBaseName(filePath: string): string {
   return splitPath(filePath).name || filePath
 }
 
+export function getStemName(fileName: string): string {
+  const { name, ext } = splitPath(fileName)
+  if (!ext) return name || fileName
+  return name.slice(0, -ext.length) || name
+}
+
 export function isModelFileName(fileName: string): boolean {
   return contain(MODEL_EXTENSIONS, getExtension(fileName))
 }

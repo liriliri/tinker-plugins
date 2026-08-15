@@ -27,16 +27,19 @@ import {
   isModelFileName,
 } from './formats'
 import {
-  convertSpecGlossGltfPackage,
+  collectGltfPackage,
   prepareCompatibleGlb,
   usesSpecGloss,
+  type GltfJson,
+  type GltfPackage,
 } from './specGloss'
 
 interface PreparedModel {
   /** Object URL for <model-viewer src>. */
   srcUrl: string
-  /** GLB bytes for export; null when displaying a multi-file glTF directly. */
+  /** GLB bytes for save; null when displaying a multi-file glTF directly. */
   glbBuffer: ArrayBuffer | null
+  gltfPackage: GltfPackage | null
   warnings: string[]
   revoke: () => void
 }
@@ -72,6 +75,7 @@ async function prepareGlbBuffer(buffer: ArrayBuffer): Promise<PreparedModel> {
   return {
     srcUrl,
     glbBuffer: compatible,
+    gltfPackage: null,
     warnings: [],
     revoke: () => URL.revokeObjectURL(srcUrl),
   }
@@ -142,21 +146,13 @@ async function prepareGltfPackage(
   files: File[],
   gltfFile: File,
 ): Promise<PreparedModel> {
-  const text = new TextDecoder().decode(await gltfFile.arrayBuffer())
-  let json: {
-    buffers?: { uri?: string }[]
-    images?: { uri?: string }[]
-    extensionsUsed?: string[]
-    extensionsRequired?: string[]
-  }
-  try {
-    json = JSON.parse(text)
-  } catch {
-    throw new Error('loadFileFailed')
-  }
+  const gltfPackage = await collectGltfPackage(files, gltfFile)
+  const json = JSON.parse(gltfPackage.gltfJson) as GltfJson
 
   if (usesSpecGloss(json)) {
-    return prepareGlbBuffer(await convertSpecGlossGltfPackage(files, gltfFile))
+    return prepareGlbBuffer(
+      await modelViewer.convertSpecGlossGltfPackage(gltfPackage),
+    )
   }
 
   const objectUrls: string[] = []
@@ -186,6 +182,7 @@ async function prepareGltfPackage(
   return {
     srcUrl,
     glbBuffer: null,
+    gltfPackage,
     warnings: [],
     revoke: () => each(objectUrls, (url) => URL.revokeObjectURL(url)),
   }
@@ -247,6 +244,7 @@ async function convertForeignToGlb(
     return {
       srcUrl,
       glbBuffer: buffer,
+      gltfPackage: null,
       warnings,
       revoke: () => each(objectUrls, (url) => URL.revokeObjectURL(url)),
     }

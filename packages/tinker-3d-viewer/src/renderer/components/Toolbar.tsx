@@ -10,6 +10,7 @@ import {
   Play,
   RefreshCw,
   RotateCcw,
+  Save,
 } from 'lucide-react'
 import { observer } from 'mobx-react-lite'
 import type { ReactNode } from 'react'
@@ -78,6 +79,14 @@ const Toolbar = observer(function Toolbar({
       >
         <IconButton title={t('open')} onClick={() => void store.openFiles()}>
           <FolderOpen className="w-3.5 h-3.5" />
+        </IconButton>
+
+        <IconButton
+          title={t('save')}
+          disabled={!store.canSave || store.isSaving}
+          onClick={() => void store.saveModel()}
+        >
+          <Save className="w-3.5 h-3.5" />
         </IconButton>
 
         <IconButton

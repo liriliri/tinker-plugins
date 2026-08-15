@@ -8,6 +8,7 @@ A 3D model preview plugin for [TINKER](https://github.com/liriliri/tinker), powe
 
 - **Multiple formats** — GLB / glTF, FBX, OBJ, STL, PLY, DAE, 3MF, and ZIP / folders
 - **Drag & drop** or file / folder picker to open models
+- **Save** the current model as `.glb`, or as an unpacked glTF folder (`.gltf` + `.bin` + textures)
 - **Auto conversion** of non-GLB sources to GLB via three.js loaders
 - **Orbit view** with auto-rotate, animation playback, and camera reset
 - **First-person view** with WASD movement and mouse look (click to lock pointer)
@@ -24,3 +25,4 @@ Download and install TINKER from `https://tinker.liriliri.io/`, then run `npm i 
 2. Orbit with the mouse, or switch to first-person view from the toolbar
 3. In first-person mode, click the view to lock the mouse, use **WASD** to move, and **Esc** to unlock
 4. Toggle auto-rotate / animation, reset the camera, or enter fullscreen from the toolbar
+5. Save the loaded model as GLB or glTF from the toolbar
