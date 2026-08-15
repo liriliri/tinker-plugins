@@ -1,0 +1,38 @@
+{
+  "name": "tinker-aquarium",
+  "version": "0.1.0",
+  "description": "Aquarium Plugin for TINKER",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "aquarium"
+  ],
+  "tinker": {
+    "name": "Aquarium",
+    "description": "Desktop aquarium fish tank simulation",
+    "main": "dist/index.html",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "水族箱",
+        "description": "桌面鱼缸模拟"
+      }
+    }
+  },
+  "devDependencies": {
+    "@types/three": "^0.185.4",
+    "three": "^0.185.1"
+  }
+}
