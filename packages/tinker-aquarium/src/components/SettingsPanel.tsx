@@ -4,6 +4,7 @@ import { X } from 'lucide-react'
 import store from '../store'
 import { tw } from '../theme'
 import ReefSection from './ReefSection'
+import CameraSection from './CameraSection'
 
 /**
  * Generic settings shell. Each feature owns a section; drop more of them into
@@ -41,6 +42,7 @@ const SettingsPanel = observer(() => {
         </header>
 
         <div className={tw.panelBody}>
+          <CameraSection />
           <ReefSection />
         </div>
       </aside>

@@ -6,5 +6,7 @@
   "vibrance": "鲜艳度",
   "regenerate": "重新生成",
   "close": "关闭",
-  "openSettings": "打开设置"
+  "openSettings": "打开设置",
+  "views": "视角",
+  "view": "视角 {{n}}"
 }

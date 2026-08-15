@@ -6,5 +6,7 @@
   "vibrance": "Vibrance",
   "regenerate": "Regenerate",
   "close": "Close",
-  "openSettings": "Open settings"
+  "openSettings": "Open settings",
+  "views": "Views",
+  "view": "View {{n}}"
 }

@@ -550,7 +550,7 @@ const wallCausticsFragmentShader = `
 
 interface WaterSystem {
   group: THREE.Group
-  addDrop: (x: number, z: number, strength?: number) => void
+  addDrop: (x: number, z: number, strength?: number, radius?: number) => void
   setFloorMap: (texture: THREE.Texture) => void
   /**
    * Lights a bed material through the wave simulation, so the focused bands and
@@ -859,9 +859,10 @@ export function createWaterSystem(
   group.scale.setScalar(waterDepth)
   group.position.y = surfaceY
 
-  const applyDrop = (x: number, z: number, strength: number) => {
+  const applyDrop = (x: number, z: number, strength: number, radius = 0.03) => {
     rippleMaterial.uniforms.center.value.set(x / halfWidth, z / halfDepth)
     rippleMaterial.uniforms.strength.value = strength
+    rippleMaterial.uniforms.radius.value = radius
     runPass(rippleMaterial)
   }
 
@@ -979,8 +980,8 @@ export function createWaterSystem(
 
   return {
     group,
-    addDrop(x, z, strength = 0.01) {
-      applyDrop(x, z, strength)
+    addDrop(x, z, strength = 0.01, radius = 0.03) {
+      applyDrop(x, z, strength, radius)
     },
     setFloorMap(texture) {
       aboveMaterial.uniforms.tiles.value = texture

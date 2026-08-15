@@ -10,12 +10,15 @@ export default function AquariumView() {
   useEffect(() => {
     if (!canvasRef.current) return
 
-    const aquarium: Aquarium = createAquarium(canvasRef.current, store.reef)
+    const aquarium: Aquarium = createAquarium(
+      canvasRef.current,
+      store.reef,
+      store.view,
+      (view) => store.setView(view),
+    )
     let timer = 0
 
-    // reaction skips the initial run — createAquarium already used store.reef.
-    // Slider drags fire many times a second; debounce so rebuilds settle.
-    const dispose = reaction(
+    const disposeReef = reaction(
       () => [
         store.reef.count,
         store.reef.size,
@@ -29,9 +32,14 @@ export default function AquariumView() {
         }, 80)
       },
     )
+    const disposeView = reaction(
+      () => store.viewEpoch,
+      () => aquarium.setView(store.view),
+    )
 
     return () => {
-      dispose()
+      disposeReef()
+      disposeView()
       window.clearTimeout(timer)
       aquarium.dispose()
     }

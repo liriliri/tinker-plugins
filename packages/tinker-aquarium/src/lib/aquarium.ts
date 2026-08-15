@@ -1,11 +1,16 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js'
+import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js'
 import clamp from 'licia/clamp'
 import each from 'licia/each'
 import toArr from 'licia/toArr'
+import { createBubbles } from './bubbles'
+import { createGlassDirt } from './glassDirt'
 import { createReef } from './reef'
 import { DEFAULT_REEF, type ReefOptions } from './reef/types'
 import { createWaterSystem } from './water'
+import type { CameraView } from '../types'
 
 const TANK = {
   width: 18,
@@ -16,8 +21,8 @@ const TANK = {
 }
 
 const SAND_THICKNESS = 0.7
-// Kept clear of the glass bottom face, otherwise the coplanar faces z-fight.
-const SAND_BASE_Y = TANK.floorY + 0.03
+// A hair above the inner bottom face, so the two coplanar slabs do not z-fight.
+const SAND_BASE_Y = TANK.floorY + 0.006
 const SAND_TOP_Y = TANK.floorY + SAND_THICKNESS
 // Sand textures live in the plugin's `public/images/` folder; missing files
 // fall back to the procedural sand color below.
@@ -28,14 +33,105 @@ const SAND_NORMAL_URL = 'images/sand_normal.jpg'
 // sides. One tile spans ~11 units at this density.
 const SAND_GRAIN_DENSITY = 0.088
 
+function createGlassShell(thickness: number, envMap: THREE.Texture) {
+  const { width, height, depth } = TANK
+  const material = new THREE.MeshPhysicalMaterial({
+    color: 0xffffff,
+    roughness: 0.04,
+    metalness: 0,
+    transmission: 1,
+    thickness: 0.12,
+    ior: 1.45,
+    attenuationColor: 0xd8eaf8,
+    attenuationDistance: 24,
+    clearcoat: 1,
+    clearcoatRoughness: 0.06,
+    envMap,
+    envMapIntensity: 1.35,
+    specularIntensity: 1,
+    transparent: true,
+    opacity: 0.08,
+    side: THREE.FrontSide,
+    depthWrite: false,
+  })
+  const group = new THREE.Group()
+  group.name = 'Glass'
+
+  const addPanel = (
+    geometry: THREE.BufferGeometry,
+    x: number,
+    y: number,
+    z: number,
+  ) => {
+    const mesh = new THREE.Mesh(geometry, material)
+    mesh.position.set(x, y, z)
+    mesh.renderOrder = 3
+    group.add(mesh)
+  }
+
+  addPanel(
+    new THREE.BoxGeometry(thickness, height, depth + thickness * 2),
+    -(width / 2 + thickness / 2),
+    0,
+    0,
+  )
+  addPanel(
+    new THREE.BoxGeometry(thickness, height, depth + thickness * 2),
+    width / 2 + thickness / 2,
+    0,
+    0,
+  )
+  addPanel(
+    new THREE.BoxGeometry(width, height, thickness),
+    0,
+    0,
+    depth / 2 + thickness / 2,
+  )
+  addPanel(
+    new THREE.BoxGeometry(width, height, thickness),
+    0,
+    0,
+    -(depth / 2 + thickness / 2),
+  )
+  addPanel(
+    new THREE.BoxGeometry(
+      width + thickness * 2,
+      thickness,
+      depth + thickness * 2,
+    ),
+    0,
+    -(height / 2 + thickness / 2),
+    0,
+  )
+
+  const outer = new THREE.BoxGeometry(
+    width + thickness * 2,
+    height + thickness,
+    depth + thickness * 2,
+  )
+  outer.translate(0, -thickness / 2, 0)
+  const inner = new THREE.BoxGeometry(width, height, depth)
+  const edgeGeometry = mergeGeometries([
+    new THREE.EdgesGeometry(outer),
+    new THREE.EdgesGeometry(inner),
+  ])!
+  outer.dispose()
+  inner.dispose()
+
+  return { group, edgeGeometry }
+}
+
 export interface Aquarium {
   setReef: (options: ReefOptions) => void
+  setView: (view: CameraView) => void
   dispose: () => void
 }
 
 export function createAquarium(
   canvas: HTMLCanvasElement,
   reefOptions: ReefOptions = DEFAULT_REEF,
+  view?: CameraView | null,
+  onViewChange?: (view: CameraView) => void,
 ): Aquarium {
   const renderer = new THREE.WebGLRenderer({
     canvas,
@@ -62,6 +158,26 @@ export function createAquarium(
   controls.minDistance = 15
   controls.maxDistance = 38
   controls.maxPolarAngle = Math.PI * 0.82
+  if (view) {
+    camera.position.fromArray(view.position)
+    controls.target.fromArray(view.target)
+    controls.update()
+  }
+
+  let saveViewTimer = 0
+  let suppressViewPersist = 0
+  const persistView = () => {
+    if (suppressViewPersist > 0) return
+    onViewChange?.({
+      position: [camera.position.x, camera.position.y, camera.position.z],
+      target: [controls.target.x, controls.target.y, controls.target.z],
+    })
+  }
+  const onControlsChange = () => {
+    window.clearTimeout(saveViewTimer)
+    saveViewTimer = window.setTimeout(persistView, 250)
+  }
+  controls.addEventListener('change', onControlsChange)
 
   // The fill is all that survives inside a shadow, so a cyan tint here turns every
   // shadowed patch of warm sand olive. A blue-grey bounce keeps them as cool shade.
@@ -91,32 +207,22 @@ export function createAquarium(
   const tank = new THREE.Group()
   scene.add(tank)
 
-  const glassGeometry = new THREE.BoxGeometry(
-    TANK.width,
-    TANK.height,
-    TANK.depth,
-  )
-  const glassMaterial = new THREE.MeshPhysicalMaterial({
-    color: 0x9cc2ff,
-    transparent: true,
-    opacity: 0.075,
-    roughness: 0.08,
-    metalness: 0,
-    transmission: 0.35,
-    thickness: 0.18,
-    side: THREE.DoubleSide,
-    depthWrite: false,
-  })
-  const glass = new THREE.Mesh(glassGeometry, glassMaterial)
-  tank.add(glass)
+  const environment = new RoomEnvironment()
+  const pmrem = new THREE.PMREMGenerator(renderer)
+  const envMap = pmrem.fromScene(environment, 0.04).texture
+  environment.dispose()
+  pmrem.dispose()
 
-  const edgeGeometry = new THREE.EdgesGeometry(glassGeometry)
+  const GLASS_THICKNESS = 0.12
+  const glass = createGlassShell(GLASS_THICKNESS, envMap)
+  tank.add(glass.group)
+
   const edgeMaterial = new THREE.LineBasicMaterial({
     color: 0xc6dbff,
     transparent: true,
     opacity: 0.38,
   })
-  const edges = new THREE.LineSegments(edgeGeometry, edgeMaterial)
+  const edges = new THREE.LineSegments(glass.edgeGeometry, edgeMaterial)
   tank.add(edges)
 
   const createSandMaterial = () =>
@@ -136,8 +242,8 @@ export function createAquarium(
   })
 
   const sandHeight = SAND_TOP_Y - SAND_BASE_Y
-  const sandWidth = TANK.width - 0.1
-  const sandDepth = TANK.depth - 0.1
+  const sandWidth = TANK.width - 0.012
+  const sandDepth = TANK.depth - 0.012
   // The world size each face's UVs are stretched over.
   const sandFaceSizes = {
     top: new THREE.Vector2(sandWidth, sandDepth),
@@ -171,7 +277,17 @@ export function createAquarium(
   tank.add(water.group)
   water.applyCaustics(sandMaterial)
   // The shell wraps the water, so it must not appear in what the surface samples.
-  water.hideFromCapture(glass, edges)
+  water.hideFromCapture(glass.group, edges)
+
+  const glassDirt = createGlassDirt(
+    TANK.width,
+    TANK.height,
+    TANK.depth,
+    TANK.waterY,
+    TANK.floorY,
+  )
+  tank.add(glassDirt.group)
+  water.hideFromCapture(glassDirt.group)
 
   const sandTextures: THREE.Texture[] = []
   const textureLoader = new THREE.TextureLoader()
@@ -245,6 +361,16 @@ export function createAquarium(
   }
   let coral = buildReef(reefOptions)
 
+  const bubbles = createBubbles(
+    SAND_TOP_Y,
+    TANK.waterY,
+    envMap,
+    (x, z, size) => {
+      water.addDrop(x, z, 0.0022 + size * 0.0012, 0.012)
+    },
+  )
+  tank.add(bubbles.mesh)
+
   const raycaster = new THREE.Raycaster()
   const pointer = new THREE.Vector2()
   const waterPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), -TANK.waterY)
@@ -315,9 +441,12 @@ export function createAquarium(
   resizeObserver.observe(canvas)
   resize()
 
+  const clock = new THREE.Clock()
   renderer.setAnimationLoop(() => {
+    bubbles.update(clock.getElapsedTime())
     water.update(camera, scene)
     controls.update()
+    if (suppressViewPersist > 0) suppressViewPersist -= 1
     renderer.render(scene, camera)
   })
 
@@ -328,8 +457,17 @@ export function createAquarium(
       coral = buildReef(options)
       water.invalidateCapture()
     },
+    setView(next) {
+      suppressViewPersist = 12
+      camera.position.fromArray(next.position)
+      controls.target.fromArray(next.target)
+      controls.update()
+    },
     dispose() {
       renderer.setAnimationLoop(null)
+      window.clearTimeout(saveViewTimer)
+      persistView()
+      controls.removeEventListener('change', onControlsChange)
       resizeObserver.disconnect()
       canvas.removeEventListener('pointerdown', onPointerDown, {
         capture: true,
@@ -340,9 +478,13 @@ export function createAquarium(
       controls.dispose()
       water.dispose()
       coral.dispose()
+      bubbles.dispose()
+      glassDirt.dispose()
+      envMap.dispose()
       each(sandTextures, (texture) => texture.dispose())
       tank.remove(water.group)
       tank.remove(coral.group)
+      tank.remove(bubbles.mesh)
       scene.traverse((object) => {
         if (!(
           object instanceof THREE.Mesh || object instanceof THREE.LineSegments

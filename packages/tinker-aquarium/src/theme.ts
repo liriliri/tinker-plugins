@@ -21,5 +21,8 @@ export const tw = {
     'h-1 w-full cursor-pointer appearance-none rounded-full bg-cyan-100/15 accent-cyan-300 outline-none',
   actionBtn:
     'mt-1 w-full rounded-md border border-cyan-100/15 bg-cyan-400/10 px-3 py-2 text-xs text-cyan-50/85 transition hover:border-cyan-100/35 hover:bg-cyan-400/20',
-  closeBtn: 'text-cyan-50/40 transition hover:text-cyan-50/80',
+  viewBtn:
+    'rounded-md border border-cyan-100/15 bg-cyan-400/10 py-2 text-xs text-cyan-50/85 transition hover:border-cyan-100/35 hover:bg-cyan-400/20',
+  viewBtnOn:
+    'rounded-md border border-cyan-100/40 bg-cyan-400/25 py-2 text-xs text-cyan-50 transition',
 }
