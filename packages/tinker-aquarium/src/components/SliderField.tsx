@@ -1,3 +1,4 @@
+import toNum from 'licia/toNum'
 import { tw } from '../theme'
 
 interface Props {
@@ -32,7 +33,7 @@ export default function SliderField({
         max={max}
         step={step}
         value={value}
-        onChange={(event) => onChange(Number(event.target.value))}
+        onChange={(event) => onChange(toNum(event.target.value))}
       />
     </label>
   )

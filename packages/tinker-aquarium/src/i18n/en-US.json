@@ -17,5 +17,6 @@
   "lightSaturation": "Saturation",
   "brightness": "Brightness",
   "display": "Display",
+  "renderScale": "Render scale",
   "showFps": "Show frame rate"
 }

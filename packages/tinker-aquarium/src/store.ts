@@ -12,6 +12,8 @@ import debounce from 'licia/debounce'
 import Color from 'licia/Color'
 import rgbToHsl from 'licia/rgbToHsl'
 import isBool from 'licia/isBool'
+import isObj from 'licia/isObj'
+import cloneDeep from 'licia/cloneDeep'
 import { DEFAULT_REEF, type ReefOptions } from './lib/reef/types'
 import {
   DEFAULT_FISH_COUNT,
@@ -21,9 +23,12 @@ import {
 } from './lib/fish/config'
 import {
   DEFAULT_LIGHTING,
+  DEFAULT_RENDER_SCALE,
   LIGHTING_BRIGHTNESS_RANGE,
+  RENDER_SCALE_RANGE,
   type CameraView,
   type LightingOptions,
+  type PerfStats,
 } from './types'
 
 const storage = new LocalStore('tinker-aquarium')
@@ -33,6 +38,7 @@ const STORAGE_FISH = 'fish'
 const STORAGE_GUPPY = 'guppy'
 const STORAGE_LIGHT = 'light'
 const STORAGE_FPS = 'fps'
+const STORAGE_RENDER_SCALE = 'renderScale'
 
 export const VIEW_SLOT_COUNT = 3
 
@@ -79,14 +85,11 @@ function isVec3(value: unknown): value is [number, number, number] {
 }
 
 function cloneView(view: CameraView): CameraView {
-  return {
-    position: [...view.position],
-    target: [...view.target],
-  }
+  return cloneDeep(view)
 }
 
 function readView(value: unknown): CameraView | null {
-  if (!value || typeof value !== 'object') return null
+  if (!isObj(value)) return null
   const view = value as Partial<CameraView>
   if (!isVec3(view.position) || !isVec3(view.target)) return null
   return cloneView(view as CameraView)
@@ -103,6 +106,8 @@ class Store {
   panelOpen = false
   showFps = false
   fps = 0
+  perf: PerfStats | null = null
+  renderScale = DEFAULT_RENDER_SCALE
 
   constructor() {
     makeAutoObservable(this)
@@ -112,6 +117,7 @@ class Store {
     this.loadLighting()
     this.loadView()
     this.loadShowFps()
+    this.loadRenderScale()
   }
 
   setPanelOpen(open: boolean) {
@@ -123,8 +129,18 @@ class Store {
     storage.set(STORAGE_FPS, show)
   }
 
-  setFps(fps: number) {
-    this.fps = fps
+  setRenderScale(scale: number) {
+    this.renderScale = clamp(
+      scale,
+      RENDER_SCALE_RANGE[0],
+      RENDER_SCALE_RANGE[1],
+    )
+    storage.set(STORAGE_RENDER_SCALE, this.renderScale)
+  }
+
+  setFps(stats: PerfStats) {
+    this.fps = stats.fps
+    this.perf = stats
   }
 
   setReef(partial: Partial<ReefOptions>) {
@@ -260,6 +276,16 @@ class Store {
   private loadShowFps() {
     const saved = storage.get(STORAGE_FPS)
     if (isBool(saved)) this.showFps = saved
+  }
+
+  private loadRenderScale() {
+    const saved = storage.get(STORAGE_RENDER_SCALE)
+    if (!isNum(saved)) return
+    this.renderScale = clamp(
+      saved,
+      RENDER_SCALE_RANGE[0],
+      RENDER_SCALE_RANGE[1],
+    )
   }
 }
 

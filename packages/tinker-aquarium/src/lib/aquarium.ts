@@ -18,8 +18,10 @@ import { DEFAULT_REEF, type ReefOptions } from './reef/types'
 import { createWaterSystem } from './water'
 import {
   DEFAULT_LIGHTING,
+  DEFAULT_RENDER_SCALE,
   type CameraView,
   type LightingOptions,
+  type PerfStats,
 } from '../types'
 
 const TANK = {
@@ -137,6 +139,7 @@ export interface Aquarium {
   setGuppyCount: (count: number) => void
   setLighting: (lighting: LightingOptions) => void
   setView: (view: CameraView) => void
+  setRenderScale: (scale: number) => void
   dispose: () => void
 }
 
@@ -147,15 +150,20 @@ export function createAquarium(
   guppyCount = DEFAULT_GUPPY_COUNT,
   lighting: LightingOptions = DEFAULT_LIGHTING,
   view?: CameraView | null,
+  renderScale = DEFAULT_RENDER_SCALE,
   onViewChange?: (view: CameraView) => void,
-  onFps?: (fps: number) => void,
+  onFps?: (stats: PerfStats) => void,
 ): Aquarium {
   const renderer = new THREE.WebGLRenderer({
     canvas,
     alpha: true,
     antialias: true,
   })
-  renderer.setPixelRatio(clamp(window.devicePixelRatio, 2))
+  let maxRenderScale = renderScale
+  const applyPixelRatio = () => {
+    renderer.setPixelRatio(clamp(window.devicePixelRatio, 1, maxRenderScale))
+  }
+  applyPixelRatio()
   renderer.outputColorSpace = THREE.SRGBColorSpace
   renderer.toneMapping = THREE.ACESFilmicToneMapping
   renderer.toneMappingExposure = 1.05
@@ -258,7 +266,8 @@ export function createAquarium(
   const edgeMaterial = new THREE.LineBasicMaterial({
     color: 0xc6dbff,
     transparent: true,
-    opacity: 0.38,
+    opacity: 0.5,
+    linewidth: 2,
   })
   const edges = new THREE.LineSegments(glass.edgeGeometry, edgeMaterial)
   tank.add(edges)
@@ -399,11 +408,13 @@ export function createAquarium(
   }
   let coral = buildReef(reefOptions)
 
+  let bubbleDropSkip = 0
   const bubbles = createBubbles(
     SAND_TOP_Y,
     TANK.waterY,
     envMap,
     (x, z, size) => {
+      if (bubbleDropSkip++ % 4 !== 0) return
       water.addDrop(x, z, 0.0022 + size * 0.0012, 0.012)
     },
   )
@@ -506,22 +517,52 @@ export function createAquarium(
   const clock = new THREE.Clock()
   let fpsFrames = 0
   let fpsStamp = performance.now()
+  let fishMsAcc = 0
+  let captureMsAcc = 0
+  let waterMsAcc = 0
+  let sceneMsAcc = 0
   renderer.setAnimationLoop(() => {
     const dt = clock.getDelta()
+    const fishStart = performance.now()
     goldfish.update(dt)
     guppies.update(dt)
     bubbles.update(clock.getElapsedTime())
-    water.update(camera, scene)
+    fishMsAcc += performance.now() - fishStart
+    const waterStart = performance.now()
+    const waterCost = water.update(camera, scene)
+    waterMsAcc += performance.now() - waterStart
+    captureMsAcc += waterCost.captureMs
     controls.update()
     if (suppressViewPersist > 0) suppressViewPersist -= 1
+    renderer.info.reset()
+    const sceneStart = performance.now()
     renderer.render(scene, camera)
+    sceneMsAcc += performance.now() - sceneStart
     fpsFrames += 1
     const now = performance.now()
     const elapsed = now - fpsStamp
     if (elapsed >= 500) {
-      onFps?.(Math.round((fpsFrames * 1000) / elapsed))
+      const cpuMs =
+        (fishMsAcc + waterMsAcc + sceneMsAcc) / Math.max(fpsFrames, 1)
+      onFps?.({
+        fps: Math.round((fpsFrames * 1000) / elapsed),
+        fishMs: fishMsAcc / fpsFrames,
+        captureMs: captureMsAcc / fpsFrames,
+        waterMs: waterMsAcc / fpsFrames,
+        sceneMs: sceneMsAcc / fpsFrames,
+        cpuMs,
+        draws: renderer.info.render.calls,
+        triangles: renderer.info.render.triangles,
+        pixelRatio: renderer.getPixelRatio(),
+        width: renderer.domElement.width,
+        height: renderer.domElement.height,
+      })
       fpsFrames = 0
       fpsStamp = now
+      fishMsAcc = 0
+      captureMsAcc = 0
+      waterMsAcc = 0
+      sceneMsAcc = 0
     }
   })
 
@@ -548,6 +589,11 @@ export function createAquarium(
       camera.position.fromArray(next.position)
       controls.target.fromArray(next.target)
       controls.update()
+    },
+    setRenderScale(scale) {
+      maxRenderScale = scale
+      applyPixelRatio()
+      resize()
     },
     dispose() {
       renderer.setAnimationLoop(null)

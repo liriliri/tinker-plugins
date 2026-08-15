@@ -17,8 +17,9 @@ export default function AquariumView() {
       store.guppyCount,
       store.lighting,
       store.view,
+      store.renderScale,
       (view) => store.setView(view),
-      (fps) => store.setFps(fps),
+      (stats) => store.setFps(stats),
     )
     let timer = 0
 
@@ -57,6 +58,10 @@ export default function AquariumView() {
       ([hue, saturation, brightness]) =>
         aquarium.setLighting({ hue, saturation, brightness }),
     )
+    const disposeScale = reaction(
+      () => store.renderScale,
+      (scale) => aquarium.setRenderScale(scale),
+    )
 
     return () => {
       disposeReef()
@@ -64,6 +69,7 @@ export default function AquariumView() {
       disposeFish()
       disposeGuppy()
       disposeLighting()
+      disposeScale()
       window.clearTimeout(timer)
       aquarium.dispose()
     }

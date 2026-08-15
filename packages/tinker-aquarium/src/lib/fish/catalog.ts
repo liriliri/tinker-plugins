@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import { pick } from '../reef/util'
 import type { Axis, FishLook, FishModelDef } from './types'
 
 export const FISH_MODELS = {
@@ -85,10 +86,7 @@ export function readFishModel(id: FishModelId): FishModelDef {
 
 export function sampleFishLook(look: FishLook, random: () => number) {
   const size = pickRange(look.size, random)
-  const tint =
-    look.tints[
-      Math.min(look.tints.length - 1, Math.floor(random() * look.tints.length))
-    ]
+  const tint = pick(look.tints, random)
   tmpColor.setHSL(tint[0], tint[1], tint[2])
   return {
     scale: {

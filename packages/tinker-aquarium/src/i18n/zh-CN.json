@@ -17,5 +17,6 @@
   "lightSaturation": "饱和度",
   "brightness": "亮度",
   "display": "显示",
+  "renderScale": "渲染倍率",
   "showFps": "显示帧率"
 }

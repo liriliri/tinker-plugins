@@ -21,8 +21,28 @@ const App = observer(() => {
       <AquariumView />
 
       {store.showFps && (
-        <div className="pointer-events-none absolute left-3 top-3 z-10 font-mono text-[11px] tabular-nums text-white/70">
-          {store.fps} FPS
+        <div className="pointer-events-none absolute left-3 top-3 z-10 font-mono text-[11px] leading-4 tabular-nums text-white/70">
+          <div>
+            {store.fps} FPS
+            {store.perf
+              ? ` · ${store.perf.pixelRatio.toFixed(1)}x ${store.perf.width}×${store.perf.height}`
+              : ''}
+          </div>
+          {store.perf && (
+            <>
+              <div>
+                cpu {store.perf.cpuMs.toFixed(1)}ms fish{' '}
+                {store.perf.fishMs.toFixed(1)} water{' '}
+                {store.perf.waterMs.toFixed(1)} (cap{' '}
+                {store.perf.captureMs.toFixed(1)}) scene{' '}
+                {store.perf.sceneMs.toFixed(1)}
+              </div>
+              <div>
+                draws {store.perf.draws} tris{' '}
+                {Math.round(store.perf.triangles / 1000)}k
+              </div>
+            </>
+          )}
         </div>
       )}
 

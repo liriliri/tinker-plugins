@@ -11,8 +11,9 @@ import random from 'licia/random'
 // is replaced by a gradient because this tank sits on a dark desktop.
 
 // The surface stretches this grid across the tank, so it sets how coarse a
-// ripple looks. Cheap enough at this size — a few small passes per frame.
-const SIMULATION_SIZE = 256
+// ripple looks. 128 keeps a few overlapping rings without paying for a 256²
+// height field every frame at fullscreen.
+const SIMULATION_SIZE = 128
 const CAUSTICS_SIZE = 512
 // Frames between caustics rasterisations. The bands drift slowly, so they do not
 // need rebuilding every frame.
@@ -20,7 +21,7 @@ const CAUSTICS_INTERVAL = 2
 // The caustics pass and the visible water mesh share this tessellation. The
 // fragment shader rebuilds the normal from the height map anyway, so the mesh
 // only needs enough vertices to carry the broad displacement.
-const SURFACE_SEGMENTS = 72
+const SURFACE_SEGMENTS = 48
 // Parallax steps taken to find the height where a view ray meets the surface.
 // Each one is a texture fetch for every water pixel, which makes this the
 // surface shader's dominant cost; a couple is enough for gentle waves.
@@ -31,16 +32,17 @@ const SURFACE_PARALLAX_STEPS = 2
 // since magnifying a capture is what produced stair-stepped edges. The
 // reflection is a dim mirror seen past the critical angle, so it can carry less.
 const REFRACTION_SIZE = 1024
-const REFLECTION_SIZE = 512
+const REFLECTION_SIZE = 256
 // Mip bias for the capture lookups. Multisampling smooths edges as the pass is
 // drawn, so this only needs to take the edge off the remaining magnification
 // rather than hide it.
 const REFRACTION_BLUR = 0.15
 const REFLECTION_BLUR = 0.6
-// Ambient drips keep the tank from freezing into a mirror; spacing them further
-// out and keeping them faint leaves most frames without a fresh ripple.
-const AMBIENT_DROP_INTERVAL = 48
-const AMBIENT_DROP_STRENGTH = 0.0035
+// Ambient drips keep the tank from freezing into a mirror. Sparse drops mean
+// fewer overlapping rings and fewer extra simulation passes.
+const AMBIENT_DROP_INTERVAL = 96
+const AMBIENT_DROP_STRENGTH = 0.0045
+const INITIAL_DROP_COUNT = 3
 
 // Projects a point in tank units onto the caustics texture, following the light
 // slant exactly as the caustics pass did when it rasterised into that texture.
@@ -573,7 +575,10 @@ interface WaterSystem {
    * The scene is needed as well as the camera: the surface shows the tank's
    * contents by sampling passes rendered from it, which cannot be ray-traced.
    */
-  update: (camera: THREE.PerspectiveCamera, scene: THREE.Scene) => void
+  update: (
+    camera: THREE.PerspectiveCamera,
+    scene: THREE.Scene,
+  ) => { captureMs: number; simMs: number }
   dispose: () => void
 }
 
@@ -726,7 +731,7 @@ export function createWaterSystem(
     magFilter: THREE.LinearFilter,
     format: THREE.RGBAFormat,
     generateMipmaps: true,
-    samples: 4,
+    samples: 2,
     depthBuffer: true,
     stencilBuffer: false,
   }
@@ -866,7 +871,7 @@ export function createWaterSystem(
     runPass(rippleMaterial)
   }
 
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < INITIAL_DROP_COUNT; i++) {
     applyDrop(
       random(-halfWidth, halfWidth, true),
       random(-halfDepth, halfDepth, true),
@@ -1067,8 +1072,12 @@ export function createWaterSystem(
       material.needsUpdate = true
     },
     update(camera, scene) {
-      if (needsRecapture(camera)) renderCaptures(camera, scene)
+      const captureStart = performance.now()
+      const captured = needsRecapture(camera)
+      if (captured) renderCaptures(camera, scene)
+      const captureMs = captured ? performance.now() - captureStart : 0
 
+      const simStart = performance.now()
       if (frame++ % AMBIENT_DROP_INTERVAL === 0) {
         applyDrop(
           random(-halfWidth, halfWidth, true),
@@ -1104,6 +1113,7 @@ export function createWaterSystem(
         material.uniforms.water.value = textureA.texture
         material.uniforms.eye.value.copy(eye)
       }
+      return { captureMs, simMs: performance.now() - simStart }
     },
     dispose() {
       textureA.dispose()
