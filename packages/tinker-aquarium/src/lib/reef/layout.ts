@@ -4,7 +4,7 @@ import some from 'licia/some'
 import toInt from 'licia/toInt'
 import * as THREE from 'three'
 import {
-  CORAL_TYPE_INDICES,
+  CORAL_TYPE_BAG,
   PALETTE,
   PLANT_PALETTE,
   PLANT_TYPE_INDICES,
@@ -15,9 +15,10 @@ import type { Random, Spot } from './types'
 import { lerp, pick, sizeVariation } from './util'
 
 /**
- * Places coral in colonies, then scatters rubble and green plants around each
- * centre so colonies do not meet the sand at a hard edge. `count` is coral-only;
- * rubble and plants are extra.
+ * Places coral in colonies, then scatters rubble and denser green plants
+ * around each centre so colonies do not meet the sand at a hard edge. Extra
+ * plant patches fill the open sand. `count` is a density budget; rubble and
+ * plants are extra.
  */
 export function layoutReef(
   random: Random,
@@ -79,16 +80,34 @@ export function layoutReef(
       0.5,
       vibrance,
     )
-  const pickCoralType = () => pick(CORAL_TYPE_INDICES, random)
+  const pickCoralType = () => pick(CORAL_TYPE_BAG, random)
   const pickPlantType = () => pick(PLANT_TYPE_INDICES, random)
+  const placePlant = (x: number, z: number) => {
+    const type = pickPlantType()
+    const scale = sizeVariation(random, 0.45, 1.9)
+    const radius = lerp(0.35, 0.7, random()) * scale
+    if (!fits(x, z, radius)) return false
+    spots.push({
+      x,
+      z,
+      radius,
+      scale,
+      type,
+      color: plantColor(),
+    })
+    return true
+  }
 
   let coralCount = 0
+  let plantCount = 0
+  const coralTarget = toInt(count * 0.75)
+  const plantTarget = toInt(count * 1.2)
   // The bed saturates well before a high count is reached, and every candidate can
   // then be rejected, so colony attempts are capped rather than looping on hope.
-  const maxColonies = count * 4
+  const maxColonies = coralTarget * 4
   for (
     let colony = 0;
-    colony < maxColonies && coralCount < count;
+    colony < maxColonies && coralCount < coralTarget;
     colony += 1
   ) {
     const centerX = (random() * 2 - 1) * spanX
@@ -96,9 +115,9 @@ export function layoutReef(
     // A colony shares a type and a hue; a stray of each keeps it from looking tiled.
     const colonyType = pickCoralType()
     const colonyHue = pick(palette, random)
-    const members = 2 + toInt(random() * 4)
+    const members = 2 + toInt(random() * 3)
 
-    for (let i = 0; i < members && coralCount < count; i += 1) {
+    for (let i = 0; i < members && coralCount < coralTarget; i += 1) {
       const angle = random() * Math.PI * 2
       const spread = random() * 1.05
       const x = centerX + Math.cos(angle) * spread
@@ -144,24 +163,32 @@ export function layoutReef(
 
     // Green plants around the same centre; taller kelp leans farther out than
     // the grass tufts that tuck into the near gaps.
-    const plantTries = 2 + toInt(random() * 2)
+    const plantTries = 3 + toInt(random() * 3)
     for (let i = 0; i < plantTries; i += 1) {
       const angle = random() * Math.PI * 2
-      const spread = 0.9 + random() * 1.6
+      const spread = 0.7 + random() * 1.8
       const x = centerX + Math.cos(angle) * spread
       const z = centerZ + Math.sin(angle) * spread
-      const type = pickPlantType()
-      const scale = sizeVariation(random, 0.45, 1.9)
-      const radius = lerp(0.35, 0.7, random()) * scale
-      if (!fits(x, z, radius)) continue
-      spots.push({
-        x,
-        z,
-        radius,
-        scale,
-        type,
-        color: plantColor(),
-      })
+      if (placePlant(x, z)) plantCount += 1
+    }
+  }
+
+  // Plant-only patches on the open sand so the bed is grassy rather than coral-led.
+  const maxPlantPatches = plantTarget * 3
+  for (
+    let patch = 0;
+    patch < maxPlantPatches && plantCount < plantTarget;
+    patch += 1
+  ) {
+    const centerX = (random() * 2 - 1) * spanX
+    const centerZ = (random() * 2 - 1) * spanZ
+    const members = 2 + toInt(random() * 3)
+    for (let i = 0; i < members && plantCount < plantTarget; i += 1) {
+      const angle = random() * Math.PI * 2
+      const spread = random() * 1.2
+      const x = centerX + Math.cos(angle) * spread
+      const z = centerZ + Math.sin(angle) * spread
+      if (placePlant(x, z)) plantCount += 1
     }
   }
 

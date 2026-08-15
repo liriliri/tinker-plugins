@@ -1,5 +1,8 @@
+import fill from 'licia/fill'
 import filter from 'licia/filter'
 import findIdx from 'licia/findIdx'
+import flatten from 'licia/flatten'
+import map from 'licia/map'
 import range from 'licia/range'
 import type { ReefType } from './types'
 import {
@@ -82,9 +85,21 @@ export const REEF_TYPES: ReefType[] = [
   },
 ]
 
-export const CORAL_TYPE_INDICES = filter(
+const CORAL_TYPE_INDICES = filter(
   range(REEF_TYPES.length),
   (index) => REEF_TYPES[index].kind === 'coral',
+)
+
+const VASE_CORAL_INDEX = findIdx(
+  REEF_TYPES,
+  (type) => type.build === createVaseCoral,
+)
+
+/** Vase cups are rarer than the other coral kinds. */
+export const CORAL_TYPE_BAG = flatten(
+  map(CORAL_TYPE_INDICES, (index) =>
+    fill(new Array(index === VASE_CORAL_INDEX ? 1 : 5), index),
+  ),
 )
 
 export const RUBBLE_TYPE_INDEX = findIdx(
