@@ -33,6 +33,8 @@ export interface ReefBuildOptions extends Partial<ReefOptions> {
   halfDepth: number
   inset?: number
   envMap?: THREE.Texture
+  /** World Y of the sand surface at (x, z); glass orbs rest on this. */
+  sandY?: (x: number, z: number) => number
 }
 
 export type Random = () => number

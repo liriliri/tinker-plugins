@@ -118,7 +118,7 @@ export const GLASS_TYPE_INDEX = findIdx(
   (type) => type.kind === 'glass',
 )
 
-export const GLASS_LARGE_SCALE = 1.85
+export const GLASS_LARGE_SCALE = 1.5
 
 export const PLANT_TYPE_INDICES = filter(
   range(REEF_TYPES.length),

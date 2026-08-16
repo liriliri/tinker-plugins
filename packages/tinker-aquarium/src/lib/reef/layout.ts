@@ -30,6 +30,7 @@ export function layoutReef(
   halfWidth: number,
   halfDepth: number,
   inset: number,
+  sandY?: (x: number, z: number) => number,
 ): Spot[] {
   const t = clamp(
     (count - REEF_DENSITY_RANGE[0]) /
@@ -105,10 +106,29 @@ export function layoutReef(
     )
   const pickCoralType = () => pick(CORAL_TYPE_BAG, random)
   const pickPlantType = () => pick(PLANT_TYPE_INDICES, random)
+  const isSandShelf = (x: number, z: number, radius: number) => {
+    if (!sandY) return true
+    let min = Infinity
+    let max = -Infinity
+    const probes = 6
+    for (let i = 0; i < probes; i += 1) {
+      const angle = (i / probes) * Math.PI * 2
+      const y = sandY(
+        x + Math.cos(angle) * radius,
+        z + Math.sin(angle) * radius,
+      )
+      if (y < min) min = y
+      if (y > max) max = y
+    }
+    const center = sandY(x, z)
+    if (center < min) min = center
+    if (center > max) max = center
+    return max - min < radius * 0.14
+  }
   const placeGlass = (x: number, z: number, large = false) => {
     const scale = large ? GLASS_LARGE_SCALE : 1
     const radius = 0.3 * scale
-    if (!fits(x, z, radius)) return false
+    if (!fits(x, z, radius) || !isSandShelf(x, z, radius)) return false
     spots.push({
       x,
       z,
@@ -134,6 +154,17 @@ export function layoutReef(
     })
     return true
   }
+
+  const scatterGlass = (large: boolean, target: number) => {
+    let placed = 0
+    const tries = target * 40
+    for (let attempt = 0; attempt < tries && placed < target; attempt += 1) {
+      const x = (random() * 2 - 1) * spanX
+      const z = (random() * 2 - 1) * spanZ
+      if (placeGlass(x, z, large)) placed += 1
+    }
+  }
+  scatterGlass(true, Math.max(1, toInt(lerp(1, 3, t))))
 
   let coralCount = 0
   let plantCount = 0
@@ -198,13 +229,19 @@ export function layoutReef(
       })
     }
 
-    if (random() < 0.5) {
-      const angle = random() * Math.PI * 2
-      const spread = 0.55 + random() * 1.35
-      placeGlass(
-        centerX + Math.cos(angle) * spread,
-        centerZ + Math.sin(angle) * spread,
-      )
+    if (random() < 0.18) {
+      for (let tryGlass = 0; tryGlass < 6; tryGlass += 1) {
+        const angle = random() * Math.PI * 2
+        const spread = 0.55 + random() * 1.35
+        if (
+          placeGlass(
+            centerX + Math.cos(angle) * spread,
+            centerZ + Math.sin(angle) * spread,
+          )
+        ) {
+          break
+        }
+      }
     }
 
     // Green plants around the same centre; taller kelp leans farther out than
@@ -219,17 +256,7 @@ export function layoutReef(
     }
   }
 
-  const scatterGlass = (large: boolean, target: number) => {
-    let placed = 0
-    const tries = target * 12
-    for (let attempt = 0; attempt < tries && placed < target; attempt += 1) {
-      const x = (random() * 2 - 1) * spanX
-      const z = (random() * 2 - 1) * spanZ
-      if (placeGlass(x, z, large)) placed += 1
-    }
-  }
-  scatterGlass(true, Math.max(2, toInt(lerp(2, 5, t))))
-  scatterGlass(false, Math.max(4, toInt(lerp(6, 12, t))))
+  scatterGlass(false, Math.max(2, toInt(lerp(2, 5, t))))
 
   // Plant-only patches on the open sand so the bed is grassy rather than coral-led.
   const maxPlantPatches = plantTarget * 3

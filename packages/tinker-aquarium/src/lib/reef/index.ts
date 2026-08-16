@@ -101,6 +101,7 @@ export function createReef({
   halfDepth,
   inset = 1.1,
   envMap,
+  sandY,
 }: ReefBuildOptions): Reef {
   const group = new THREE.Group()
   group.name = 'Reef'
@@ -169,6 +170,7 @@ export function createReef({
     halfWidth,
     halfDepth,
     inset,
+    sandY,
   )
   const perType = map(
     REEF_TYPES,
@@ -263,7 +265,11 @@ export function createReef({
         ? type.size[0]
         : lerp(type.size[0], type.size[1], layoutRandom())
     const size = base * spot.scale * sizeScale
-    tmpPosition.set(spot.x, floorY - size * type.sink, spot.z)
+    const restY =
+      type.kind === 'glass' && sandY
+        ? sandY(spot.x, spot.z) - size * 0.028
+        : floorY
+    tmpPosition.set(spot.x, restY - size * type.sink, spot.z)
     tmpQuaternion.setFromAxisAngle(Y_AXIS, layoutRandom() * Math.PI * 2)
     // Plants lean more than coral; a stiff vertical clump reads as a bottle brush.
     const lean =
@@ -320,12 +326,13 @@ export function createReef({
       group.add(orb)
 
       const radius = size * 0.5
-      const travel = (floorY + 0.014 - (floorY + radius)) / GLASS_LIGHT_DIR.y
+      const travel = (restY + 0.014 - (restY + radius)) / GLASS_LIGHT_DIR.y
       const shadowX = spot.x + GLASS_LIGHT_DIR.x * travel
       const shadowZ = spot.z + GLASS_LIGHT_DIR.z * travel
+      const shadeY = sandY ? sandY(shadowX, shadowZ) : floorY
       const shade = new THREE.Mesh(glassSpotGeo, glassShadeMat)
       shade.rotation.x = -Math.PI / 2
-      shade.position.set(shadowX, floorY + 0.012, shadowZ)
+      shade.position.set(shadowX, shadeY + 0.012, shadowZ)
       shade.scale.setScalar(size * 1.35)
       shade.renderOrder = 0
       group.add(shade)
@@ -341,7 +348,7 @@ export function createReef({
       extraMaterials.push(causticMat)
       const caustic = new THREE.Mesh(glassSpotGeo, causticMat)
       caustic.rotation.x = -Math.PI / 2
-      caustic.position.set(shadowX, floorY + 0.014, shadowZ)
+      caustic.position.set(shadowX, shadeY + 0.014, shadowZ)
       caustic.scale.setScalar(size * 0.82)
       caustic.renderOrder = 1
       group.add(caustic)
@@ -354,7 +361,7 @@ export function createReef({
         x: spot.x,
         z: spot.z,
         radius: Math.max(spot.radius * 0.72, size * girth * 0.34) + 0.22,
-        topY: floorY + size * height * (1 - type.sink) * 0.9,
+        topY: restY + size * height * (1 - type.sink) * 0.9,
       })
     }
   }

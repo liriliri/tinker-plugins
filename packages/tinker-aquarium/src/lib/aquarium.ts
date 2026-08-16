@@ -400,8 +400,21 @@ export function createAquarium(
     sandSideXMaterial,
   )
   const sandSides = [sandSideZPos, sandSideZNeg, sandSideXPos, sandSideXNeg]
+  let duneHeightAt = createDuneHeight(reefOptions.seed)
+  const sandRay = new THREE.Raycaster()
+  const sandRayOrigin = new THREE.Vector3()
+  const sandRayDown = new THREE.Vector3(0, -1, 0)
+  const sandYAt = (x: number, z: number) => {
+    sandRayOrigin.set(x, sandTopY + 1.6, z)
+    sandRay.set(sandRayOrigin, sandRayDown)
+    sandRay.far = 3
+    const hit = sandRay.intersectObject(sand, false)[0]
+    if (hit) return hit.point.y
+    return sandTopY + duneHeightAt(x / sandWidth + 0.5, z / sandDepth + 0.5)
+  }
   const rebuildSand = (seed: number) => {
-    const heightAt = createDuneHeight(seed)
+    duneHeightAt = createDuneHeight(seed)
+    const heightAt = duneHeightAt
     const topGeometry = new THREE.PlaneGeometry(sandWidth, sandDepth, 72, 44)
     topGeometry.rotateX(-Math.PI / 2)
     const topPos = topGeometry.attributes.position
@@ -541,6 +554,7 @@ export function createAquarium(
       halfWidth: TANK.width / 2,
       halfDepth: TANK.depth / 2,
       envMap,
+      sandY: sandYAt,
     })
     tank.add(reef.group)
     each(reef.materials, (material) => {
@@ -747,6 +761,7 @@ export function createAquarium(
 
   return {
     setReef(options) {
+      rebuildSand(options.seed)
       tank.remove(coral.group)
       coral.dispose()
       coral = buildReef(options)
@@ -758,7 +773,6 @@ export function createAquarium(
       bubbles.dispose()
       bubbles = spawnBubbles(options.seed)
       tank.add(bubbles.mesh)
-      rebuildSand(options.seed)
       water.invalidateCapture()
     },
     setFishCount(count) {
