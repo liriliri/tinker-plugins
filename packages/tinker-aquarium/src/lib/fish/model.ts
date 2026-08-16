@@ -6,22 +6,21 @@ import type { FishModelDef } from './types'
 const tmpBox = new THREE.Box3()
 const tmpCenter = new THREE.Vector3()
 const tmpSize = new THREE.Vector3()
+const gltfLoader = new GLTFLoader()
 
-interface LoadedFishModel {
-  def: FishModelDef
-  geometry: THREE.BufferGeometry
-  material: THREE.MeshStandardMaterial
+export function isFishMesh(object: THREE.Object3D): object is THREE.Mesh {
+  return (object as THREE.Mesh).isMesh === true
 }
 
 export function loadFishGltf(id: FishModelId) {
-  return new GLTFLoader().loadAsync(readFishModel(id).url)
+  return gltfLoader.loadAsync(readFishModel(id).url)
 }
 
 function stripGltfExtras(root: THREE.Object3D) {
   const remove: THREE.Object3D[] = []
   root.traverse((object) => {
     if (
-      object instanceof THREE.Light ||
+      (object as THREE.Light).isLight ||
       object.name === 'Lamp' ||
       object.name.startsWith('Lamp')
     ) {
@@ -52,13 +51,13 @@ export function prepareAnimatedTemplate(
   const aligned = new THREE.Group()
   aligned.quaternion.setFromRotationMatrix(bakeAxes(def.forward, def.up))
   aligned.add(holder)
+  if (def.pitchOffset) aligned.rotateX(def.pitchOffset)
   return aligned
 }
 
-export function loadFishModel(id: FishModelId): Promise<LoadedFishModel> {
+export function loadFishModel(id: FishModelId) {
   const def = readFishModel(id)
-  const loader = new GLTFLoader()
-  return loader.loadAsync(def.url).then((gltf) => {
+  return loadFishGltf(id).then((gltf) => {
     gltf.scene.updateWorldMatrix(true, true)
     const sourceMesh = findPrimaryMesh(gltf.scene)
     if (!sourceMesh) {
@@ -67,24 +66,23 @@ export function loadFishModel(id: FishModelId): Promise<LoadedFishModel> {
     return {
       def,
       geometry: createFishGeometry(sourceMesh, def),
-      material: createFishMaterial(sourceMesh.material),
+      material: hardenFishMaterial(sourceMesh.material),
     }
   })
 }
 
 function findPrimaryMesh(root: THREE.Object3D): THREE.Mesh | null {
-  const meshes: THREE.Mesh[] = []
+  let best: THREE.Mesh | null = null
+  let bestCount = 0
   root.traverse((object) => {
-    if (object instanceof THREE.Mesh && object.geometry) {
-      meshes.push(object)
+    if (!isFishMesh(object) || !object.geometry) return
+    const count = object.geometry.getAttribute('position')?.count ?? 0
+    if (count > bestCount) {
+      best = object
+      bestCount = count
     }
   })
-  if (meshes.length === 0) return null
-  return meshes.reduce((best, mesh) => {
-    const count = mesh.geometry.getAttribute('position')?.count ?? 0
-    const bestCount = best.geometry.getAttribute('position')?.count ?? 0
-    return count > bestCount ? mesh : best
-  })
+  return best
 }
 
 function createFishGeometry(sourceMesh: THREE.Mesh, def: FishModelDef) {
@@ -121,25 +119,16 @@ export function hardenFishMaterial(
   cloned.opacity = 1
   cloned.alphaMap = null
   cloned.depthWrite = true
+  cloned.transparent = false
   cloned.roughness = Math.max(cloned.roughness, 0.62)
   cloned.metalness = 0
   cloned.metalnessMap = null
   cloned.side = options.doubleSide ? THREE.DoubleSide : THREE.FrontSide
   cloned.envMapIntensity = 0.2
-  if (cloned.map) {
-    cloned.transparent = false
-    cloned.alphaTest = Math.max(cloned.alphaTest, 0.12)
-  } else {
-    cloned.transparent = false
-    cloned.alphaTest = 0
-  }
+  cloned.alphaTest = cloned.map ? Math.max(cloned.alphaTest, 0.12) : 0
   if ('transmission' in cloned) {
     cloned.transmission = 0
   }
   cloned.needsUpdate = true
   return cloned
-}
-
-function createFishMaterial(source: THREE.Material | THREE.Material[]) {
-  return hardenFishMaterial(source)
 }

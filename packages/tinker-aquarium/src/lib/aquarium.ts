@@ -7,10 +7,14 @@ import each from 'licia/each'
 import toArr from 'licia/toArr'
 import { createBubbles } from './bubbles'
 import {
+  createAngelfishSchool,
   createGoldfishSchool,
   createGuppySchool,
+  createNeonTetraSchool,
+  DEFAULT_ANGELFISH_COUNT,
   DEFAULT_FISH_COUNT,
   DEFAULT_GUPPY_COUNT,
+  DEFAULT_NEON_COUNT,
 } from './fish'
 import { createGlassDirt } from './glassDirt'
 import { createReef } from './reef'
@@ -136,7 +140,9 @@ function createGlassShell(thickness: number, envMap: THREE.Texture) {
 export interface Aquarium {
   setReef: (options: ReefOptions) => void
   setFishCount: (count: number) => void
+  setAngelfishCount: (count: number) => void
   setGuppyCount: (count: number) => void
+  setNeonTetraCount: (count: number) => void
   setLighting: (lighting: LightingOptions) => void
   setView: (view: CameraView) => void
   setRenderScale: (scale: number) => void
@@ -147,7 +153,9 @@ export function createAquarium(
   canvas: HTMLCanvasElement,
   reefOptions: ReefOptions = DEFAULT_REEF,
   fishCount = DEFAULT_FISH_COUNT,
+  angelfishCount = DEFAULT_ANGELFISH_COUNT,
   guppyCount = DEFAULT_GUPPY_COUNT,
+  neonTetraCount = DEFAULT_NEON_COUNT,
   lighting: LightingOptions = DEFAULT_LIGHTING,
   view?: CameraView | null,
   renderScale = DEFAULT_RENDER_SCALE,
@@ -438,11 +446,30 @@ export function createAquarium(
   tank.add(goldfish.group)
   goldfish.setObstacles(coral.obstacles)
 
+  const angelfish = createAngelfishSchool(
+    fishBounds,
+    angelfishCount,
+    (material) => water.applyCaustics(material),
+  )
+  tank.add(angelfish.group)
+  angelfish.setObstacles(coral.obstacles)
+
   const guppies = createGuppySchool(fishBounds, guppyCount, (material) =>
     water.applyCaustics(material),
   )
   tank.add(guppies.group)
   guppies.setObstacles(coral.obstacles)
+
+  const tetras = createNeonTetraSchool(fishBounds, neonTetraCount, (material) =>
+    water.applyCaustics(material),
+  )
+  tank.add(tetras.group)
+  tetras.setObstacles(coral.obstacles)
+
+  goldfish.setNeighbors([angelfish.fish, guppies.fish])
+  angelfish.setNeighbors([goldfish.fish, guppies.fish])
+  guppies.setNeighbors([goldfish.fish, angelfish.fish])
+  tetras.setNeighbors([goldfish.fish, angelfish.fish, guppies.fish])
 
   const raycaster = new THREE.Raycaster()
   const pointer = new THREE.Vector2()
@@ -525,7 +552,9 @@ export function createAquarium(
     const dt = clock.getDelta()
     const fishStart = performance.now()
     goldfish.update(dt)
+    angelfish.update(dt)
     guppies.update(dt)
+    tetras.update(dt)
     bubbles.update(clock.getElapsedTime())
     fishMsAcc += performance.now() - fishStart
     const waterStart = performance.now()
@@ -572,14 +601,22 @@ export function createAquarium(
       coral.dispose()
       coral = buildReef(options)
       goldfish.setObstacles(coral.obstacles)
+      angelfish.setObstacles(coral.obstacles)
       guppies.setObstacles(coral.obstacles)
+      tetras.setObstacles(coral.obstacles)
       water.invalidateCapture()
     },
     setFishCount(count) {
       goldfish.setCount(count)
     },
+    setAngelfishCount(count) {
+      angelfish.setCount(count)
+    },
     setGuppyCount(count) {
       guppies.setCount(count)
+    },
+    setNeonTetraCount(count) {
+      tetras.setCount(count)
     },
     setLighting(next) {
       applyLighting(next)
@@ -611,7 +648,9 @@ export function createAquarium(
       water.dispose()
       coral.dispose()
       goldfish.dispose()
+      angelfish.dispose()
       guppies.dispose()
+      tetras.dispose()
       bubbles.dispose()
       glassDirt.dispose()
       envMap.dispose()
@@ -619,7 +658,9 @@ export function createAquarium(
       tank.remove(water.group)
       tank.remove(coral.group)
       tank.remove(goldfish.group)
+      tank.remove(angelfish.group)
       tank.remove(guppies.group)
+      tank.remove(tetras.group)
       tank.remove(bubbles.mesh)
       scene.traverse((object) => {
         if (!(

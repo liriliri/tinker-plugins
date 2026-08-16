@@ -40,9 +40,11 @@ export interface FishState {
 
 export interface FishSchool {
   group: THREE.Group
+  fish: FishState[]
   update: (dt: number) => void
   setCount: (count: number) => void
   setObstacles: (obstacles: ReefObstacle[]) => void
+  setNeighbors: (groups: FishState[][]) => void
   dispose: () => void
 }
 
@@ -75,4 +77,9 @@ export interface FishModelDef {
   look: FishLook
   motion: 'curve' | 'clip'
   depthRange?: NumberRange
+  schooling?: boolean
+  /** Small fish slip between plants instead of skirting the whole reef. */
+  weave?: boolean
+  /** Radians, baked local X. Sign depends on the GLB rest pose. */
+  pitchOffset?: number
 }

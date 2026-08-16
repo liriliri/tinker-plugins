@@ -14,7 +14,9 @@ export default function AquariumView() {
       canvasRef.current,
       store.reef,
       store.fishCount,
+      store.angelfishCount,
       store.guppyCount,
+      store.neonTetraCount,
       store.lighting,
       store.view,
       store.renderScale,
@@ -45,9 +47,17 @@ export default function AquariumView() {
       () => store.fishCount,
       (count) => aquarium.setFishCount(count),
     )
+    const disposeAngelfish = reaction(
+      () => store.angelfishCount,
+      (count) => aquarium.setAngelfishCount(count),
+    )
     const disposeGuppy = reaction(
       () => store.guppyCount,
       (count) => aquarium.setGuppyCount(count),
+    )
+    const disposeNeon = reaction(
+      () => store.neonTetraCount,
+      (count) => aquarium.setNeonTetraCount(count),
     )
     const disposeLighting = reaction(
       () => [
@@ -67,7 +77,9 @@ export default function AquariumView() {
       disposeReef()
       disposeView()
       disposeFish()
+      disposeAngelfish()
       disposeGuppy()
+      disposeNeon()
       disposeLighting()
       disposeScale()
       window.clearTimeout(timer)

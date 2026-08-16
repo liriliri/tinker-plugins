@@ -91,7 +91,9 @@ export function addFishCurveAttributes(
 
 export function enableFishCurveDeformation(material: THREE.Material) {
   const previousOnBeforeCompile = material.onBeforeCompile
-  material.customProgramCacheKey = () => 'fish-curve-headlock'
+  const previousCacheKey = material.customProgramCacheKey
+  material.customProgramCacheKey = () =>
+    `${previousCacheKey?.call(material) ?? ''}|fish-curve`
   material.onBeforeCompile = (shader, renderer) => {
     previousOnBeforeCompile?.call(material, shader, renderer)
     shader.vertexShader = shader.vertexShader

@@ -1023,15 +1023,22 @@ export function createWaterSystem(
              varying vec3 vCausticWorld;`,
           )
           .replace(
-            '#include <project_vertex>',
-            `#include <project_vertex>
-             {
-               vec4 causticLocal = vec4(transformed, 1.0);
-               #ifdef USE_INSTANCING
-                 causticLocal = instanceMatrix * causticLocal;
-               #endif
-               vCausticWorld = (modelMatrix * causticLocal).xyz;
-             }`,
+            '#include <worldpos_vertex>',
+            `#include <worldpos_vertex>
+             #if defined( USE_ENVMAP ) || defined( DISTANCE ) || defined( USE_SHADOWMAP ) || defined( USE_TRANSMISSION ) || NUM_SPOT_LIGHT_COORDS > 0
+               vCausticWorld = worldPosition.xyz;
+             #else
+               {
+                 vec4 causticLocal = vec4(transformed, 1.0);
+                 #ifdef USE_BATCHING
+                   causticLocal = batchingMatrix * causticLocal;
+                 #endif
+                 #ifdef USE_INSTANCING
+                   causticLocal = instanceMatrix * causticLocal;
+                 #endif
+                 vCausticWorld = (modelMatrix * causticLocal).xyz;
+               }
+             #endif`,
           )
 
         shader.fragmentShader = shader.fragmentShader
@@ -1047,9 +1054,8 @@ export function createWaterSystem(
              ${causticLookupChunk}`,
           )
           .replace(
-            '#include <map_fragment>',
-            `#include <map_fragment>
-             {
+            '#include <opaque_fragment>',
+            `{
                vec3 tankPoint = vec3(
                  vCausticWorld.x,
                  vCausticWorld.y - causticSurfaceY,
@@ -1061,12 +1067,13 @@ export function createWaterSystem(
                vec2 edge = min(uv, 1.0 - uv);
                float coverage = smoothstep(0.0, 0.06, min(edge.x, edge.y));
                vec4 caustic = texture2D(causticTex, uv);
-               diffuseColor.rgb *= mix(
+               outgoingLight *= mix(
                  1.0,
-                 0.72 + caustic.r * caustic.g * 2.2,
+                 0.62 + caustic.r * caustic.g * 2.6,
                  coverage
                );
-             }`,
+             }
+             #include <opaque_fragment>`,
           )
       }
       material.needsUpdate = true

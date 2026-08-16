@@ -16,10 +16,14 @@ import isObj from 'licia/isObj'
 import cloneDeep from 'licia/cloneDeep'
 import { DEFAULT_REEF, type ReefOptions } from './lib/reef/types'
 import {
+  DEFAULT_ANGELFISH_COUNT,
   DEFAULT_FISH_COUNT,
   DEFAULT_GUPPY_COUNT,
+  DEFAULT_NEON_COUNT,
+  ANGELFISH_COUNT_RANGE,
   FISH_COUNT_RANGE,
   GUPPY_COUNT_RANGE,
+  NEON_COUNT_RANGE,
 } from './lib/fish/config'
 import {
   DEFAULT_LIGHTING,
@@ -35,7 +39,9 @@ const storage = new LocalStore('tinker-aquarium')
 const STORAGE_REEF = 'reef'
 const STORAGE_VIEW = 'view'
 const STORAGE_FISH = 'fish'
+const STORAGE_ANGELFISH = 'angelfish'
 const STORAGE_GUPPY = 'guppy'
+const STORAGE_NEON = 'neontetra'
 const STORAGE_LIGHT = 'light'
 const STORAGE_FPS = 'fps'
 const STORAGE_RENDER_SCALE = 'renderScale'
@@ -98,7 +104,9 @@ function readView(value: unknown): CameraView | null {
 class Store {
   reef: ReefOptions = { ...DEFAULT_REEF }
   fishCount = DEFAULT_FISH_COUNT
+  angelfishCount = DEFAULT_ANGELFISH_COUNT
   guppyCount = DEFAULT_GUPPY_COUNT
+  neonTetraCount = DEFAULT_NEON_COUNT
   lighting: LightingOptions = { ...DEFAULT_LIGHTING }
   view: CameraView = cloneView(DEFAULT_VIEW)
   viewEpoch = 0
@@ -113,7 +121,9 @@ class Store {
     makeAutoObservable(this)
     this.loadReef()
     this.loadFish()
+    this.loadAngelfish()
     this.loadGuppy()
+    this.loadNeonTetra()
     this.loadLighting()
     this.loadView()
     this.loadShowFps()
@@ -155,11 +165,25 @@ class Store {
     this.saveFish()
   }
 
+  setAngelfishCount(count: number) {
+    this.angelfishCount = Math.round(
+      clamp(count, ANGELFISH_COUNT_RANGE[0], ANGELFISH_COUNT_RANGE[1]),
+    )
+    this.saveAngelfish()
+  }
+
   setGuppyCount(count: number) {
     this.guppyCount = Math.round(
       clamp(count, GUPPY_COUNT_RANGE[0], GUPPY_COUNT_RANGE[1]),
     )
     this.saveGuppy()
+  }
+
+  setNeonTetraCount(count: number) {
+    this.neonTetraCount = Math.round(
+      clamp(count, NEON_COUNT_RANGE[0], NEON_COUNT_RANGE[1]),
+    )
+    this.saveNeonTetra()
   }
 
   setLighting(partial: Partial<LightingOptions>) {
@@ -229,6 +253,18 @@ class Store {
     storage.set(STORAGE_FISH, this.fishCount)
   }
 
+  private loadAngelfish() {
+    const saved = storage.get(STORAGE_ANGELFISH)
+    if (!isNum(saved)) return
+    this.angelfishCount = Math.round(
+      clamp(saved, ANGELFISH_COUNT_RANGE[0], ANGELFISH_COUNT_RANGE[1]),
+    )
+  }
+
+  private saveAngelfish() {
+    storage.set(STORAGE_ANGELFISH, this.angelfishCount)
+  }
+
   private loadGuppy() {
     const saved = storage.get(STORAGE_GUPPY)
     if (!isNum(saved)) return
@@ -239,6 +275,18 @@ class Store {
 
   private saveGuppy() {
     storage.set(STORAGE_GUPPY, this.guppyCount)
+  }
+
+  private loadNeonTetra() {
+    const saved = storage.get(STORAGE_NEON)
+    if (!isNum(saved)) return
+    this.neonTetraCount = Math.round(
+      clamp(saved, NEON_COUNT_RANGE[0], NEON_COUNT_RANGE[1]),
+    )
+  }
+
+  private saveNeonTetra() {
+    storage.set(STORAGE_NEON, this.neonTetraCount)
   }
 
   private loadLighting() {

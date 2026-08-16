@@ -38,10 +38,10 @@ const SettingsPanel = observer(() => {
 
       <div className={tw.panelBody}>
         <CameraSection />
+        <DisplaySection />
         <LightSection />
         <FishSection />
         <ReefSection />
-        <DisplaySection />
       </div>
     </aside>
   )

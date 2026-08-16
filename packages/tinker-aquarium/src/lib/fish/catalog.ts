@@ -11,11 +11,11 @@ export const FISH_MODELS = {
     up: 'y',
     look: {
       size: [
-        { min: 0.36, max: 0.58, weight: 0.3 },
-        { min: 0.62, max: 0.92, weight: 0.52 },
-        { min: 0.96, max: 1.18, weight: 0.18 },
+        { min: 0.36, max: 0.54, weight: 0.32 },
+        { min: 0.56, max: 0.82, weight: 0.52 },
+        { min: 0.84, max: 0.98, weight: 0.16 },
       ],
-      length: { min: 1.06, max: 1.38 },
+      length: { min: 1.04, max: 1.18 },
       width: { min: 0.68, max: 0.98 },
       height: { min: 0.7, max: 0.96 },
       tints: [
@@ -28,19 +28,45 @@ export const FISH_MODELS = {
     },
     motion: 'curve',
   },
+  angelfish: {
+    id: 'angelfish',
+    url: 'models/angelfish.glb',
+    length: 0.8,
+    forward: '-x',
+    up: 'y',
+    look: {
+      size: [
+        { min: 0.36, max: 0.58, weight: 0.3 },
+        { min: 0.62, max: 0.92, weight: 0.52 },
+        { min: 0.96, max: 1.18, weight: 0.18 },
+      ],
+      length: { min: 1, max: 1 },
+      width: { min: 1, max: 1 },
+      height: { min: 1, max: 1 },
+      tints: [
+        [0, 0.92, 0.5],
+        [0.14, 0.95, 0.52],
+        [0.6, 0.88, 0.52],
+        [0.33, 0.85, 0.45],
+        [0.78, 0.82, 0.5],
+      ],
+    },
+    motion: 'curve',
+    depthRange: { min: 0, max: 1 },
+  },
   guppy: {
     id: 'guppy',
     url: 'models/guppyfish.glb',
-    length: 1.22,
+    length: 0.92,
     forward: '-z',
     up: 'y',
     look: {
       size: [
-        { min: 0.72, max: 0.92, weight: 0.4 },
-        { min: 0.94, max: 1.12, weight: 0.45 },
-        { min: 1.14, max: 1.28, weight: 0.15 },
+        { min: 0.68, max: 0.84, weight: 0.42 },
+        { min: 0.86, max: 0.98, weight: 0.46 },
+        { min: 1, max: 1.08, weight: 0.12 },
       ],
-      length: { min: 1.06, max: 1.38 },
+      length: { min: 1.02, max: 1.16 },
       width: { min: 0.68, max: 0.98 },
       height: { min: 0.7, max: 0.96 },
       tints: [
@@ -69,6 +95,32 @@ export const FISH_MODELS = {
     },
     motion: 'clip',
     depthRange: { min: 0.5, max: 0.97 },
+  },
+  neontetra: {
+    id: 'neontetra',
+    url: 'models/neontetra.glb',
+    length: 0.58,
+    forward: 'z',
+    up: 'y',
+    look: {
+      size: [
+        { min: 0.72, max: 0.86, weight: 0.28 },
+        { min: 0.88, max: 1.02, weight: 0.48 },
+        { min: 1.06, max: 1.22, weight: 0.24 },
+      ],
+      length: { min: 0.94, max: 1.08 },
+      width: { min: 0.9, max: 1.06 },
+      height: { min: 0.92, max: 1.08 },
+      tints: [
+        [0, 0, 1],
+        [0.55, 0.04, 0.97],
+      ],
+    },
+    motion: 'clip',
+    depthRange: { min: 0.04, max: 0.94 },
+    schooling: true,
+    weave: true,
+    pitchOffset: 0.18,
   },
 } as const satisfies Record<string, FishModelDef>
 
