@@ -7,6 +7,7 @@ import range from 'licia/range'
 import type { ReefType } from './types'
 import {
   createBrainCoral,
+  createGlassShell,
   createGrassTuft,
   createKelp,
   createOrganPipe,
@@ -28,6 +29,10 @@ export const PALETTE = [
 export const STONE_PALETTE = [0xd2c8b8, 0xc4b9a8, 0xb8aea0, 0xcdc2b0]
 export const PLANT_PALETTE = [
   0x3f7a3a, 0x4d8f42, 0x2f6b35, 0x5a9a48, 0x6b8f3a, 0x457a50,
+]
+export const GLASS_PALETTE = [
+  0xe84b5a, 0xf08a2a, 0xf2d35a, 0x3ecf7a, 0x2ec4d4, 0x3a7bff, 0xb45cff,
+  0xff6eb4,
 ]
 
 /** Every growable bed item. Coral, rubble, and plants share the same instancing path. */
@@ -69,6 +74,7 @@ export const REEF_TYPES: ReefType[] = [
     doubleSide: true,
   },
   { kind: 'rubble', build: createRubble, size: [0.35, 0.7], sink: 0.25 },
+  { kind: 'glass', build: createGlassShell, size: [0.48, 0.48], sink: 0 },
   {
     kind: 'plant',
     build: createKelp,
@@ -106,6 +112,13 @@ export const RUBBLE_TYPE_INDEX = findIdx(
   REEF_TYPES,
   (type) => type.kind === 'rubble',
 )
+
+export const GLASS_TYPE_INDEX = findIdx(
+  REEF_TYPES,
+  (type) => type.kind === 'glass',
+)
+
+export const GLASS_LARGE_SCALE = 1.85
 
 export const PLANT_TYPE_INDICES = filter(
   range(REEF_TYPES.length),

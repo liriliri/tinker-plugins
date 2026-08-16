@@ -2,14 +2,15 @@ import * as THREE from 'three'
 import { clone as cloneSkeleton } from 'three/addons/utils/SkeletonUtils.js'
 import clamp from 'licia/clamp'
 import each from 'licia/each'
+import filter from 'licia/filter'
 import map from 'licia/map'
-import toArr from 'licia/toArr'
 import { fishConfig, GUPPY_CAPACITY, neonSimulationSettings } from './config'
 import { readFishModel, type FishModelId } from './catalog'
 import {
   hardenFishMaterial,
   isFishMesh,
   loadFishGltf,
+  meshMaterials,
   prepareAnimatedTemplate,
 } from './model'
 import { writeFishOrientationQuaternion } from './pose'
@@ -40,7 +41,7 @@ function stripClipRootMotion(
     }
   })
   each(clips, (clip) => {
-    clip.tracks = clip.tracks.filter((track) => {
+    clip.tracks = filter(clip.tracks, (track) => {
       const dot = track.name.lastIndexOf('.')
       if (dot < 0) return true
       const node = track.name.slice(0, dot)
@@ -54,7 +55,7 @@ function stripClipRootMotion(
 function disposeVisual(root: THREE.Object3D) {
   root.traverse((object) => {
     if (!isFishMesh(object)) return
-    each(toArr(object.material), (material: THREE.Material) => {
+    each(meshMaterials(object), (material) => {
       material.dispose()
     })
   })
@@ -91,9 +92,7 @@ export function createClipFishSchool(
   let template: THREE.Object3D | null = null
   let clips: THREE.AnimationClip[] = []
   let disposed = false
-  const minSpeed = simulation.settings.minSpeed
   const maxSpeed = simulation.settings.maxSpeed
-  const speedSpan = Math.max(maxSpeed - minSpeed, 1e-4)
 
   loadFishGltf(id)
     .then((gltf) => {
@@ -106,16 +105,13 @@ export function createClipFishSchool(
         object.castShadow = true
         object.receiveShadow = false
         object.frustumCulled = false
-        const next = map(
-          toArr(object.material) as THREE.Material[],
-          (material) => {
-            const hardened = hardenFishMaterial(material, {
-              keepColor: true,
-              doubleSide: true,
-            })
-            return hardened
-          },
-        )
+        const next = map(meshMaterials(object), (material) => {
+          const hardened = hardenFishMaterial(material, {
+            keepColor: true,
+            doubleSide: true,
+          })
+          return hardened
+        })
         object.material = next.length === 1 ? next[0] : next
       })
       template = prepared
@@ -128,17 +124,14 @@ export function createClipFishSchool(
     model.traverse((object) => {
       if (!isFishMesh(object)) return
       object.frustumCulled = false
-      const next = map(
-        toArr(object.material) as THREE.Material[],
-        (material: THREE.Material) => {
-          const cloned = material.clone()
-          decorateMaterial?.(cloned)
-          if ('color' in cloned && cloned.color instanceof THREE.Color) {
-            cloned.color.setRGB(fish.tint.r, fish.tint.g, fish.tint.b)
-          }
-          return cloned
-        },
-      )
+      const next = map(meshMaterials(object), (material) => {
+        const cloned = material.clone()
+        decorateMaterial?.(cloned)
+        if ('color' in cloned && cloned.color instanceof THREE.Color) {
+          cloned.color.setRGB(fish.tint.r, fish.tint.g, fish.tint.b)
+        }
+        return cloned
+      })
       object.material = next.length === 1 ? next[0] : next
     })
     const bind = model.children[0]?.children[0] ?? model
@@ -202,24 +195,24 @@ export function createClipFishSchool(
         visual.root.quaternion.copy(tmpQuaternion)
         visual.root.scale.set(fish.scale.x, fish.scale.y, fish.scale.z)
         if (visual.action) {
-          const pace = THREE.MathUtils.clamp(
-            (fish.speed - minSpeed) / speedSpan,
+          const tempo = THREE.MathUtils.clamp(fish.speed / maxSpeed, 0.15, 3.4)
+          const energy = THREE.MathUtils.clamp(
+            Math.max(
+              (tempo - 0.2) / 2.8,
+              fish.kickTime > 0
+                ? THREE.MathUtils.inverseLerp(
+                    fishConfig.kickFrequency.min,
+                    fishConfig.kickFrequency.max,
+                    fish.kickFrequency,
+                  )
+                : 0,
+            ),
             0,
             1,
           )
           visual.action.timeScale = schooling
-            ? THREE.MathUtils.lerp(1.65, 2.85, pace)
-            : THREE.MathUtils.lerp(
-                0.55,
-                2.15,
-                fish.kickTime > 0
-                  ? THREE.MathUtils.inverseLerp(
-                      fishConfig.kickFrequency.min,
-                      fishConfig.kickFrequency.max,
-                      fish.kickFrequency,
-                    )
-                  : 0.18,
-              )
+            ? THREE.MathUtils.lerp(1.5, 4.6, energy)
+            : THREE.MathUtils.lerp(0.55, 4.9, energy)
         }
         visual.mixer.update(step)
         visual.bind.position.copy(visual.bindPos)
@@ -236,6 +229,9 @@ export function createClipFishSchool(
     setNeighbors(groups) {
       simulation.setNeighbors(groups)
     },
+    scare(x, y, z) {
+      simulation.scare(x, y, z)
+    },
     dispose() {
       disposed = true
       each(visuals, dropVisual)
@@ -244,7 +240,7 @@ export function createClipFishSchool(
         template.traverse((object) => {
           if (!isFishMesh(object)) return
           object.geometry.dispose()
-          each(toArr(object.material), (material: THREE.Material) => {
+          each(meshMaterials(object), (material) => {
             material.dispose()
           })
         })

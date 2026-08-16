@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
+import isArr from 'licia/isArr'
 import { bakeAxes, readFishModel, type FishModelId } from './catalog'
 import type { FishModelDef } from './types'
 
@@ -10,6 +11,10 @@ const gltfLoader = new GLTFLoader()
 
 export function isFishMesh(object: THREE.Object3D): object is THREE.Mesh {
   return (object as THREE.Mesh).isMesh === true
+}
+
+export function meshMaterials(mesh: THREE.Mesh): THREE.Material[] {
+  return isArr(mesh.material) ? mesh.material : [mesh.material]
 }
 
 export function loadFishGltf(id: FishModelId) {

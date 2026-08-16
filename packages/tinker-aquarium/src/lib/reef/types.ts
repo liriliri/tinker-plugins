@@ -4,6 +4,7 @@ export interface Reef {
   group: THREE.Group
   materials: THREE.Material[]
   obstacles: ReefObstacle[]
+  update: (dt: number) => void
   dispose: () => void
 }
 
@@ -31,12 +32,13 @@ export interface ReefBuildOptions extends Partial<ReefOptions> {
   halfWidth: number
   halfDepth: number
   inset?: number
+  envMap?: THREE.Texture
 }
 
 export type Random = () => number
 
-/** What a reef bed can grow: coral, gap-filling rubble, or green plants. */
-export type ReefKind = 'coral' | 'rubble' | 'plant'
+/** What a reef bed can grow: coral, gap-filling rubble, plants, or glass orbs. */
+export type ReefKind = 'coral' | 'rubble' | 'plant' | 'glass'
 
 export interface ReefType {
   kind: ReefKind

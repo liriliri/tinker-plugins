@@ -102,6 +102,9 @@ function createCurveFishSchool(
     setNeighbors(groups) {
       simulation.setNeighbors(groups)
     },
+    scare(x, y, z) {
+      simulation.scare(x, y, z)
+    },
     dispose() {
       disposed = true
       if (mesh) {

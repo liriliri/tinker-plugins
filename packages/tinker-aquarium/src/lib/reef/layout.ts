@@ -5,6 +5,9 @@ import toInt from 'licia/toInt'
 import * as THREE from 'three'
 import {
   CORAL_TYPE_BAG,
+  GLASS_LARGE_SCALE,
+  GLASS_PALETTE,
+  GLASS_TYPE_INDEX,
   PALETTE,
   PLANT_PALETTE,
   PLANT_TYPE_INDICES,
@@ -51,6 +54,7 @@ export function layoutReef(
   const palette = map(PALETTE, (hex) => new THREE.Color(hex))
   const stones = map(STONE_PALETTE, (hex) => new THREE.Color(hex))
   const greens = map(PLANT_PALETTE, (hex) => new THREE.Color(hex))
+  const jewels = map(GLASS_PALETTE, (hex) => new THREE.Color(hex))
   const shiftHsl = (
     base: THREE.Color,
     hueJitter: number,
@@ -87,8 +91,34 @@ export function layoutReef(
       0.5,
       vibrance,
     )
+  const glassColor = () =>
+    shiftHsl(
+      pick(jewels, random),
+      0.04,
+      0.12,
+      0.55,
+      0.95,
+      0.08,
+      0.42,
+      0.62,
+      vibrance,
+    )
   const pickCoralType = () => pick(CORAL_TYPE_BAG, random)
   const pickPlantType = () => pick(PLANT_TYPE_INDICES, random)
+  const placeGlass = (x: number, z: number, large = false) => {
+    const scale = large ? GLASS_LARGE_SCALE : 1
+    const radius = 0.3 * scale
+    if (!fits(x, z, radius)) return false
+    spots.push({
+      x,
+      z,
+      radius,
+      scale,
+      type: GLASS_TYPE_INDEX,
+      color: glassColor(),
+    })
+    return true
+  }
   const placePlant = (x: number, z: number) => {
     const type = pickPlantType()
     const scale = sizeVariation(random, 0.45, 1.9)
@@ -168,6 +198,15 @@ export function layoutReef(
       })
     }
 
+    if (random() < 0.5) {
+      const angle = random() * Math.PI * 2
+      const spread = 0.55 + random() * 1.35
+      placeGlass(
+        centerX + Math.cos(angle) * spread,
+        centerZ + Math.sin(angle) * spread,
+      )
+    }
+
     // Green plants around the same centre; taller kelp leans farther out than
     // the grass tufts that tuck into the near gaps.
     const plantTries = 1 + toInt(lerp(1, 5, t))
@@ -179,6 +218,18 @@ export function layoutReef(
       if (placePlant(x, z)) plantCount += 1
     }
   }
+
+  const scatterGlass = (large: boolean, target: number) => {
+    let placed = 0
+    const tries = target * 12
+    for (let attempt = 0; attempt < tries && placed < target; attempt += 1) {
+      const x = (random() * 2 - 1) * spanX
+      const z = (random() * 2 - 1) * spanZ
+      if (placeGlass(x, z, large)) placed += 1
+    }
+  }
+  scatterGlass(true, Math.max(2, toInt(lerp(2, 5, t))))
+  scatterGlass(false, Math.max(4, toInt(lerp(6, 12, t))))
 
   // Plant-only patches on the open sand so the bed is grassy rather than coral-led.
   const maxPlantPatches = plantTarget * 3

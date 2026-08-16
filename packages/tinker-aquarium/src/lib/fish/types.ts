@@ -45,6 +45,7 @@ export interface FishSchool {
   setCount: (count: number) => void
   setObstacles: (obstacles: ReefObstacle[]) => void
   setNeighbors: (groups: FishState[][]) => void
+  scare: (x: number, y: number, z: number) => void
   dispose: () => void
 }
 

@@ -4,7 +4,7 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js'
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js'
 import clamp from 'licia/clamp'
 import each from 'licia/each'
-import toArr from 'licia/toArr'
+import isArr from 'licia/isArr'
 import { createBubbles } from './bubbles'
 import {
   createAngelfishSchool,
@@ -19,6 +19,7 @@ import {
 import { createGlassDirt } from './glassDirt'
 import { createReef } from './reef'
 import { DEFAULT_REEF, type ReefOptions } from './reef/types'
+import { mulberry32 } from './reef/util'
 import { createWaterSystem } from './water'
 import {
   DEFAULT_LIGHTING,
@@ -109,16 +110,21 @@ function createGlassShell(thickness: number, envMap: THREE.Texture) {
     0,
     -(depth / 2 + thickness / 2),
   )
-  addPanel(
+
+  const bottom = new THREE.Mesh(
     new THREE.BoxGeometry(
       width + thickness * 2,
       thickness,
       depth + thickness * 2,
     ),
-    0,
-    -(height / 2 + thickness / 2),
-    0,
+    new THREE.MeshStandardMaterial({
+      color: 0x050505,
+      roughness: 0.92,
+      metalness: 0,
+    }),
   )
+  bottom.position.set(0, -(height / 2 + thickness / 2), 0)
+  group.add(bottom)
 
   const outer = new THREE.BoxGeometry(
     width + thickness * 2,
@@ -174,7 +180,7 @@ export function createAquarium(
   applyPixelRatio()
   renderer.outputColorSpace = THREE.SRGBColorSpace
   renderer.toneMapping = THREE.ACESFilmicToneMapping
-  renderer.toneMappingExposure = 1.05
+  renderer.toneMappingExposure = 0.88
   renderer.shadowMap.enabled = true
   renderer.shadowMap.type = THREE.PCFSoftShadowMap
 
@@ -214,8 +220,8 @@ export function createAquarium(
 
   // The fill is all that survives inside a shadow, so a cyan tint here turns every
   // shadowed patch of warm sand olive. A blue-grey bounce keeps them as cool shade.
-  const KEY_INTENSITY = 2.6
-  const HEMI_INTENSITY = 1
+  const KEY_INTENSITY = 2
+  const HEMI_INTENSITY = 0.78
   const hemiLight = new THREE.HemisphereLight(
     0xe6eeff,
     0x232c46,
@@ -251,7 +257,7 @@ export function createAquarium(
     skyTint.setHSL(next.hue, sat * 0.42, 0.78)
     hemiLight.color.copy(skyTint)
     hemiLight.intensity = HEMI_INTENSITY * (0.4 + bright * 0.6)
-    renderer.toneMappingExposure = 0.48 + bright * 0.72
+    renderer.toneMappingExposure = 0.4 + bright * 0.58
     if (scene.fog instanceof THREE.FogExp2) {
       scene.fog.color.setHSL(next.hue, sat * 0.22, 0.08)
     }
@@ -266,6 +272,8 @@ export function createAquarium(
   const envMap = pmrem.fromScene(environment, 0.04).texture
   environment.dispose()
   pmrem.dispose()
+  scene.environment = envMap
+  scene.environmentIntensity = 0.16
 
   const GLASS_THICKNESS = 0.12
   const glass = createGlassShell(GLASS_THICKNESS, envMap)
@@ -289,38 +297,162 @@ export function createAquarium(
   const sandMaterial = createSandMaterial()
   const sandSideXMaterial = createSandMaterial()
   const sandSideZMaterial = createSandMaterial()
-  // Never in view, so it stays untextured.
-  const sandBottomMaterial = new THREE.MeshStandardMaterial({
-    color: 0xa38d66,
-    roughness: 1,
-    metalness: 0,
-  })
 
   const sandHeight = SAND_TOP_Y - SAND_BASE_Y
   const sandWidth = TANK.width - 0.012
   const sandDepth = TANK.depth - 0.012
-  // The world size each face's UVs are stretched over.
   const sandFaceSizes = {
     top: new THREE.Vector2(sandWidth, sandDepth),
     sideX: new THREE.Vector2(sandDepth, sandHeight),
     sideZ: new THREE.Vector2(sandWidth, sandHeight),
   }
+  const sandTopY = SAND_TOP_Y + 0.004
+  const halfW = sandWidth / 2
+  const halfD = sandDepth / 2
+  const createDuneHeight = (seed: number) => {
+    const random = mulberry32(seed + 203)
+    const f1u = THREE.MathUtils.lerp(1.5, 2.9, random())
+    const f1v = THREE.MathUtils.lerp(1.15, 2.5, random())
+    const p1 = random() * Math.PI * 2
+    const a1 = THREE.MathUtils.lerp(0.12, 0.2, random())
+    const f2u = THREE.MathUtils.lerp(4.2, 7.4, random())
+    const f2v = THREE.MathUtils.lerp(3.3, 5.9, random())
+    const p2 = random() * Math.PI * 2
+    const a2 = THREE.MathUtils.lerp(0.06, 0.12, random())
+    const f3 = THREE.MathUtils.lerp(2.4, 4.8, random())
+    const p3 = random() * Math.PI * 2
+    const a3 = THREE.MathUtils.lerp(0.035, 0.07, random())
+    const mix = THREE.MathUtils.lerp(0.7, 1.45, random())
+    const base = THREE.MathUtils.lerp(0.08, 0.14, random())
+    return (u: number, v: number) =>
+      THREE.MathUtils.clamp(
+        base +
+          Math.sin(u * Math.PI * f1u + p1) * Math.cos(v * Math.PI * f1v) * a1 +
+          Math.sin(u * Math.PI * f2u + p2) * Math.sin(v * Math.PI * f2v) * a2 +
+          Math.sin((u * mix + v) * Math.PI * f3 + p3) * a3,
+        0.04,
+        0.34,
+      )
+  }
+  const createSandSkirt = (
+    count: number,
+    nx: number,
+    nz: number,
+    heightAt: (u: number, v: number) => number,
+    at: (t: number) => { x: number; z: number; u: number; v: number },
+  ) => {
+    const positions: number[] = []
+    const uvs: number[] = []
+    const indices: number[] = []
+    for (let i = 0; i <= count; i += 1) {
+      const t = i / count
+      const point = at(t)
+      const topY = sandTopY + heightAt(point.u, point.v)
+      positions.push(point.x, SAND_BASE_Y, point.z, point.x, topY, point.z)
+      uvs.push(t, 0, t, 1)
+    }
+    for (let i = 0; i < count; i += 1) {
+      const a = i * 2
+      indices.push(a, a + 2, a + 3, a, a + 3, a + 1)
+    }
+    const geometry = new THREE.BufferGeometry()
+    geometry.setAttribute(
+      'position',
+      new THREE.Float32BufferAttribute(positions, 3),
+    )
+    geometry.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2))
+    geometry.setIndex(indices)
+    geometry.computeVertexNormals()
+    const first = geometry.attributes.normal
+    if (first.getX(0) * nx + first.getZ(0) * nz < 0) {
+      for (let i = 0; i < indices.length; i += 3) {
+        const swap = indices[i + 1]
+        indices[i + 1] = indices[i + 2]
+        indices[i + 2] = swap
+      }
+      geometry.setIndex(indices)
+      geometry.computeVertexNormals()
+    }
+    return geometry
+  }
 
   const sand = new THREE.Mesh(
-    new THREE.BoxGeometry(sandWidth, sandHeight, sandDepth),
-    // BoxGeometry face order: +X, -X, +Y, -Y, +Z, -Z.
-    [
-      sandSideXMaterial,
-      sandSideXMaterial,
-      sandMaterial,
-      sandBottomMaterial,
-      sandSideZMaterial,
-      sandSideZMaterial,
-    ],
+    new THREE.PlaneGeometry(sandWidth, sandDepth, 72, 44),
+    sandMaterial,
   )
-  sand.position.y = SAND_BASE_Y + sandHeight / 2
+  sand.position.y = sandTopY
   sand.receiveShadow = true
-  tank.add(sand)
+  sand.castShadow = true
+  const sandSideZPos = new THREE.Mesh(
+    new THREE.BufferGeometry(),
+    sandSideZMaterial,
+  )
+  const sandSideZNeg = new THREE.Mesh(
+    new THREE.BufferGeometry(),
+    sandSideZMaterial,
+  )
+  const sandSideXPos = new THREE.Mesh(
+    new THREE.BufferGeometry(),
+    sandSideXMaterial,
+  )
+  const sandSideXNeg = new THREE.Mesh(
+    new THREE.BufferGeometry(),
+    sandSideXMaterial,
+  )
+  const sandSides = [sandSideZPos, sandSideZNeg, sandSideXPos, sandSideXNeg]
+  const rebuildSand = (seed: number) => {
+    const heightAt = createDuneHeight(seed)
+    const topGeometry = new THREE.PlaneGeometry(sandWidth, sandDepth, 72, 44)
+    topGeometry.rotateX(-Math.PI / 2)
+    const topPos = topGeometry.attributes.position
+    for (let i = 0; i < topPos.count; i += 1) {
+      const x = topPos.getX(i)
+      const z = topPos.getZ(i)
+      topPos.setY(i, heightAt(x / sandWidth + 0.5, z / sandDepth + 0.5))
+    }
+    topGeometry.computeVertexNormals()
+    sand.geometry.dispose()
+    sand.geometry = topGeometry
+    const nextSkirts = [
+      createSandSkirt(72, 0, 1, heightAt, (t) => ({
+        x: -halfW + t * sandWidth,
+        z: halfD,
+        u: t,
+        v: 1,
+      })),
+      createSandSkirt(72, 0, -1, heightAt, (t) => ({
+        x: halfW - t * sandWidth,
+        z: -halfD,
+        u: 1 - t,
+        v: 0,
+      })),
+      createSandSkirt(44, 1, 0, heightAt, (t) => ({
+        x: halfW,
+        z: halfD - t * sandDepth,
+        u: 1,
+        v: 1 - t,
+      })),
+      createSandSkirt(44, -1, 0, heightAt, (t) => ({
+        x: -halfW,
+        z: -halfD + t * sandDepth,
+        u: 0,
+        v: t,
+      })),
+    ]
+    each(sandSides, (side, index) => {
+      side.geometry.dispose()
+      side.geometry = nextSkirts[index]
+    })
+  }
+  rebuildSand(reefOptions.seed)
+
+  const sandGroup = new THREE.Group()
+  sandGroup.add(sand)
+  each([sandSideZPos, sandSideZNeg, sandSideXPos, sandSideXNeg], (side) => {
+    side.receiveShadow = true
+    sandGroup.add(side)
+  })
+  tank.add(sandGroup)
 
   const water = createWaterSystem(
     renderer,
@@ -408,24 +540,32 @@ export function createAquarium(
       floorY: SAND_TOP_Y,
       halfWidth: TANK.width / 2,
       halfDepth: TANK.depth / 2,
+      envMap,
     })
     tank.add(reef.group)
-    // Same light bands the bed gets, otherwise the colonies float free of the scene.
-    each(reef.materials, (material) => water.applyCaustics(material))
+    each(reef.materials, (material) => {
+      if (material instanceof THREE.MeshPhysicalMaterial) return
+      water.applyCaustics(material)
+    })
     return reef
   }
   let coral = buildReef(reefOptions)
 
   let bubbleDropSkip = 0
-  const bubbles = createBubbles(
-    SAND_TOP_Y,
-    TANK.waterY,
-    envMap,
-    (x, z, size) => {
-      if (bubbleDropSkip++ % 4 !== 0) return
-      water.addDrop(x, z, 0.0022 + size * 0.0012, 0.012)
-    },
-  )
+  const spawnBubbles = (seed: number) =>
+    createBubbles(
+      SAND_TOP_Y,
+      TANK.waterY,
+      envMap,
+      seed,
+      TANK.width / 2,
+      TANK.depth / 2,
+      (x, z, size) => {
+        if (bubbleDropSkip++ % 4 !== 0) return
+        water.addDrop(x, z, 0.0022 + size * 0.0012, 0.012)
+      },
+    )
+  let bubbles = spawnBubbles(reefOptions.seed)
   tank.add(bubbles.mesh)
 
   const fishBounds = {
@@ -510,6 +650,14 @@ export function createAquarium(
     strokePointerId = event.pointerId
     controls.enabled = false
     water.addDrop(point.x, point.z, 0.01)
+    startleFish(point.x, point.z)
+  }
+
+  const startleFish = (x: number, z: number) => {
+    goldfish.scare(x, TANK.waterY, z)
+    angelfish.scare(x, TANK.waterY, z)
+    guppies.scare(x, TANK.waterY, z)
+    tetras.scare(x, TANK.waterY, z)
   }
 
   const onPointerMove = (event: PointerEvent) => {
@@ -517,6 +665,7 @@ export function createAquarium(
     const point = getWaterPoint(event)
     if (!point) return
     water.addDrop(point.x, point.z, 0.01)
+    startleFish(point.x, point.z)
   }
 
   const onPointerEnd = (event: PointerEvent) => {
@@ -555,6 +704,7 @@ export function createAquarium(
     angelfish.update(dt)
     guppies.update(dt)
     tetras.update(dt)
+    coral.update(dt)
     bubbles.update(clock.getElapsedTime())
     fishMsAcc += performance.now() - fishStart
     const waterStart = performance.now()
@@ -604,6 +754,11 @@ export function createAquarium(
       angelfish.setObstacles(coral.obstacles)
       guppies.setObstacles(coral.obstacles)
       tetras.setObstacles(coral.obstacles)
+      tank.remove(bubbles.mesh)
+      bubbles.dispose()
+      bubbles = spawnBubbles(options.seed)
+      tank.add(bubbles.mesh)
+      rebuildSand(options.seed)
       water.invalidateCapture()
     },
     setFishCount(count) {
@@ -669,7 +824,10 @@ export function createAquarium(
           return
         }
         object.geometry.dispose()
-        each(toArr(object.material), (material) => material.dispose())
+        const materials = isArr(object.material)
+          ? object.material
+          : [object.material]
+        each(materials, (material) => material.dispose())
       })
       renderer.dispose()
     },

@@ -1,7 +1,9 @@
 import clamp from 'licia/clamp'
 import each from 'licia/each'
+import map from 'licia/map'
 import range from 'licia/range'
 import * as THREE from 'three'
+import { lerp } from './reef/util'
 
 function hash2(ix: number, iy: number) {
   let n = Math.imul(ix, 374761393) + Math.imul(iy, 668265263)
@@ -11,10 +13,6 @@ function hash2(ix: number, iy: number) {
 
 function fade(t: number) {
   return t * t * (3 - 2 * t)
-}
-
-function lerp(a: number, b: number, t: number) {
-  return a + (b - a) * t
 }
 
 function valueNoise(x: number, y: number) {
@@ -49,7 +47,7 @@ function createDirtTexture(waterV: number) {
   const ctx = canvas.getContext('2d')!
   const image = ctx.createImageData(size, size)
   const pixels = image.data
-  const drips = range(7).map((i) => ({
+  const drips = map(range(7), (i) => ({
     u: hash2(i * 19, 7),
     half: 0.003 + hash2(i, 11) * 0.008,
     length: 0.08 + hash2(i, 23) * 0.28,

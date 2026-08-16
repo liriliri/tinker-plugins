@@ -439,11 +439,19 @@ export function createKelp(random: Random) {
     const length = lerp(0.7, 1.15, random())
     const { curve } = bentCurve(origin, direction, length, random)
     const width = lerp(0.045, 0.085, random())
+    const pointed = random() < 0.86
     parts.push(
       createRibbon(
         curve,
-        (t) => width * (1 - 0.55 * t * t) * (1 + 0.12 * Math.sin(t * 9)),
-        10,
+        (t) => {
+          const wave = 1 + 0.1 * Math.sin(t * 9)
+          if (pointed) {
+            const tail = Math.max(0, (t - 0.42) / 0.58)
+            return width * (1 - 0.12 * t) * (1 - tail * tail) * wave
+          }
+          return width * (1 - 0.28 * t) * wave
+        },
+        12,
       ),
     )
   }
@@ -472,10 +480,120 @@ export function createGrassTuft(random: Random) {
     const length = lerp(0.28, 0.62, random())
     const { curve } = bentCurve(origin, direction, length, random)
     const width = lerp(0.02, 0.04, random())
-    parts.push(createRibbon(curve, (t) => width * (1 - 0.65 * t), 7))
+    const pointed = random() < 0.9
+    parts.push(
+      createRibbon(
+        curve,
+        (t) =>
+          pointed ? width * (1 - t) * (1 - 0.15 * t) : width * (1 - 0.4 * t),
+        9,
+      ),
+    )
   }
 
   return normalizeGeometry(mergeGeometries(parts, false)!)
+}
+
+function tintRibbon(geometry: THREE.BufferGeometry, color: THREE.Color) {
+  const count = geometry.attributes.position.count
+  const colors = new Float32Array(count * 3)
+  for (let i = 0; i < count; i += 1) {
+    colors[i * 3] = color.r
+    colors[i * 3 + 1] = color.g
+    colors[i * 3 + 2] = color.b
+  }
+  geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3))
+  return geometry
+}
+
+function createTwistedLeaf(random: Random, color: THREE.Color) {
+  const lengthSegs = 22
+  const widthSegs = 10
+  const length = 1
+  const maxWidth = lerp(0.3, 0.44, random())
+  const twist = lerp(0.85, 1.7, random()) * Math.PI
+  const curl = lerp(0.06, 0.2, random())
+  const fold = lerp(0.03, 0.07, random())
+  const positions: number[] = []
+  const uvs: number[] = []
+
+  for (let i = 0; i <= lengthSegs; i += 1) {
+    const t = i / lengthSegs
+    const envelope = Math.pow(Math.sin(Math.PI * Math.pow(t, 0.82)), 1.05)
+    const spin = t * twist
+    const cos = Math.cos(spin)
+    const sin = Math.sin(spin)
+    const midX = Math.sin(t * Math.PI) * curl
+    const midY = (t - 0.5) * length
+
+    for (let j = 0; j <= widthSegs; j += 1) {
+      const s = (j / widthSegs) * 2 - 1
+      const x = s * envelope * maxWidth * 0.5
+      const z = (1 - Math.abs(s)) * fold
+      positions.push(midX + x * cos - z * sin, midY, x * sin + z * cos)
+      uvs.push((s + 1) * 0.5, t)
+    }
+  }
+
+  const indices: number[] = []
+  const stride = widthSegs + 1
+  for (let i = 0; i < lengthSegs; i += 1) {
+    for (let j = 0; j < widthSegs; j += 1) {
+      const a = i * stride + j
+      const b = a + 1
+      const c = a + stride
+      const d = c + 1
+      indices.push(a, c, b, b, c, d)
+    }
+  }
+
+  const geometry = new THREE.BufferGeometry()
+  geometry.setIndex(indices)
+  geometry.setAttribute(
+    'position',
+    new THREE.Float32BufferAttribute(positions, 3),
+  )
+  geometry.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2))
+  geometry.computeVertexNormals()
+  return tintRibbon(geometry, color)
+}
+
+/** One or two twisted leaves inside a marble. */
+export function createGlassSwirl(random: Random, colors: THREE.Color[]) {
+  const parts: THREE.BufferGeometry[] = []
+  const count = colors.length > 1 ? colors.length : random() < 0.3 ? 2 : 1
+  for (let i = 0; i < count; i += 1) {
+    const leaf = createTwistedLeaf(random, colors[i % colors.length])
+    const phi = Math.acos(2 * random() - 1)
+    const theta = random() * Math.PI * 2
+    tmpVector.set(
+      Math.sin(phi) * Math.cos(theta),
+      Math.cos(phi),
+      Math.sin(phi) * Math.sin(theta),
+    )
+    leaf.applyQuaternion(
+      new THREE.Quaternion().setFromUnitVectors(Y_AXIS, tmpVector),
+    )
+    leaf.rotateY(random() * Math.PI * 2)
+    parts.push(leaf)
+  }
+
+  const geometry = mergeGeometries(parts, false)!
+  geometry.computeBoundingSphere()
+  const center = geometry.boundingSphere!.center
+  geometry.translate(-center.x, -center.y, -center.z)
+  geometry.computeBoundingSphere()
+  const fit = 0.46 / Math.max(geometry.boundingSphere!.radius, 0.001)
+  geometry.scale(fit, fit, fit)
+  geometry.computeVertexNormals()
+  return geometry
+}
+
+/** Smooth glass marble that sits on the sand, not through it. */
+export function createGlassShell() {
+  const geometry = new THREE.SphereGeometry(0.5, 48, 32)
+  geometry.translate(0, 0.5, 0)
+  return geometry
 }
 
 /** Loose rubble, so the colonies do not meet the sand at a hard edge. */

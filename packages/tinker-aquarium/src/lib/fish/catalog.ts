@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import reduce from 'licia/reduce'
 import { pick } from '../reef/util'
 import type { Axis, FishLook, FishModelDef } from './types'
 
@@ -159,7 +160,7 @@ export function bakeAxes(forward: Axis, up: Axis) {
 }
 
 function pickRange(buckets: FishLook['size'], random: () => number) {
-  const total = buckets.reduce((sum, bucket) => sum + bucket.weight, 0)
+  const total = reduce(buckets, (sum, bucket) => sum + bucket.weight, 0)
   let pick = random() * total
   for (const bucket of buckets) {
     pick -= bucket.weight

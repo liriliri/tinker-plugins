@@ -20,6 +20,13 @@ const App = observer(() => {
     >
       <AquariumView />
 
+      {store.panelOpen && (
+        <div
+          className="absolute inset-0 z-[15]"
+          onPointerDown={() => store.setPanelOpen(false)}
+        />
+      )}
+
       {store.showFps && (
         <div className="pointer-events-none absolute left-3 top-3 z-10 font-mono text-[11px] leading-4 tabular-nums text-white/70">
           <div>

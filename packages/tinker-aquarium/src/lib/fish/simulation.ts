@@ -136,6 +136,84 @@ export class FishSchoolSimulation {
     }
   }
 
+  scare(x: number, y: number, z: number) {
+    const horizRadius = 5
+    const vertRadius = 12.5
+    const { min, max } = this.bounds
+    for (const fish of this.fish) {
+      let dx = fish.position.x - x
+      const dy = fish.position.y - y
+      let dz = fish.position.z - z
+      const nx = dx / horizRadius
+      const ny = dy / vertRadius
+      const nz = dz / horizRadius
+      const dist = Math.sqrt(nx * nx + ny * ny + nz * nz)
+      if (dist >= 1) continue
+      const strength = (1 - dist) ** 2
+      if (strength < 0.06) continue
+      const burst = this.species.schooling ? 2.85 : 5.4
+      const scareSpeed =
+        this.settings.maxSpeed * THREE.MathUtils.lerp(1.55, burst, strength)
+      if (fish.t < fish.avoidUntil) {
+        fish.speed = Math.max(fish.speed, scareSpeed)
+        fish.kickTime = Math.max(fish.kickTime, 0.4 + strength * 0.75)
+        continue
+      }
+      const horiz = Math.hypot(dx, dz)
+      if (horiz < 0.14) {
+        dx = -headingX(fish.angle, 0)
+        dz = -headingZ(fish.angle, 0)
+      } else {
+        dx /= horiz
+        dz /= horiz
+      }
+      const hx = headingX(fish.angle, 0)
+      const hz = headingZ(fish.angle, 0)
+      const facingSplash = dx * hx + dz * hz < 0.2
+      const snapTurn = facingSplash ? this.random() < 0.82 : this.random() < 0.4
+      if (!snapTurn) {
+        dx = hx
+        dz = hz
+      } else {
+        const yaw = (this.random() - 0.5) * 0.7
+        const flee = wrapAngle(Math.atan2(dz, dx) + yaw)
+        dx = Math.cos(flee)
+        dz = Math.sin(flee)
+      }
+      const run = 1.1 + strength * 5.4
+      fish.dest = {
+        x: THREE.MathUtils.clamp(
+          fish.position.x + dx * run,
+          min.x + 0.6,
+          max.x - 0.6,
+        ),
+        y: THREE.MathUtils.clamp(
+          fish.position.y - (snapTurn ? 1.1 * strength : 0),
+          this.depthMin(),
+          this.depthMax(),
+        ),
+        z: THREE.MathUtils.clamp(
+          fish.position.z + dz * run,
+          min.z + 0.6,
+          max.z - 0.6,
+        ),
+      }
+      fish.avoidUntil = fish.t + 0.55 + strength * 1.05
+      fish.kickTime = Math.max(fish.kickTime, 0.4 + strength * 0.75)
+      fish.kickFrequency = THREE.MathUtils.lerp(
+        fishConfig.kickFrequency.min,
+        fishConfig.kickFrequency.max,
+        0.55 + strength * 0.45,
+      )
+      fish.speed = Math.max(fish.speed, scareSpeed)
+      if (snapTurn) {
+        fish.targetAngle = wrapAngle(Math.atan2(dz, dx))
+        fish.targetPitch = -this.settings.maxPitch * 0.85 * strength
+        fish.angle = fish.targetAngle
+      }
+    }
+  }
+
   update(dt: number) {
     if (dt > 0.1) return
     if (this.species.schooling) {
@@ -204,7 +282,7 @@ export class FishSchoolSimulation {
       if (this.nudgeOut(fish)) this.steerAway(fish)
       if (this.separateFromOthers(fish)) {
         this.keepInside(fish)
-        fish.angle = mixAngle(fish.angle, fish.targetAngle, 0.45)
+        this.snapTowardTarget(fish, 0.45)
       }
       fish.velocity.x = headingX(fish.angle, fish.pitch) * fish.speed
       fish.velocity.y = headingY(fish.pitch) * fish.speed
@@ -221,13 +299,21 @@ export class FishSchoolSimulation {
       fish.curveBendWorld.x += (targetBend - fish.curveBendWorld.x) * turnEase
       fish.curveBendWorld.y = 0
       fish.curveBendWorld.z = 0
+      const tempo = THREE.MathUtils.clamp(
+        fish.speed / Math.max(settings.maxSpeed, 1e-4),
+        0.2,
+        3.3,
+      )
       const drive =
-        fish.kickTime > 0
-          ? THREE.MathUtils.lerp(0.42, 1, kickStrength(fish.kickFrequency))
-          : THREE.MathUtils.lerp(0.18, 0.34, fish.speed / settings.maxSpeed)
+        tempo > 1.2
+          ? 1
+          : fish.kickTime > 0
+            ? THREE.MathUtils.lerp(0.42, 1, kickStrength(fish.kickFrequency))
+            : THREE.MathUtils.lerp(0.18, 0.34, Math.min(tempo, 1))
       fish.swimDrive += (drive - fish.swimDrive) * (1 - Math.exp(-6 * dt))
       const frequency =
-        fish.kickTime > 0 ? fish.kickFrequency : fishConfig.coastFrequency
+        (fish.kickTime > 0 ? fish.kickFrequency : fishConfig.coastFrequency) *
+        Math.max(1, tempo)
       fish.swimPhase = (fish.swimPhase + frequency * TWO_PI * dt) % TWO_PI
     }
   }
@@ -427,6 +513,15 @@ export class FishSchoolSimulation {
       }
       if (!passing) this.boidSide[i] = 0
 
+      if (fish.t < fish.avoidUntil) {
+        const fx = fish.dest.x - fish.position.x
+        const fz = fish.dest.z - fish.position.z
+        const flen = Math.hypot(fx, fz) || 1
+        vx += (fx / flen) * 2.6
+        vz += (fz / flen) * 2.6
+        vy += (fish.dest.y - fish.position.y) * 0.55
+      }
+
       const desiredAngle = wrapAngle(Math.atan2(vz, vx))
       const horizontal = Math.hypot(vx, vz)
       const desiredPitch = THREE.MathUtils.clamp(
@@ -468,15 +563,17 @@ export class FishSchoolSimulation {
         settings.maxPitch,
       )
 
-      fish.speed = THREE.MathUtils.lerp(
-        fish.speed,
-        THREE.MathUtils.lerp(
-          settings.minSpeed,
-          settings.maxSpeed,
-          this.schoolPace,
-        ),
-        1 - Math.exp(-3.2 * dt),
-      )
+      if (fish.t >= fish.avoidUntil) {
+        fish.speed = THREE.MathUtils.lerp(
+          fish.speed,
+          THREE.MathUtils.lerp(
+            settings.minSpeed,
+            settings.maxSpeed,
+            this.schoolPace,
+          ),
+          1 - Math.exp(-3.2 * dt),
+        )
+      }
       const hx = headingX(fish.angle, fish.pitch)
       const hy = headingY(fish.pitch)
       const hz = headingZ(fish.angle, fish.pitch)
@@ -498,12 +595,19 @@ export class FishSchoolSimulation {
       const turnEase = 1 - Math.exp(-5 * dt)
       fish.turnRate +=
         (headingDelta / Math.max(dt, 1e-4) - fish.turnRate) * turnEase
+      const tempo = THREE.MathUtils.clamp(
+        fish.speed / Math.max(settings.maxSpeed, 1e-4),
+        0.2,
+        3.2,
+      )
       fish.swimDrive +=
-        (THREE.MathUtils.lerp(0.4, 0.95, this.schoolPace) - fish.swimDrive) *
+        (THREE.MathUtils.lerp(0.4, 1, Math.min(tempo, 1)) - fish.swimDrive) *
         (1 - Math.exp(-6 * dt))
       fish.swimPhase =
         (fish.swimPhase +
-          THREE.MathUtils.lerp(1.1, 2.4, this.schoolPace) * TWO_PI * dt) %
+          THREE.MathUtils.lerp(1.1, 5.1, Math.min((tempo - 0.3) / 2.7, 1)) *
+            TWO_PI *
+            dt) %
         TWO_PI
     }
   }
@@ -601,7 +705,7 @@ export class FishSchoolSimulation {
   }
 
   private kick(fish: FishState) {
-    const dart = this.random() < fishConfig.dartChance
+    const dart = this.isNimble() && this.random() < fishConfig.dartChance
     const duration = dart
       ? THREE.MathUtils.lerp(0.28, 0.5, this.random())
       : THREE.MathUtils.lerp(
@@ -658,16 +762,11 @@ export class FishSchoolSimulation {
       fish.position.y = this.depthMin()
     }
     if (!hitX && !hitZ) return
-    if (hitX && hitZ) {
-      fish.targetAngle = wrapAngle(fish.angle + Math.PI)
-    } else if (hitX) {
-      fish.targetAngle = wrapAngle(Math.PI - fish.angle)
-    } else {
-      fish.targetAngle = wrapAngle(-fish.angle)
-    }
-    fish.avoidUntil = fish.t + 0.7
-    fish.dest = this.randomPoint(fish)
-    fish.angle = mixAngle(fish.angle, fish.targetAngle, 0.55)
+    fish.targetAngle = this.alongWall(fish.angle, hitX, hitZ)
+    fish.avoidUntil = fish.t + 1.1
+    fish.dest = this.randomPoint(fish, true)
+    if (this.isNimble()) this.snapTowardTarget(fish, 0.55)
+    else fish.angle = mixAngle(fish.angle, fish.targetAngle, 0.22)
   }
 
   private createFish(index: number, total = index + 1): FishState {
@@ -784,10 +883,12 @@ export class FishSchoolSimulation {
     )
   }
 
-  private randomPoint(fish: FishState) {
+  private randomPoint(fish: FishState, inward = false) {
     const { min, max } = this.bounds
     const inset = 1.4
     const point = { x: 0, y: 0, z: 0 }
+    const cx = (min.x + max.x) * 0.5 - fish.position.x
+    const cz = (min.z + max.z) * 0.5 - fish.position.z
     for (let attempt = 0; attempt < SPAWN_RETRIES; attempt += 1) {
       point.x = THREE.MathUtils.lerp(
         min.x + inset,
@@ -800,8 +901,19 @@ export class FishSchoolSimulation {
         max.z - inset,
         this.random(),
       )
-      if (!this.blocked(point.x, point.y, point.z, fish.scale))
-        return { ...point }
+      if (this.blocked(point.x, point.y, point.z, fish.scale)) continue
+      if (attempt < SPAWN_RETRIES - 8) {
+        const dx = point.x - fish.position.x
+        const dz = point.z - fish.position.z
+        if (inward) {
+          if (dx * cx + dz * cz < 0) continue
+        } else if (!this.isNimble()) {
+          const hx = headingX(fish.angle, 0)
+          const hz = headingZ(fish.angle, 0)
+          if (dx * hx + dz * hz < 0) continue
+        }
+      }
+      return { ...point }
     }
     return point
   }
@@ -906,7 +1018,7 @@ export class FishSchoolSimulation {
     hy: number,
     hz: number,
     look: number,
-  ) {
+  ): FishState | null {
     let nearest: FishState | null = null
     let nearestSq = Infinity
     for (let step = 1; step <= 6; step += 1) {
@@ -1013,7 +1125,10 @@ export class FishSchoolSimulation {
 
   private glideAround(fish: FishState, cx: number, cz: number) {
     const aside = this.asideFrom(fish, cx, cz)
-    fish.targetAngle = wrapAngle(Math.atan2(aside.z, aside.x))
+    const heading = wrapAngle(Math.atan2(aside.z, aside.x))
+    fish.targetAngle = this.isNimble()
+      ? heading
+      : this.limitTurn(fish.angle, heading, 0.85)
     fish.avoidUntil = fish.t + 0.4
     if (!this.species.schooling) {
       fish.speed = Math.min(fish.speed, this.settings.maxSpeed * 0.55)
@@ -1041,14 +1156,9 @@ export class FishSchoolSimulation {
     if (y > max.y - 0.35) fish.targetPitch = -this.settings.maxPitch
     else if (y < min.y + 0.35) fish.targetPitch = this.settings.maxPitch
     if (!hitX && !hitZ) return false
-    if (hitX && hitZ) {
-      fish.targetAngle = wrapAngle(fish.angle + Math.PI)
-    } else if (hitX) {
-      fish.targetAngle = wrapAngle(Math.PI - fish.angle)
-    } else {
-      fish.targetAngle = wrapAngle(-fish.angle)
-    }
-    fish.avoidUntil = fish.t + 0.55
+    fish.targetAngle = this.alongWall(fish.angle, hitX, hitZ)
+    fish.dest = this.randomPoint(fish, true)
+    fish.avoidUntil = fish.t + 0.85
     return true
   }
 
@@ -1082,7 +1192,7 @@ export class FishSchoolSimulation {
     hy: number,
     hz: number,
     look: number,
-  ) {
+  ): FishState | null {
     const reach = this.fishRadius(fish.scale) + 0.85
     let nearest: FishState | null = null
     let nearestSq = Infinity
@@ -1104,6 +1214,34 @@ export class FishSchoolSimulation {
       })
     }
     return nearest
+  }
+
+  private alongWall(angle: number, hitX: number, hitZ: number) {
+    let tx = headingX(angle, 0)
+    let tz = headingZ(angle, 0)
+    if (hitX) tx = -hitX
+    if (hitZ) tz = -hitZ
+    if (Math.hypot(tx, tz) < 1e-4) {
+      tx = hitX ? -hitX : headingX(angle, 0)
+      tz = hitZ ? -hitZ : headingZ(angle, 0)
+    }
+    return wrapAngle(Math.atan2(tz, tx))
+  }
+
+  private isNimble() {
+    return this.species.weave === true || this.species.schooling === true
+  }
+
+  private snapTowardTarget(fish: FishState, amount: number) {
+    if (!this.isNimble()) return
+    fish.angle = mixAngle(fish.angle, fish.targetAngle, amount)
+  }
+
+  private limitTurn(from: number, to: number, maxDelta: number) {
+    return wrapAngle(
+      from +
+        THREE.MathUtils.clamp(shortestDelta(from, to), -maxDelta, maxDelta),
+    )
   }
 
   private separateFromOthers(fish: FishState) {
