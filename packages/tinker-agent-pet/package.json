@@ -1,0 +1,86 @@
+{
+  "name": "tinker-agent-pet",
+  "version": "0.1.0",
+  "description": "Browse, install and run Petdex agent pets in Tinker",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:preload\"",
+    "dev:renderer": "vite build --watch",
+    "dev:preload": "vite build --watch --config vite.preload.ts",
+    "build": "concurrently \"npm run build:renderer\" \"npm run build:preload\"",
+    "build:renderer": "vite build",
+    "build:preload": "vite build --config vite.preload.ts",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "agent-pet",
+    "petdex",
+    "desktop-pet"
+  ],
+  "tinker": {
+    "name": "Agent Pet",
+    "description": "Browse Petdex pets and run an animated desktop companion",
+    "main": "dist/renderer/index.html",
+    "preload": "dist/preload/index.js",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "Agent 桌宠",
+        "description": "浏览 Petdex 宠物并在桌面启用动画桌宠"
+      }
+    },
+    "mcp": {
+      "tools": {
+        "play_action": {
+          "description": "Play a named animation on the currently enabled desktop pet. Requires an active pet window. Pass loop=true to keep repeating until another play_action call.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "action": {
+                "type": "string",
+                "enum": [
+                  "idle",
+                  "waving",
+                  "jumping",
+                  "running",
+                  "review",
+                  "waiting"
+                ],
+                "description": "Animation to play on the active pet"
+              },
+              "loop": {
+                "type": "boolean",
+                "description": "If true, keep looping this animation until the next play_action (e.g. stop/idle). Defaults to false (play once, then return to idle when that setting is on)."
+              }
+            },
+            "required": [
+              "action"
+            ]
+          }
+        },
+        "list_actions": {
+          "description": "List available pet animations and the currently enabled pet.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        "get_status": {
+          "description": "Get whether a desktop pet is enabled and its runtime settings.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      }
+    }
+  }
+}

@@ -192,5 +192,13 @@ All plugins in the list can be installed to TINKER by running `npm i -g tinker-x
       <th><img src="./packages/tinker-map/screenshot.png"/></th>
       <th><img src="./packages/tinker-dos/screenshot.png"/></th>
     </tr>
+    <tr>
+      <th><a href="./packages/tinker-aquarium/">tinker-aquarium</a></th>
+      <th><a href="./packages/tinker-agent-pet/">tinker-agent-pet</a></th>
+    </tr>
+    <tr>
+      <th><img src="./packages/tinker-aquarium/screenshot.png"/></th>
+      <th><img src="./packages/tinker-agent-pet/screenshot.png"/></th>
+    </tr>
   </tbody>
 </table>
