@@ -1,5 +1,4 @@
 import { contextBridge, shell } from 'electron'
-import { loadAccounts, saveAccounts } from './accountStore'
 import {
   connect,
   deleteMessage,
@@ -41,10 +40,6 @@ function exposeAsync<A extends unknown[], R>(
 }
 
 const api = {
-  loadAccounts: exposeAsync((): Promise<Account[]> => loadAccounts()),
-  saveAccounts: exposeAsync((accounts: Account[]): Promise<void> =>
-    saveAccounts(accounts),
-  ),
   testAccount: exposeAsync((account: Account): Promise<void> =>
     testAccount(account),
   ),

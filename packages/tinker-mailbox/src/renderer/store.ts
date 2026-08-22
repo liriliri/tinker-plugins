@@ -1,6 +1,7 @@
 import { makeAutoObservable, runInAction, toJS } from 'mobx'
 import filter from 'licia/filter'
 import find from 'licia/find'
+import isArr from 'licia/isArr'
 import isEmpty from 'licia/isEmpty'
 import isStrBlank from 'licia/isStrBlank'
 import LocalStore from 'licia/LocalStore'
@@ -46,9 +47,19 @@ import { createMcpApi } from './mcp'
 
 const MESSAGE_PAGE = 50
 const MESSAGE_CACHE_KEEP = 2000
+const STORAGE_ACCOUNTS = 'accounts'
 const STORAGE_READER_DARK = 'readerDark'
 
 const storage = new LocalStore('tinker-mailbox')
+
+function loadStoredAccounts(): Account[] {
+  const saved = storage.get(STORAGE_ACCOUNTS)
+  return isArr(saved) ? (saved as Account[]) : []
+}
+
+function saveStoredAccounts(accounts: Account[]) {
+  storage.set(STORAGE_ACCOUNTS, accounts)
+}
 
 export class Store {
   readonly mcp = createMcpApi(() => this)
@@ -212,7 +223,7 @@ export class Store {
 
   async init() {
     try {
-      const accounts = await mailbox.loadAccounts()
+      const accounts = loadStoredAccounts()
       runInAction(() => {
         this.accounts = accounts
       })
@@ -850,7 +861,7 @@ export class Store {
         ...filter(this.accounts, (a) => a.id !== normalized.id),
         normalized,
       ]
-      await mailbox.saveAccounts(toJS(next))
+      saveStoredAccounts(toJS(next))
       runInAction(() => {
         this.accounts = next
         this.closeSetup()
@@ -868,7 +879,7 @@ export class Store {
 
   async removeAccount(id: string) {
     const next = filter(this.accounts, (a) => a.id !== id)
-    await mailbox.saveAccounts(toJS(next))
+    saveStoredAccounts(toJS(next))
     await clearAccountCache(id)
     runInAction(() => {
       this.accounts = next
