@@ -8,8 +8,7 @@ import { tw } from '../theme'
 import store from '../store'
 
 function getDroppedPath(file: File): string | null {
-  const withPath = file as File & { path?: string }
-  return withPath.path || null
+  return tinker.getPathForFile(file) || null
 }
 
 const AddDialog = observer(() => {
