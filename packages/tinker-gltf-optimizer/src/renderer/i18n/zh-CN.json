@@ -1,0 +1,22 @@
+{
+  "openFile": "打开文件",
+  "clear": "清空",
+  "openTitle": "拖入模型或点击打开",
+  "supportedFormats": "GLB · GLTF",
+  "quality": "质量",
+  "qualityVeryLow": "非常低",
+  "qualityLow": "低",
+  "qualityMedium": "中等",
+  "qualityHigh": "高",
+  "qualityExcellent": "极好",
+  "optimize": "优化",
+  "stop": "停止",
+  "outputDirPlaceholder": "同源文件目录",
+  "browseOutputDir": "浏览输出目录",
+  "clearOutputDir": "清除输出目录",
+  "size": "大小",
+  "meshRatio": "网格",
+  "textureMax": "纹理",
+  "remove": "移除",
+  "showInFileManager": "打开所在位置"
+}

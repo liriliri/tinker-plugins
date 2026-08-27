@@ -1,0 +1,22 @@
+{
+  "openFile": "Open File",
+  "clear": "Clear",
+  "openTitle": "Drop models here or click to open",
+  "supportedFormats": "GLB · GLTF",
+  "quality": "Quality",
+  "qualityVeryLow": "Very Low",
+  "qualityLow": "Low",
+  "qualityMedium": "Medium",
+  "qualityHigh": "High",
+  "qualityExcellent": "Excellent",
+  "optimize": "Optimize",
+  "stop": "Stop",
+  "outputDirPlaceholder": "Same as source",
+  "browseOutputDir": "Browse output directory",
+  "clearOutputDir": "Clear output directory",
+  "size": "Size",
+  "meshRatio": "Mesh",
+  "textureMax": "Tex",
+  "remove": "Remove",
+  "showInFileManager": "Show in Folder"
+}
