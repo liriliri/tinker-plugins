@@ -7,7 +7,6 @@ import type { GltfItem } from '../../common/types'
 import { tw } from '../theme'
 import store from '../store'
 import { formatSize, getReduction, isSmaller } from '../lib/util'
-import { QUALITY_PRESETS } from '../lib/constants'
 
 interface ModelRowProps {
   item: GltfItem
@@ -15,7 +14,7 @@ interface ModelRowProps {
 
 const ModelRow = observer(function ModelRow({ item }: ModelRowProps) {
   const { t } = useTranslation()
-  const preset = QUALITY_PRESETS[store.quality]
+  const options = store.optimizeOptions
 
   const handleContextMenu = (e: React.MouseEvent) => {
     if (item.isOptimizing) {
@@ -71,11 +70,14 @@ const ModelRow = observer(function ModelRow({ item }: ModelRowProps) {
           </span>
           <span>·</span>
           <span>
-            {t('meshRatio')} {Math.round(preset.simplifyRatio * 100)}%
+            {t('meshRatio')}{' '}
+            {options.simplifyEnabled
+              ? `${Math.round(options.simplifyRatio * 100)}%`
+              : '100%'}
           </span>
           <span>·</span>
           <span>
-            {t('textureMax')} {preset.textureResolution}
+            {t('textureMax')} {options.textureResolution}
           </span>
         </div>
       </div>

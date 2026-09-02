@@ -1,8 +1,8 @@
 import { contextBridge } from 'electron'
 import fs from 'node:fs/promises'
 import path from 'node:path'
-import { optimizer } from 'gltf-optimizer'
 import type { OptimizeOptions } from '../common/types'
+import { optimizeGltf } from './optimize'
 
 async function resolveSavePath(filePath: string): Promise<string> {
   try {
@@ -32,21 +32,7 @@ const api = {
     options: OptimizeOptions,
   ): Promise<string> {
     const input = await fs.readFile(inputPath)
-    const result = await optimizer.node(new Uint8Array(input), {
-      transform: {
-        draco: { method: options.dracoMethod },
-        simplify: {
-          enabled: true,
-          ratio: options.simplifyRatio,
-        },
-        texture: {
-          resize: {
-            resolution: options.textureResolution,
-            filter: 'LANCZOS3',
-          },
-        },
-      },
-    })
+    const result = await optimizeGltf(new Uint8Array(input), options)
 
     const finalPath = await resolveSavePath(outputPath)
     await fs.mkdir(path.dirname(finalPath), { recursive: true })

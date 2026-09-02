@@ -1,8 +1,9 @@
-export type DracoMethod = 'edgebreaker' | 'sequential'
-
 export interface OptimizeOptions {
-  dracoMethod: DracoMethod
+  dracoEnabled: boolean
+  simplifyEnabled: boolean
   simplifyRatio: number
+  simplifyError: number
+  weldTolerance: number
   textureResolution: number
 }
 

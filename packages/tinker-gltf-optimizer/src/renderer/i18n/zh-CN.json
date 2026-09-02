@@ -4,6 +4,8 @@
   "openTitle": "拖入模型或点击打开",
   "supportedFormats": "GLB · GLTF",
   "quality": "质量",
+  "draco": "Draco",
+  "simplify": "减面",
   "qualityVeryLow": "非常低",
   "qualityLow": "低",
   "qualityMedium": "中等",

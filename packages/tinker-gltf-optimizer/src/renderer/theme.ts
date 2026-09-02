@@ -49,6 +49,8 @@ export const tw = {
   },
   panel: 'shadow-[inset_0_1px_0_rgba(255,255,255,0.45)] dark:shadow-none',
   separator: 'bg-[var(--go-line)]',
+  checkbox:
+    'size-3.5 shrink-0 accent-[var(--go-accent)] cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed',
   mono: 'font-mono tabular-nums tracking-tight',
   focus:
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--go-accent)]/35',

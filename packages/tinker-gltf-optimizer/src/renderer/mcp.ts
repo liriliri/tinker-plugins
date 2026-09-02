@@ -2,17 +2,21 @@ import find from 'licia/find'
 import isStrBlank from 'licia/isStrBlank'
 import trim from 'licia/trim'
 import type { Store } from './store'
-import { QUALITY_PRESETS } from './lib/constants'
+
+interface OptimizeToolArgs {
+  path: string
+  quality?: number
+  draco?: boolean
+  simplify?: boolean
+  output_dir?: string
+}
 
 export function createMcpApi(getStore: () => Store) {
   const callTool = (name: string, args: Record<string, unknown>) => {
     if (name !== 'optimize') {
       throw new Error(`Unknown tool "${name}"`)
     }
-    return optimize(
-      getStore(),
-      args as { path: string; quality?: number; output_dir?: string },
-    )
+    return optimize(getStore(), args as OptimizeToolArgs)
   }
 
   tinker.registerMcp({ callTool })
@@ -20,10 +24,7 @@ export function createMcpApi(getStore: () => Store) {
   return { callTool }
 }
 
-async function optimize(
-  store: Store,
-  args: { path: string; quality?: number; output_dir?: string },
-) {
+async function optimize(store: Store, args: OptimizeToolArgs) {
   const path = trim(args.path)
   if (isStrBlank(path)) {
     throw new Error('path is required')
@@ -31,6 +32,14 @@ async function optimize(
 
   if (args.quality != null) {
     store.setQuality(args.quality)
+  }
+
+  if (args.draco != null) {
+    store.setDracoEnabled(args.draco)
+  }
+
+  if (args.simplify != null) {
+    store.setSimplifyEnabled(args.simplify)
   }
 
   if (args.output_dir != null) {
@@ -55,7 +64,7 @@ async function optimize(
     throw new Error(item.error)
   }
 
-  const preset = QUALITY_PRESETS[store.quality]
+  const options = store.optimizeOptions
 
   return {
     fileName: item.fileName,
@@ -64,8 +73,12 @@ async function optimize(
     outputSize: item.outputSize,
     outputPath: item.outputPath,
     quality: store.quality,
-    simplifyRatio: preset.simplifyRatio,
-    textureResolution: preset.textureResolution,
+    dracoEnabled: options.dracoEnabled,
+    simplifyEnabled: options.simplifyEnabled,
+    simplifyRatio: options.simplifyRatio,
+    simplifyError: options.simplifyError,
+    weldTolerance: options.weldTolerance,
+    textureResolution: options.textureResolution,
     outputDir: store.outputDir || null,
   }
 }

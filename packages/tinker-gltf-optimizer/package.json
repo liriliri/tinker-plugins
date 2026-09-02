@@ -1,6 +1,6 @@
 {
   "name": "tinker-gltf-optimizer",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "GLTF Optimizer Plugin for TINKER",
   "files": [
     "dist/",
@@ -54,6 +54,14 @@
                 "minimum": 0,
                 "maximum": 4,
                 "description": "Quality preset index: 0 very low, 1 low, 2 medium (default), 3 high, 4 excellent"
+              },
+              "draco": {
+                "type": "boolean",
+                "description": "Enable Draco mesh compression. Defaults to true."
+              },
+              "simplify": {
+                "type": "boolean",
+                "description": "Enable mesh simplification. Defaults to true."
               },
               "output_dir": {
                 "type": "string",

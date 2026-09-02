@@ -4,6 +4,8 @@
   "openTitle": "Drop models here or click to open",
   "supportedFormats": "GLB · GLTF",
   "quality": "Quality",
+  "draco": "Draco",
+  "simplify": "Simplify",
   "qualityVeryLow": "Very Low",
   "qualityLow": "Low",
   "qualityMedium": "Medium",

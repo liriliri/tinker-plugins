@@ -29,6 +29,8 @@ export class Store {
   items: GltfItem[] = []
   outputDir = ''
   quality = DEFAULT_QUALITY
+  dracoEnabled = true
+  simplifyEnabled = true
   private stopRequested = false
 
   constructor() {
@@ -52,6 +54,16 @@ export class Store {
         this.quality = quality
       }
     }
+
+    const savedDracoEnabled = settings.get('dracoEnabled')
+    if (savedDracoEnabled != null) {
+      this.dracoEnabled = savedDracoEnabled === 'true'
+    }
+
+    const savedSimplifyEnabled = settings.get('simplifyEnabled')
+    if (savedSimplifyEnabled != null) {
+      this.simplifyEnabled = savedSimplifyEnabled === 'true'
+    }
   }
 
   get hasItems() {
@@ -69,10 +81,23 @@ export class Store {
   get optimizeOptions(): OptimizeOptions {
     const preset = QUALITY_PRESETS[this.quality]
     return {
-      dracoMethod: 'edgebreaker',
+      dracoEnabled: this.dracoEnabled,
+      simplifyEnabled: this.simplifyEnabled,
       simplifyRatio: preset.simplifyRatio,
+      simplifyError: preset.simplifyError,
+      weldTolerance: preset.weldTolerance,
       textureResolution: preset.textureResolution,
     }
+  }
+
+  setSimplifyEnabled(enabled: boolean) {
+    this.simplifyEnabled = enabled
+    settings.set('simplifyEnabled', enabled ? 'true' : 'false')
+  }
+
+  setDracoEnabled(enabled: boolean) {
+    this.dracoEnabled = enabled
+    settings.set('dracoEnabled', enabled ? 'true' : 'false')
   }
 
   setQuality(quality: number) {

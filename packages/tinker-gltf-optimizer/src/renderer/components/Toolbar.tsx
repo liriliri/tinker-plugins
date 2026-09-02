@@ -8,6 +8,7 @@ import { tw } from '../theme'
 import store from '../store'
 import { QUALITY_PRESETS } from '../lib/constants'
 import SettingSelect from './SettingSelect'
+import SettingCheckbox from './SettingCheckbox'
 
 const TOOLBAR_ICON_SIZE = 14
 
@@ -86,6 +87,20 @@ export default observer(function ToolbarComponent() {
           className="flex items-center gap-1.5"
           style={{ WebkitAppRegion: 'no-drag' } as React.CSSProperties}
         >
+          <SettingCheckbox
+            checked={store.dracoEnabled}
+            onChange={(checked) => store.setDracoEnabled(checked)}
+            label={t('draco')}
+            disabled={store.isOptimizing}
+          />
+
+          <SettingCheckbox
+            checked={store.simplifyEnabled}
+            onChange={(checked) => store.setSimplifyEnabled(checked)}
+            label={t('simplify')}
+            disabled={store.isOptimizing}
+          />
+
           <span
             className={`text-[11px] uppercase tracking-wide ${tw.text.muted}`}
           >
@@ -98,8 +113,6 @@ export default observer(function ToolbarComponent() {
             disabled={store.isOptimizing}
             className="w-28"
           />
-
-          <div className={`mx-0.5 h-4 w-px ${tw.separator}`} />
 
           <button
             onClick={() =>

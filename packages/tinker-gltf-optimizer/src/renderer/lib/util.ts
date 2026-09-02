@@ -1,4 +1,5 @@
 import fileSize from 'licia/fileSize'
+import normalizePath from 'licia/normalizePath'
 import rtrim from 'licia/rtrim'
 import splitPath from 'licia/splitPath'
 import toNum from 'licia/toNum'
@@ -12,10 +13,19 @@ function getStemName(inputPath: string): string {
   return name
 }
 
+function normalizeDir(dir: string): string {
+  return rtrim(normalizePath(dir), '/').toLowerCase()
+}
+
 export function getOutputPath(inputPath: string, outputDir: string): string {
   const { dir } = splitPath(inputPath)
+  const sourceDir = normalizeDir(dir)
   const baseDir = rtrim(outputDir || dir, ['/', '\\'])
-  return `${baseDir}/${getStemName(inputPath)}_optimized.glb`
+  const stem = getStemName(inputPath)
+  const sameDir = !outputDir || normalizeDir(outputDir) === sourceDir
+  const fileName = sameDir ? `${stem}_optimized.glb` : `${stem}.glb`
+
+  return `${baseDir}/${fileName}`
 }
 
 export function getReduction(item: GltfItem): string {
