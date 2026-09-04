@@ -22,6 +22,7 @@ import {
 } from './lib/formats'
 import { filesFromPath, hasModelFile, mergeFilesByName } from './lib/sidecars'
 import type { GltfPackage } from './lib/specGloss'
+import { createMcpApi } from './mcp'
 import {
   DEFAULT_MATCAP_PRESET,
   DEFAULT_WIREFRAME_COLOR,
@@ -63,7 +64,9 @@ function loadMatcapPreset(): MatcapPresetId {
     : DEFAULT_MATCAP_PRESET
 }
 
-class Store {
+export class Store {
+  readonly mcp = createMcpApi(() => this)
+
   status: LoadStatus = 'idle'
   srcUrl: string | null = null
   info: ModelInfo | null = null
@@ -86,6 +89,7 @@ class Store {
 
   constructor() {
     makeAutoObservable(this, {
+      mcp: false,
       revokePrepared: false,
       glbBuffer: false,
       gltfPackage: false,
@@ -182,6 +186,26 @@ class Store {
     }
   }
 
+  async openModelFromPath(path: string) {
+    this.toastOpen = false
+    this.toastMsg = ''
+    this.toastTitle = 'error'
+
+    try {
+      const files = await filesFromPath(path)
+      if (!hasModelFile(files)) {
+        throw new Error('unsupportedFormat')
+      }
+      await this.loadFiles(files)
+    } catch (err) {
+      throw new Error(isErr(err) ? err.message : 'openFailed')
+    }
+
+    if (this.status !== 'ready' || !this.info) {
+      throw new Error(this.toastMsg || 'loadFailed')
+    }
+  }
+
   async handleDrop(fileList: FileList) {
     try {
       const dropped = toArr(fileList) as File[]
@@ -265,20 +289,37 @@ class Store {
     })
     if (result.canceled || !result.filePath) return
 
+    try {
+      const savedPath = await this.saveModelToPath(result.filePath)
+      tinker.showItemInPath(savedPath)
+    } catch {
+      this.showError('saveFailed')
+    }
+  }
+
+  async saveModelToPath(filePath: string): Promise<string> {
+    if (!this.canSave) {
+      throw new Error('No model loaded')
+    }
+    if (this.isSaving) {
+      throw new Error('Save in progress')
+    }
+
+    const ext = getExtension(filePath)
+    if (ext !== 'glb' && ext !== 'gltf') {
+      throw new Error('path must end with .glb or .gltf')
+    }
+
     this.isSaving = true
     try {
       const glb = await this.getGlbBuffer()
-      if (getExtension(result.filePath) === 'gltf') {
-        const { dir, name } = splitPath(result.filePath)
+      if (ext === 'gltf') {
+        const { dir, name } = splitPath(filePath)
         const outDir = `${dir}${getStemName(name)}`
-        const gltfPath = await modelViewer.writeGltfDirectory(outDir, glb)
-        tinker.showItemInPath(gltfPath)
-        return
+        return await modelViewer.writeGltfDirectory(outDir, glb)
       }
-      await tinker.writeFile(result.filePath, new Uint8Array(glb))
-      tinker.showItemInPath(result.filePath)
-    } catch {
-      this.showError('saveFailed')
+      await tinker.writeFile(filePath, new Uint8Array(glb))
+      return filePath
     } finally {
       runInAction(() => {
         this.isSaving = false

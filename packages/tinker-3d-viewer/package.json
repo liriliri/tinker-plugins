@@ -1,6 +1,6 @@
 {
   "name": "tinker-3d-viewer",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "3D Model Viewer Plugin for TINKER",
   "files": [
     "dist/",
@@ -34,6 +34,42 @@
       "zh-CN": {
         "name": "3D 预览",
         "description": "预览 3D 模型"
+      }
+    },
+    "mcp": {
+      "tools": {
+        "open": {
+          "description": "Open a local 3D model for preview. Updates the plugin UI and returns model info.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Absolute path to a model file or a folder containing one (glb, gltf, obj, fbx, stl, ply, dae, 3mf, zip)"
+              }
+            },
+            "required": [
+              "path"
+            ]
+          }
+        },
+        "save": {
+          "description": "Save the currently loaded model as GLB or GLTF. Format is taken from the path extension (.glb or .gltf).",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Absolute output path ending in .glb or .gltf. For .gltf, writes a directory of assets next to the file."
+              }
+            },
+            "required": [
+              "path"
+            ]
+          }
+        }
       }
     }
   },
