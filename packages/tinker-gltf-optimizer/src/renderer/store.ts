@@ -91,23 +91,43 @@ export class Store {
   }
 
   setSimplifyEnabled(enabled: boolean) {
+    if (this.simplifyEnabled === enabled) return
     this.simplifyEnabled = enabled
     settings.set('simplifyEnabled', enabled ? 'true' : 'false')
+    this.resetOptimizedItems()
   }
 
   setDracoEnabled(enabled: boolean) {
+    if (this.dracoEnabled === enabled) return
     this.dracoEnabled = enabled
     settings.set('dracoEnabled', enabled ? 'true' : 'false')
+    this.resetOptimizedItems()
   }
 
   setQuality(quality: number) {
-    this.quality = clamp(quality, 0, QUALITY_PRESETS.length - 1)
+    const next = clamp(quality, 0, QUALITY_PRESETS.length - 1)
+    if (next === this.quality) return
+    this.quality = next
     settings.set('quality', toStr(this.quality))
+    this.resetOptimizedItems()
   }
 
   setOutputDir(dir: string) {
-    this.outputDir = rtrim(dir, ['/', '\\'])
+    const next = rtrim(dir, ['/', '\\'])
+    if (next === this.outputDir) return
+    this.outputDir = next
     settings.set('outputDir', this.outputDir)
+    this.resetOptimizedItems()
+  }
+
+  private resetOptimizedItems() {
+    for (const item of this.items) {
+      if (!item.isDone || item.isOptimizing) continue
+      item.isDone = false
+      item.outputSize = 0
+      item.outputPath = null
+      item.error = null
+    }
   }
 
   async browseOutputDir() {

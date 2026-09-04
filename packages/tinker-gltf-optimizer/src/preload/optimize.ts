@@ -36,6 +36,9 @@ type GltfDoc = {
     listMeshes: () => Array<{
       listPrimitives: () => Array<{ getIndices: () => unknown }>
     }>
+    listTextures: () => Array<{
+      getSize: () => [number, number] | null
+    }>
   }
   transform: (...fns: unknown[]) => Promise<unknown>
 }
@@ -52,6 +55,18 @@ function hasNonIndexedPrimitive(doc: GltfDoc): boolean {
   return false
 }
 
+/** Cap preset resolution to the longest existing texture edge so we never upscale. */
+function cappedTextureResolution(doc: GltfDoc, preset: number): number {
+  let longest = 0
+  for (const texture of doc.getRoot().listTextures()) {
+    const size = texture.getSize()
+    if (!size) continue
+    longest = Math.max(longest, size[0], size[1])
+  }
+  if (longest <= 0) return preset
+  return Math.min(preset, longest)
+}
+
 export async function optimizeGltf(
   input: Uint8Array,
   options: OptimizeOptions,
@@ -60,7 +75,10 @@ export async function optimizeGltf(
   const doc = await io.readBinary(input)
   const nonIndexed = hasNonIndexedPrimitive(doc)
 
-  await convertTextureWebP(doc, options.textureResolution)
+  await convertTextureWebP(
+    doc,
+    cappedTextureResolution(doc, options.textureResolution),
+  )
   await MeshoptEncoder.ready
 
   const functions: unknown[] = [resample()]

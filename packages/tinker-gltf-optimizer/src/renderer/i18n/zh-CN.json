@@ -20,5 +20,6 @@
   "meshRatio": "网格",
   "textureMax": "纹理",
   "remove": "移除",
-  "showInFileManager": "打开所在位置"
+  "showInFileManager": "打开所在位置",
+  "openIn3dViewer": "查看结果"
 }

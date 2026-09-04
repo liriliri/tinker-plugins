@@ -8,6 +8,13 @@ import { tw } from '../theme'
 import store from '../store'
 import { formatSize, getReduction, isSmaller } from '../lib/util'
 
+const VIEWER_ID = 'tinker-3d-viewer'
+
+async function openIn3dViewer(path: string) {
+  await tinker.openPlugin(VIEWER_ID)
+  await tinker.callMcpTool(VIEWER_ID, 'open', { path })
+}
+
 interface ModelRowProps {
   item: GltfItem
 }
@@ -16,7 +23,8 @@ const ModelRow = observer(function ModelRow({ item }: ModelRowProps) {
   const { t } = useTranslation()
   const options = store.optimizeOptions
 
-  const handleContextMenu = (e: React.MouseEvent) => {
+  const handleContextMenu = async (e: React.MouseEvent) => {
+    e.preventDefault()
     if (item.isOptimizing) {
       return
     }
@@ -24,6 +32,14 @@ const ModelRow = observer(function ModelRow({ item }: ModelRowProps) {
     const menuItems: MenuItemConstructorOptions[] = []
 
     if (item.isDone && item.outputPath) {
+      if (await tinker.hasPlugin(VIEWER_ID)) {
+        menuItems.push({
+          label: t('openIn3dViewer'),
+          click: () => {
+            void openIn3dViewer(item.outputPath!)
+          },
+        })
+      }
       menuItems.push({
         label: t('showInFileManager'),
         click: () => tinker.showItemInPath(item.outputPath!),
@@ -44,7 +60,9 @@ const ModelRow = observer(function ModelRow({ item }: ModelRowProps) {
       className={`relative flex items-center gap-3 pl-3 pr-3 py-2.5 border-b last:border-b-0 ${tw.border} ${
         item.isOptimizing ? tw.bg.rowBusy : tw.bg.row
       } select-none transition-colors`}
-      onContextMenu={handleContextMenu}
+      onContextMenu={(e) => {
+        void handleContextMenu(e)
+      }}
     >
       {item.isOptimizing ? (
         <div

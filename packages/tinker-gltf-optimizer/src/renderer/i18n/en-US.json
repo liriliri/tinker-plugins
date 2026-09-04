@@ -20,5 +20,6 @@
   "meshRatio": "Mesh",
   "textureMax": "Tex",
   "remove": "Remove",
-  "showInFileManager": "Show in Folder"
+  "showInFileManager": "Show in Folder",
+  "openIn3dViewer": "View Result"
 }
