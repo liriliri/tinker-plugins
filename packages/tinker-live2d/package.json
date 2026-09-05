@@ -1,0 +1,84 @@
+{
+  "name": "tinker-live2d",
+  "version": "0.1.0",
+  "description": "Display Live2D models as animated desktop companions in Tinker",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:preload\"",
+    "dev:renderer": "vite build --watch",
+    "dev:preload": "vite build --watch --config vite.preload.ts",
+    "build": "concurrently \"npm run build:renderer\" \"npm run build:preload\"",
+    "build:renderer": "vite build",
+    "build:preload": "vite build --config vite.preload.ts",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "live2d",
+    "desktop-pet"
+  ],
+  "tinker": {
+    "name": "Live2D",
+    "description": "Run Live2D models as animated desktop companions",
+    "main": "dist/renderer/index.html",
+    "preload": "dist/preload/index.js",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "Live2D 桌宠",
+        "description": "在桌面启用 Live2D 动画桌宠"
+      }
+    },
+    "mcp": {
+      "tools": {
+        "list_models": {
+          "description": "List installed Live2D models and which one is active.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        "enable_model": {
+          "description": "Enable a Live2D model on the desktop by id.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "Installed model UUID"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          }
+        },
+        "disable_model": {
+          "description": "Hide the desktop Live2D pet window.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        "get_status": {
+          "description": "Get whether a Live2D pet is enabled and its runtime settings.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      }
+    }
+  },
+  "devDependencies": {
+    "pixi-live2d-display": "^0.4.0",
+    "pixi.js": "^6.5.10"
+  }
+}

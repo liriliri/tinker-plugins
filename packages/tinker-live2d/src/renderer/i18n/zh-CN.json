@@ -1,0 +1,33 @@
+{
+  "tabs": {
+    "settings": "设置"
+  },
+  "addModel": "添加模型",
+  "dropTitle": "拖入 Live2D 模型",
+  "dropHint": "支持文件夹或 .model3.json / model.json / index.json",
+  "enable": "启用",
+  "close": "关闭",
+  "onStage": "使用中",
+  "uninstall": "移除",
+  "deleteTitle": "移除模型",
+  "deleteConfirm": "确定移除「{{name}}」？此操作不可撤销。",
+  "delete": "移除",
+  "deleting": "移除中…",
+  "cancel": "取消",
+  "uninstallFailed": "移除模型失败",
+  "scale": "大小",
+  "opacity": "透明度",
+  "alwaysOnTop": "始终置顶",
+  "alwaysOnTopHint": "让桌宠保持在其他窗口上方",
+  "error": "错误",
+  "installFailed": "添加模型失败",
+  "dropPathFailed": "无法读取拖入的路径",
+  "enablePetFailed": "启用模型失败",
+  "saveSettingsFailed": "保存设置失败",
+  "desktopPet": "Live2D 桌宠",
+  "previewTitle": "预览模型",
+  "previewName": "名称",
+  "previewConfirm": "添加",
+  "previewLoadFailed": "预览加载失败",
+  "importOneOnly": "一次只能导入一个模型"
+}

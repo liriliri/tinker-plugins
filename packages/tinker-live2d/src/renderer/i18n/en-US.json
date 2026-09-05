@@ -1,0 +1,33 @@
+{
+  "tabs": {
+    "settings": "Settings"
+  },
+  "addModel": "Add model",
+  "dropTitle": "Drop a Live2D model here",
+  "dropHint": "Folder or .model3.json / model.json / index.json",
+  "enable": "Enable",
+  "close": "Close",
+  "onStage": "In use",
+  "uninstall": "Remove",
+  "deleteTitle": "Remove model",
+  "deleteConfirm": "Remove \"{{name}}\"? This cannot be undone.",
+  "delete": "Remove",
+  "deleting": "Removing…",
+  "cancel": "Cancel",
+  "uninstallFailed": "Failed to remove model",
+  "scale": "Size",
+  "opacity": "Opacity",
+  "alwaysOnTop": "Always on top",
+  "alwaysOnTopHint": "Keep the pet above other windows",
+  "error": "Error",
+  "installFailed": "Failed to add model",
+  "dropPathFailed": "Could not read the dropped path",
+  "enablePetFailed": "Failed to enable model",
+  "saveSettingsFailed": "Failed to save settings",
+  "desktopPet": "Live2D pet",
+  "previewTitle": "Preview model",
+  "previewName": "Name",
+  "previewConfirm": "Add",
+  "previewLoadFailed": "Failed to load preview",
+  "importOneOnly": "Import one model at a time"
+}
