@@ -1,6 +1,6 @@
 {
   "name": "tinker-meme",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Meme Search Plugin for TINKER",
   "files": [
     "dist/",

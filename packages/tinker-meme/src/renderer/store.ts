@@ -1,9 +1,10 @@
 import { makeAutoObservable, runInAction } from 'mobx'
-import { fetchSogouMemes } from './lib/sogou'
+import filter from 'licia/filter'
+import { DEFAULT_KEYWORD, fetchSogouMemes } from './lib/sogou'
 import type { MemeItem } from './types'
 
 class Store {
-  keyword = ''
+  keyword = DEFAULT_KEYWORD
   memes: MemeItem[] = []
   loading = false
   error = ''
@@ -17,6 +18,10 @@ class Store {
 
   setKeyword(keyword: string) {
     this.keyword = keyword
+  }
+
+  removeMeme(url: string) {
+    this.memes = filter(this.memes, (m) => m.url !== url)
   }
 
   async search() {

@@ -4,6 +4,7 @@ import className from 'licia/className'
 import delay from 'licia/delay'
 import { useTranslation } from 'react-i18next'
 import { tw } from '../theme'
+import store from '../store'
 import { saveImage } from '../lib/image'
 import type { MemeItem } from '../types'
 
@@ -16,6 +17,9 @@ type Feedback = 'copied' | 'failed' | null
 const MemeCard = observer(({ item }: MemeCardProps) => {
   const { t } = useTranslation()
   const [feedback, setFeedback] = useState<Feedback>(null)
+  const [failed, setFailed] = useState(false)
+
+  if (failed) return null
 
   const showFeedback = (type: Feedback) => {
     setFeedback(type)
@@ -39,6 +43,11 @@ const MemeCard = observer(({ item }: MemeCardProps) => {
         click: () => saveImage(item.url),
       },
     ])
+  }
+
+  const handleError = () => {
+    setFailed(true)
+    store.removeMeme(item.url)
   }
 
   return (
@@ -65,6 +74,7 @@ const MemeCard = observer(({ item }: MemeCardProps) => {
         alt=""
         loading="lazy"
         referrerPolicy="no-referrer"
+        onError={handleError}
         className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-110"
       />
 
