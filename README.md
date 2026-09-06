@@ -200,5 +200,13 @@ All plugins in the list can be installed to TINKER by running `npm i -g tinker-x
       <th><img src="./packages/tinker-aquarium/screenshot.png"/></th>
       <th><img src="./packages/tinker-agent-pet/screenshot.png"/></th>
     </tr>
+    <tr>
+      <th><a href="./packages/tinker-gltf-optimizer/">tinker-gltf-optimizer</a></th>
+      <th><a href="./packages/tinker-live2d/">tinker-live2d</a></th>
+    </tr>
+    <tr>
+      <th><img src="./packages/tinker-gltf-optimizer/screenshot.png"/></th>
+      <th><img src="./packages/tinker-live2d/screenshot.png"/></th>
+    </tr>
   </tbody>
 </table>
