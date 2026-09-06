@@ -1,6 +1,6 @@
 {
   "name": "tinker-tts",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Edge TTS plugin for TINKER",
   "files": [
     "dist/",
@@ -37,6 +37,6 @@
     }
   },
   "dependencies": {
-    "msedge-tts": "^2.0.7"
+    "node-edge-tts": "^1.2.10"
   }
 }

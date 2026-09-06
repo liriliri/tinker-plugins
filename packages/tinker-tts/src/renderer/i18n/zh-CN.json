@@ -12,6 +12,8 @@
   "noAudio": "暂无音频",
   "emptyText": "请输入文本",
   "voiceRequired": "请选择音色",
+  "voicesFetchFailed": "获取音色列表失败",
+  "noAudioData": "未收到音频数据",
   "locale": "语言",
   "voice": "音色",
   "selectVoice": "选择音色",

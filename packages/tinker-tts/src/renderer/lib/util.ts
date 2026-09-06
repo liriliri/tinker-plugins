@@ -1,16 +1,16 @@
 import contain from 'licia/contain'
 import endWith from 'licia/endWith'
-import isErr from 'licia/isErr'
 import isFinite from 'licia/isFinite'
 import lpad from 'licia/lpad'
 import startWith from 'licia/startWith'
 import toStr from 'licia/toStr'
 
-const I18N_ERROR_KEYS = ['emptyText', 'voiceRequired'] as const
-
-export function errorMessage(err: unknown): string {
-  return isErr(err) ? err.message : toStr(err)
-}
+const I18N_ERROR_KEYS = [
+  'emptyText',
+  'voiceRequired',
+  'voicesFetchFailed',
+  'noAudioData',
+] as const
 
 export function resolveErrorLabel(
   t: (key: string) => string,

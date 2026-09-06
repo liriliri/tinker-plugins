@@ -16,7 +16,8 @@ import type {
   SynthesizeProgress,
   SynthesizeResult,
 } from '../common/types'
-import { errorMessage, localeGroup, shortVoiceName } from './lib/util'
+import { errorMessage } from '../common/util'
+import { localeGroup, shortVoiceName } from './lib/util'
 
 const storage = new LocalStore('tinker-tts')
 const STORAGE_TEXT = 'text'

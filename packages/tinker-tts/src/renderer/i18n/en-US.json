@@ -12,6 +12,8 @@
   "noAudio": "No audio yet",
   "emptyText": "Please enter some text",
   "voiceRequired": "Please select a voice",
+  "voicesFetchFailed": "Failed to fetch voice list",
+  "noAudioData": "No audio data received",
   "locale": "Language",
   "voice": "Voice",
   "selectVoice": "Select voice",

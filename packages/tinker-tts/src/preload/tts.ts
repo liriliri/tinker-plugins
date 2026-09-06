@@ -1,10 +1,9 @@
 import fs from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
-import { Readable } from 'node:stream'
 import isEmpty from 'licia/isEmpty'
 import trim from 'licia/trim'
-import { MsEdgeTTS, OUTPUT_FORMAT } from 'msedge-tts'
+import { EdgeTTS } from 'node-edge-tts'
 import { toSignedHz, toSignedPercent } from '../common/prosody'
 import type {
   EdgeVoice,
@@ -15,7 +14,9 @@ import type {
 import { splitTextByByteLength } from './splitText'
 
 const DEFAULT_VOICE = 'zh-CN-XiaoxiaoNeural'
-const OUTPUT = OUTPUT_FORMAT.AUDIO_24KHZ_48KBITRATE_MONO_MP3
+const OUTPUT = 'audio-24khz-48kbitrate-mono-mp3'
+const TRUSTED_CLIENT_TOKEN = '6A5AA1D4EAFF4E9FB37E23D68491D6F4'
+const VOICES_URL = `https://speech.platform.bing.com/consumer/speech/synthesize/readaloud/voices/list?trustedclienttoken=${TRUSTED_CLIENT_TOKEN}`
 
 function getTempDir(): string {
   const dir = path.join(os.tmpdir(), 'tinker-tts')
@@ -23,16 +24,24 @@ function getTempDir(): string {
   return dir
 }
 
+function localeFromVoice(voice: string): string {
+  const m = voice.match(/^[a-z]{2,3}-[A-Za-z]+/i)
+  return m?.[0] ?? 'zh-CN'
+}
+
+function safeUnlink(filePath: string) {
+  try {
+    fs.unlinkSync(filePath)
+  } catch {
+    // ignore
+  }
+}
+
 let voicesCache: EdgeVoice[] | null = null
-let activeStream: Readable | null = null
 let cancelRequested = false
 
 export function requestCancelSynthesize() {
   cancelRequested = true
-  if (activeStream) {
-    activeStream.destroy()
-    activeStream = null
-  }
 }
 
 function throwIfCancelled() {
@@ -42,18 +51,11 @@ function throwIfCancelled() {
   throw err
 }
 
-async function streamToBuffer(stream: Readable): Promise<Buffer> {
-  const parts: Buffer[] = []
-  for await (const chunk of stream) {
-    parts.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk))
-  }
-  return Buffer.concat(parts)
-}
-
 export async function listVoices(): Promise<EdgeVoice[]> {
   if (voicesCache) return voicesCache
-  const client = new MsEdgeTTS()
-  const voices = (await client.getVoices()) as EdgeVoice[]
+  const res = await fetch(VOICES_URL)
+  if (!res.ok) throw new Error('voicesFetchFailed')
+  const voices = (await res.json()) as EdgeVoice[]
   voicesCache = voices
   return voices
 }
@@ -88,12 +90,21 @@ export async function synthesizeText(
     total,
   })
 
-  const client = new MsEdgeTTS()
-  await client.setMetadata(voice, OUTPUT)
   throwIfCancelled()
 
+  const client = new EdgeTTS({
+    voice,
+    lang: localeFromVoice(voice),
+    outputFormat: OUTPUT,
+    rate: prosody.rate,
+    pitch: prosody.pitch,
+    volume: prosody.volume,
+    timeout: 30000,
+  })
+
+  const tempDir = getTempDir()
   const audioParts: Buffer[] = []
-  const audioPath = path.join(getTempDir(), `tts-${Date.now()}.mp3`)
+  const audioPath = path.join(tempDir, `tts-${Date.now()}.mp3`)
 
   try {
     for (let i = 0; i < chunks.length; i++) {
@@ -105,17 +116,15 @@ export async function synthesizeText(
         total,
       })
 
-      const { audioStream } = client.toStream(chunks[i]!, prosody)
-      activeStream = audioStream
+      const chunkPath = path.join(tempDir, `tts-chunk-${Date.now()}-${i}.mp3`)
       try {
-        const buf = await streamToBuffer(audioStream)
-        if (isEmpty(buf)) throw new Error('No audio data received')
-        audioParts.push(buf)
-      } catch (err) {
+        await client.ttsPromise(chunks[i]!, chunkPath)
         throwIfCancelled()
-        throw err
+        const buf = await fs.promises.readFile(chunkPath)
+        if (isEmpty(buf)) throw new Error('noAudioData')
+        audioParts.push(buf)
       } finally {
-        activeStream = null
+        safeUnlink(chunkPath)
       }
 
       onProgress?.({
@@ -129,15 +138,8 @@ export async function synthesizeText(
     throwIfCancelled()
     await fs.promises.writeFile(audioPath, Buffer.concat(audioParts))
   } catch (err) {
-    try {
-      fs.unlinkSync(audioPath)
-    } catch {
-      // ignore
-    }
+    safeUnlink(audioPath)
     throw err
-  } finally {
-    activeStream = null
-    client.close()
   }
 
   throwIfCancelled()

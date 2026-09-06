@@ -1,4 +1,5 @@
 import { contextBridge } from 'electron'
+import { errorMessage } from '../common/util'
 import {
   copyAudio,
   listVoices,
@@ -23,7 +24,12 @@ const api = {
     options: SynthesizeOptions,
     onProgress?: (progress: SynthesizeProgress) => void,
   ): Promise<SynthesizeResult> {
-    return synthesizeText(text, options, onProgress)
+    try {
+      return await synthesizeText(text, options, onProgress)
+    } catch (err) {
+      // contextBridge drops Error fields; reject with a plain string.
+      throw errorMessage(err)
+    }
   },
 
   cancelSynthesize() {
