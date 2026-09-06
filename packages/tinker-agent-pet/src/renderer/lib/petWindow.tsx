@@ -1,20 +1,21 @@
+import sleep from 'licia/sleep'
 import { openPopupWindow } from './popupWindow'
-import { getRuntimeConfig, saveRuntimeConfig } from './runtimeConfig'
+import { getRuntimeConfig, saveRuntimeConfig } from './storage'
 import { clonePlain, getPetWindowSize } from './util'
 import PetWindow from '../components/PetWindow'
-import type { InstalledPet, PetRuntimeConfig } from '../../common/types'
+import type { InstalledPet, PetStorage } from '../../common/types'
 
 let petWindow: Window | null = null
 let activeSlug: string | null = null
 let activeAlwaysOnTop: boolean | null = null
-let onConfigChange: ((config: PetRuntimeConfig) => void) | null = null
+let onStorageChange: ((storage: PetStorage) => void) | null = null
 /** Windows we closed ourselves (switch / disable) — skip unload side effects. */
 const intentionalCloses = new WeakSet<Window>()
 
-export function setRuntimeConfigListener(
-  handler: ((config: PetRuntimeConfig) => void) | null,
+export function setStorageListener(
+  handler: ((storage: PetStorage) => void) | null,
 ) {
-  onConfigChange = handler
+  onStorageChange = handler
 }
 
 function hasLiveWindow() {
@@ -56,10 +57,10 @@ function handlePetWindowUnload(closed: Window) {
       x: Math.round(closed.screenX),
       y: Math.round(closed.screenY),
     }
-    const config = saveRuntimeConfig(
+    const storage = saveRuntimeConfig(
       clonePlain({ ...getRuntimeConfig(), position }),
     )
-    onConfigChange?.(config)
+    onStorageChange?.(storage)
   }
   clearWindowRefs(closed)
 }
@@ -77,43 +78,79 @@ function closePetWindow() {
   clearWindowRefs(closing)
 }
 
+async function openPetPopupWindow(
+  size: { width: number; height: number },
+  position: { x: number; y: number },
+  alwaysOnTop: boolean,
+): Promise<Window> {
+  let lastError: Error | null = null
+  for (let attempt = 0; attempt < 5; attempt++) {
+    if (attempt > 0) await sleep(80 * attempt)
+    const created = openPopupWindow(
+      {
+        width: size.width,
+        height: size.height,
+        x: position.x,
+        y: position.y,
+        alwaysOnTop,
+        resizable: false,
+        transparent: true,
+      },
+      (popup, onClose) => <PetWindow popup={popup} onClose={onClose} />,
+    )
+    if (created && !created.closed) return created
+    lastError = new Error(
+      'Failed to open pet window (window.open returned null)',
+    )
+  }
+  throw lastError ?? new Error('Failed to open pet window')
+}
+
+function persistPositionIfNeeded(
+  storage: PetStorage,
+  position: { x: number; y: number },
+): PetStorage {
+  if (
+    storage.position &&
+    storage.position.x === position.x &&
+    storage.position.y === position.y
+  ) {
+    return storage
+  }
+  const next = saveRuntimeConfig(clonePlain({ ...storage, position }))
+  onStorageChange?.(next)
+  return next
+}
+
 async function showPetWindow(
   pet: InstalledPet,
-  config: PetRuntimeConfig,
-): Promise<PetRuntimeConfig> {
-  const size = getPetWindowSize(config.scale)
-  const position =
-    hasLiveWindow() && petWindow
-      ? { x: Math.round(petWindow.screenX), y: Math.round(petWindow.screenY) }
-      : (config.position ?? getDefaultPosition(size))
+  storage: PetStorage,
+): Promise<PetStorage> {
+  const size = getPetWindowSize(storage.scale)
 
   if (
     hasLiveWindow() &&
     petWindow &&
     activeSlug === pet.slug &&
-    activeAlwaysOnTop === config.alwaysOnTop
+    activeAlwaysOnTop === storage.alwaysOnTop
   ) {
-    return config
+    const position = {
+      x: Math.round(petWindow.screenX),
+      y: Math.round(petWindow.screenY),
+    }
+    petWindow.resizeTo(size.width, size.height)
+    return persistPositionIfNeeded(storage, position)
   }
+
+  const position =
+    hasLiveWindow() && petWindow
+      ? { x: Math.round(petWindow.screenX), y: Math.round(petWindow.screenY) }
+      : (storage.position ?? getDefaultPosition(size))
 
   closePetWindow()
+  await sleep(150)
 
-  const created = openPopupWindow(
-    {
-      width: size.width,
-      height: size.height,
-      x: position.x,
-      y: position.y,
-      alwaysOnTop: config.alwaysOnTop,
-      resizable: false,
-      transparent: true,
-    },
-    (popup, onClose) => <PetWindow popup={popup} onClose={onClose} />,
-  )
-
-  if (!created) {
-    throw new Error('Failed to open pet window (window.open returned null)')
-  }
+  const created = await openPetPopupWindow(size, position, storage.alwaysOnTop)
 
   created.addEventListener('beforeunload', () => {
     handlePetWindowUnload(created)
@@ -121,54 +158,44 @@ async function showPetWindow(
 
   petWindow = created
   activeSlug = pet.slug
-  activeAlwaysOnTop = config.alwaysOnTop
+  activeAlwaysOnTop = storage.alwaysOnTop
 
-  if (
-    config.position &&
-    config.position.x === position.x &&
-    config.position.y === position.y
-  ) {
-    return config
-  }
-
-  const next = saveRuntimeConfig(clonePlain({ ...config, position }))
-  onConfigChange?.(next)
-  return next
+  return persistPositionIfNeeded(storage, position)
 }
 
 export async function restorePetWindow() {
-  const config = getRuntimeConfig()
-  if (!config.enabled || !config.activeSlug) return
+  const storage = getRuntimeConfig()
+  if (!storage.enabled || !storage.activeSlug) return
   if (hasLiveWindow()) return
   const installedPets = await agentPet.listInstalledPets()
-  const pet = installedPets.find((item) => item.slug === config.activeSlug)
+  const pet = installedPets.find((item) => item.slug === storage.activeSlug)
   if (!pet) {
     const cleared = saveRuntimeConfig(
-      clonePlain({ ...config, enabled: false, activeSlug: null }),
+      clonePlain({ ...storage, enabled: false, activeSlug: null }),
     )
-    onConfigChange?.(cleared)
+    onStorageChange?.(cleared)
     closePetWindow()
     return
   }
-  onConfigChange?.(config)
-  await showPetWindow(pet, config)
+  onStorageChange?.(storage)
+  await showPetWindow(pet, storage)
 }
 
-export async function applyPetRuntimeConfig(
-  nextConfig: PetRuntimeConfig,
+export async function applyStorage(
+  nextStorage: PetStorage,
   installedPets: InstalledPet[],
 ) {
-  const config = saveRuntimeConfig(clonePlain(nextConfig))
-  onConfigChange?.(config)
-  if (!config.enabled || !config.activeSlug) {
+  const storage = saveRuntimeConfig(clonePlain(nextStorage))
+  onStorageChange?.(storage)
+  if (!storage.enabled || !storage.activeSlug) {
     closePetWindow()
-    return config
+    return storage
   }
-  const pet = installedPets.find((item) => item.slug === config.activeSlug)
+  const pet = installedPets.find((item) => item.slug === storage.activeSlug)
   if (!pet) throw new Error('Enabled pet is not installed')
-  return showPetWindow(pet, config)
+  return showPetWindow(pet, storage)
 }
 
 export function disposePetWindowController() {
-  onConfigChange = null
+  onStorageChange = null
 }

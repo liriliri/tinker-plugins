@@ -49,7 +49,7 @@ export interface InstalledPet {
   installedAt: string
 }
 
-export interface PetRuntimeConfig {
+export interface PetStorage {
   activeSlug: string | null
   enabled: boolean
   scale: number
@@ -60,7 +60,7 @@ export interface PetRuntimeConfig {
   position: { x: number; y: number } | null
 }
 
-export const DEFAULT_RUNTIME_CONFIG: PetRuntimeConfig = {
+export const DEFAULT_STORAGE: PetStorage = {
   activeSlug: null,
   enabled: false,
   scale: 0.72,

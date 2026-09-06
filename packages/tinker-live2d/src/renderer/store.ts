@@ -6,7 +6,7 @@ import {
   restorePetWindow,
   setStorageListener,
 } from './lib/petWindow'
-import { getStorage, saveStorage } from './lib/storage'
+import { getRuntimeConfig, saveRuntimeConfig } from './lib/storage'
 import { clonePlain, errorMessage } from './lib/util'
 import { createMcpApi } from './mcp'
 import {
@@ -62,7 +62,7 @@ export class Store {
     const models = await live2d.listModels()
     runInAction(() => {
       this.models = models
-      this.storage = getStorage()
+      this.storage = getRuntimeConfig()
     })
   }
 
@@ -202,7 +202,7 @@ export class Store {
     if (this.storage.activeId === id) await this.disablePet()
     await live2d.uninstallModel(id)
     if (this.storage.activeId === id) {
-      this.storage = saveStorage(
+      this.storage = saveRuntimeConfig(
         clonePlain({
           ...this.storage,
           activeId: null,

@@ -8,7 +8,7 @@ import {
   getPetWindowSize,
   clonePlain,
 } from '../lib/util'
-import { saveStorage } from '../lib/storage'
+import { saveRuntimeConfig } from '../lib/storage'
 import { mountLive2d, type Live2dRuntime } from '../lib/live2dRuntime'
 
 interface PetWindowProps {
@@ -128,7 +128,7 @@ export default observer(function PetWindow({ popup, onClose }: PetWindowProps) {
         x: Math.round(popup.screenX),
         y: Math.round(popup.screenY),
       }
-      const next = saveStorage(clonePlain({ ...store.storage, position }))
+      const next = saveRuntimeConfig(clonePlain({ ...store.storage, position }))
       store.patchStorage(next)
     }
     d.active = false

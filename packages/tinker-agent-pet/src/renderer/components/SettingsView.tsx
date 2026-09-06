@@ -5,7 +5,7 @@ import { tw } from '../theme'
 
 const SettingsView = observer(function SettingsView() {
   const { t } = useTranslation()
-  const config = store.runtimeConfig
+  const config = store.storage
 
   return (
     <div className="p-4">
@@ -30,7 +30,7 @@ const SettingsView = observer(function SettingsView() {
             step={0.05}
             value={config.scale}
             onChange={(e) =>
-              store.patchRuntimeConfig({ scale: Number(e.target.value) })
+              store.patchStorage({ scale: Number(e.target.value) })
             }
             onMouseUp={() => void store.saveSettings()}
             onTouchEnd={() => void store.saveSettings()}
@@ -55,7 +55,7 @@ const SettingsView = observer(function SettingsView() {
             step={0.05}
             value={config.opacity}
             onChange={(e) =>
-              store.patchRuntimeConfig({ opacity: Number(e.target.value) })
+              store.patchStorage({ opacity: Number(e.target.value) })
             }
             onMouseUp={() => void store.saveSettings()}
             onTouchEnd={() => void store.saveSettings()}

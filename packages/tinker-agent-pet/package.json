@@ -1,6 +1,6 @@
 {
   "name": "tinker-agent-pet",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Browse, install and run Petdex agent pets in Tinker",
   "files": [
     "dist/",

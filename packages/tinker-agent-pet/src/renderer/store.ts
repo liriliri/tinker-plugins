@@ -13,20 +13,20 @@ import {
 } from './lib/agentHooks'
 import type { AgentDef, AgentSettings, HookEventId, PetActionId } from './types'
 import {
-  applyPetRuntimeConfig,
+  applyStorage,
   disposePetWindowController,
   restorePetWindow,
-  setRuntimeConfigListener,
+  setStorageListener,
 } from './lib/petWindow'
-import { getRuntimeConfig, saveRuntimeConfig } from './lib/runtimeConfig'
+import { getRuntimeConfig, saveRuntimeConfig } from './lib/storage'
 import { clonePlain, PET_ACTION_IDS, findPetActionIndex } from './lib/util'
 import { createMcpApi } from './mcp'
 import {
-  DEFAULT_RUNTIME_CONFIG,
+  DEFAULT_STORAGE,
   type InstalledPet,
   type PetDownloadProgress,
   type PetOverlay,
-  type PetRuntimeConfig,
+  type PetStorage,
   type PetSearchItem,
 } from '../common/types'
 
@@ -219,7 +219,7 @@ export class Store {
   overlay: PetOverlay | null = null
   pets: PetSearchItem[] = []
   installedPets: InstalledPet[] = []
-  runtimeConfig: PetRuntimeConfig = { ...DEFAULT_RUNTIME_CONFIG }
+  storage: PetStorage = { ...DEFAULT_STORAGE }
   query = ''
   sort = 'installed'
   kind = ''
@@ -276,7 +276,7 @@ export class Store {
 
   get activePet() {
     return this.installedPets.find(
-      (pet) => pet.slug === this.runtimeConfig.activeSlug,
+      (pet) => pet.slug === this.storage.activeSlug,
     )
   }
 
@@ -303,8 +303,8 @@ export class Store {
     this.detailPet = pet
   }
 
-  patchRuntimeConfig(partial: Partial<PetRuntimeConfig>) {
-    this.runtimeConfig = { ...this.runtimeConfig, ...partial }
+  patchStorage(partial: Partial<PetStorage>) {
+    this.storage = { ...this.storage, ...partial }
   }
 
   setErrorMessage(message: string) {
@@ -332,7 +332,7 @@ export class Store {
     const installed = await agentPet.listInstalledPets()
     runInAction(() => {
       this.installedPets = installed
-      this.runtimeConfig = getRuntimeConfig()
+      this.storage = getRuntimeConfig()
     })
   }
 
@@ -419,8 +419,8 @@ export class Store {
   async enablePet(slug: string) {
     try {
       const pet = this.installedPets.find((item) => item.slug === slug)
-      const config = clonePlain(this.runtimeConfig)
-      this.runtimeConfig = await applyPetRuntimeConfig(
+      const config = clonePlain(this.storage)
+      this.storage = await applyStorage(
         {
           ...config,
           activeSlug: slug,
@@ -438,15 +438,15 @@ export class Store {
   }
 
   async disablePet() {
-    const config = clonePlain(this.runtimeConfig)
-    this.runtimeConfig = await applyPetRuntimeConfig(
+    const config = clonePlain(this.storage)
+    this.storage = await applyStorage(
       { ...config, enabled: false },
       this.installedPets,
     )
   }
 
   playAction(action: string, options: { loop?: boolean } = {}) {
-    if (!this.runtimeConfig.enabled || !this.activePet) {
+    if (!this.storage.enabled || !this.activePet) {
       throw new Error(t('noPetEnabled'))
     }
     const index = findPetActionIndex(action)
@@ -471,12 +471,12 @@ export class Store {
   }
 
   async uninstallPet(slug: string) {
-    if (this.runtimeConfig.activeSlug === slug) await this.disablePet()
+    if (this.storage.activeSlug === slug) await this.disablePet()
     await agentPet.uninstallPet(slug)
-    if (this.runtimeConfig.activeSlug === slug) {
-      this.runtimeConfig = saveRuntimeConfig(
+    if (this.storage.activeSlug === slug) {
+      this.storage = saveRuntimeConfig(
         clonePlain({
-          ...this.runtimeConfig,
+          ...this.storage,
           activeSlug: null,
           enabled: false,
         }),
@@ -485,10 +485,10 @@ export class Store {
     await this.refreshLocalState()
   }
 
-  async saveSettings(partial?: Partial<PetRuntimeConfig>) {
+  async saveSettings(partial?: Partial<PetStorage>) {
     try {
-      this.runtimeConfig = await applyPetRuntimeConfig(
-        { ...clonePlain(this.runtimeConfig), ...partial },
+      this.storage = await applyStorage(
+        { ...clonePlain(this.storage), ...partial },
         this.installedPets,
       )
     } catch (error) {
@@ -499,9 +499,9 @@ export class Store {
   }
 
   async init() {
-    setRuntimeConfigListener((config) => {
+    setStorageListener((storage) => {
       runInAction(() => {
-        this.runtimeConfig = config
+        this.storage = storage
       })
     })
     await this.refreshLocalState()

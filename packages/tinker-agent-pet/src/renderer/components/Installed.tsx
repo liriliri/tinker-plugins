@@ -26,8 +26,7 @@ const Installed = observer(function Installed() {
     <div className="flex flex-col gap-2 p-3">
       {store.installedPets.map((pet) => {
         const active =
-          store.runtimeConfig.activeSlug === pet.slug &&
-          store.runtimeConfig.enabled
+          store.storage.activeSlug === pet.slug && store.storage.enabled
         return (
           <article key={pet.slug} className={tw.card.row}>
             <div

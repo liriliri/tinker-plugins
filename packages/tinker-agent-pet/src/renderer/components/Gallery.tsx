@@ -160,8 +160,7 @@ const Gallery = observer(function Gallery() {
               const installing = store.installingSlugs.has(pet.slug)
               const installed = store.installedSlugSet.has(pet.slug)
               const active =
-                store.runtimeConfig.activeSlug === pet.slug &&
-                store.runtimeConfig.enabled
+                store.storage.activeSlug === pet.slug && store.storage.enabled
               return (
                 <article
                   key={pet.slug}

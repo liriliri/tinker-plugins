@@ -1,7 +1,7 @@
 import find from 'licia/find'
 import sleep from 'licia/sleep'
 import { openPopupWindow } from './popupWindow'
-import { getStorage, saveStorage } from './storage'
+import { getRuntimeConfig, saveRuntimeConfig } from './storage'
 import { clonePlain, getPetWindowSize } from './util'
 import PetWindow from '../components/PetWindow'
 import type { InstalledModel, PetStorage } from '../../common/types'
@@ -53,7 +53,9 @@ function handlePetWindowUnload(closed: Window) {
       x: Math.round(closed.screenX),
       y: Math.round(closed.screenY),
     }
-    const storage = saveStorage(clonePlain({ ...getStorage(), position }))
+    const storage = saveRuntimeConfig(
+      clonePlain({ ...getRuntimeConfig(), position }),
+    )
     onStorageChange?.(storage)
   }
   clearWindowRefs(closed)
@@ -110,7 +112,7 @@ function persistPositionIfNeeded(
   ) {
     return storage
   }
-  const next = saveStorage(clonePlain({ ...storage, position }))
+  const next = saveRuntimeConfig(clonePlain({ ...storage, position }))
   onStorageChange?.(next)
   return next
 }
@@ -152,13 +154,13 @@ async function showPetWindow(storage: PetStorage): Promise<PetStorage> {
 }
 
 export async function restorePetWindow() {
-  const storage = getStorage()
+  const storage = getRuntimeConfig()
   if (!storage.enabled || !storage.activeId) return
   if (hasLiveWindow()) return
   const models = await live2d.listModels()
   const model = find(models, (item) => item.id === storage.activeId)
   if (!model) {
-    const cleared = saveStorage(
+    const cleared = saveRuntimeConfig(
       clonePlain({ ...storage, enabled: false, activeId: null }),
     )
     onStorageChange?.(cleared)
@@ -173,7 +175,7 @@ export async function applyStorage(
   nextStorage: PetStorage,
   models: InstalledModel[],
 ) {
-  const storage = saveStorage(clonePlain(nextStorage))
+  const storage = saveRuntimeConfig(clonePlain(nextStorage))
   onStorageChange?.(storage)
   if (!storage.enabled || !storage.activeId) {
     closePetWindow()

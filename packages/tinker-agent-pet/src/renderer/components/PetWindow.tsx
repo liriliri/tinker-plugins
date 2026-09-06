@@ -10,7 +10,7 @@ import {
   findPetActionIndex,
   clonePlain,
 } from '../lib/util'
-import { saveRuntimeConfig } from '../lib/runtimeConfig'
+import { saveRuntimeConfig } from '../lib/storage'
 
 interface PetWindowProps {
   popup: Window
@@ -44,7 +44,7 @@ export default observer(function PetWindow({ popup, onClose }: PetWindowProps) {
     winY: 0,
   })
 
-  const config = store.runtimeConfig
+  const config = store.storage
   const pet = store.activePet
   const scale = config.scale
   const opacity = config.opacity
@@ -110,7 +110,7 @@ export default observer(function PetWindow({ popup, onClose }: PetWindowProps) {
     // Use the popup clock — opener performance.now() drifts when backgrounded.
     frameStartedAtRef.current = popup.performance.now()
     loopRef.current = Boolean(actionLoop)
-    if (store.runtimeConfig.soundEnabled && soundRef.current && index !== 0) {
+    if (store.storage.soundEnabled && soundRef.current && index !== 0) {
       const sound = soundRef.current
       sound.pause()
       sound.currentTime = 0
@@ -149,7 +149,7 @@ export default observer(function PetWindow({ popup, onClose }: PetWindowProps) {
           actionIndexRef.current !== 0 &&
           !dragRef.current.active &&
           !loopRef.current &&
-          store.runtimeConfig.returnToDefaultAnimation
+          store.storage.returnToDefaultAnimation
         ) {
           actionIndexRef.current = 0
         }
@@ -179,7 +179,7 @@ export default observer(function PetWindow({ popup, onClose }: PetWindowProps) {
   }, [ready, scale, opacity, popup])
 
   const playSound = () => {
-    if (!store.runtimeConfig.soundEnabled || !soundRef.current) return
+    if (!store.storage.soundEnabled || !soundRef.current) return
     const sound = soundRef.current
     sound.pause()
     sound.currentTime = 0
@@ -249,11 +249,11 @@ export default observer(function PetWindow({ popup, onClose }: PetWindowProps) {
     }
     const config = saveRuntimeConfig(
       clonePlain({
-        ...store.runtimeConfig,
+        ...store.storage,
         position,
       }),
     )
-    store.patchRuntimeConfig(config)
+    store.patchStorage(config)
   }
 
   return (

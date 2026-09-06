@@ -16,8 +16,8 @@ export function createMcpApi(getStore: () => Store) {
       const store = getStore()
       return {
         actions: PET_ACTION_IDS,
-        enabled: store.runtimeConfig.enabled,
-        activeSlug: store.runtimeConfig.activeSlug,
+        enabled: store.storage.enabled,
+        activeSlug: store.storage.activeSlug,
         activePet: store.activePet?.displayName ?? null,
       }
     }
@@ -25,8 +25,8 @@ export function createMcpApi(getStore: () => Store) {
       const store = getStore()
       const pet = store.activePet
       return {
-        enabled: store.runtimeConfig.enabled,
-        activeSlug: store.runtimeConfig.activeSlug,
+        enabled: store.storage.enabled,
+        activeSlug: store.storage.activeSlug,
         activePet: pet
           ? {
               slug: pet.slug,
@@ -34,11 +34,11 @@ export function createMcpApi(getStore: () => Store) {
               spriteVersionNumber: pet.spriteVersionNumber,
             }
           : null,
-        scale: store.runtimeConfig.scale,
-        opacity: store.runtimeConfig.opacity,
-        alwaysOnTop: store.runtimeConfig.alwaysOnTop,
-        soundEnabled: store.runtimeConfig.soundEnabled,
-        returnToDefaultAnimation: store.runtimeConfig.returnToDefaultAnimation,
+        scale: store.storage.scale,
+        opacity: store.storage.opacity,
+        alwaysOnTop: store.storage.alwaysOnTop,
+        soundEnabled: store.storage.soundEnabled,
+        returnToDefaultAnimation: store.storage.returnToDefaultAnimation,
         pendingAction: store.actionRequest?.id ?? null,
         looping: store.actionRequest?.loop ?? false,
       }
