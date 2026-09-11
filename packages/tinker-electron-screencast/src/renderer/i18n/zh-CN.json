@@ -1,0 +1,17 @@
+{
+  "host": "监听",
+  "hostLan": "局域网",
+  "hostLocal": "本机",
+  "port": "端口",
+  "username": "用户名",
+  "password": "密码",
+  "authHint": "可选",
+  "start": "启动",
+  "stop": "停止",
+  "apps": "应用",
+  "refresh": "刷新",
+  "noApps": "未找到 Electron 应用",
+  "logs": "日志",
+  "clearLogs": "清空",
+  "noLogs": "暂无连接记录"
+}

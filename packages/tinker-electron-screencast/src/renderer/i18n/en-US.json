@@ -1,0 +1,17 @@
+{
+  "host": "Listen",
+  "hostLan": "LAN",
+  "hostLocal": "Local",
+  "port": "Port",
+  "username": "User",
+  "password": "Password",
+  "authHint": "Optional",
+  "start": "Start",
+  "stop": "Stop",
+  "apps": "Apps",
+  "refresh": "Refresh",
+  "noApps": "No Electron apps found",
+  "logs": "Logs",
+  "clearLogs": "Clear",
+  "noLogs": "No connections yet"
+}

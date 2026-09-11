@@ -1,0 +1,47 @@
+{
+  "name": "tinker-electron-screencast",
+  "version": "0.1.0",
+  "description": "Electron Screencast Plugin for TINKER",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:preload\" \"npm run dev:http\"",
+    "dev:renderer": "vite build --watch",
+    "dev:preload": "vite build --watch --config vite.preload.ts",
+    "dev:http": "vite build --watch --config vite.http.ts",
+    "build": "concurrently \"npm run build:renderer\" \"npm run build:preload\" \"npm run build:http\"",
+    "build:renderer": "vite build",
+    "build:preload": "vite build --config vite.preload.ts",
+    "build:http": "vite build --config vite.http.ts",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "electron-screencast"
+  ],
+  "tinker": {
+    "name": "Electron Screencast",
+    "description": "LAN screencast server for remote Electron app control",
+    "main": "dist/renderer/index.html",
+    "preload": "dist/preload/index.js",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "Electron 投屏",
+        "description": "局域网投屏服务，远程操控 Electron 应用"
+      }
+    }
+  },
+  "devDependencies": {
+    "@types/ws": "^8.18.1"
+  },
+  "dependencies": {
+    "ws": "^8.19.0"
+  }
+}

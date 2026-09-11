@@ -1,0 +1,22 @@
+{
+  "username": "Username",
+  "password": "Password",
+  "login": "Sign in",
+  "loginErr": "Invalid username or password",
+  "noApps": "No Electron apps found",
+  "launching": "Launching...",
+  "back": "Back",
+  "fullscreen": "Fullscreen",
+  "exitFullscreen": "Exit fullscreen",
+  "notActive": "Page not active",
+  "inputText": "Insert text...",
+  "send": "Send",
+  "connected": "Connected",
+  "disconnected": "Disconnected",
+  "connecting": "Connecting...",
+  "wsFailed": "WebSocket connection failed",
+  "unknownError": "Unknown error",
+  "noPages": "No pages available yet. Try again.",
+  "waitingWindows": "Waiting for windows...",
+  "sessionGone": "Session ended. Go back and open the app again."
+}

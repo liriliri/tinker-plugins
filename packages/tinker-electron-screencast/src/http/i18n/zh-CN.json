@@ -1,0 +1,22 @@
+{
+  "username": "用户名",
+  "password": "密码",
+  "login": "登录",
+  "loginErr": "用户名或密码错误",
+  "noApps": "未找到 Electron 应用",
+  "launching": "正在启动...",
+  "back": "返回",
+  "fullscreen": "全屏",
+  "exitFullscreen": "退出全屏",
+  "notActive": "页面未激活",
+  "inputText": "插入文本...",
+  "send": "发送",
+  "connected": "已连接",
+  "disconnected": "已断开",
+  "connecting": "连接中...",
+  "wsFailed": "WebSocket 连接失败",
+  "unknownError": "未知错误",
+  "noPages": "暂无页面，请稍后重试",
+  "waitingWindows": "等待窗口出现...",
+  "sessionGone": "会话已结束，请返回重新打开应用。"
+}
