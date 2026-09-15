@@ -1,5 +1,6 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 import { t } from 'i18next'
+import find from 'licia/find'
 import {
   applyStorage,
   disposePetWindowController,
@@ -38,7 +39,7 @@ export class Store {
   get activeModel() {
     const id = this.storage.activeId
     if (!id) return null
-    return this.models.find((item) => item.id === id) ?? null
+    return find(this.models, (item) => item.id === id) ?? null
   }
 
   setOverlay(overlay: PetOverlay | null) {
@@ -170,7 +171,7 @@ export class Store {
   }
 
   requestDelete(id: string) {
-    const model = this.models.find((item) => item.id === id)
+    const model = find(this.models, (item) => item.id === id)
     if (!model) return
     this.deleteTarget = model
   }

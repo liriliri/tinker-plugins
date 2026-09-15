@@ -2,8 +2,9 @@ import * as PIXI from 'pixi.js'
 import { Application, Point, Ticker } from 'pixi.js'
 import { Live2DModel } from 'pixi-live2d-display'
 import clamp from 'licia/clamp'
+import max from 'licia/max'
 
-// Official setup: expose PIXI + register Ticker so models auto-update.
+// Required by pixi-live2d-display: global PIXI + shared Ticker.
 ;(window as unknown as { PIXI: typeof PIXI }).PIXI = PIXI
 Live2DModel.registerTicker(Ticker)
 
@@ -20,12 +21,11 @@ interface MountLive2dOptions {
   width: number
   height: number
   autoInteract?: boolean
+  /** System-wide cursor via `tinker.registerMouse` (desktop pet gaze). */
+  screenWindow?: Window
 }
 
-/**
- * Fit model into the view the same way as the upstream demos:
- * uniform scale from model.width / model.height, then center.
- */
+/** Match upstream demos: uniform scale, then center. */
 function fitModel(model: Live2DModel, viewW: number, viewH: number) {
   const scaleX = viewW / model.width
   const scaleY = viewH / model.height
@@ -35,7 +35,18 @@ function fitModel(model: Live2DModel, viewW: number, viewH: number) {
   model.y = viewH / 2
 }
 
-/** Map pointer → Pixi stage coords (handles CSS-scaled pet windows). */
+function setStageFromNorm(
+  app: Application,
+  nx: number,
+  ny: number,
+  out: Point,
+) {
+  out.x = nx * (app.renderer.width / app.renderer.resolution)
+  out.y = ny * (app.renderer.height / app.renderer.resolution)
+  return out
+}
+
+/** Accounts for CSS-scaled pet windows (getBoundingClientRect ≠ logical size). */
 function toStagePoint(
   view: HTMLCanvasElement,
   app: Application,
@@ -49,21 +60,56 @@ function toStagePoint(
     return out
   }
   // Same formula as Pixi InteractionManager.mapPositionToPoint
-  out.x =
-    ((clientX - rect.left) / rect.width) *
-    (app.renderer.width / app.renderer.resolution)
-  out.y =
-    ((clientY - rect.top) / rect.height) *
-    (app.renderer.height / app.renderer.resolution)
-  return out
+  return setStageFromNorm(
+    app,
+    (clientX - rect.left) / rect.width,
+    (clientY - rect.top) / rect.height,
+    out,
+  )
+}
+
+function followRangePx(win: Window): number {
+  const { width, height } = win.screen
+  return max(width, height) / 2
+}
+
+function distanceToWindow(win: Window, x: number, y: number): number {
+  const left = win.screenX
+  const top = win.screenY
+  const right = left + win.outerWidth
+  const bottom = top + win.outerHeight
+  const dx = x < left ? left - x : x > right ? x - right : 0
+  const dy = y < top ? top - y : y > bottom ? y - bottom : 0
+  return Math.hypot(dx, dy)
+}
+
+/** Screen DIP → stage via the pet window's outer box (includes CSS scale). */
+function screenToStagePoint(
+  screenWindow: Window,
+  app: Application,
+  screenX: number,
+  screenY: number,
+  out: Point,
+) {
+  const w = screenWindow.outerWidth
+  const h = screenWindow.outerHeight
+  if (w <= 0 || h <= 0) {
+    out.set(app.screen.width / 2, app.screen.height / 2)
+    return out
+  }
+  return setStageFromNorm(
+    app,
+    (screenX - screenWindow.screenX) / w,
+    (screenY - screenWindow.screenY) / h,
+    out,
+  )
 }
 
 const _local = new Point()
 
 /**
- * Look toward a stage point with linear intensity (Cubism-style drag).
- * Avoids Live2DModel.focus()'s atan2 path, which always looks at full
- * strength and is unstable near the model center (atan2(0,0) → look right).
+ * Linear Cubism-style look. Avoids Live2DModel.focus()'s atan2 path, which
+ * is full-strength and unstable near the model center (atan2(0,0) → look right).
  */
 function focusAtStage(model: Live2DModel, stageX: number, stageY: number) {
   _local.set(stageX, stageY)
@@ -84,6 +130,7 @@ export async function mountLive2d({
   width,
   height,
   autoInteract = true,
+  screenWindow,
 }: MountLive2dOptions): Promise<Live2dRuntime> {
   container.replaceChildren()
 
@@ -107,6 +154,14 @@ export async function mountLive2d({
 
   let tracking = autoInteract
   const stagePoint = new Point()
+  let offGlobalMouse: (() => void) | undefined
+  let usingLocalPointer = false
+  /** Gates easeGazeFront so out-of-range moves don't spam-reset. */
+  let inFollowRange = true
+
+  const easeGazeFront = () => {
+    model.internalModel.focusController.focus(0, 0)
+  }
 
   const onPointerMove = (event: PointerEvent) => {
     if (!tracking) return
@@ -116,12 +171,48 @@ export async function mountLive2d({
 
   const onPointerLeave = () => {
     if (!tracking) return
-    // Ease gaze back to front when the pointer leaves the view.
-    model.internalModel.focusController.focus(0, 0)
+    easeGazeFront()
   }
 
-  container.addEventListener('pointermove', onPointerMove)
-  container.addEventListener('pointerleave', onPointerLeave)
+  const attachLocalPointer = () => {
+    if (usingLocalPointer) return
+    usingLocalPointer = true
+    container.addEventListener('pointermove', onPointerMove)
+    container.addEventListener('pointerleave', onPointerLeave)
+  }
+
+  const detachLocalPointer = () => {
+    if (!usingLocalPointer) return
+    usingLocalPointer = false
+    container.removeEventListener('pointermove', onPointerMove)
+    container.removeEventListener('pointerleave', onPointerLeave)
+  }
+
+  if (screenWindow) {
+    try {
+      offGlobalMouse = await tinker.registerMouse('move', (event) => {
+        if (!tracking || screenWindow.closed) return
+        if (
+          distanceToWindow(screenWindow, event.x, event.y) >
+          followRangePx(screenWindow)
+        ) {
+          if (inFollowRange) {
+            inFollowRange = false
+            easeGazeFront()
+          }
+          return
+        }
+        inFollowRange = true
+        screenToStagePoint(screenWindow, app, event.x, event.y, stagePoint)
+        focusAtStage(model, stagePoint.x, stagePoint.y)
+      })
+    } catch {
+      // uiohook unavailable — fall back to in-window pointer tracking.
+      attachLocalPointer()
+    }
+  } else {
+    attachLocalPointer()
+  }
 
   return {
     capture: () => {
@@ -129,10 +220,8 @@ export async function mountLive2d({
       tracking = false
       model.internalModel.focusController.focus(0, 0, true)
       app.renderer.render(app.stage)
-      // Capture the framebuffer (what the preview shows). Do NOT use
-      // extract.base64(stage): generateTexture sizes to DisplayObject
-      // bounds (logical canvas), which clips Live2D meshes that overflow
-      // via layout (e.g. shizuku's y: 1.2).
+      // Prefer framebuffer over extract.base64(stage): the latter sizes to
+      // DisplayObject bounds and clips meshes that overflow via layout.
       let dataUrl: string | null = null
       try {
         dataUrl = view.toDataURL('image/png')
@@ -150,8 +239,9 @@ export async function mountLive2d({
       model.internalModel.focusController.focus(0, 0, true)
     },
     destroy: () => {
-      container.removeEventListener('pointermove', onPointerMove)
-      container.removeEventListener('pointerleave', onPointerLeave)
+      offGlobalMouse?.()
+      offGlobalMouse = undefined
+      detachLocalPointer()
       try {
         model.destroy()
       } catch {

@@ -6,157 +6,97 @@ argument-hint: <plugin-name-or-file-path>
 
 # Lint Plugin Code
 
-Review a Tinker plugin's source code and report any violations of the project's coding standards defined in `AGENTS.md`.
+Check a Tinker plugin against `AGENTS.md` standards. **Walk every checklist item below in order — do not skip any category** (Comments and Licia are easy to miss).
 
 ## Arguments
 
-- `plugin-name-or-file-path`: plugin folder name (e.g. `tinker-hash`) or a specific file path to check
+- Plugin folder (e.g. `tinker-hash`) → all `.ts` / `.tsx` / `.scss` under `packages/<name>/src/`
+- Or a single file path
 
 ## Checklist
 
-Go through each category below and report violations with file path and line number.
+Report each hit as `[Category] path:line — …`.
 
-### 1. Naming Conventions
+### 1. Naming
+- Plugin dir: `tinker-*` kebab-case
+- Component files + identifiers: PascalCase; `store.ts`; `index.scss`
+- Functions/vars: camelCase; constants: `UPPER_SNAKE`; types: PascalCase
+- Name clash with import → suffix `Component` (not a violation)
 
-- Plugin folder: kebab-case with `tinker-` prefix
-- Component files: PascalCase (e.g. `Toolbar.tsx`)
-- Store file: `store.ts` (lowercase)
-- Style file: `index.scss`
-- React components: PascalCase identifiers (`const Toolbar = observer(...)`)
-- Functions/variables: camelCase
-- Constants: UPPER_SNAKE_CASE
-- Types/interfaces: PascalCase
-- **Exception**: If a component name would conflict with an imported identifier (e.g. a local `Toolbar` component that also imports `Toolbar` from another module), suffix the local component with `Component` (e.g. `ToolbarComponent`). This is intentional and should NOT be reported as a violation.
+### 2. Store
+- Plain `class Store` (no extends / no `super`)
+- `makeAutoObservable(this)` in constructor
+- `export default store` singleton
 
-### 2. Store Structure
+### 3. Theme
+- Every plugin has `theme.ts` exporting `tw`; import `{ tw }` from it
+- No hardcoded colors in components (OK inside `theme.ts`)
+- Light/dark (`dark:`) classes → only via `tw.*`, never inlined in JSX
+- Non-theme Tailwind (layout/spacing/sizing) OK in JSX
 
-- Store class must NOT extend any base class — define it as a plain `class Store`
-- Constructor must call `makeAutoObservable(this)`
-- Export a singleton instance: `export default store` (where `const store = new Store()`)
-- No `super()` call in constructor
+### 4. Components
+- Store users wrapped in `observer()`
+- Props have an interface
+- No inline object/array literals in JSX render (prefer MobX computed)
 
-### 3. Theme & Colors
-
-- Never hardcode literal color values (e.g. `#0fc25e`, `#e0e0e0`, `rgb(...)`) in component files — exception: accent/brand colors defined inside `theme.ts` itself are allowed
-- Each plugin must have a `theme.ts` file that exports a `tw` object containing all theme-aware Tailwind class strings
-- Theme-aware styles (anything that changes between light/dark mode, i.e. uses `dark:` variant) must be defined in `theme.ts` and imported as `tw.*` tokens — they must NOT be inlined in component JSX
-- Non-theme-aware Tailwind classes (layout, spacing, sizing, etc.) may be used directly in JSX
-- Import must be: `import { tw } from './theme'` (or appropriate relative path)
-
-### 4. Component Patterns
-
-- Components that access store must be wrapped with `observer()`
-- All component props must have an interface definition
-- Avoid creating new objects/arrays inline in JSX render — use MobX computed properties
-
-### 5. Library and Utilities (`lib/` directory)
-
-- External wrappers, utility functions, business logic must live in `src/lib/` (plugins with `src/renderer/`: use `src/renderer/lib/`)
-- Forbidden directory names for utilities: `src/utils/`, `src/helpers/`
-- Logic in `store.ts` that has no dependency on store state or MobX should be extracted to `src/lib/`. Candidates: pure functions, data transformation, algorithm helpers, API wrappers
-- Never create `src/lib/index.ts` as a catch-all. Name files by their purpose (e.g. `util.ts`, `math.ts`, `format.ts`). When unsure of the name, use `lib/util.ts`
-- Do **not** create a separate file for a single small helper (e.g. `errorLabel.ts`, `media.ts` with only a few short functions). Put those in `lib/util.ts` instead. Only split out a dedicated file when the module has a clear domain and enough code to stand alone (e.g. SRT/timestamp formatting in `format.ts`)
+### 5. Lib
+- Logic in `src/lib/` or `src/renderer/lib/` — never `utils/` / `helpers/`
+- Pure / non-MobX helpers out of `store.ts` into lib
+- No `lib/index.ts` barrel; name files by purpose (`util.ts`, `format.ts`, …)
+- Tiny one-off helpers → `lib/util.ts`; only split a dedicated file when the domain is large enough
 
 ### 6. TypeScript
+- No `any` — use proper / union types
+- Multi-file types → `src/renderer/types.ts` (or `src/types.ts` if no renderer); preload+renderer shared → `src/common/types.ts`
+- Import types from the definition site — never re-export-only
 
-- No `any` types — use proper types or union types
-- Types/interfaces referenced in more than one file must be extracted:
-  - Plugins with `src/renderer/` directory: extract to `src/renderer/types.ts`
-  - Simple plugins without `src/renderer/` directory: extract to `src/types.ts`
-  - Types/interfaces shared between `preload` and `renderer` must be extracted to `src/common/types.ts`
-- Each file must import types directly from the source file where they are defined — **never import a type just to re-export it** (e.g. `import type { Foo } from './types'; export type { Foo }` in an unrelated file is forbidden)
+### 7. i18n
+- UI strings via `t()` (`react-i18next`), not hardcoded
+- Locales required: `en-US.json` + `zh-CN.json` at `src/renderer/i18n/` (or `src/i18n/` if no renderer)
 
-### 7. Internationalization
+### 8. Comments
+- English only
+- **Why, not what** — delete comments that restate the next line / function name
+- Keep non-obvious rationale (tradeoffs, upstream quirks, gotchas)
 
-- UI strings must use `t()` from `react-i18next`, not hardcoded strings
-- i18n files must exist:
-  - Plugins with `src/renderer/` directory: `src/renderer/i18n/en-US.json`, `src/renderer/i18n/zh-CN.json`
-  - Simple plugins without `src/renderer/` directory: `src/i18n/en-US.json`, `src/i18n/zh-CN.json`
-
-### 8. Code Comments
-
-- All comments must be in English
-- No redundant comments that restate what the code does (e.g. `// Set loading state` before `this.isLoading = true`)
-- Comments should explain "why", not "what"
-
-### 9. SCSS Usage
-
-- SCSS (`index.scss`) should only be used for third-party library style overrides, CSS custom properties (theme tokens under `:root` / `html.dark`), and minimal `@layer base` resets that cannot live on a component
-- Application styles must use Tailwind CSS classes (via JSX / `theme.ts` `tw.*` tokens)
-- If a rule in `index.scss` can be expressed with Tailwind (including `@apply` in `@layer base`, or utility classes in `theme.ts`), prefer Tailwind — do not keep a hand-written CSS class for layout, typography, backgrounds, grids, or similar when utilities suffice
-- Hardcoded colors inside third-party library style overrides in SCSS are allowed
-- Theme token hex values in `:root` / `html.dark` CSS variables are allowed; do not hardcode those same colors in component JSX
+### 9. SCSS
+- Only: theme tokens (`:root` / `html.dark`), 3rd-party overrides, minimal `@layer base` resets that cannot live on a component
+- App UI → Tailwind / `tw.*`; no hand-rolled layout/typography/background classes when utilities work
+- Hardcoded colors OK in 3rd-party SCSS overrides and in CSS variables; do not repeat those hexes in component JSX
 
 ### 10. Fonts
-
-- Do not load fonts from external URLs (e.g. Google Fonts, Adobe Fonts, CDN `@import url(...)`, `<link>` to remote stylesheets)
-- Use system font stacks only (e.g. `-apple-system`, `BlinkMacSystemFont`, `Segoe UI`, `PingFang SC`, `ui-monospace`, `SFMono-Regular`)
-- Bundling local font files inside the plugin is allowed when needed; remote font hosting is not
+- System stacks only (e.g. `-apple-system`, `Segoe UI`, `PingFang SC`) — no remote font URLs
+- Bundling local font files OK
 
 ### 11. Icons
+- `lucide-react`, or `*.svg?react`
 
-- Use `lucide-react` for icons: `import { Copy } from 'lucide-react'`
-- Custom SVG: `import Icon from '../assets/icon.svg?react'`
+### 12. Dependencies
+- Prefer `@radix-ui/*` for UI primitives
+- Renderer-only / bundled pkgs → `devDependencies`
+- Preload Node runtime → `dependencies`, and list each **explicitly** in `vite.preload.ts` `external` (with `electron` + Node builtins) — do **not** auto-collect from `Object.keys(pkg.dependencies)`
+- Do not re-add deps already at the monorepo root; only plugin-specific ones
 
-### 12. External UI Libraries & Dependencies
+### 13. Licia
+- Prefer `licia/*` over hand-rolled helpers (map/each/isStr/trim, etc.)
+- `import x from 'licia/x'` (per-module) — do not reimplement what licia already has
 
-- When a UI component library is needed, prefer `@radix-ui/*` packages
-- Pure frontend dependencies (bundled into `dist/` by Vite — UI libraries like `@radix-ui/*` / `lucide-react`, and any other renderer-only packages) must be listed under `devDependencies` in `package.json`, not `dependencies`
-- Reserve `dependencies` for runtime packages that must ship with the plugin outside the Vite bundle (typically Node-only modules used from `preload/`)
-- If a dependency is already installed at the monorepo root level, do NOT add it to the plugin's `package.json` — only add dependencies that are specific to this plugin
-- Preload runtime deps: list them under `dependencies`, and **do not bundle them** into the preload build. In `vite.preload.ts`, add each package name **explicitly** to the Rollup `external` array alongside `electron` and Node builtins (same pattern as other plugins: `external.push('electron', 'pkg-name', ...)`). Do not auto-collect from `Object.keys(pkg.dependencies)` unless the rest of the repo adopts that pattern — prefer the explicit list
-
-### 13. Use licia Utilities
-
-- Prefer functions from the `licia` utility library over hand-rolled implementations (e.g. use `licia/map`, `licia/each`, `licia/isStr`, `licia/trim`, etc.)
-- Common candidates: string manipulation, type checking, array/object helpers, async utilities, DOM helpers
-- Import individual modules: `import map from 'licia/map'` (not `import { map } from 'licia'`)
-- Do not reimplement logic that already exists in `licia`
-
-## Output Format
-
-For each violation found, output:
+## Output
 
 ```
-[Category] file/path:line — description of violation
+[Category] file:line — description
 ```
 
-Example:
-```
-[Theme] src/components/Toolbar.tsx:12 — hardcoded color `#0fc25e`, use tw.accent.bg instead
-[Naming] src/components/toolbar.tsx — component file should be PascalCase: Toolbar.tsx
-[Store] src/store.ts:5 — Store must not extend any base class, use plain class Store
-[Comments] src/App.tsx:34 — comment in Chinese, must use English
-[Fonts] src/index.scss:4 — external font URL `fonts.googleapis.com`, use system font stacks instead
-```
-
-If no violations are found, report: **No violations found.**
+No issues → **No violations found.** End with category totals.
 
 ## Steps
 
-1. Identify the target: if a plugin name is given, glob all `.ts`, `.tsx`, `.scss` files under `packages/<plugin-name>/src/`. If a file path is given, check that file only.
-2. Read each file and check against the checklist above.
-3. Report all violations grouped by category, including total violation count and which categories had issues.
-4. Format the plugin using its format script (run from the plugin directory):
+1. Glob / read target sources; check **all 13** categories.
+2. Report violations; **fix** clear ones (especially Comments / Licia / Theme).
+3. From the plugin dir:
 
 ```bash
-cd packages/<plugin-name> && npm run format
+npm run format && npm run build && npx tsc --noEmit
 ```
 
-5. Run the build to ensure there are no compilation errors (run from the plugin directory):
-
-```bash
-cd packages/<plugin-name> && npm run build
-```
-
-If the build fails, fix the errors, then re-run the build to confirm it succeeds.
-
-6. Run TypeScript type checking (run from the plugin directory):
-
-```bash
-cd packages/<plugin-name> && npx tsc --noEmit
-```
-
-**IMPORTANT**: Only fix errors in files that are tracked by git. Never touch files under `references/` directories or any file listed in `.gitignore` — these are reference materials only.
-
-If there are TypeScript errors, fix them, then re-run to confirm all errors are resolved.
+4. Only edit git-tracked files — never `references/` or gitignored paths. Fix this plugin's TS errors and re-run until clean.

@@ -6,75 +6,56 @@ argument-hint: <plugin-name-or-file-path>
 
 # Simplify Plugin Code
 
-Review a Tinker plugin's source code for redundant, dead, or duplicated code, then fix all issues found.
+Find redundant / dead / duplicated code in a Tinker plugin, then **fix every issue**. **Walk every checklist item below in order — do not skip any category.**
+
+Comments (why/what) are handled by the **lint** skill, not this one.
 
 ## Arguments
 
-- `plugin-name-or-file-path`: plugin folder name (e.g. `tinker-bilibili-downloader`) or one or more specific file paths
+- Plugin folder (e.g. `tinker-hash`) → all `.ts` / `.tsx` / `.json` under `packages/<name>/src/`
+- Or one or more file paths (still load that plugin’s i18n JSON for key checks)
 
 ## Checklist
 
-Read all target files and check for the following categories of redundancy:
+Report each hit as `[Category] path:line — …`.
 
-### 1. Unused Exports
+### 1. Unused exports
+- Exported const / function / type / interface never imported elsewhere in the plugin
+- Declared variables never read
 
-- Constants, functions, types, or interfaces that are exported but never imported anywhere in the plugin
-- Variables declared but never read
+### 2. Dead code
+- Unreachable after `return` / `throw` / `break`
+- Branches / `switch` cases that can never run given existing callers
+- Conditions that are always `true` or always `false`
 
-### 2. Dead Code
+### 3. Duplicate logic
+- Identical or near-identical functions → merge
+- Same expression / block in 2+ places → shared helper or hook
 
-- Unreachable code after `return`, `throw`, or `break`
-- Branches or `switch` cases that can never execute given the existing logic (e.g. a handler registered before a special-case check that already covers the same path)
-- Code guarded by a condition that is always `true` or always `false`
+### 4. Duplicate types
+- Interfaces / types with the same shape defined more than once → keep one
+- Type aliases that only re-export another type with no added meaning → remove
 
-### 3. Duplicate Logic
+### 5. Repeated inline patterns
+- Copy-pasted JSX subtrees across components → extract
+- Same event-handler logic inlined in multiple components → shared helper / hook
 
-- Functions with identical or near-identical bodies that could be merged into one
-- The same expression or block repeated in two or more places that could be extracted into a shared helper or hook
+### 6. Unused i18n keys
+- Collect keys from both `en-US.json` and `zh-CN.json` under `src/**/i18n/` (or `src/**/i18n/locales/`)
+- Grep all `.ts` / `.tsx` for `t('…')` / `t("…")` (including nested keys like `tabs.settings`)
+- A key is unused only if it appears in **no** `t()` call across the plugin — then remove from **both** locale files
 
-### 4. Duplicate Type Definitions
-
-- Interfaces or types with identical shapes defined more than once
-- Type aliases that simply re-export another type without adding meaning
-
-### 5. Repeated Inline Patterns
-
-- Identical JSX subtrees copy-pasted across components
-- Identical event handler logic inline in multiple components
-
-### 6. Unused i18n Keys
-
-- Keys defined in `src/**/i18n/locales/*.json` that are never referenced via `t('key')` anywhere in the plugin's `.ts`/`.tsx` files
-- Check both locale files (`en-US.json` and `zh-CN.json`) — a key is unused only if it is absent from **all** `t()` calls across the entire plugin source
-
-## Output Format
-
-For each issue found, output:
+## Output
 
 ```
-[Category] file/path:line — description
+[Category] file:line — description
 ```
 
-Example:
-```
-[Unused] src/lib/constants.ts:40 — SUPPORTED_EXTENSIONS is exported but never imported
-[Dead Code] src/lib/ffmpegArgs.ts:22 — case 'gif' in getVideoCodecArgs is unreachable; caller handles gif before invoking this function
-[Duplicate Logic] src/components/MediaList.tsx:50,158 — handleContextMenu is identical in ImageCard and MediaRow; extract to a shared hook
-[Duplicate Type] src/components/MediaList.tsx:43,151 — MediaItemProps and MediaRowProps are identical; remove one
-[i18n] src/i18n/locales/en-US.json:12 — key "outputDir" is defined but never used via t()
-```
-
-If no issues are found, report: **No redundancies found.**
+No issues → **No redundancies found.** End with category totals.
 
 ## Steps
 
-1. Identify the target:
-   - If a plugin name is given, glob all `.ts`, `.tsx`, and `.json` files under `packages/<plugin-name>/src/`
-   - If file paths are given, read those files; also read the i18n locale files for i18n key checks
-2. Read all target files thoroughly.
-3. Cross-reference exports against imports across all files in the plugin to detect unused exports.
-4. For i18n keys: collect every key from both locale JSON files (found under `src/**/i18n/locales/`), then grep all `.ts`/`.tsx` files for `t('key')` calls. Any key not found in any call is unused.
-5. Apply each checklist item and collect all findings.
-5. Report all findings grouped by category with file path and line number.
-6. Fix every issue found by editing the relevant files. Do not skip any issue.
-7. After fixing, verify there are no TypeScript errors by checking IDE diagnostics or re-reading the changed files.
+1. Glob / read targets; for i18n, always load both locale files.
+2. Cross-check exports↔imports; apply **all 6** checklist items.
+3. Report findings; **fix every issue** — do not skip any.
+4. Re-check changed files / IDE diagnostics for TypeScript errors and fix until clean.

@@ -69,6 +69,7 @@ export default observer(function PetWindow({ popup, onClose }: PetWindowProps) {
           width: BASE_WIDTH,
           height: BASE_HEIGHT,
           autoInteract: true,
+          screenWindow: popup,
         })
         if (cancelled) {
           runtime.destroy()

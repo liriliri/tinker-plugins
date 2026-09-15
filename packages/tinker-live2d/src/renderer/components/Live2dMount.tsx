@@ -12,7 +12,6 @@ interface Live2dMountProps {
   onError?: (error: unknown) => void
 }
 
-/** Mount Live2D via pixi-live2d-display (Cubism cores must be on window). */
 export default function Live2dMount({
   modelUrl,
   width,

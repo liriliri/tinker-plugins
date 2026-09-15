@@ -7,9 +7,7 @@ export interface InstalledModel {
   format: ModelFormat
   /** Relative path from model root to entry json (e.g. Haru/Haru.model3.json) */
   modelFileName: string
-  /** file:// URL to the entry json */
   modelUrl?: string
-  /** file:// URL to thumbnail.png when present */
   thumbnailUrl?: string | null
   installedAt: string
 }
@@ -26,11 +24,9 @@ export interface ModelPreviewInfo {
 
 export interface ModelWindowPayload {
   model: InstalledModel
-  /** Absolute file:// URL to entry json */
   modelUrl: string
-  /** file:// base path for Live2dV3 (parent of model folder) */
+  /** file:// parent of the model folder (Live2dV3 basePath) */
   basePath: string
-  /** Folder / stem name expected by Live2dV3 */
   modelName: string
   format: ModelFormat
 }
