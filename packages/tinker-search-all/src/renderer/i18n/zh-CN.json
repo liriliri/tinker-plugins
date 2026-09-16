@@ -1,0 +1,12 @@
+{
+  "placeholder": "搜索文件、应用、插件…",
+  "categoryAll": "全部",
+  "categoryFiles": "文件",
+  "categoryApps": "应用",
+  "categoryPlugins": "插件",
+  "empty": "无内容",
+  "emptyHint": "输入关键词搜索",
+  "recent": "最近",
+  "open": "打开",
+  "showInFolder": "在文件夹中显示"
+}

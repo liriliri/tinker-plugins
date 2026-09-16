@@ -1,0 +1,12 @@
+{
+  "placeholder": "Search files, apps, plugins…",
+  "categoryAll": "All",
+  "categoryFiles": "Files",
+  "categoryApps": "Apps",
+  "categoryPlugins": "Plugins",
+  "empty": "No content",
+  "emptyHint": "Enter a keyword to search",
+  "recent": "Recent",
+  "open": "Open",
+  "showInFolder": "Show in Folder"
+}
