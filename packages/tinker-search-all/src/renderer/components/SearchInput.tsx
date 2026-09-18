@@ -11,7 +11,20 @@ const SearchInput = observer(function SearchInput() {
   const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
-    inputRef.current?.focus()
+    const focus = () => inputRef.current?.focus()
+
+    focus()
+    const timer = window.setTimeout(focus, 0)
+
+    const onVisibilityChange = () => {
+      if (document.visibilityState === 'visible') focus()
+    }
+    document.addEventListener('visibilitychange', onVisibilityChange)
+
+    return () => {
+      window.clearTimeout(timer)
+      document.removeEventListener('visibilitychange', onVisibilityChange)
+    }
   }, [])
 
   return (
@@ -37,10 +50,7 @@ const SearchInput = observer(function SearchInput() {
         <button
           type="button"
           onClick={() => store.setQuery('')}
-          className={className(
-            'flex items-center justify-center w-6 h-6 rounded-md border-none bg-transparent cursor-pointer transition-colors',
-            tw.query.clear,
-          )}
+          className={tw.iconBtn}
         >
           <X className="w-3.5 h-3.5" />
         </button>

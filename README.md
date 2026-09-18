@@ -208,5 +208,13 @@ All plugins in the list can be installed to TINKER by running `npm i -g tinker-x
       <th><img src="./packages/tinker-gltf-optimizer/screenshot.png"/></th>
       <th><img src="./packages/tinker-live2d/screenshot.png"/></th>
     </tr>
+    <tr>
+      <th><a href="./packages/tinker-electron-screencast/">tinker-electron-screencast</a></th>
+      <th><a href="./packages/tinker-search-all/">tinker-search-all</a></th>
+    </tr>
+    <tr>
+      <th><img src="./packages/tinker-electron-screencast/screenshot.png"/></th>
+      <th><img src="./packages/tinker-search-all/screenshot.png"/></th>
+    </tr>
   </tbody>
 </table>

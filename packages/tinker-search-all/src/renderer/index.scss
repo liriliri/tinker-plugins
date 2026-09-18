@@ -12,6 +12,10 @@
   --sa-border: rgba(60, 60, 67, 0.12);
   --sa-kbd: rgba(60, 60, 67, 0.08);
   --sa-bar: #dedee0;
+  --sa-panel: #f7f7f8;
+  --sa-panel-row: rgba(255, 255, 255, 0.72);
+  --sa-toggle: rgba(60, 60, 67, 0.18);
+  --sa-danger: #c45c5c;
   color-scheme: light;
 }
 
@@ -26,6 +30,10 @@ html.dark {
   --sa-border: rgba(255, 255, 255, 0.1);
   --sa-kbd: rgba(255, 255, 255, 0.08);
   --sa-bar: #161618;
+  --sa-panel: #2a2a2c;
+  --sa-panel-row: rgba(255, 255, 255, 0.04);
+  --sa-toggle: rgba(255, 255, 255, 0.16);
+  --sa-danger: #e88888;
   color-scheme: dark;
 }
 
@@ -71,4 +79,96 @@ body,
 ::-webkit-scrollbar-thumb {
   background: color-mix(in srgb, var(--sa-ash) 35%, transparent);
   border-radius: 999px;
+}
+
+/* Radix Dialog — centering transform lives only in CSS (not Tailwind translate) */
+.sa-dialog-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--sa-ink) 28%, transparent);
+  backdrop-filter: blur(2px);
+}
+
+.sa-dialog-overlay[data-state='open'] {
+  animation: saOverlayShow 150ms ease-out;
+}
+
+.sa-dialog-overlay[data-state='closed'] {
+  animation: saOverlayHide 100ms ease-in;
+}
+
+.sa-dialog-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 50;
+  width: min(420px, calc(100vw - 2rem));
+  padding: 0;
+  overflow: hidden;
+  outline: none;
+  border-radius: 1rem;
+  border: 1px solid var(--sa-border);
+  background: var(--sa-panel);
+  box-shadow:
+    0 24px 64px -20px rgba(0, 0, 0, 0.35),
+    0 8px 24px -12px rgba(0, 0, 0, 0.18);
+}
+
+.sa-dialog-content[data-state='open'] {
+  animation: saContentShow 160ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sa-dialog-content[data-state='closed'] {
+  animation: saContentHide 100ms ease-in;
+}
+
+@keyframes saOverlayShow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes saOverlayHide {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes saContentShow {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes saContentHide {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sa-dialog-overlay[data-state='open'],
+  .sa-dialog-overlay[data-state='closed'],
+  .sa-dialog-content[data-state='open'],
+  .sa-dialog-content[data-state='closed'] {
+    animation: none;
+  }
 }

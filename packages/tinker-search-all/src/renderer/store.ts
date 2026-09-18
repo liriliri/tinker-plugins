@@ -33,11 +33,20 @@ import {
   type AppEntry,
   type PluginEntry,
 } from './lib/result'
+import {
+  readCloseOnOpen,
+  readHotkey,
+  writeCloseOnOpen,
+  writeHotkey,
+} from './lib/settings'
 
 const ALL_LIMIT = 5
 const CATEGORY_LIMIT = 50
 const FILE_MAX_RESULTS = 50
 const PLUGIN_ID_PREFIX = 'plugin:'
+const PLUGIN_ID = 'tinker-search-all'
+
+let shortcutOff: (() => void) | null = null
 
 function pluginId(id: string) {
   return startWith(id, PLUGIN_ID_PREFIX)
@@ -55,6 +64,10 @@ class Store {
   fileIcons = new Map<string, string>()
   searchingFiles = false
   selectedIndex = 0
+  closeOnOpen = readCloseOnOpen()
+  hotkey = readHotkey()
+  hotkeyError = false
+  showSettings = false
 
   private fileTask: tinker.SearchFileTask | null = null
   private debounceSearchFiles = debounce((query: string) => {
@@ -82,6 +95,7 @@ class Store {
         void this.loadFileIcon(item.subtitle)
       }
     })
+    await this.syncHotkey()
   }
 
   setQuery(query: string) {
@@ -97,6 +111,56 @@ class Store {
 
   setSelectedIndex(index: number) {
     this.selectedIndex = index
+  }
+
+  setShowSettings(open: boolean) {
+    this.showSettings = open
+  }
+
+  setCloseOnOpen(value: boolean) {
+    this.closeOnOpen = value
+    writeCloseOnOpen(value)
+  }
+
+  setHotkey(value: string) {
+    this.hotkey = value
+    writeHotkey(value)
+    void this.syncHotkey()
+  }
+
+  async summon() {
+    if (document.visibilityState === 'visible' && document.hasFocus()) {
+      window.close()
+      return
+    }
+    await tinker.openPlugin(PLUGIN_ID)
+  }
+
+  private async syncHotkey() {
+    if (shortcutOff) {
+      shortcutOff()
+      shortcutOff = null
+    }
+
+    if (isStrBlank(this.hotkey)) {
+      runInAction(() => {
+        this.hotkeyError = false
+      })
+      return
+    }
+
+    try {
+      shortcutOff = await tinker.registerShortcut(this.hotkey, () => {
+        void this.summon()
+      })
+      runInAction(() => {
+        this.hotkeyError = false
+      })
+    } catch {
+      runInAction(() => {
+        this.hotkeyError = true
+      })
+    }
   }
 
   get filteredApps(): SearchResultItem[] {
@@ -202,9 +266,7 @@ class Store {
       runInAction(() => {
         this.fileIcons.set(filePath, icon)
       })
-    } catch {
-      // ignore icon failures
-    }
+    } catch {}
   }
 
   async activateSelected() {
@@ -217,13 +279,14 @@ class Store {
     this.addRecent(item)
     if (item.category === 'apps') {
       await searchAll.openApp(item.subtitle)
-      return
-    }
-    if (item.category === 'plugins') {
+    } else if (item.category === 'plugins') {
       await tinker.openPlugin(pluginId(item.id))
-      return
+    } else {
+      await searchAll.openPath(item.subtitle)
     }
-    await searchAll.openPath(item.subtitle)
+    if (this.closeOnOpen) {
+      window.close()
+    }
   }
 
   revealInFinder(item: SearchResultItem) {

@@ -8,5 +8,13 @@
   "emptyHint": "输入关键词搜索",
   "recent": "最近",
   "open": "打开",
-  "showInFolder": "在文件夹中显示"
+  "showInFolder": "在文件夹中显示",
+  "settings": "设置",
+  "closeOnOpen": "回车打开自动关闭",
+  "closeOnOpenHint": "打开结果后自动关闭当前窗口",
+  "hotkey": "呼出快捷键",
+  "hotkeyHint": "全局快捷键显示或隐藏本窗口",
+  "hotkeyError": "注册失败，快捷键可能已被占用",
+  "recordHotkey": "点击录制",
+  "recording": "请按下按键…"
 }

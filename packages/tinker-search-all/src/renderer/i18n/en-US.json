@@ -8,5 +8,13 @@
   "emptyHint": "Enter a keyword to search",
   "recent": "Recent",
   "open": "Open",
-  "showInFolder": "Show in Folder"
+  "showInFolder": "Show in Folder",
+  "settings": "Settings",
+  "closeOnOpen": "Close after open",
+  "closeOnOpenHint": "Automatically close this window when a result is opened",
+  "hotkey": "Summon hotkey",
+  "hotkeyHint": "Global shortcut to show or hide this window",
+  "hotkeyError": "Failed to register — key may already be in use",
+  "recordHotkey": "Click to record",
+  "recording": "Press keys…"
 }

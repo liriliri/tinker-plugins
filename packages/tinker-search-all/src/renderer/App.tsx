@@ -11,6 +11,7 @@ import { tw } from './theme'
 const App = observer(function App() {
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
+      if (store.showSettings) return
       if (e.key === 'ArrowDown') {
         e.preventDefault()
         store.moveSelection(1)
@@ -20,9 +21,13 @@ const App = observer(function App() {
       } else if (e.key === 'Enter') {
         e.preventDefault()
         void store.activateSelected()
-      } else if (e.key === 'Escape' && store.query) {
+      } else if (e.key === 'Escape') {
         e.preventDefault()
-        store.setQuery('')
+        if (store.query) {
+          store.setQuery('')
+        } else {
+          window.close()
+        }
       }
     }
     window.addEventListener('keydown', onKeyDown)
