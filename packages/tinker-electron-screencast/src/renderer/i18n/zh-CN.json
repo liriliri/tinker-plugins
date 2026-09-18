@@ -13,5 +13,7 @@
   "noApps": "未找到 Electron 应用",
   "logs": "日志",
   "clearLogs": "清空",
-  "noLogs": "暂无连接记录"
+  "noLogs": "暂无连接记录",
+  "showQrcode": "显示二维码",
+  "qrcodeMissing": "未安装 tinker-qrcode"
 }

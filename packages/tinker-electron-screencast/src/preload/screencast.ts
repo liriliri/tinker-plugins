@@ -6,7 +6,8 @@ import isStr from 'licia/isStr'
 import toBool from 'licia/toBool'
 import toNum from 'licia/toNum'
 import { CdpClient } from './cdp'
-import { findPage } from './apps'
+import { findPage, findSessionByPageId } from './apps'
+import { activateMainWindows } from './inspect'
 import { addLog } from './logger'
 import { errorMessage } from './util'
 
@@ -92,6 +93,71 @@ async function setTouchMode(session: PageSession, enabled: boolean) {
     configuration: 'mobile',
   })
   session.touchMode = enabled
+}
+
+async function evaluate(session: PageSession, expression: string) {
+  if (!session.cdp.connected) return null
+  const result = (await session.cdp.send('Runtime.evaluate', {
+    expression,
+    returnByValue: true,
+  })) as { result?: { value?: unknown } }
+  return result?.result?.value ?? null
+}
+
+async function getFocusedInputText(session: PageSession) {
+  return evaluate(
+    session,
+    `(() => {
+      const el = document.activeElement
+      if (!el) return null
+      if (el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement) {
+        if (el.type === 'password') return ''
+        return el.value
+      }
+      if (el.isContentEditable) return el.innerText
+      return null
+    })()`,
+  )
+}
+
+async function setFocusedInputText(session: PageSession, text: string) {
+  const value = JSON.stringify(text)
+  return evaluate(
+    session,
+    `((text) => {
+      const el = document.activeElement
+      if (!el) return false
+      if (el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement) {
+        const proto =
+          el instanceof HTMLInputElement
+            ? HTMLInputElement.prototype
+            : HTMLTextAreaElement.prototype
+        const setter = Object.getOwnPropertyDescriptor(proto, 'value')?.set
+        if (setter) setter.call(el, text)
+        else el.value = text
+        el.dispatchEvent(new Event('input', { bubbles: true }))
+        return true
+      }
+      if (el.isContentEditable) {
+        el.textContent = text
+        el.dispatchEvent(new Event('input', { bubbles: true }))
+        return true
+      }
+      return false
+    })(${value})`,
+  )
+}
+
+async function activatePage(session: PageSession) {
+  const app = findSessionByPageId(session.pageId)
+  if (!app) {
+    throw new Error('Session not found for page')
+  }
+  const ok = await activateMainWindows(app.nodePort)
+  if (!ok) {
+    throw new Error('No BrowserWindow found in main process')
+  }
+  addLog(`Activated main windows for page ${session.pageId}`)
 }
 
 export function disposePageSession(pageId: string) {
@@ -190,7 +256,11 @@ async function ensurePageSession(pageId: string): Promise<PageSession> {
   return session
 }
 
-async function handleClientMessage(session: PageSession, raw: string) {
+async function handleClientMessage(
+  session: PageSession,
+  raw: string,
+  ws: WebSocket,
+) {
   let msg: {
     type?: string
     width?: number
@@ -230,7 +300,26 @@ async function handleClientMessage(session: PageSession, raw: string) {
     return
   }
 
+  if (msg.type === 'activate') {
+    await activatePage(session)
+    return
+  }
+
   if (!session.cdpVisible) return
+
+  if (msg.type === 'getInputText') {
+    const text = await getFocusedInputText(session)
+    if (ws.readyState === WebSocket.OPEN) {
+      ws.send(JSON.stringify({ type: 'inputText', text }))
+    }
+    return
+  }
+
+  if (msg.type === 'setInputText') {
+    if (!isStr(msg.text)) return
+    await setFocusedInputText(session, msg.text)
+    return
+  }
 
   if (msg.type === 'mouse') {
     const typeMap: Record<string, string> = {
@@ -337,16 +426,18 @@ export async function handleScreencastUpgrade(
   }
 
   ws.on('message', (raw) => {
-    void handleClientMessage(session, raw.toString()).catch((err: unknown) => {
-      if (ws.readyState === WebSocket.OPEN) {
-        ws.send(
-          JSON.stringify({
-            type: 'error',
-            message: errorMessage(err),
-          }),
-        )
-      }
-    })
+    void handleClientMessage(session, raw.toString(), ws).catch(
+      (err: unknown) => {
+        if (ws.readyState === WebSocket.OPEN) {
+          ws.send(
+            JSON.stringify({
+              type: 'error',
+              message: errorMessage(err),
+            }),
+          )
+        }
+      },
+    )
   })
 
   ws.on('close', () => {

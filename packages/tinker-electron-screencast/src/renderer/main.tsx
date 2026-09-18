@@ -6,7 +6,7 @@ import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import fileUrl from 'licia/fileUrl'
 import dateFormat from 'licia/dateFormat'
-import { Play, RotateCw, Square, Trash2 } from 'lucide-react'
+import { Play, QrCode, RotateCw, Square, Trash2 } from 'lucide-react'
 import store from './store'
 import { tw } from './theme'
 import DotSpinner from './components/DotSpinner'
@@ -25,6 +25,11 @@ i18n.use(initReactI18next).init({
 })
 
 const fieldClass = `h-6 px-1.5 rounded border text-[11px] outline-none transition-colors ${tw.background.input} ${tw.text.primary} ${tw.border.input} ${tw.border.focus} disabled:opacity-55`
+
+function urlFromLog(message: string) {
+  const match = message.match(/https?:\/\/[^\s)]+/)
+  return match ? match[0] : null
+}
 
 const ElectronScreencast = observer(function ElectronScreencast() {
   const { t } = useTranslation()
@@ -126,7 +131,7 @@ const ElectronScreencast = observer(function ElectronScreencast() {
 
         {store.error ? (
           <div className={`px-2.5 py-1 text-[11px] ${tw.text.error}`}>
-            {store.error}
+            {store.error === 'qrcodeMissing' ? t('qrcodeMissing') : store.error}
           </div>
         ) : null}
       </section>
@@ -232,26 +237,40 @@ const ElectronScreencast = observer(function ElectronScreencast() {
               </div>
             ) : (
               <div className="space-y-0.5">
-                {store.reversedLogs.map((log) => (
-                  <div key={log.id} className="flex gap-2">
-                    <span
-                      className={`shrink-0 tabular-nums ${tw.text.logTime}`}
-                    >
-                      {dateFormat(new Date(log.time), 'HH:MM:ss')}
-                    </span>
-                    <span
-                      className={
-                        log.level === 'error'
-                          ? tw.text.error
-                          : log.level === 'warn'
-                            ? tw.text.warn
-                            : tw.text.log
-                      }
-                    >
-                      {log.message}
-                    </span>
-                  </div>
-                ))}
+                {store.reversedLogs.map((log) => {
+                  const url = urlFromLog(log.message)
+                  return (
+                    <div key={log.id} className="flex gap-2 items-start">
+                      <span
+                        className={`shrink-0 tabular-nums ${tw.text.logTime}`}
+                      >
+                        {dateFormat(new Date(log.time), 'HH:MM:ss')}
+                      </span>
+                      <span
+                        className={`flex-1 min-w-0 break-all ${
+                          log.level === 'error'
+                            ? tw.text.error
+                            : log.level === 'warn'
+                              ? tw.text.warn
+                              : tw.text.log
+                        }`}
+                      >
+                        {log.message}
+                      </span>
+                      {url ? (
+                        <button
+                          type="button"
+                          className={`h-4 w-4 mt-0.5 inline-flex items-center justify-center rounded bg-transparent border-none cursor-pointer shrink-0 ${tw.button.icon}`}
+                          onClick={() => store.showQrcode(url)}
+                          aria-label={t('showQrcode')}
+                          title={t('showQrcode')}
+                        >
+                          <QrCode className="w-3 h-3" />
+                        </button>
+                      ) : null}
+                    </div>
+                  )
+                })}
               </div>
             )}
           </div>

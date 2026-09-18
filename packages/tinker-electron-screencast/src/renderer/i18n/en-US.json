@@ -13,5 +13,7 @@
   "noApps": "No Electron apps found",
   "logs": "Logs",
   "clearLogs": "Clear",
-  "noLogs": "No connections yet"
+  "noLogs": "No connections yet",
+  "showQrcode": "Show QR code",
+  "qrcodeMissing": "tinker-qrcode is not installed"
 }

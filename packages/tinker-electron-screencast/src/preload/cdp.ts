@@ -15,14 +15,16 @@ export class CdpClient {
 
   constructor(
     private readonly wsUrl: string,
-    private readonly onEvent: CdpEventHandler,
+    private readonly onEvent: CdpEventHandler = () => {},
+    private readonly origin: string | null = 'devtools://devtools',
   ) {}
 
   connect(): Promise<void> {
     return new Promise((resolve, reject) => {
-      const ws = new WebSocket(this.wsUrl, {
-        headers: { Origin: 'devtools://devtools' },
-      })
+      const ws = new WebSocket(
+        this.wsUrl,
+        this.origin ? { headers: { Origin: this.origin } } : undefined,
+      )
       this.ws = ws
 
       ws.on('open', () => resolve())

@@ -24,7 +24,10 @@ import {
   touchCanvasOffset,
 } from './screencast'
 
-export function useScreencast(pageId: string) {
+export function useScreencast(
+  pageId: string,
+  onInputText?: (text: string | null) => void,
+) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const imageRef = useRef<HTMLImageElement | null>(null)
   const wsRef = useRef<WebSocket | null>(null)
@@ -33,6 +36,8 @@ export function useScreencast(pageId: string) {
   const offsetTopRef = useRef(0)
   const activeOffsetTopRef = useRef<number | null>(null)
   const touchModeRef = useRef(isTouchClient())
+  const onInputTextRef = useRef(onInputText)
+  onInputTextRef.current = onInputText
 
   const paint = useCallback(() => {
     const canvas = canvasRef.current
@@ -149,6 +154,7 @@ export function useScreencast(pageId: string) {
         message?: string
         visible?: boolean
         url?: string
+        text?: string | null
       }
       try {
         msg = JSON.parse(String(event.data))
@@ -171,6 +177,10 @@ export function useScreencast(pageId: string) {
       }
       if (msg.type === 'visibility') {
         store.setScreencastActive(!!msg.visible)
+        return
+      }
+      if (msg.type === 'inputText') {
+        onInputTextRef.current?.(msg.text ?? null)
         return
       }
       if (msg.type === 'error') {
@@ -312,6 +322,21 @@ export function useScreencast(pageId: string) {
     [send],
   )
 
+  const pullFocusedInput = useCallback(() => {
+    send({ type: 'getInputText' })
+  }, [send])
+
+  const pushFocusedInput = useCallback(
+    (value: string) => {
+      send({ type: 'setInputText', text: value })
+    },
+    [send],
+  )
+
+  const activatePage = useCallback(() => {
+    send({ type: 'activate' })
+  }, [send])
+
   const onMouse = (event: MouseEvent<HTMLCanvasElement>) => {
     const native = event.nativeEvent as unknown as {
       sourceCapabilities?: { firesTouchEvents?: boolean }
@@ -419,7 +444,9 @@ export function useScreencast(pageId: string) {
 
   return {
     canvasRef,
-    pasteText,
+    pullFocusedInput,
+    pushFocusedInput,
+    activatePage,
     onMouse,
     onWheel,
     onKeyDown,

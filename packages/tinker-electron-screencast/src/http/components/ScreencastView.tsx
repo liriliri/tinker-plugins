@@ -17,15 +17,18 @@ export default observer(function ScreencastView({
   const rootRef = useRef<HTMLDivElement>(null)
   const [text, setText] = useState('')
   const [isFullscreen, setIsFullscreen] = useState(fullscreen.isActive())
+  const [activating, setActivating] = useState(false)
   const {
     canvasRef,
-    pasteText,
+    pullFocusedInput,
+    pushFocusedInput,
+    activatePage,
     onMouse,
     onWheel,
     onKeyDown,
     onKeyUp,
     onPaste,
-  } = useScreencast(pageId)
+  } = useScreencast(pageId, (value) => setText(value ?? ''))
 
   useEffect(() => {
     const onChange = () => setIsFullscreen(fullscreen.isActive())
@@ -34,6 +37,16 @@ export default observer(function ScreencastView({
       fullscreen.off('change', onChange)
     }
   }, [])
+
+  useEffect(() => {
+    if (store.screencastActive) {
+      setActivating(false)
+      return
+    }
+    if (!activating) return
+    const timer = window.setTimeout(() => setActivating(false), 4000)
+    return () => window.clearTimeout(timer)
+  }, [store.screencastActive, activating])
 
   const statusLabel = store.statusKey ? t(store.statusKey) : ''
   const errorLabel = store.screencastErrorRaw
@@ -175,36 +188,59 @@ export default observer(function ScreencastView({
             style={{
               position: 'absolute',
               inset: 0,
+              zIndex: 100,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               background: 'var(--overlay)',
               color: 'var(--overlay-text)',
-              fontSize: 18,
+              userSelect: 'none',
             }}
           >
-            {t('notActive')}
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: 16,
+                fontSize: 18,
+              }}
+            >
+              <span>{t('notActive')}</span>
+              <button
+                type="button"
+                disabled={activating}
+                style={{
+                  height: 32,
+                  padding: '0 16px',
+                  border: 0,
+                  borderRadius: 4,
+                  background: 'var(--primary)',
+                  color: 'var(--on-primary)',
+                  fontSize: 13,
+                  cursor: activating ? 'wait' : 'pointer',
+                  opacity: activating ? 0.6 : 1,
+                }}
+                onClick={() => {
+                  setActivating(true)
+                  activatePage()
+                }}
+              >
+                {activating ? t('activating') : t('activate')}
+              </button>
+            </div>
           </div>
         ) : null}
       </div>
 
-      <form
+      <div
         style={{
           display: 'flex',
-          gap: 0,
           height: 26,
           alignItems: 'stretch',
-          margin: 0,
-          padding: 0,
           borderTop: '1px solid var(--border)',
           background: 'var(--panel)',
           flexShrink: 0,
-        }}
-        onSubmit={(event) => {
-          event.preventDefault()
-          if (!store.screencastActive || !text) return
-          pasteText(text)
-          setText('')
         }}
       >
         <input
@@ -224,27 +260,14 @@ export default observer(function ScreencastView({
           value={text}
           placeholder={t('inputText')}
           disabled={!store.screencastActive}
-          onChange={(event) => setText(event.target.value)}
-        />
-        <button
-          type="submit"
-          disabled={!store.screencastActive || !text}
-          style={{
-            margin: 0,
-            padding: '0 10px',
-            border: 0,
-            borderRadius: 0,
-            background: 'var(--primary)',
-            color: 'var(--on-primary)',
-            fontSize: 11,
-            cursor: 'pointer',
-            flexShrink: 0,
-            opacity: !store.screencastActive || !text ? 0.5 : 1,
+          onFocus={() => pullFocusedInput()}
+          onChange={(event) => {
+            const value = event.target.value
+            setText(value)
+            pushFocusedInput(value)
           }}
-        >
-          {t('send')}
-        </button>
-      </form>
+        />
+      </div>
     </div>
   )
 })

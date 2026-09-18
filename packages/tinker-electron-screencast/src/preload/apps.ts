@@ -223,10 +223,21 @@ export async function waitForPages(
   return sessions.get(sessionId)?.pages || []
 }
 
-export function findPage(pageId: string): PageInfo | null {
+function findPageEntry(pageId: string): {
+  session: LaunchedApp
+  page: PageInfo
+} | null {
   for (const session of sessions.values()) {
     const page = find(session.pages, (p) => p.id === pageId)
-    if (page) return page
+    if (page) return { session, page }
   }
   return null
+}
+
+export function findPage(pageId: string): PageInfo | null {
+  return findPageEntry(pageId)?.page ?? null
+}
+
+export function findSessionByPageId(pageId: string): LaunchedApp | null {
+  return findPageEntry(pageId)?.session ?? null
 }

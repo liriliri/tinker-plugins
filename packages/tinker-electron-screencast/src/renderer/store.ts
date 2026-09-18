@@ -18,6 +18,7 @@ const STORAGE_HOST = 'host'
 const STORAGE_PORT = 'port'
 const STORAGE_USERNAME = 'username'
 const STORAGE_PASSWORD = 'password'
+const QRCODE_PLUGIN = 'tinker-qrcode'
 
 class Store {
   apps: AppInfo[] = []
@@ -151,6 +152,31 @@ class Store {
     } finally {
       runInAction(() => {
         this.busy = false
+      })
+    }
+  }
+
+  async showQrcode(url: string) {
+    if (!url) return
+    runInAction(() => {
+      this.error = ''
+    })
+    try {
+      if (!(await tinker.hasPlugin(QRCODE_PLUGIN))) {
+        runInAction(() => {
+          this.error = 'qrcodeMissing'
+        })
+        return
+      }
+      await tinker.openPlugin(QRCODE_PLUGIN)
+      const tempDir = await tinker.getPath('temp')
+      await tinker.callMcpTool(QRCODE_PLUGIN, 'generate', {
+        text: url,
+        path: `${tempDir}/tinker-electron-screencast-qr.png`,
+      })
+    } catch (err: unknown) {
+      runInAction(() => {
+        this.error = errorMessage(err)
       })
     }
   }
