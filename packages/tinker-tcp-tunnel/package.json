@@ -1,0 +1,45 @@
+{
+  "name": "tinker-tcp-tunnel",
+  "version": "0.1.0",
+  "description": "TCP Tunnel Plugin for TINKER",
+  "files": [
+    "dist/",
+    "bin/",
+    "icon.png"
+  ],
+  "bin": {
+    "tinker-tcp-tunnel": "bin/tinker-tcp-tunnel.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:preload\"",
+    "dev:renderer": "vite build --watch",
+    "dev:preload": "vite build --watch --config vite.preload.ts",
+    "build": "concurrently \"npm run build:renderer\" \"npm run build:preload\" \"npm run build:cli\"",
+    "build:renderer": "vite build",
+    "build:preload": "vite build --config vite.preload.ts",
+    "build:cli": "vite build --config vite.cli.ts",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "tcp",
+    "tunnel"
+  ],
+  "tinker": {
+    "name": "TCP Tunnel",
+    "description": "Expose local TCP ports through a public relay",
+    "main": "dist/renderer/index.html",
+    "preload": "dist/preload/index.js",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "TCP 隧道",
+        "description": "通过公网中继暴露本地 TCP 端口"
+      }
+    }
+  }
+}
