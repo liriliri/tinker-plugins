@@ -2,6 +2,8 @@ import { makeAutoObservable, runInAction, toJS } from 'mobx'
 import clone from 'licia/clone'
 import find from 'licia/find'
 import i18n from 'i18next'
+import isArr from 'licia/isArr'
+import LocalStore from 'licia/LocalStore'
 import trim from 'licia/trim'
 import {
   createHost,
@@ -16,6 +18,27 @@ import {
   type PortMapping,
   type TunnelStatus,
 } from '../common/types'
+
+const storage = new LocalStore('tinker-tcp-tunnel', defaultAppData())
+
+function readAppData(): AppData {
+  const hostsRaw = storage.get('hosts')
+  const hosts = (isArr(hostsRaw) ? hostsRaw : []).map((h) => createHost(h))
+  return {
+    hosts,
+    activeHostId:
+      find(hosts, (h) => h.id === storage.get('activeHostId'))?.id ||
+      hosts[0]?.id ||
+      '',
+  }
+}
+
+function writeAppData(data: AppData) {
+  storage.set({
+    hosts: data.hosts,
+    activeHostId: data.activeHostId,
+  })
+}
 
 interface HostDraft {
   id: string
@@ -39,7 +62,7 @@ export class Store {
   }
 
   init() {
-    this.appData = tcpTunnel.getAppData()
+    this.appData = readAppData()
     this.statuses = tcpTunnel.getStatuses()
     this.unsub = tcpTunnel.onStatus((hostId, status) => {
       runInAction(() => {
@@ -54,8 +77,9 @@ export class Store {
   }
 
   private persist() {
-    // contextBridge can only clone plain objects, not MobX proxies
-    this.appData = tcpTunnel.setAppData(toJS(this.appData))
+    // LocalStore JSON cannot store MobX proxies
+    writeAppData(toJS(this.appData))
+    this.appData = readAppData()
   }
 
   private patchActiveHost(partial: Partial<Host>) {

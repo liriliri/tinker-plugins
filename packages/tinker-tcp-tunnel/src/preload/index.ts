@@ -1,49 +1,14 @@
 import { contextBridge } from 'electron'
-import fs from 'node:fs'
-import path from 'node:path'
-import os from 'node:os'
 import clone from 'licia/clone'
-import FileStore from 'licia/FileStore'
-import isArr from 'licia/isArr'
-import find from 'licia/find'
 import trim from 'licia/trim'
 import {
-  createHost,
   DEFAULT_RELAY_PORT,
-  defaultAppData,
   idleStatus,
-  type AppData,
   type HostStatuses,
   type TunnelConfig,
   type TunnelStatus,
 } from '../common/types'
 import { TunnelClient } from '../client/tunnelClient'
-
-const CONFIG_DIR = path.join(os.homedir(), '.tinker-tcp-tunnel')
-const CONFIG_FILE = path.join(CONFIG_DIR, 'config.json')
-
-fs.mkdirSync(CONFIG_DIR, { recursive: true })
-
-const fileStore = new FileStore(CONFIG_FILE, defaultAppData())
-
-function readAppData(): AppData {
-  const hostsRaw = fileStore.get('hosts')
-  const hosts = (isArr(hostsRaw) ? hostsRaw : []).map((h) => createHost(h))
-  return {
-    hosts,
-    activeHostId:
-      find(hosts, (h) => h.id === fileStore.get('activeHostId'))?.id ||
-      hosts[0]?.id ||
-      '',
-  }
-}
-
-function writeAppData(data: AppData) {
-  fileStore.set({
-    hosts: data.hosts,
-    activeHostId: data.activeHostId,
-  })
-}
 
 const clients = new Map<string, TunnelClient>()
 const statusListeners = new Set<
@@ -86,15 +51,6 @@ function readStatuses(): HostStatuses {
 }
 
 const api = {
-  getAppData(): AppData {
-    return clone(readAppData())
-  },
-
-  setAppData(data: AppData): AppData {
-    writeAppData(data)
-    return clone(readAppData())
-  },
-
   getStatuses(): HostStatuses {
     return clone(readStatuses())
   },

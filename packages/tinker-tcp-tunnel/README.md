@@ -2,6 +2,8 @@
 
 A TCP tunnel plugin for [TINKER](https://github.com/liriliri/tinker), for temporarily exposing local TCP ports through a public relay.
 
+![Screenshot](https://raw.githubusercontent.com/liriliri/tinker-plugins/master/packages/tinker-tcp-tunnel/screenshot.png)
+
 ## Features
 
 - **Host list** with per-host connect / disconnect and independent status
@@ -23,7 +25,7 @@ Download and install TINKER from `https://tinker.liriliri.io/`, then run `npm i 
 3. Add port mappings for that host
 4. Click **Connect**
 
-Config is stored at `~/.tinker-tcp-tunnel/config.json`.
+Config is stored in `localStorage` via `licia/LocalStore`.
 
 ### Server (relay)
 
