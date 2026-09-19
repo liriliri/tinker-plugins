@@ -19,18 +19,14 @@ Options:
 
 Notes:
   - Token is required.
-  - Control port always binds to 127.0.0.1 (not exposed on the public NIC).
-    Reach it via SSH local forward, or run the client on the same machine.
+  - Control port binds to 0.0.0.0. Open it in the firewall so the client can connect.
   - By default, ports < 1024 and common sensitive ports (22, 3306, 3389, …)
     cannot be mapped. Use --allow-sensitive to override.
   - Control port itself cannot be mapped.
 
 Example:
   tinker-tcp-tunnel serve -p 7700 -t my-secret
-
-  # On your laptop (control via SSH):
-  ssh -L 7700:127.0.0.1:7700 user@vps
-  # Then in the plugin, relay host = 127.0.0.1, port = 7700
+  # Plugin relay host = the server's public IP, port = 7700
 `)
 }
 
@@ -78,13 +74,6 @@ async function main() {
   if (hasFlag(args, '-h', '--help')) {
     printHelp()
     process.exit(0)
-  }
-
-  if (readArg(args, '--host', '-H')) {
-    console.error(
-      'Error: --host/-H was removed; control always binds to 127.0.0.1. Use --proxy-bind for mapped ports.',
-    )
-    process.exit(1)
   }
 
   const portRaw = readArg(args, '--port', '-p')

@@ -41,7 +41,7 @@ interface ClientSession {
   listeners: Map<number, Server>
 }
 
-const CONTROL_HOST = '127.0.0.1'
+const CONTROL_HOST = '0.0.0.0'
 
 export class RelayServer {
   private server: Server | null = null

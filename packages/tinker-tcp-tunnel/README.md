@@ -8,7 +8,7 @@ A TCP tunnel plugin for [TINKER](https://github.com/liriliri/tinker), for tempor
 - **Port mappings** as separate cards (remote port → local host:port)
 - **Relay CLI** (`tinker-tcp-tunnel serve`) packaged in the same npm package
 - **Required token** auth on the server
-- **Safe defaults**: control port on `127.0.0.1` only, sensitive ports blocked, max 10 mappings per client
+- **Safe defaults**: required token, sensitive ports blocked, max 10 mappings per client
 
 ## Installation
 
@@ -27,7 +27,7 @@ Config is stored at `~/.tinker-tcp-tunnel/config.json`.
 
 ### Server (relay)
 
-The relay must run on a machine with a public IP (for example a VPS). The control port always binds to **`127.0.0.1`** and is not exposed on the public NIC; mapped ports bind to `0.0.0.0` by default.
+The relay must run on a machine with a public IP (for example a VPS). The control port and mapped ports both bind to `0.0.0.0` by default.
 
 On the VPS:
 
@@ -37,19 +37,13 @@ tinker-tcp-tunnel serve -p 7700 -t my-secret
 
 `--token` is **required**. Defaults:
 
-- Control listen: `127.0.0.1` only
+- Control listen: `0.0.0.0`
 - Mapped ports: `0.0.0.0` (change with `--proxy-bind`)
 - Block privileged ports (`< 1024`) and common sensitive ports (MySQL, RDP, Redis, …)
 - At most **10** mapped ports per client
 - Control port itself cannot be mapped
 
-Reach the control port from your laptop via SSH local forward:
-
-```bash
-ssh -L 7700:127.0.0.1:7700 user@vps
-```
-
-Then in the plugin set relay host to `127.0.0.1`, port `7700`, and the same token. Open the **mapped** remote ports in the VPS firewall; you do not need to expose the control port publicly.
+In the plugin, set the relay host to the server's public IP (or `tcp.surunzi.com`), port `7700`, and the same token. Open the control port and the mapped remote ports in the firewall.
 
 Optional flags:
 
