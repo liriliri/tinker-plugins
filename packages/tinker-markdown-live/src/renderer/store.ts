@@ -30,7 +30,6 @@ class Store {
 
   setDark(dark: boolean) {
     this.isDark = dark
-    document.documentElement.classList.toggle('dark', dark)
   }
 
   setFilePath(path: string | null) {

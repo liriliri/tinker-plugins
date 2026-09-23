@@ -77,18 +77,8 @@ const App = observer(() => {
 })
 
 ;(async function () {
-  const applyTheme = (theme: string) => {
-    document.documentElement.classList.toggle('dark', theme === 'dark')
-  }
-
-  const [language, theme] = await Promise.all([
-    tinker.getLanguage(),
-    tinker.getTheme(),
-  ])
-
+  const language = await tinker.getLanguage()
   i18n.changeLanguage(language)
-  applyTheme(theme)
-  tinker.on('changeTheme', applyTheme)
   tinker.on('changeLanguage', (lang: string) => i18n.changeLanguage(lang))
 
   const container = document.getElementById('app') as HTMLElement

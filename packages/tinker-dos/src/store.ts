@@ -47,7 +47,6 @@ class Store {
 
   private setTheme(theme: string) {
     this.isDark = theme === 'dark'
-    document.documentElement.classList.toggle('dark', this.isDark)
   }
 
   private async initTheme() {

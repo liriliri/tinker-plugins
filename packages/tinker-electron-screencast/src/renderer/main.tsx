@@ -281,19 +281,11 @@ const ElectronScreencast = observer(function ElectronScreencast() {
 })
 
 ;(async function () {
-  const applyTheme = (theme: string) => {
-    document.documentElement.classList.toggle('dark', theme === 'dark')
-  }
-  const [language, theme] = await Promise.all([
-    tinker.getLanguage(),
-    tinker.getTheme(),
-  ])
+  const language = await tinker.getLanguage()
   i18n.changeLanguage(language)
-  applyTheme(theme)
   tinker.on('changeLanguage', (lang) => {
     i18n.changeLanguage(lang)
   })
-  tinker.on('changeTheme', applyTheme)
   createRoot(document.getElementById('app') as HTMLElement).render(
     <ElectronScreencast />,
   )

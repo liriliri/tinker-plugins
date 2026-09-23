@@ -95,12 +95,6 @@ const App = observer(function App() {
 ;(async function () {
   const language = await tinker.getLanguage()
   i18n.changeLanguage(language)
-
-  const theme = await tinker.getTheme()
-  document.documentElement.classList.toggle('dark', theme === 'dark')
-  tinker.on('changeTheme', (next: string) => {
-    document.documentElement.classList.toggle('dark', next === 'dark')
-  })
   tinker.on('changeLanguage', (next: string) => {
     i18n.changeLanguage(next)
   })

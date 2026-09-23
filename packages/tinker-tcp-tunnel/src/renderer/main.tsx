@@ -42,18 +42,8 @@ function App() {
 }
 
 ;(async function () {
-  const applyTheme = (theme: string) => {
-    document.documentElement.classList.toggle('dark', theme === 'dark')
-  }
-
-  const [language, theme] = await Promise.all([
-    tinker.getLanguage(),
-    tinker.getTheme(),
-  ])
-
+  const language = await tinker.getLanguage()
   await i18n.changeLanguage(language)
-  applyTheme(theme)
-  tinker.on('changeTheme', applyTheme)
   tinker.on('changeLanguage', (lang: string) => {
     void i18n.changeLanguage(lang)
   })
