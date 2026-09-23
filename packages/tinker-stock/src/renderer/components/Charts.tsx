@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef } from 'react'
+import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import {
   dispose,
@@ -16,6 +17,7 @@ import isNaN from 'licia/isNaN'
 import map from 'licia/map'
 import sortBy from 'licia/sortBy'
 import { chartColors, tw, type ChartColors } from '../theme'
+import store from '../store'
 import type { KlineBar, KlinePeriod, MinutePoint } from '../../common/types'
 
 const MINUTE_PERIOD: Period = { span: 1, type: 'minute' }
@@ -74,10 +76,6 @@ function pointsToData(points: MinutePoint[]): KLineData[] {
     })),
     (bar) => !isNaN(bar.timestamp),
   )
-}
-
-function isDarkTheme(): boolean {
-  return document.documentElement.classList.contains('dark')
 }
 
 function buildStyles(
@@ -168,7 +166,7 @@ interface ChartCanvasProps {
   prevClose?: number
 }
 
-function ChartCanvas({
+const ChartCanvas = observer(function ChartCanvas({
   data,
   symbol,
   period,
@@ -180,16 +178,14 @@ function ChartCanvas({
   const containerRef = useRef<HTMLDivElement>(null)
   const chartRef = useRef<Chart | null>(null)
   const dataRef = useRef(data)
-  const styleRef = useRef({ candleType, areaColor })
   const overlayIdRef = useRef<string | null>(null)
   dataRef.current = data
-  styleRef.current = { candleType, areaColor }
 
   useEffect(() => {
     const el = containerRef.current
     if (!el) return
 
-    const colors = chartColors(isDarkTheme())
+    const colors = chartColors(store.isDark)
     const chart = init(el, {
       locale: i18n.language === 'zh-CN' ? 'zh-CN' : 'en-US',
       timezone: 'Asia/Shanghai',
@@ -216,19 +212,7 @@ function ChartCanvas({
     const ro = new ResizeObserver(() => chart.resize())
     ro.observe(el)
 
-    const syncTheme = () => {
-      const { candleType: type, areaColor: color } = styleRef.current
-      const next = chartColors(isDarkTheme())
-      chart.setStyles(buildStyles(next, type, color || next.up))
-    }
-    const mo = new MutationObserver(syncTheme)
-    mo.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class'],
-    })
-
     return () => {
-      mo.disconnect()
       ro.disconnect()
       dispose(el)
       chartRef.current = null
@@ -253,11 +237,11 @@ function ChartCanvas({
   }, [period])
 
   useEffect(() => {
-    const colors = chartColors(isDarkTheme())
+    const colors = chartColors(store.isDark)
     chartRef.current?.setStyles(
       buildStyles(colors, candleType, areaColor || colors.up),
     )
-  }, [candleType, areaColor])
+  }, [candleType, areaColor, store.isDark])
 
   useEffect(() => {
     chartRef.current?.resetData()
@@ -271,7 +255,7 @@ function ChartCanvas({
       overlayIdRef.current = null
     }
     if (!prevClose || isEmpty(data)) return
-    const colors = chartColors(isDarkTheme())
+    const colors = chartColors(store.isDark)
     const id = chart.createOverlay({
       name: 'priceLine',
       lock: true,
@@ -291,10 +275,10 @@ function ChartCanvas({
       },
     })
     if (typeof id === 'string') overlayIdRef.current = id
-  }, [data, prevClose])
+  }, [data, prevClose, store.isDark])
 
   return <div ref={containerRef} className="w-full h-56" />
-}
+})
 
 function EmptyChart() {
   return (
@@ -312,18 +296,18 @@ interface MinuteChartProps {
   symbol?: string
 }
 
-export function MinuteChart({
+export const MinuteChart = observer(function MinuteChart({
   points,
   prevClose,
   symbol = 'STOCK',
 }: MinuteChartProps) {
   const data = useMemo(() => pointsToData(points), [points])
   const areaColor = useMemo(() => {
-    const colors = chartColors(isDarkTheme())
+    const colors = chartColors(store.isDark)
     const last = data[data.length - 1]?.close
     if (!prevClose || isNaN(prevClose) || last == null) return colors.up
     return last >= prevClose ? colors.up : colors.down
-  }, [data, prevClose])
+  }, [data, prevClose, store.isDark])
 
   if (isEmpty(data)) return <EmptyChart />
 
@@ -339,7 +323,7 @@ export function MinuteChart({
       />
     </div>
   )
-}
+})
 
 interface KlineChartProps {
   bars: KlineBar[]

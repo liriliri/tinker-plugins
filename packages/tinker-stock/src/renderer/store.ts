@@ -85,6 +85,7 @@ export class Store {
   detailLoading = false
   detailError = ''
   tabLoading = false
+  isDark = false
 
   private debouncedSearch: (keyword: string) => void
 
@@ -95,6 +96,20 @@ export class Store {
     this.debouncedSearch = debounce((keyword: string) => {
       void this.runSearch(keyword)
     }, 350)
+    this.initTheme()
+  }
+
+  private async initTheme() {
+    const theme = await tinker.getTheme()
+    runInAction(() => {
+      this.isDark = theme === 'dark'
+    })
+    tinker.on('changeTheme', async () => {
+      const newTheme = await tinker.getTheme()
+      runInAction(() => {
+        this.isDark = newTheme === 'dark'
+      })
+    })
   }
 
   get selectedSnapshot(): QuoteSnapshot | null {
