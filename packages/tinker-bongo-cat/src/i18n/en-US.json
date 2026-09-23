@@ -1,0 +1,9 @@
+{
+  "title": "Bongo Cat",
+  "openFloat": "Pop out",
+  "closeFloat": "Dock",
+  "floatScale": "Size",
+  "floating": "Floating…",
+  "statusIdle": "Idle",
+  "statusLive": "Drumming"
+}

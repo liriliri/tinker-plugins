@@ -1,0 +1,35 @@
+{
+  "name": "tinker-bongo-cat",
+  "version": "0.1.0",
+  "description": "Bongo Cat desktop pet that reacts to keyboard and mouse",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "bongo-cat",
+    "desktop-pet"
+  ],
+  "tinker": {
+    "name": "Bongo Cat",
+    "description": "Desktop pet that reacts to keyboard and mouse input",
+    "main": "dist/index.html",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "Bongo Cat",
+        "description": "跟随键盘与鼠标敲击的桌面猫咪"
+      }
+    }
+  }
+}

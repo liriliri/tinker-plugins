@@ -216,5 +216,13 @@ All plugins in the list can be installed to TINKER by running `npm i -g tinker-x
       <th><img src="./packages/tinker-electron-screencast/screenshot.png"/></th>
       <th><img src="./packages/tinker-search-all/screenshot.png"/></th>
     </tr>
+    <tr>
+      <th><a href="./packages/tinker-tcp-tunnel/">tinker-tcp-tunnel</a></th>
+      <th><a href="./packages/tinker-bongo-cat/">tinker-bongo-cat</a></th>
+    </tr>
+    <tr>
+      <th><img src="./packages/tinker-tcp-tunnel/screenshot.png"/></th>
+      <th><img src="./packages/tinker-bongo-cat/screenshot.png"/></th>
+    </tr>
   </tbody>
 </table>

@@ -1,0 +1,9 @@
+{
+  "title": "Bongo Cat",
+  "openFloat": "弹出",
+  "closeFloat": "收回",
+  "floatScale": "大小",
+  "floating": "已弹出悬浮窗",
+  "statusIdle": "待命",
+  "statusLive": "敲击中"
+}
