@@ -1,6 +1,6 @@
 {
   "name": "tinker-tts",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Edge TTS plugin for TINKER",
   "files": [
     "dist/",

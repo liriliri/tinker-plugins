@@ -5,21 +5,20 @@ import find from 'licia/find'
 import isEmpty from 'licia/isEmpty'
 import isErr from 'licia/isErr'
 import isFinite from 'licia/isFinite'
-import LocalStore from 'licia/LocalStore'
 import map from 'licia/map'
 import toNum from 'licia/toNum'
 import trim from 'licia/trim'
 import unique from 'licia/unique'
+import { storage } from 'tinker-share/store/Base'
+import { errorMessage } from 'tinker-share/lib/util'
 import { toSignedHz, toSignedPercent } from '../common/prosody'
 import type {
   EdgeVoice,
   SynthesizeProgress,
   SynthesizeResult,
 } from '../common/types'
-import { errorMessage } from '../common/util'
 import { localeGroup, shortVoiceName } from './lib/util'
 
-const storage = new LocalStore('tinker-tts')
 const STORAGE_TEXT = 'text'
 const STORAGE_LOCALE = 'locale'
 const STORAGE_VOICE = 'voice'
@@ -59,6 +58,18 @@ class Store {
       cancelRequested: false,
       audioEl: false,
     } as Record<string, false>)
+  }
+
+  showError(msg: string) {
+    this.toastMsg = msg
+    this.toastOpen = false
+    requestAnimationFrame(() => {
+      this.toastOpen = true
+    })
+  }
+
+  setToastOpen(open: boolean) {
+    this.toastOpen = open
   }
 
   get locales(): string[] {
@@ -110,18 +121,6 @@ class Store {
 
   get volumeLabel() {
     return toSignedPercent(this.volume)
-  }
-
-  showError(msg: string) {
-    this.toastMsg = msg
-    this.toastOpen = false
-    requestAnimationFrame(() => {
-      this.toastOpen = true
-    })
-  }
-
-  setToastOpen(open: boolean) {
-    this.toastOpen = open
   }
 
   setText(value: string) {

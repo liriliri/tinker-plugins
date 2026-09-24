@@ -23,6 +23,10 @@ icon.png
 - Small, focused components.
 - Avoid unnecessary comments.
 
+## Shared code
+
+See `packages/share/README.md`.
+
 ## TINKER configuration
 
 Declare `tinker` in `package.json`:

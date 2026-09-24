@@ -1,0 +1,16 @@
+{
+  "name": "tinker-share",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Shared helpers for Tinker plugins (monorepo only)",
+  "scripts": {
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "exports": {
+    "./vite": "./src/vite.ts",
+    "./lib/util": "./src/lib/util.ts",
+    "./lib/i18n": "./src/lib/i18n.ts",
+    "./lib/renderApp": "./src/lib/renderApp.tsx",
+    "./store/Base": "./src/store/Base.ts"
+  }
+}

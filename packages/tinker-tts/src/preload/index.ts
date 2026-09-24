@@ -1,5 +1,5 @@
 import { contextBridge } from 'electron'
-import { errorMessage } from '../common/util'
+import { errorMessage } from 'tinker-share/lib/util'
 import {
   copyAudio,
   listVoices,
