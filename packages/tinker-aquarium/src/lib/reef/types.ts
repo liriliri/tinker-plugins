@@ -26,6 +26,8 @@ export const DEFAULT_REEF: ReefOptions = {
 }
 
 export const REEF_DENSITY_RANGE = [8, 160] as const
+export const REEF_SIZE_RANGE = [0.6, 1.6] as const
+export const REEF_VIBRANCE_RANGE = [0, 1.6] as const
 
 export interface ReefBuildOptions extends Partial<ReefOptions> {
   floorY: number

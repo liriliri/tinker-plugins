@@ -16,6 +16,7 @@ export const tw = {
     'flex h-7 w-7 items-center justify-center rounded-md text-white/40 transition hover:bg-white/8 hover:text-white/80 focus-visible:outline focus-visible:outline-1 focus-visible:outline-sky-300/60',
   fieldLabel: 'flex items-baseline justify-between text-xs text-white/65',
   fieldValue: 'font-mono text-[11px] text-white/35',
+  fieldRow: 'flex items-center justify-between gap-3 text-xs text-white/65',
   slider: 'aq-slider',
   actionBtn:
     'mt-1 w-full rounded-md border border-white/10 bg-white/5 px-3 py-2 text-xs text-white/80 transition hover:border-white/20 hover:bg-white/10 focus-visible:outline focus-visible:outline-1 focus-visible:outline-sky-300/60',
@@ -23,4 +24,14 @@ export const tw = {
     'rounded-md border border-white/10 bg-white/5 py-2 text-xs text-white/65 transition hover:border-white/20 hover:text-white/85 focus-visible:outline focus-visible:outline-1 focus-visible:outline-sky-300/60',
   viewBtnOn:
     'rounded-md border border-sky-300/35 bg-sky-400/15 py-2 text-xs text-white/90',
+  toggle:
+    'relative h-5 w-9 shrink-0 rounded-full transition focus-visible:outline focus-visible:outline-1 focus-visible:outline-sky-300/60',
+  toggleOn: 'bg-sky-400/45',
+  toggleOff: 'bg-white/12',
+  toggleThumb:
+    'absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white/90 transition-transform',
+  toggleThumbOn: 'translate-x-4',
+  toggleThumbOff: 'translate-x-0',
+  fpsOverlay:
+    'pointer-events-none absolute left-3 top-3 z-10 font-mono text-[11px] leading-4 tabular-nums text-white/70',
 }

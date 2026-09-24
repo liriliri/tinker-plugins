@@ -3,7 +3,6 @@ import { reaction } from 'mobx'
 import { createAquarium, type Aquarium } from '../lib/aquarium'
 import store from '../store'
 
-/** Owns the WebGL canvas and pushes reef changes from the store into three.js. */
 export default function AquariumView() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 

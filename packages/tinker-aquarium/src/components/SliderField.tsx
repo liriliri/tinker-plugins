@@ -1,7 +1,7 @@
 import toNum from 'licia/toNum'
 import { tw } from '../theme'
 
-interface Props {
+interface SliderFieldProps {
   label: string
   value: number
   min: number
@@ -19,7 +19,7 @@ export default function SliderField({
   step,
   format,
   onChange,
-}: Props) {
+}: SliderFieldProps) {
   return (
     <label className="flex flex-col gap-1.5">
       <span className={tw.fieldLabel}>

@@ -1,5 +1,4 @@
 import { makeAutoObservable } from 'mobx'
-import LocalStore from 'licia/LocalStore'
 import isArr from 'licia/isArr'
 import isStr from 'licia/isStr'
 import isNum from 'licia/isNum'
@@ -14,6 +13,7 @@ import rgbToHsl from 'licia/rgbToHsl'
 import isBool from 'licia/isBool'
 import isObj from 'licia/isObj'
 import cloneDeep from 'licia/cloneDeep'
+import BaseStore, { storage } from 'tinker-share/store/Base'
 import { DEFAULT_REEF, type ReefOptions } from './lib/reef/types'
 import {
   DEFAULT_ANGELFISH_COUNT,
@@ -35,7 +35,6 @@ import {
   type PerfStats,
 } from './types'
 
-const storage = new LocalStore('tinker-aquarium')
 const STORAGE_REEF = 'reef'
 const STORAGE_VIEW = 'view'
 const STORAGE_FISH = 'fish'
@@ -101,7 +100,7 @@ function readView(value: unknown): CameraView | null {
   return cloneView(view as CameraView)
 }
 
-class Store {
+class Store extends BaseStore {
   reef: ReefOptions = { ...DEFAULT_REEF }
   fishCount = DEFAULT_FISH_COUNT
   angelfishCount = DEFAULT_ANGELFISH_COUNT
@@ -118,6 +117,7 @@ class Store {
   renderScale = DEFAULT_RENDER_SCALE
 
   constructor() {
+    super()
     makeAutoObservable(this)
     this.loadReef()
     this.loadFish()

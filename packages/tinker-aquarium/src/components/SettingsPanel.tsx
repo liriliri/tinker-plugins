@@ -1,6 +1,7 @@
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import { X } from 'lucide-react'
+import className from 'licia/className'
 import store from '../store'
 import { tw } from '../theme'
 import CameraSection from './CameraSection'
@@ -9,19 +10,16 @@ import FishSection from './FishSection'
 import LightSection from './LightSection'
 import ReefSection from './ReefSection'
 
-/**
- * Generic settings shell. Each feature owns a section; drop more of them into
- * the body as they appear (water, lighting, …) without reshaping the panel.
- */
 const SettingsPanel = observer(() => {
   const { t } = useTranslation()
   const { panelOpen } = store
 
   return (
     <aside
-      className={`${tw.panel} ${
-        panelOpen ? 'translate-x-0' : 'translate-x-full'
-      }`}
+      className={className(
+        tw.panel,
+        panelOpen ? 'translate-x-0' : 'translate-x-full',
+      )}
       aria-hidden={!panelOpen}
     >
       <header className={tw.panelHeader}>

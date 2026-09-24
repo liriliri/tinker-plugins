@@ -3,26 +3,15 @@ import { useTranslation } from 'react-i18next'
 import store from '../store'
 import { tw } from '../theme'
 import { LIGHTING_BRIGHTNESS_RANGE } from '../types'
+import {
+  denormalizeSlider,
+  formatHue,
+  formatPercent,
+  normalizeSlider,
+  SLIDER_MAX,
+  SLIDER_MIN,
+} from '../lib/slider'
 import SliderField from './SliderField'
-
-const SLIDER_MIN = 0
-const SLIDER_MAX = 100
-
-function formatPercent(value: number) {
-  return `${Math.round(value)}%`
-}
-
-function formatHue(value: number) {
-  return `${Math.round(value)}°`
-}
-
-function normalize(value: number, min: number, max: number) {
-  return ((value - min) / (max - min)) * SLIDER_MAX
-}
-
-function denormalize(value: number, min: number, max: number) {
-  return min + (value / SLIDER_MAX) * (max - min)
-}
 
 const LightSection = observer(() => {
   const { t } = useTranslation()
@@ -53,14 +42,17 @@ const LightSection = observer(() => {
       />
       <SliderField
         label={t('brightness')}
-        value={normalize(lighting.brightness, ...LIGHTING_BRIGHTNESS_RANGE)}
+        value={normalizeSlider(
+          lighting.brightness,
+          ...LIGHTING_BRIGHTNESS_RANGE,
+        )}
         min={SLIDER_MIN}
         max={SLIDER_MAX}
         step={1}
         format={formatPercent}
         onChange={(value) =>
           store.setLighting({
-            brightness: denormalize(value, ...LIGHTING_BRIGHTNESS_RANGE),
+            brightness: denormalizeSlider(value, ...LIGHTING_BRIGHTNESS_RANGE),
           })
         }
       />
