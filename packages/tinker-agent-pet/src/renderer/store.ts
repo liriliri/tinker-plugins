@@ -2,7 +2,10 @@ import { makeAutoObservable, runInAction } from 'mobx'
 import { t } from 'i18next'
 import isArr from 'licia/isArr'
 import isEmpty from 'licia/isEmpty'
+import isErr from 'licia/isErr'
 import naturalSort from 'licia/naturalSort'
+import BaseStore from 'tinker-share/store/Base'
+import { errorMessage } from 'tinker-share/lib/util'
 import {
   AGENTS,
   HOOK_TYPES,
@@ -213,7 +216,7 @@ class AgentHookStore {
   }
 }
 
-export class Store {
+export class Store extends BaseStore {
   readonly mcp = createMcpApi(() => this)
 
   overlay: PetOverlay | null = null
@@ -243,6 +246,7 @@ export class Store {
   private searchTimer: number | null = null
 
   constructor() {
+    super()
     makeAutoObservable(
       this,
       {
@@ -364,8 +368,9 @@ export class Store {
     } catch (error) {
       if (sequence !== this.requestSequence) return
       runInAction(() => {
-        this.errorMessage =
-          error instanceof Error ? error.message : t('loadPetsFailed')
+        this.errorMessage = isErr(error)
+          ? errorMessage(error)
+          : t('loadPetsFailed')
       })
     } finally {
       if (sequence === this.requestSequence) {
@@ -400,8 +405,9 @@ export class Store {
       await this.refreshLocalState()
     } catch (error) {
       runInAction(() => {
-        this.errorMessage =
-          error instanceof Error ? error.message : t('downloadFailed')
+        this.errorMessage = isErr(error)
+          ? errorMessage(error)
+          : t('downloadFailed')
       })
       this.showError(this.errorMessage)
     } finally {
@@ -431,9 +437,7 @@ export class Store {
       )
       this.detailPet = null
     } catch (error) {
-      this.showError(
-        error instanceof Error ? error.message : t('enablePetFailed'),
-      )
+      this.showError(isErr(error) ? errorMessage(error) : t('enablePetFailed'))
     }
   }
 
@@ -493,7 +497,7 @@ export class Store {
       )
     } catch (error) {
       this.showError(
-        error instanceof Error ? error.message : t('saveSettingsFailed'),
+        isErr(error) ? errorMessage(error) : t('saveSettingsFailed'),
       )
     }
   }

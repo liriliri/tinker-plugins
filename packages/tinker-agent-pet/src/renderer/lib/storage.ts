@@ -2,11 +2,10 @@ import clamp from 'licia/clamp'
 import isFinite from 'licia/isFinite'
 import isObj from 'licia/isObj'
 import isStr from 'licia/isStr'
-import LocalStore from 'licia/LocalStore'
 import toNum from 'licia/toNum'
+import { storage } from 'tinker-share/store/Base'
 import { DEFAULT_STORAGE, type PetStorage } from '../../common/types'
 
-const localStore = new LocalStore('tinker-agent-pet')
 const STORAGE_KEY = 'runtimeConfig'
 
 const SLUG_RE = /^[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?$/
@@ -39,13 +38,13 @@ function normalizeStorage(value: unknown): PetStorage {
 }
 
 export function getRuntimeConfig(): PetStorage {
-  const saved = localStore.get(STORAGE_KEY)
+  const saved = storage.get(STORAGE_KEY)
   if (saved == null) return { ...DEFAULT_STORAGE }
   return normalizeStorage(saved)
 }
 
 export function saveRuntimeConfig(value: PetStorage): PetStorage {
   const config = normalizeStorage(value)
-  localStore.set(STORAGE_KEY, config)
+  storage.set(STORAGE_KEY, config)
   return config
 }
