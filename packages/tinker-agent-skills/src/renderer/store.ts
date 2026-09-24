@@ -1,5 +1,6 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 import debounce from 'licia/debounce'
+import BaseStore from 'tinker-share/store/Base'
 import type {
   MarketplaceSkill,
   RepoSkillCandidate,
@@ -10,7 +11,7 @@ import { filterSkills } from './lib/filterSkills'
 import { toErrorKey } from './lib/installError'
 import { createMcpApi } from './mcp'
 
-export class Store {
+export class Store extends BaseStore {
   readonly mcp = createMcpApi(() => this)
   skills: SkillInfo[] = []
   query: string = ''
@@ -56,6 +57,7 @@ export class Store {
   private debouncedMarketplaceSearch: (query: string) => void
 
   constructor() {
+    super()
     makeAutoObservable(this, {
       mcp: false,
     })

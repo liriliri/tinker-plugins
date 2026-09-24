@@ -1,7 +1,6 @@
 import contain from 'licia/contain'
-import isErr from 'licia/isErr'
 import startWith from 'licia/startWith'
-import toStr from 'licia/toStr'
+import { errorMessage } from 'tinker-share/lib/util'
 
 const INSTALL_ERROR_KEYS = [
   'errNoSkillMd',
@@ -27,7 +26,7 @@ const INSTALL_ERROR_KEYS = [
 
 /** Map thrown errors (including Electron-wrapped messages) to i18n keys. */
 export function toErrorKey(err: unknown, fallback: string): string {
-  const message = isErr(err) ? err.message : toStr(err)
+  const message = errorMessage(err)
   if (contain(INSTALL_ERROR_KEYS, message) || startWith(message, 'err')) {
     return message
   }
