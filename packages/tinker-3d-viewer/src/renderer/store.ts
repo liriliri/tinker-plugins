@@ -5,12 +5,13 @@ import flatten from 'licia/flatten'
 import isBool from 'licia/isBool'
 import isEmpty from 'licia/isEmpty'
 import isErr from 'licia/isErr'
-import LocalStore from 'licia/LocalStore'
 import map from 'licia/map'
 import some from 'licia/some'
 import splitPath from 'licia/splitPath'
 import toArr from 'licia/toArr'
 import i18n from 'i18next'
+import BaseStore, { storage } from 'tinker-share/store/Base'
+import { errorMessage } from 'tinker-share/lib/util'
 import { prepareModel, sourceFormatLabel } from './lib/convert'
 import {
   getBaseName,
@@ -34,7 +35,6 @@ import {
   type ViewMode,
 } from './types'
 
-const storage = new LocalStore('tinker-3d-viewer')
 const STORAGE_AUTO_ROTATE = 'autoRotate'
 const STORAGE_VIEW_MODE = 'viewMode'
 const STORAGE_WIREFRAME_COLOR = 'wireframeColor'
@@ -64,7 +64,7 @@ function loadMatcapPreset(): MatcapPresetId {
     : DEFAULT_MATCAP_PRESET
 }
 
-export class Store {
+export class Store extends BaseStore {
   readonly mcp = createMcpApi(() => this)
 
   status: LoadStatus = 'idle'
@@ -88,6 +88,7 @@ export class Store {
   private gltfPackage: GltfPackage | null = null
 
   constructor() {
+    super()
     makeAutoObservable(this, {
       mcp: false,
       revokePrepared: false,
@@ -182,7 +183,7 @@ export class Store {
       )
       await this.loadFiles(mergeFilesByName(flatten(groups)))
     } catch (err) {
-      this.showError(isErr(err) ? err.message : 'openFailed')
+      this.showError(isErr(err) ? errorMessage(err) : 'openFailed')
     }
   }
 
@@ -198,7 +199,7 @@ export class Store {
       }
       await this.loadFiles(files)
     } catch (err) {
-      throw new Error(isErr(err) ? err.message : 'openFailed')
+      throw new Error(isErr(err) ? errorMessage(err) : 'openFailed')
     }
 
     if (this.status !== 'ready' || !this.info) {
@@ -234,7 +235,7 @@ export class Store {
 
       await this.loadFiles(files)
     } catch (err) {
-      this.showError(isErr(err) ? err.message : 'openFailed')
+      this.showError(isErr(err) ? errorMessage(err) : 'openFailed')
     }
   }
 
@@ -271,7 +272,7 @@ export class Store {
     } catch (err) {
       runInAction(() => {
         this.status = hadModel ? 'ready' : 'idle'
-        this.showError(isErr(err) ? err.message : 'loadFailed')
+        this.showError(isErr(err) ? errorMessage(err) : 'loadFailed')
       })
     }
   }
