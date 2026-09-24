@@ -5,11 +5,12 @@ html.dark {
   color-scheme: dark;
 }
 
-html,
-body,
-#root {
-  height: 100%;
-  margin: 0;
+@layer base {
+  html,
+  body,
+  #app {
+    @apply h-full m-0;
+  }
 }
 
 @keyframes toast-in {
@@ -32,14 +33,6 @@ body,
     opacity: 0;
     transform: translateX(100%);
   }
-}
-
-.animate-toast-in {
-  animation: toast-in 0.25s ease-out;
-}
-
-.animate-toast-out {
-  animation: toast-out 0.2s ease-in;
 }
 
 .toast-root[data-state='open'] {

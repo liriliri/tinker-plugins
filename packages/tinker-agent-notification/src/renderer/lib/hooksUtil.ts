@@ -1,5 +1,6 @@
 import startWith from 'licia/startWith'
 import trim from 'licia/trim'
+import type { Hook } from '../types'
 
 export function extractSoundPath(command: string): string | null {
   if (startWith(command, 'afplay ')) {
@@ -12,12 +13,7 @@ export function extractSoundPath(command: string): string | null {
   return null
 }
 
-interface HookLike {
-  type?: string
-  command?: string
-}
-
-export function isSoundHook(hook: HookLike): boolean {
+export function isSoundHook(hook: Hook): boolean {
   return (
     hook.type === 'command' &&
     typeof hook.command === 'string' &&

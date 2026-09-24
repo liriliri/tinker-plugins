@@ -1,14 +1,27 @@
-import type { HookTypeDef } from '../types'
 import isArr from 'licia/isArr'
+import type {
+  Hook,
+  HookConfigEntry,
+  HookEntry,
+  HookTypeDef,
+  Settings,
+} from '../types'
 import { extractSoundPath, isSoundHook } from './hooksUtil'
+
+function isHookEntry(entry: HookConfigEntry): entry is HookEntry {
+  return 'hooks' in entry || 'matcher' in entry
+}
 
 export interface HooksFormat {
   getEventName(hookDef: HookTypeDef): string
-  filterEntries(entries: any[], hookDef: HookTypeDef): any[]
-  detectSound(entries: any[], hookDef: HookTypeDef): string | null
-  buildEntry(command: string, hookDef: HookTypeDef): any
+  filterEntries(
+    entries: HookConfigEntry[],
+    hookDef: HookTypeDef,
+  ): HookConfigEntry[]
+  detectSound(entries: HookConfigEntry[], hookDef: HookTypeDef): string | null
+  buildEntry(command: string, hookDef: HookTypeDef): HookConfigEntry
   filterHookTypes(all: HookTypeDef[]): HookTypeDef[]
-  initialSettings(): Record<string, any>
+  initialSettings(): Partial<Settings>
 }
 
 const defaultFormat: HooksFormat = {
@@ -17,7 +30,8 @@ const defaultFormat: HooksFormat = {
   },
 
   filterEntries(entries, hookDef) {
-    return entries.filter((entry: any) => {
+    return entries.filter((entry) => {
+      if (!isHookEntry(entry)) return true
       if (hookDef.matcher && entry.matcher !== hookDef.matcher) return true
       if (!hookDef.matcher && entry.matcher) return true
       if (!entry.hooks) return true
@@ -27,6 +41,7 @@ const defaultFormat: HooksFormat = {
 
   detectSound(entries, hookDef) {
     for (const entry of entries) {
+      if (!isHookEntry(entry)) continue
       if (hookDef.matcher && entry.matcher !== hookDef.matcher) continue
       if (!isArr(entry.hooks)) continue
       for (const hook of entry.hooks) {
@@ -37,7 +52,7 @@ const defaultFormat: HooksFormat = {
   },
 
   buildEntry(command, hookDef) {
-    const entry: any = { hooks: [{ type: 'command', command }] }
+    const entry: HookEntry = { hooks: [{ type: 'command', command }] }
     if (hookDef.matcher) entry.matcher = hookDef.matcher
     return entry
   },
@@ -56,18 +71,20 @@ const cursorFormat: HooksFormat = {
     return hookDef.cursorEvent || hookDef.event
   },
 
-  filterEntries(entries, _hookDef) {
-    return entries.filter((entry: any) => !isSoundHook(entry))
+  filterEntries(entries) {
+    return entries.filter((entry) => !isSoundHook(entry as Hook))
   },
 
-  detectSound(entries, _hookDef) {
+  detectSound(entries) {
     for (const entry of entries) {
-      if (isSoundHook(entry)) return extractSoundPath(entry.command!)
+      if (isSoundHook(entry as Hook)) {
+        return extractSoundPath((entry as Hook).command!)
+      }
     }
     return null
   },
 
-  buildEntry(command, _hookDef) {
+  buildEntry(command) {
     return { command, type: 'command' }
   },
 

@@ -1,10 +1,15 @@
 import className from 'licia/className'
-import { observer } from 'mobx-react-lite'
 import { tw } from '../theme'
 
-const ToggleSwitch = observer(
-  ({ checked, onChange }: { checked: boolean; onChange: () => void }) => (
+interface ToggleSwitchProps {
+  checked: boolean
+  onChange: () => void
+}
+
+function ToggleSwitch({ checked, onChange }: ToggleSwitchProps) {
+  return (
     <button
+      type="button"
       className={className(
         'relative w-9 h-5 rounded-full transition-colors duration-200 cursor-pointer',
         'focus:outline-none',
@@ -21,7 +26,7 @@ const ToggleSwitch = observer(
         )}
       />
     </button>
-  ),
-)
+  )
+}
 
 export default ToggleSwitch

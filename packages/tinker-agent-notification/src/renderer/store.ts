@@ -1,25 +1,17 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 import { t } from 'i18next'
 import endWith from 'licia/endWith'
+import find from 'licia/find'
+import isArr from 'licia/isArr'
 import isEmpty from 'licia/isEmpty'
 import isWindows from 'licia/isWindows'
-import isArr from 'licia/isArr'
+import map from 'licia/map'
 import naturalSort from 'licia/naturalSort'
-import type { HookTypeDef } from './types'
+import some from 'licia/some'
+import BaseStore from 'tinker-share/store/Base'
 import type { HooksFormat } from './lib/hooksFormat'
 import { resolveFormat } from './lib/hooksFormat'
-
-interface SoundPack {
-  id: string
-}
-
-export const soundPacks: SoundPack[] = [
-  { id: 'default' },
-  { id: 'young-girl' },
-  { id: 'elegant-lady' },
-  { id: 'gentle-lord' },
-  { id: 'graceful-beauty' },
-]
+import type { HookType, HookTypeDef, Settings } from './types'
 
 interface AgentDef {
   id: string
@@ -29,6 +21,14 @@ interface AgentDef {
   requireDir?: boolean
   format?: 'default' | 'cursor'
 }
+
+export const soundPackIds = [
+  'default',
+  'young-girl',
+  'elegant-lady',
+  'gentle-lord',
+  'graceful-beauty',
+] as const
 
 const agents: AgentDef[] = [
   { id: 'codebuddy', name: 'CodeBuddy', configDir: '.codebuddy' },
@@ -65,15 +65,7 @@ const agents: AgentDef[] = [
   },
 ]
 
-type HookType = 'ready' | 'work' | 'stop' | 'permission'
-
-export const hookTypes: {
-  id: HookType
-  file: string
-  event: string
-  matcher?: string
-  cursorEvent?: string
-}[] = [
+const hookTypes: HookTypeDef[] = [
   {
     id: 'ready',
     file: 'ready.mp3',
@@ -95,21 +87,6 @@ export const hookTypes: {
   },
 ]
 
-interface Hook {
-  type: string
-  command?: string
-}
-
-interface HookEntry {
-  matcher?: string
-  hooks?: Hook[]
-}
-
-interface Settings {
-  version?: number
-  hooks?: Record<string, HookEntry[]>
-}
-
 function buildPlayCommand(soundPath: string): string {
   if (isWindows) {
     return `powershell -ExecutionPolicy Bypass -File "${store.playScript}" "${soundPath}"`
@@ -117,7 +94,7 @@ function buildPlayCommand(soundPath: string): string {
   return `afplay "${soundPath}"`
 }
 
-export class AgentStore {
+class AgentStore {
   agent: AgentDef
   settingsPath: string = ''
   selectedPack: string = 'default'
@@ -135,7 +112,6 @@ export class AgentStore {
   }
   isConfigured: boolean = false
   saving: boolean = false
-  message: string = ''
 
   constructor(agent: AgentDef) {
     this.agent = agent
@@ -152,7 +128,7 @@ export class AgentStore {
     return resolveFormat(this.agent.format)
   }
 
-  get enabledHookTypes(): typeof hookTypes {
+  get enabledHookTypes(): HookTypeDef[] {
     return this.hooksFormat.filterHookTypes(hookTypes)
   }
 
@@ -160,21 +136,18 @@ export class AgentStore {
     if (this.selectedPack === 'custom') {
       return this.customSoundPaths[hookType]
     }
-    const hookDef = hookTypes.find((h) => h.id === hookType)!
+    const hookDef = find(hookTypes, (h) => h.id === hookType)!
     return `${store.soundsDir}/${this.selectedPack}/${hookDef.file}`
   }
 
   get canApply(): boolean {
     if (this.selectedPack === 'custom') {
       const hookTypesToCheck = this.enabledHookTypes
-      const hasAnyEnabled = hookTypesToCheck.some(
-        (h) => this.enabledHooks[h.id],
+      if (!some(hookTypesToCheck, (h) => this.enabledHooks[h.id])) return false
+      return !some(
+        hookTypesToCheck,
+        (h) => this.enabledHooks[h.id] && !this.customSoundPaths[h.id],
       )
-      if (!hasAnyEnabled) return false
-      for (const h of hookTypesToCheck) {
-        if (this.enabledHooks[h.id] && !this.customSoundPaths[h.id])
-          return false
-      }
     }
     return true
   }
@@ -195,11 +168,11 @@ export class AgentStore {
           found = true
           runInAction(() => {
             this.enabledHooks[hookDef.id] = true
-            const pack = soundPacks.find((p) =>
-              endWith(soundPath, `/${p.id}/${hookDef.file}`),
+            const packId = find(soundPackIds, (id) =>
+              endWith(soundPath, `/${id}/${hookDef.file}`),
             )
-            if (pack) {
-              this.selectedPack = pack.id
+            if (packId) {
+              this.selectedPack = packId
             } else {
               this.selectedPack = 'custom'
               this.customSoundPaths[hookDef.id] = soundPath
@@ -239,17 +212,14 @@ export class AgentStore {
 
   setSelectedPack(id: string) {
     this.selectedPack = id
-    this.message = ''
   }
 
   toggleHook(hookType: HookType) {
     this.enabledHooks[hookType] = !this.enabledHooks[hookType]
-    this.message = ''
   }
 
-  async applyConfig() {
+  async applyConfig(): Promise<boolean> {
     this.saving = true
-    this.message = ''
 
     try {
       let settings: Settings = {}
@@ -304,13 +274,11 @@ export class AgentStore {
 
       runInAction(() => {
         this.isConfigured = true
-        this.message = t('applySuccess')
       })
+      return true
     } catch (err) {
-      runInAction(() => {
-        this.message = t('applyFailed')
-      })
       console.error('Failed to write settings:', err)
+      return false
     } finally {
       runInAction(() => {
         this.saving = false
@@ -318,9 +286,8 @@ export class AgentStore {
     }
   }
 
-  async removeConfig() {
+  async removeConfig(): Promise<boolean> {
     this.saving = true
-    this.message = ''
 
     try {
       const content = await tinker.readFile(this.settingsPath, 'utf-8')
@@ -345,7 +312,7 @@ export class AgentStore {
         if (isEmpty(settings.hooks)) {
           delete settings.hooks
           for (const key of Object.keys(this.hooksFormat.initialSettings())) {
-            delete (settings as any)[key]
+            delete settings[key as keyof Settings]
           }
         }
       }
@@ -358,13 +325,11 @@ export class AgentStore {
 
       runInAction(() => {
         this.isConfigured = false
-        this.message = t('removeSuccess')
       })
+      return true
     } catch (err) {
-      runInAction(() => {
-        this.message = t('removeFailed')
-      })
       console.error('Failed to update settings:', err)
+      return false
     } finally {
       runInAction(() => {
         this.saving = false
@@ -373,14 +338,15 @@ export class AgentStore {
   }
 }
 
-class Store {
+class Store extends BaseStore {
   soundsDir: string = ''
   playScript: string = ''
   selectedAgentId: string = agents[0].id
   agentStores: Map<string, AgentStore> = new Map()
-  visibleAgentIds: Set<string> = new Set(agents.map((a) => a.id))
+  visibleAgentIds: Set<string> = new Set(map(agents, (a) => a.id))
 
   constructor() {
+    super()
     makeAutoObservable(this)
     for (const agent of agents) {
       this.agentStores.set(agent.id, new AgentStore(agent))

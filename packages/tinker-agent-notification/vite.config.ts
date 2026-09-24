@@ -1,5 +1,5 @@
-import { defineConfig, type Plugin } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineRendererConfig } from 'tinker-share/vite'
+import type { Plugin } from 'vite'
 import path from 'node:path'
 import fs from 'node:fs'
 import fsp from 'node:fs/promises'
@@ -40,32 +40,16 @@ function soundsAssets(soundsDir: string, outSoundsDir: () => string): Plugin {
   }
 }
 
-export default defineConfig(() => {
-  const pkg = require(path.join(process.cwd(), 'package.json'))
-  const outDir = path.dirname(pkg.tinker.main)
-  const soundsDir = path.resolve(process.cwd(), 'sounds')
+const soundsDir = path.resolve(process.cwd(), 'sounds')
 
-  return {
-    base: '',
-    publicDir: false,
-    plugins: [
-      react(),
-      soundsAssets(soundsDir, () => path.join(outDir, '..', 'sounds')),
-    ],
-    build: {
-      outDir,
-      rollupOptions: {
-        input: {
-          app: 'index.html',
-        },
-      },
-    },
-    css: {
-      preprocessorOptions: {
-        scss: {
-          api: 'modern',
-        },
-      },
-    },
-  }
+export default defineRendererConfig({
+  publicDir: false,
+  plugins: [
+    soundsAssets(soundsDir, () => {
+      const pkg = JSON.parse(
+        fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf-8'),
+      ) as { tinker: { main: string } }
+      return path.join(path.dirname(pkg.tinker.main), '..', 'sounds')
+    }),
+  ],
 })
