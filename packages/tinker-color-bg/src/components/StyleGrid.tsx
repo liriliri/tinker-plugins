@@ -1,6 +1,7 @@
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import className from 'licia/className'
+import map from 'licia/map'
 import store from '../store'
 import { BG_STYLES, styleLabelKey } from '../lib/backgrounds'
 import { tw } from '../theme'
@@ -10,7 +11,7 @@ const StyleGrid = observer(() => {
 
   return (
     <div className="grid grid-cols-2 gap-2">
-      {BG_STYLES.map((item) => {
+      {map(BG_STYLES, (item) => {
         const active = store.style === item.id
         const label = t(styleLabelKey(item.id))
         return (

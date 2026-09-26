@@ -1,6 +1,4 @@
-import { createRoot } from 'react-dom/client'
-import i18n from 'i18next'
-import { initReactI18next } from 'react-i18next'
+import renderApp from 'tinker-share/lib/renderApp'
 import ControlPanel from './components/ControlPanel'
 import ParamsPanel from './components/ParamsPanel'
 import Preview from './components/Preview'
@@ -19,21 +17,4 @@ function App() {
   )
 }
 
-i18n.use(initReactI18next).init({
-  resources: {
-    'en-US': { translation: enUS },
-    'zh-CN': { translation: zhCN },
-  },
-  lng: 'en-US',
-  fallbackLng: 'en-US',
-  interpolation: {
-    escapeValue: false,
-  },
-})
-;(async function () {
-  const language = await tinker.getLanguage()
-  i18n.changeLanguage(language)
-
-  const container = document.getElementById('app') as HTMLElement
-  createRoot(container).render(<App />)
-})()
+void renderApp(App, { 'en-US': enUS, 'zh-CN': zhCN })

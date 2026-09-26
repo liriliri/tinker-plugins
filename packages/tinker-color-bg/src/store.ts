@@ -1,14 +1,14 @@
 import { makeAutoObservable } from 'mobx'
-import LocalStore from 'licia/LocalStore'
 import clone from 'licia/clone'
 import extend from 'licia/extend'
-import random from 'licia/random'
-import isArr from 'licia/isArr'
-import isNum from 'licia/isNum'
-import isBool from 'licia/isBool'
-import isStr from 'licia/isStr'
-import isObj from 'licia/isObj'
 import every from 'licia/every'
+import isArr from 'licia/isArr'
+import isBool from 'licia/isBool'
+import isNum from 'licia/isNum'
+import isObj from 'licia/isObj'
+import isStr from 'licia/isStr'
+import random from 'licia/random'
+import BaseStore, { storage } from 'tinker-share/store/Base'
 import {
   defaultPaletteForStyle,
   getDefaultOptions,
@@ -18,7 +18,6 @@ import {
 import { exportPng, toPositiveInt } from './lib/util'
 import type { BgStyle, PaletteKey } from './types'
 
-const storage = new LocalStore('tinker-color-bg')
 const STORAGE_SETTINGS = 'settings'
 
 interface SavedSettings {
@@ -31,7 +30,7 @@ interface SavedSettings {
   exportHeight: number
 }
 
-class Store {
+class Store extends BaseStore {
   style: BgStyle = 'aesthetic-fluid'
   colors: string[] = clone(PALETTES.vivid)
   seed = 1000
@@ -43,6 +42,7 @@ class Store {
   stylePanelOpen = false
 
   constructor() {
+    super()
     makeAutoObservable(this)
     this.loadSettings()
   }

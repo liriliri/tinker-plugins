@@ -2,6 +2,7 @@ import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import { Dices } from 'lucide-react'
 import className from 'licia/className'
+import map from 'licia/map'
 import { tw } from '../theme'
 import store from '../store'
 import { getStyleOptions } from '../lib/backgrounds'
@@ -50,7 +51,7 @@ const OptionControls = observer(() => {
         </span>
       </label>
 
-      {options.map((opt) => (
+      {map(options, (opt) => (
         <div key={opt.name} className="flex flex-col gap-1.5">
           <div className="flex items-center justify-between">
             <span className={className('text-xs', tw.text.secondary)}>

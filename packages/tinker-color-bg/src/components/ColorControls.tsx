@@ -1,6 +1,7 @@
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import className from 'licia/className'
+import map from 'licia/map'
 import { tw } from '../theme'
 import store from '../store'
 import { PALETTE_KEYS, PALETTES } from '../lib/backgrounds'
@@ -11,7 +12,7 @@ const ColorControls = observer(() => {
   return (
     <div className="flex flex-col gap-2.5">
       <div className="flex flex-col gap-1">
-        {PALETTE_KEYS.map((key) => (
+        {map(PALETTE_KEYS, (key) => (
           <button
             key={key}
             type="button"
@@ -20,7 +21,7 @@ const ColorControls = observer(() => {
             title={t(`palette.${key}`)}
           >
             <div className="flex gap-1 flex-1 min-w-0">
-              {PALETTES[key].slice(0, 5).map((hex, i) => (
+              {map(PALETTES[key].slice(0, 5), (hex, i) => (
                 <span
                   key={`${key}-${i}`}
                   className={className(tw.swatch, 'shrink-0')}
@@ -36,7 +37,7 @@ const ColorControls = observer(() => {
       </div>
 
       <div className="flex flex-wrap gap-2 px-1">
-        {store.colors.map((color, index) => (
+        {map(store.colors, (color, index) => (
           <label key={index} className={tw.colorDot} title={color}>
             <span
               className="absolute inset-0"
