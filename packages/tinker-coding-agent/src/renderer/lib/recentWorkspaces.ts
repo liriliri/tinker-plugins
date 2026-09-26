@@ -1,11 +1,10 @@
-import LocalStore from 'licia/LocalStore'
 import concat from 'licia/concat'
 import filter from 'licia/filter'
 import isArr from 'licia/isArr'
 import isStr from 'licia/isStr'
 import unique from 'licia/unique'
+import { storage } from 'tinker-share/store/Base'
 
-const storage = new LocalStore('tinker-coding-agent')
 const STORAGE_RECENT = 'recentWorkspaces'
 const MAX_RECENT = 5
 

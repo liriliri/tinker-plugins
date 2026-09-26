@@ -42,11 +42,13 @@ Report each hit as `[Category] path:line — …`.
 
 ### 6. Unused i18n keys
 - Collect keys from both `en-US.json` and `zh-CN.json` under `src/**/i18n/` (or `src/**/i18n/locales/`)
-- Grep all `.ts` / `.tsx` for `t('…')` / `t("…")` (including nested keys like `tabs.settings`)
-- A key is unused only if it appears in **no** `t()` call across the plugin — then remove from **both** locale files
+- A key is **in use** if it appears anywhere in `.ts` / `.tsx` as:
+  - `t('…')` / `t("…")` (including nested keys like `tabs.settings`)
+  - a string literal matching the key (error codes / toast keys: `showError('folderNotFound')`, `throw new Error('errorTextOnly')`, `i18n.exists(msg)` + `t(msg)`)
+- Remove from **both** locale files only when the key string appears in **no** source file
 
 ### 7. Share reuse
-Local code that duplicates `tinker-share` (`renderApp`, vite helpers, `storage`, `errorMessage`) → replace with the share export. Drop thin wrappers that only re-export share with no added behavior.
+Local code that duplicates `tinker-share` (`renderApp`, vite helpers, `storage`, `errorMessage`) → replace with the share export. Drop thin wrappers that only re-export share with no added behavior. Hand-rolled ESM preload configs → `definePreloadConfig({ format: 'es', external: [...] })`.
 
 ## Output
 

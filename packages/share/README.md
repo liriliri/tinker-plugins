@@ -25,11 +25,25 @@ export default defineRendererConfig()
 ```
 
 ```ts
-// vite.preload.ts
+// vite.preload.ts — CJS (`tinker.preload`: dist/preload/index.js)
 import { definePreloadConfig } from 'tinker-share/vite'
 
 export default definePreloadConfig({ external: ['node-edge-tts'] })
 ```
+
+```ts
+// vite.preload.ts — ESM (`tinker.preload`: dist/preload/index.mjs)
+import { definePreloadConfig } from 'tinker-share/vite'
+
+export default definePreloadConfig({
+  format: 'es',
+  external: ['ccusage', 'ccusage/data-loader'],
+})
+```
+
+Use `format: 'es'` (not `overrides.build.lib.formats`) — Vite’s `mergeConfig` concatenates `formats` arrays, which would emit both CJS and ESM.
+
+List each preload Node/npm runtime dep explicitly in `external` (share already adds `electron` + Node builtins). Do not auto-collect from `package.json`.
 
 ## Bootstrap
 
@@ -41,6 +55,16 @@ import zhCN from './i18n/zh-CN.json'
 import './index.scss'
 
 renderApp(App, { 'en-US': enUS, 'zh-CN': zhCN })
+```
+
+ESM preload (`index.mjs`) loads asynchronously. Wait for the bridge before rendering:
+
+```ts
+import waitUntil from 'licia/waitUntil'
+import renderApp from 'tinker-share/lib/renderApp'
+
+await waitUntil(() => typeof myApi !== 'undefined')
+await renderApp(App, { 'en-US': enUS, 'zh-CN': zhCN })
 ```
 
 ## Store

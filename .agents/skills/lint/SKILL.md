@@ -31,9 +31,15 @@ Report each hit as `[Category] path:line — …`.
 ### 3. Share
 Prefer `tinker-share` (see `packages/share/README.md`); flag local copies of:
 - `renderApp` — no hand-rolled `i18n.init` + `createRoot`
-- `defineRendererConfig` / `definePreloadConfig` (preload Node deps via `external: [...]`)
+- `defineRendererConfig` / `definePreloadConfig` — preload Node deps via `external: [...]`; ESM (`tinker.preload` ends in `.mjs`) → `format: 'es'` (never set `formats` via `overrides` — mergeConfig concatenates arrays)
+- ESM preload bridge: wait with `waitUntil(() => typeof api !== 'undefined')` before `renderApp`
 - `storage` from `tinker-share/store/Base` — not `new LocalStore(...)`
 - `errorMessage` from `tinker-share/lib/util`
+
+### 3b. Package metadata
+- Root `description`: English only (not `tinker.description`)
+- `tinker.category`: one of `dev` | `file` | `media` | `productivity` | `system` | `entertainment`
+- Localized copy under `tinker.locales.zh-CN.description` when needed
 
 ### 4. Theme
 - Every plugin has `theme.ts` exporting `tw`; import `{ tw }` from it
@@ -81,12 +87,13 @@ Prefer `tinker-share` (see `packages/share/README.md`); flag local copies of:
 ### 13. Dependencies
 - Prefer `@radix-ui/*` for UI primitives
 - Renderer-only / bundled pkgs → `devDependencies`
-- Preload Node runtime → `dependencies`, and list each **explicitly** in `definePreloadConfig({ external: [...] })` (share already adds `electron` + Node builtins) — do **not** auto-collect from `Object.keys(pkg.dependencies)`
+- Preload Node runtime → `dependencies`, and list each **explicitly** in `definePreloadConfig({ external: [...] })` (share already adds `electron` + Node builtins) — do **not** auto-collect from `Object.keys(pkg.dependencies)`. For `index.mjs`, also pass `format: 'es'`.
 - Do not re-add deps already at the monorepo root; only plugin-specific ones
 
 ### 14. Licia
 - Prefer `licia/*` over hand-rolled helpers (map/each/isStr/trim, etc.)
 - `import x from 'licia/x'` (per-module) — do not reimplement what licia already has
+- Do **not** use `licia/values` (or similar) on MobX `ObservableMap` / observable collections — use `[...map.values()]` / native iterators instead
 
 ## Output
 
@@ -98,8 +105,8 @@ No issues → **No violations found.** End with category totals.
 
 ## Steps
 
-1. Glob / read target sources (include vite configs); check **all 14** categories.
-2. Report violations; **fix** clear ones (especially Comments / Licia / Theme / Share).
+1. Glob / read target sources (include vite configs + `package.json`); check **all** checklist categories.
+2. Report violations; **fix** clear ones (especially Comments / Licia / Theme / Share / Package metadata).
 3. From the plugin dir:
 
 ```bash

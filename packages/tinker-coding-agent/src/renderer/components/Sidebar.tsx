@@ -3,6 +3,7 @@ import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import { Plus, MessageSquare } from 'lucide-react'
 import className from 'licia/className'
+import map from 'licia/map'
 import splitPath from 'licia/splitPath'
 import { tw } from '../theme'
 import store from '../store'
@@ -60,7 +61,7 @@ const Sidebar = observer(function Sidebar() {
 
       <div className="flex-1 min-h-0 overflow-y-auto px-2 pt-2 pb-2">
         <div className="flex flex-col gap-0.5">
-          {store.sessions.map((session) => {
+          {map(store.sessions, (session) => {
             const active = session.id === store.activeSessionId
             return (
               <button

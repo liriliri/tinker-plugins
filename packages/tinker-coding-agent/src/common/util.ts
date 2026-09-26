@@ -1,8 +1,6 @@
 import filter from 'licia/filter'
-import isErr from 'licia/isErr'
 import isStr from 'licia/isStr'
 import pluck from 'licia/pluck'
-import toStr from 'licia/toStr'
 
 type TextPart = { type: 'text'; text: string }
 
@@ -14,10 +12,6 @@ export function contentToText(
     filter(content, (c): c is TextPart => c.type === 'text' && !!c.text),
     'text',
   ).join('\n')
-}
-
-export function errorMessage(err: unknown): string {
-  return isErr(err) ? err.message : toStr(err)
 }
 
 /** Compact token count for footer display (e.g. 1.2k, 128k). */

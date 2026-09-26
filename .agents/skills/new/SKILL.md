@@ -44,9 +44,11 @@ Where `<source>` is the similar plugin chosen by the user, or the default templa
 Edit `packages/tinker-<plugin-name>/package.json`:
 
 - `name` → `"tinker-<plugin-name>"`
-- `description` → provided description
+- `description` → English description at package root (not `tinker.description`)
 - `tinker.name` → Title Case English name
+- `tinker.category` → one of `dev` | `file` | `media` | `productivity` | `system` | `entertainment` (ask if unclear)
 - `tinker.locales.zh-CN.name` → Chinese name (ask if unclear)
+- `tinker.locales.zh-CN.description` → Chinese description when useful
 
 **Basic plugin** layout (`src/` flat, e.g. like `tinker-hanzi-converter`):
 - `scripts`: only `dev` and `build` using plain `vite` commands (no `concurrently`)

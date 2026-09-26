@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { ChevronDown } from 'lucide-react'
 import * as Select from '@radix-ui/react-select'
 import className from 'licia/className'
+import map from 'licia/map'
 import { tw } from '../theme'
 import store from '../store'
 import { isValidSelection, parseModelValue, toModelValue } from '../lib/model'
@@ -61,7 +62,7 @@ const ModelSelect = observer(function ModelSelect() {
           align="start"
         >
           <Select.Viewport className="p-1">
-            {providers.map((provider) => (
+            {map(providers, (provider) => (
               <Select.Group key={provider.name}>
                 <Select.Label
                   className={className(
@@ -71,7 +72,7 @@ const ModelSelect = observer(function ModelSelect() {
                 >
                   {provider.name}
                 </Select.Label>
-                {provider.models.map((m) => (
+                {map(provider.models, (m) => (
                   <Select.Item
                     key={`${provider.name}-${m.name}`}
                     value={toModelValue({

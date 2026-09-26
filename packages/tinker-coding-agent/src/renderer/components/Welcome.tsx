@@ -3,6 +3,7 @@ import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import { FolderOpen } from 'lucide-react'
 import className from 'licia/className'
+import map from 'licia/map'
 import splitPath from 'licia/splitPath'
 import { tw } from '../theme'
 import store from '../store'
@@ -71,7 +72,7 @@ const Welcome = observer(function Welcome() {
               tw.border.divider,
             )}
           >
-            {store.recentWorkspaces.map((path) => (
+            {map(store.recentWorkspaces, (path) => (
               <button
                 key={path}
                 type="button"

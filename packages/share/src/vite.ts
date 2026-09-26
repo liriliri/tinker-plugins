@@ -52,14 +52,21 @@ export type PreloadConfigOptions = {
   /** Extra rollup externals (e.g. native/npm modules that must stay external). */
   external?: string[]
   entry?: string
+  /**
+   * Output format. Default `cjs` → `index.js`.
+   * Use `es` when `tinker.preload` is `dist/preload/index.mjs` (async ESM preload).
+   * Do not set `build.lib.formats` via `overrides` — mergeConfig concatenates arrays.
+   */
+  format?: 'cjs' | 'es'
   overrides?: UserConfig
 }
 
-/** Standard preload (CJS lib) Vite config. */
+/** Standard preload Vite config (CJS by default; pass `format: 'es'` for ESM). */
 export function definePreloadConfig(options: PreloadConfigOptions = {}) {
   const {
     external: extraExternal = [],
     entry = 'src/preload/index.ts',
+    format = 'cjs',
     overrides = {},
   } = options
 
@@ -87,7 +94,7 @@ export function definePreloadConfig(options: PreloadConfigOptions = {}) {
             entry,
             name: 'Main',
             fileName: 'index',
-            formats: ['cjs'],
+            formats: [format],
           },
           rollupOptions: {
             external,

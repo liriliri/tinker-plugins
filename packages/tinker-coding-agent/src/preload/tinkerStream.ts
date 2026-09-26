@@ -15,7 +15,8 @@ import isStr from 'licia/isStr'
 import map from 'licia/map'
 import now from 'licia/now'
 import startWith from 'licia/startWith'
-import { contentToText, errorMessage } from '../common/util'
+import { contentToText } from '../common/util'
+import { errorMessage } from 'tinker-share/lib/util'
 
 interface TinkerStreamConfig {
   getProvider: () => string | undefined

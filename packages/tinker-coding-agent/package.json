@@ -1,7 +1,7 @@
 {
   "name": "tinker-coding-agent",
-  "version": "0.1.0",
-  "description": "Coding Agent Plugin for TINKER",
+  "version": "0.1.1",
+  "description": "GUI coding agent for editing and coding tasks",
   "files": [
     "dist/",
     "icon.png"
@@ -25,7 +25,7 @@
   ],
   "tinker": {
     "name": "Coding Agent",
-    "description": "A GUI coding agent for editing and coding tasks",
+    "category": "dev",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.mjs",
     "icon": "icon.png",
@@ -44,6 +44,8 @@
   "devDependencies": {
     "@assistant-ui/react": "^0.15.0",
     "@assistant-ui/react-markdown": "^0.14.8",
+    "classnames": "^2.5.1",
+    "react-markdown": "^10.1.0",
     "remark-gfm": "^4.0.1"
   }
 }

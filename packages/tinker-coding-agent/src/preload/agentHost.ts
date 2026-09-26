@@ -43,7 +43,8 @@ import type {
   SessionInfo,
   SkillInfo,
 } from '../common/types'
-import { contentToText, errorMessage } from '../common/util'
+import { contentToText } from '../common/util'
+import { errorMessage } from 'tinker-share/lib/util'
 import { getWorkspaceSessionDir } from './sessionPaths'
 import { createTinkerStreamFn } from './tinkerStream'
 

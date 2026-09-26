@@ -3,6 +3,7 @@ import type { ThreadMessageLike } from '@assistant-ui/react'
 import map from 'licia/map'
 import now from 'licia/now'
 import raf from 'licia/raf'
+import BaseStore from 'tinker-share/store/Base'
 import type {
   CodingAgentEvent,
   ContextUsageInfo,
@@ -18,7 +19,7 @@ import {
   removeRecentWorkspace,
 } from './lib/recentWorkspaces'
 
-class Store {
+class Store extends BaseStore {
   ready = false
   workspace: string | null = null
   sessions: SessionInfo[] = []
@@ -38,6 +39,7 @@ class Store {
   isRunning = false
 
   constructor() {
+    super()
     makeAutoObservable(this)
   }
 
