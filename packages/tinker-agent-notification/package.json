@@ -1,7 +1,7 @@
 {
   "name": "tinker-agent-notification",
-  "version": "0.2.3",
-  "description": "Coding Agent Notification Sound Plugin for TINKER",
+  "version": "0.2.4",
+  "description": "Configure notification sounds for coding agents like Claude, Cursor, and Codex",
   "files": [
     "dist/",
     "icon.png"
@@ -28,14 +28,14 @@
   ],
   "tinker": {
     "name": "Agent Notification",
-    "description": "Configure notification sounds for coding agents",
+    "category": "dev",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",
     "locales": {
       "zh-CN": {
         "name": "Agent 提示音",
-        "description": "为编码 Agent 配置提示音"
+        "description": "为 Claude、Cursor、Codex 等编码 Agent 配置提示音"
       }
     }
   }

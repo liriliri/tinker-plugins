@@ -1,9 +1,11 @@
 import className from 'licia/className'
+import map from 'licia/map'
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import { RotateCcw } from 'lucide-react'
 import store from '../store'
 import { tw } from '../theme'
+import IconButton from './IconButton'
 import Select from './Select'
 
 interface AgentToolbarProps {
@@ -46,32 +48,20 @@ const AgentToolbar = observer(({ showToast }: AgentToolbarProps) => {
         value={store.selectedAgentId}
         onChange={(e) => store.setSelectedAgent(e.target.value)}
       >
-        {store.visibleAgents.map((agent) => (
+        {map(store.visibleAgents, (agent) => (
           <option key={agent.id} value={agent.id}>
             {agent.name}
           </option>
         ))}
       </Select>
       <div className="flex-1" />
-      <button
-        className={className(
-          'flex items-center justify-center w-8 h-8 rounded',
-          'transition-all duration-200',
-          agentStore.isConfigured
-            ? className(
-                'cursor-pointer',
-                tw.text.icon,
-                tw.accent.hoverText,
-                tw.accent.hoverBg,
-                'active:scale-90',
-              )
-            : 'invisible',
-        )}
+      <IconButton
+        invisible={!agentStore.isConfigured}
         disabled={agentStore.saving || !agentStore.isConfigured}
-        onClick={handleRemove}
+        onClick={() => void handleRemove()}
       >
         <RotateCcw size={14} />
-      </button>
+      </IconButton>
       <button
         className={className(
           'min-w-20 px-3.5 py-1.5 rounded text-xs font-semibold',
@@ -81,7 +71,7 @@ const AgentToolbar = observer(({ showToast }: AgentToolbarProps) => {
             : tw.button.applyDisabled,
         )}
         disabled={!agentStore.canApply || agentStore.saving}
-        onClick={handleApply}
+        onClick={() => void handleApply()}
       >
         {agentStore.saving ? t('saving') : t('apply')}
       </button>

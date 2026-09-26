@@ -1,3 +1,4 @@
+import isStr from 'licia/isStr'
 import startWith from 'licia/startWith'
 import trim from 'licia/trim'
 import type { Hook } from '../types'
@@ -16,7 +17,7 @@ export function extractSoundPath(command: string): string | null {
 export function isSoundHook(hook: Hook): boolean {
   return (
     hook.type === 'command' &&
-    typeof hook.command === 'string' &&
+    isStr(hook.command) &&
     extractSoundPath(hook.command) !== null
   )
 }

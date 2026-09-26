@@ -1,4 +1,6 @@
+import filter from 'licia/filter'
 import isArr from 'licia/isArr'
+import some from 'licia/some'
 import type {
   Hook,
   HookConfigEntry,
@@ -10,6 +12,11 @@ import { extractSoundPath, isSoundHook } from './hooksUtil'
 
 function isHookEntry(entry: HookConfigEntry): entry is HookEntry {
   return 'hooks' in entry || 'matcher' in entry
+}
+
+function matchesHookDef(entry: HookEntry, hookDef: HookTypeDef): boolean {
+  if (hookDef.matcher) return entry.matcher === hookDef.matcher
+  return !entry.matcher
 }
 
 export interface HooksFormat {
@@ -30,19 +37,17 @@ const defaultFormat: HooksFormat = {
   },
 
   filterEntries(entries, hookDef) {
-    return entries.filter((entry) => {
+    return filter(entries, (entry) => {
       if (!isHookEntry(entry)) return true
-      if (hookDef.matcher && entry.matcher !== hookDef.matcher) return true
-      if (!hookDef.matcher && entry.matcher) return true
+      if (!matchesHookDef(entry, hookDef)) return true
       if (!entry.hooks) return true
-      return !entry.hooks.some(isSoundHook)
+      return !some(entry.hooks, isSoundHook)
     })
   },
 
   detectSound(entries, hookDef) {
     for (const entry of entries) {
-      if (!isHookEntry(entry)) continue
-      if (hookDef.matcher && entry.matcher !== hookDef.matcher) continue
+      if (!isHookEntry(entry) || !matchesHookDef(entry, hookDef)) continue
       if (!isArr(entry.hooks)) continue
       for (const hook of entry.hooks) {
         if (isSoundHook(hook)) return extractSoundPath(hook.command!)
@@ -72,7 +77,7 @@ const cursorFormat: HooksFormat = {
   },
 
   filterEntries(entries) {
-    return entries.filter((entry) => !isSoundHook(entry as Hook))
+    return filter(entries, (entry) => !isSoundHook(entry as Hook))
   },
 
   detectSound(entries) {
@@ -89,7 +94,7 @@ const cursorFormat: HooksFormat = {
   },
 
   filterHookTypes(all) {
-    return all.filter((h) => h.cursorEvent)
+    return filter(all, (h) => !!h.cursorEvent)
   },
 
   initialSettings() {

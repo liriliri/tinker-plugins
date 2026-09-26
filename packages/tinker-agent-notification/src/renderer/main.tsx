@@ -30,8 +30,7 @@ const App = observer(() => {
     })
   }, [])
 
-  const previewSound = useCallback((url: string, e?: React.MouseEvent) => {
-    e?.stopPropagation()
+  const previewSound = useCallback((url: string) => {
     const audio = new Audio(url)
     audio.play().catch(console.error)
   }, [])

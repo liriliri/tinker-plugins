@@ -1,10 +1,13 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 import { t } from 'i18next'
 import endWith from 'licia/endWith'
+import extend from 'licia/extend'
+import filter from 'licia/filter'
 import find from 'licia/find'
 import isArr from 'licia/isArr'
 import isEmpty from 'licia/isEmpty'
 import isWindows from 'licia/isWindows'
+import keys from 'licia/keys'
 import map from 'licia/map'
 import naturalSort from 'licia/naturalSort'
 import some from 'licia/some'
@@ -92,6 +95,43 @@ function buildPlayCommand(soundPath: string): string {
     return `powershell -ExecutionPolicy Bypass -File "${store.playScript}" "${soundPath}"`
   }
   return `afplay "${soundPath}"`
+}
+
+async function readSettings(path: string): Promise<Settings> {
+  try {
+    const content = await tinker.readFile(path, 'utf-8')
+    return JSON.parse(content as string)
+  } catch {
+    return {}
+  }
+}
+
+function stripSoundHooks(
+  settings: Settings,
+  hookDefs: HookTypeDef[],
+  format: HooksFormat,
+) {
+  if (!settings.hooks) return
+
+  for (const hookDef of hookDefs) {
+    const eventName = format.getEventName(hookDef)
+    if (!settings.hooks[eventName] || !isArr(settings.hooks[eventName])) {
+      continue
+    }
+
+    settings.hooks[eventName] = format.filterEntries(
+      settings.hooks[eventName],
+      hookDef,
+    )
+
+    if (settings.hooks[eventName].length === 0) {
+      delete settings.hooks[eventName]
+    }
+  }
+
+  if (isEmpty(settings.hooks)) {
+    delete settings.hooks
+  }
 }
 
 class AgentStore {
@@ -222,47 +262,28 @@ class AgentStore {
     this.saving = true
 
     try {
-      let settings: Settings = {}
-      try {
-        const content = await tinker.readFile(this.settingsPath, 'utf-8')
-        settings = JSON.parse(content as string)
-      } catch {
-        // file doesn't exist yet
-      }
+      const settings = await readSettings(this.settingsPath)
+      if (!settings.hooks) settings.hooks = {}
+      extend(settings, this.hooksFormat.initialSettings())
 
-      if (!settings.hooks) {
-        settings.hooks = {}
-      }
-
-      Object.assign(settings, this.hooksFormat.initialSettings())
+      stripSoundHooks(settings, this.enabledHookTypes, this.hooksFormat)
 
       for (const hookDef of this.enabledHookTypes) {
+        if (!this.enabledHooks[hookDef.id]) continue
+
+        const soundPath = this.getSoundAbsolutePath(hookDef.id)
+        if (!soundPath) continue
+
         const eventName = this.hooksFormat.getEventName(hookDef)
+        if (!settings.hooks) settings.hooks = {}
+        if (!settings.hooks[eventName]) settings.hooks[eventName] = []
 
-        if (!settings.hooks[eventName]) {
-          settings.hooks[eventName] = []
-        }
-
-        settings.hooks[eventName] = this.hooksFormat.filterEntries(
-          settings.hooks[eventName],
-          hookDef,
+        settings.hooks[eventName].push(
+          this.hooksFormat.buildEntry(buildPlayCommand(soundPath), hookDef),
         )
-
-        if (this.enabledHooks[hookDef.id]) {
-          const soundPath = this.getSoundAbsolutePath(hookDef.id)
-          if (soundPath) {
-            settings.hooks[eventName].push(
-              this.hooksFormat.buildEntry(buildPlayCommand(soundPath), hookDef),
-            )
-          }
-        }
-
-        if (settings.hooks[eventName].length === 0) {
-          delete settings.hooks[eventName]
-        }
       }
 
-      if (isEmpty(settings.hooks)) {
+      if (settings.hooks && isEmpty(settings.hooks)) {
         delete settings.hooks
       }
 
@@ -290,30 +311,12 @@ class AgentStore {
     this.saving = true
 
     try {
-      const content = await tinker.readFile(this.settingsPath, 'utf-8')
-      const settings: Settings = JSON.parse(content as string)
+      const settings = await readSettings(this.settingsPath)
+      stripSoundHooks(settings, hookTypes, this.hooksFormat)
 
-      if (settings.hooks) {
-        for (const hookDef of hookTypes) {
-          const eventName = this.hooksFormat.getEventName(hookDef)
-          if (!settings.hooks[eventName] || !isArr(settings.hooks[eventName]))
-            continue
-
-          settings.hooks[eventName] = this.hooksFormat.filterEntries(
-            settings.hooks[eventName],
-            hookDef,
-          )
-
-          if (settings.hooks[eventName].length === 0) {
-            delete settings.hooks[eventName]
-          }
-        }
-
-        if (isEmpty(settings.hooks)) {
-          delete settings.hooks
-          for (const key of Object.keys(this.hooksFormat.initialSettings())) {
-            delete settings[key as keyof Settings]
-          }
+      if (!settings.hooks) {
+        for (const key of keys(this.hooksFormat.initialSettings())) {
+          delete settings[key as keyof Settings]
         }
       }
 
@@ -355,9 +358,9 @@ class Store extends BaseStore {
   }
 
   get visibleAgents(): AgentDef[] {
-    return agents
-      .filter((a) => this.visibleAgentIds.has(a.id))
-      .sort((a, b) => naturalSort.comparator(a.name, b.name))
+    return filter(agents, (a) => this.visibleAgentIds.has(a.id)).sort((a, b) =>
+      naturalSort.comparator(a.name, b.name),
+    )
   }
 
   async init() {
@@ -385,10 +388,6 @@ class Store extends BaseStore {
     for (const agentStore of this.agentStores.values()) {
       await agentStore.init(home)
     }
-  }
-
-  getSoundAbsolutePath(packId: string, file: string): string {
-    return `${this.soundsDir}/${packId}/${file}`
   }
 
   setSelectedAgent(id: string) {
