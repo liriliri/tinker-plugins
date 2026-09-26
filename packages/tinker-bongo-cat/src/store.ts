@@ -1,5 +1,4 @@
 import { makeAutoObservable, runInAction } from 'mobx'
-import LocalStore from 'licia/LocalStore'
 import clamp from 'licia/clamp'
 import contain from 'licia/contain'
 import each from 'licia/each'
@@ -13,6 +12,7 @@ import range from 'licia/range'
 import sleep from 'licia/sleep'
 import toBool from 'licia/toBool'
 import toNum from 'licia/toNum'
+import BaseStore, { storage } from 'tinker-share/store/Base'
 import { FACE_COUNT, keyboardIndex, resolveKeyboardId } from './lib/keymap'
 import { computeRightHand, cursorToTip } from './lib/rightHand'
 import {
@@ -25,16 +25,15 @@ import {
   type FloatPosition,
 } from './lib/floatWindow'
 
-const storage = new LocalStore('tinker-bongo-cat')
 const STORAGE_FLOAT_SCALE = 'floatScale'
 const STORAGE_FLOAT_X = 'floatX'
 const STORAGE_FLOAT_Y = 'floatY'
 const STORAGE_FLOATING = 'floating'
 const AUTO_RELEASE_MS = 3000
 const FACE_DURATION_MS = 2000
-const DEFAULT_FLOAT_SCALE = 1
-const MIN_FLOAT_SCALE = 0.5
-const MAX_FLOAT_SCALE = 1.5
+export const DEFAULT_FLOAT_SCALE = 1
+export const MIN_FLOAT_SCALE = 0.5
+export const MAX_FLOAT_SCALE = 1.5
 
 function loadFloatPosition(): FloatPosition | null {
   const x = toNum(storage.get(STORAGE_FLOAT_X))
@@ -43,7 +42,7 @@ function loadFloatPosition(): FloatPosition | null {
   return { x: Math.round(x), y: Math.round(y) }
 }
 
-class Store {
+class Store extends BaseStore {
   floating = false
   floatScale = DEFAULT_FLOAT_SCALE
   floatPosition: FloatPosition | null = null
@@ -65,6 +64,7 @@ class Store {
   private shuttingDown = false
 
   constructor() {
+    super()
     makeAutoObservable(this, {}, { autoBind: true })
     const saved = toNum(storage.get(STORAGE_FLOAT_SCALE))
     this.floatScale = isFinite(saved)

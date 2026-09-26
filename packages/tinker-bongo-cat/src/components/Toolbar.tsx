@@ -1,13 +1,17 @@
 import { observer } from 'mobx-react-lite'
 import className from 'licia/className'
+import toNum from 'licia/toNum'
 import { useTranslation } from 'react-i18next'
 import { PictureInPicture2, X } from 'lucide-react'
 import { tw } from '../theme'
-import store from '../store'
+import store, { MAX_FLOAT_SCALE, MIN_FLOAT_SCALE } from '../store'
 
 export default observer(function Toolbar() {
   const { t } = useTranslation()
-  const fillPct = ((store.floatScale - 0.5) / 1) * 100
+  const fillPct =
+    ((store.floatScale - MIN_FLOAT_SCALE) /
+      (MAX_FLOAT_SCALE - MIN_FLOAT_SCALE)) *
+    100
 
   return (
     <header className={tw.bar}>
@@ -55,11 +59,11 @@ export default observer(function Toolbar() {
                 />
                 <input
                   type="range"
-                  min={0.5}
-                  max={1.5}
+                  min={MIN_FLOAT_SCALE}
+                  max={MAX_FLOAT_SCALE}
                   step={0.05}
                   value={store.floatScale}
-                  onChange={(e) => store.setFloatScale(Number(e.target.value))}
+                  onChange={(e) => store.setFloatScale(toNum(e.target.value))}
                   className="bongo-slider"
                   aria-label={t('floatScale')}
                 />

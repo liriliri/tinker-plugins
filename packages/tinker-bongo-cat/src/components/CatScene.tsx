@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { observer } from 'mobx-react-lite'
 import className from 'licia/className'
+import filter from 'licia/filter'
+import map from 'licia/map'
 import min from 'licia/min'
 import store from '../store'
 import { tw } from '../theme'
@@ -188,8 +190,9 @@ function CatScene({ fill = false, animWindow }: CatSceneProps) {
             className="absolute"
             style={deviceStyle}
           />
-          {mouseOverlays.map(([on, file]) =>
-            on ? (
+          {map(
+            filter(mouseOverlays, ([on]) => on),
+            ([, file]) => (
               <img
                 key={file}
                 src={assetUrl(file)}
@@ -198,7 +201,7 @@ function CatScene({ fill = false, animWindow }: CatSceneProps) {
                 className="absolute"
                 style={deviceStyle}
               />
-            ) : null,
+            ),
           )}
 
           <canvas
@@ -208,7 +211,7 @@ function CatScene({ fill = false, animWindow }: CatSceneProps) {
             className="absolute inset-0"
           />
 
-          {store.activeKeyboardIndexes.map((idx) => (
+          {map(store.activeKeyboardIndexes, (idx) => (
             <img
               key={idx}
               src={assetUrl(`keyboard/${idx}.png`)}

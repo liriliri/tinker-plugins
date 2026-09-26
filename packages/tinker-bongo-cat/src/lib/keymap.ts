@@ -1,4 +1,5 @@
 import contain from 'licia/contain'
+import find from 'licia/find'
 import findIdx from 'licia/findIdx'
 import lowerCase from 'licia/lowerCase'
 import map from 'licia/map'
@@ -55,15 +56,13 @@ function matchBinding(
 ): string | null {
   const raw = trim(key)
   const rawLower = lowerCase(raw)
-  for (const binding of bindings) {
-    if (
-      contain(binding.aliases, raw) ||
-      contain(map(binding.aliases, lowerCase), rawLower)
-    ) {
-      return binding.id
-    }
-  }
-  return null
+  const binding = find(
+    bindings,
+    (item) =>
+      contain(item.aliases, raw) ||
+      contain(map(item.aliases, lowerCase), rawLower),
+  )
+  return binding?.id ?? null
 }
 
 export function resolveKeyboardId(key: string, keycode: number): string | null {

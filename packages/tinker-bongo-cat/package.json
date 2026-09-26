@@ -1,7 +1,7 @@
 {
   "name": "tinker-bongo-cat",
-  "version": "0.1.0",
-  "description": "Bongo Cat desktop pet that reacts to keyboard and mouse",
+  "version": "0.1.1",
+  "description": "Desktop pet that reacts to keyboard and mouse",
   "files": [
     "dist/",
     "icon.png"
@@ -22,7 +22,7 @@
   ],
   "tinker": {
     "name": "Bongo Cat",
-    "description": "Desktop pet that reacts to keyboard and mouse input",
+    "category": "entertainment",
     "main": "dist/index.html",
     "icon": "icon.png",
     "locales": {
