@@ -9,13 +9,13 @@ import flatten from 'licia/flatten'
 import kebabCase from 'licia/kebabCase'
 import map from 'licia/map'
 import startWith from 'licia/startWith'
+import { USER_AGENT } from '../common/constants'
 import type { RepoSkillCandidate } from '../common/types'
 import { assertValidSkillDir } from './parseSkillMd'
 import { parseRepoSource } from './parseRepoSource'
 import { sanitizeFolderName } from './sanitizeFolderName'
 import { AGENTS_SKILLS_DIR, pathExists, removePath } from './syncSkills'
 
-const USER_AGENT = 'tinker-agent-skills'
 const SKIP_DIRS = new Set([
   'node_modules',
   '.git',
@@ -87,9 +87,7 @@ async function findSkillDirs(
   try {
     await assertValidSkillDir(dir)
     return [dir]
-  } catch {
-    // keep searching
-  }
+  } catch {}
 
   let entries
   try {

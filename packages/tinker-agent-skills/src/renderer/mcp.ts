@@ -1,3 +1,6 @@
+import find from 'licia/find'
+import map from 'licia/map'
+import trim from 'licia/trim'
 import type { SkillInfo } from '../common/types'
 import type { Store } from './store'
 
@@ -24,7 +27,7 @@ export function createMcpApi(getStore: () => Store) {
 }
 
 async function installFromGithub(store: Store, args: { source: string }) {
-  const trimmed = args.source.trim()
+  const trimmed = trim(args.source)
   if (!trimmed) throw new Error('errRepoInvalidSource')
 
   store.openRepoDialog()
@@ -39,7 +42,7 @@ async function installFromGithub(store: Store, args: { source: string }) {
 
   return {
     source: trimmed,
-    skills: store.skills.map(toSkillSummary),
+    skills: map(store.skills, toSkillSummary),
   }
 }
 
@@ -47,11 +50,11 @@ async function listSkills(store: Store, args: { skill?: string }) {
   await store.loadSkills()
   assertStoreOk(store)
 
-  const filter = args.skill?.trim()
-  const skills = filter ? [findSkill(store, filter)] : store.skills
+  const skillFilter = args.skill ? trim(args.skill) : ''
+  const skills = skillFilter ? [findSkill(store, skillFilter)] : store.skills
 
   return {
-    skills: skills.map(toSkillSummary),
+    skills: map(skills, toSkillSummary),
   }
 }
 
@@ -68,7 +71,8 @@ async function linkSkill(
   await store.toggleSkillAgent(args.agent, args.enabled)
   assertStoreOk(store)
 
-  const updated = store.skills.find((item) => item.path === skill.path) ?? skill
+  const updated =
+    find(store.skills, (item: SkillInfo) => item.path === skill.path) ?? skill
   const agents = store.configAgents
   store.closeConfig()
 
@@ -79,9 +83,11 @@ async function linkSkill(
 }
 
 function findSkill(store: Store, query: string): SkillInfo {
-  const q = query.trim()
-  const skill = store.skills.find(
-    (item) => item.folderName === q || item.name === q || item.path === q,
+  const q = trim(query)
+  const skill = find(
+    store.skills,
+    (item: SkillInfo) =>
+      item.folderName === q || item.name === q || item.path === q,
   )
   if (!skill) throw new Error(`Skill not found: ${query}`)
   return skill

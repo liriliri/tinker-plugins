@@ -37,6 +37,8 @@
   "marketplaceInstalling": "Installing…",
   "marketplaceInstalled": "Installed",
   "marketplaceInstalls": "{{count}} installs",
+  "filterZip": "ZIP",
+  "filterAllFiles": "All Files",
   "errNoSkillMd": "No valid SKILL.md found",
   "errInvalidSkillMd": "SKILL.md is missing a name in frontmatter",
   "errAmbiguousZip": "ZIP contains multiple skills; package one skill only",

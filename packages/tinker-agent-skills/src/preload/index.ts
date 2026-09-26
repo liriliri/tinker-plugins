@@ -4,7 +4,7 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import startWith from 'licia/startWith'
 import trim from 'licia/trim'
-import type { SkillInfo } from '../common/types'
+import type { MarketplaceInstallInput, SkillInfo } from '../common/types'
 import {
   getSkillAgentLinks,
   removeSkillAgentLinks,
@@ -85,12 +85,8 @@ const api = {
   searchMarketplace: (query: string, cursor?: string | null) =>
     searchMarketplace(query, cursor),
 
-  installMarketplaceSkill: (skill: {
-    slug: string
-    name: string
-    author?: string
-    version?: string
-  }) => installMarketplaceSkill(skill),
+  installMarketplaceSkill: (skill: MarketplaceInstallInput) =>
+    installMarketplaceSkill(skill),
 
   resolveRepoSkills: (source: string) => resolveRepoSkills(source),
 

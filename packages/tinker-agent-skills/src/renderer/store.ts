@@ -1,5 +1,11 @@
 import { makeAutoObservable, runInAction } from 'mobx'
+import { t } from 'i18next'
+import contain from 'licia/contain'
 import debounce from 'licia/debounce'
+import filter from 'licia/filter'
+import find from 'licia/find'
+import map from 'licia/map'
+import trim from 'licia/trim'
 import BaseStore from 'tinker-share/store/Base'
 import type {
   MarketplaceSkill,
@@ -12,7 +18,6 @@ import { toErrorKey } from './lib/installError'
 import { createMcpApi } from './mcp'
 
 export class Store extends BaseStore {
-  readonly mcp = createMcpApi(() => this)
   skills: SkillInfo[] = []
   query: string = ''
   isLoading: boolean = false
@@ -58,9 +63,8 @@ export class Store extends BaseStore {
 
   constructor() {
     super()
-    makeAutoObservable(this, {
-      mcp: false,
-    })
+    makeAutoObservable(this)
+    createMcpApi(() => this)
     this.debouncedMarketplaceSearch = debounce((query: string) => {
       void this.fetchMarketplace(query, false)
     }, 320)
@@ -140,8 +144,11 @@ export class Store extends BaseStore {
   }
 
   toggleRepoSkill(id: string) {
-    if (this.repoSelectedIds.includes(id)) {
-      this.repoSelectedIds = this.repoSelectedIds.filter((item) => item !== id)
+    if (contain(this.repoSelectedIds, id)) {
+      this.repoSelectedIds = filter(
+        this.repoSelectedIds,
+        (item: string) => item !== id,
+      )
     } else {
       this.repoSelectedIds = [...this.repoSelectedIds, id]
     }
@@ -149,13 +156,13 @@ export class Store extends BaseStore {
 
   toggleAllRepoSkills(selectAll: boolean) {
     this.repoSelectedIds = selectAll
-      ? this.repoSkills.map((skill) => skill.id)
+      ? map(this.repoSkills, (skill: RepoSkillCandidate) => skill.id)
       : []
   }
 
   async resolveRepoSkills() {
     if (this.repoResolving || this.repoInstalling) return
-    const source = this.repoSource.trim()
+    const source = trim(this.repoSource)
     if (!source) return
 
     const prevSession = this.repoSessionId
@@ -171,7 +178,10 @@ export class Store extends BaseStore {
 
     try {
       const result = await agentSkills.resolveRepoSkills(source)
-      const selectedIds = result.skills.map((skill) => skill.id)
+      const selectedIds = map(
+        result.skills,
+        (skill: RepoSkillCandidate) => skill.id,
+      )
       runInAction(() => {
         this.repoSessionId = result.sessionId
         this.repoSourceLabel = result.sourceLabel
@@ -237,7 +247,7 @@ export class Store extends BaseStore {
       !this.marketplaceHasMore ||
       this.marketplaceLoading ||
       this.marketplaceLoadingMore ||
-      this.marketplaceQuery.trim()
+      trim(this.marketplaceQuery)
     ) {
       return
     }
@@ -298,10 +308,12 @@ export class Store extends BaseStore {
         version: skill.version,
       })
       runInAction(() => {
-        this.marketplaceSkills = this.marketplaceSkills.map((item) =>
-          item.id === skill.id || item.slug === skill.slug
-            ? { ...item, installed: true }
-            : item,
+        this.marketplaceSkills = map(
+          this.marketplaceSkills,
+          (item: MarketplaceSkill) =>
+            item.id === skill.id || item.slug === skill.slug
+              ? { ...item, installed: true }
+              : item,
         )
         this.showToast('addSuccess')
       })
@@ -323,8 +335,8 @@ export class Store extends BaseStore {
     const result = await tinker.showOpenDialog({
       properties: ['openFile', 'openDirectory'],
       filters: [
-        { name: 'ZIP', extensions: ['zip'] },
-        { name: 'All Files', extensions: ['*'] },
+        { name: t('filterZip'), extensions: ['zip'] },
+        { name: t('filterAllFiles'), extensions: ['*'] },
       ],
     })
     if (result.canceled || !result.filePaths.length) return
@@ -362,7 +374,10 @@ export class Store extends BaseStore {
       runInAction(() => {
         this.skills = skills
         if (this.configSkill) {
-          const updated = skills.find((s) => s.path === this.configSkill!.path)
+          const updated = find(
+            skills,
+            (s: SkillInfo) => s.path === this.configSkill!.path,
+          )
           if (updated) {
             this.configSkill = updated
             this.configAgents = updated.agents
@@ -432,14 +447,19 @@ export class Store extends BaseStore {
     try {
       await agentSkills.deleteSkill(skill.path)
       runInAction(() => {
-        this.skills = this.skills.filter((item) => item.path !== skill.path)
+        this.skills = filter(
+          this.skills,
+          (item: SkillInfo) => item.path !== skill.path,
+        )
         if (this.configSkill?.path === skill.path) {
           this.closeConfig()
         }
-        this.marketplaceSkills = this.marketplaceSkills.map((item) =>
-          item.slug === skill.folderName || item.name === skill.name
-            ? { ...item, installed: false }
-            : item,
+        this.marketplaceSkills = map(
+          this.marketplaceSkills,
+          (item: MarketplaceSkill) =>
+            item.slug === skill.folderName || item.name === skill.name
+              ? { ...item, installed: false }
+              : item,
         )
         this.deleteTarget = null
         this.showToast('deleteSuccess')

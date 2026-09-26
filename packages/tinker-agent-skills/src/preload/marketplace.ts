@@ -1,14 +1,25 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import AdmZip from 'adm-zip'
+import contain from 'licia/contain'
+import endWith from 'licia/endWith'
+import filter from 'licia/filter'
+import lowerCase from 'licia/lowerCase'
+import map from 'licia/map'
+import some from 'licia/some'
+import startWith from 'licia/startWith'
 import trim from 'licia/trim'
-import type { MarketplaceSearchResult, MarketplaceSkill } from '../common/types'
+import { USER_AGENT } from '../common/constants'
+import type {
+  MarketplaceInstallInput,
+  MarketplaceSearchResult,
+  MarketplaceSkill,
+} from '../common/types'
 import { sanitizeFolderName } from './sanitizeFolderName'
 import { AGENTS_SKILLS_DIR, pathExists, removePath } from './syncSkills'
 
 const CLAWHUB_API = 'https://clawhub.ai/api/v1'
 const PAGE_SIZE = 40
-const USER_AGENT = 'tinker-agent-skills'
 
 interface ClawhubListItem {
   slug: string
@@ -39,57 +50,46 @@ interface ClawhubAmbiguous {
 }
 
 async function isInstalled(slug: string, name: string): Promise<boolean> {
-  const candidates = [
-    sanitizeFolderName(slug),
-    sanitizeFolderName(name),
-  ].filter(Boolean)
+  const candidates = filter(
+    [sanitizeFolderName(slug), sanitizeFolderName(name)],
+    Boolean,
+  )
   for (const folder of candidates) {
     const dir = path.join(AGENTS_SKILLS_DIR, folder)
     if (await pathExists(path.join(dir, 'SKILL.md'))) return true
     try {
       const entries = await fs.readdir(dir)
-      if (entries.some((entry) => entry.toLowerCase() === 'skill.md'))
+      if (some(entries, (entry: string) => lowerCase(entry) === 'skill.md'))
         return true
-    } catch {
-      // continue
-    }
+    } catch {}
   }
   return false
 }
 
-async function mapListItem(item: ClawhubListItem): Promise<MarketplaceSkill> {
-  const slug = item.slug
-  const name = trim(item.displayName || '') || slug
-  const version =
-    trim(item.latestVersion?.version || '') ||
-    trim(item.tags?.latest || '') ||
-    ''
-  return {
-    id: `clawhub::${slug}`,
-    slug,
-    name,
-    description: trim(item.summary || ''),
-    author: '',
-    installCount: item.stats?.installs ?? item.stats?.downloads ?? null,
-    version,
-    installed: await isInstalled(slug, name),
-  }
-}
-
-async function mapSearchItem(
-  item: ClawhubSearchItem,
+async function mapMarketplaceItem(
+  item: ClawhubListItem | ClawhubSearchItem,
 ): Promise<MarketplaceSkill> {
   const slug = item.slug
   const name = trim(item.displayName || '') || slug
-  const author = trim(item.ownerHandle || '')
+  const author = trim('ownerHandle' in item ? item.ownerHandle || '' : '')
+  const version =
+    trim('version' in item ? item.version || '' : '') ||
+    trim('latestVersion' in item ? item.latestVersion?.version || '' : '') ||
+    trim('tags' in item ? item.tags?.latest || '' : '') ||
+    ''
+  const fromStats =
+    'stats' in item
+      ? (item.stats?.installs ?? item.stats?.downloads ?? null)
+      : null
+  const fromDownloads = 'downloads' in item ? (item.downloads ?? null) : null
   return {
     id: `clawhub::${slug}${author ? `::${author}` : ''}`,
     slug,
     name,
     description: trim(item.summary || ''),
     author,
-    installCount: item.downloads ?? null,
-    version: trim(item.version || ''),
+    installCount: fromStats ?? fromDownloads,
+    version,
     installed: await isInstalled(slug, name),
   }
 }
@@ -144,7 +144,7 @@ async function resolveOwnerAndVersion(
 function stripArchivePrefix(entryName: string, slug: string): string {
   const normalized = entryName.replace(/\\/g, '/').replace(/^\.\//, '')
   const prefix = `${slug}/`
-  if (normalized.startsWith(prefix)) return normalized.slice(prefix.length)
+  if (startWith(normalized, prefix)) return normalized.slice(prefix.length)
   return normalized
 }
 
@@ -161,7 +161,9 @@ export async function searchMarketplace(
     if (!res.ok) throw new Error('errMarketplaceNetwork')
     const body = (await res.json()) as { results?: ClawhubSearchItem[] }
     const skills = await Promise.all(
-      (body.results || []).map((item) => mapSearchItem(item)),
+      map(body.results || [], (item: ClawhubSearchItem) =>
+        mapMarketplaceItem(item),
+      ),
     )
     return { skills, nextCursor: null, hasMore: false }
   }
@@ -178,18 +180,15 @@ export async function searchMarketplace(
     nextCursor?: string | null
   }
   const skills = await Promise.all(
-    (body.items || []).map((item) => mapListItem(item)),
+    map(body.items || [], (item: ClawhubListItem) => mapMarketplaceItem(item)),
   )
   const nextCursor = body.nextCursor || null
   return { skills, nextCursor, hasMore: Boolean(nextCursor) }
 }
 
-export async function installMarketplaceSkill(skill: {
-  slug: string
-  name: string
-  author?: string
-  version?: string
-}): Promise<{ folderName: string }> {
+export async function installMarketplaceSkill(
+  skill: MarketplaceInstallInput,
+): Promise<{ folderName: string }> {
   const slug = trim(skill.slug)
   if (!slug) throw new Error('errMarketplaceInstall')
 
@@ -211,7 +210,7 @@ export async function installMarketplaceSkill(skill: {
 
   const buffer = Buffer.from(await res.arrayBuffer())
   const zip = new AdmZip(buffer)
-  const entries = zip.getEntries().filter((entry) => !entry.isDirectory)
+  const entries = filter(zip.getEntries(), (entry) => !entry.isDirectory)
 
   const folderName =
     sanitizeFolderName(slug) || sanitizeFolderName(skill.name) || 'skill'
@@ -227,9 +226,9 @@ export async function installMarketplaceSkill(skill: {
   for (const entry of entries) {
     const name = entry.entryName.replace(/\\/g, '/')
     if (
-      name.includes('__MACOSX/') ||
-      name.endsWith('_meta.json') ||
-      name.endsWith('skill-card.md')
+      contain(name, '__MACOSX/') ||
+      endWith(name, '_meta.json') ||
+      endWith(name, 'skill-card.md')
     ) {
       continue
     }
@@ -238,7 +237,7 @@ export async function installMarketplaceSkill(skill: {
     const target = path.join(dest, relative)
     await fs.mkdir(path.dirname(target), { recursive: true })
     await fs.writeFile(target, entry.getData())
-    if (path.basename(relative).toLowerCase() === 'skill.md') {
+    if (lowerCase(path.basename(relative)) === 'skill.md') {
       wroteSkillMd = true
     }
   }

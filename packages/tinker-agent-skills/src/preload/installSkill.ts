@@ -49,9 +49,7 @@ async function findSkillRoot(extractRoot: string): Promise<string> {
     try {
       await assertValidSkillDir(full)
       candidates.push(full)
-    } catch {
-      // not a skill dir
-    }
+    } catch {}
   }
 
   if (candidates.length === 1) return candidates[0]

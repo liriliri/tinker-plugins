@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import os from 'node:os'
+import find from 'licia/find'
 import { LINKABLE_AGENTS } from '../common/types'
 import type { AgentDef, SkillAgentLink } from '../common/types'
 import {
@@ -21,21 +22,19 @@ async function resolveConfigDir(agent: AgentDef): Promise<string | null> {
   return null
 }
 
-export async function resolveAgentSkillsDir(
+async function resolveAgentSkillsDir(
   agent: AgentDef,
-): Promise<{ configDir: string; skillsDir: string; detected: boolean }> {
+): Promise<{ skillsDir: string; detected: boolean }> {
   const home = os.homedir()
   const existing = await resolveConfigDir(agent)
   if (existing) {
     return {
-      configDir: existing,
       skillsDir: path.join(existing, 'skills'),
       detected: true,
     }
   }
   const configDir = path.join(home, agent.configDir)
   return {
-    configDir,
     skillsDir: path.join(configDir, 'skills'),
     detected: false,
   }
@@ -68,7 +67,7 @@ export async function setSkillAgentLink(
   agentId: string,
   enabled: boolean,
 ): Promise<SkillAgentLink[]> {
-  const agent = LINKABLE_AGENTS.find((item) => item.id === agentId)
+  const agent = find(LINKABLE_AGENTS, (item) => item.id === agentId)
   if (!agent) throw new Error(`Unknown agent: ${agentId}`)
 
   const folderName = path.basename(skillPath)

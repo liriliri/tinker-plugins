@@ -53,6 +53,13 @@ export interface MarketplaceSearchResult {
   hasMore: boolean
 }
 
+export interface MarketplaceInstallInput {
+  slug: string
+  name: string
+  author?: string
+  version?: string
+}
+
 export interface RepoSkillCandidate {
   id: string
   name: string

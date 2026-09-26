@@ -26,7 +26,7 @@ export async function isSymlink(target: string): Promise<boolean> {
   }
 }
 
-export async function isRealDirectory(target: string): Promise<boolean> {
+async function isRealDirectory(target: string): Promise<boolean> {
   try {
     const stats = await fs.lstat(target)
     return stats.isDirectory() && !stats.isSymbolicLink()
@@ -158,11 +158,9 @@ export async function materializeToAgents(
     if ((await pathExists(dest)) || (await isSymlink(dest))) {
       // Never delete source while it still is the only copy
       const destReal = await fs.realpath(dest).catch(() => dest)
+      const sourceReal = await fs.realpath(source).catch(() => source)
       const tmpReal = await fs.realpath(tmp)
-      if (destReal === (await fs.realpath(source).catch(() => source))) {
-        // source lives at dest; tmp already has the copy
-      }
-      if (destReal !== tmpReal) {
+      if (destReal !== sourceReal && destReal !== tmpReal) {
         await removePath(dest)
       }
     }
@@ -174,48 +172,6 @@ export async function materializeToAgents(
   }
 
   return dest
-}
-
-export async function ensureSymlink(
-  target: string,
-  linkPath: string,
-): Promise<void> {
-  const absoluteTarget = path.resolve(target)
-
-  if (path.resolve(linkPath) === absoluteTarget) return
-
-  try {
-    if ((await fs.realpath(linkPath)) === (await fs.realpath(absoluteTarget))) {
-      return
-    }
-  } catch {
-    // continue
-  }
-
-  if (await isSymlink(linkPath)) {
-    try {
-      const current = await fs.readlink(linkPath)
-      const resolved = path.resolve(path.dirname(linkPath), current)
-      const [realCurrent, realTarget] = await Promise.all([
-        fs.realpath(resolved).catch(() => resolved),
-        fs.realpath(absoluteTarget).catch(() => absoluteTarget),
-      ])
-      if (realCurrent === realTarget) return
-    } catch {
-      // recreate below
-    }
-    await removePath(linkPath)
-  } else if (await pathExists(linkPath)) {
-    await removePath(linkPath)
-  }
-
-  await fs.mkdir(path.dirname(linkPath), { recursive: true })
-
-  if (process.platform === 'win32') {
-    await fs.symlink(absoluteTarget, linkPath, 'junction')
-  } else {
-    await fs.symlink(absoluteTarget, linkPath)
-  }
 }
 
 export async function isLinkToTarget(
@@ -233,6 +189,34 @@ export async function isLinkToTarget(
     return realCurrent === realTarget
   } catch {
     return false
+  }
+}
+
+export async function ensureSymlink(
+  target: string,
+  linkPath: string,
+): Promise<void> {
+  const absoluteTarget = path.resolve(target)
+
+  if (path.resolve(linkPath) === absoluteTarget) return
+  if (await isLinkToTarget(linkPath, absoluteTarget)) return
+
+  try {
+    if ((await fs.realpath(linkPath)) === (await fs.realpath(absoluteTarget))) {
+      return
+    }
+  } catch {}
+
+  if ((await pathExists(linkPath)) || (await isSymlink(linkPath))) {
+    await removePath(linkPath)
+  }
+
+  await fs.mkdir(path.dirname(linkPath), { recursive: true })
+
+  if (process.platform === 'win32') {
+    await fs.symlink(absoluteTarget, linkPath, 'junction')
+  } else {
+    await fs.symlink(absoluteTarget, linkPath)
   }
 }
 
@@ -269,4 +253,4 @@ export async function syncSkillsToAgents(): Promise<void> {
   }
 }
 
-export { AGENTS_SKILLS_DIR, CODEBUDDY_SKILLS_DIR }
+export { AGENTS_SKILLS_DIR }

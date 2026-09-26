@@ -70,11 +70,6 @@ async function findSkillMdPath(dir: string): Promise<string | null> {
   }
 }
 
-function isValidSkillMd(raw: string): boolean {
-  const meta = parseFrontmatter(raw)
-  return Boolean(trim(meta.name || ''))
-}
-
 export async function assertValidSkillDir(dir: string): Promise<{
   name: string
   description: string
@@ -83,11 +78,12 @@ export async function assertValidSkillDir(dir: string): Promise<{
   if (!skillMd) throw new Error('errNoSkillMd')
 
   const content = await fs.readFile(skillMd, 'utf-8')
-  if (!isValidSkillMd(content)) throw new Error('errInvalidSkillMd')
-
   const meta = parseFrontmatter(content)
+  const name = trim(meta.name || '')
+  if (!name) throw new Error('errInvalidSkillMd')
+
   return {
-    name: trim(meta.name!),
+    name,
     description: trim(meta.description || ''),
   }
 }

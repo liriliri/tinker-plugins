@@ -11,6 +11,7 @@ An agent skills manager plugin for [TINKER](https://github.com/liriliri/tinker).
 - **Marketplace** search and one-click install
 - **Local Install** from ZIP archives or skill folders
 - **Per-Agent Linking** for CodeBuddy, Claude, Codex, and OpenCode
+
 ## Installation
 
 Download and install TINKER from `https://tinker.liriliri.io/`, then run `npm i -g tinker-agent-skills`.

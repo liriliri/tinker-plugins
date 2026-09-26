@@ -15,7 +15,6 @@ export const tw = {
     secondary: 'text-slate-500 dark:text-slate-400',
     muted: 'text-slate-400 dark:text-slate-500',
     placeholder: 'placeholder-slate-400 dark:placeholder-slate-600',
-    folder: 'text-slate-400 dark:text-slate-500',
   },
   border: {
     divider: 'border-slate-200/90 dark:border-white/[0.06]',

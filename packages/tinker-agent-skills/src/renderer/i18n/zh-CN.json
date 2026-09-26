@@ -37,6 +37,8 @@
   "marketplaceInstalling": "安装中…",
   "marketplaceInstalled": "已安装",
   "marketplaceInstalls": "{{count}} 次安装",
+  "filterZip": "ZIP",
+  "filterAllFiles": "所有文件",
   "errNoSkillMd": "未找到有效的 SKILL.md",
   "errInvalidSkillMd": "SKILL.md 缺少 frontmatter 中的 name",
   "errAmbiguousZip": "ZIP 中包含多个技能，请只打包一个",

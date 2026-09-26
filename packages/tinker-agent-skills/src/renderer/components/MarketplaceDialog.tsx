@@ -16,12 +16,13 @@ interface MarketplaceRowProps {
 
 function formatInstallCount(count: number | null): string {
   if (isNil(count)) return ''
-  if (count >= 10000) return `${(count / 1000).toFixed(1).replace(/\.0$/, '')}k`
   if (count >= 1000) return `${(count / 1000).toFixed(1).replace(/\.0$/, '')}k`
   return String(count)
 }
 
-function MarketplaceRow({ skill }: MarketplaceRowProps) {
+const MarketplaceRow = observer(function MarketplaceRow({
+  skill,
+}: MarketplaceRowProps) {
   const { t } = useTranslation()
   const installing = store.marketplaceInstallingId === skill.id
   const busy = Boolean(store.marketplaceInstallingId)
@@ -106,7 +107,7 @@ function MarketplaceRow({ skill }: MarketplaceRowProps) {
       )}
     </div>
   )
-}
+})
 
 const MarketplaceDialog = observer(() => {
   const { t } = useTranslation()

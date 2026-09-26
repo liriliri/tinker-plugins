@@ -3,6 +3,9 @@ import { useTranslation } from 'react-i18next'
 import { FolderOpen, Settings2, Sparkles, Trash2 } from 'lucide-react'
 import className from 'licia/className'
 import filter from 'licia/filter'
+import lowerCase from 'licia/lowerCase'
+import map from 'licia/map'
+import some from 'licia/some'
 import type { SkillAgentLink, SkillInfo } from '../../common/types'
 import { tw } from '../theme'
 import store from '../store'
@@ -30,7 +33,7 @@ function AgentPatch({ agents }: AgentPatchProps) {
 
   return (
     <div className="flex flex-wrap gap-1.5 items-center">
-      {enabledAgents.map((agent) => (
+      {map(enabledAgents, (agent: SkillAgentLink) => (
         <span
           key={agent.id}
           title={agent.name}
@@ -48,7 +51,7 @@ function AgentPatch({ agents }: AgentPatchProps) {
 
 const SkillCard = observer(function SkillCard({ skill }: SkillCardProps) {
   const { t } = useTranslation()
-  const linked = skill.agents.some((agent) => agent.enabled)
+  const linked = some(skill.agents, (agent: SkillAgentLink) => agent.enabled)
   const deleting = store.deletingPath === skill.path
 
   function openInFolder(e?: React.MouseEvent) {
@@ -100,11 +103,11 @@ const SkillCard = observer(function SkillCard({ skill }: SkillCardProps) {
       <div className="flex flex-col gap-1 px-3.5 pt-3 pb-2.5">
         <div className="flex items-start gap-2 min-w-0">
           <div className="flex-1 min-w-0">
-            {skill.name.toLowerCase() !== skill.folderName.toLowerCase() ? (
+            {lowerCase(skill.name) !== lowerCase(skill.folderName) ? (
               <div
                 className={className(
                   'text-[10px] font-medium tracking-[0.08em] uppercase mb-1 truncate font-mono',
-                  tw.text.folder,
+                  tw.text.muted,
                 )}
                 title={skill.folderName}
               >
@@ -243,7 +246,7 @@ const SkillList = observer(() => {
   return (
     <AppScrollArea viewportClassName="p-4">
       <div className="grid gap-3 grid-cols-1 min-[640px]:grid-cols-2 min-[1100px]:grid-cols-3 min-[1400px]:grid-cols-4">
-        {skills.map((skill) => (
+        {map(skills, (skill: SkillInfo) => (
           <SkillCard key={skill.path} skill={skill} />
         ))}
       </div>
