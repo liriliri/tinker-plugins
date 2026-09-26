@@ -5,8 +5,8 @@ import isStr from 'licia/isStr'
 import contain from 'licia/contain'
 import lowerCase from 'licia/lowerCase'
 import trim from 'licia/trim'
-import toStr from 'licia/toStr'
 import delay from 'licia/delay'
+import { errorMessage } from 'tinker-share/lib/util'
 import type { IAvd } from '../common/types'
 import { createMcpApi } from './mcp'
 
@@ -72,6 +72,16 @@ export class Store {
     })
   }
 
+  private resolveAvd(id?: string) {
+    const targetId = id || this.avd?.id
+    if (!targetId) return null
+    return find(this.avds, (d) => d.id === targetId) || null
+  }
+
+  private scheduleReload(ms: number) {
+    delay(() => this.loadAvds(false, { silent: true }), ms)
+  }
+
   async loadAvds(forceRefresh = false, opts?: { silent?: boolean }) {
     if (!opts?.silent) this.isLoading = true
     try {
@@ -79,7 +89,7 @@ export class Store {
       this.updateAvds(list)
     } catch (err) {
       if (opts?.silent) throw err
-      this.showToast(toStr(err), 'error')
+      this.showToast(errorMessage(err), 'error')
     } finally {
       if (!opts?.silent) this.isLoading = false
     }
@@ -93,29 +103,25 @@ export class Store {
   }
 
   async startAvd(id?: string) {
-    const targetId = id || this.avd?.id
-    if (!targetId) return
-    const target = find(this.avds, (d) => d.id === targetId)
-    if (target?.pid) return
+    const target = this.resolveAvd(id)
+    if (!target || target.pid) return
     try {
-      await avd.startAvd(targetId)
-      delay(() => this.loadAvds(false, { silent: true }), 1500)
+      await avd.startAvd(target.id)
+      this.scheduleReload(1500)
     } catch (err) {
-      this.showToast(toStr(err), 'error')
+      this.showToast(errorMessage(err), 'error')
       throw err
     }
   }
 
   async stopAvd(id?: string) {
-    const targetId = id || this.avd?.id
-    if (!targetId) return
-    const target = find(this.avds, (d) => d.id === targetId)
+    const target = this.resolveAvd(id)
     if (!target?.pid) return
     try {
-      await avd.stopAvd(targetId)
-      delay(() => this.loadAvds(false, { silent: true }), 800)
+      await avd.stopAvd(target.id)
+      this.scheduleReload(800)
     } catch (err) {
-      this.showToast(toStr(err), 'error')
+      this.showToast(errorMessage(err), 'error')
       throw err
     }
   }
@@ -146,7 +152,7 @@ export class Store {
       await this.loadAvds(true)
       this.showToast('wiped')
     } catch (err) {
-      this.showToast(toStr(err), 'error')
+      this.showToast(errorMessage(err), 'error')
       throw err
     }
   }

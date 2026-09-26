@@ -1,11 +1,10 @@
-import { createRoot } from 'react-dom/client'
 import { useEffect } from 'react'
 import { observer } from 'mobx-react-lite'
-import i18n from 'i18next'
-import { initReactI18next, useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next'
 import * as Toast from '@radix-ui/react-toast'
 import { X } from 'lucide-react'
 import className from 'licia/className'
+import renderApp from 'tinker-share/lib/renderApp'
 import Toolbar from './components/Toolbar'
 import AvdList from './components/AvdList'
 import WipeDialog from './components/WipeDialog'
@@ -14,18 +13,6 @@ import store from './store'
 import enUS from './i18n/en-US.json'
 import zhCN from './i18n/zh-CN.json'
 import './index.scss'
-
-i18n.use(initReactI18next).init({
-  resources: {
-    'en-US': { translation: enUS },
-    'zh-CN': { translation: zhCN },
-  },
-  lng: 'en-US',
-  fallbackLng: 'en-US',
-  interpolation: {
-    escapeValue: false,
-  },
-})
 
 const App = observer(() => {
   const { t } = useTranslation()
@@ -72,11 +59,4 @@ const App = observer(() => {
   )
 })
 
-;(async function () {
-  const language = await tinker.getLanguage()
-  i18n.changeLanguage(language)
-  tinker.on('changeLanguage', (lang: string) => i18n.changeLanguage(lang))
-
-  const container = document.getElementById('app') as HTMLElement
-  createRoot(container).render(<App />)
-})()
+renderApp(App, { 'en-US': enUS, 'zh-CN': zhCN })

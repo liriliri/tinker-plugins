@@ -91,7 +91,7 @@ const AvdList = observer(() => {
   const { t } = useTranslation()
   const rows = store.filteredAvds
 
-  if (!store.isLoading && store.avds.length === 0) {
+  if (!store.isLoading && (store.avds.length === 0 || rows.length === 0)) {
     return (
       <div
         className={className(
@@ -99,20 +99,7 @@ const AvdList = observer(() => {
           tw.empty,
         )}
       >
-        {t('noAvds')}
-      </div>
-    )
-  }
-
-  if (!store.isLoading && rows.length === 0) {
-    return (
-      <div
-        className={className(
-          'flex-1 flex items-center justify-center text-[12px]',
-          tw.empty,
-        )}
-      >
-        {t('noMatches')}
+        {t(store.avds.length === 0 ? 'noAvds' : 'noMatches')}
       </div>
     )
   }

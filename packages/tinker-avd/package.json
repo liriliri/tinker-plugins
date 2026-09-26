@@ -1,7 +1,7 @@
 {
   "name": "tinker-avd",
-  "version": "0.1.0",
-  "description": "Manage Android Virtual Devices: list, start, and stop local AVDs",
+  "version": "0.1.1",
+  "description": "List, start, and stop local Android Virtual Devices",
   "files": [
     "dist/",
     "icon.png"
@@ -27,7 +27,7 @@
   ],
   "tinker": {
     "name": "AVD",
-    "description": "List, start and stop local Android Virtual Devices",
+    "category": "dev",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",

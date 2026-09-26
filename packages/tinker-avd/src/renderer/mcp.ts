@@ -38,16 +38,16 @@ async function ensureAvds(store: Store) {
 
 export function createMcpApi(getStore: () => Store) {
   const callTool = (name: string, args: Record<string, unknown>) => {
-    if (name === 'list_avds') {
-      return listAvds(getStore())
+    switch (name) {
+      case 'list_avds':
+        return listAvds(getStore())
+      case 'start_avd':
+        return startAvd(getStore(), args as { avd_id: string })
+      case 'stop_avd':
+        return stopAvd(getStore(), args as { avd_id: string })
+      default:
+        throw new Error(`Unknown tool "${name}"`)
     }
-    if (name === 'start_avd') {
-      return startAvd(getStore(), args as { avd_id: string })
-    }
-    if (name === 'stop_avd') {
-      return stopAvd(getStore(), args as { avd_id: string })
-    }
-    throw new Error(`Unknown tool "${name}"`)
   }
 
   tinker.registerMcp({ callTool })
