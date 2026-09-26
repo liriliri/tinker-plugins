@@ -13,12 +13,15 @@ import splitPath from 'licia/splitPath'
 import startWith from 'licia/startWith'
 import trim from 'licia/trim'
 import unique from 'licia/unique'
+import type { GltfJson } from '../types'
 import {
   getBaseName,
   getExtension,
+  isDataUri,
   isModelFileName,
   isTextureFileName,
   MODEL_EXTENSIONS,
+  TEXTURE_EXTENSIONS,
 } from './formats'
 
 function dirname(filePath: string): string {
@@ -31,7 +34,6 @@ function joinPath(dir: string, rel: string): string {
   return left ? `${left}/${right}` : right
 }
 
-/** Load a model path (file or directory) and referenced sidecars. */
 export async function filesFromPath(filePath: string): Promise<File[]> {
   const stat = await tinker.fstat(filePath)
   if (stat.isDirectory) {
@@ -71,10 +73,7 @@ async function expandGltfSidecars(
 ): Promise<File[]> {
   const gltfBuffer = await gltfFile.arrayBuffer()
   const text = new TextDecoder().decode(gltfBuffer)
-  let json: {
-    images?: { uri?: string }[]
-    buffers?: { uri?: string }[]
-  }
+  let json: GltfJson
   try {
     json = JSON.parse(text)
   } catch {
@@ -152,11 +151,11 @@ async function expandObjSidecars(
           files.push(new File([texBuffer], getBaseName(texName)))
           seen.add(texKey)
         } catch {
-          // optional texture
+          /* texture may be missing */
         }
       }
     } catch {
-      // optional mtl
+      /* mtl may be missing */
     }
   }
 
@@ -194,7 +193,7 @@ async function expandTextureCompanions(
     try {
       const results = await tinker.searchFile('*', {
         dirs: [searchDir],
-        exts: ['png', 'jpg', 'jpeg', 'webp', 'bmp', 'tga', 'tif', 'tiff'],
+        exts: [...TEXTURE_EXTENSIONS],
         maxResults: 100,
       })
       for (const item of results) {
@@ -211,11 +210,11 @@ async function expandTextureCompanions(
           files.push(new File([buffer], getBaseName(item.path)))
           seen.add(key)
         } catch {
-          // optional
+          /* skip unreadable texture */
         }
       }
     } catch {
-      // search unavailable
+      /* search unavailable */
     }
   }
 
@@ -239,7 +238,7 @@ async function findModelInDirectory(dir: string): Promise<string | null> {
         const stat = await tinker.fstat(candidate)
         if (stat.isFile) return candidate
       } catch {
-        // continue
+        /* try next candidate */
       }
     }
   }
@@ -263,10 +262,6 @@ async function findModelInDirectory(dir: string): Promise<string | null> {
   } catch {
     return null
   }
-}
-
-function isDataUri(uri: string): boolean {
-  return startWith(lowerCase(uri.slice(0, 5)), 'data:')
 }
 
 export function mergeFilesByName(files: File[]): File[] {

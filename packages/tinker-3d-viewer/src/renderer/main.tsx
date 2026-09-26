@@ -25,11 +25,8 @@ const App = observer(function App() {
   }, [])
 
   const handleDrop = useCallback((e: DragEvent) => {
-    e.preventDefault()
     setIsDragOver(false)
-    if (e.dataTransfer.files.length) {
-      void store.handleDrop(e.dataTransfer.files)
-    }
+    store.handleDropEvent(e)
   }, [])
 
   return (

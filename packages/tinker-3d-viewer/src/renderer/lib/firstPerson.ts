@@ -1,5 +1,6 @@
 import type { ModelViewerElement } from '@google/model-viewer'
 import clamp from 'licia/clamp'
+import type { FirstPersonState } from '../types'
 
 const LOOK_SENSITIVITY = 0.0022
 const MIN_PHI = 0.05
@@ -9,19 +10,6 @@ const MIN_LOOK_AHEAD = 0.15
 const MOVE_SPEED_RATIO = 0.14
 const MOVE_RESPONSIVENESS = 12
 const STOP_EPSILON = 1e-5
-
-export interface FirstPersonState {
-  eyeX: number
-  eyeY: number
-  eyeZ: number
-  velX: number
-  velY: number
-  velZ: number
-  theta: number
-  phi: number
-  radius: number
-  moveSpeed: number
-}
 
 function modelSpan(el: ModelViewerElement) {
   const dims = el.getDimensions()

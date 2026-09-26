@@ -22,7 +22,7 @@ import {
   OPEN_DIALOG_EXTENSIONS,
 } from './lib/formats'
 import { filesFromPath, hasModelFile, mergeFilesByName } from './lib/sidecars'
-import type { GltfPackage } from './lib/specGloss'
+import type { GltfPackage } from './types'
 import { createMcpApi } from './mcp'
 import {
   DEFAULT_MATCAP_PRESET,
@@ -204,6 +204,13 @@ export class Store extends BaseStore {
 
     if (this.status !== 'ready' || !this.info) {
       throw new Error(this.toastMsg || 'loadFailed')
+    }
+  }
+
+  handleDropEvent(e: { preventDefault(): void; dataTransfer: DataTransfer }) {
+    e.preventDefault()
+    if (e.dataTransfer.files.length) {
+      void this.handleDrop(e.dataTransfer.files)
     }
   }
 

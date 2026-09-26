@@ -8,7 +8,9 @@ import isEmpty from 'licia/isEmpty'
 import isErr from 'licia/isErr'
 import keys from 'licia/keys'
 import lowerCase from 'licia/lowerCase'
+import map from 'licia/map'
 import some from 'licia/some'
+import sortBy from 'licia/sortBy'
 import startWith from 'licia/startWith'
 import upperCase from 'licia/upperCase'
 import * as THREE from 'three'
@@ -20,9 +22,11 @@ import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader.js'
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader.js'
 import { ThreeMFLoader } from 'three/examples/jsm/loaders/3MFLoader.js'
 import { GLTFExporter } from 'three/examples/jsm/exporters/GLTFExporter.js'
+import type { GltfJson, GltfPackage } from '../types'
 import {
   getBaseName,
   getExtension,
+  isDataUri,
   isDirectGlb,
   isModelFileName,
 } from './formats'
@@ -30,8 +34,6 @@ import {
   collectGltfPackage,
   prepareCompatibleGlb,
   usesSpecGloss,
-  type GltfJson,
-  type GltfPackage,
 } from './specGloss'
 
 interface PreparedModel {
@@ -91,7 +93,7 @@ async function prepareZip(zipFile: File): Promise<PreparedModel> {
   if (!isEmpty(glbFiles)) {
     const preferred =
       find(glbFiles, (file) => /scene\.glb$/i.test(file.name)) ||
-      glbFiles.sort((a, b) => b.size - a.size)[0]
+      sortBy(glbFiles, (file) => -file.size)[0]
     return prepareGlbBuffer(await preferred.arrayBuffer())
   }
 
@@ -286,10 +288,6 @@ function normalizeEntryName(name: string): string {
   return lowerCase(name.replace(/\\/g, '/').replace(/^\.\//, ''))
 }
 
-function isDataUri(uri: string): boolean {
-  return startWith(lowerCase(uri.slice(0, 5)), 'data:')
-}
-
 function isBlobOrDataUrl(url: string): boolean {
   const lower = lowerCase(url)
   return startWith(lower, 'blob:') || startWith(lower, 'data:')
@@ -310,6 +308,17 @@ function isKnownError(message: string): boolean {
     ) ||
     startWith(message, 'missingFiles:') ||
     startWith(message, 'convertFailed:')
+  )
+}
+
+function meshFromGeometry(geometry: THREE.BufferGeometry): THREE.Mesh {
+  return new THREE.Mesh(
+    geometry,
+    new THREE.MeshStandardMaterial({
+      color: 0xcccccc,
+      metalness: 0.1,
+      roughness: 0.8,
+    }),
   )
 }
 
@@ -345,27 +354,13 @@ async function loadForeignObject(
 
   if (ext === 'stl') {
     const geometry = await new STLLoader(manager).loadAsync(mainUrl)
-    return new THREE.Mesh(
-      geometry,
-      new THREE.MeshStandardMaterial({
-        color: 0xcccccc,
-        metalness: 0.1,
-        roughness: 0.8,
-      }),
-    )
+    return meshFromGeometry(geometry)
   }
 
   if (ext === 'ply') {
     const geometry = await new PLYLoader(manager).loadAsync(mainUrl)
     geometry.computeVertexNormals()
-    return new THREE.Mesh(
-      geometry,
-      new THREE.MeshStandardMaterial({
-        color: 0xcccccc,
-        metalness: 0.1,
-        roughness: 0.8,
-      }),
-    )
+    return meshFromGeometry(geometry)
   }
 
   if (ext === 'dae') {
@@ -519,7 +514,7 @@ async function decodeOrWaitTexture(texture: THREE.Texture): Promise<boolean> {
     try {
       if (await tryBitmap(src)) return true
     } catch {
-      // continue polling
+      /* keep polling until texture.image is ready */
     }
   }
 
@@ -582,7 +577,7 @@ function normalizeMaterials(root: THREE.Object3D) {
     const materials = Array.isArray(mesh.material)
       ? mesh.material
       : [mesh.material]
-    const converted = materials.map((material) => {
+    const converted = map(materials, (material) => {
       if (
         (material as THREE.MeshStandardMaterial).isMeshStandardMaterial ||
         (material as THREE.MeshBasicMaterial).isMeshBasicMaterial

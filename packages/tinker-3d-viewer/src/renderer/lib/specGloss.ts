@@ -1,18 +1,11 @@
 import contain from 'licia/contain'
 import lowerCase from 'licia/lowerCase'
 import map from 'licia/map'
-import startWith from 'licia/startWith'
-import { getBaseName } from './formats'
+import type { GltfJson, GltfPackage } from '../types'
+import { getBaseName, isDataUri } from './formats'
 
 const SPEC_GLOSS = 'KHR_materials_pbrSpecularGlossiness'
 const JSON_CHUNK = 0x4e4f534a // 'JSON'
-
-export type GltfJson = {
-  extensionsUsed?: string[]
-  extensionsRequired?: string[]
-  buffers?: { uri?: string }[]
-  images?: { uri?: string }[]
-}
 
 export function usesSpecGloss(json: GltfJson): boolean {
   return (
@@ -47,11 +40,6 @@ function readGlbJson(buffer: ArrayBuffer): GltfJson | null {
   return null
 }
 
-export interface GltfPackage {
-  gltfJson: string
-  resources: Record<string, ArrayBuffer>
-}
-
 export async function collectGltfPackage(
   files: File[],
   gltfFile: File,
@@ -69,12 +57,12 @@ export async function collectGltfPackage(
   )
 
   const uris = [
-    ...(json.buffers || []).map((item) => item.uri),
-    ...(json.images || []).map((item) => item.uri),
+    ...map(json.buffers || [], (item) => item.uri),
+    ...map(json.images || [], (item) => item.uri),
   ]
 
   for (const uri of uris) {
-    if (!uri || startWith(lowerCase(uri.slice(0, 5)), 'data:')) continue
+    if (!uri || isDataUri(uri)) continue
     const file = byBase.get(lowerCase(getBaseName(uri)))
     if (!file) {
       throw new Error(`missingFiles:${getBaseName(uri)}`)

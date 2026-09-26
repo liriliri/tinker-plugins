@@ -10,11 +10,11 @@ import {
   lookFirstPerson,
   prepareFirstPersonViewer,
   stepFirstPerson,
-  type FirstPersonState,
 } from '../lib/firstPerson'
 import { createDisplayModeController } from '../lib/displayMode'
 import store from '../store'
 import { tw } from '../theme'
+import type { FirstPersonState } from '../types'
 import InspectorPanel from './InspectorPanel'
 import Toolbar from './Toolbar'
 
@@ -116,9 +116,10 @@ const ModelStage = observer(function ModelStage() {
     if (!el || !store.srcUrl) return
 
     if (store.viewMode === 'firstPerson') {
-      prepareFirstPersonViewer(el)
       if (el.loaded) {
         enterFirstPersonCamera()
+      } else {
+        prepareFirstPersonViewer(el)
       }
     } else {
       el.setAttribute('camera-controls', '')
@@ -282,12 +283,7 @@ const ModelStage = observer(function ModelStage() {
       onDragOver={(e) => {
         e.preventDefault()
       }}
-      onDrop={(e) => {
-        e.preventDefault()
-        if (e.dataTransfer.files.length) {
-          void store.handleDrop(e.dataTransfer.files)
-        }
-      }}
+      onDrop={(e) => store.handleDropEvent(e)}
     >
       {store.srcUrl && (
         <>
@@ -322,7 +318,7 @@ const ModelStage = observer(function ModelStage() {
                 tw.spinner,
               )}
             />
-            <p className={className('text-[12px]', tw.text.secondary)}>
+            <p className={className('text-[12px]', tw.text.muted)}>
               {t('loading')}
             </p>
           </div>

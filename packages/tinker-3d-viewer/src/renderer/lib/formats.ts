@@ -1,6 +1,7 @@
 import contain from 'licia/contain'
 import lowerCase from 'licia/lowerCase'
 import splitPath from 'licia/splitPath'
+import startWith from 'licia/startWith'
 
 /** Formats converted to GLB via three.js loaders for model-viewer. */
 export const MODEL_EXTENSIONS = [
@@ -16,7 +17,7 @@ export const MODEL_EXTENSIONS = [
 ]
 
 /** Sidecar files that must travel with the model (textures, bins, materials). */
-export const COMPANION_EXTENSIONS = [
+const COMPANION_EXTENSIONS = [
   'bin',
   'mtl',
   'png',
@@ -30,6 +31,18 @@ export const COMPANION_EXTENSIONS = [
   'tiff',
   'ktx2',
   'basis',
+]
+
+export const TEXTURE_EXTENSIONS = [
+  'png',
+  'jpg',
+  'jpeg',
+  'webp',
+  'bmp',
+  'gif',
+  'tga',
+  'tif',
+  'tiff',
 ]
 
 export const OPEN_DIALOG_EXTENSIONS = [
@@ -56,7 +69,7 @@ export function isModelFileName(fileName: string): boolean {
   return contain(MODEL_EXTENSIONS, getExtension(fileName))
 }
 
-export function isCompanionFileName(fileName: string): boolean {
+function isCompanionFileName(fileName: string): boolean {
   return contain(COMPANION_EXTENSIONS, getExtension(fileName))
 }
 
@@ -69,8 +82,9 @@ export function isDirectGlb(fileName: string): boolean {
 }
 
 export function isTextureFileName(fileName: string): boolean {
-  return contain(
-    ['png', 'jpg', 'jpeg', 'webp', 'bmp', 'gif', 'tga', 'tif', 'tiff'],
-    getExtension(fileName),
-  )
+  return contain(TEXTURE_EXTENSIONS, getExtension(fileName))
+}
+
+export function isDataUri(uri: string): boolean {
+  return startWith(lowerCase(uri.slice(0, 5)), 'data:')
 }

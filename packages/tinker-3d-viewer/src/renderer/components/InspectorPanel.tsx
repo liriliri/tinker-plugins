@@ -3,6 +3,7 @@ import filter from 'licia/filter'
 import map from 'licia/map'
 import some from 'licia/some'
 import { observer } from 'mobx-react-lite'
+import type { CSSProperties } from 'react'
 import { useTranslation } from 'react-i18next'
 import store from '../store'
 import { tw } from '../theme'
@@ -31,6 +32,23 @@ const MODE_OPTIONS: ModeOption[] = [
   { mode: 'wireframe', labelKey: 'displayWireframe' },
   { mode: 'skeleton', labelKey: 'displaySkeleton' },
 ]
+
+function isWireframeColor(color: string): boolean {
+  return color.toLowerCase() === store.wireframeColor.toLowerCase()
+}
+
+function swatchStyle(color: string): CSSProperties {
+  return { backgroundColor: color }
+}
+
+function matcapStyle(url: string): CSSProperties {
+  return {
+    backgroundImage: `url("${url}")`,
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+  }
+}
+
 const InspectorPanel = observer(function InspectorPanel() {
   const { t } = useTranslation()
   const modeOptions = filter(
@@ -45,7 +63,7 @@ const InspectorPanel = observer(function InspectorPanel() {
     store.displayMode === 'matcap' || store.displayMode === 'matcapWireframe'
   const isCustomWireframeColor = !some(
     WIREFRAME_COLOR_PRESETS,
-    (color) => color.toLowerCase() === store.wireframeColor.toLowerCase(),
+    isWireframeColor,
   )
 
   if (!store.inspectorOpen) return null
@@ -84,20 +102,20 @@ const InspectorPanel = observer(function InspectorPanel() {
               {t('wireframeColor')}
             </p>
             <div className="flex flex-wrap gap-1.5 items-center">
-              {map(WIREFRAME_COLOR_PRESETS, (color) => {
-                const active =
-                  store.wireframeColor.toLowerCase() === color.toLowerCase()
-                return (
-                  <button
-                    key={color}
-                    type="button"
-                    title={color}
-                    onClick={() => store.setWireframeColor(color)}
-                    className={active ? tw.swatch.active : tw.swatch.default}
-                    style={{ backgroundColor: color }}
-                  />
-                )
-              })}
+              {map(WIREFRAME_COLOR_PRESETS, (color) => (
+                <button
+                  key={color}
+                  type="button"
+                  title={color}
+                  onClick={() => store.setWireframeColor(color)}
+                  className={
+                    isWireframeColor(color)
+                      ? tw.swatch.active
+                      : tw.swatch.default
+                  }
+                  style={swatchStyle(color)}
+                />
+              ))}
               <label
                 className={
                   isCustomWireframeColor
@@ -136,11 +154,7 @@ const InspectorPanel = observer(function InspectorPanel() {
                     className={
                       active ? tw.swatch.matcapActive : tw.swatch.matcap
                     }
-                    style={{
-                      backgroundImage: `url("${preset.url}")`,
-                      backgroundPosition: 'center',
-                      backgroundSize: 'cover',
-                    }}
+                    style={matcapStyle(preset.url)}
                   />
                 )
               })}

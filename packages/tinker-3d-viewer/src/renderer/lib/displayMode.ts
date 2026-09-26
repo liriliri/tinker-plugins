@@ -3,6 +3,7 @@ import each from 'licia/each'
 import filter from 'licia/filter'
 import find from 'licia/find'
 import map from 'licia/map'
+import sortBy from 'licia/sortBy'
 import {
   Bone,
   Box3,
@@ -240,7 +241,7 @@ function createBoneGeometry(): BufferGeometry {
 }
 
 function median(values: number[]): number {
-  const sorted = [...values].sort((a, b) => a - b)
+  const sorted = sortBy(values, (value) => value)
   return sorted[Math.floor(sorted.length / 2)]
 }
 

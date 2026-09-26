@@ -1,7 +1,7 @@
 {
   "name": "tinker-3d-viewer",
-  "version": "0.4.1",
-  "description": "3D Model Viewer Plugin for TINKER",
+  "version": "0.4.2",
+  "description": "Preview local 3D models in GLB, glTF, OBJ, FBX, STL, and more, and export as GLB or glTF",
   "files": [
     "dist/",
     "icon.png"
@@ -26,14 +26,14 @@
   ],
   "tinker": {
     "name": "3D Viewer",
-    "description": "Preview 3D models",
+    "category": "media",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",
     "locales": {
       "zh-CN": {
         "name": "3D 预览",
-        "description": "预览 3D 模型"
+        "description": "预览本地 GLB、glTF、OBJ、FBX、STL 等 3D 模型，并导出为 GLB 或 glTF"
       }
     },
     "mcp": {

@@ -17,6 +17,31 @@ export type DisplayMode =
   | 'shadedWireframe'
   | 'skeleton'
 
+export type GltfJson = {
+  extensionsUsed?: string[]
+  extensionsRequired?: string[]
+  buffers?: { uri?: string }[]
+  images?: { uri?: string }[]
+}
+
+export interface GltfPackage {
+  gltfJson: string
+  resources: Record<string, ArrayBuffer>
+}
+
+export interface FirstPersonState {
+  eyeX: number
+  eyeY: number
+  eyeZ: number
+  velX: number
+  velY: number
+  velZ: number
+  theta: number
+  phi: number
+  radius: number
+  moveSpeed: number
+}
+
 export const MATCAP_PRESETS = [
   { id: 'porcelain', url: porcelain },
   { id: 'clay', url: clay },

@@ -7,7 +7,6 @@ export const tw = {
   },
   text: {
     primary: 'text-[var(--ink)]',
-    secondary: 'text-[var(--muted)]',
     muted: 'text-[var(--muted)]',
   },
   border: {
@@ -17,8 +16,6 @@ export const tw = {
     icon: 'flex items-center justify-center w-6 h-6 rounded-sm bg-transparent border-none cursor-default text-[var(--ink)] hover:bg-[var(--hover)] active:bg-[var(--line)] disabled:opacity-40 disabled:cursor-default',
     iconActive:
       'flex items-center justify-center w-6 h-6 rounded-sm border-none cursor-default bg-[var(--select-soft)] text-[var(--select)] hover:bg-[var(--select-soft)] active:brightness-95 disabled:opacity-40 disabled:cursor-default',
-    primary:
-      'inline-flex items-center gap-1.5 h-6 px-2.5 rounded-sm text-[12px] border border-transparent cursor-default bg-[var(--select)] text-[var(--select-text)] hover:brightness-110 active:brightness-95',
     panelItem:
       'w-full text-left text-[12px] px-2 py-1.5 rounded-sm border-none cursor-default bg-transparent text-[var(--ink)] hover:bg-[var(--hover)]',
     panelItemActive:
