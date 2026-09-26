@@ -12,7 +12,7 @@ Comments (why/what) are handled by the **lint** skill, not this one.
 
 ## Arguments
 
-- Plugin folder (e.g. `tinker-hash`) → all `.ts` / `.tsx` / `.json` under `packages/<name>/src/`
+- Plugin folder (e.g. `tinker-hash`) → all `.ts` / `.tsx` / `.json` under `packages/<name>/src/` (also `vite.config.ts`, `vite.preload.ts` when present)
 - Or one or more file paths (still load that plugin’s i18n JSON for key checks)
 
 ## Checklist
@@ -45,6 +45,9 @@ Report each hit as `[Category] path:line — …`.
 - Grep all `.ts` / `.tsx` for `t('…')` / `t("…")` (including nested keys like `tabs.settings`)
 - A key is unused only if it appears in **no** `t()` call across the plugin — then remove from **both** locale files
 
+### 7. Share reuse
+Local code that duplicates `tinker-share` (`renderApp`, vite helpers, `storage`, `errorMessage`) → replace with the share export. Drop thin wrappers that only re-export share with no added behavior.
+
 ## Output
 
 ```
@@ -55,7 +58,7 @@ No issues → **No redundancies found.** End with category totals.
 
 ## Steps
 
-1. Glob / read targets; for i18n, always load both locale files.
-2. Cross-check exports↔imports; apply **all 6** checklist items.
+1. Glob / read targets (include vite configs); for i18n, always load both locale files.
+2. Cross-check exports↔imports; apply **all 7** checklist items.
 3. Report findings; **fix every issue** — do not skip any.
 4. Re-check changed files / IDE diagnostics for TypeScript errors and fix until clean.
