@@ -1,7 +1,7 @@
 {
   "name": "tinker-agent-pet",
-  "version": "0.1.2",
-  "description": "Browse, install and run Petdex agent pets in Tinker",
+  "version": "0.1.3",
+  "description": "Browse, install, and run Petdex pets as an animated desktop companion",
   "files": [
     "dist/",
     "icon.png"
@@ -27,7 +27,7 @@
   ],
   "tinker": {
     "name": "Agent Pet",
-    "description": "Browse Petdex pets and run an animated desktop companion",
+    "category": "entertainment",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",

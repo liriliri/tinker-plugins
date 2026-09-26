@@ -44,6 +44,8 @@
   "loadPetsFailed": "Failed to load pets",
   "downloadFailed": "Download failed",
   "enablePetFailed": "Failed to enable pet",
+  "openPetWindowFailed": "Failed to open pet window",
+  "enabledPetMissing": "Enabled pet is not installed",
   "saveSettingsFailed": "Failed to save settings",
   "noPetEnabled": "No pet is currently enabled",
   "unknownAction": "Unknown action \"{{action}}\". Available: {{available}}",

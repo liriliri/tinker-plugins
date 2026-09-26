@@ -44,6 +44,8 @@
   "loadPetsFailed": "加载宠物失败",
   "downloadFailed": "下载失败",
   "enablePetFailed": "启用宠物失败",
+  "openPetWindowFailed": "无法打开桌宠窗口",
+  "enabledPetMissing": "已启用的宠物未安装",
   "saveSettingsFailed": "保存设置失败",
   "noPetEnabled": "当前没有启用的宠物",
   "unknownAction": "未知动作 \"{{action}}\"。可用：{{available}}",

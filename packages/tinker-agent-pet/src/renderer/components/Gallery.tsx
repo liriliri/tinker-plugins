@@ -15,7 +15,12 @@ import {
 } from 'lucide-react'
 import store from '../store'
 import { tw } from '../theme'
-import { formatCount, getPetPreviewUrl, progressLabel } from '../lib/util'
+import {
+  formatCount,
+  getPetPreviewUrl,
+  petAccentStyle,
+  progressLabel,
+} from '../lib/util'
 import PetPreview from './PetPreview'
 import SelectMenu from './SelectMenu'
 
@@ -38,17 +43,16 @@ const Gallery = observer(function Gallery() {
     return () => observer.disconnect()
   }, [store.pets.length, store.nextCursor])
 
-  const sortOptions = [
-    { value: 'installed', label: t('sort.installed') },
-    { value: 'recent', label: t('sort.recent') },
-    { value: 'popular', label: t('sort.popular') },
-  ]
-  const kindOptions = [
-    { value: 'all', label: t('kind.all') },
-    { value: 'creature', label: t('kind.creature') },
-    { value: 'character', label: t('kind.character') },
-    { value: 'object', label: t('kind.object') },
-  ]
+  const sortValues = ['installed', 'recent', 'popular'] as const
+  const kindValues = ['all', 'creature', 'character', 'object'] as const
+  const sortOptions = sortValues.map((value) => ({
+    value,
+    label: t(`sort.${value}`),
+  }))
+  const kindOptions = kindValues.map((value) => ({
+    value,
+    label: t(`kind.${value}`),
+  }))
 
   return (
     <section className="flex-1 min-h-0 flex flex-col">
@@ -165,12 +169,7 @@ const Gallery = observer(function Gallery() {
                 <article
                   key={pet.slug}
                   className={tw.card.base}
-                  style={
-                    {
-                      ['--pet-accent' as string]:
-                        pet.dominantColor || tw.brand.accent,
-                    } as React.CSSProperties
-                  }
+                  style={petAccentStyle(pet.dominantColor)}
                 >
                   <button
                     type="button"

@@ -1,8 +1,14 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 import { t } from 'i18next'
+import debounce from 'licia/debounce'
+import extend from 'licia/extend'
+import filter from 'licia/filter'
+import find from 'licia/find'
 import isArr from 'licia/isArr'
 import isEmpty from 'licia/isEmpty'
 import isErr from 'licia/isErr'
+import keys from 'licia/keys'
+import map from 'licia/map'
 import naturalSort from 'licia/naturalSort'
 import BaseStore from 'tinker-share/store/Base'
 import { errorMessage } from 'tinker-share/lib/util'
@@ -13,8 +19,11 @@ import {
   defaultActions,
   defaultEnabled,
   resolveFormat,
+  type HooksFormat,
+  type HookTypeDef,
 } from './lib/agentHooks'
-import type { AgentDef, AgentSettings, HookEventId, PetActionId } from './types'
+import type { AgentDef, AgentSettings, HookEventId } from './types'
+import type { PetActionId } from './lib/util'
 import {
   applyStorage,
   disposePetWindowController,
@@ -32,6 +41,42 @@ import {
   type PetStorage,
   type PetSearchItem,
 } from '../common/types'
+
+function failMessage(error: unknown, fallbackKey: string) {
+  return isErr(error) ? errorMessage(error) : t(fallbackKey)
+}
+
+async function readAgentSettings(path: string): Promise<AgentSettings> {
+  try {
+    const content = await tinker.readFile(path, 'utf-8')
+    return JSON.parse(content as string)
+  } catch {
+    return {}
+  }
+}
+
+function stripPetHooks(
+  settings: AgentSettings,
+  hookDefs: HookTypeDef[],
+  format: HooksFormat,
+) {
+  if (!settings.hooks) return
+
+  for (const hookDef of hookDefs) {
+    const eventName = format.getEventName(hookDef)
+    const entries = settings.hooks[eventName]
+    if (!entries || !isArr(entries)) continue
+
+    // Strip only our previous pet hooks; keep sound / custom hooks.
+    settings.hooks[eventName] = format.filterEntries(entries, hookDef)
+
+    if (settings.hooks[eventName]!.length === 0) {
+      delete settings.hooks[eventName]
+    }
+  }
+
+  if (isEmpty(settings.hooks)) delete settings.hooks
+}
 
 class AgentHookStore {
   agent: AgentDef
@@ -86,7 +131,9 @@ class AgentHookStore {
           this.isConfigured = true
         })
       }
-    } catch {}
+    } catch {
+      // settings.json not found or invalid
+    }
   }
 
   toggleHook(hookType: HookEventId) {
@@ -104,40 +151,28 @@ class AgentHookStore {
     this.message = ''
 
     try {
-      let settings: AgentSettings = {}
-      try {
-        const content = await tinker.readFile(this.settingsPath, 'utf-8')
-        settings = JSON.parse(content as string)
-      } catch {}
-
+      const settings = await readAgentSettings(this.settingsPath)
       if (!settings.hooks) settings.hooks = {}
-      Object.assign(settings, this.hooksFormat.initialSettings())
+      extend(settings, this.hooksFormat.initialSettings())
+
+      stripPetHooks(settings, this.enabledHookTypes, this.hooksFormat)
 
       for (const hookDef of this.enabledHookTypes) {
+        if (!this.enabledHooks[hookDef.id]) continue
+
         const eventName = this.hooksFormat.getEventName(hookDef)
+        if (!settings.hooks) settings.hooks = {}
         if (!settings.hooks[eventName]) settings.hooks[eventName] = []
 
-        // Strip only our previous pet hooks; keep sound / custom hooks.
-        settings.hooks[eventName] = this.hooksFormat.filterEntries(
-          settings.hooks[eventName],
-          hookDef,
+        settings.hooks[eventName].push(
+          this.hooksFormat.buildEntry(
+            buildPetHookCommand(this.actions[hookDef.id]),
+            hookDef,
+          ),
         )
-
-        if (this.enabledHooks[hookDef.id]) {
-          settings.hooks[eventName].push(
-            this.hooksFormat.buildEntry(
-              buildPetHookCommand(this.actions[hookDef.id]),
-              hookDef,
-            ),
-          )
-        }
-
-        if (settings.hooks[eventName].length === 0) {
-          delete settings.hooks[eventName]
-        }
       }
 
-      if (isEmpty(settings.hooks)) delete settings.hooks
+      if (settings.hooks && isEmpty(settings.hooks)) delete settings.hooks
 
       await tinker.writeFile(
         this.settingsPath,
@@ -166,30 +201,12 @@ class AgentHookStore {
     this.message = ''
 
     try {
-      const content = await tinker.readFile(this.settingsPath, 'utf-8')
-      const settings: AgentSettings = JSON.parse(content as string)
+      const settings = await readAgentSettings(this.settingsPath)
+      stripPetHooks(settings, HOOK_TYPES, this.hooksFormat)
 
-      if (settings.hooks) {
-        for (const hookDef of HOOK_TYPES) {
-          const eventName = this.hooksFormat.getEventName(hookDef)
-          const entries = settings.hooks[eventName]
-          if (!entries || !isArr(entries)) continue
-
-          settings.hooks[eventName] = this.hooksFormat.filterEntries(
-            entries,
-            hookDef,
-          )
-
-          if (settings.hooks[eventName].length === 0) {
-            delete settings.hooks[eventName]
-          }
-        }
-
-        if (isEmpty(settings.hooks)) {
-          delete settings.hooks
-          for (const key of Object.keys(this.hooksFormat.initialSettings())) {
-            delete (settings as Record<string, unknown>)[key]
-          }
+      if (!settings.hooks) {
+        for (const key of keys(this.hooksFormat.initialSettings())) {
+          delete (settings as Record<string, unknown>)[key]
         }
       }
 
@@ -217,8 +234,6 @@ class AgentHookStore {
 }
 
 export class Store extends BaseStore {
-  readonly mcp = createMcpApi(() => this)
-
   overlay: PetOverlay | null = null
   pets: PetSearchItem[] = []
   installedPets: InstalledPet[] = []
@@ -241,27 +256,24 @@ export class Store extends BaseStore {
 
   selectedAgentId = AGENTS[0]!.id
   agentHookStores: Map<string, AgentHookStore> = new Map()
-  visibleAgentIds: Set<string> = new Set(AGENTS.map((a) => a.id))
+  visibleAgentIds: Set<string> = new Set(map(AGENTS, (a) => a.id))
 
-  private searchTimer: number | null = null
+  private runSearch = debounce(() => {
+    void this.loadPets(false)
+  }, 320)
 
   constructor() {
     super()
-    makeAutoObservable(
-      this,
-      {
-        mcp: false,
-      },
-      { autoBind: true },
-    )
+    makeAutoObservable(this, {}, { autoBind: true })
     void tinker.setBackgroundThrottling(false)
+    createMcpApi(() => this)
     for (const agent of AGENTS) {
       this.agentHookStores.set(agent.id, new AgentHookStore(agent))
     }
   }
 
   get visibleAgents(): AgentDef[] {
-    return AGENTS.filter((a) => this.visibleAgentIds.has(a.id)).sort((a, b) =>
+    return filter(AGENTS, (a) => this.visibleAgentIds.has(a.id)).sort((a, b) =>
       naturalSort.comparator(a.name, b.name),
     )
   }
@@ -275,11 +287,12 @@ export class Store extends BaseStore {
   }
 
   get installedSlugSet() {
-    return new Set(this.installedPets.map((pet) => pet.slug))
+    return new Set(map(this.installedPets, (pet) => pet.slug))
   }
 
   get activePet() {
-    return this.installedPets.find(
+    return find(
+      this.installedPets,
       (pet) => pet.slug === this.storage.activeSlug,
     )
   }
@@ -328,8 +341,7 @@ export class Store extends BaseStore {
   }
 
   scheduleSearch() {
-    if (this.searchTimer !== null) window.clearTimeout(this.searchTimer)
-    this.searchTimer = window.setTimeout(() => void this.loadPets(false), 320)
+    this.runSearch()
   }
 
   async refreshLocalState() {
@@ -368,9 +380,7 @@ export class Store extends BaseStore {
     } catch (error) {
       if (sequence !== this.requestSequence) return
       runInAction(() => {
-        this.errorMessage = isErr(error)
-          ? errorMessage(error)
-          : t('loadPetsFailed')
+        this.errorMessage = failMessage(error, 'loadPetsFailed')
       })
     } finally {
       if (sequence === this.requestSequence) {
@@ -405,9 +415,7 @@ export class Store extends BaseStore {
       await this.refreshLocalState()
     } catch (error) {
       runInAction(() => {
-        this.errorMessage = isErr(error)
-          ? errorMessage(error)
-          : t('downloadFailed')
+        this.errorMessage = failMessage(error, 'downloadFailed')
       })
       this.showError(this.errorMessage)
     } finally {
@@ -424,7 +432,7 @@ export class Store extends BaseStore {
 
   async enablePet(slug: string) {
     try {
-      const pet = this.installedPets.find((item) => item.slug === slug)
+      const pet = find(this.installedPets, (item) => item.slug === slug)
       const config = clonePlain(this.storage)
       this.storage = await applyStorage(
         {
@@ -437,7 +445,7 @@ export class Store extends BaseStore {
       )
       this.detailPet = null
     } catch (error) {
-      this.showError(isErr(error) ? errorMessage(error) : t('enablePetFailed'))
+      this.showError(failMessage(error, 'enablePetFailed'))
     }
   }
 
@@ -496,9 +504,7 @@ export class Store extends BaseStore {
         this.installedPets,
       )
     } catch (error) {
-      this.showError(
-        isErr(error) ? errorMessage(error) : t('saveSettingsFailed'),
-      )
+      this.showError(failMessage(error, 'saveSettingsFailed'))
     }
   }
 
@@ -540,7 +546,6 @@ export class Store extends BaseStore {
   }
 
   dispose() {
-    if (this.searchTimer !== null) window.clearTimeout(this.searchTimer)
     disposePetWindowController()
   }
 }

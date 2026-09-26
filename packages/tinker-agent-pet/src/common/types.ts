@@ -1,10 +1,10 @@
-export interface PetMetrics {
+interface PetMetrics {
   installCount: number
   likeCount: number
   zipDownloadCount: number
 }
 
-export interface PetAuthor {
+interface PetAuthor {
   name: string
   imageUrl?: string
 }

@@ -1,9 +1,11 @@
+import { t } from 'i18next'
+import find from 'licia/find'
 import sleep from 'licia/sleep'
+import type { InstalledPet, PetStorage } from '../../common/types'
+import PetWindow from '../components/PetWindow'
 import { openPopupWindow } from './popupWindow'
 import { getRuntimeConfig, saveRuntimeConfig } from './storage'
 import { clonePlain, getPetWindowSize } from './util'
-import PetWindow from '../components/PetWindow'
-import type { InstalledPet, PetStorage } from '../../common/types'
 
 let petWindow: Window | null = null
 let activeSlug: string | null = null
@@ -99,11 +101,9 @@ async function openPetPopupWindow(
       (popup, onClose) => <PetWindow popup={popup} onClose={onClose} />,
     )
     if (created && !created.closed) return created
-    lastError = new Error(
-      'Failed to open pet window (window.open returned null)',
-    )
+    lastError = new Error(t('openPetWindowFailed'))
   }
-  throw lastError ?? new Error('Failed to open pet window')
+  throw lastError ?? new Error(t('openPetWindowFailed'))
 }
 
 function persistPositionIfNeeded(
@@ -191,8 +191,8 @@ export async function applyStorage(
     closePetWindow()
     return storage
   }
-  const pet = installedPets.find((item) => item.slug === storage.activeSlug)
-  if (!pet) throw new Error('Enabled pet is not installed')
+  const pet = find(installedPets, (item) => item.slug === storage.activeSlug)
+  if (!pet) throw new Error(t('enabledPetMissing'))
   return showPetWindow(pet, storage)
 }
 

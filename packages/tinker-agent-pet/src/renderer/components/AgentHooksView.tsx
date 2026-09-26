@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import store from '../store'
 import { tw } from '../theme'
 import { PET_ACTION_IDS } from '../lib/util'
-import type { PetActionId } from '../types'
+import type { PetActionId } from '../lib/util'
 import SelectMenu from './SelectMenu'
 
 const AgentHooksView = observer(function AgentHooksView() {

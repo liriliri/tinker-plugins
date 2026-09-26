@@ -1,3 +1,4 @@
+import clamp from 'licia/clamp'
 import { useEffect, useRef, useState } from 'react'
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
@@ -110,12 +111,7 @@ export default observer(function PetWindow({ popup, onClose }: PetWindowProps) {
     // Use the popup clock — opener performance.now() drifts when backgrounded.
     frameStartedAtRef.current = popup.performance.now()
     loopRef.current = Boolean(actionLoop)
-    if (store.storage.soundEnabled && soundRef.current && index !== 0) {
-      const sound = soundRef.current
-      sound.pause()
-      sound.currentTime = 0
-      void sound.play().catch(() => undefined)
-    }
+    if (index !== 0) playSound()
   }, [actionToken, actionId, actionLoop, ready, popup])
 
   useEffect(() => {
@@ -127,8 +123,7 @@ export default observer(function PetWindow({ popup, onClose }: PetWindowProps) {
     // Drive the loop from the visible popup window. Opener rAF stays janky
     // even with setBackgroundThrottling(false) while the plugin page is hidden.
     const ratio = popup.devicePixelRatio || 1
-    const width = Math.round(FRAME_WIDTH * scale)
-    const height = Math.round(FRAME_HEIGHT * scale)
+    const { width, height } = getPetWindowSize(scale)
     canvas.width = Math.round(width * ratio)
     canvas.height = Math.round(height * ratio)
     canvas.style.width = `${width}px`
@@ -157,7 +152,7 @@ export default observer(function PetWindow({ popup, onClose }: PetWindowProps) {
       ctx.clearRect(0, 0, width, height)
       const image = imageRef.current
       if (image) {
-        ctx.globalAlpha = Math.min(1, Math.max(0.2, opacity))
+        ctx.globalAlpha = clamp(opacity, 0.2, 1)
         ctx.drawImage(
           image,
           frameIndexRef.current * FRAME_WIDTH,

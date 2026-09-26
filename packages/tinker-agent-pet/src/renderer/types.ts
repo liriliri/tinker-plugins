@@ -1,6 +1,3 @@
-export type PetActionId =
-  'idle' | 'waving' | 'jumping' | 'running' | 'review' | 'waiting'
-
 export type HookEventId = 'ready' | 'work' | 'stop' | 'permission'
 
 export interface AgentDef {

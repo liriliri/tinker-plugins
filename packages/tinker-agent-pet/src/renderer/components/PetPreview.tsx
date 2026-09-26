@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { FRAME_HEIGHT, FRAME_WIDTH } from '../lib/util'
 
 interface PetPreviewProps {
   src: string
@@ -50,19 +51,19 @@ export default function PetPreview({
         return
       }
 
-      const sourceFrameWidth = Math.min(192, image.width)
+      const sourceFrameWidth = Math.min(FRAME_WIDTH, image.width)
       const sourceFrameHeight =
-        image.height >= 208 && image.width >= 192
-          ? 208
-          : sourceFrameWidth * (208 / 192)
-      canvas.width = 192
-      canvas.height = 208
+        image.height >= FRAME_HEIGHT && image.width >= FRAME_WIDTH
+          ? FRAME_HEIGHT
+          : sourceFrameWidth * (FRAME_HEIGHT / FRAME_WIDTH)
+      canvas.width = FRAME_WIDTH
+      canvas.height = FRAME_HEIGHT
       ctx.imageSmoothingEnabled = false
       setReady(true)
 
       const draw = () => {
         if (cancelled) return
-        ctx.clearRect(0, 0, 192, 208)
+        ctx.clearRect(0, 0, FRAME_WIDTH, FRAME_HEIGHT)
         ctx.drawImage(
           image!,
           0,
@@ -71,8 +72,8 @@ export default function PetPreview({
           sourceFrameHeight,
           0,
           0,
-          192,
-          208,
+          FRAME_WIDTH,
+          FRAME_HEIGHT,
         )
         frame = requestAnimationFrame(draw)
       }

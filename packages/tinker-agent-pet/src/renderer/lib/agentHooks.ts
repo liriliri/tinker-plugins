@@ -1,9 +1,14 @@
+import contain from 'licia/contain'
+import filter from 'licia/filter'
 import isArr from 'licia/isArr'
+import isStr from 'licia/isStr'
 import isWindows from 'licia/isWindows'
-import type { AgentDef, HookEventId, PetActionId } from '../types'
-import { PET_ACTION_IDS } from './util'
+import lowerCase from 'licia/lowerCase'
+import some from 'licia/some'
+import type { AgentDef, HookEventId } from '../types'
+import { PET_ACTION_IDS, type PetActionId } from './util'
 
-interface HookTypeDef {
+export interface HookTypeDef {
   id: HookEventId
   event: string
   matcher?: string
@@ -83,7 +88,7 @@ interface HookLike {
 function isPetHook(hook: HookLike): boolean {
   return (
     hook.type === 'command' &&
-    typeof hook.command === 'string' &&
+    isStr(hook.command) &&
     PET_HOOK_RE.test(hook.command)
   )
 }
@@ -91,8 +96,8 @@ function isPetHook(hook: HookLike): boolean {
 function extractPetAction(command: string): PetActionId | null {
   const match = command.match(/"action"\s*:\s*"([a-z]+)"/i)
   if (!match) return null
-  const id = match[1]!.toLowerCase()
-  return PET_ACTION_IDS.includes(id as PetActionId) ? (id as PetActionId) : null
+  const id = lowerCase(match[1]!)
+  return contain(PET_ACTION_IDS, id) ? (id as PetActionId) : null
 }
 
 export function buildPetHookCommand(action: PetActionId): string {
@@ -105,7 +110,7 @@ export function buildPetHookCommand(action: PetActionId): string {
   return `tinker call ${PLUGIN_ID} --tool play_action --args '${args}'`
 }
 
-interface HooksFormat {
+export interface HooksFormat {
   getEventName(hookDef: HookTypeDef): string
   /** Drop only our pet hooks; keep every other entry intact. */
   filterEntries(entries: unknown[], hookDef: HookTypeDef): unknown[]
@@ -126,8 +131,8 @@ const defaultFormat: HooksFormat = {
       if (hookDef.matcher && entry.matcher !== hookDef.matcher) return [raw]
       if (!hookDef.matcher && entry.matcher) return [raw]
       if (!isArr(entry.hooks)) return [raw]
-      if (!entry.hooks.some(isPetHook)) return [raw]
-      const remaining = entry.hooks.filter((h) => !isPetHook(h))
+      if (!some(entry.hooks, isPetHook)) return [raw]
+      const remaining = filter(entry.hooks, (h) => !isPetHook(h))
       if (remaining.length === 0) return []
       return [{ ...entry, hooks: remaining }]
     })
@@ -168,7 +173,7 @@ const cursorFormat: HooksFormat = {
   },
 
   filterEntries(entries) {
-    return entries.filter((raw) => !isPetHook(raw as HookLike))
+    return filter(entries, (raw) => !isPetHook(raw as HookLike))
   },
 
   detectAction(entries) {
@@ -186,7 +191,7 @@ const cursorFormat: HooksFormat = {
   },
 
   filterHookTypes(all) {
-    return all.filter((h) => h.cursorEvent)
+    return filter(all, (h) => !!h.cursorEvent)
   },
 
   initialSettings() {

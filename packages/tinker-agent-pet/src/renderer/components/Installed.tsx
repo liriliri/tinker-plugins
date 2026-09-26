@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Download, Play, Square, Trash2 } from 'lucide-react'
 import store from '../store'
 import { tw } from '../theme'
-import { getPetPreviewUrl } from '../lib/util'
+import { getPetPreviewUrl, petAccentStyle } from '../lib/util'
 import PetPreview from './PetPreview'
 
 const Installed = observer(function Installed() {
@@ -31,11 +31,7 @@ const Installed = observer(function Installed() {
           <article key={pet.slug} className={tw.card.row}>
             <div
               className={`rounded-xl overflow-hidden border ${tw.border.divider} ${tw.card.stage} shrink-0`}
-              style={
-                {
-                  ['--pet-accent' as string]: tw.brand.accent,
-                } as React.CSSProperties
-              }
+              style={petAccentStyle()}
             >
               <PetPreview
                 src={getPetPreviewUrl(pet.slug)}

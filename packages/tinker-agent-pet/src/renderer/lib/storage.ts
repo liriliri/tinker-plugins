@@ -28,8 +28,10 @@ function normalizeStorage(value: unknown): PetStorage {
   return {
     activeSlug,
     enabled: config.enabled === true,
-    scale: isFinite(scale) ? clamp(scale, 0.4, 1.4) : 0.72,
-    opacity: isFinite(opacity) ? clamp(opacity, 0.2, 1) : 1,
+    scale: isFinite(scale) ? clamp(scale, 0.4, 1.4) : DEFAULT_STORAGE.scale,
+    opacity: isFinite(opacity)
+      ? clamp(opacity, 0.2, 1)
+      : DEFAULT_STORAGE.opacity,
     alwaysOnTop: config.alwaysOnTop !== false,
     soundEnabled: config.soundEnabled === true,
     returnToDefaultAnimation: config.returnToDefaultAnimation !== false,

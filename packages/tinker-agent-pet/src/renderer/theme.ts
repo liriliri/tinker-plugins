@@ -1,4 +1,3 @@
-/** Shared visual tokens — desk chrome + sticker-card pets. */
 export const tw = {
   brand: {
     solid:

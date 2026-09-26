@@ -13,7 +13,6 @@ interface SelectMenuProps {
   onChange: (value: string) => void
   options: SelectOption[]
   icon?: ReactNode
-  title?: string
   className?: string
 }
 
@@ -22,13 +21,11 @@ export default function SelectMenu({
   onChange,
   options,
   icon,
-  title,
   className = '',
 }: SelectMenuProps) {
   return (
     <Select.Root value={value} onValueChange={onChange}>
       <Select.Trigger
-        title={title}
         className={`${tw.select.trigger} ${icon ? 'pl-2.5' : 'pl-3'} ${className}`}
       >
         {icon ? <span className={tw.select.icon}>{icon}</span> : null}

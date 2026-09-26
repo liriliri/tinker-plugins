@@ -5,6 +5,13 @@ import { homedir } from 'node:os'
 import path from 'node:path'
 import zlib from 'node:zlib'
 import { pathToFileURL } from 'node:url'
+import clamp from 'licia/clamp'
+import filter from 'licia/filter'
+import isArr from 'licia/isArr'
+import isStr from 'licia/isStr'
+import lowerCase from 'licia/lowerCase'
+import trim from 'licia/trim'
+import { defaultPetPreviewUrl, TRUSTED_ASSET_HOST } from '../common/petAssets'
 import type {
   AgentPetApi,
   InstalledPet,
@@ -15,7 +22,6 @@ import type {
 
 const PETDEX_ORIGIN = 'https://petdex.dev'
 const PETDEX_SEARCH_URL = `${PETDEX_ORIGIN}/api/pets/search`
-const TRUSTED_ASSET_HOST = 'assets.petdex.dev'
 const STORAGE_DIRECTORY_NAME = 'tinker-agent-pet'
 const MAX_RESPONSE_BYTES = 12 * 1024 * 1024
 const MAX_ZIP_ENTRIES = 32
@@ -28,18 +34,15 @@ const PREVIEW_ASSET_CACHE_LIMIT = 24
 const previewAssetCache = new Map<string, Promise<string>>()
 
 function assertSafeSlug(value: unknown): string {
-  if (
-    typeof value !== 'string' ||
-    !/^[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?$/.test(value)
-  ) {
+  if (!isStr(value) || !/^[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?$/.test(value)) {
     throw new Error('Invalid pet slug')
   }
   return value
 }
 
 function assertPackageId(value: unknown): string {
-  if (typeof value !== 'string') throw new Error('Invalid pet.json id')
-  const packageId = value.trim()
+  if (!isStr(value)) throw new Error('Invalid pet.json id')
+  const packageId = trim(value)
   if (
     !packageId ||
     packageId.length > 120 ||
@@ -198,25 +201,20 @@ function normalizePet(value: unknown): PetSearchItem {
         : undefined,
     featured: pet.featured === true,
     kind,
-    vibes: Array.isArray(pet.vibes)
-      ? pet.vibes.filter((item: unknown) => typeof item === 'string')
+    vibes: isArr(pet.vibes)
+      ? filter(pet.vibes, (item: unknown) => isStr(item))
       : [],
-    tags: Array.isArray(pet.tags)
-      ? pet.tags.filter((item: unknown) => typeof item === 'string')
+    tags: isArr(pet.tags)
+      ? filter(pet.tags, (item: unknown) => isStr(item))
       : [],
-    dominantColor:
-      typeof pet.dominantColor === 'string' ? pet.dominantColor : undefined,
+    dominantColor: isStr(pet.dominantColor) ? pet.dominantColor : undefined,
     submittedBy: {
-      name:
-        typeof submittedBy.name === 'string'
-          ? submittedBy.name.slice(0, 120)
-          : 'Petdex creator',
-      imageUrl:
-        typeof submittedBy.imageUrl === 'string'
-          ? submittedBy.imageUrl
-          : undefined,
+      name: isStr(submittedBy.name)
+        ? submittedBy.name.slice(0, 120)
+        : 'Petdex creator',
+      imageUrl: isStr(submittedBy.imageUrl) ? submittedBy.imageUrl : undefined,
     },
-    previewUrl: `https://${TRUSTED_ASSET_HOST}/pets/${slug}/preview.webp`,
+    previewUrl: defaultPetPreviewUrl(slug),
     spriteVersionNumber,
     dexNumber: Number.isFinite(pet.dexNumber)
       ? Number(pet.dexNumber)
@@ -245,14 +243,13 @@ async function searchPets(
     vibes?: string[]
   } = {},
 ): Promise<PetSearchResponse> {
-  const query =
-    typeof params.query === 'string' ? params.query.trim().slice(0, 120) : ''
+  const query = isStr(params.query) ? trim(params.query).slice(0, 120) : ''
   const cursor =
     Number.isInteger(params.cursor) && (params.cursor as number) >= 0
       ? (params.cursor as number)
       : 0
   const limit = Number.isInteger(params.limit)
-    ? Math.min(Math.max(params.limit as number, 1), 48)
+    ? clamp(params.limit as number, 1, 48)
     : 24
   const sort = ['installed', 'recent', 'popular', 'alpha', 'curated'].includes(
     params.sort || '',
@@ -267,10 +264,10 @@ async function searchPets(
   url.searchParams.set('sort', sort)
   url.searchParams.set('cursor', String(cursor))
   url.searchParams.set('limit', String(limit))
-  if (Array.isArray(params.kinds) && params.kinds.length) {
+  if (isArr(params.kinds) && params.kinds.length) {
     url.searchParams.set('kinds', params.kinds.join(','))
   }
-  if (Array.isArray(params.vibes) && params.vibes.length) {
+  if (isArr(params.vibes) && params.vibes.length) {
     url.searchParams.set('vibes', params.vibes.join(','))
   }
 
@@ -278,11 +275,7 @@ async function searchPets(
     await requestBuffer(url),
     'Petdex search',
   ) as Record<string, unknown>
-  if (
-    !response ||
-    typeof response !== 'object' ||
-    !Array.isArray(response.pets)
-  ) {
+  if (!response || typeof response !== 'object' || !isArr(response.pets)) {
     throw new Error('Invalid Petdex search response')
   }
   return {
@@ -350,7 +343,7 @@ function readImageDimensions(
 
 async function loadPreviewAsset(value: string): Promise<string> {
   const url = assertTrustedAssetUrl(value)
-  const pathname = url.pathname.toLowerCase()
+  const pathname = lowerCase(url.pathname)
   const fileName = pathname.endsWith('.png')
     ? 'preview.png'
     : pathname.endsWith('.webp')

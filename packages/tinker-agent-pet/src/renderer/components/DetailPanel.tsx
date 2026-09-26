@@ -3,7 +3,12 @@ import { useTranslation } from 'react-i18next'
 import { Download, LoaderCircle, Play, Square, X } from 'lucide-react'
 import store from '../store'
 import { tw } from '../theme'
-import { formatCount, getPetPreviewUrl, progressLabel } from '../lib/util'
+import {
+  formatCount,
+  getPetPreviewUrl,
+  petAccentStyle,
+  progressLabel,
+} from '../lib/util'
 import PetPreview from './PetPreview'
 
 const DetailPanel = observer(function DetailPanel() {
@@ -31,12 +36,7 @@ const DetailPanel = observer(function DetailPanel() {
           </button>
           <div
             className={tw.card.stage}
-            style={
-              {
-                ['--pet-accent' as string]:
-                  pet.dominantColor || tw.brand.accent,
-              } as React.CSSProperties
-            }
+            style={petAccentStyle(pet.dominantColor)}
           >
             <PetPreview
               src={getPetPreviewUrl(pet.slug, pet.previewUrl)}
