@@ -2,6 +2,7 @@ import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import { Settings, Link2, Loader2 } from 'lucide-react'
 import className from 'licia/className'
+import trim from 'licia/trim'
 import store from '../store'
 import { tw } from '../theme'
 
@@ -36,7 +37,7 @@ const Header = observer(() => {
       </div>
       <button
         onClick={() => store.parseUrl()}
-        disabled={loading || !store.urlInput.trim()}
+        disabled={loading || !trim(store.urlInput)}
         className={className(
           tw.button.primary.base,
           tw.button.primary.hover,

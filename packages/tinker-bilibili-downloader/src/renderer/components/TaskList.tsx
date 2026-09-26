@@ -5,6 +5,7 @@ import * as ScrollArea from '@radix-ui/react-scroll-area'
 import * as Progress from '@radix-ui/react-progress'
 import { Loader2, CheckCircle2, XCircle, Clock } from 'lucide-react'
 import className from 'licia/className'
+import map from 'licia/map'
 import store from '../store'
 import type { TaskData } from '../types'
 import { tw } from '../theme'
@@ -169,7 +170,7 @@ const TaskScrollList = ({ tasks }: TaskScrollListProps) => {
     <ScrollArea.Root className="h-full">
       <ScrollArea.Viewport className="h-full w-full">
         <div className="space-y-2 pr-2">
-          {tasks.map((task) => (
+          {map(tasks, (task) => (
             <TaskItem key={task.id} task={task} />
           ))}
         </div>
@@ -205,7 +206,7 @@ const TaskList = observer(() => {
           tw.border.divider,
         )}
       >
-        {(['downloading', 'done'] as const).map((tab) => (
+        {map(['downloading', 'done'] as const, (tab) => (
           <Tabs.Trigger
             key={tab}
             value={tab}

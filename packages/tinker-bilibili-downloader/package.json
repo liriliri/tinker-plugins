@@ -1,7 +1,7 @@
 {
   "name": "tinker-bilibili-downloader",
-  "version": "0.3.1",
-  "description": "Bilibili Video Downloader Plugin for TINKER",
+  "version": "0.3.2",
+  "description": "Download Bilibili videos with quality selection",
   "files": [
     "dist/",
     "icon.png"
@@ -27,7 +27,7 @@
   ],
   "tinker": {
     "name": "Bilibili Downloader",
-    "description": "Download Bilibili videos with quality selection",
+    "category": "media",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",
@@ -97,7 +97,6 @@
     }
   },
   "devDependencies": {
-    "@radix-ui/react-progress": "^1.1.7",
-    "@radix-ui/react-switch": "^1.1.11"
+    "@radix-ui/react-progress": "^1.1.7"
   }
 }

@@ -3,6 +3,9 @@ import { useTranslation } from 'react-i18next'
 import * as Dialog from '@radix-ui/react-dialog'
 import * as ScrollArea from '@radix-ui/react-scroll-area'
 import className from 'licia/className'
+import contain from 'licia/contain'
+import every from 'licia/every'
+import map from 'licia/map'
 import store from '../store'
 import { tw } from '../theme'
 
@@ -13,8 +16,8 @@ const VideoModal = observer(() => {
   if (!videoInfo) return null
 
   const isMultiPage = videoInfo.page.length > 1
-  const allSelected = videoInfo.page.every((p) =>
-    selectedPages.includes(p.page),
+  const allSelected = every(videoInfo.page, (p) =>
+    contain(selectedPages, p.page),
   )
 
   return (
@@ -44,7 +47,7 @@ const VideoModal = observer(() => {
                 </Dialog.Title>
                 <div className="flex items-center gap-2 mt-1.5">
                   <span className="text-white/60 text-xs truncate">
-                    {videoInfo.up.map((u) => u.name).join(', ')}
+                    {map(videoInfo.up, (u) => u.name).join(', ')}
                   </span>
                   <span className="text-white/30 text-xs">·</span>
                   <span className="text-white/60 text-xs flex-shrink-0">
@@ -64,7 +67,7 @@ const VideoModal = observer(() => {
                 {t('quality')}
               </div>
               <div className="flex flex-wrap gap-2">
-                {videoInfo.qualityOptions.map((opt) => (
+                {map(videoInfo.qualityOptions, (opt) => (
                   <button
                     key={opt.value}
                     onClick={() => store.setSelectedQuality(opt.value)}
@@ -116,7 +119,7 @@ const VideoModal = observer(() => {
                 <ScrollArea.Root className="flex-1 min-h-0 overflow-hidden">
                   <ScrollArea.Viewport className="h-full w-full">
                     <div className="space-y-0.5 px-4 pb-4">
-                      {videoInfo.page.map((p) => (
+                      {map(videoInfo.page, (p) => (
                         <label
                           key={p.page}
                           className={className(
@@ -126,7 +129,7 @@ const VideoModal = observer(() => {
                         >
                           <input
                             type="checkbox"
-                            checked={selectedPages.includes(p.page)}
+                            checked={contain(selectedPages, p.page)}
                             onChange={() => store.togglePageSelection(p.page)}
                             className={tw.bilibili.accentCheckbox}
                           />

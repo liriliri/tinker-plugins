@@ -1,14 +1,24 @@
 import { makeAutoObservable, runInAction } from 'mobx'
-import LocalStore from 'licia/LocalStore'
+import { t } from 'i18next'
+import contain from 'licia/contain'
+import extend from 'licia/extend'
+import filter from 'licia/filter'
+import find from 'licia/find'
+import map from 'licia/map'
+import sortBy from 'licia/sortBy'
+import startWith from 'licia/startWith'
+import trim from 'licia/trim'
+import uuid from 'licia/uuid'
+import values from 'licia/values'
+import BaseStore, { storage } from 'tinker-share/store/Base'
+import { errorMessage } from 'tinker-share/lib/util'
 import { VideoData, qualityMap, userQuality } from '../common/types'
 import type { TaskData, Settings } from './types'
-import uuid from 'licia/uuid'
-import trim from 'licia/trim'
 import { createMcpApi } from './mcp'
 
-const storage = new LocalStore('tinker-bilibili-downloader')
+const STORAGE_SETTINGS = 'settings'
 
-export class Store {
+export class Store extends BaseStore {
   readonly mcp = createMcpApi(() => this)
 
   settings: Settings = {
@@ -19,19 +29,20 @@ export class Store {
     isFolder: false,
   }
 
-  urlInput: string = ''
-  loading: boolean = false
-  showVideoModal: boolean = false
-  showSettings: boolean = false
+  urlInput = ''
+  loading = false
+  showVideoModal = false
+  showSettings = false
   activeTab: 'downloading' | 'done' = 'downloading'
 
   videoInfo: VideoData | null = null
-  selectedQuality: number = 80
+  selectedQuality = 80
   selectedPages: number[] = []
 
   tasks: Map<string, TaskData> = new Map()
 
   constructor() {
+    super()
     makeAutoObservable(this, {
       mcp: false,
     })
@@ -39,14 +50,14 @@ export class Store {
   }
 
   private loadSettings() {
-    const saved = storage.get('settings')
+    const saved = storage.get(STORAGE_SETTINGS)
     if (saved) {
-      Object.assign(this.settings, saved)
+      extend(this.settings, saved)
     }
   }
 
   saveSettings() {
-    storage.set('settings', { ...this.settings })
+    storage.set(STORAGE_SETTINGS, { ...this.settings })
   }
 
   setUrlInput(url: string) {
@@ -84,7 +95,7 @@ export class Store {
 
   selectAllPages() {
     if (this.videoInfo) {
-      this.selectedPages = this.videoInfo.page.map((p) => p.page)
+      this.selectedPages = map(this.videoInfo.page, (p) => p.page)
     }
   }
 
@@ -93,7 +104,7 @@ export class Store {
   }
 
   updateSettings(partial: Partial<Settings>) {
-    Object.assign(this.settings, partial)
+    extend(this.settings, partial)
     this.saveSettings()
   }
 
@@ -104,7 +115,7 @@ export class Store {
   updateTask(id: string, partial: Partial<TaskData>) {
     const task = this.tasks.get(id)
     if (task) {
-      Object.assign(task, partial)
+      extend(task, partial)
     }
   }
 
@@ -113,28 +124,36 @@ export class Store {
   }
 
   get downloadingTasks(): TaskData[] {
-    return Array.from(this.tasks.values())
-      .filter((t) => t.status !== 'done' && t.status !== 'error')
-      .sort((a, b) => b.createdTime - a.createdTime)
+    return sortBy(
+      filter(
+        values(this.tasks),
+        (task) => task.status !== 'done' && task.status !== 'error',
+      ),
+      (task) => -task.createdTime,
+    )
   }
 
   get doneTasks(): TaskData[] {
-    return Array.from(this.tasks.values())
-      .filter((t) => t.status === 'done' || t.status === 'error')
-      .sort((a, b) => b.createdTime - a.createdTime)
+    return sortBy(
+      filter(
+        values(this.tasks),
+        (task) => task.status === 'done' || task.status === 'error',
+      ),
+      (task) => -task.createdTime,
+    )
   }
 
   async parseUrl() {
-    let url = this.urlInput.trim()
+    let url = trim(this.urlInput)
     if (!url) return
 
-    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+    if (!startWith(url, 'http://') && !startWith(url, 'https://')) {
       url = `https://${url}`
     }
 
     const type = bilibiliDownloader.checkUrl(url)
     if (!type) {
-      alert('Invalid Bilibili URL')
+      alert(t('invalidUrl'))
       return
     }
 
@@ -159,20 +178,18 @@ export class Store {
         this.settings.sessdata,
       )
       const allowed = userQuality[loginStatus] ?? userQuality[0]
-      info.qualityOptions = info.qualityOptions.filter((opt) =>
-        allowed.includes(opt.value),
+      info.qualityOptions = filter(info.qualityOptions, (opt) =>
+        contain(allowed, opt.value),
       )
       runInAction(() => {
         this.videoInfo = info
         this.selectedQuality = info.qualityOptions[0]?.value ?? 80
-        this.selectedPages = info.page.map((p) => p.page)
+        this.selectedPages = map(info.page, (p) => p.page)
         this.showVideoModal = true
       })
-    } catch (err: unknown) {
+    } catch (err) {
       console.error('Failed to parse URL:', err)
-      alert(
-        `Failed to parse URL: ${err instanceof Error ? err.message : String(err)}`,
-      )
+      alert(t('parseFailed', { message: errorMessage(err) }))
     } finally {
       runInAction(() => this.setLoading(false))
     }
@@ -184,7 +201,7 @@ export class Store {
     const basePath =
       trim(options?.downloadPath || '') || this.settings.downloadPath
     if (!basePath) {
-      alert('Please set a download path in settings first.')
+      alert(t('downloadPathRequired'))
       return
     }
     this.setShowVideoModal(false)
@@ -192,11 +209,11 @@ export class Store {
     const tmpBase = await tinker.getPath('temp')
     const bestAudio =
       this.videoInfo.audio.length > 0
-        ? [...this.videoInfo.audio].sort((a, b) => b.id - a.id)[0]
+        ? sortBy(this.videoInfo.audio, (a) => -a.id)[0]
         : null
 
     for (const pageNum of this.selectedPages) {
-      const pageInfo = this.videoInfo.page.find((p) => p.page === pageNum)
+      const pageInfo = find(this.videoInfo.page, (p) => p.page === pageNum)
       if (!pageInfo) continue
 
       const taskId = uuid()
@@ -213,7 +230,8 @@ export class Store {
       const audioTmpPath = `${tmpBase}/${taskId}-audio.m4s`
 
       let downloadUrl = { video: '', audio: '' }
-      const videoItem = this.videoInfo.video.find(
+      const videoItem = find(
+        this.videoInfo.video,
         (v) => v.id === this.selectedQuality && v.cid === pageInfo.cid,
       )
 
@@ -230,7 +248,7 @@ export class Store {
             pageInfo.epid,
             pageInfo.ssid,
           )
-        } catch (err: unknown) {
+        } catch (err) {
           console.error('Failed to get download URL:', err)
           continue
         }
@@ -324,12 +342,12 @@ export class Store {
       runInAction(() => {
         this.updateTask(taskId, { status: 'done', progress: 100 })
       })
-    } catch (err: unknown) {
+    } catch (err) {
       console.error('Download failed:', err)
       runInAction(() => {
         this.updateTask(taskId, {
           status: 'error',
-          error: err instanceof Error ? err.message : String(err),
+          error: errorMessage(err),
         })
       })
     }

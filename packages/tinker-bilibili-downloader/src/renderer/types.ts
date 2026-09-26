@@ -1,9 +1,5 @@
 export type TaskStatus =
-  | 'pending'
-  | 'downloading'
-  | 'merging'
-  | 'done'
-  | 'error'
+  'pending' | 'downloading' | 'merging' | 'done' | 'error'
 
 export interface TaskData {
   id: string

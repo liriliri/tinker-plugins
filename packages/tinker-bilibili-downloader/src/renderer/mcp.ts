@@ -1,24 +1,26 @@
 import type { Store } from './store'
 import type { TaskData } from './types'
-import map from 'licia/map'
 import filter from 'licia/filter'
+import map from 'licia/map'
+import sortBy from 'licia/sortBy'
 import trim from 'licia/trim'
+import values from 'licia/values'
 
 export function createMcpApi(getStore: () => Store) {
   const callTool = (name: string, args: Record<string, unknown>) => {
-    if (name === 'query') {
-      return query(getStore(), args as { url: string })
+    switch (name) {
+      case 'query':
+        return query(getStore(), args as { url: string })
+      case 'download':
+        return download(
+          getStore(),
+          args as { quality?: number; pages?: number[]; downloadPath?: string },
+        )
+      case 'get_progress':
+        return getProgress(getStore(), args as { taskId?: string })
+      default:
+        throw new Error(`Unknown tool "${name}"`)
     }
-    if (name === 'download') {
-      return download(
-        getStore(),
-        args as { quality?: number; pages?: number[]; downloadPath?: string },
-      )
-    }
-    if (name === 'get_progress') {
-      return getProgress(getStore(), args as { taskId?: string })
-    }
-    throw new Error(`Unknown tool "${name}"`)
   }
 
   tinker.registerMcp({ callTool })
@@ -90,14 +92,9 @@ async function download(
     throw new Error('No download tasks were created')
   }
 
-  const tasks = map(newIds, (id) => {
-    const task = store.tasks.get(id)!
-    return serializeTask(task)
-  })
-
   return {
     taskIds: newIds,
-    tasks,
+    tasks: map(newIds, (id) => serializeTask(store.tasks.get(id)!)),
   }
 }
 
@@ -124,10 +121,10 @@ function getProgress(store: Store, args: { taskId?: string }) {
     return serializeTask(task)
   }
 
-  const tasks = map(
-    [...store.tasks.values()].sort((a, b) => b.createdTime - a.createdTime),
-    serializeTask,
-  )
-
-  return { tasks }
+  return {
+    tasks: map(
+      sortBy(values(store.tasks), (task) => -task.createdTime),
+      serializeTask,
+    ),
+  }
 }
