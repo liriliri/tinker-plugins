@@ -51,12 +51,12 @@ export interface FishSchool {
 
 export type Axis = 'x' | 'y' | 'z' | '-x' | '-y' | '-z'
 
-export interface NumberRange {
+interface NumberRange {
   min: number
   max: number
 }
 
-export interface SizeBucket extends NumberRange {
+interface SizeBucket extends NumberRange {
   weight: number
 }
 

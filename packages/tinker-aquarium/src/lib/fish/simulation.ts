@@ -258,13 +258,7 @@ export class FishSchoolSimulation {
       const hz = headingZ(fish.angle, fish.pitch)
 
       fish.kickTime = Math.max(0, fish.kickTime - dt)
-      if (this.species.schooling) {
-        fish.speed = THREE.MathUtils.lerp(
-          fish.speed,
-          settings.maxSpeed,
-          1 - Math.exp(-4 * dt),
-        )
-      } else if (fish.kickTime <= 0) {
+      if (fish.kickTime <= 0) {
         fish.speed *= Math.exp(-settings.damping * dt)
         if (fish.speed <= settings.minSpeed) {
           this.kick(fish)

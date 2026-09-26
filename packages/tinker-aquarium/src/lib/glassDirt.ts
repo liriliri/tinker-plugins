@@ -3,7 +3,7 @@ import each from 'licia/each'
 import map from 'licia/map'
 import range from 'licia/range'
 import * as THREE from 'three'
-import { lerp } from './reef/util'
+import { lerp, smoothstep } from './reef/util'
 
 function hash2(ix: number, iy: number) {
   let n = Math.imul(ix, 374761393) + Math.imul(iy, 668265263)
@@ -11,15 +11,11 @@ function hash2(ix: number, iy: number) {
   return ((n ^ (n >>> 16)) >>> 0) / 4294967296
 }
 
-function fade(t: number) {
-  return t * t * (3 - 2 * t)
-}
-
 function valueNoise(x: number, y: number) {
   const x0 = Math.floor(x)
   const y0 = Math.floor(y)
-  const tx = fade(x - x0)
-  const ty = fade(y - y0)
+  const tx = smoothstep(0, 1, x - x0)
+  const ty = smoothstep(0, 1, y - y0)
   return lerp(
     lerp(hash2(x0, y0), hash2(x0 + 1, y0), tx),
     lerp(hash2(x0, y0 + 1), hash2(x0 + 1, y0 + 1), tx),

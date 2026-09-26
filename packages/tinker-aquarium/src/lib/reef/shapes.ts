@@ -418,7 +418,6 @@ function createRibbon(
   return geometry
 }
 
-/** Tall, waving kelp ribbons in a loose clump. */
 export function createKelp(random: Random) {
   const parts: THREE.BufferGeometry[] = []
   const blades = 4 + toInt(random() * 4)
@@ -459,7 +458,6 @@ export function createKelp(random: Random) {
   return normalizeGeometry(mergeGeometries(parts, false)!)
 }
 
-/** Short grassy tuft: many thin blades from one holdfast. */
 export function createGrassTuft(random: Random) {
   const parts: THREE.BufferGeometry[] = []
   const blades = 10 + toInt(random() * 8)
@@ -558,7 +556,6 @@ function createTwistedLeaf(random: Random, color: THREE.Color) {
   return tintRibbon(geometry, color)
 }
 
-/** One or two twisted leaves inside a marble. */
 export function createGlassSwirl(random: Random, colors: THREE.Color[]) {
   const parts: THREE.BufferGeometry[] = []
   const count = colors.length > 1 ? colors.length : random() < 0.3 ? 2 : 1

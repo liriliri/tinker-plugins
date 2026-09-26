@@ -1,7 +1,7 @@
 {
   "name": "tinker-aquarium",
-  "version": "0.1.2",
-  "description": "Aquarium Plugin for TINKER",
+  "version": "0.1.3",
+  "description": "Desktop aquarium fish tank simulation",
   "files": [
     "dist/",
     "icon.png"
@@ -21,7 +21,7 @@
   ],
   "tinker": {
     "name": "Aquarium",
-    "description": "Desktop aquarium fish tank simulation",
+    "category": "entertainment",
     "main": "dist/index.html",
     "icon": "icon.png",
     "locales": {

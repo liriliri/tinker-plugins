@@ -115,7 +115,7 @@ export function hardenFishMaterial(
   source: THREE.Material | THREE.Material[],
   options: { keepColor?: boolean; doubleSide?: boolean } = {},
 ) {
-  const first = Array.isArray(source) ? source[0] : source
+  const first = isArr(source) ? source[0] : source
   const cloned =
     first instanceof THREE.MeshStandardMaterial
       ? first.clone()

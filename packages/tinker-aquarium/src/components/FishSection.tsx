@@ -13,39 +13,39 @@ import {
 import { formatCount } from '../lib/slider'
 import SliderField from './SliderField'
 
+const SPECIES = [
+  {
+    titleKey: 'goldfish' as const,
+    range: FISH_COUNT_RANGE,
+    getValue: () => store.fishCount,
+    setValue: (value: number) => store.setFishCount(value),
+  },
+  {
+    titleKey: 'angelfish' as const,
+    range: ANGELFISH_COUNT_RANGE,
+    getValue: () => store.angelfishCount,
+    setValue: (value: number) => store.setAngelfishCount(value),
+  },
+  {
+    titleKey: 'guppy' as const,
+    range: GUPPY_COUNT_RANGE,
+    getValue: () => store.guppyCount,
+    setValue: (value: number) => store.setGuppyCount(value),
+  },
+  {
+    titleKey: 'neonTetra' as const,
+    range: NEON_COUNT_RANGE,
+    getValue: () => store.neonTetraCount,
+    setValue: (value: number) => store.setNeonTetraCount(value),
+  },
+]
+
 const FishSection = observer(() => {
   const { t } = useTranslation()
 
-  const species = [
-    {
-      titleKey: 'goldfish' as const,
-      value: store.fishCount,
-      range: FISH_COUNT_RANGE,
-      onChange: (value: number) => store.setFishCount(value),
-    },
-    {
-      titleKey: 'angelfish' as const,
-      value: store.angelfishCount,
-      range: ANGELFISH_COUNT_RANGE,
-      onChange: (value: number) => store.setAngelfishCount(value),
-    },
-    {
-      titleKey: 'guppy' as const,
-      value: store.guppyCount,
-      range: GUPPY_COUNT_RANGE,
-      onChange: (value: number) => store.setGuppyCount(value),
-    },
-    {
-      titleKey: 'neonTetra' as const,
-      value: store.neonTetraCount,
-      range: NEON_COUNT_RANGE,
-      onChange: (value: number) => store.setNeonTetraCount(value),
-    },
-  ]
-
   return (
     <section className={tw.section}>
-      {map(species, (item, index) => (
+      {map(SPECIES, (item, index) => (
         <Fragment key={item.titleKey}>
           <h3
             className={index > 0 ? `${tw.sectionTitle} mt-4` : tw.sectionTitle}
@@ -54,12 +54,12 @@ const FishSection = observer(() => {
           </h3>
           <SliderField
             label={t('count')}
-            value={item.value}
+            value={item.getValue()}
             min={item.range[0]}
             max={item.range[1]}
             step={1}
             format={formatCount}
-            onChange={item.onChange}
+            onChange={item.setValue}
           />
         </Fragment>
       ))}

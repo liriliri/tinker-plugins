@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import store from '../store'
 import { tw } from '../theme'
 import { RENDER_SCALE_RANGE } from '../types'
+import { formatRenderScale } from '../lib/slider'
 import SliderField from './SliderField'
 
 const DisplaySection = observer(() => {
@@ -19,7 +20,7 @@ const DisplaySection = observer(() => {
         min={RENDER_SCALE_RANGE[0]}
         max={RENDER_SCALE_RANGE[1]}
         step={0.25}
-        format={(value) => `${value}×`}
+        format={formatRenderScale}
         onChange={(value) => store.setRenderScale(value)}
       />
       <div className={tw.fieldRow}>

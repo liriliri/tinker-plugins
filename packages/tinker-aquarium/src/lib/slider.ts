@@ -20,3 +20,7 @@ export function formatHue(value: number) {
 export function formatCount(value: number) {
   return String(Math.round(value))
 }
+
+export function formatRenderScale(value: number) {
+  return `${value}×`
+}

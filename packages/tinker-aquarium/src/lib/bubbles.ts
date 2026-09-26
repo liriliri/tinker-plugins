@@ -1,4 +1,5 @@
 import each from 'licia/each'
+import every from 'licia/every'
 import range from 'licia/range'
 import * as THREE from 'three'
 import { mulberry32 } from './reef/util'
@@ -67,7 +68,10 @@ export function createBubbles(
       x = THREE.MathUtils.lerp(-halfWidth + inset, halfWidth - inset, random())
       z = THREE.MathUtils.lerp(-halfDepth + inset, halfDepth - inset, random())
       if (
-        vents.every((vent) => (vent.x - x) ** 2 + (vent.z - z) ** 2 >= minGapSq)
+        every(
+          vents,
+          (vent) => (vent.x - x) ** 2 + (vent.z - z) ** 2 >= minGapSq,
+        )
       ) {
         break
       }

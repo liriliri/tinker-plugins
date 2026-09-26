@@ -376,10 +376,7 @@ export function createAquarium(
     return geometry
   }
 
-  const sand = new THREE.Mesh(
-    new THREE.PlaneGeometry(sandWidth, sandDepth, 72, 44),
-    sandMaterial,
-  )
+  const sand = new THREE.Mesh(new THREE.BufferGeometry(), sandMaterial)
   sand.position.y = sandTopY
   sand.receiveShadow = true
   sand.castShadow = true

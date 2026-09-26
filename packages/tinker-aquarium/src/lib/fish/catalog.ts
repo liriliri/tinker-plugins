@@ -1,9 +1,12 @@
 import * as THREE from 'three'
 import reduce from 'licia/reduce'
+import startWith from 'licia/startWith'
 import { pick } from '../reef/util'
 import type { Axis, FishLook, FishModelDef } from './types'
 
-export const FISH_MODELS = {
+type NumberRange = FishLook['length']
+
+const FISH_MODELS = {
   goldfish: {
     id: 'goldfish',
     url: 'models/goldfish.glb',
@@ -169,12 +172,12 @@ function pickRange(buckets: FishLook['size'], random: () => number) {
   return lerpRange(buckets[buckets.length - 1], random)
 }
 
-function lerpRange(range: { min: number; max: number }, random: () => number) {
+function lerpRange(range: NumberRange, random: () => number) {
   return THREE.MathUtils.lerp(range.min, range.max, random())
 }
 
 function axisVector(axis: Axis, target: THREE.Vector3) {
-  const sign = axis.startsWith('-') ? -1 : 1
+  const sign = startWith(axis, '-') ? -1 : 1
   const name = axis.at(-1)
   target.set(
     name === 'x' ? sign : 0,

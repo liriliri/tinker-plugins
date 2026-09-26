@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import clamp from 'licia/clamp'
 import each from 'licia/each'
+import isArr from 'licia/isArr'
 import {
   ANGELFISH_CAPACITY,
   DEFAULT_ANGELFISH_COUNT,
@@ -173,7 +174,7 @@ function writeInstances(
 }
 
 function materialDispose(material: THREE.Material | THREE.Material[]) {
-  const list = Array.isArray(material) ? material : [material]
+  const list = isArr(material) ? material : [material]
   each(list, (item: THREE.Material) => item.dispose())
 }
 

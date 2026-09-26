@@ -7,12 +7,9 @@ interface SurfacePack {
   mapUrl: string
   /** Tile count over a colony's 0..1 UVs; lower = larger pores. */
   repeat: number
-  /** Grayscale map contrast boost (coral cavity only). */
   contrast?: number
   pivot?: number
   normalScale: number
-  /** When true, map is a cavity bake that needs contrast boosting. */
-  boostMap?: boolean
 }
 
 interface SurfaceMaps {
@@ -31,7 +28,6 @@ const CORAL_SURFACES: SurfacePack[] = [
     contrast: 3.4,
     pivot: 0.7,
     normalScale: 2.4,
-    boostMap: true,
   },
   {
     normalUrl: 'images/coral2_normal.jpg',
@@ -40,7 +36,6 @@ const CORAL_SURFACES: SurfacePack[] = [
     contrast: 2.6,
     pivot: 0.66,
     normalScale: 2.2,
-    boostMap: true,
   },
 ]
 
@@ -142,7 +137,6 @@ const ROCK_REPEAT = 0.85
 
 let rockSurface: SurfaceMaps | null = null
 
-/** Diffuse + normal pack for rubble stones. */
 export function loadRockSurface(): SurfaceMaps {
   if (rockSurface) return rockSurface
 

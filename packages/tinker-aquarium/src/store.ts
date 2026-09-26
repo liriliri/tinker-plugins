@@ -1,18 +1,11 @@
 import { makeAutoObservable } from 'mobx'
-import isArr from 'licia/isArr'
-import isStr from 'licia/isStr'
 import isNum from 'licia/isNum'
-import every from 'licia/every'
 import defaults from 'licia/defaults'
 import extend from 'licia/extend'
 import clamp from 'licia/clamp'
 import random from 'licia/random'
 import debounce from 'licia/debounce'
-import Color from 'licia/Color'
-import rgbToHsl from 'licia/rgbToHsl'
 import isBool from 'licia/isBool'
-import isObj from 'licia/isObj'
-import cloneDeep from 'licia/cloneDeep'
 import BaseStore, { storage } from 'tinker-share/store/Base'
 import { DEFAULT_REEF, type ReefOptions } from './lib/reef/types'
 import {
@@ -25,6 +18,7 @@ import {
   GUPPY_COUNT_RANGE,
   NEON_COUNT_RANGE,
 } from './lib/fish/config'
+import { cloneView, readLightTint, readView } from './lib/storageHelpers'
 import {
   DEFAULT_LIGHTING,
   DEFAULT_RENDER_SCALE,
@@ -47,57 +41,26 @@ const STORAGE_RENDER_SCALE = 'renderScale'
 
 export const VIEW_SLOT_COUNT = 3
 
-const DEFAULT_VIEW: CameraView = {
-  position: [15, 9, 22],
-  target: [0, 0.2, 0],
-}
-
 const DEFAULT_SLOTS: CameraView[] = [
   { position: [15, 9, 22], target: [0, 0.2, 0] },
   { position: [0, 3.2, 24], target: [0, 0.2, 0] },
   { position: [24, 4, 0], target: [0, 0.4, 0] },
 ]
 
-function isHexColor(value: unknown): value is string {
-  return isStr(value) && /^#[0-9a-fA-F]{6}$/.test(value)
-}
-
-function readLightTint(saved: Partial<LightingOptions> & { color?: string }) {
-  if (isNum(saved.hue) && isNum(saved.saturation)) {
-    return {
-      hue: clamp(saved.hue, 0, 1),
-      saturation: clamp(saved.saturation, 0, 1),
-    }
-  }
-  if (isHexColor(saved.color)) {
-    const parsed = Color.parse(saved.color)
-    const rgb = parsed.model === 'rgb' ? parsed.val : [244, 249, 255]
-    const hsl = rgbToHsl(rgb.slice(0, 3))
-    return { hue: hsl[0] / 360, saturation: hsl[1] / 100 }
-  }
-  return {
-    hue: DEFAULT_LIGHTING.hue,
-    saturation: DEFAULT_LIGHTING.saturation,
-  }
-}
+const DEFAULT_VIEW = DEFAULT_SLOTS[0]
 
 const persistLighting = debounce((lighting: LightingOptions) => {
   storage.set(STORAGE_LIGHT, lighting)
 }, 160)
 
-function isVec3(value: unknown): value is [number, number, number] {
-  return isArr(value) && value.length === 3 && every(value, isNum)
+function clampCount(count: number, range: readonly [number, number]) {
+  return Math.round(clamp(count, range[0], range[1]))
 }
 
-function cloneView(view: CameraView): CameraView {
-  return cloneDeep(view)
-}
-
-function readView(value: unknown): CameraView | null {
-  if (!isObj(value)) return null
-  const view = value as Partial<CameraView>
-  if (!isVec3(view.position) || !isVec3(view.target)) return null
-  return cloneView(view as CameraView)
+function loadStoredCount(key: string, range: readonly [number, number]) {
+  const saved = storage.get(key)
+  if (!isNum(saved)) return null
+  return clampCount(saved, range)
 }
 
 class Store extends BaseStore {
@@ -159,30 +122,22 @@ class Store extends BaseStore {
   }
 
   setFishCount(count: number) {
-    this.fishCount = Math.round(
-      clamp(count, FISH_COUNT_RANGE[0], FISH_COUNT_RANGE[1]),
-    )
+    this.fishCount = clampCount(count, FISH_COUNT_RANGE)
     this.saveFish()
   }
 
   setAngelfishCount(count: number) {
-    this.angelfishCount = Math.round(
-      clamp(count, ANGELFISH_COUNT_RANGE[0], ANGELFISH_COUNT_RANGE[1]),
-    )
+    this.angelfishCount = clampCount(count, ANGELFISH_COUNT_RANGE)
     this.saveAngelfish()
   }
 
   setGuppyCount(count: number) {
-    this.guppyCount = Math.round(
-      clamp(count, GUPPY_COUNT_RANGE[0], GUPPY_COUNT_RANGE[1]),
-    )
+    this.guppyCount = clampCount(count, GUPPY_COUNT_RANGE)
     this.saveGuppy()
   }
 
   setNeonTetraCount(count: number) {
-    this.neonTetraCount = Math.round(
-      clamp(count, NEON_COUNT_RANGE[0], NEON_COUNT_RANGE[1]),
-    )
+    this.neonTetraCount = clampCount(count, NEON_COUNT_RANGE)
     this.saveNeonTetra()
   }
 
@@ -242,11 +197,9 @@ class Store extends BaseStore {
   }
 
   private loadFish() {
-    const saved = storage.get(STORAGE_FISH)
-    if (!isNum(saved)) return
-    this.fishCount = Math.round(
-      clamp(saved, FISH_COUNT_RANGE[0], FISH_COUNT_RANGE[1]),
-    )
+    const count = loadStoredCount(STORAGE_FISH, FISH_COUNT_RANGE)
+    if (count == null) return
+    this.fishCount = count
   }
 
   private saveFish() {
@@ -254,11 +207,9 @@ class Store extends BaseStore {
   }
 
   private loadAngelfish() {
-    const saved = storage.get(STORAGE_ANGELFISH)
-    if (!isNum(saved)) return
-    this.angelfishCount = Math.round(
-      clamp(saved, ANGELFISH_COUNT_RANGE[0], ANGELFISH_COUNT_RANGE[1]),
-    )
+    const count = loadStoredCount(STORAGE_ANGELFISH, ANGELFISH_COUNT_RANGE)
+    if (count == null) return
+    this.angelfishCount = count
   }
 
   private saveAngelfish() {
@@ -266,11 +217,9 @@ class Store extends BaseStore {
   }
 
   private loadGuppy() {
-    const saved = storage.get(STORAGE_GUPPY)
-    if (!isNum(saved)) return
-    this.guppyCount = Math.round(
-      clamp(saved, GUPPY_COUNT_RANGE[0], GUPPY_COUNT_RANGE[1]),
-    )
+    const count = loadStoredCount(STORAGE_GUPPY, GUPPY_COUNT_RANGE)
+    if (count == null) return
+    this.guppyCount = count
   }
 
   private saveGuppy() {
@@ -278,11 +227,9 @@ class Store extends BaseStore {
   }
 
   private loadNeonTetra() {
-    const saved = storage.get(STORAGE_NEON)
-    if (!isNum(saved)) return
-    this.neonTetraCount = Math.round(
-      clamp(saved, NEON_COUNT_RANGE[0], NEON_COUNT_RANGE[1]),
-    )
+    const count = loadStoredCount(STORAGE_NEON, NEON_COUNT_RANGE)
+    if (count == null) return
+    this.neonTetraCount = count
   }
 
   private saveNeonTetra() {

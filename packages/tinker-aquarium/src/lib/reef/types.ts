@@ -8,7 +8,6 @@ export interface Reef {
   dispose: () => void
 }
 
-/** The knobs the settings panel drives. */
 export interface ReefOptions {
   count: number
   /** Multiplies every type's world size. */
@@ -41,8 +40,7 @@ export interface ReefBuildOptions extends Partial<ReefOptions> {
 
 export type Random = () => number
 
-/** What a reef bed can grow: coral, gap-filling rubble, plants, or glass orbs. */
-export type ReefKind = 'coral' | 'rubble' | 'plant' | 'glass'
+type ReefKind = 'coral' | 'rubble' | 'plant' | 'glass'
 
 export interface ReefType {
   kind: ReefKind
