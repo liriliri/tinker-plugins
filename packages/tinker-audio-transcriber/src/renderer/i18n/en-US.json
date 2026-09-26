@@ -13,7 +13,6 @@
   "preparing": "Preparing audio",
   "vad": "Detecting speech",
   "recognizing": "Recognizing",
-  "done": "Done",
   "transcript": "Transcript",
   "segments": "Cue list",
   "segmentsEmpty": "Cue segments will show here",
@@ -23,5 +22,8 @@
   "selectModel": "Select model",
   "recommended": "Recommended",
   "familySenseVoice": "SenseVoice",
-  "familyWhisper": "Whisper"
+  "familyWhisper": "Whisper",
+  "filterMedia": "Media",
+  "filterText": "Text",
+  "filterSrt": "SubRip"
 }

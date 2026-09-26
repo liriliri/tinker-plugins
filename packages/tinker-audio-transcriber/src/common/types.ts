@@ -1,6 +1,6 @@
 export type AsrModelId = string
 
-export type AsrModelFamily = 'sense_voice' | 'whisper' | string
+type AsrModelFamily = 'sense_voice' | 'whisper' | string
 
 export interface AsrRecognizerConfig {
   model_type: string
@@ -31,9 +31,7 @@ export interface TranscriptSegment {
   start: number
   end: number
   text: string
-  /** Detected or configured language (e.g. en, zh, <|zh|>). */
   lang?: string
-  /** ASR model family used for this segment (e.g. sense_voice). */
   family?: string
 }
 
@@ -57,14 +55,12 @@ export interface ModelsStatus {
   items: ModelFileStatus[]
 }
 
-export type TranscribeProgressStage =
-  'preparing' | 'vad' | 'recognizing' | 'done'
+type TranscribeProgressStage = 'preparing' | 'vad' | 'recognizing'
 
 export interface TranscribeProgress {
   stage: TranscribeProgressStage
   current: number
   total: number
-  message?: string
   segment?: TranscriptSegment
   duration?: number
 }

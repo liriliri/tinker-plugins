@@ -1,4 +1,5 @@
 import filter from 'licia/filter'
+import map from 'licia/map'
 import some from 'licia/some'
 import { observer } from 'mobx-react-lite'
 import * as Select from '@radix-ui/react-select'
@@ -48,7 +49,7 @@ const ModelSelect = observer(() => {
           align="end"
         >
           <Select.Viewport className="p-1 min-w-[280px]">
-            {families.map((family) => {
+            {map(families, (family) => {
               const models = filter(store.models, (m) => m.family === family)
               if (!models.length) return null
               return (
@@ -61,7 +62,7 @@ const ModelSelect = observer(() => {
                   >
                     {t(FAMILY_I18N[family] ?? family)}
                   </Select.Label>
-                  {models.map((model) => (
+                  {map(models, (model) => (
                     <Select.Item
                       key={model.id}
                       value={model.id}

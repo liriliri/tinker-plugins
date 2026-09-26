@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { AudioLines, FolderOpen } from 'lucide-react'
 import className from 'licia/className'
+import map from 'licia/map'
 import store from '../store'
 import { tw } from '../theme'
 import { formatTimestamp, stripSubtitleDisplayPunctuation } from '../lib/format'
@@ -164,7 +165,7 @@ const ResultPanel = observer(() => {
           </header>
           <AppScrollArea ref={segmentsRef}>
             {store.result?.segments.length ? (
-              store.result.segments.map((segment, index) => (
+              map(store.result.segments, (segment, index) => (
                 <div
                   key={`${segment.start}-${index}`}
                   className={className(

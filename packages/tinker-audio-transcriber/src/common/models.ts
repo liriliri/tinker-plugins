@@ -1,6 +1,7 @@
 import contain from 'licia/contain'
 import find from 'licia/find'
 import isStr from 'licia/isStr'
+import lowerCase from 'licia/lowerCase'
 import map from 'licia/map'
 import some from 'licia/some'
 import startWith from 'licia/startWith'
@@ -35,7 +36,7 @@ const RECOGNIZER_FILE_KEYS = [
 ] as const
 
 function getDefaultAsrModelId(language?: string | null): AsrModelId {
-  if (language && startWith(language.toLowerCase(), 'zh')) {
+  if (language && startWith(lowerCase(language), 'zh')) {
     return DEFAULT_ASR_MODEL_ID_ZH
   }
   return DEFAULT_ASR_MODEL_ID_EN

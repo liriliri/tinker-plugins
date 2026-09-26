@@ -13,7 +13,6 @@
   "preparing": "正在准备音频",
   "vad": "正在检测语音",
   "recognizing": "正在识别",
-  "done": "完成",
   "transcript": "文稿",
   "segments": "时间轴",
   "segmentsEmpty": "语音分段将显示在这里",
@@ -23,5 +22,8 @@
   "selectModel": "选择模型",
   "recommended": "推荐",
   "familySenseVoice": "SenseVoice 多语种",
-  "familyWhisper": "Whisper 英文 / 多语种"
+  "familyWhisper": "Whisper 英文 / 多语种",
+  "filterMedia": "媒体",
+  "filterText": "文本",
+  "filterSrt": "SubRip"
 }

@@ -1,5 +1,7 @@
 import endWith from 'licia/endWith'
 import map from 'licia/map'
+import min from 'licia/min'
+import pluck from 'licia/pluck'
 import some from 'licia/some'
 import startWith from 'licia/startWith'
 import trim from 'licia/trim'
@@ -16,7 +18,6 @@ interface SentenceGroupingOptions {
   maxDurationSec: number
   pauseThresholdSec: number
   sentenceEnders: string[]
-  mergeAdjacentDigitTokens: boolean
 }
 
 const DEFAULT_SENTENCE_GROUPING_OPTIONS: SentenceGroupingOptions = {
@@ -36,7 +37,10 @@ const DEFAULT_SENTENCE_GROUPING_OPTIONS: SentenceGroupingOptions = {
     '，',
     ' ',
   ],
-  mergeAdjacentDigitTokens: true,
+}
+
+export function joinSegmentTexts(segments: Array<{ text: string }>): string {
+  return trim(pluck(segments, 'text').join('\n'))
 }
 
 const PUNCTUATION_ONLY_RE = /^[.?。！？…；;，、:：""''（）()]+$/u
@@ -125,7 +129,7 @@ function tokensToTimedChunks(
     const start = segmentStartSec + timestamps[index]
     let end = tokenEndSec(timestamps, index, segmentStartSec, segmentEndSec)
     if (end <= start) {
-      end = Math.min(start + 0.05, segmentEndSec)
+      end = min(start + 0.05, segmentEndSec)
     }
 
     if (isPunctuationOnly(text)) {
@@ -151,9 +155,7 @@ function groupWordsIntoSentences(
 ): TranscriptSegment[] {
   if (!words.length) return []
 
-  const normalized = options.mergeAdjacentDigitTokens
-    ? mergeAdjacentDigitTokens(words)
-    : words
+  const normalized = mergeAdjacentDigitTokens(words)
 
   const sentences: TranscriptSegment[] = []
   let current: TimedToken[] = []

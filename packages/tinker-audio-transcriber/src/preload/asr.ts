@@ -1,10 +1,11 @@
 import os from 'node:os'
 import path from 'node:path'
 import contain from 'licia/contain'
-import pluck from 'licia/pluck'
+import max from 'licia/max'
 import trim from 'licia/trim'
 import {
   getAsrModel,
+  normalizeAsrModelId,
   SAMPLE_RATE,
   VAD_MAX_SPEECH_SECS,
   VAD_MIN_SILENCE_SECS,
@@ -12,7 +13,10 @@ import {
   VAD_THRESHOLD,
   VAD_WINDOW_SIZE,
 } from '../common/models'
-import { splitSegmentByTokenTimestamps } from '../common/sentenceGrouping'
+import {
+  joinSegmentTexts,
+  splitSegmentByTokenTimestamps,
+} from '../common/sentenceGrouping'
 import type {
   AsrModelId,
   AsrRecognizerConfig,
@@ -20,7 +24,7 @@ import type {
   TranscriptSegment,
   TranscribeProgress,
 } from '../common/types'
-import { getModelDir, getSileroVadPath, resolveModelId } from './models'
+import { getModelDir, getSileroVadPath } from './models'
 
 type SherpaModule = typeof import('sherpa-onnx-node')
 
@@ -217,7 +221,7 @@ export async function transcribeWav(
   modelId?: string,
 ): Promise<TranscriptResult> {
   resetCancelFlag()
-  const resolvedModelId = resolveModelId(modelId)
+  const resolvedModelId = normalizeAsrModelId(modelId)
   const sherpaOnnx = getSherpa()
   onProgress?.({ stage: 'preparing', current: 0, total: 1 })
   await yieldToUi()
@@ -233,7 +237,7 @@ export async function transcribeWav(
   const vad = createVad(sherpaOnnx)
   const speechSegments: Array<{ start: number; samples: Float32Array }> = []
 
-  const totalWindows = Math.max(1, Math.ceil(samples.length / VAD_WINDOW_SIZE))
+  const totalWindows = max(1, Math.ceil(samples.length / VAD_WINDOW_SIZE))
   let offset = 0
   let windowIndex = 0
   while (offset + VAD_WINDOW_SIZE <= samples.length) {
@@ -327,10 +331,8 @@ export async function transcribeWav(
     }
   }
 
-  onProgress?.({ stage: 'done', current: 1, total: 1, duration })
-
   return {
-    text: trim(pluck(segments, 'text').join('\n')),
+    text: joinSegmentTexts(segments),
     segments,
     duration,
   }

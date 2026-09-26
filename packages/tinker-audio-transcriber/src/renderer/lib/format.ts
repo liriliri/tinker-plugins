@@ -1,6 +1,7 @@
 import durationFormat from 'licia/durationFormat'
 import lpad from 'licia/lpad'
 import map from 'licia/map'
+import max from 'licia/max'
 import trim from 'licia/trim'
 import { shouldRefineChineseSubtitles } from '../../common/lang'
 import type { TranscriptSegment } from '../../common/types'
@@ -17,13 +18,13 @@ export function stripSubtitleDisplayPunctuation(
 }
 
 export function formatTimestamp(seconds: number): string {
-  const ms = Math.max(0, seconds) * 1000
+  const ms = max(0, seconds) * 1000
   const h = Math.floor(ms / 3_600_000)
   return durationFormat(ms, h > 0 ? 'hh:mm:ss' : 'mm:ss')
 }
 
 function formatSrtTime(seconds: number): string {
-  const totalMs = Math.max(0, Math.round(seconds * 1000))
+  const totalMs = max(0, Math.round(seconds * 1000))
   const h = Math.floor(totalMs / 3_600_000)
   const m = Math.floor((totalMs % 3_600_000) / 60_000)
   const s = Math.floor((totalMs % 60_000) / 1000)

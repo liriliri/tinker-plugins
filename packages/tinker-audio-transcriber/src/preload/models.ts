@@ -21,10 +21,6 @@ function getModelsDir(): string {
   return path.join(os.homedir(), '.tinker', 'models')
 }
 
-export function resolveModelId(modelId?: string): AsrModelId {
-  return normalizeAsrModelId(modelId)
-}
-
 export function getModelDir(modelId: AsrModelId): string {
   return path.join(getModelsDir(), getAsrModel(modelId).relativeDir)
 }
@@ -61,7 +57,7 @@ function exists(filePath: string): boolean {
 }
 
 export function getModelsStatus(modelId?: string): ModelsStatus {
-  const id = resolveModelId(modelId)
+  const id = normalizeAsrModelId(modelId)
   const model = getAsrModel(id)
   const modelsDir = getModelsDir()
   const items: ModelFileStatus[] = map(
@@ -90,7 +86,7 @@ export function getModelsStatus(modelId?: string): ModelsStatus {
 }
 
 export function getDownloadItems(modelId?: string) {
-  return getModelDownloadItems(resolveModelId(modelId))
+  return getModelDownloadItems(normalizeAsrModelId(modelId))
 }
 
 export function getTempDir(): string {

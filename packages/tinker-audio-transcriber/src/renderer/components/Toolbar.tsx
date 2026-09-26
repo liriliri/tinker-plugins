@@ -1,12 +1,20 @@
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import { FolderOpen, Square } from 'lucide-react'
+import type { CSSProperties } from 'react'
 import clamp from 'licia/clamp'
 import className from 'licia/className'
 import store from '../store'
 import { tw } from '../theme'
 import { formatTimestamp } from '../lib/format'
 import ModelSelect from './ModelSelect'
+
+const TOOLBAR_BTN =
+  'inline-flex items-center gap-1 h-7 px-2 rounded-md text-[11px] cursor-pointer transition-colors duration-150'
+
+function progressBarStyle(percent: number): CSSProperties {
+  return { width: `${percent}%` }
+}
 
 const Toolbar = observer(() => {
   const { t } = useTranslation()
@@ -48,7 +56,7 @@ const Toolbar = observer(() => {
         type="button"
         disabled={store.isTranscribing}
         className={className(
-          'inline-flex items-center gap-1 h-7 px-2 rounded-md text-[11px] cursor-pointer transition-colors duration-150',
+          TOOLBAR_BTN,
           tw.button.secondary,
           'disabled:opacity-40 disabled:cursor-not-allowed',
         )}
@@ -61,10 +69,7 @@ const Toolbar = observer(() => {
       {store.isTranscribing && (
         <button
           type="button"
-          className={className(
-            'inline-flex items-center gap-1 h-7 px-2 rounded-md text-[11px] cursor-pointer transition-colors duration-150',
-            tw.button.secondary,
-          )}
+          className={className(TOOLBAR_BTN, tw.button.secondary)}
           onClick={() => store.cancelTranscribe()}
         >
           <Square className="w-2.5 h-2.5 fill-current" />
@@ -113,7 +118,7 @@ const Toolbar = observer(() => {
               'h-full transition-all duration-200 ease-out',
               tw.progress.bar,
             )}
-            style={{ width: `${progressPercent()}%` }}
+            style={progressBarStyle(progressPercent())}
           />
         </div>
       )}

@@ -1,7 +1,6 @@
 import contain from 'licia/contain'
-import isErr from 'licia/isErr'
+import lowerCase from 'licia/lowerCase'
 import splitPath from 'licia/splitPath'
-import toStr from 'licia/toStr'
 
 export const MEDIA_EXTENSIONS = [
   'wav',
@@ -24,16 +23,12 @@ const I18N_ERROR_KEYS = [
   'dropUnsupported',
 ] as const
 
-export function errorMessage(err: unknown): string {
-  return isErr(err) ? err.message : toStr(err)
-}
-
 export function fileName(filePath: string): string {
   return splitPath(filePath).name
 }
 
 export function isMediaFile(filePath: string): boolean {
-  const ext = splitPath(filePath).ext.replace(/^\./, '').toLowerCase()
+  const ext = lowerCase(splitPath(filePath).ext.replace(/^\./, ''))
   return contain(MEDIA_EXTENSIONS, ext)
 }
 

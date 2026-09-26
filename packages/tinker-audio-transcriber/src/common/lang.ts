@@ -1,15 +1,16 @@
+import lowerCase from 'licia/lowerCase'
 import startWith from 'licia/startWith'
 import trim from 'licia/trim'
 
 /** Normalize SenseVoice tags like `<|zh|>` and config codes like `zh`. */
 function normalizeAsrLang(lang?: string | null): string {
   if (!lang) return ''
-  return trim(lang.replace(/[<>|]/g, '')).toLowerCase()
+  return lowerCase(trim(lang.replace(/[<>|]/g, '')))
 }
 
 function isChineseLang(lang?: string | null): boolean {
   const code = normalizeAsrLang(lang)
-  return code === 'zh' || code === 'yue' || startWith(code, 'zh')
+  return code === 'yue' || startWith(code, 'zh')
 }
 
 /** Secondary split + punct strip: SenseVoice + detected Chinese only. */

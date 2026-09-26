@@ -2,10 +2,12 @@ import { makeAutoObservable, runInAction } from 'mobx'
 import clamp from 'licia/clamp'
 import find from 'licia/find'
 import isErr from 'licia/isErr'
-import LocalStore from 'licia/LocalStore'
-import pluck from 'licia/pluck'
 import trim from 'licia/trim'
+import i18n from 'i18next'
+import { storage } from 'tinker-share/store/Base'
+import { errorMessage } from 'tinker-share/lib/util'
 import { ASR_MODELS, normalizeAsrModelId, SAMPLE_RATE } from '../common/models'
+import { joinSegmentTexts } from '../common/sentenceGrouping'
 import type {
   AsrModelId,
   ModelsStatus,
@@ -13,14 +15,8 @@ import type {
   TranscribeProgress,
 } from '../common/types'
 import { formatSrt } from './lib/format'
-import {
-  errorMessage,
-  fileName,
-  isMediaFile,
-  MEDIA_EXTENSIONS,
-} from './lib/util'
+import { fileName, isMediaFile, MEDIA_EXTENSIONS } from './lib/util'
 
-const storage = new LocalStore('tinker-audio-transcriber')
 const STORAGE_MODEL_ID = 'modelId'
 
 class Store {
@@ -149,7 +145,7 @@ class Store {
       properties: ['openFile'],
       filters: [
         {
-          name: 'Media',
+          name: i18n.t('filterMedia'),
           extensions: [...MEDIA_EXTENSIONS],
         },
       ],
@@ -199,11 +195,9 @@ class Store {
     tinker.setTitle(this.sourceName)
 
     let wavPath = ''
-    let shouldCleanup = false
 
     try {
       wavPath = await this.runFfmpegToWav(inputPath)
-      shouldCleanup = wavPath !== inputPath
 
       runInAction(() => {
         this.progress = { stage: 'vad', current: 0, total: 1 }
@@ -222,7 +216,6 @@ class Store {
               stage: progress.stage,
               current: progress.current,
               total: progress.total,
-              message: progress.message,
             }
 
             if (progress.segment) {
@@ -231,7 +224,7 @@ class Store {
                 ? [...prev.segments, progress.segment]
                 : [progress.segment]
               this.result = {
-                text: pluck(nextSegments, 'text').join('\n'),
+                text: joinSegmentTexts(nextSegments),
                 segments: nextSegments,
                 duration: progress.duration ?? prev?.duration ?? 0,
               }
@@ -249,7 +242,7 @@ class Store {
       runInAction(() => {
         this.result = result
         this.isTranscribing = false
-        this.progress = { stage: 'done', current: 1, total: 1 }
+        this.progress = null
       })
     } catch (err) {
       const cancelled =
@@ -259,14 +252,12 @@ class Store {
       runInAction(() => {
         if (!cancelled) this.showError(errorMessage(err))
         this.isTranscribing = false
-        this.progress = cancelled
-          ? { stage: 'done', current: 1, total: 1 }
-          : null
+        this.progress = null
       })
     } finally {
       this.ffmpegTask = null
       this.cancelRequested = false
-      if (shouldCleanup && wavPath) {
+      if (wavPath) {
         await audioTranscriber.removeTempFile(wavPath)
       }
     }
@@ -301,7 +292,6 @@ class Store {
                 ? clamp(Math.round(percent), 1, 99)
                 : clamp(this.progress?.current ?? 0, 1, 99),
             total: 100,
-            message: 'ffmpeg',
           }
         })
       },
@@ -318,18 +308,33 @@ class Store {
     return wavPath
   }
 
+  private async copyContent(content: string) {
+    if (!content) return
+    await navigator.clipboard.writeText(content)
+  }
+
+  private async saveContent(
+    content: string,
+    defaultPath: string,
+    filterName: string,
+    extensions: string[],
+  ) {
+    if (!content) return
+    const { filePath } = await tinker.showSaveDialog({
+      defaultPath,
+      filters: [{ name: filterName, extensions }],
+    })
+    if (filePath) await tinker.writeFile(filePath, content)
+  }
+
   async copyText() {
-    if (!this.text) return
-    await navigator.clipboard.writeText(this.text)
+    await this.copyContent(this.text)
   }
 
   async saveText() {
-    if (!this.text) return
-    const { filePath } = await tinker.showSaveDialog({
-      defaultPath: 'transcript.txt',
-      filters: [{ name: 'Text', extensions: ['txt'] }],
-    })
-    if (filePath) await tinker.writeFile(filePath, this.text)
+    await this.saveContent(this.text, 'transcript.txt', i18n.t('filterText'), [
+      'txt',
+    ])
   }
 
   get srtText(): string {
@@ -338,17 +343,16 @@ class Store {
   }
 
   async copySrt() {
-    if (!this.srtText) return
-    await navigator.clipboard.writeText(this.srtText)
+    await this.copyContent(this.srtText)
   }
 
   async saveSrt() {
-    if (!this.srtText) return
-    const { filePath } = await tinker.showSaveDialog({
-      defaultPath: 'transcript.srt',
-      filters: [{ name: 'SubRip', extensions: ['srt'] }],
-    })
-    if (filePath) await tinker.writeFile(filePath, this.srtText)
+    await this.saveContent(
+      this.srtText,
+      'transcript.srt',
+      i18n.t('filterSrt'),
+      ['srt'],
+    )
   }
 }
 
