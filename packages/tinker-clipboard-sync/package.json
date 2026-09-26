@@ -1,7 +1,7 @@
 {
   "name": "tinker-clipboard-sync",
-  "version": "0.1.0",
-  "description": "Clipboard sync plugin for TINKER via shared files in VM",
+  "version": "0.1.1",
+  "description": "Sync clipboard between host and VM via shared files",
   "files": [
     "dist/",
     "icon.png"
@@ -25,7 +25,7 @@
   ],
   "tinker": {
     "name": "Clipboard Sync",
-    "description": "Sync clipboard between host and VM via shared files",
+    "category": "productivity",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",

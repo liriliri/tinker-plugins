@@ -1,15 +1,18 @@
 import { makeAutoObservable } from 'mobx'
-import LocalStore from 'licia/LocalStore'
+import toBool from 'licia/toBool'
+import trim from 'licia/trim'
+import { storage } from 'tinker-share/store/Base'
 
-const storage = new LocalStore('tinker-clipboard-sync')
+const STORAGE_FILE_PATH = 'filePath'
+const STORAGE_AUTO_SYNC = 'autoSync'
 
 class Store {
-  filePath: string = storage.get('filePath') ?? ''
-  autoSync: boolean = storage.get('autoSync') ?? false
-  syncing: boolean = false
-  clipboardText: string = ''
-  toastOpen: boolean = false
-  toastMsg: string = ''
+  filePath = (storage.get(STORAGE_FILE_PATH) as string) || ''
+  autoSync = toBool(storage.get(STORAGE_AUTO_SYNC))
+  syncing = false
+  clipboardText = ''
+  toastOpen = false
+  toastMsg = ''
 
   constructor() {
     makeAutoObservable(this)
@@ -20,7 +23,7 @@ class Store {
     clipboardSync.onClipboardChange((text: string) => {
       this.clipboardText = text
     })
-    if (this.autoSync && this.filePath.trim()) {
+    if (this.autoSync && trim(this.filePath)) {
       clipboardSync.start(this.filePath)
       this.syncing = true
     }
@@ -28,23 +31,23 @@ class Store {
 
   setFilePath(path: string) {
     this.filePath = path
-    storage.set('filePath', path)
+    storage.set(STORAGE_FILE_PATH, path)
   }
 
   setAutoSync(value: boolean) {
     this.autoSync = value
-    storage.set('autoSync', value)
+    storage.set(STORAGE_AUTO_SYNC, value)
   }
 
   toggleSync() {
     if (this.syncing) {
       clipboardSync.stop()
       this.syncing = false
-    } else {
-      if (!this.filePath.trim()) return
-      clipboardSync.start(this.filePath)
-      this.syncing = true
+      return
     }
+    if (!trim(this.filePath)) return
+    clipboardSync.start(this.filePath)
+    this.syncing = true
   }
 
   showError(msg: string) {
