@@ -1,8 +1,8 @@
-import { createRoot } from 'react-dom/client'
 import { observer } from 'mobx-react-lite'
 import { useState, useCallback } from 'react'
-import i18n from 'i18next'
-import { initReactI18next } from 'react-i18next'
+import className from 'licia/className'
+import startWith from 'licia/startWith'
+import renderApp from 'tinker-share/lib/renderApp'
 import store from './store'
 import { tw } from './theme'
 import Sidebar from './components/Sidebar'
@@ -11,18 +11,6 @@ import ImageViewer from './components/ImageViewer'
 import enUS from './i18n/en-US.json'
 import zhCN from './i18n/zh-CN.json'
 import './index.scss'
-
-i18n.use(initReactI18next).init({
-  resources: {
-    'en-US': { translation: enUS },
-    'zh-CN': { translation: zhCN },
-  },
-  lng: 'en-US',
-  fallbackLng: 'en-US',
-  interpolation: {
-    escapeValue: false,
-  },
-})
 
 const App = observer(() => {
   const [isDragOver, setIsDragOver] = useState(false)
@@ -40,17 +28,20 @@ const App = observer(() => {
     e.preventDefault()
     setIsDragOver(false)
     const file = e.dataTransfer.files[0]
-    if (file && file.type.startsWith('image/')) {
+    if (file && startWith(file.type, 'image/')) {
       store.handleDrop(file)
     }
   }, [])
 
   return (
     <div
-      className={`h-screen flex ${tw.background.app} overflow-hidden antialiased`}
+      className={className(
+        'h-screen flex overflow-hidden antialiased',
+        tw.background.app,
+      )}
     >
       <Sidebar />
-      <div className={`flex-1 min-w-0 ${tw.background.preview}`}>
+      <div className={className('flex-1 min-w-0', tw.background.preview)}>
         {!store.originalImage ? (
           <DropZone
             isDragOver={isDragOver}
@@ -66,10 +57,4 @@ const App = observer(() => {
   )
 })
 
-;(async function () {
-  const language = await tinker.getLanguage()
-  i18n.changeLanguage(language)
-
-  const container = document.getElementById('app') as HTMLElement
-  createRoot(container).render(<App />)
-})()
+renderApp(App, { 'en-US': enUS, 'zh-CN': zhCN })

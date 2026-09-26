@@ -1,7 +1,8 @@
 import base64 from 'licia/base64'
 import dataUrl from 'licia/dataUrl'
-import last from 'licia/last'
 import mime from 'licia/mime'
+import splitPath from 'licia/splitPath'
+import startWith from 'licia/startWith'
 
 const DEFAULT_IMAGE_MIME = 'image/png'
 
@@ -13,10 +14,11 @@ const DIRECTLY_SUPPORTED_TYPES = new Set([
 ])
 
 function getImageMime(name: string, fallback = DEFAULT_IMAGE_MIME) {
-  const ext = String(last(name.split('.')) || '').toLowerCase()
+  const ext = splitPath(name).ext.replace(/^\./, '').toLowerCase()
   const resolvedMime = ext ? mime(ext) : undefined
-
-  return resolvedMime?.startsWith('image/') ? resolvedMime : fallback
+  return resolvedMime && startWith(resolvedMime, 'image/')
+    ? resolvedMime
+    : fallback
 }
 
 export function bytesToDataUrl(bytes: Uint8Array, name: string) {

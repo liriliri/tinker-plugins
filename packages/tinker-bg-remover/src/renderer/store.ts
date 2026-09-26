@@ -2,6 +2,7 @@ import { makeAutoObservable } from 'mobx'
 import base64 from 'licia/base64'
 import dataUrl from 'licia/dataUrl'
 import splitPath from 'licia/splitPath'
+import { errorMessage } from 'tinker-share/lib/util'
 import type { ModelSize } from '../common/types'
 import { bytesToDataUrl, toPng } from './lib/image'
 
@@ -52,7 +53,7 @@ class Store {
       const result = await bgRemover.removeBackground(input, this.model)
       this.resultImage = result
     } catch (err) {
-      console.error('Background removal failed:', err)
+      console.error('Background removal failed:', errorMessage(err))
     } finally {
       this.isProcessing = false
     }

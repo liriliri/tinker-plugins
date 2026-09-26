@@ -1,3 +1,4 @@
+import className from 'licia/className'
 import { tw } from '../theme'
 
 interface SectionLabelProps {
@@ -6,7 +7,10 @@ interface SectionLabelProps {
 
 const SectionLabel = ({ children }: SectionLabelProps) => (
   <div
-    className={`text-[10px] font-semibold uppercase tracking-widest ${tw.text.muted} mb-2`}
+    className={className(
+      'text-[10px] font-semibold uppercase tracking-widest mb-2',
+      tw.text.muted,
+    )}
   >
     {children}
   </div>
