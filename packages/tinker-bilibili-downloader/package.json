@@ -1,6 +1,6 @@
 {
   "name": "tinker-bilibili-downloader",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Download Bilibili videos with quality selection",
   "files": [
     "dist/",

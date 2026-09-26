@@ -9,7 +9,6 @@ import sortBy from 'licia/sortBy'
 import startWith from 'licia/startWith'
 import trim from 'licia/trim'
 import uuid from 'licia/uuid'
-import values from 'licia/values'
 import BaseStore, { storage } from 'tinker-share/store/Base'
 import { errorMessage } from 'tinker-share/lib/util'
 import { VideoData, qualityMap, userQuality } from '../common/types'
@@ -126,7 +125,7 @@ export class Store extends BaseStore {
   get downloadingTasks(): TaskData[] {
     return sortBy(
       filter(
-        values(this.tasks),
+        [...this.tasks.values()],
         (task) => task.status !== 'done' && task.status !== 'error',
       ),
       (task) => -task.createdTime,
@@ -136,7 +135,7 @@ export class Store extends BaseStore {
   get doneTasks(): TaskData[] {
     return sortBy(
       filter(
-        values(this.tasks),
+        [...this.tasks.values()],
         (task) => task.status === 'done' || task.status === 'error',
       ),
       (task) => -task.createdTime,

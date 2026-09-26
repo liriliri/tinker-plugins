@@ -4,7 +4,6 @@ import filter from 'licia/filter'
 import map from 'licia/map'
 import sortBy from 'licia/sortBy'
 import trim from 'licia/trim'
-import values from 'licia/values'
 
 export function createMcpApi(getStore: () => Store) {
   const callTool = (name: string, args: Record<string, unknown>) => {
@@ -123,7 +122,7 @@ function getProgress(store: Store, args: { taskId?: string }) {
 
   return {
     tasks: map(
-      sortBy(values(store.tasks), (task) => -task.createdTime),
+      sortBy([...store.tasks.values()], (task) => -task.createdTime),
       serializeTask,
     ),
   }
