@@ -7,7 +7,6 @@ import map from 'licia/map'
 import { tw } from '../theme'
 import store from '../store'
 // Raw UMD bundle injected into definition iframes for dark mode.
-// @ts-expect-error raw import
 import drScript from 'darkreader/darkreader.js?raw'
 
 const baseStyles = `

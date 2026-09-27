@@ -3,11 +3,11 @@ import debounce from 'licia/debounce'
 import filter from 'licia/filter'
 import findIdx from 'licia/findIdx'
 import map from 'licia/map'
-import mime from 'licia/mime'
 import some from 'licia/some'
 import trim from 'licia/trim'
 import BaseStore, { storage } from 'tinker-share/store/Base'
 import { getAllDicts, putDict, removeDict } from './lib/db'
+import { inlineCssUrls, inlineDefinitionResources } from './lib/dictResources'
 import type { WordEntry, DictInfo } from '../common/types'
 import { createMcpApi } from './mcp'
 
@@ -42,7 +42,6 @@ export class Store extends BaseStore {
     super()
     makeAutoObservable(this, {
       mcp: false,
-      dictsLoading: false,
     })
   }
 
@@ -197,55 +196,20 @@ export class Store extends BaseStore {
     const results = dictionary.lookup(word, this.activeDictPaths)
     runInAction(() => {
       this.definitions = map(
-        filter(results, (r) => r.definition),
+        filter(results, (r) => !!r.definition),
         (r) => {
-          const extraCss = dictionary.getExtraCss(r.dictPath)
+          const rawExtra = dictionary.getExtraCss(r.dictPath)
           return {
             dictPath: r.dictPath,
             dictTitle: r.dictTitle,
-            definition: this.processDefinition(r.definition!, r.dictPath),
-            extraCss: extraCss ?? undefined,
+            definition: inlineDefinitionResources(r.definition!, r.dictPath),
+            extraCss: rawExtra
+              ? inlineCssUrls(rawExtra, r.dictPath)
+              : undefined,
           }
         },
       )
     })
-  }
-
-  private processDefinition(html: string, dictPath: string): string {
-    let processed = html
-
-    const hasHtmlTags = /<[a-z][\s\S]*?>/i.test(processed)
-    if (!hasHtmlTags) {
-      processed = processed.replace(/\r\n|\r|\n/g, '<br>')
-    }
-
-    processed = processed.replace(
-      /<link\s+[^>]*href=["']([^"']+\.css)["'][^>]*>/gi,
-      (_match, cssFile) => {
-        const cssData = dictionary.lookupResource(dictPath, cssFile)
-        if (cssData) {
-          const cssText = atob(cssData)
-          return `<style>${cssText}</style>`
-        }
-        return ''
-      },
-    )
-
-    processed = processed.replace(
-      /(<img\s+[^>]*src=["'])([^"']+)(["'][^>]*>)/gi,
-      (_match, prefix, src, suffix) => {
-        if (src.startsWith('data:') || src.startsWith('http')) return _match
-        const imgData = dictionary.lookupResource(dictPath, src)
-        if (imgData) {
-          const ext = src.split('.').pop()?.toLowerCase() || 'png'
-          const mimeType = mime(ext) || 'image/png'
-          return `${prefix}data:${mimeType};base64,${imgData}${suffix}`
-        }
-        return _match
-      },
-    )
-
-    return processed
   }
 
   async handleEntryJump(word: string) {

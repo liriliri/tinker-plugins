@@ -8,7 +8,26 @@ import crypto from 'node:crypto'
 import filter from 'licia/filter'
 import map from 'licia/map'
 import mime from 'licia/mime'
+import unique from 'licia/unique'
 import type { WordEntry, DictLookupResult, DictInfo } from '../common/types'
+
+function resourceKeyCandidates(key: string): string[] {
+  const trimmed = key.trim()
+  const normalized = trimmed.replace(/\\/g, '/').replace(/^\.\//, '')
+  const noLead = normalized.replace(/^\//, '')
+  const win = noLead.replace(/\//g, '\\')
+  const base = noLead.split('/').pop() || noLead
+  return unique([
+    trimmed,
+    normalized,
+    noLead,
+    `/${noLead}`,
+    `\\${win}`,
+    win,
+    base,
+    `\\${base}`,
+  ])
+}
 
 interface DictInstance {
   mdx: InstanceType<typeof MDX>
@@ -276,13 +295,15 @@ const api = {
   lookupResource: (dictPath: string, resourceKey: string): string | null => {
     const entry = dicts.get(dictPath)
     if (!entry?.mdd) return null
-    try {
-      const result = entry.mdd.locate(resourceKey)
-      return result.definition
-    } catch (err) {
-      console.error('Resource lookup failed:', err)
-      return null
+    for (const key of resourceKeyCandidates(resourceKey)) {
+      try {
+        const result = entry.mdd.locate(key)
+        if (result?.definition) return result.definition
+      } catch {
+        // try next candidate
+      }
     }
+    return null
   },
 
   getExtraCss: (dictPath: string): string | null => {
