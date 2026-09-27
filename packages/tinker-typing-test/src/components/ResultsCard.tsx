@@ -23,7 +23,7 @@ const ResultsCard = observer(() => {
     <div className="results-enter flex flex-col items-center gap-10 w-full max-w-lg">
       <h2
         className={`text-lg font-medium tracking-wide ${tw.text.resultsHeading} uppercase`}
-        style={{ fontFamily: "'Outfit', sans-serif", letterSpacing: '0.12em' }}
+        style={{ letterSpacing: '0.12em' }}
       >
         {t('results')}
       </h2>

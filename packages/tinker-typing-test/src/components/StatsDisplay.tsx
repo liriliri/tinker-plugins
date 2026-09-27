@@ -1,10 +1,9 @@
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import className from 'licia/className'
-import store from '../store'
+import store, { DURATION } from '../store'
 import { tw } from '../theme'
 
-const DURATION = 60
 const RADIUS = 22
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS
 
@@ -19,7 +18,6 @@ const StatsDisplay = observer(() => {
 
   return (
     <div className="flex items-center justify-center gap-10">
-      {/* Timer */}
       <div className="relative flex items-center justify-center">
         <svg width="60" height="60" viewBox="0 0 60 60" className="-rotate-90">
           <circle
@@ -55,13 +53,11 @@ const StatsDisplay = observer(() => {
               'timer-value': !isWarning,
             },
           )}
-          style={{ fontFamily: "'JetBrains Mono', monospace" }}
         >
           {timeLeft}
         </span>
       </div>
 
-      {/* Stats */}
       {isEnglish && (
         <div className="flex flex-col items-center gap-1 min-w-16">
           <span className="stats-label">{t('wpm')}</span>

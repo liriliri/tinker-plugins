@@ -45,7 +45,6 @@ const TextDisplay = observer(() => {
     return words
   }, [chars])
 
-  const wordSpanRefs = useRef<(HTMLSpanElement | null)[]>([])
   const wordsRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -130,12 +129,11 @@ const TextDisplay = observer(() => {
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
-      if (isComposingRef.current) {
-        if (e.key === 'Enter' && !e.nativeEvent.isComposing) {
-          // allow
-        } else {
-          return
-        }
+      if (
+        isComposingRef.current &&
+        !(e.key === 'Enter' && !e.nativeEvent.isComposing)
+      ) {
+        return
       }
       if (store.status === 'finished') return
 
@@ -214,13 +212,7 @@ const TextDisplay = observer(() => {
             }
 
             return (
-              <span
-                key={`w${wi}`}
-                ref={(el) => {
-                  wordSpanRefs.current[wi] = el
-                }}
-                className="word"
-              >
+              <span key={`w${wi}`} className="word">
                 {word.chars.map((char, ci) => {
                   const gi = word.startIndex + ci
                   return (

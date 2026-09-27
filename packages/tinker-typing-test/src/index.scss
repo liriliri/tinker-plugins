@@ -1,8 +1,6 @@
 @use 'tailwindcss';
 @config "../tailwind.config.js";
 
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
-
 html.dark {
   color-scheme: dark;
 }
@@ -16,17 +14,21 @@ body,
 }
 
 body {
-  font-family: 'Outfit', system-ui, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    'PingFang SC',
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ===== Type Box ===== */
 .type-box {
   display: block;
   width: 100%;
   max-width: 960px;
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
   font-size: 1.35rem;
   font-weight: 400;
   letter-spacing: 0.01em;
@@ -56,7 +58,6 @@ body {
   padding-right: 2px;
 }
 
-/* ===== Character States ===== */
 .char {
   border-left: 2px solid transparent;
   border-right: 1px solid transparent;
@@ -90,7 +91,6 @@ body {
   text-decoration-color: var(--color-red-500);
 }
 
-/* ===== Caret ===== */
 .caret-char-left {
   border-left: 2.5px solid var(--color-amber-500);
   border-right: 1px solid transparent;
@@ -131,9 +131,13 @@ body {
   }
 }
 
-/* ===== Stats ===== */
 .stats-label {
-  font-family: 'Outfit', system-ui, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    'PingFang SC',
+    sans-serif;
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.08em;
@@ -146,7 +150,7 @@ body {
 }
 
 .stats-value {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
   font-size: 1.25rem;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
@@ -166,13 +170,12 @@ body {
   color: var(--color-amber-400);
 }
 
-/* ===== Timer ===== */
 .timer-ring {
   transition: stroke-dashoffset 1s linear;
 }
 
 .timer-value {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
   font-size: 1.5rem;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
@@ -191,7 +194,6 @@ body {
   color: var(--color-red-400);
 }
 
-/* ===== Results ===== */
 .results-enter {
   animation: results-fade-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
@@ -224,7 +226,7 @@ body {
 }
 
 .results-primary-value {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
   font-size: 2.75rem;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
@@ -245,7 +247,12 @@ body {
 }
 
 .result-label {
-  font-family: 'Outfit', system-ui, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    'PingFang SC',
+    sans-serif;
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.06em;
@@ -257,9 +264,13 @@ body {
   color: var(--color-neutral-500);
 }
 
-/* ===== Restart Button ===== */
 .restart-btn {
-  font-family: 'Outfit', system-ui, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    'PingFang SC',
+    sans-serif;
   padding: 0.625rem 2rem;
   border: none;
   border-radius: 8px;
@@ -293,7 +304,6 @@ body {
   background: var(--color-amber-400);
 }
 
-/* ===== New Article Button ===== */
 .new-article-btn {
   display: flex;
   align-items: center;
@@ -322,7 +332,6 @@ body {
   background: color-mix(in srgb, var(--color-amber-500) 10%, transparent);
 }
 
-/* ===== Language Toggle Button ===== */
 .lang-toggle-btn {
   display: flex;
   align-items: center;
@@ -333,7 +342,7 @@ body {
   border-radius: 6px;
   background: transparent;
   color: var(--color-neutral-400);
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
   font-size: 0.7rem;
   font-weight: 600;
   cursor: pointer;
@@ -354,9 +363,13 @@ body {
   background: color-mix(in srgb, var(--color-amber-500) 10%, transparent);
 }
 
-/* ===== Hint Text ===== */
 .hint-text {
-  font-family: 'Outfit', system-ui, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    'PingFang SC',
+    sans-serif;
   animation: hint-pulse 2.5s ease-in-out infinite;
 }
 

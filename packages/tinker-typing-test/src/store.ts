@@ -1,5 +1,6 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 import random from 'licia/random'
+import BaseStore from 'tinker-share/store/Base'
 import { articles } from './data/articles'
 import {
   analyzeTyping,
@@ -17,9 +18,9 @@ interface CpmHistoryPoint {
 
 type Status = 'idle' | 'running' | 'finished'
 
-const DURATION = 60
+export const DURATION = 60
 
-class Store {
+class Store extends BaseStore {
   status: Status = 'idle'
   displayText = ''
   typedText = ''
@@ -37,7 +38,14 @@ class Store {
   private timerHandle: ReturnType<typeof setInterval> | null = null
 
   constructor() {
+    super()
     makeAutoObservable(this)
+  }
+
+  async init() {
+    const lang = await tinker.getLanguage()
+    this.setLanguage(lang)
+    tinker.on('changeLanguage', (next) => this.setLanguage(next))
   }
 
   get isEnglish() {
@@ -57,8 +65,9 @@ class Store {
   }
 
   setLanguage(lang: string) {
+    const changed = this.language !== lang
     this.language = lang
-    this.initTest()
+    if (changed || !this.displayText) this.initTest()
   }
 
   initTest() {

@@ -1,7 +1,7 @@
 {
   "name": "tinker-typing-test",
-  "version": "0.1.0",
-  "description": "Typing Speed Test Plugin for TINKER",
+  "version": "0.1.1",
+  "description": "Test and improve your typing speed",
   "files": [
     "dist/",
     "icon.png"
@@ -21,6 +21,7 @@
   ],
   "tinker": {
     "name": "Typing Test",
+    "category": "entertainment",
     "description": "Test and improve your typing speed",
     "main": "dist/index.html",
     "icon": "icon.png",
