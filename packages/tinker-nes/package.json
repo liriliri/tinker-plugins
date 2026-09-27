@@ -1,7 +1,7 @@
 {
   "name": "tinker-nes",
-  "version": "0.3.2",
-  "description": "NES Emulator Plugin for TINKER",
+  "version": "0.3.3",
+  "description": "Play NES ROMs with save state support",
   "files": [
     "dist/",
     "icon.png"
@@ -22,7 +22,7 @@
   ],
   "tinker": {
     "name": "NES",
-    "description": "Play NES ROMs with save state support",
+    "category": "entertainment",
     "main": "dist/index.html",
     "icon": "icon.png",
     "locales": {

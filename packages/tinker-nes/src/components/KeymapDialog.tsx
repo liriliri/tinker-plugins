@@ -13,7 +13,7 @@ import {
   formatGamepadAxis,
 } from '../lib/keymap'
 
-interface Props {
+interface KeymapDialogProps {
   isDark: boolean
   keymap: [PlayerKeymap, PlayerKeymap]
   onClose: () => void
@@ -31,7 +31,7 @@ export default function KeymapDialog({
   keymap,
   onClose,
   onSave,
-}: Props) {
+}: KeymapDialogProps) {
   const { t } = useTranslation()
   const [draft, setDraft] = useState<[PlayerKeymap, PlayerKeymap]>(() =>
     cloneDeep(keymap),
