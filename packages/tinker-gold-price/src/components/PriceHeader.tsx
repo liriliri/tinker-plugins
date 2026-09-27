@@ -15,7 +15,7 @@ function changeClass(change: number | undefined): string {
   return change > 0 ? tw.up : tw.down
 }
 
-const PriceHeader = observer(() => {
+const PriceHeader = observer(function PriceHeader() {
   const { t } = useTranslation()
   const { quote, isLoading, isRefreshing, error, language } = store
 

@@ -1,8 +1,7 @@
-import isErr from 'licia/isErr'
 import isFinite from 'licia/isFinite'
 import isNum from 'licia/isNum'
 import isUndef from 'licia/isUndef'
-import toStr from 'licia/toStr'
+import slice from 'licia/slice'
 
 function isValidNumber(value: number | undefined): value is number {
   return !isUndef(value) && isNum(value) && isFinite(value)
@@ -29,9 +28,5 @@ export function formatPct(value: number | undefined): string {
 
 export function formatTimeLabel(time: string): string {
   const part = time.split(' ')[1] || time
-  return part.slice(0, 5)
-}
-
-export function getErrorMessage(err: unknown): string {
-  return isErr(err) ? err.message : toStr(err)
+  return slice(part, 0, 5)
 }

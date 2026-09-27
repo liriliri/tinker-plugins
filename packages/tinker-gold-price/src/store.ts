@@ -1,12 +1,13 @@
 import { makeAutoObservable, runInAction } from 'mobx'
+import BaseStore from 'tinker-share/store/Base'
+import { errorMessage } from 'tinker-share/lib/util'
 import type { ChartPoint, GoldQuote } from './types'
 import { fetchChart, fetchQuote } from './lib/eastmoney'
-import { getErrorMessage } from './lib/format'
 import { createMcpApi } from './mcp'
 
 const REFRESH_MS = 60_000
 
-export class Store {
+export class Store extends BaseStore {
   readonly mcp = createMcpApi(() => this)
 
   quote: GoldQuote | null = null
@@ -18,18 +19,30 @@ export class Store {
   chartError = ''
   language = 'en-US'
 
+  private inited = false
+  private refreshTimer: ReturnType<typeof setInterval> | null = null
+
   constructor() {
+    super()
     makeAutoObservable(this, {
       mcp: false,
+      inited: false,
+      refreshTimer: false,
     })
   }
 
   init(language: string) {
-    this.language = language
+    this.setLanguage(language)
+    if (this.inited) return
+    this.inited = true
     void this.load()
-    setInterval(() => {
+    this.refreshTimer = setInterval(() => {
       void this.refresh()
     }, REFRESH_MS)
+  }
+
+  setLanguage(language: string) {
+    this.language = language
   }
 
   async load() {
@@ -45,7 +58,7 @@ export class Store {
       })
     } catch (err) {
       runInAction(() => {
-        this.error = getErrorMessage(err)
+        this.error = errorMessage(err)
         this.isLoading = false
       })
     }
@@ -64,7 +77,7 @@ export class Store {
       await this.loadChart(true)
     } catch (err) {
       runInAction(() => {
-        this.error = getErrorMessage(err)
+        this.error = errorMessage(err)
       })
     } finally {
       runInAction(() => {
@@ -84,7 +97,7 @@ export class Store {
       })
     } catch (err) {
       runInAction(() => {
-        this.chartError = getErrorMessage(err)
+        this.chartError = errorMessage(err)
         this.chartLoading = false
         if (!silent) this.points = []
       })

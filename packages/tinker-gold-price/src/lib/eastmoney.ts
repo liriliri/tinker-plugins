@@ -1,11 +1,11 @@
 import filter from 'licia/filter'
 import isEmpty from 'licia/isEmpty'
-import isErr from 'licia/isErr'
 import isFinite from 'licia/isFinite'
 import map from 'licia/map'
 import safeGet from 'licia/safeGet'
 import toNum from 'licia/toNum'
 import toStr from 'licia/toStr'
+import { errorMessage } from 'tinker-share/lib/util'
 import type { ChartPoint, GoldQuote } from '../types'
 
 const SECID = '118.AU9999'
@@ -42,7 +42,7 @@ async function fetchFromHosts(
       lastError = err
     }
   }
-  throw isErr(lastError) ? lastError : new Error('All East Money hosts failed')
+  throw new Error(errorMessage(lastError) || 'All East Money hosts failed')
 }
 
 function num(value: unknown): number {

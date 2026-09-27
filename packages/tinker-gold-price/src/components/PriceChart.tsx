@@ -38,7 +38,7 @@ function ChartStatus({ children, error }: ChartStatusProps) {
   )
 }
 
-const PriceChart = observer(() => {
+const PriceChart = observer(function PriceChart() {
   const { t } = useTranslation()
   const { points, chartLoading, chartError, quote } = store
 

@@ -1,7 +1,7 @@
 {
   "name": "tinker-gold-price",
-  "version": "0.1.1",
-  "description": "Gold Price Plugin for TINKER",
+  "version": "0.1.2",
+  "description": "Query gold prices",
   "files": [
     "dist/",
     "icon.png"
@@ -22,7 +22,7 @@
   ],
   "tinker": {
     "name": "Gold Price",
-    "description": "Query gold prices",
+    "category": "productivity",
     "main": "dist/index.html",
     "icon": "icon.png",
     "locales": {

@@ -21,7 +21,7 @@ function Stat({ label, value }: StatProps) {
   )
 }
 
-const StatGrid = observer(() => {
+const StatGrid = observer(function StatGrid() {
   const { t } = useTranslation()
   const { quote } = store
 
