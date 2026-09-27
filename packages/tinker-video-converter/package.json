@@ -1,7 +1,7 @@
 {
   "name": "tinker-video-converter",
-  "version": "0.1.1",
-  "description": "Video Format Converter Plugin for TINKER",
+  "version": "0.1.2",
+  "description": "Convert video formats with FFmpeg",
   "files": [
     "dist/",
     "icon.png"
@@ -22,6 +22,7 @@
   ],
   "tinker": {
     "name": "Video Converter",
+    "category": "media",
     "description": "Convert video formats with FFmpeg",
     "main": "dist/index.html",
     "icon": "icon.png",

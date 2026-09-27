@@ -1,7 +1,6 @@
 @use 'tailwindcss';
 @config "../tailwind.config.js";
 
-
 html.dark {
   color-scheme: dark;
 }
@@ -16,10 +15,14 @@ body,
 }
 
 body {
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    'PingFang SC',
+    sans-serif;
 }
 
-/* Custom scrollbar - light */
 ::-webkit-scrollbar {
   width: 5px;
 }
@@ -34,7 +37,6 @@ body {
   background: rgba(0, 0, 0, 0.18);
 }
 
-/* Custom scrollbar - dark */
 .dark ::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.08);
 }
@@ -42,12 +44,10 @@ body {
   background: rgba(255, 255, 255, 0.15);
 }
 
-/* Mono font utility */
 .font-mono {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
-/* DropZone filmstrip animation */
 @keyframes filmScroll {
   0% {
     background-position: 0 0;
@@ -70,7 +70,6 @@ body {
   animation: filmScroll 4s linear infinite;
 }
 
-/* Perforations along left edge */
 .film-perf-left::before,
 .film-perf-right::after {
   content: '';
@@ -96,7 +95,6 @@ body {
   right: 0;
 }
 
-/* Progress bar glow */
 @keyframes progressPulse {
   0%,
   100% {
@@ -111,7 +109,6 @@ body {
   animation: progressPulse 2s ease-in-out infinite;
 }
 
-/* Progress bar stripe animation */
 @keyframes progressStripes {
   0% {
     background-position: 0 0;
@@ -135,7 +132,6 @@ body {
   animation: progressStripes 0.6s linear infinite;
 }
 
-/* Stagger entrance */
 @keyframes slideUp {
   from {
     opacity: 0;
@@ -151,7 +147,6 @@ body {
   animation: slideUp 0.3s ease-out both;
 }
 
-/* Subtle noise texture on panels */
 .noise-texture {
   position: relative;
 }
@@ -164,12 +159,10 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Badge / pill styling */
 .tag {
   @apply inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-mono font-medium tracking-wide;
 }
 
-/* Select styling */
 .select-styled {
   @apply text-xs pl-2.5 pr-7 py-[5px] rounded-md border appearance-none cursor-pointer transition-all duration-150;
   background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%2371717A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
@@ -177,7 +170,6 @@ body {
   background-position: right 8px center;
 }
 
-/* Range slider custom - light */
 input[type='range'] {
   -webkit-appearance: none;
   appearance: none;
@@ -208,7 +200,6 @@ input[type='range']:disabled::-webkit-slider-thumb {
   cursor: not-allowed;
 }
 
-/* Range slider custom - dark */
 .dark input[type='range'] {
   background: rgba(255, 255, 255, 0.08);
 }
@@ -219,7 +210,6 @@ input[type='range']:disabled::-webkit-slider-thumb {
   background: #52525b;
 }
 
-/* Dialog animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -269,7 +259,6 @@ input[type='range']:disabled::-webkit-slider-thumb {
   animation: scaleOut 0.15s ease-in;
 }
 
-/* Glow button */
 .btn-glow {
   position: relative;
   overflow: hidden;

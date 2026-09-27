@@ -1,3 +1,5 @@
+import isArr from 'licia/isArr'
+import { storage } from 'tinker-share/store/Base'
 import type {
   QueueItem,
   QueueStats,
@@ -6,29 +8,19 @@ import type {
 } from '../types'
 import { QueueItemStatus } from '../types'
 
-const QUEUE_STORAGE_KEY = 'tinker-video-converter:queue'
+const QUEUE_STORAGE_KEY = 'queue'
 
 export function generateQueueItemId(): string {
   return `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`
 }
 
 export function saveQueueToDisk(queue: QueueItem[]): void {
-  try {
-    localStorage.setItem(QUEUE_STORAGE_KEY, JSON.stringify(queue))
-  } catch (err) {
-    console.error('Failed to save queue to disk:', err)
-  }
+  storage.set(QUEUE_STORAGE_KEY, queue)
 }
 
 export function loadQueueFromDisk(): QueueItem[] {
-  try {
-    const data = localStorage.getItem(QUEUE_STORAGE_KEY)
-    if (!data) return []
-    return JSON.parse(data) as QueueItem[]
-  } catch (err) {
-    console.error('Failed to load queue from disk:', err)
-    return []
-  }
+  const data = storage.get(QUEUE_STORAGE_KEY)
+  return isArr(data) ? (data as QueueItem[]) : []
 }
 
 export function calculateQueueStats(queue: QueueItem[]): QueueStats {

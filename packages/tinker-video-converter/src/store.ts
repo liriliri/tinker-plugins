@@ -1,4 +1,6 @@
 import { makeAutoObservable, runInAction } from 'mobx'
+import BaseStore, { storage } from 'tinker-share/store/Base'
+import { errorMessage } from 'tinker-share/lib/util'
 import type {
   SourceFile,
   ConversionProgress,
@@ -11,14 +13,10 @@ import {
   CONTAINER_ENCODERS,
   getDefaultEncoder,
   getEncodersForContainer,
-  GLOBAL_PRESETS,
 } from './lib/constants'
 import type { GlobalPreset } from './lib/constants'
 import { buildFFmpegArgs } from './lib/ffmpegArgs'
-import LocalStore from 'licia/LocalStore'
 import queueStore from './queueStore'
-
-const settings = new LocalStore('tinker-video-converter')
 
 const SETTING_DEFAULTS: Record<string, string> = {
   container: CONTAINERS[0].value,
@@ -44,32 +42,32 @@ const SETTING_DEFAULTS: Record<string, string> = {
   sharpen: 'off',
 }
 
-class Store {
+class Store extends BaseStore {
   source: SourceFile | null = null
   container: string = CONTAINERS[0].value
   videoEncoder: string = getDefaultEncoder(CONTAINERS[0].value)
-  outputDir: string = ''
-  preset: string = 'medium'
+  outputDir = ''
+  preset = 'medium'
   qualityType: 'crf' | 'abr' = 'crf'
-  crf: number = 23
-  avgBitrate: number = 2500
-  multiPass: boolean = false
-  encoderTune: string = 'none'
-  encoderProfile: string = 'auto'
-  encoderLevel: string = 'auto'
-  resolution: string = 'auto'
-  framerate: string = 'auto'
-  framerateMode: string = 'auto'
-  audioCodec: string = 'aac'
-  audioBitrate: string = '128k'
-  audioSampleRate: string = 'auto'
-  audioMixdown: string = 'auto'
-  deinterlace: string = 'off'
-  denoise: string = 'off'
-  sharpen: string = 'off'
+  crf = 23
+  avgBitrate = 2500
+  multiPass = false
+  encoderTune = 'none'
+  encoderProfile = 'auto'
+  encoderLevel = 'auto'
+  resolution = 'auto'
+  framerate = 'auto'
+  framerateMode = 'auto'
+  audioCodec = 'aac'
+  audioBitrate = '128k'
+  audioSampleRate = 'auto'
+  audioMixdown = 'auto'
+  deinterlace = 'off'
+  denoise = 'off'
+  sharpen = 'off'
 
-  activePresetName: string = ''
-  private _presetSnapshot: string = ''
+  activePresetName = ''
+  private _presetSnapshot = ''
 
   isConverting = false
   isDone = false
@@ -81,24 +79,25 @@ class Store {
   private queueLoopActive = false
 
   constructor() {
+    super()
     makeAutoObservable(this, {
       currentTask: false,
       queueLoopActive: false,
       _presetSnapshot: false,
     } as Record<string, false>)
     for (const [key, defaultVal] of Object.entries(SETTING_DEFAULTS)) {
-      const stored = settings.get(key) || defaultVal
-      const field = key as keyof this
-      if (typeof this[field] === 'number') {
-        ;(this as any)[field] = parseInt(stored, 10)
-      } else if (typeof this[field] === 'boolean') {
-        ;(this as any)[field] = stored === 'true'
+      const stored = (storage.get(key) as string | null) || defaultVal
+      const current = (this as Record<string, unknown>)[key]
+      if (typeof current === 'number') {
+        Object.assign(this, { [key]: parseInt(stored, 10) })
+      } else if (typeof current === 'boolean') {
+        Object.assign(this, { [key]: stored === 'true' })
       } else {
-        ;(this as any)[field] = stored
+        Object.assign(this, { [key]: stored })
       }
     }
-    this.activePresetName = settings.get('activePresetName') || ''
-    this._presetSnapshot = settings.get('presetSnapshot') || ''
+    this.activePresetName = (storage.get('activePresetName') as string) || ''
+    this._presetSnapshot = (storage.get('presetSnapshot') as string) || ''
   }
 
   get canStart() {
@@ -122,20 +121,15 @@ class Store {
     return getEncodersForContainer(this.container)
   }
 
-  get formatLabel() {
-    const c = this.containerConfig
-    return c ? `${c.label} (${this.videoEncoder})` : ''
-  }
-
   private persistSetting(key: string, value: string | number | boolean) {
-    ;(this as any)[key] = value
-    settings.set(key, String(value))
+    Object.assign(this, { [key]: value })
+    storage.set(key, String(value))
     if (this.activePresetName && this._presetSnapshot) {
       if (this._settingsFingerprint() !== this._presetSnapshot) {
         this.activePresetName = ''
         this._presetSnapshot = ''
-        settings.set('activePresetName', '')
-        settings.set('presetSnapshot', '')
+        storage.set('activePresetName', '')
+        storage.set('presetSnapshot', '')
       }
     }
   }
@@ -148,14 +142,14 @@ class Store {
 
   applyPreset(preset: GlobalPreset) {
     for (const [key, val] of Object.entries(preset.settings)) {
-      ;(this as Record<string, string | number | boolean>)[key] = val
-      settings.set(key, String(val))
+      Object.assign(this, { [key]: val })
+      storage.set(key, String(val))
     }
 
     this.activePresetName = preset.name
     this._presetSnapshot = this._settingsFingerprint()
-    settings.set('activePresetName', preset.name)
-    settings.set('presetSnapshot', this._presetSnapshot)
+    storage.set('activePresetName', preset.name)
+    storage.set('presetSnapshot', this._presetSnapshot)
   }
 
   setContainer(value: string) {
@@ -172,7 +166,7 @@ class Store {
 
   setOutputDir(dir: string) {
     this.outputDir = dir.replace(/[/\\]+$/, '')
-    settings.set('outputDir', this.outputDir)
+    storage.set('outputDir', this.outputDir)
   }
 
   setPreset(value: string) {
@@ -390,10 +384,9 @@ class Store {
       })
     } catch (err) {
       this.currentTask = null
-      const message = err instanceof Error ? err.message : String(err)
       runInAction(() => {
         this.isConverting = false
-        this.error = message
+        this.error = errorMessage(err)
       })
     }
   }
@@ -433,9 +426,8 @@ class Store {
             queueStore.completeItem(nextJob.id, outputPath)
           })
         } catch (err) {
-          const message = err instanceof Error ? err.message : String(err)
           runInAction(() => {
-            queueStore.failItem(nextJob.id, message)
+            queueStore.failItem(nextJob.id, errorMessage(err))
           })
         }
       }
@@ -469,4 +461,5 @@ class Store {
   }
 }
 
-export default new Store()
+const store = new Store()
+export default store

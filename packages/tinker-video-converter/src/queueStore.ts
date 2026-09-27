@@ -8,7 +8,6 @@ import type {
 } from './types'
 import { QueueItemStatus } from './types'
 import {
-  generateQueueItemId,
   saveQueueToDisk,
   loadQueueFromDisk,
   calculateQueueStats,
@@ -221,4 +220,5 @@ class QueueStore {
   }
 }
 
-export default new QueueStore()
+const queueStore = new QueueStore()
+export default queueStore
