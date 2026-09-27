@@ -1,4 +1,3 @@
-import LocalStore from 'licia/LocalStore'
 import concat from 'licia/concat'
 import contain from 'licia/contain'
 import filter from 'licia/filter'
@@ -8,9 +7,9 @@ import isStr from 'licia/isStr'
 import slice from 'licia/slice'
 import startWith from 'licia/startWith'
 import unique from 'licia/unique'
+import { storage } from 'tinker-share/store/Base'
 import type { ResultCategory, SearchResultItem } from '../../common/types'
 
-const storage = new LocalStore('tinker-search-all')
 const STORAGE_RECENT = 'recentItems'
 const RESULT_CATEGORIES: ResultCategory[] = ['apps', 'plugins', 'files']
 export const MAX_RECENT = 15

@@ -12,6 +12,7 @@ import pluck from 'licia/pluck'
 import slice from 'licia/slice'
 import startWith from 'licia/startWith'
 import trim from 'licia/trim'
+import BaseStore from 'tinker-share/store/Base'
 import type {
   ResultSection,
   SearchCategory,
@@ -54,7 +55,7 @@ function pluginId(id: string) {
     : id
 }
 
-class Store {
+class Store extends BaseStore {
   query = ''
   category: SearchCategory = 'all'
   apps: AppEntry[] = []
@@ -75,7 +76,11 @@ class Store {
   }, 250)
 
   constructor() {
-    makeAutoObservable(this)
+    super()
+    makeAutoObservable(this, {
+      fileTask: false,
+      debounceSearchFiles: false,
+    })
     void this.init()
   }
 

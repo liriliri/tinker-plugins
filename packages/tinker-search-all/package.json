@@ -1,7 +1,7 @@
 {
   "name": "tinker-search-all",
-  "version": "0.1.0",
-  "description": "Search All Plugin for TINKER",
+  "version": "0.1.1",
+  "description": "Unified search across files, apps, and plugins",
   "files": [
     "dist/",
     "icon.png"
@@ -25,7 +25,7 @@
   ],
   "tinker": {
     "name": "Search All",
-    "description": "Unified search across files, apps, and plugins",
+    "category": "productivity",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",

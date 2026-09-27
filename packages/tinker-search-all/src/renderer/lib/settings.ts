@@ -1,8 +1,7 @@
-import LocalStore from 'licia/LocalStore'
 import isBool from 'licia/isBool'
 import isStr from 'licia/isStr'
+import { storage } from 'tinker-share/store/Base'
 
-const storage = new LocalStore('tinker-search-all')
 const STORAGE_CLOSE_ON_OPEN = 'closeOnOpen'
 const STORAGE_HOTKEY = 'hotkey'
 

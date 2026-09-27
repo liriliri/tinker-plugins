@@ -1,28 +1,58 @@
-import { createRoot } from 'react-dom/client'
-import i18n from 'i18next'
-import { initReactI18next } from 'react-i18next'
-import App from './App'
+import { observer } from 'mobx-react-lite'
+import { useEffect } from 'react'
+import className from 'licia/className'
+import renderApp from 'tinker-share/lib/renderApp'
+import SearchInput from './components/SearchInput'
+import CategoryTabs from './components/CategoryTabs'
+import ResultList from './components/ResultList'
+import Footer from './components/Footer'
+import store from './store'
+import { tw } from './theme'
 import enUS from './i18n/en-US.json'
 import zhCN from './i18n/zh-CN.json'
 import './index.scss'
 
-i18n.use(initReactI18next).init({
-  resources: {
-    'en-US': { translation: enUS },
-    'zh-CN': { translation: zhCN },
-  },
-  lng: 'en-US',
-  fallbackLng: 'en-US',
-  interpolation: {
-    escapeValue: false,
-  },
+const App = observer(function App() {
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (store.showSettings) return
+      if (e.key === 'ArrowDown') {
+        e.preventDefault()
+        store.moveSelection(1)
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault()
+        store.moveSelection(-1)
+      } else if (e.key === 'Enter') {
+        e.preventDefault()
+        void store.activateSelected()
+      } else if (e.key === 'Escape') {
+        e.preventDefault()
+        if (store.query) {
+          store.setQuery('')
+        } else {
+          window.close()
+        }
+      }
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [])
+
+  return (
+    <div
+      className={className('h-screen flex flex-col overflow-hidden', tw.app)}
+    >
+      <div className="sa-glow" aria-hidden />
+      <div className={className('flex flex-col flex-1 min-h-0', tw.content)}>
+        <SearchInput />
+        <div className="flex flex-col flex-1 min-h-0 px-2.5 pt-2 gap-1.5">
+          <CategoryTabs />
+          <ResultList />
+        </div>
+        <Footer />
+      </div>
+    </div>
+  )
 })
 
-;(async function () {
-  const language = await tinker.getLanguage()
-  i18n.changeLanguage(language)
-  tinker.on('changeLanguage', (lang) => i18n.changeLanguage(lang))
-
-  const container = document.getElementById('app') as HTMLElement
-  createRoot(container).render(<App />)
-})()
+renderApp(App, { 'en-US': enUS, 'zh-CN': zhCN })
