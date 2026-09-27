@@ -29,6 +29,13 @@ export const tw = {
     },
   },
 
+  search: {
+    field:
+      'flex items-center flex-1 gap-2 px-2.5 py-1 rounded border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 transition-colors duration-100 focus-within:border-zinc-400 dark:focus-within:border-zinc-600',
+    dropdown:
+      'absolute left-12 right-3 top-full mt-0.5 z-50 max-h-72 overflow-y-auto rounded border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-lg shadow-black/8 dark:shadow-black/30 list-none m-0 p-1 animate-fade-up',
+  },
+
   list: {
     item: 'text-zinc-600 dark:text-zinc-400',
     itemHover: 'hover:bg-zinc-100 dark:hover:bg-zinc-800/60',

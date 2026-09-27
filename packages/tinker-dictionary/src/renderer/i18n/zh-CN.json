@@ -8,5 +8,6 @@
   "all": "全部",
   "showInFolder": "打开所在位置",
   "remove": "删除",
-  "error": "错误"
+  "error": "错误",
+  "loadFailed": "加载词典失败"
 }

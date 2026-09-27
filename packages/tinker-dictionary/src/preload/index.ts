@@ -5,6 +5,8 @@ import path from 'node:path'
 import fs from 'node:fs/promises'
 import os from 'node:os'
 import crypto from 'node:crypto'
+import filter from 'licia/filter'
+import map from 'licia/map'
 import mime from 'licia/mime'
 import type { WordEntry, DictLookupResult, DictInfo } from '../common/types'
 
@@ -81,7 +83,6 @@ async function loadZipDictionary(zipPath: string): Promise<DictInfo | null> {
       if (result) return result
     }
 
-    // Cache miss or incomplete, re-extract
     await fs.rm(cacheDir, { recursive: true, force: true }).catch(() => {})
     return await extractAndLoad(zipPath, cacheDir)
   } catch (err) {
@@ -192,7 +193,7 @@ async function extractAndLoad(
 
   let extraCss: string | undefined
   if (cssEntries.length > 0) {
-    extraCss = cssEntries.map((e) => zip.readAsText(e, 'utf-8')).join('\n')
+    extraCss = map(cssEntries, (e) => zip.readAsText(e, 'utf-8')).join('\n')
     await fs.writeFile(path.join(cacheDir, 'cached.extracss'), extraCss)
   }
 
@@ -224,8 +225,11 @@ const api = {
     const seen = new Set<string>()
     const results: WordEntry[] = []
     const entries: DictInstance[] = dictPaths
-      ? (dictPaths.map((p) => dicts.get(p)).filter(Boolean) as DictInstance[])
-      : Array.from(dicts.values())
+      ? (filter(
+          map(dictPaths, (p) => dicts.get(p)),
+          Boolean,
+        ) as DictInstance[])
+      : [...dicts.values()]
     try {
       for (const entry of entries) {
         const items = entry.mdx.prefix(word)
@@ -246,8 +250,11 @@ const api = {
   lookup: (word: string, dictPaths?: string[]): DictLookupResult[] => {
     const results: DictLookupResult[] = []
     const entries: DictInstance[] = dictPaths
-      ? (dictPaths.map((p) => dicts.get(p)).filter(Boolean) as DictInstance[])
-      : Array.from(dicts.values())
+      ? (filter(
+          map(dictPaths, (p) => dicts.get(p)),
+          Boolean,
+        ) as DictInstance[])
+      : [...dicts.values()]
     for (const entry of entries) {
       try {
         const result = entry.mdx.lookup(word)
@@ -284,7 +291,7 @@ const api = {
   },
 
   getDictList: (): DictInfo[] => {
-    return Array.from(dicts.values()).map((e) => e.info)
+    return map([...dicts.values()], (e) => e.info)
   },
 }
 

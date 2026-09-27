@@ -1,13 +1,18 @@
 import { makeAutoObservable, runInAction } from 'mobx'
-import LocalStore from 'licia/LocalStore'
 import debounce from 'licia/debounce'
+import filter from 'licia/filter'
+import findIdx from 'licia/findIdx'
+import map from 'licia/map'
 import mime from 'licia/mime'
+import some from 'licia/some'
 import trim from 'licia/trim'
+import BaseStore, { storage } from 'tinker-share/store/Base'
 import { getAllDicts, putDict, removeDict } from './lib/db'
 import type { WordEntry, DictInfo } from '../common/types'
 import { createMcpApi } from './mcp'
 
-const storage = new LocalStore('tinker-dictionary')
+const STORAGE_SHOW_PANEL = 'showDictPanel'
+const STORAGE_SELECTED_DICT = 'selectedDictPath'
 
 interface DefinitionEntry {
   dictPath: string
@@ -16,42 +21,28 @@ interface DefinitionEntry {
   extraCss?: string
 }
 
-export class Store {
+export class Store extends BaseStore {
   readonly mcp = createMcpApi(() => this)
 
   dictList: DictInfo[] = []
-  searchText: string = ''
+  searchText = ''
   suggestions: WordEntry[] = []
-  selectedWord: string = ''
+  selectedWord = ''
   definitions: DefinitionEntry[] = []
   selectedDictPath: string | null = null
-  showDictPanel: boolean = storage.get('showDictPanel') ?? true
-  isDark: boolean = false
-  dropdownOpen: boolean = false
-  toastOpen: boolean = false
-  toastMsg: string = ''
+  showDictPanel: boolean = storage.get(STORAGE_SHOW_PANEL) ?? true
+  dropdownOpen = false
+  toastOpen = false
+  toastMsg = ''
 
-  private dictsLoaded: boolean = false
+  private dictsLoaded = false
   private dictsLoading: Promise<void> | null = null
 
   constructor() {
+    super()
     makeAutoObservable(this, {
       mcp: false,
       dictsLoading: false,
-    })
-    this.initTheme()
-  }
-
-  private async initTheme() {
-    const theme = await tinker.getTheme()
-    runInAction(() => {
-      this.isDark = theme === 'dark'
-    })
-    tinker.on('changeTheme', async () => {
-      const newTheme = await tinker.getTheme()
-      runInAction(() => {
-        this.isDark = newTheme === 'dark'
-      })
     })
   }
 
@@ -59,8 +50,8 @@ export class Store {
     const all = await getAllDicts()
     runInAction(() => {
       this.dictList = all
-      const savedDictPath = storage.get('selectedDictPath') ?? null
-      if (savedDictPath && all.some((d) => d.path === savedDictPath)) {
+      const savedDictPath = storage.get(STORAGE_SELECTED_DICT) ?? null
+      if (savedDictPath && some(all, (d) => d.path === savedDictPath)) {
         this.selectedDictPath = savedDictPath
       }
     })
@@ -82,14 +73,14 @@ export class Store {
   }
 
   private async loadAllDicts() {
-    const paths = this.dictList.map((d) => d.path)
+    const paths = map(this.dictList, (d) => d.path)
     const results = await Promise.all(
-      paths.map((p) => dictionary.loadDictionary(p)),
+      map(paths, (p) => dictionary.loadDictionary(p)),
     )
     runInAction(() => {
       for (let i = 0; i < paths.length; i++) {
         if (results[i]) {
-          const idx = this.dictList.findIndex((d) => d.path === paths[i])
+          const idx = findIdx(this.dictList, (d) => d.path === paths[i])
           if (idx !== -1) this.dictList[idx] = results[i]!
         }
       }
@@ -105,12 +96,12 @@ export class Store {
     })
     if (result.canceled || !result.filePaths.length) return
     await Promise.all(
-      result.filePaths.map((filePath) => this.addDictionary(filePath)),
+      map(result.filePaths, (filePath) => this.addDictionary(filePath)),
     )
   }
 
   async addDictionary(dictPath: string) {
-    if (this.dictList.some((d) => d.path === dictPath)) return
+    if (some(this.dictList, (d) => d.path === dictPath)) return
     const info = await dictionary.loadDictionary(dictPath)
     if (info) {
       await putDict(info)
@@ -119,7 +110,7 @@ export class Store {
         this.dictsLoaded = true
       })
     } else {
-      this.showError('Failed to load dictionary')
+      this.showError('loadFailed')
     }
   }
 
@@ -127,10 +118,10 @@ export class Store {
     await dictionary.removeDictionary(dictPath)
     await removeDict(dictPath)
     runInAction(() => {
-      this.dictList = this.dictList.filter((d) => d.path !== dictPath)
+      this.dictList = filter(this.dictList, (d) => d.path !== dictPath)
       if (this.selectedDictPath === dictPath) {
         this.selectedDictPath = null
-        storage.set('selectedDictPath', null)
+        storage.set(STORAGE_SELECTED_DICT, null)
       }
     })
     if (this.searchText) {
@@ -140,7 +131,7 @@ export class Store {
 
   selectDict(path: string | null) {
     this.selectedDictPath = path
-    storage.set('selectedDictPath', path)
+    storage.set(STORAGE_SELECTED_DICT, path)
     this.searchText = ''
     this.suggestions = []
     this.selectedWord = ''
@@ -150,7 +141,7 @@ export class Store {
 
   setShowDictPanel(show: boolean) {
     this.showDictPanel = show
-    storage.set('showDictPanel', show)
+    storage.set(STORAGE_SHOW_PANEL, show)
   }
 
   setSearchText(text: string) {
@@ -167,7 +158,7 @@ export class Store {
 
   private debouncedSearch = debounce((text: string) => this.search(text), 150)
 
-  private async search(word: string, silent: boolean = false) {
+  private async search(word: string, silent = false) {
     if (this.dictList.length === 0) return
     await this.ensureLoaded()
     const results = dictionary.search(word, 50, this.activeDictPaths)
@@ -205,9 +196,9 @@ export class Store {
     await this.ensureLoaded()
     const results = dictionary.lookup(word, this.activeDictPaths)
     runInAction(() => {
-      this.definitions = results
-        .filter((r) => r.definition)
-        .map((r) => {
+      this.definitions = map(
+        filter(results, (r) => r.definition),
+        (r) => {
           const extraCss = dictionary.getExtraCss(r.dictPath)
           return {
             dictPath: r.dictPath,
@@ -215,7 +206,8 @@ export class Store {
             definition: this.processDefinition(r.definition!, r.dictPath),
             extraCss: extraCss ?? undefined,
           }
-        })
+        },
+      )
     })
   }
 

@@ -1,18 +1,14 @@
 @use 'tailwindcss';
 @config "../../tailwind.config.js";
 
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap');
-
 html.dark {
   color-scheme: dark;
 }
 
 body {
   font-family:
-    'IBM Plex Sans',
-    -apple-system,
-    BlinkMacSystemFont,
-    sans-serif;
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+    'Hiragino Sans GB', sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -30,7 +26,7 @@ body {
     background: rgba(0, 0, 0, 0.24);
   }
 }
-@media (prefers-color-scheme: dark) {
+html.dark {
   ::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.1);
     &:hover {

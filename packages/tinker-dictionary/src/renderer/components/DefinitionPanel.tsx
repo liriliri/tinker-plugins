@@ -1,16 +1,19 @@
 import { observer } from 'mobx-react-lite'
 import { useEffect, useCallback, useRef, useState, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { BookOpen, Search } from 'lucide-react'
+import { BookOpen } from 'lucide-react'
+import className from 'licia/className'
+import map from 'licia/map'
 import { tw } from '../theme'
 import store from '../store'
-// @ts-ignore – raw import of UMD bundle
+// Raw UMD bundle injected into definition iframes for dark mode.
+// @ts-expect-error raw import
 import drScript from 'darkreader/darkreader.js?raw'
 
 const baseStyles = `
   body {
     margin: 0;
-    font-family: 'IBM Plex Serif', Georgia, serif;
+    font-family: Georgia, 'Times New Roman', 'Songti SC', serif;
     font-size: 15px;
     line-height: 1.65;
     padding: 16px 20px;
@@ -19,15 +22,13 @@ const baseStyles = `
   img { max-width: 100%; height: auto; }
   a { color: #18181b; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: rgba(0,0,0,0.2); }
   a:hover { text-decoration-color: rgba(0,0,0,0.5); }
-  h1, h2, h3, h4, h5, h6 { font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; }
+  h1, h2, h3, h4, h5, h6 { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif; font-weight: 600; }
   ::-webkit-scrollbar { width: 4px; height: 4px; }
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 0; }
   ::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.24); }
-  @media (prefers-color-scheme: dark) {
-    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); }
-    ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
-  }
+  html.dark ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); }
+  html.dark ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
 `
 
 const clickScript = `
@@ -63,11 +64,9 @@ function buildSrcdoc(
 ): string {
   const overflowStyle = autoHeight ? 'overflow: hidden;' : ''
   return `<!DOCTYPE html>
-<html style="${autoHeight ? 'overflow: hidden;' : ''}">
+<html class="${isDark ? 'dark' : ''}" style="${autoHeight ? 'overflow: hidden;' : ''}">
 <head>
 <meta charset="utf-8">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>${baseStyles}${overflowStyle ? `\nbody { ${overflowStyle} }` : ''}</style>
 ${extraCss ? `<style>${extraCss}</style>` : ''}
 ${isDark ? `<script>${drScript}<\/script>` : ''}
@@ -134,7 +133,7 @@ const DefinitionPanel = observer(() => {
 
   const handleMessage = useCallback((e: MessageEvent) => {
     if (e.data?.type === 'entry-jump' && e.data.word) {
-      store.handleEntryJump(e.data.word)
+      void store.handleEntryJump(e.data.word)
     }
   }, [])
 
@@ -146,11 +145,16 @@ const DefinitionPanel = observer(() => {
   if (!store.hasDictionary) {
     return (
       <div
-        className={`flex-1 flex flex-col items-center justify-center gap-3 ${tw.text.muted}`}
+        className={className(
+          'flex-1 flex flex-col items-center justify-center gap-3',
+          tw.text.muted,
+        )}
       >
         <BookOpen className="w-10 h-10" strokeWidth={1} />
         <div className="text-center">
-          <p className={`text-[13px] font-medium ${tw.text.secondary}`}>
+          <p
+            className={className('text-[13px] font-medium', tw.text.secondary)}
+          >
             {t('noDictionary')}
           </p>
           <p className="text-[11px] mt-1">{t('noDictionaryHint')}</p>
@@ -162,7 +166,10 @@ const DefinitionPanel = observer(() => {
   if (store.definitions.length === 0) {
     return (
       <div
-        className={`flex-1 flex items-center justify-center ${tw.text.muted}`}
+        className={className(
+          'flex-1 flex items-center justify-center',
+          tw.text.muted,
+        )}
       >
         <p className="text-[13px] italic">
           {store.searchText ? t('noResults') : t('searchPlaceholder')}
@@ -182,10 +189,15 @@ const DefinitionPanel = observer(() => {
 
   return (
     <div className="flex-1 overflow-y-auto">
-      {store.definitions.map((entry, idx) => (
+      {map(store.definitions, (entry, idx) => (
         <div key={`${entry.dictPath}-${idx}`}>
           <div
-            className={`sticky top-0 z-10 px-5 py-1.5 text-[11px] font-medium tracking-wider uppercase ${tw.text.secondary} ${tw.background.toolbar} border-b ${tw.border.divider}`}
+            className={className(
+              'sticky top-0 z-10 px-5 py-1.5 text-[11px] font-medium tracking-wider uppercase border-b',
+              tw.text.secondary,
+              tw.background.toolbar,
+              tw.border.divider,
+            )}
           >
             {entry.dictTitle}
           </div>
