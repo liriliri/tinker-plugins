@@ -5,6 +5,7 @@ import startWith from 'licia/startWith'
 import toNum from 'licia/toNum'
 import { makeAutoObservable, runInAction } from 'mobx'
 import SvgCanvasCtor from '@svgedit/svgcanvas'
+import BaseStore from 'tinker-share/store/Base'
 import type { SvgCanvas } from './lib/canvasTypes'
 import { buildSelectionInfo } from './lib/selection'
 import { displayColor, normalizeHex, toPaintHex } from './lib/palette'
@@ -25,7 +26,7 @@ type ZoomBBox = {
   zoom?: number
 }
 
-export class Store {
+export class Store extends BaseStore {
   readonly mcp = createMcpApi(() => this)
 
   ready = false
@@ -51,6 +52,7 @@ export class Store {
   private panLast = { x: 0, y: 0 }
 
   constructor() {
+    super()
     makeAutoObservable(
       this,
       {
@@ -63,6 +65,12 @@ export class Store {
       } as never,
       { autoBind: true },
     )
+  }
+
+  // Editor chrome defaults to dark; light theme uses `html.inverted`.
+  setIsDark(isDark: boolean) {
+    super.setIsDark(isDark)
+    document.documentElement.classList.toggle('inverted', !isDark)
   }
 
   get hasSelection() {

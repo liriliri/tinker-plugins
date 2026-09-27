@@ -1,7 +1,7 @@
 {
   "name": "tinker-svg-editor",
-  "version": "0.1.0",
-  "description": "SVG Editor Plugin for TINKER",
+  "version": "0.1.1",
+  "description": "Draw and edit SVG vector graphics, with PNG export",
   "files": [
     "dist/",
     "icon.png"
@@ -22,7 +22,7 @@
   ],
   "tinker": {
     "name": "SVG Editor",
-    "description": "Draw and edit SVG vector graphics, with PNG export",
+    "category": "media",
     "main": "dist/index.html",
     "icon": "icon.png",
     "locales": {
