@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import className from 'licia/className'
 import { tw } from '../theme'
-import { store } from '../store'
+import store from '../store'
 
 export function IntroScreen() {
   const { t } = useTranslation()
@@ -17,19 +17,10 @@ export function IntroScreen() {
         >
           {t('introDescription')}
         </p>
-        <p className="text-[10px] text-zinc-400 dark:text-zinc-500 mb-5">
+        <p className={className('text-[10px] mb-5', tw.text.muted)}>
           {t('introTips')}
         </p>
-        <button
-          onClick={() => store.startTest()}
-          className={className(
-            'px-6 py-2 rounded-lg text-sm font-medium transition-all duration-200',
-            'bg-accent-500 dark:bg-accent-400',
-            'text-white dark:text-zinc-950',
-            'hover:bg-accent-600 dark:hover:bg-accent-500',
-            'active:scale-95',
-          )}
-        >
+        <button onClick={() => store.startTest()} className={tw.button.primary}>
           {t('introStartButton')}
         </button>
       </div>

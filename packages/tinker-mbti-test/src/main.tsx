@@ -1,47 +1,22 @@
 import { observer } from 'mobx-react-lite'
-import { useTranslation } from 'react-i18next'
-import { createRoot } from 'react-dom/client'
-import i18n from 'i18next'
-import { initReactI18next } from 'react-i18next'
-
-import { store } from './store'
+import renderApp from 'tinker-share/lib/renderApp'
+import store from './store'
 import { IntroScreen } from './components/IntroScreen'
 import { QuestionScreen } from './components/QuestionScreen'
 import { ResultScreen } from './components/ResultScreen'
+import { tw } from './theme'
 import enUS from './i18n/en-US.json'
 import zhCN from './i18n/zh-CN.json'
 import './index.scss'
 
-const App = observer(() => {
-  const { t } = useTranslation()
-
-  switch (store.screen) {
-    case 'intro':
-      return <IntroScreen />
-    case 'question':
-      return <QuestionScreen />
-    case 'result':
-      return <ResultScreen />
-    default:
-      return null
-  }
+const App = observer(function App() {
+  return (
+    <div className={`min-h-full ${tw.background.primary}`}>
+      {store.screen === 'intro' ? <IntroScreen /> : null}
+      {store.screen === 'question' ? <QuestionScreen /> : null}
+      {store.screen === 'result' ? <ResultScreen /> : null}
+    </div>
+  )
 })
 
-i18n.use(initReactI18next).init({
-  resources: {
-    'en-US': { translation: enUS },
-    'zh-CN': { translation: zhCN },
-  },
-  lng: 'en-US',
-  fallbackLng: 'en-US',
-  interpolation: {
-    escapeValue: false,
-  },
-})
-;(async function () {
-  const language = await tinker.getLanguage()
-  i18n.changeLanguage(language)
-
-  const container = document.getElementById('app') as HTMLElement
-  createRoot(container).render(<App />)
-})()
+renderApp(App, { 'en-US': enUS, 'zh-CN': zhCN })

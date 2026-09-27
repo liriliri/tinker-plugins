@@ -1,7 +1,7 @@
 {
   "name": "tinker-mbti-test",
-  "version": "0.1.0",
-  "description": "MBTI Personality Test Plugin for TINKER",
+  "version": "0.1.1",
+  "description": "MBTI personality type test",
   "files": [
     "dist/",
     "icon.png"
@@ -23,7 +23,7 @@
   ],
   "tinker": {
     "name": "MBTI Test",
-    "description": "MBTI personality type test",
+    "category": "entertainment",
     "main": "dist/index.html",
     "icon": "icon.png",
     "locales": {

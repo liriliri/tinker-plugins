@@ -1,16 +1,18 @@
 import { makeAutoObservable } from 'mobx'
-import type { Choice, MBTIType, Screen } from './types'
-import { getQuestions, computeMBTIType } from './data/questions'
 import findIdx from 'licia/findIdx'
 import keys from 'licia/keys'
+import BaseStore from 'tinker-share/store/Base'
+import type { Choice, MBTIType, Screen } from './types'
+import { getQuestions, computeMBTIType } from './data/questions'
 
-class Store {
+class Store extends BaseStore {
   screen: Screen = 'intro'
   currentQuestion = 0
   answers: Record<number, Choice> = {}
   resultType: MBTIType | null = null
 
   constructor() {
+    super()
     makeAutoObservable(this)
   }
 
@@ -58,12 +60,6 @@ class Store {
     }
   }
 
-  goToQuestion(index: number) {
-    if (index >= 0 && index < this.totalQuestions) {
-      this.currentQuestion = index
-    }
-  }
-
   goToPrev() {
     if (this.currentQuestion > 0) {
       this.currentQuestion--
@@ -90,4 +86,5 @@ class Store {
   }
 }
 
-export const store = new Store()
+const store = new Store()
+export default store

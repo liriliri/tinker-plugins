@@ -4,7 +4,7 @@ import { RotateCcw } from 'lucide-react'
 import className from 'licia/className'
 import findKey from 'licia/findKey'
 import { tw } from '../theme'
-import { store } from '../store'
+import store from '../store'
 import { getPortraits } from '../data/portraits'
 import type { MBTIType } from '../types'
 
@@ -12,7 +12,7 @@ const typeImages = import.meta.glob<{ default: string }>('../assets/*.png', {
   eager: true,
 })
 
-const getTypeImage = (type: MBTIType): string | undefined => {
+function getTypeImage(type: MBTIType): string | undefined {
   const path = findKey(typeImages, (_val, key) => key.includes(`/${type}.png`))
   return path ? typeImages[path].default : undefined
 }
@@ -24,55 +24,64 @@ const DIMENSION_PAIRS: [string, string, string][] = [
   ['J', 'P', 'JP'],
 ]
 
+interface DimensionRowProps {
+  left: number
+  right: number
+  leftLabel: string
+  rightLabel: string
+  dimLabel: string
+}
+
 function DimensionRow({
   left,
   right,
   leftLabel,
   rightLabel,
   dimLabel,
-}: {
-  left: number
-  right: number
-  leftLabel: string
-  rightLabel: string
-  dimLabel: string
-}) {
+}: DimensionRowProps) {
   const total = left + right
   const leftPct = total > 0 ? (left / total) * 100 : 50
   const leftWins = left >= right
 
   return (
     <div>
-      <div className="text-[10px] text-zinc-400 dark:text-zinc-500 mb-0.5">
+      <div className={className('text-[10px] mb-0.5', tw.text.muted)}>
         {dimLabel}
       </div>
       <div className="grid grid-cols-[1.25rem_1fr_1.25rem] gap-x-1.5 items-center">
         <span
           className={className(
             'text-xs font-medium tabular-nums',
-            leftWins
-              ? 'text-accent-500 dark:text-accent-400'
-              : tw.text.inactive,
+            leftWins ? tw.text.accent : tw.text.inactive,
           )}
         >
           {leftLabel}
         </span>
-        <div className="h-1.5 rounded-full bg-zinc-200 dark:bg-zinc-700 overflow-hidden flex">
+        <div
+          className={className(
+            'h-1.5 rounded-full overflow-hidden flex',
+            tw.background.track,
+          )}
+        >
           <div
-            className="h-full bg-accent-500 dark:bg-accent-400 transition-all duration-500"
+            className={className(
+              'h-full transition-all duration-500',
+              tw.background.accent,
+            )}
             style={{ width: `${leftPct}%` }}
           />
           <div
-            className="h-full bg-zinc-300 dark:bg-zinc-600 transition-all duration-500"
+            className={className(
+              'h-full transition-all duration-500',
+              tw.background.trackMuted,
+            )}
             style={{ width: `${100 - leftPct}%` }}
           />
         </div>
         <span
           className={className(
             'text-xs font-medium tabular-nums text-right',
-            !leftWins
-              ? 'text-accent-500 dark:text-accent-400'
-              : tw.text.inactive,
+            !leftWins ? tw.text.accent : tw.text.inactive,
           )}
         >
           {rightLabel}
@@ -101,15 +110,13 @@ function DimensionRow({
   )
 }
 
-function TraitList({
-  title,
-  items,
-  bulletColor,
-}: {
+interface TraitListProps {
   title: string
   items: string[]
   bulletColor: 'accent' | 'rose'
-}) {
+}
+
+function TraitList({ title, items, bulletColor }: TraitListProps) {
   return (
     <div>
       <div
@@ -129,7 +136,7 @@ function TraitList({
             <span
               className={className(
                 'absolute left-0 top-0',
-                bulletColor === 'accent' ? 'text-accent-500' : 'text-rose-400',
+                bulletColor === 'accent' ? tw.text.accent : tw.text.rose,
               )}
             >
               ·
@@ -153,22 +160,22 @@ export const ResultScreen = observer(() => {
   const typeImage = getTypeImage(store.resultType)
 
   const dimensionScoresData = [
-    { left: scores.E, right: scores.I, leftLabel: 'E', rightLabel: 'I' },
-    { left: scores.S, right: scores.N, leftLabel: 'S', rightLabel: 'N' },
-    { left: scores.T, right: scores.F, leftLabel: 'T', rightLabel: 'F' },
-    { left: scores.J, right: scores.P, leftLabel: 'J', rightLabel: 'P' },
+    { left: scores.E, right: scores.I },
+    { left: scores.S, right: scores.N },
+    { left: scores.T, right: scores.F },
+    { left: scores.J, right: scores.P },
   ]
 
   return (
     <div className="flex flex-col min-h-full px-3 py-3 overflow-y-auto">
       <div className="flex items-center gap-3 mb-3">
-        {typeImage && (
+        {typeImage ? (
           <img
             src={typeImage}
             alt={store.resultType}
             className="w-14 h-14 shrink-0 rounded-lg"
           />
-        )}
+        ) : null}
         <div className="min-w-0 flex-1">
           <div
             className={className(
@@ -178,23 +185,23 @@ export const ResultScreen = observer(() => {
           >
             {store.resultType}
           </div>
-          {portrait && (
+          {portrait ? (
             <div
               className={className('text-xs mt-0.5 truncate', tw.text.inactive)}
             >
               {portrait.nickname}
             </div>
-          )}
+          ) : null}
         </div>
         <button
           onClick={() => store.restart()}
           title={t('resultRestartButton')}
           className={className(
-            'shrink-0 p-2 rounded-md transition-all duration-200',
+            'shrink-0 p-2 rounded-md transition-all duration-200 active:scale-95',
             tw.border.primary,
             tw.text.inactive,
-            'hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-zinc-700 dark:hover:text-zinc-200',
-            'active:scale-95',
+            tw.background.iconHover,
+            tw.text.iconHover,
           )}
         >
           <RotateCcw size={14} />
@@ -234,7 +241,7 @@ export const ResultScreen = observer(() => {
           </div>
         </section>
 
-        {portrait && (
+        {portrait ? (
           <>
             <div className={className('h-px', tw.divider.line)} />
 
@@ -283,7 +290,7 @@ export const ResultScreen = observer(() => {
               </p>
             </section>
           </>
-        )}
+        ) : null}
       </div>
     </div>
   )
