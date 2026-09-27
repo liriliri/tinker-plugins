@@ -15,7 +15,7 @@ import {
   codeToKey,
 } from '../lib/keymap'
 
-interface Props {
+interface KeymapDialogProps {
   isDark: boolean
   keymap: PlayerKeymap
   onClose: () => void
@@ -32,7 +32,7 @@ export default function KeymapDialog({
   keymap,
   onClose,
   onSave,
-}: Props) {
+}: KeymapDialogProps) {
   const { t } = useTranslation()
   const [draft, setDraft] = useState<PlayerKeymap>(() => cloneDeep(keymap))
   const [listening, setListening] = useState<BindingTarget | null>(null)
@@ -275,7 +275,7 @@ export default function KeymapDialog({
             </ScrollArea.Viewport>
             <ScrollArea.Scrollbar
               orientation="vertical"
-              className={tw.scrollArea.scrollbar(isDark)}
+              className={tw.scrollArea.scrollbar}
             >
               <ScrollArea.Thumb className={tw.scrollArea.thumb(isDark)} />
             </ScrollArea.Scrollbar>

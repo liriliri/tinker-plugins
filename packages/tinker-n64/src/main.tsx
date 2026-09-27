@@ -1,9 +1,8 @@
 import { useCallback, useState } from 'react'
-import { createRoot } from 'react-dom/client'
 import { observer } from 'mobx-react-lite'
-import i18n from 'i18next'
-import { initReactI18next } from 'react-i18next'
+import className from 'licia/className'
 import * as Toast from '@radix-ui/react-toast'
+import renderApp from 'tinker-share/lib/renderApp'
 import enUS from './i18n/en-US.json'
 import zhCN from './i18n/zh-CN.json'
 import store from './store'
@@ -16,19 +15,7 @@ import GameViewport from './components/GameViewport'
 import ErrorToast from './components/ErrorToast'
 import './index.scss'
 
-i18n.use(initReactI18next).init({
-  resources: {
-    'en-US': { translation: enUS },
-    'zh-CN': { translation: zhCN },
-  },
-  lng: 'en-US',
-  fallbackLng: 'en-US',
-  interpolation: {
-    escapeValue: false,
-  },
-})
-
-const App = observer(() => {
+const App = observer(function App() {
   const { isDark } = store
   const [showKeymap, setShowKeymap] = useState(false)
   const emulator = useEmulator(showKeymap)
@@ -40,7 +27,12 @@ const App = observer(() => {
 
   return (
     <Toast.Provider duration={4000}>
-      <div className={`h-screen flex flex-col font-mono ${tw.appBg(isDark)}`}>
+      <div
+        className={className(
+          'h-screen flex flex-col font-mono',
+          tw.appBg(isDark),
+        )}
+      >
         <Toolbar
           isDark={isDark}
           romLoaded={emulator.romLoaded}
@@ -56,7 +48,9 @@ const App = observer(() => {
         />
 
         <div className="flex flex-1 min-h-0">
-          {store.sidebarOpen && <Sidebar onSelect={emulator.loadRomFromPath} />}
+          {store.sidebarOpen ? (
+            <Sidebar onSelect={emulator.loadRomFromPath} />
+          ) : null}
 
           <GameViewport
             containerRef={emulator.containerRef}
@@ -70,24 +64,21 @@ const App = observer(() => {
           />
         </div>
 
-        {showKeymap && (
+        {showKeymap ? (
           <KeymapDialog
             isDark={isDark}
             keymap={store.keymap}
             onClose={() => setShowKeymap(false)}
             onSave={handleSaveKeymap}
           />
-        )}
+        ) : null}
       </div>
       <ErrorToast />
     </Toast.Provider>
   )
 })
 
-;(async function () {
-  const language = await tinker.getLanguage()
-  i18n.changeLanguage(language)
-
-  const container = document.getElementById('app') as HTMLElement
-  createRoot(container).render(<App />)
-})()
+renderApp(App, {
+  'en-US': enUS,
+  'zh-CN': zhCN,
+})

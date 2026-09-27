@@ -1,7 +1,7 @@
 {
   "name": "tinker-n64",
-  "version": "0.1.3",
-  "description": "N64 Emulator Plugin for TINKER",
+  "version": "0.1.4",
+  "description": "Play N64 ROMs with save state support",
   "files": [
     "dist/",
     "icon.png"
@@ -22,7 +22,7 @@
   ],
   "tinker": {
     "name": "N64",
-    "description": "Play N64 ROMs with save state support",
+    "category": "entertainment",
     "main": "dist/index.html",
     "icon": "icon.png",
     "locales": {

@@ -1,7 +1,12 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 import debounce from 'licia/debounce'
-import LocalStore from 'licia/LocalStore'
+import filter from 'licia/filter'
+import map from 'licia/map'
+import raf from 'licia/raf'
+import slice from 'licia/slice'
 import splitPath from 'licia/splitPath'
+import trim from 'licia/trim'
+import BaseStore, { storage } from 'tinker-share/store/Base'
 import { DEFAULT_KEYMAP, N64_BUTTONS, type PlayerKeymap } from './lib/keymap'
 import type { PlayHistoryItem } from './types'
 
@@ -16,28 +21,27 @@ const STORAGE_KEYMAP = 'keymap'
 const STORAGE_SIDEBAR_OPEN = 'sidebarOpen'
 const MAX_PLAY_HISTORY = 50
 
-const storage = new LocalStore('tinker-n64')
-
-class Store {
-  isDark: boolean = false
-  searchQuery: string = ''
+class Store extends BaseStore {
+  searchQuery = ''
   fileSearchResults: FileSearchResult[] = []
-  isSearchingFiles: boolean = false
-  sidebarOpen: boolean = false
+  isSearchingFiles = false
+  sidebarOpen = false
   playHistory: PlayHistoryItem[] = []
-  currentRomPath: string = ''
+  currentRomPath = ''
   keymap: PlayerKeymap = DEFAULT_KEYMAP
-  toastOpen: boolean = false
-  toastMsg: string = ''
+  toastOpen = false
+  toastMsg = ''
 
   private searchFileTask: tinker.SearchFileTask | null = null
 
   constructor() {
-    makeAutoObservable(this)
+    super()
+    makeAutoObservable(this, {
+      searchFileTask: false,
+    })
     this.playHistory = this.loadPlayHistory()
     this.keymap = this.loadKeymap()
     this.sidebarOpen = storage.get(STORAGE_SIDEBAR_OPEN) ?? false
-    this.initTheme()
   }
 
   private loadKeymap(): PlayerKeymap {
@@ -77,14 +81,6 @@ class Store {
     }
   }
 
-  private async initTheme() {
-    this.isDark = (await tinker.getTheme()) === 'dark'
-
-    tinker.on('changeTheme', async () => {
-      this.isDark = (await tinker.getTheme()) === 'dark'
-    })
-  }
-
   toggleSidebar() {
     this.sidebarOpen = !this.sidebarOpen
     storage.set(STORAGE_SIDEBAR_OPEN, this.sidebarOpen)
@@ -93,16 +89,17 @@ class Store {
   setCurrentRom(filePath: string) {
     this.currentRomPath = filePath
     const entry = this.createHistoryEntry(filePath)
-    const next = [
-      entry,
-      ...this.playHistory.filter((item) => item.path !== filePath),
-    ].slice(0, MAX_PLAY_HISTORY)
+    const next = slice(
+      [entry, ...filter(this.playHistory, (item) => item.path !== filePath)],
+      0,
+      MAX_PLAY_HISTORY,
+    )
     this.playHistory = next
     this.savePlayHistory(next)
   }
 
   removeFromPlayHistory(filePath: string) {
-    const next = this.playHistory.filter((item) => item.path !== filePath)
+    const next = filter(this.playHistory, (item) => item.path !== filePath)
     this.playHistory = next
     this.savePlayHistory(next)
     if (this.currentRomPath === filePath) {
@@ -124,7 +121,7 @@ class Store {
   showError(msg: string) {
     this.toastMsg = msg
     this.toastOpen = false
-    requestAnimationFrame(() => {
+    raf(() => {
       this.toastOpen = true
     })
   }
@@ -134,7 +131,7 @@ class Store {
   }
 
   private debouncedFileSearch = debounce((query: string) => {
-    this.searchFiles(query)
+    void this.searchFiles(query)
   }, 300)
 
   private async searchFiles(query: string) {
@@ -143,7 +140,7 @@ class Store {
       this.searchFileTask = null
     }
 
-    if (!query.trim()) {
+    if (!trim(query)) {
       runInAction(() => {
         this.fileSearchResults = []
         this.isSearchingFiles = false
@@ -163,7 +160,7 @@ class Store {
       this.searchFileTask = task
       const results = await task
       runInAction(() => {
-        this.fileSearchResults = results.map((r) => ({
+        this.fileSearchResults = map(results, (r) => ({
           path: r.path,
           name: splitPath(r.path).name,
         }))

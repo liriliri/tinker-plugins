@@ -115,10 +115,8 @@ export const tw = {
   scrollArea: {
     root: 'flex flex-col flex-1 min-h-0 overflow-hidden',
     viewport: 'flex-1 min-h-0 w-full [&>div]:!block',
-    scrollbar: (isDark: boolean) =>
-      `flex select-none touch-none p-0.5 transition-colors data-[orientation=vertical]:w-2 data-[orientation=horizontal]:flex-col data-[orientation=horizontal]:h-2 ${
-        isDark ? 'bg-transparent' : 'bg-transparent'
-      }`,
+    scrollbar:
+      'flex select-none touch-none p-0.5 transition-colors data-[orientation=vertical]:w-2 data-[orientation=horizontal]:flex-col data-[orientation=horizontal]:h-2 bg-transparent',
     thumb: (isDark: boolean) =>
       `flex-1 rounded-full relative ${
         isDark
