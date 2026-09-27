@@ -1,7 +1,7 @@
 {
   "name": "tinker-translate",
-  "version": "0.2.5",
-  "description": "Translation Plugin for TINKER",
+  "version": "0.2.6",
+  "description": "Translate text with multiple translation services",
   "files": [
     "dist/",
     "icon.png"
@@ -25,6 +25,7 @@
   ],
   "tinker": {
     "name": "Translate",
+    "category": "productivity",
     "description": "Translate text with multiple translation services",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",

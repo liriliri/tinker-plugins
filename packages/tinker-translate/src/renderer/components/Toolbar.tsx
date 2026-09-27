@@ -25,7 +25,6 @@ const Toolbar = observer(() => {
     <div
       className={`flex items-center px-2.5 py-2 ${tw.background.toolbar} border-b ${tw.border.divider} shrink-0 min-h-11.5`}
     >
-      {/* Left: service select — flex-1 so it balances the right side */}
       <div className="flex-1 flex items-center gap-1.5">
         <Select.Root
           value={store.service}
@@ -85,7 +84,6 @@ const Toolbar = observer(() => {
         </Tooltip.Root>
       </div>
 
-      {/* Center: language row — not flex-1, so it stays truly centered */}
       <div className="flex items-center gap-0.5">
         <LangSelect
           value={store.sourceLang}
@@ -127,7 +125,6 @@ const Toolbar = observer(() => {
         />
       </div>
 
-      {/* Right: actions — flex-1 + justify-end to mirror the left side */}
       <div className="flex-1 flex items-center justify-end gap-1.5">
         <button
           onClick={() => store.handleCopy()}

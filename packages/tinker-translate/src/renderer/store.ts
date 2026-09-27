@@ -1,30 +1,29 @@
 import { makeAutoObservable } from 'mobx'
-import LocalStore from 'licia/LocalStore'
 import concat from 'licia/concat'
 import delay from 'licia/delay'
 import isStrBlank from 'licia/isStrBlank'
 import i18n from 'i18next'
+import { storage } from 'tinker-share/store/Base'
+import { errorMessage } from 'tinker-share/lib/util'
 import { type Service } from '../common/types'
 import { translateWithAI } from './lib/ai'
 import { services, aiService, toBingLang, fromBingLang } from './lib/languages'
-
-const storage = new LocalStore('tinker-translate')
 
 const STORAGE_SOURCE_LANG = 'sourceLang'
 const STORAGE_TARGET_LANG = 'targetLang'
 const STORAGE_SERVICE = 'service'
 
 class Store {
-  sourceText: string = ''
-  translatedText: string = ''
+  sourceText = ''
+  translatedText = ''
   sourceLang: string = storage.get(STORAGE_SOURCE_LANG) ?? 'auto'
   targetLang: string = storage.get(STORAGE_TARGET_LANG) ?? 'zh-CN'
   service: Service = storage.get(STORAGE_SERVICE) ?? 'google'
-  isTranslating: boolean = false
-  toastOpen: boolean = false
-  toastMsg: string = ''
-  copied: boolean = false
-  hasAI: boolean = false
+  isTranslating = false
+  toastOpen = false
+  toastMsg = ''
+  copied = false
+  hasAI = false
 
   constructor() {
     makeAutoObservable(this)
@@ -131,7 +130,7 @@ class Store {
         this.translatedText = result.text
       }
     } catch (err) {
-      this.showError(i18n.t('translateFailed'))
+      this.showError(errorMessage(err) || i18n.t('translateFailed'))
       console.error(err)
     } finally {
       this.isTranslating = false
@@ -148,7 +147,7 @@ class Store {
   }
 
   get availableServices() {
-    return this.hasAI ? concat(services, aiService) : [...services]
+    return this.hasAI ? concat(services, aiService) : services
   }
 
   get canSwap() {
