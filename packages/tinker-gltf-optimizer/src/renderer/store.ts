@@ -6,9 +6,7 @@ import findIdx from 'licia/findIdx'
 import isBool from 'licia/isBool'
 import isEmpty from 'licia/isEmpty'
 import isNaN from 'licia/isNaN'
-import lowerCase from 'licia/lowerCase'
 import rtrim from 'licia/rtrim'
-import slice from 'licia/slice'
 import some from 'licia/some'
 import splitPath from 'licia/splitPath'
 import toNum from 'licia/toNum'
@@ -179,7 +177,7 @@ export class Store extends BaseStore {
     }
 
     const { ext, name } = splitPath(filePath)
-    if (!GLTF_EXTENSIONS.has(lowerCase(slice(ext, 1)))) {
+    if (!GLTF_EXTENSIONS.has(ext.slice(1).toLowerCase())) {
       return
     }
 

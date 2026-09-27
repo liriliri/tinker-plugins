@@ -1,6 +1,6 @@
 {
   "name": "tinker-gltf-optimizer",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Optimize GLB and GLTF models with Draco, WebP, and mesh simplify",
   "files": [
     "dist/",
