@@ -1,10 +1,11 @@
 import { makeAutoObservable, runInAction } from 'mobx'
-import find from 'licia/find'
-import filter from 'licia/filter'
-import map from 'licia/map'
 import concat from 'licia/concat'
 import delay from 'licia/delay'
+import filter from 'licia/filter'
+import find from 'licia/find'
 import isEmpty from 'licia/isEmpty'
+import map from 'licia/map'
+import BaseStore from 'tinker-share/store/Base'
 import type {
   DnsExitInfo,
   LanInterface,
@@ -17,7 +18,7 @@ import { queryDnsExits } from './lib/dnsExit'
 import { getSpeedTestTargets, runSpeedTests } from './lib/speedTest'
 import { createMcpApi } from './mcp'
 
-export class Store {
+export class Store extends BaseStore {
   readonly mcp = createMcpApi(() => this)
 
   lanInterfaces: LanInterface[] = []
@@ -37,11 +38,15 @@ export class Store {
   dnsExits: DnsExitInfo[] = []
   dnsLoading = true
 
-  copiedKey: string = ''
+  copiedKey = ''
+
+  private inited = false
 
   constructor() {
+    super()
     makeAutoObservable(this, {
       mcp: false,
+      inited: false,
     })
   }
 
@@ -57,6 +62,8 @@ export class Store {
       this.language = language
       this.speedTargets = getSpeedTestTargets(language)
     }
+    if (this.inited) return
+    this.inited = true
     void this.refreshLan()
     void this.refreshPublicIps()
     void this.refreshSpeedTests()

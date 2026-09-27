@@ -6,7 +6,7 @@ interface SectionHeaderProps {
   trailing?: string
 }
 
-const SectionHeader = ({ title, trailing }: SectionHeaderProps) => {
+export default function SectionHeader({ title, trailing }: SectionHeaderProps) {
   return (
     <div
       className={className(
@@ -29,7 +29,7 @@ const SectionHeader = ({ title, trailing }: SectionHeaderProps) => {
           {title}
         </h2>
       </div>
-      {trailing && (
+      {trailing ? (
         <span
           className={className(
             'font-mono text-[10px] tracking-wide',
@@ -38,9 +38,7 @@ const SectionHeader = ({ title, trailing }: SectionHeaderProps) => {
         >
           {trailing}
         </span>
-      )}
+      ) : null}
     </div>
   )
 }
-
-export default SectionHeader

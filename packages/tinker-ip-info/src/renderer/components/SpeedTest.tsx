@@ -1,6 +1,7 @@
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import className from 'licia/className'
+import map from 'licia/map'
 import store from '../store'
 import { tw } from '../theme'
 import SectionHeader from './SectionHeader'
@@ -14,7 +15,7 @@ function latencyTone(latency: number | null, error: boolean) {
   return { text: tw.text.good, dot: tw.fill.good }
 }
 
-const SpeedTest = observer(() => {
+const SpeedTest = observer(function SpeedTest() {
   const { t } = useTranslation()
 
   return (
@@ -27,7 +28,7 @@ const SpeedTest = observer(() => {
           tw.border.divide,
         )}
       >
-        {store.speedTargets.map((target) => {
+        {map(store.speedTargets, (target) => {
           const result = store.getSpeedResult(target.id)
           const latency = result?.latency ?? null
           const error = result?.error ?? false

@@ -1,7 +1,7 @@
 {
   "name": "tinker-ip-info",
-  "version": "0.2.2",
-  "description": "IP Info Plugin for TINKER",
+  "version": "0.2.3",
+  "description": "View LAN/public IP, latency and DNS exits",
   "files": [
     "dist/",
     "icon.png"
@@ -26,7 +26,7 @@
   ],
   "tinker": {
     "name": "IP Info",
-    "description": "View LAN/public IP, latency and DNS exits",
+    "category": "system",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",

@@ -5,7 +5,7 @@ import { RotateCw } from 'lucide-react'
 import store from '../store'
 import { tw } from '../theme'
 
-const Toolbar = observer(() => {
+const Toolbar = observer(function Toolbar() {
   const { t } = useTranslation()
   const busy =
     store.domesticLoading ||
@@ -34,7 +34,7 @@ const Toolbar = observer(() => {
         >
           {t('appTitle')}
         </span>
-        {busy && (
+        {busy ? (
           <span
             className={className(
               'rounded-full px-2 py-0.5 text-[10px] font-medium',
@@ -44,7 +44,7 @@ const Toolbar = observer(() => {
           >
             {t('loading')}
           </span>
-        )}
+        ) : null}
       </div>
       <button
         type="button"

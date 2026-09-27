@@ -1,8 +1,9 @@
-import { createRoot } from 'react-dom/client'
-import waitUntil from 'licia/waitUntil'
+import { useEffect } from 'react'
+import { observer } from 'mobx-react-lite'
 import className from 'licia/className'
-import i18n from 'i18next'
-import { initReactI18next } from 'react-i18next'
+import waitUntil from 'licia/waitUntil'
+import { useTranslation } from 'react-i18next'
+import renderApp from 'tinker-share/lib/renderApp'
 import Toolbar from './components/Toolbar'
 import IpPanel from './components/IpPanel'
 import SpeedTest from './components/SpeedTest'
@@ -13,19 +14,17 @@ import enUS from './i18n/en-US.json'
 import zhCN from './i18n/zh-CN.json'
 import './index.scss'
 
-i18n.use(initReactI18next).init({
-  resources: {
-    'en-US': { translation: enUS },
-    'zh-CN': { translation: zhCN },
-  },
-  lng: 'en-US',
-  fallbackLng: 'en-US',
-  interpolation: {
-    escapeValue: false,
-  },
-})
+const App = observer(function App() {
+  const { i18n } = useTranslation()
 
-function App() {
+  useEffect(() => {
+    void store.init(i18n.language)
+  }, [])
+
+  useEffect(() => {
+    store.setLanguage(i18n.language)
+  }, [i18n.language])
+
   return (
     <div
       className={className(
@@ -41,19 +40,12 @@ function App() {
       </div>
     </div>
   )
-}
+})
 
-;(async function () {
-  const language = await tinker.getLanguage()
-  await i18n.changeLanguage(language)
-  tinker.on('changeLanguage', (lang: string) => {
-    void i18n.changeLanguage(lang)
-    store.setLanguage(lang)
-  })
-
+void (async () => {
   await waitUntil(() => typeof ipInfo !== 'undefined')
-  await store.init(language)
-
-  const container = document.getElementById('app') as HTMLElement
-  createRoot(container).render(<App />)
+  await renderApp(App, {
+    'en-US': enUS,
+    'zh-CN': zhCN,
+  })
 })()
