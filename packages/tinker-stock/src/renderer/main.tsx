@@ -1,11 +1,10 @@
 import { useEffect } from 'react'
-import { createRoot } from 'react-dom/client'
 import { observer } from 'mobx-react-lite'
 import { RotateCw } from 'lucide-react'
-import i18n from 'i18next'
-import { initReactI18next, useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next'
 import className from 'licia/className'
 import map from 'licia/map'
+import renderApp from 'tinker-share/lib/renderApp'
 import store from './store'
 import { tw } from './theme'
 import { MARKET_TAB_IDS, MARKET_TAB_LABEL_KEYS } from '../common/types'
@@ -17,19 +16,7 @@ import enUS from './i18n/en-US.json'
 import zhCN from './i18n/zh-CN.json'
 import './index.scss'
 
-i18n.use(initReactI18next).init({
-  resources: {
-    'en-US': { translation: enUS },
-    'zh-CN': { translation: zhCN },
-  },
-  lng: 'en-US',
-  fallbackLng: 'en-US',
-  interpolation: {
-    escapeValue: false,
-  },
-})
-
-const App = observer(() => {
+const App = observer(function App() {
   const { t } = useTranslation()
 
   useEffect(() => {
@@ -38,10 +25,13 @@ const App = observer(() => {
 
   return (
     <div
-      className={`relative h-screen flex flex-col overflow-hidden ${tw.bg.app}`}
+      className={className(
+        'relative h-screen flex flex-col overflow-hidden',
+        tw.bg.app,
+      )}
     >
       <div className="relative z-10 flex flex-col h-full min-h-0">
-        <header className={`shrink-0 ${tw.bg.header}`}>
+        <header className={className('shrink-0', tw.bg.header)}>
           <div className="relative flex items-center px-3 py-1">
             <div className="relative z-10 w-48 shrink-0">
               <SearchBar />
@@ -73,7 +63,10 @@ const App = observer(() => {
 
             <button
               type="button"
-              className={`relative z-10 ${tw.button.ghost} ml-auto shrink-0`}
+              className={className(
+                'relative z-10 ml-auto shrink-0',
+                tw.button.ghost,
+              )}
               title={t('refresh')}
               onClick={() => {
                 void store.refreshWatchlist()
@@ -85,17 +78,21 @@ const App = observer(() => {
               <RotateCw className="w-3.5 h-3.5" />
             </button>
           </div>
-          <div className={`border-b ${tw.border.default}`} />
+          <div className={className('border-b', tw.border.default)} />
         </header>
 
         <div className="flex-1 min-h-0 flex">
           <aside
-            className={`w-52 shrink-0 border-r ${tw.border.default} ${tw.bg.rail} flex flex-col min-h-0`}
+            className={className(
+              'w-52 shrink-0 border-r flex flex-col min-h-0',
+              tw.border.default,
+              tw.bg.rail,
+            )}
           >
             <Watchlist />
           </aside>
 
-          <main className={`flex-1 min-w-0 min-h-0 ${tw.bg.panel}`}>
+          <main className={className('flex-1 min-w-0 min-h-0', tw.bg.panel)}>
             {store.view === 'detail' ? <StockDetail /> : <MarketHome />}
           </main>
         </div>
@@ -104,13 +101,4 @@ const App = observer(() => {
   )
 })
 
-;(async function () {
-  const language = await tinker.getLanguage()
-  i18n.changeLanguage(language)
-  tinker.on('changeLanguage', (lang: string) => {
-    void i18n.changeLanguage(lang)
-  })
-
-  const container = document.getElementById('app') as HTMLElement
-  createRoot(container).render(<App />)
-})()
+renderApp(App, { 'en-US': enUS, 'zh-CN': zhCN })

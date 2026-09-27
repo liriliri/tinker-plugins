@@ -1,16 +1,15 @@
 import { makeAutoObservable, runInAction } from 'mobx'
-import LocalStore from 'licia/LocalStore'
 import debounce from 'licia/debounce'
 import each from 'licia/each'
 import filter from 'licia/filter'
 import find from 'licia/find'
 import isEmpty from 'licia/isEmpty'
-import isErr from 'licia/isErr'
 import map from 'licia/map'
 import safeDel from 'licia/safeDel'
 import sortBy from 'licia/sortBy'
 import trim from 'licia/trim'
-import i18n from 'i18next'
+import BaseStore, { storage } from 'tinker-share/store/Base'
+import { errorMessage } from 'tinker-share/lib/util'
 import { supportsChip } from '../common/market'
 import type {
   BoardData,
@@ -31,7 +30,6 @@ import { createMcpApi } from './mcp'
 type View = 'market' | 'detail'
 type ChartMode = 'minute' | 'kline'
 
-const storage = new LocalStore('tinker-stock')
 const STORAGE_WATCHLIST = 'watchlist'
 
 const DEFAULT_WATCHLIST: WatchItem[] = [
@@ -42,11 +40,7 @@ const DEFAULT_WATCHLIST: WatchItem[] = [
   { code: 'usAAPL', name: '苹果' },
 ]
 
-function errMsg(err: unknown): string {
-  return isErr(err) ? err.message : i18n.t('error')
-}
-
-export class Store {
+export class Store extends BaseStore {
   readonly mcp = createMcpApi(() => this)
 
   view: View = 'market'
@@ -85,31 +79,18 @@ export class Store {
   detailLoading = false
   detailError = ''
   tabLoading = false
-  isDark = false
 
   private debouncedSearch: (keyword: string) => void
 
   constructor() {
+    super()
     makeAutoObservable(this, {
       mcp: false,
+      debouncedSearch: false,
     })
     this.debouncedSearch = debounce((keyword: string) => {
       void this.runSearch(keyword)
     }, 350)
-    this.initTheme()
-  }
-
-  private async initTheme() {
-    const theme = await tinker.getTheme()
-    runInAction(() => {
-      this.isDark = theme === 'dark'
-    })
-    tinker.on('changeTheme', async () => {
-      const newTheme = await tinker.getTheme()
-      runInAction(() => {
-        this.isDark = newTheme === 'dark'
-      })
-    })
   }
 
   get selectedSnapshot(): QuoteSnapshot | null {
@@ -219,7 +200,7 @@ export class Store {
     } catch (err) {
       runInAction(() => {
         this.watchLoading = false
-        this.marketError = errMsg(err)
+        this.marketError = errorMessage(err)
       })
     }
   }
@@ -280,7 +261,7 @@ export class Store {
     } catch (err) {
       runInAction(() => {
         this.searching = false
-        this.searchError = errMsg(err)
+        this.searchError = errorMessage(err)
         this.searchResults = []
       })
     }
@@ -318,7 +299,7 @@ export class Store {
     } catch (err) {
       runInAction(() => {
         this.marketLoading = false
-        this.marketError = errMsg(err)
+        this.marketError = errorMessage(err)
       })
     }
   }
@@ -355,7 +336,7 @@ export class Store {
     } catch (err) {
       runInAction(() => {
         this.detailLoading = false
-        this.detailError = errMsg(err)
+        this.detailError = errorMessage(err)
       })
     }
   }
@@ -375,7 +356,7 @@ export class Store {
     } catch (err) {
       runInAction(() => {
         this.tabLoading = false
-        this.detailError = errMsg(err)
+        this.detailError = errorMessage(err)
       })
     }
   }
@@ -421,7 +402,7 @@ export class Store {
     } catch (err) {
       runInAction(() => {
         this.tabLoading = false
-        this.detailError = errMsg(err)
+        this.detailError = errorMessage(err)
       })
     }
   }

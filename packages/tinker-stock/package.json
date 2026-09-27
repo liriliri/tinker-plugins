@@ -1,7 +1,7 @@
 {
   "name": "tinker-stock",
-  "version": "0.1.0",
-  "description": "Stock Plugin for TINKER",
+  "version": "0.1.1",
+  "description": "View real-time stock information",
   "files": [
     "dist/",
     "icon.png"
@@ -25,7 +25,7 @@
   ],
   "tinker": {
     "name": "Stock",
-    "description": "View real-time stock information",
+    "category": "productivity",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",

@@ -2,12 +2,7 @@ export type HotType = 'stock' | 'board' | 'etf'
 export type KlinePeriod = 'day' | 'week' | 'month' | 'season' | 'year'
 export type MarketTab = 'hot' | 'etf' | 'board' | 'ipo'
 export type DetailTab =
-  | 'overview'
-  | 'fund'
-  | 'chip'
-  | 'finance'
-  | 'shareholder'
-  | 'dividend'
+  'overview' | 'fund' | 'chip' | 'finance' | 'shareholder' | 'dividend'
 
 export const MARKET_TAB_IDS: MarketTab[] = ['hot', 'etf', 'board', 'ipo']
 
