@@ -1,7 +1,7 @@
 {
   "name": "tinker-tcp-tunnel",
-  "version": "0.1.2",
-  "description": "TCP Tunnel Plugin for TINKER",
+  "version": "0.1.3",
+  "description": "Expose local TCP ports through a public relay",
   "files": [
     "dist/",
     "bin/",
@@ -31,6 +31,7 @@
   ],
   "tinker": {
     "name": "TCP Tunnel",
+    "category": "system",
     "description": "Expose local TCP ports through a public relay",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",

@@ -3,8 +3,9 @@ import clone from 'licia/clone'
 import find from 'licia/find'
 import i18n from 'i18next'
 import isArr from 'licia/isArr'
-import LocalStore from 'licia/LocalStore'
 import trim from 'licia/trim'
+import BaseStore, { storage } from 'tinker-share/store/Base'
+import { errorMessage } from 'tinker-share/lib/util'
 import {
   createHost,
   createMapping,
@@ -18,8 +19,6 @@ import {
   type PortMapping,
   type TunnelStatus,
 } from '../common/types'
-
-const storage = new LocalStore('tinker-tcp-tunnel', defaultAppData())
 
 function readAppData(): AppData {
   const hostsRaw = storage.get('hosts')
@@ -48,7 +47,7 @@ interface HostDraft {
   token: string
 }
 
-export class Store {
+export class Store extends BaseStore {
   appData: AppData = defaultAppData()
   statuses: HostStatuses = {}
   busyHostId = ''
@@ -58,6 +57,7 @@ export class Store {
   private unsub: (() => void) | null = null
 
   constructor() {
+    super()
     makeAutoObservable(this)
   }
 
@@ -287,7 +287,7 @@ export class Store {
       })
     } catch (err) {
       runInAction(() => {
-        this.error = err instanceof Error ? err.message : String(err)
+        this.error = errorMessage(err)
         this.statuses = {
           ...this.statuses,
           [host.id]: tcpTunnel.getStatus(host.id),
