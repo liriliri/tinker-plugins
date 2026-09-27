@@ -44,10 +44,9 @@ const DateDetail = observer(() => {
           <div className="flex items-baseline gap-3">
             <span
               className={className(
-                'font-numeral text-[68px] leading-[0.85] font-medium inline-block w-[78px] text-center',
+                'font-numeral text-[68px] leading-[0.85] font-medium inline-block w-[78px] text-center lining-nums tabular-nums',
                 tw.text.accent,
               )}
-              style={{ fontVariantNumeric: 'lining-nums tabular-nums' }}
             >
               {store.selectedDay}
             </span>

@@ -1,7 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import className from 'licia/className'
-import isEqual from 'licia/isEqual'
 import map from 'licia/map'
 import store from '../store'
 import type { DayCell } from '../types'
@@ -45,14 +44,11 @@ const CalendarGrid = observer(() => {
           <DayCellView
             key={`${cell.year}-${cell.month}-${cell.day}`}
             cell={cell}
-            isSelected={isEqual(
-              { year: cell.year, month: cell.month, day: cell.day },
-              {
-                year: selectedYear,
-                month: selectedMonth,
-                day: selectedDay,
-              },
-            )}
+            isSelected={
+              cell.year === selectedYear &&
+              cell.month === selectedMonth &&
+              cell.day === selectedDay
+            }
           />
         ))}
       </div>
@@ -70,6 +66,7 @@ const DayCellView = ({ cell, isSelected }: DayCellViewProps) => {
 
   return (
     <button
+      type="button"
       onClick={() => store.selectDate(cell.year, cell.month, cell.day)}
       className={className(
         'group relative flex flex-col items-center justify-center rounded-[3px] transition-colors duration-200 cursor-pointer overflow-hidden',
@@ -110,14 +107,13 @@ const DayCellView = ({ cell, isSelected }: DayCellViewProps) => {
 
       <span
         className={className(
-          'font-numeral text-xl leading-none',
+          'font-numeral text-xl leading-none lining-nums tabular-nums',
           isSelected
             ? tw.text.onSeal
             : cell.isWeekend
               ? tw.text.accent
               : tw.text.primary,
         )}
-        style={{ fontVariantNumeric: 'lining-nums tabular-nums' }}
       >
         {cell.day}
       </span>

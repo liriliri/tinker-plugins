@@ -1,6 +1,6 @@
 import { makeAutoObservable } from 'mobx'
 import { SolarMonth } from 'lunar-javascript'
-import isEqual from 'licia/isEqual'
+import BaseStore from 'tinker-share/store/Base'
 import {
   buildMonthGrid,
   buildDateInfo,
@@ -10,7 +10,7 @@ import {
 import type { DayCell, DateInfo } from './types'
 import { createMcpApi } from './mcp'
 
-export class Store {
+export class Store extends BaseStore {
   readonly mcp = createMcpApi(() => this)
 
   currentYear: number
@@ -20,6 +20,7 @@ export class Store {
   selectedDay: number
 
   constructor() {
+    super()
     const today = getTodaySolar()
     this.currentYear = today.year
     this.currentMonth = today.month
@@ -45,14 +46,9 @@ export class Store {
 
   selectDate(year: number, month: number, day: number) {
     if (
-      isEqual(
-        { year, month, day },
-        {
-          year: this.selectedYear,
-          month: this.selectedMonth,
-          day: this.selectedDay,
-        },
-      )
+      year === this.selectedYear &&
+      month === this.selectedMonth &&
+      day === this.selectedDay
     ) {
       return
     }

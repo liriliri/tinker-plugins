@@ -1,7 +1,5 @@
-import { createRoot } from 'react-dom/client'
-import i18n from 'i18next'
-import { initReactI18next } from 'react-i18next'
 import className from 'licia/className'
+import renderApp from 'tinker-share/lib/renderApp'
 import CalendarHeader from './components/CalendarHeader'
 import CalendarGrid from './components/CalendarGrid'
 import DateDetail from './components/DateDetail'
@@ -10,18 +8,6 @@ import { tw } from './theme'
 import enUS from './i18n/en-US.json'
 import zhCN from './i18n/zh-CN.json'
 import './index.scss'
-
-i18n.use(initReactI18next).init({
-  resources: {
-    'en-US': { translation: enUS },
-    'zh-CN': { translation: zhCN },
-  },
-  lng: 'en-US',
-  fallbackLng: 'en-US',
-  interpolation: {
-    escapeValue: false,
-  },
-})
 
 interface FlourishProps {
   className?: string
@@ -46,7 +32,7 @@ const Flourish = ({ className: extraClass = '' }: FlourishProps) => (
   </svg>
 )
 
-const LunarCalendar = () => {
+function App() {
   return (
     <div
       className={className(
@@ -78,10 +64,4 @@ const LunarCalendar = () => {
   )
 }
 
-;(async function () {
-  const language = await tinker.getLanguage()
-  i18n.changeLanguage(language)
-
-  const container = document.getElementById('app') as HTMLElement
-  createRoot(container).render(<LunarCalendar />)
-})()
+renderApp(App, { 'en-US': enUS, 'zh-CN': zhCN })

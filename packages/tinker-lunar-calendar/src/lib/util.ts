@@ -4,7 +4,6 @@ import range from 'licia/range'
 import concat from 'licia/concat'
 import contain from 'licia/contain'
 import isEmpty from 'licia/isEmpty'
-import isEqual from 'licia/isEqual'
 import type { DayCell, DateInfo, TodayRef } from '../types'
 
 const CALENDAR_CELL_COUNT = 42
@@ -43,7 +42,8 @@ function buildDayCell(
     day,
     lunarLabel,
     isCurrentMonth,
-    isToday: isEqual({ year, month, day }, today),
+    isToday:
+      year === today.year && month === today.month && day === today.day,
     isWeekend: contain([0, 6], weekday),
     isHoliday,
     isWorkday,

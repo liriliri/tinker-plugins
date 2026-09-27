@@ -1,13 +1,27 @@
 @use 'tailwindcss';
 @config "../tailwind.config.js";
 
+:root {
+  --lc-ink: #24201a;
+  --lc-ink-dark: #e9dfc6;
+  --lc-paper: #f4e8cf;
+  --lc-paper-dark: #141210;
+  --lc-card: #fbf4e1;
+  --lc-card-dark: #1c1814;
+  --lc-gold: rgba(201, 155, 72, 0.55);
+  --lc-gold-soft: rgba(201, 155, 72, 0.35);
+  --lc-gold-dark: rgba(201, 155, 72, 0.5);
+  --lc-gold-soft-dark: rgba(201, 155, 72, 0.28);
+  --lc-scroll: rgba(165, 122, 44, 0.4);
+  --lc-scroll-hot: rgba(165, 122, 44, 0.6);
+}
+
 html.dark {
   color-scheme: dark;
 }
 
 html,
 body,
-#root,
 #app {
   height: 100%;
   margin: 0;
@@ -18,42 +32,42 @@ body {
   font-family: 'Songti SC', 'STSong', SimSun, '宋体', Georgia, serif;
   font-feature-settings: 'palt';
   -webkit-font-smoothing: antialiased;
-  color: #24201a;
+  color: var(--lc-ink);
 }
 
 html.dark body {
-  color: #e9dfc6;
+  color: var(--lc-ink-dark);
 }
 
 .paper-bg {
-  background-color: #f4e8cf;
+  background-color: var(--lc-paper);
 }
 
 html.dark .paper-bg {
-  background-color: #141210;
+  background-color: var(--lc-paper-dark);
 }
 
 .paper-card {
-  background-color: #fbf4e1;
+  background-color: var(--lc-card);
 }
 
 html.dark .paper-card {
-  background-color: #1c1814;
+  background-color: var(--lc-card-dark);
 }
 
 .gold-frame {
   position: relative;
-  border: 1px solid rgba(201, 155, 72, 0.55);
+  border: 1px solid var(--lc-gold);
   box-shadow:
-    inset 0 0 0 3px #fbf4e1,
-    inset 0 0 0 4px rgba(201, 155, 72, 0.35);
+    inset 0 0 0 3px var(--lc-card),
+    inset 0 0 0 4px var(--lc-gold-soft);
 }
 
 html.dark .gold-frame {
-  border-color: rgba(201, 155, 72, 0.5);
+  border-color: var(--lc-gold-dark);
   box-shadow:
-    inset 0 0 0 3px #1c1814,
-    inset 0 0 0 4px rgba(201, 155, 72, 0.28);
+    inset 0 0 0 3px var(--lc-card-dark),
+    inset 0 0 0 4px var(--lc-gold-soft-dark);
 }
 
 .scroll-mo::-webkit-scrollbar {
@@ -66,12 +80,12 @@ html.dark .gold-frame {
 }
 
 .scroll-mo::-webkit-scrollbar-thumb {
-  background: rgba(165, 122, 44, 0.4);
+  background: var(--lc-scroll);
   border-radius: 3px;
 }
 
 .scroll-mo::-webkit-scrollbar-thumb:hover {
-  background: rgba(165, 122, 44, 0.6);
+  background: var(--lc-scroll-hot);
 }
 
 .writing-vertical {

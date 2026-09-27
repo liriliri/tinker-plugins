@@ -24,10 +24,9 @@ const CalendarHeader = observer(() => {
           <div className="flex items-baseline gap-2">
             <span
               className={className(
-                'font-numeral text-4xl font-medium tracking-tight',
+                'font-numeral text-4xl font-medium tracking-tight lining-nums',
                 tw.text.primary,
               )}
-              style={{ fontVariantNumeric: 'lining-nums' }}
             >
               {store.currentYear}
             </span>
@@ -89,6 +88,7 @@ interface NavBtnProps {
 
 const NavBtn = ({ dir, onClick }: NavBtnProps) => (
   <button
+    type="button"
     onClick={onClick}
     className={className(
       'group w-9 h-9 flex items-center justify-center rounded-full transition-all duration-300',

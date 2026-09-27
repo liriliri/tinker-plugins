@@ -1,3 +1,4 @@
+import { errorMessage } from 'tinker-share/lib/util'
 import type { Store } from './store'
 import { getTodaySolar } from './lib/util'
 
@@ -35,6 +36,6 @@ function query(
       ...store.selectedDateInfo,
     }
   } catch (error) {
-    return `Error: ${error instanceof Error ? error.message : 'Date query failed'}`
+    return `Error: ${errorMessage(error) || 'Date query failed'}`
   }
 }
