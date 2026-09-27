@@ -1,7 +1,7 @@
 {
   "name": "tinker-token-usage",
-  "version": "0.1.4",
-  "description": "Token Usage Statistics Plugin for TINKER",
+  "version": "0.1.5",
+  "description": "Track token usage statistics for AI coding tools",
   "files": [
     "dist/",
     "icon.png"
@@ -27,6 +27,7 @@
   ],
   "tinker": {
     "name": "Token Usage",
+    "category": "dev",
     "description": "Track token usage statistics for AI coding tools",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.mjs",

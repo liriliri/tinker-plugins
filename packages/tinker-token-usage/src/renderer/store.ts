@@ -1,18 +1,16 @@
 import { makeAutoObservable } from 'mobx'
-import waitUntil from 'licia/waitUntil'
-import LocalStore from 'licia/LocalStore'
-import i18n from 'i18next'
+import BaseStore, { storage } from 'tinker-share/store/Base'
+import { errorMessage } from 'tinker-share/lib/util'
 import type { TokenUsageData, DataSource } from '../common/types'
 import { createEmptyUsageData, todayStr } from './lib/util'
 
-const storage = new LocalStore('tinker-token-usage')
 const STORAGE_DATA_SOURCE = 'dataSource'
 
-class Store {
+class Store extends BaseStore {
   dataSource: DataSource = 'claude-code'
 
   usageData: TokenUsageData | null = createEmptyUsageData()
-  loading: boolean = false
+  loading = false
   error: string | null = null
   dateRange: { start: string; end: string } | null = (() => {
     const today = todayStr()
@@ -31,9 +29,9 @@ class Store {
   }
 
   constructor() {
+    super()
     makeAutoObservable(this)
     this.loadFromStorage()
-    this.init()
   }
 
   private loadFromStorage() {
@@ -41,11 +39,6 @@ class Store {
     if (savedDataSource === 'claude-code' || savedDataSource === 'codex') {
       this.dataSource = savedDataSource
     }
-  }
-
-  private async init() {
-    await waitUntil(() => typeof tokenUsage !== 'undefined')
-    this.loadUsageData()
   }
 
   setDataSource(source: DataSource) {
@@ -102,20 +95,25 @@ class Store {
       return this.usageData.total
     }
 
-    return {
-      inputTokens: filtered.reduce((sum, day) => sum + day.inputTokens, 0),
-      outputTokens: filtered.reduce((sum, day) => sum + day.outputTokens, 0),
-      cacheCreationTokens: filtered.reduce(
-        (sum, day) => sum + day.cacheCreationTokens,
-        0,
-      ),
-      cacheReadTokens: filtered.reduce(
-        (sum, day) => sum + day.cacheReadTokens,
-        0,
-      ),
-      totalTokens: filtered.reduce((sum, day) => sum + day.totalTokens, 0),
-      sessionCount: filtered.reduce((sum, day) => sum + day.sessionCount, 0),
-    }
+    return filtered.reduce(
+      (acc, day) => {
+        acc.inputTokens += day.inputTokens
+        acc.outputTokens += day.outputTokens
+        acc.cacheCreationTokens += day.cacheCreationTokens
+        acc.cacheReadTokens += day.cacheReadTokens
+        acc.totalTokens += day.totalTokens
+        acc.sessionCount += day.sessionCount
+        return acc
+      },
+      {
+        inputTokens: 0,
+        outputTokens: 0,
+        cacheCreationTokens: 0,
+        cacheReadTokens: 0,
+        totalTokens: 0,
+        sessionCount: 0,
+      },
+    )
   }
 
   async loadUsageData() {
@@ -132,9 +130,7 @@ class Store {
       }
     } catch (error) {
       console.error('Failed to load token usage data:', error)
-      this.setError(
-        error instanceof Error ? error.message : i18n.t('unknownError'),
-      )
+      this.setError(errorMessage(error))
       const today = todayStr()
       this.setUsageData(createEmptyUsageData())
       this.setDateRange(today, today)

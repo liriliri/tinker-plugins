@@ -7,6 +7,5 @@
   "claudeCode": "Claude Code",
   "codex": "Codex",
   "tokens": "token",
-  "loading": "加载中...",
-  "unknownError": "发生未知错误"
+  "loading": "加载中..."
 }
