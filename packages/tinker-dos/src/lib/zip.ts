@@ -1,8 +1,10 @@
 import { zipSync, unzipSync, strToU8, strFromU8 } from 'fflate'
-import endWith from 'licia/endWith'
-import lowerCase from 'licia/lowerCase'
-import splitPath from 'licia/splitPath'
 import contain from 'licia/contain'
+import endWith from 'licia/endWith'
+import filter from 'licia/filter'
+import lowerCase from 'licia/lowerCase'
+import map from 'licia/map'
+import splitPath from 'licia/splitPath'
 import trim from 'licia/trim'
 
 const RUNNABLE_EXTS = ['.exe', '.com', '.bat']
@@ -102,10 +104,9 @@ function resolveInZip(
 function parseAutoexecCommands(conf: string): string[] {
   const match = conf.match(/\[autoexec\]([\s\S]*?)(?=\n\[|$)/i)
   if (!match) return []
-  return match[1]
-    .split(/\r?\n/)
-    .map((line) => trim(line.replace(/^\s*@/, '')))
-    .filter((line) => {
+  return filter(
+    map(match[1].split(/\r?\n/), (line) => trim(line.replace(/^\s*@/, ''))),
+    (line) => {
       if (!line) return false
       const lower = lowerCase(line)
       if (lower.startsWith('rem ')) return false
@@ -116,7 +117,8 @@ function parseAutoexecCommands(conf: string): string[] {
       if (lower.startsWith('cd ')) return false
       if (lower.startsWith('cls')) return false
       return true
-    })
+    },
+  )
 }
 
 function findAutoexecExecutable(

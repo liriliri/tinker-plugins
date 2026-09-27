@@ -2,10 +2,11 @@ import { observer } from 'mobx-react-lite'
 import * as Toast from '@radix-ui/react-toast'
 import { X } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import className from 'licia/className'
 import store from '../store'
 import { tw } from '../theme'
 
-const ErrorToast = observer(() => {
+const ErrorToast = observer(function ErrorToast() {
   const { t } = useTranslation()
   const { isDark } = store
 
@@ -14,7 +15,10 @@ const ErrorToast = observer(() => {
       <Toast.Root
         open={store.toastOpen}
         onOpenChange={(open) => store.setToastOpen(open)}
-        className={`${tw.toast.root(isDark)} data-[state=open]:animate-fade-up data-[state=closed]:opacity-0 transition-opacity`}
+        className={className(
+          tw.toast.root(isDark),
+          'data-[state=open]:animate-fade-up data-[state=closed]:opacity-0 transition-opacity',
+        )}
       >
         <div className="flex-1 min-w-0">
           <Toast.Title className={tw.toast.title(isDark)}>

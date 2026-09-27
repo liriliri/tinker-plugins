@@ -7,6 +7,7 @@ import {
   PanelLeft,
   PanelLeftClose,
 } from 'lucide-react'
+import className from 'licia/className'
 import store from '../store'
 import { tw } from '../theme'
 import { shortcutLabel } from '../lib/util'
@@ -55,7 +56,10 @@ export default observer(function Toolbar({
 
   return (
     <div
-      className={`flex items-center gap-0.5 h-9 px-2 shrink-0 ${tw.toolbar(isDark)}`}
+      className={className(
+        'flex items-center gap-0.5 h-9 px-2 shrink-0',
+        tw.toolbar(isDark),
+      )}
     >
       <ToolbarBtn
         onClick={() => store.toggleSidebar()}

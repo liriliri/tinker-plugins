@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useRef } from 'react'
 import i18n from 'i18next'
+import contain from 'licia/contain'
+import find from 'licia/find'
 import fullscreen from 'licia/fullscreen'
 import splitPath from 'licia/splitPath'
 import toArr from 'licia/toArr'
-import contain from 'licia/contain'
 import store from '../store'
 import { getPluginBaseUrl } from './util'
 import { buildDosboxIframeHtml } from './dosboxLoader'
@@ -238,7 +239,7 @@ export function useEmulator() {
   const handleDrop = useCallback(
     (e: React.DragEvent | DragEvent) => {
       e.preventDefault()
-      const file = toArr(e.dataTransfer?.files).find((f) =>
+      const file = find(toArr(e.dataTransfer?.files), (f) =>
         isDosProgramName(f.name),
       )
       if (file) void loadProgram(file)

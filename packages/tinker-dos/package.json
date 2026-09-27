@@ -1,7 +1,7 @@
 {
   "name": "tinker-dos",
-  "version": "0.1.0",
-  "description": "DOS Emulator Plugin for TINKER",
+  "version": "0.1.1",
+  "description": "Run DOS programs and games",
   "files": [
     "dist/",
     "icon.png"
@@ -23,7 +23,7 @@
   ],
   "tinker": {
     "name": "DOS",
-    "description": "Run DOS programs and games",
+    "category": "entertainment",
     "main": "dist/index.html",
     "icon": "icon.png",
     "locales": {

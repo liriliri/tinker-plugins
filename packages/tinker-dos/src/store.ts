@@ -1,28 +1,26 @@
 import { makeAutoObservable } from 'mobx'
-import LocalStore from 'licia/LocalStore'
+import filter from 'licia/filter'
 import splitPath from 'licia/splitPath'
+import BaseStore, { storage } from 'tinker-share/store/Base'
 import type { PlayHistoryItem } from './types'
 
 const STORAGE_PLAY_HISTORY = 'playHistory'
 const STORAGE_SIDEBAR_OPEN = 'sidebarOpen'
 const MAX_PLAY_HISTORY = 50
 
-const storage = new LocalStore('tinker-dos')
-
-class Store {
-  isDark: boolean = false
+class Store extends BaseStore {
   sidebarOpen: boolean = true
   playHistory: PlayHistoryItem[] = []
-  currentProgramPath: string = ''
-  isLoading: boolean = true
-  toastOpen: boolean = false
-  toastMsg: string = ''
+  currentProgramPath = ''
+  isLoading = true
+  toastOpen = false
+  toastMsg = ''
 
   constructor() {
+    super()
     makeAutoObservable(this)
     this.playHistory = this.loadPlayHistory()
     this.sidebarOpen = storage.get(STORAGE_SIDEBAR_OPEN) ?? true
-    this.initTheme()
   }
 
   get currentProgramName(): string {
@@ -45,18 +43,6 @@ class Store {
     }
   }
 
-  private setTheme(theme: string) {
-    this.isDark = theme === 'dark'
-  }
-
-  private async initTheme() {
-    this.setTheme(await tinker.getTheme())
-
-    tinker.on('changeTheme', async () => {
-      this.setTheme(await tinker.getTheme())
-    })
-  }
-
   toggleSidebar() {
     this.sidebarOpen = !this.sidebarOpen
     storage.set(STORAGE_SIDEBAR_OPEN, this.sidebarOpen)
@@ -71,7 +57,7 @@ class Store {
     const entry = this.createHistoryEntry(filePath)
     const next = [
       entry,
-      ...this.playHistory.filter((item) => item.path !== filePath),
+      ...filter(this.playHistory, (item) => item.path !== filePath),
     ].slice(0, MAX_PLAY_HISTORY)
     this.playHistory = next
     this.savePlayHistory(next)
@@ -79,7 +65,7 @@ class Store {
   }
 
   removeFromPlayHistory(filePath: string) {
-    const next = this.playHistory.filter((item) => item.path !== filePath)
+    const next = filter(this.playHistory, (item) => item.path !== filePath)
     this.playHistory = next
     this.savePlayHistory(next)
     if (this.currentProgramPath === filePath) {

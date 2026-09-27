@@ -1,6 +1,8 @@
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import { FileTerminal, Inbox, X } from 'lucide-react'
+import className from 'licia/className'
+import map from 'licia/map'
 import store from '../store'
 import { tw } from '../theme'
 import type { PlayHistoryItem } from '../types'
@@ -30,7 +32,7 @@ export default observer(function Sidebar({ onSelect }: Props) {
   }
 
   return (
-    <aside className={`${tw.sidebar(isDark)} min-h-0`}>
+    <aside className={className(tw.sidebar(isDark), 'min-h-0')}>
       {playHistory.length === 0 ? (
         <div className="flex flex-1 flex-col items-center justify-center gap-3">
           <Inbox size={28} className={tw.sidebarEmptyIcon(isDark)} />
@@ -38,7 +40,7 @@ export default observer(function Sidebar({ onSelect }: Props) {
         </div>
       ) : (
         <div className="flex-1 min-h-0 overflow-y-auto">
-          {playHistory.map((item) => (
+          {map(playHistory, (item) => (
             <div
               key={item.path}
               className={tw.sidebarItem(isDark)}
