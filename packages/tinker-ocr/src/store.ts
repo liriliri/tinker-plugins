@@ -1,8 +1,8 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 import { createWorker } from 'tesseract.js'
-import LocalStore from 'licia/LocalStore'
 import mime from 'licia/mime'
 import trim from 'licia/trim'
+import BaseStore, { storage } from 'tinker-share/store/Base'
 import type { OcrLang } from './types'
 import { createMcpApi } from './mcp'
 
@@ -12,21 +12,24 @@ const LANG_OPTIONS: { value: OcrLang; labelKey: string }[] = [
   { value: 'eng', labelKey: 'langEng' },
 ]
 
-const storage = new LocalStore('tinker-ocr')
+const STORAGE_LANG = 'lang'
+const STORAGE_STRIP_NEWLINES = 'stripNewlines'
 
-export class Store {
+export class Store extends BaseStore {
   readonly mcp = createMcpApi(() => this)
 
-  imageUrl: string = ''
-  result: string = ''
-  isRecognizing: boolean = false
-  lang: OcrLang = storage.get('lang') ?? 'chi_sim+eng'
+  imageUrl = ''
+  result = ''
+  isRecognizing = false
+  lang: OcrLang = storage.get(STORAGE_LANG) ?? 'chi_sim+eng'
   langOptions = LANG_OPTIONS
-  stripNewlines: boolean = storage.get('stripNewlines') ?? false
+  stripNewlines: boolean = storage.get(STORAGE_STRIP_NEWLINES) ?? false
 
   constructor() {
+    super()
     makeAutoObservable(this, {
       mcp: false,
+      langOptions: false,
     })
   }
 
@@ -42,12 +45,12 @@ export class Store {
 
   setLang(lang: OcrLang) {
     this.lang = lang
-    storage.set('lang', lang)
+    storage.set(STORAGE_LANG, lang)
   }
 
   setStripNewlines(value: boolean) {
     this.stripNewlines = value
-    storage.set('stripNewlines', value)
+    storage.set(STORAGE_STRIP_NEWLINES, value)
   }
 
   toggleStripNewlines() {

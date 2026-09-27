@@ -2,7 +2,6 @@ export const tw = {
   background: {
     primary: 'bg-white dark:bg-zinc-900',
     secondary: 'bg-zinc-50 dark:bg-zinc-800',
-    results: 'bg-zinc-50 dark:bg-zinc-800',
   },
   text: {
     primary: 'text-zinc-900 dark:text-zinc-100',
