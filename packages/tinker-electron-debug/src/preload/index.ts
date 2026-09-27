@@ -4,6 +4,7 @@ import path from 'path'
 import process from 'process'
 import { spawn } from 'child_process'
 import getPort from 'licia/getPort'
+import some from 'licia/some'
 import WebSocket from 'ws'
 
 function isElectronAppMac(appPath: string): boolean {
@@ -16,12 +17,10 @@ function isElectronAppWin(exePath: string): boolean {
   const dir = path.dirname(exePath)
   const resourcesDir = path.join(dir, 'resources')
   if (!fs.existsSync(resourcesDir)) return false
-  return [
-    'electron.asar',
-    'default_app.asar',
-    'app.asar',
-    'app.asar.unpacked',
-  ].some((file) => fs.existsSync(path.join(resourcesDir, file)))
+  return some(
+    ['electron.asar', 'default_app.asar', 'app.asar', 'app.asar.unpacked'],
+    (file) => fs.existsSync(path.join(resourcesDir, file)),
+  )
 }
 
 function isElectronAppLinux(exePath: string): boolean {

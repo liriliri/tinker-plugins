@@ -1,7 +1,7 @@
 {
   "name": "tinker-electron-debug",
-  "version": "0.1.4",
-  "description": "Electron Debug Plugin for TINKER",
+  "version": "0.1.5",
+  "description": "Remote debugger for Electron applications",
   "files": [
     "dist/",
     "icon.png"
@@ -25,7 +25,7 @@
   ],
   "tinker": {
     "name": "Electron Debug",
-    "description": "Remote debugger for Electron applications",
+    "category": "dev",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",

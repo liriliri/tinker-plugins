@@ -1,35 +1,29 @@
 import { makeAutoObservable, runInAction } from 'mobx'
+import filter from 'licia/filter'
+import some from 'licia/some'
+import startWith from 'licia/startWith'
+import BaseStore from 'tinker-share/store/Base'
 import type { AppInfo, PageInfo, Session } from './types'
 
-class Store {
+class Store extends BaseStore {
   apps: AppInfo[] = []
-  loading: boolean = false
+  loading = false
   sessions: Map<string, Session> = new Map()
   activeSessionId: string | null = null
   dialogApp: AppInfo | null = null
-  isDark: boolean = false
 
   private pollTimers: Map<string, ReturnType<typeof setInterval>> = new Map()
 
   constructor() {
+    super()
     makeAutoObservable(this)
-    this.initTheme()
-  }
-
-  private async initTheme() {
-    const theme = await tinker.getTheme()
-    this.isDark = theme === 'dark'
-    tinker.on('changeTheme', async () => {
-      const newTheme = await tinker.getTheme()
-      this.isDark = newTheme === 'dark'
-    })
   }
 
   async loadApps() {
     this.loading = true
     try {
       const all = await tinker.getApps()
-      this.apps = all.filter((app) => electronDebug.isElectronApp(app.path))
+      this.apps = filter(all, (app) => electronDebug.isElectronApp(app.path))
     } finally {
       this.loading = false
     }
@@ -92,12 +86,13 @@ class Store {
       runInAction(() => {
         const session = this.sessions.get(sessionId)
         if (session) {
-          const newPages = ([...nodePages, ...winPages] as PageInfo[]).filter(
-            (p) => !p.url.startsWith('devtools://'),
+          const newPages = filter(
+            [...nodePages, ...winPages] as PageInfo[],
+            (p) => !startWith(p.url, 'devtools://'),
           )
           const changed =
             newPages.length !== session.pages.length ||
-            newPages.some((p, i) => p.id !== session.pages[i].id)
+            some(newPages, (p, i) => p.id !== session.pages[i].id)
           if (changed) session.pages = newPages
         }
       })

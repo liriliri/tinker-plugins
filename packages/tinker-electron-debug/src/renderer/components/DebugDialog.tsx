@@ -3,7 +3,9 @@ import { observer } from 'mobx-react-lite'
 import * as Dialog from '@radix-ui/react-dialog'
 import { X } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import className from 'licia/className'
 import fileUrl from 'licia/fileUrl'
+import map from 'licia/map'
 import store from '../store'
 import { tw, xtermTheme } from '../theme'
 import type { PageInfo } from '../types'
@@ -15,7 +17,7 @@ interface PageRowProps {
   nodePort: number
 }
 
-const PageRow = observer(({ page, nodePort }: PageRowProps) => {
+const PageRow = observer(function PageRow({ page, nodePort }: PageRowProps) {
   const { t } = useTranslation()
   const typeStyle =
     page.type === 'node'
@@ -26,27 +28,48 @@ const PageRow = observer(({ page, nodePort }: PageRowProps) => {
 
   return (
     <div
-      className={`flex items-center gap-3 px-3 py-2 border-b ${tw.border.divider} last:border-b-0 ${tw.pageRow.hover} transition-colors duration-100 group`}
+      className={className(
+        'flex items-center gap-3 px-3 py-2 border-b last:border-b-0 transition-colors duration-100 group',
+        tw.border.divider,
+        tw.pageRow.hover,
+      )}
     >
       <span
-        className={`shrink-0 inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider ${typeStyle}`}
+        className={className(
+          'shrink-0 inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider',
+          typeStyle,
+        )}
       >
         {page.type}
       </span>
       <div className="flex-1 min-w-0">
-        <div className={`text-[12px] ${tw.text.primary} truncate leading-snug`}>
+        <div
+          className={className(
+            'text-[12px] truncate leading-snug',
+            tw.text.primary,
+          )}
+        >
           {page.title || page.url}
         </div>
         {page.title && (
-          <div className={`text-[10.5px] ${tw.text.muted} truncate mt-0.5`}>
+          <div
+            className={className(
+              'text-[10.5px] truncate mt-0.5',
+              tw.text.muted,
+            )}
+          >
             {page.url}
           </div>
         )}
       </div>
       <button
-        className={`shrink-0 px-2.5 py-1 text-[11px] font-semibold rounded-md cursor-pointer bg-transparent transition-all duration-150 ${tw.button.inspect}`}
+        type="button"
+        className={className(
+          'shrink-0 px-2.5 py-1 text-[11px] font-semibold rounded-md cursor-pointer bg-transparent transition-all duration-150',
+          tw.button.inspect,
+        )}
         onClick={() =>
-          electronDebug
+          void electronDebug
             .openDevTools(nodePort, page.devtoolsFrontendUrl)
             .catch((e) => alert(e?.message || String(e)))
         }
@@ -57,7 +80,7 @@ const PageRow = observer(({ page, nodePort }: PageRowProps) => {
   )
 })
 
-const DebugView = observer(() => {
+const DebugView = observer(function DebugView() {
   const { t } = useTranslation()
   const { activeSession } = store
   const theme = store.isDark ? xtermTheme.dark : xtermTheme.light
@@ -67,17 +90,20 @@ const DebugView = observer(() => {
       {activeSession ? (
         <>
           <div
-            className={`shrink-0 border-b ${tw.border.divider} max-h-48 overflow-y-auto`}
+            className={className(
+              'shrink-0 border-b max-h-48 overflow-y-auto',
+              tw.border.divider,
+            )}
           >
             {activeSession.pages.length === 0 ? (
               <div className="flex flex-col items-center justify-center gap-2 py-4">
                 <DotSpinner size="sm" />
-                <span className={`text-[11px] ${tw.text.muted}`}>
+                <span className={className('text-[11px]', tw.text.muted)}>
                   {t('waitingForDebug')}
                 </span>
               </div>
             ) : (
-              activeSession.pages.map((page) => (
+              map(activeSession.pages, (page) => (
                 <PageRow
                   key={page.id}
                   page={page}
@@ -87,7 +113,7 @@ const DebugView = observer(() => {
             )}
           </div>
 
-          <div className={`flex-1 min-h-0 p-1 ${tw.background.term}`}>
+          <div className={className('flex-1 min-h-0 p-1', tw.background.term)}>
             <Xterm
               key={activeSession.sessionId}
               content={activeSession.log}
@@ -97,7 +123,10 @@ const DebugView = observer(() => {
         </>
       ) : (
         <div
-          className={`flex-1 flex items-center justify-center text-[12.5px] ${tw.text.muted}`}
+          className={className(
+            'flex-1 flex items-center justify-center text-[12.5px]',
+            tw.text.muted,
+          )}
         >
           {t('noActiveSession')}
         </div>
@@ -106,13 +135,13 @@ const DebugView = observer(() => {
   )
 })
 
-const DebugDialog = observer(() => {
+const DebugDialog = observer(function DebugDialog() {
   const { dialogApp } = store
   const hasHadSession = useRef(false)
   const sessionsSize = store.sessions.size
 
   useEffect(() => {
-    if (dialogApp) store.launchApp(dialogApp)
+    if (dialogApp) void store.launchApp(dialogApp)
   }, [dialogApp])
 
   useEffect(() => {
@@ -137,10 +166,18 @@ const DebugDialog = observer(() => {
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-black/50" />
         <Dialog.Content
-          className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col w-[calc(100vw-4rem)] max-w-2xl max-h-[580px] rounded-xl shadow-2xl border ${tw.border.divider} ${tw.background.app} overflow-hidden animate-fade-up`}
+          className={className(
+            'fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col w-[calc(100vw-4rem)] max-w-2xl max-h-[580px] rounded-xl shadow-2xl border overflow-hidden animate-fade-up',
+            tw.border.divider,
+            tw.background.app,
+          )}
         >
           <div
-            className={`flex items-center gap-2.5 px-4 py-3 border-b ${tw.border.divider} ${tw.background.toolbar} shrink-0`}
+            className={className(
+              'flex items-center gap-2.5 px-4 py-3 border-b shrink-0',
+              tw.border.divider,
+              tw.background.toolbar,
+            )}
           >
             {dialogApp && (
               <div className="relative shrink-0">
@@ -150,17 +187,28 @@ const DebugDialog = observer(() => {
                   className="w-5 h-5 object-contain"
                 />
                 <span
-                  className={`status-pulse absolute -bottom-0.5 -right-0.5 w-2 h-2 rounded-full ${tw.status.active} border ${tw.border.statusIndicator}`}
+                  className={className(
+                    'status-pulse absolute -bottom-0.5 -right-0.5 w-2 h-2 rounded-full border',
+                    tw.status.active,
+                    tw.border.statusIndicator,
+                  )}
                 />
               </div>
             )}
             <Dialog.Title
-              className={`text-[13px] font-semibold ${tw.text.primary} flex-1 min-w-0 truncate`}
+              className={className(
+                'text-[13px] font-semibold flex-1 min-w-0 truncate',
+                tw.text.primary,
+              )}
             >
               {dialogApp?.name}
             </Dialog.Title>
             <Dialog.Close
-              className={`p-1 rounded bg-transparent border-none cursor-pointer ${tw.text.muted} ${tw.text.hoverPrimary} transition-colors duration-150`}
+              className={className(
+                'p-1 rounded bg-transparent border-none cursor-pointer transition-colors duration-150',
+                tw.text.muted,
+                tw.text.hoverPrimary,
+              )}
             >
               <X className="w-3.5 h-3.5" />
             </Dialog.Close>
