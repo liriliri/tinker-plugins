@@ -2,16 +2,14 @@ import { makeAutoObservable, runInAction } from 'mobx'
 import debounce from 'licia/debounce'
 import filter from 'licia/filter'
 import find from 'licia/find'
-import LocalStore from 'licia/LocalStore'
 import isStrBlank from 'licia/isStrBlank'
 import trim from 'licia/trim'
 import uuid from 'licia/uuid'
 import i18n from 'i18next'
-import type { Coords } from '../common/types'
-import type { MapLocation, MapLayer, Bookmark } from './types'
+import BaseStore, { storage } from 'tinker-share/store/Base'
+import type { Coords, SearchResult } from '../common/types'
+import type { MapLayer, Bookmark } from './types'
 import { createMcpApi } from './mcp'
-
-const storage = new LocalStore('tinker-map')
 
 const STORAGE_CENTER = 'center'
 const STORAGE_ZOOM = 'zoom'
@@ -20,10 +18,10 @@ const STORAGE_BOOKMARKS = 'bookmarks'
 
 const DEFAULT_CENTER: Coords = { lat: 39.9042, lng: 116.4074 }
 
-export class Store {
+export class Store extends BaseStore {
   readonly mcp = createMcpApi(() => this)
 
-  locations: MapLocation[] = []
+  locations: SearchResult[] = []
   selectedId: string | null = null
   center: Coords = storage.get(STORAGE_CENTER) ?? DEFAULT_CENTER
   zoom: number = storage.get(STORAGE_ZOOM) ?? 3
@@ -37,6 +35,7 @@ export class Store {
   private searchDebounced: (query: string) => void
 
   constructor() {
+    super()
     makeAutoObservable(
       this,
       {
@@ -48,11 +47,6 @@ export class Store {
       (query: string) => this.performSearch(query),
       500,
     )
-  }
-
-  get selectedLocation(): MapLocation | null {
-    if (!this.selectedId) return null
-    return find(this.locations, (l) => l.id === this.selectedId) ?? null
   }
 
   setSearch(query: string) {

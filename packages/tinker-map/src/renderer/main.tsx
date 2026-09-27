@@ -1,32 +1,19 @@
-import { createRoot } from 'react-dom/client'
-import { observer } from 'mobx-react-lite'
 import { useState } from 'react'
+import { observer } from 'mobx-react-lite'
 import { PanelLeftOpen, PanelLeftClose } from 'lucide-react'
 import className from 'licia/className'
-import i18n from 'i18next'
-import { initReactI18next } from 'react-i18next'
+import renderApp from 'tinker-share/lib/renderApp'
 import Map from './components/Map'
 import SearchBar from './components/SearchBar'
 import LocationList from './components/LocationList'
 import BookmarkDialog from './components/BookmarkDialog'
+import './store'
 import { tw } from './theme'
 import enUS from './i18n/en-US.json'
 import zhCN from './i18n/zh-CN.json'
 import './index.scss'
 
-i18n.use(initReactI18next).init({
-  resources: {
-    'en-US': { translation: enUS },
-    'zh-CN': { translation: zhCN },
-  },
-  lng: 'en-US',
-  fallbackLng: 'en-US',
-  interpolation: {
-    escapeValue: false,
-  },
-})
-
-const App = observer(() => {
+const App = observer(function App() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
 
   return (
@@ -49,6 +36,7 @@ const App = observer(() => {
             <SearchBar />
           </div>
           <button
+            type="button"
             onClick={() => setSidebarOpen(false)}
             className={className(
               'shrink-0 w-7 h-7 flex items-center justify-center rounded-lg transition-all duration-150',
@@ -64,6 +52,7 @@ const App = observer(() => {
         </div>
       </div>
       <button
+        type="button"
         onClick={() => setSidebarOpen(true)}
         className={className(
           'absolute top-3 left-3 z-[1000] w-9 h-9 rounded-lg shadow-lg',
@@ -82,10 +71,4 @@ const App = observer(() => {
   )
 })
 
-;(async function () {
-  const language = await tinker.getLanguage()
-  i18n.changeLanguage(language)
-
-  const container = document.getElementById('app') as HTMLElement
-  createRoot(container).render(<App />)
-})()
+renderApp(App, { 'en-US': enUS, 'zh-CN': zhCN })

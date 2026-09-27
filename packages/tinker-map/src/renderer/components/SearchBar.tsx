@@ -37,6 +37,7 @@ const SearchBar = observer(() => {
         )}
       />
       <button
+        type="button"
         onClick={() => store.setSearch('')}
         className={className(
           'absolute right-2 top-1/2 -translate-y-1/2 text-lg leading-none',

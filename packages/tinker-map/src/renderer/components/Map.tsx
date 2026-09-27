@@ -18,7 +18,8 @@ import store from '../store'
 import { markerColor, tw } from '../theme'
 import { formatCoord } from '../lib/util'
 import '../lib/mapCorrection'
-import type { MapLocation, MapLayer, Bookmark } from '../types'
+import type { SearchResult } from '../../common/types'
+import type { MapLayer, Bookmark } from '../types'
 
 interface TileConfig {
   url: string
@@ -124,10 +125,12 @@ function MapSync() {
 }
 
 interface LocationMarkerProps {
-  location: MapLocation
+  location: SearchResult
 }
 
-function LocationMarker({ location }: LocationMarkerProps) {
+const LocationMarker = observer(function LocationMarker({
+  location,
+}: LocationMarkerProps) {
   const isSelected = store.selectedId === location.id
 
   return (
@@ -144,7 +147,7 @@ function LocationMarker({ location }: LocationMarkerProps) {
       </Popup>
     </Marker>
   )
-}
+})
 
 const bookmarkIcon = L.icon({
   iconUrl: markerSvg(markerColor.bookmark),
@@ -152,8 +155,6 @@ const bookmarkIcon = L.icon({
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
 })
-
-const LocationMarkerObserver = observer(LocationMarker)
 
 function ContextMenuHandler() {
   const { t } = useTranslation()
@@ -197,6 +198,7 @@ const LayerSwitcher = observer(() => {
     <div className="absolute top-3 right-3 z-[1000] flex rounded-lg overflow-hidden shadow-lg">
       {layers.map(({ key, icon: Icon }, i) => (
         <button
+          type="button"
           key={key}
           onClick={() => store.setLayer(key)}
           className={className(
@@ -217,6 +219,7 @@ const LayerSwitcher = observer(() => {
 const LocateButton = observer(() => {
   return (
     <button
+      type="button"
       onClick={() => store.locateMe()}
       disabled={store.locating}
       className={className(
@@ -264,7 +267,7 @@ const Map = observer(() => {
         <MapSync />
         <ContextMenuHandler />
         {store.locations.map((loc) => (
-          <LocationMarkerObserver key={loc.id} location={loc} />
+          <LocationMarker key={loc.id} location={loc} />
         ))}
         {store.bookmarks.map((bm) => (
           <BookmarkMarker key={bm.id} bookmark={bm} />

@@ -14,7 +14,8 @@ import type { LucideIcon } from 'lucide-react'
 import store from '../store'
 import { tw } from '../theme'
 import { formatCoord } from '../lib/util'
-import type { MapLocation, Bookmark as BookmarkType } from '../types'
+import type { SearchResult } from '../../common/types'
+import type { Bookmark as BookmarkType } from '../types'
 
 const STAGGER_DELAY_MS = 30
 
@@ -55,7 +56,7 @@ function EmptyState({ icon: Icon, text, spinning }: EmptyStateProps) {
 }
 
 interface LocationItemProps {
-  location: MapLocation
+  location: SearchResult
   index: number
 }
 
@@ -144,6 +145,7 @@ const BookmarkItem = observer(({ bookmark, index }: BookmarkItemProps) => {
         </div>
       </div>
       <button
+        type="button"
         onClick={handleRemove}
         className={`shrink-0 mt-0.5 opacity-0 group-hover:opacity-100 transition-all duration-150 ${tw.list.deleteBtn} hover:scale-110 active:scale-90`}
       >

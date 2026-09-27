@@ -5,10 +5,12 @@ const text = {
   danger: 'text-red-500 dark:text-red-400',
 }
 
+const MARKER_ACCENT = '#ef4444'
+
 export const markerColor = {
   default: '#3b82f6',
-  selected: '#ef4444',
-  bookmark: '#ef4444',
+  selected: MARKER_ACCENT,
+  bookmark: MARKER_ACCENT,
 }
 
 export const tw = {
