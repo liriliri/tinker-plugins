@@ -1,9 +1,10 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 import filter from 'licia/filter'
+import BaseStore from 'tinker-share/store/Base'
 import { DEFAULT_KEYWORD, fetchSogouMemes } from './lib/sogou'
 import type { MemeItem } from './types'
 
-class Store {
+class Store extends BaseStore {
   keyword = DEFAULT_KEYWORD
   memes: MemeItem[] = []
   loading = false
@@ -12,6 +13,7 @@ class Store {
   hasMore = false
 
   constructor() {
+    super()
     makeAutoObservable(this)
     this.search()
   }

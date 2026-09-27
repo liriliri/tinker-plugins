@@ -19,9 +19,6 @@ export const tw = {
     bg: 'bg-orange-500/90 dark:bg-orange-600/90',
     text: 'text-white',
   },
-  input: {
-    base: 'border border-stone-200 dark:border-stone-700',
-  },
   feedback: {
     failed: 'bg-red-500/90 dark:bg-red-600/90 text-white',
   },

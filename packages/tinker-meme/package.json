@@ -1,7 +1,7 @@
 {
   "name": "tinker-meme",
-  "version": "0.1.1",
-  "description": "Meme Search Plugin for TINKER",
+  "version": "0.1.2",
+  "description": "Search and browse memes",
   "files": [
     "dist/",
     "icon.png"
@@ -25,7 +25,7 @@
   ],
   "tinker": {
     "name": "Meme",
-    "description": "Search and browse memes",
+    "category": "entertainment",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",

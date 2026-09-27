@@ -51,11 +51,11 @@ const MemeGrid = observer(() => {
             <MemeCard key={item.url} item={item} />
           ))}
         </div>
-        {store.loading && (
+        {store.loading ? (
           <div className={className('text-center py-4 text-sm', tw.text.muted)}>
             {t('loading')}
           </div>
-        )}
+        ) : null}
       </ScrollArea.Viewport>
       <ScrollArea.Scrollbar
         className={className(

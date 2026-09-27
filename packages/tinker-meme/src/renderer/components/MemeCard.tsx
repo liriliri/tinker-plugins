@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { observer } from 'mobx-react-lite'
 import className from 'licia/className'
 import delay from 'licia/delay'
 import { useTranslation } from 'react-i18next'
@@ -14,7 +13,7 @@ interface MemeCardProps {
 
 type Feedback = 'copied' | 'failed' | null
 
-const MemeCard = observer(({ item }: MemeCardProps) => {
+export default function MemeCard({ item }: MemeCardProps) {
   const { t } = useTranslation()
   const [feedback, setFeedback] = useState<Feedback>(null)
   const [failed, setFailed] = useState(false)
@@ -78,7 +77,7 @@ const MemeCard = observer(({ item }: MemeCardProps) => {
         className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-110"
       />
 
-      {feedback && (
+      {feedback ? (
         <div
           className={className(
             'absolute inset-0 flex items-center justify-center',
@@ -91,9 +90,7 @@ const MemeCard = observer(({ item }: MemeCardProps) => {
             {feedback === 'copied' ? t('copied') : t('copyFailed')}
           </span>
         </div>
-      )}
+      ) : null}
     </div>
   )
-})
-
-export default MemeCard
+}

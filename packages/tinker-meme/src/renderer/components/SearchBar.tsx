@@ -33,7 +33,7 @@ const SearchBar = observer(() => {
           'w-full pl-9 pr-3 py-2 text-sm rounded-md outline-none',
           tw.background.secondary,
           tw.text.primary,
-          tw.input.base,
+          tw.border.primary,
           tw.accent.focus,
           'transition-colors',
           tw.text.placeholder,
