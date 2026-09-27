@@ -103,18 +103,16 @@ export function useFileTree({
     })
   }, [])
 
-  // Build a stable key for expanded folders to use in effect deps
+  // Stable string key so watch effect deps stay comparable across Set identity changes.
   const expandedDirsKey = useMemo(
     () => [...expandedFolders].sort().join('\0'),
     [expandedFolders],
   )
 
-  // Clear expanded folders when root path changes
   useEffect(() => {
     setExpandedFolders(new Set())
   }, [sourcePath])
 
-  // Auto-expand first folder
   useEffect(() => {
     if (!sourcePath || files.length === 0) return
     const tree = buildFileTree(files, sourcePath)
@@ -127,7 +125,6 @@ export function useFileTree({
     })
   }, [sourcePath, files])
 
-  // Load files when sourcePath changes (ignores initial mount)
   useEffect(() => {
     let active = true
 
@@ -160,7 +157,7 @@ export function useFileTree({
     }
   }, [sourcePath])
 
-  // On-demand file watching with chokidar
+  // Watch only the root + expanded dirs + open file (chokidar).
   useEffect(() => {
     if (!sourcePath) return
     let active = true
@@ -202,7 +199,6 @@ export function useFileTree({
     }
   }, [sourcePath, expandedDirsKey, openFilePath, onFileChanged, refresh])
 
-  // Auto-open last folder on mount
   useEffect(() => {
     const path = store.getLastFolderPath()
     if (!path) return

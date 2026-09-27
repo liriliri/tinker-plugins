@@ -1,7 +1,7 @@
 {
   "name": "tinker-markdown-live",
-  "version": "0.2.0",
-  "description": "A WYSIWYG markdown editor for TINKER",
+  "version": "0.2.1",
+  "description": "A WYSIWYG markdown editor with live editing",
   "files": [
     "dist/",
     "icon.png"
@@ -25,7 +25,7 @@
   ],
   "tinker": {
     "name": "Markdown Live",
-    "description": "A WYSIWYG markdown editor with live editing",
+    "category": "productivity",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",

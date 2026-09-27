@@ -1,35 +1,22 @@
 import { makeAutoObservable } from 'mobx'
 import isStr from 'licia/isStr'
-import LocalStore from 'licia/LocalStore'
 import splitPath from 'licia/splitPath'
+import BaseStore, { storage } from 'tinker-share/store/Base'
 
-const storage = new LocalStore('tinker-markdown-live')
 const STORAGE_LAST_FOLDER = 'lastFolderPath'
 
-class Store {
+export class Store extends BaseStore {
   filePath: string | null = null
-  isDark: boolean = false
   content: string = ''
   private savedContent: string = ''
 
   constructor() {
+    super()
     makeAutoObservable(this)
   }
 
   async init() {
-    const theme = await tinker.getTheme()
-    this.setDark(theme === 'dark')
-
-    tinker.on('changeTheme', async () => {
-      const t = await tinker.getTheme()
-      this.setDark(t === 'dark')
-    })
-
     tinker.setTitle('')
-  }
-
-  setDark(dark: boolean) {
-    this.isDark = dark
   }
 
   setFilePath(path: string | null) {

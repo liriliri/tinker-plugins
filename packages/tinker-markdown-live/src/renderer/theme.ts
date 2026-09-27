@@ -6,6 +6,7 @@ export const tw = {
     border: 'border-neutral-200 dark:border-neutral-700',
     bg: 'bg-[#fcfcfc] dark:bg-[#2e2e2e]',
     title: 'text-xs text-neutral-400 dark:text-neutral-500',
+    dirtyDot: 'text-blue-500 dark:text-blue-400',
   },
   toolbarBtn: {
     icon: 'inline-flex size-7 cursor-pointer items-center justify-center rounded-md border border-transparent bg-transparent text-neutral-400 opacity-80 transition-[opacity,background-color,color] duration-150 ease-out hover:bg-neutral-100 hover:text-blue-600 hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 dark:text-neutral-500 dark:hover:bg-[#363636] dark:hover:text-blue-400 dark:focus-visible:ring-blue-400/40',

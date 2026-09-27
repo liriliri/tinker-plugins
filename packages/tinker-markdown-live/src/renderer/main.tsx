@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { createRoot } from 'react-dom/client'
 import { observer } from 'mobx-react-lite'
-import { initReactI18next, useTranslation } from 'react-i18next'
-import i18n from 'i18next'
+import { useTranslation } from 'react-i18next'
 import { Crepe, CrepeFeature } from '@milkdown/crepe'
 import '@milkdown/crepe/theme/common/style.css'
 import '@milkdown/crepe/theme/frame.css'
 import mermaid from 'mermaid'
-import { uuid } from 'licia'
+import uuid from 'licia/uuid'
+import renderApp from 'tinker-share/lib/renderApp'
+import { errorMessage } from 'tinker-share/lib/util'
 import type { MarkdownFolderFile } from '../common/types'
 import EmptyEditor from './components/EmptyEditor'
 import FileTree from './components/FileTree'
@@ -131,7 +131,7 @@ function setupMermaidPanZoom() {
   )
 }
 
-const App = observer(() => {
+const App = observer(function App() {
   const { t } = useTranslation()
   const editorRef = useRef<HTMLDivElement>(null)
   const crepeRef = useRef<Crepe | null>(null)
@@ -176,10 +176,9 @@ const App = observer(() => {
               `</div>`,
           )
         } catch (e) {
-          const message = e instanceof Error ? e.message : String(e)
           console.error('[mermaid] render error:', e)
           applyPreview(
-            `<pre class="mermaid-error"><code>${message}</code></pre>`,
+            `<pre class="mermaid-error"><code>${errorMessage(e)}</code></pre>`,
           )
         }
       }
@@ -406,21 +405,7 @@ const App = observer(() => {
   )
 })
 
-i18n.use(initReactI18next).init({
-  resources: {
-    'en-US': { translation: enUS },
-    'zh-CN': { translation: zhCN },
-  },
-  lng: 'en-US',
-  fallbackLng: 'en-US',
-  interpolation: {
-    escapeValue: false,
-  },
-})
-;(async function () {
-  const [language] = await Promise.all([tinker.getLanguage(), store.init()])
-  i18n.changeLanguage(language)
-
-  const container = document.getElementById('app') as HTMLElement
-  createRoot(container).render(<App />)
+void (async () => {
+  await store.init()
+  await renderApp(App, { 'en-US': enUS, 'zh-CN': zhCN })
 })()

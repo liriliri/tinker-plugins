@@ -9,14 +9,11 @@ import {
   FolderOpen,
 } from 'lucide-react'
 import type { MarkdownFolderFile } from '../../common/types'
+import { normalizeTrimmedPath, parentPathFromPath } from '../../common/path'
 import type { MarkdownOutlineItem } from '../lib/markdownOutline'
 import DocumentOutline from './DocumentOutline'
 import { buildFileTree, type TreeNode } from '../lib/fileTree'
-import {
-  folderNodeAsFile,
-  normalizeCreateParentPath,
-  parentPathFromPath,
-} from '../lib/treePath'
+import { folderNodeAsFile } from '../lib/treePath'
 import { tw } from '../theme'
 
 interface FileTreeProps {
@@ -79,7 +76,7 @@ function creatingAtParentPath(
   creatingParentPath: string | null,
   depth = 0,
 ) {
-  const normalizedParentPath = normalizeCreateParentPath(parentPath)
+  const normalizedParentPath = normalizeTrimmedPath(parentPath)
   if (!normalizedParentPath && depth > 0) return false
   return normalizedParentPath === creatingParentPath
 }
@@ -352,7 +349,7 @@ export default function FileTree({
     setNewFolderName('')
     setRenamingPath(null)
     setRenameFileName('')
-    setCreatingParentPath(normalizeCreateParentPath(parentPath))
+    setCreatingParentPath(normalizeTrimmedPath(parentPath))
   }
 
   const startCreatingFile = (parentPath: string | null = null) =>
@@ -406,7 +403,7 @@ export default function FileTree({
     event.preventDefault()
     event.stopPropagation()
 
-    const createTargetPath = normalizeCreateParentPath(
+    const createTargetPath = normalizeTrimmedPath(
       targetFolderPath ??
         (file
           ? file.kind === 'folder'

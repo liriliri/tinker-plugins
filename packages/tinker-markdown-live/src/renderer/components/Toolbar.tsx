@@ -32,6 +32,7 @@ export default function Toolbar({
       className={`flex h-10 shrink-0 items-center gap-0.5 border-b px-2 ${tw.toolbar.border} ${tw.toolbar.bg}`}
     >
       <button
+        type="button"
         onClick={onToggleFileTree}
         className={tw.toolbarBtn.icon}
         aria-label={fileTreeOpen ? t('hideFileTree') : t('showFileTree')}
@@ -43,6 +44,7 @@ export default function Toolbar({
         )}
       </button>
       <button
+        type="button"
         onClick={onOpenFolder}
         className={tw.toolbarBtn.icon}
         aria-label={t('openFolder')}
@@ -50,6 +52,7 @@ export default function Toolbar({
         <FolderOpen aria-hidden="true" size={15} />
       </button>
       <button
+        type="button"
         onClick={onSave}
         className={tw.toolbarBtn.icon}
         aria-label={t('save')}
@@ -63,8 +66,8 @@ export default function Toolbar({
         >
           {isDirty ? (
             <Circle
-              aria-label="Unsaved changes"
-              className="mr-1 inline-block -translate-y-px text-blue-500 dark:text-blue-400"
+              aria-label={t('unsavedChanges')}
+              className={`mr-1 inline-block -translate-y-px ${tw.toolbar.dirtyDot}`}
               fill="currentColor"
               size={6}
             />
