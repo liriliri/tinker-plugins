@@ -1,5 +1,8 @@
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
+import className from 'licia/className'
+import isEmpty from 'licia/isEmpty'
+import map from 'licia/map'
 import {
   FolderOpen,
   Pause,
@@ -19,30 +22,33 @@ import store from '../store'
 import { tw } from '../theme'
 import ToolbarSearch, { type ToolbarSearchDropdownItem } from './ToolbarSearch'
 
-interface BtnProps {
+interface ToolbarBtnProps {
   onClick: () => void
   icon: React.ReactNode
   label: string
   isDark: boolean
+  active?: boolean
 }
 
-const ToolbarBtn = ({
+function ToolbarBtn({
   onClick,
   icon,
   label,
   isDark,
   active = false,
-}: BtnProps & { active?: boolean }) => (
-  <button
-    className={active ? tw.btnActive(isDark) : tw.btn(isDark)}
-    onClick={onClick}
-    title={label}
-  >
-    {icon}
-  </button>
-)
+}: ToolbarBtnProps) {
+  return (
+    <button
+      className={active ? tw.btnActive(isDark) : tw.btn(isDark)}
+      onClick={onClick}
+      title={label}
+    >
+      {icon}
+    </button>
+  )
+}
 
-interface Props {
+interface ToolbarProps {
   isDark: boolean
   romLoaded: boolean
   isPaused: boolean
@@ -72,16 +78,18 @@ export default observer(function Toolbar({
   onLoadState,
   onFullscreen,
   onOpenKeymap,
-}: Props) {
+}: ToolbarProps) {
   const { t } = useTranslation()
 
-  const dropdownItems: ToolbarSearchDropdownItem[] =
-    store.fileSearchResults.map((r) => ({
+  const dropdownItems: ToolbarSearchDropdownItem[] = map(
+    store.fileSearchResults,
+    (r) => ({
       id: r.path,
       label: r.name,
       description: r.path,
       icon: <Gamepad2 size={12} />,
-    }))
+    }),
+  )
 
   const handleDropdownSelect = (item: ToolbarSearchDropdownItem) => {
     onLoadRomPath(item.id)
@@ -90,7 +98,10 @@ export default observer(function Toolbar({
 
   return (
     <div
-      className={`flex items-center gap-0.5 px-2 py-1 shrink-0 border-b ${tw.toolbar(isDark)}`}
+      className={className(
+        'flex items-center gap-0.5 px-2 py-1 shrink-0 border-b',
+        tw.toolbar(isDark),
+      )}
     >
       <ToolbarBtn
         onClick={() => store.toggleSidebar()}
@@ -116,7 +127,7 @@ export default observer(function Toolbar({
         value={store.searchQuery}
         onChange={(val) => store.setSearchQuery(val)}
         placeholder={t('search')}
-        dropdownItems={dropdownItems.length > 0 ? dropdownItems : undefined}
+        dropdownItems={!isEmpty(dropdownItems) ? dropdownItems : undefined}
         onDropdownSelect={handleDropdownSelect}
       />
       {romLoaded && (

@@ -1,26 +1,29 @@
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
+import className from 'licia/className'
+import isEmpty from 'licia/isEmpty'
+import map from 'licia/map'
 import { Gamepad2, X } from 'lucide-react'
 import store from '../store'
 import { tw } from '../theme'
 
-interface Props {
+interface SidebarProps {
   onSelect: (filePath: string) => void
 }
 
-export default observer(function Sidebar({ onSelect }: Props) {
+export default observer(function Sidebar({ onSelect }: SidebarProps) {
   const { t } = useTranslation()
   const { isDark, playHistory, currentRomPath } = store
 
   return (
-    <aside className={`${tw.sidebar(isDark)} flex flex-col min-h-0`}>
-      {playHistory.length === 0 ? (
+    <aside className={className(tw.sidebar(isDark), 'flex flex-col min-h-0')}>
+      {isEmpty(playHistory) ? (
         <div className="flex flex-1 items-center justify-center">
           <p className={tw.sidebarEmpty(isDark)}>{t('emptyHistory')}</p>
         </div>
       ) : (
         <div className="flex-1 min-h-0 overflow-y-auto">
-          {playHistory.map((item) => (
+          {map(playHistory, (item) => (
             <div
               key={item.path}
               className={tw.sidebarItem(isDark, item.path === currentRomPath)}

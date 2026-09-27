@@ -1,14 +1,5 @@
 export type GbaButton =
-  | 'up'
-  | 'down'
-  | 'left'
-  | 'right'
-  | 'a'
-  | 'b'
-  | 'l'
-  | 'r'
-  | 'start'
-  | 'select'
+  'up' | 'down' | 'left' | 'right' | 'a' | 'b' | 'l' | 'r' | 'start' | 'select'
 
 export const GBA_BUTTONS: GbaButton[] = [
   'up',

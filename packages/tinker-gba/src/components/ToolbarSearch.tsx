@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
+import className from 'licia/className'
+import map from 'licia/map'
 import { Search, X } from 'lucide-react'
 import { tw } from '../theme'
 
@@ -9,7 +11,7 @@ export interface ToolbarSearchDropdownItem {
   description?: string
 }
 
-interface Props {
+interface ToolbarSearchProps {
   isDark: boolean
   value: string
   onChange: (value: string) => void
@@ -25,7 +27,7 @@ export default function ToolbarSearch({
   placeholder,
   dropdownItems,
   onDropdownSelect,
-}: Props) {
+}: ToolbarSearchProps) {
   const inputRef = useRef<HTMLInputElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const [isFocused, setIsFocused] = useState(false)
@@ -77,14 +79,17 @@ export default function ToolbarSearch({
       {value && (
         <button
           onClick={() => onChange('')}
-          className={`absolute right-2 top-1/2 -translate-y-1/2 ${tw.searchClear(isDark)}`}
+          className={className(
+            'absolute right-2 top-1/2 -translate-y-1/2',
+            tw.searchClear(isDark),
+          )}
         >
           <X size={12} />
         </button>
       )}
-      {showDropdown && (
+      {showDropdown ? (
         <div className={tw.searchDropdown(isDark)}>
-          {dropdownItems?.map((item, index) => (
+          {map(dropdownItems || [], (item, index) => (
             <button
               key={item.id}
               tabIndex={-1}
@@ -93,18 +98,21 @@ export default function ToolbarSearch({
               onClick={() => onDropdownSelect?.(item)}
               title={item.description}
             >
-              {item.icon && (
+              {item.icon ? (
                 <span
-                  className={`flex-shrink-0 ${tw.searchDropdownIcon(isDark)}`}
+                  className={className(
+                    'flex-shrink-0',
+                    tw.searchDropdownIcon(isDark),
+                  )}
                 >
                   {item.icon}
                 </span>
-              )}
+              ) : null}
               <span className="truncate">{item.label}</span>
             </button>
           ))}
         </div>
-      )}
+      ) : null}
     </div>
   )
 }

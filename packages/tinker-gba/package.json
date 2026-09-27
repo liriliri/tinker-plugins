@@ -1,7 +1,7 @@
 {
   "name": "tinker-gba",
-  "version": "0.2.2",
-  "description": "GBA Emulator Plugin for TINKER",
+  "version": "0.2.3",
+  "description": "Play Game Boy Advance ROMs",
   "files": [
     "dist/",
     "icon.png"
@@ -22,7 +22,7 @@
   ],
   "tinker": {
     "name": "GBA",
-    "description": "Play Game Boy Advance ROMs",
+    "category": "entertainment",
     "main": "dist/index.html",
     "icon": "icon.png",
     "locales": {

@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
+import map from 'licia/map'
 import { X, RotateCcw, Gamepad2, Keyboard } from 'lucide-react'
 import { tw } from '../theme'
 import {
@@ -12,7 +13,7 @@ import {
   ButtonBinding,
 } from '../lib/keymap'
 
-interface Props {
+interface KeymapDialogProps {
   isDark: boolean
   keymap: Keymap
   onClose: () => void
@@ -29,7 +30,7 @@ export default function KeymapDialog({
   keymap,
   onClose,
   onSave,
-}: Props) {
+}: KeymapDialogProps) {
   const { t } = useTranslation()
   const [draft, setDraft] = useState<Keymap>(() => ({ ...keymap }))
   const [listening, setListening] = useState<BindingTarget | null>(null)
@@ -250,7 +251,7 @@ export default function KeymapDialog({
               </tr>
             </thead>
             <tbody>
-              {GBA_BUTTONS.map((btn) => (
+              {map(GBA_BUTTONS, (btn) => (
                 <tr key={btn}>
                   <td
                     className={`py-1.5 px-3 border-b tracking-wider uppercase ${borderCls} ${thCls}`}
