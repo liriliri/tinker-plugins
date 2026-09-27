@@ -1,6 +1,6 @@
 {
   "name": "tinker-wallpaper",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Search, preview and set desktop wallpapers",
   "files": [
     "dist/",
@@ -29,7 +29,7 @@
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",
-    "category": "media",
+    "category": "system",
     "locales": {
       "zh-CN": {
         "name": "壁纸",
