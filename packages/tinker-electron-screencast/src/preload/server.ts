@@ -26,7 +26,7 @@ import {
   disposePageSession,
   handleScreencastUpgrade,
 } from './screencast'
-import { errorMessage } from './util'
+import { errorMessage } from 'tinker-share/lib/util'
 
 interface ServerState {
   config: ServerConfig

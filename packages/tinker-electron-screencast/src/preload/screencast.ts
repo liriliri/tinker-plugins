@@ -9,7 +9,7 @@ import { CdpClient } from './cdp'
 import { findPage, findSessionByPageId } from './apps'
 import { activateMainWindows } from './inspect'
 import { addLog } from './logger'
-import { errorMessage } from './util'
+import { errorMessage } from 'tinker-share/lib/util'
 
 interface PageSession {
   pageId: string

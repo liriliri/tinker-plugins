@@ -1,3 +1,4 @@
+import className from 'licia/className'
 import { tw } from '../theme'
 
 interface DotSpinnerProps {
@@ -9,15 +10,27 @@ export default function DotSpinner({ size = 'md' }: DotSpinnerProps) {
   const gap = size === 'sm' ? 'gap-1' : 'gap-1.5'
 
   return (
-    <div className={`flex items-center ${gap}`}>
+    <div className={className('flex items-center', gap)}>
       <span
-        className={`${dotSize} rounded-full ${tw.loading.dot} animate-dot-pulse`}
+        className={className(
+          dotSize,
+          'rounded-full animate-dot-pulse',
+          tw.loading.dot,
+        )}
       />
       <span
-        className={`${dotSize} rounded-full ${tw.loading.dot} animate-dot-pulse-2`}
+        className={className(
+          dotSize,
+          'rounded-full animate-dot-pulse-2',
+          tw.loading.dot,
+        )}
       />
       <span
-        className={`${dotSize} rounded-full ${tw.loading.dot} animate-dot-pulse-3`}
+        className={className(
+          dotSize,
+          'rounded-full animate-dot-pulse-3',
+          tw.loading.dot,
+        )}
       />
     </div>
   )

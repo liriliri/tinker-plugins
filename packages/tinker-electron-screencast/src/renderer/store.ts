@@ -1,9 +1,10 @@
 import { makeAutoObservable, runInAction } from 'mobx'
-import LocalStore from 'licia/LocalStore'
 import isStr from 'licia/isStr'
 import reverse from 'licia/reverse'
 import toNum from 'licia/toNum'
 import toStr from 'licia/toStr'
+import BaseStore, { storage } from 'tinker-share/store/Base'
+import { errorMessage } from 'tinker-share/lib/util'
 import type {
   AppInfo,
   LogEntry,
@@ -11,16 +12,14 @@ import type {
   ServerStatus,
 } from '../common/types'
 import { DEFAULT_SERVER_CONFIG } from '../common/types'
-import { errorMessage } from './lib/util'
 
-const storage = new LocalStore('tinker-electron-screencast')
 const STORAGE_HOST = 'host'
 const STORAGE_PORT = 'port'
 const STORAGE_USERNAME = 'username'
 const STORAGE_PASSWORD = 'password'
 const QRCODE_PLUGIN = 'tinker-qrcode'
 
-class Store {
+class Store extends BaseStore {
   apps: AppInfo[] = []
   loadingApps = false
   config: ServerConfig = { ...DEFAULT_SERVER_CONFIG }
@@ -39,6 +38,7 @@ class Store {
   private logListener: ((entry: LogEntry) => void) | null = null
 
   constructor() {
+    super()
     makeAutoObservable(this)
     this.loadConfig()
     this.refreshStatus()

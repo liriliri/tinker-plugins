@@ -1,7 +1,7 @@
 {
   "name": "tinker-electron-screencast",
-  "version": "0.2.0",
-  "description": "Electron Screencast Plugin for TINKER",
+  "version": "0.2.1",
+  "description": "LAN screencast server for remote Electron app control",
   "files": [
     "dist/",
     "icon.png"
@@ -27,7 +27,7 @@
   ],
   "tinker": {
     "name": "Electron Screencast",
-    "description": "LAN screencast server for remote Electron app control",
+    "category": "dev",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",

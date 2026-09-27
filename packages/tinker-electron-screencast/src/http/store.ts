@@ -7,7 +7,7 @@ import {
   loadCredentials,
   saveCredentials,
 } from './lib/auth'
-import { errorMessage } from './lib/util'
+import { errorMessage } from 'tinker-share/lib/util'
 
 interface RemoteApp {
   name: string

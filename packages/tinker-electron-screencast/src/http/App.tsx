@@ -1,6 +1,7 @@
 import { useEffect, useState, type CSSProperties } from 'react'
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
+import map from 'licia/map'
 import ScreencastView from './components/ScreencastView'
 import store from './store'
 
@@ -115,7 +116,7 @@ export default observer(function App() {
               padding: 6,
             }}
           >
-            {store.apps.map((app) => (
+            {map(store.apps, (app) => (
               <button
                 key={app.path}
                 type="button"
@@ -204,7 +205,7 @@ const PagePicker = observer(function PagePicker() {
               gap: 4,
             }}
           >
-            {store.pages.map((page) => (
+            {map(store.pages, (page) => (
               <li key={page.id}>
                 <button
                   type="button"
