@@ -1,8 +1,9 @@
 import { makeAutoObservable, runInAction } from 'mobx'
-import isEmpty from 'licia/isEmpty'
-import LocalStore from 'licia/LocalStore'
 import contain from 'licia/contain'
 import filter from 'licia/filter'
+import isEmpty from 'licia/isEmpty'
+import BaseStore, { storage } from 'tinker-share/store/Base'
+import { errorMessage } from 'tinker-share/lib/util'
 import allCurrencyCodes from './currencies.json'
 import { fetchRatesWithFallback } from './lib/rates'
 import { createMcpApi } from './mcp'
@@ -23,9 +24,7 @@ const STORAGE_BASE_AMOUNT = 'baseAmount'
 const STORAGE_SELECTED_CODES = 'selectedCodes'
 const STORAGE_DIGIT = 'digit'
 
-const storage = new LocalStore('tinker-exchange')
-
-export class Store {
+export class Store extends BaseStore {
   readonly mcp = createMcpApi(() => this)
 
   rates: Record<string, number> = storage.get(STORAGE_RATES) ?? {}
@@ -44,20 +43,32 @@ export class Store {
   currencyCodes: string[] = allCurrencyCodes
 
   private currencyNames: Intl.DisplayNames | null = null
+  private inited = false
 
   constructor() {
+    super()
     makeAutoObservable(this, {
       mcp: false,
+      inited: false,
     })
   }
 
   init(language: string) {
-    this.language = language
-    this.currencyNames = new Intl.DisplayNames([language], { type: 'currency' })
+    if (this.inited) {
+      this.setLanguage(language)
+      return
+    }
+    this.inited = true
+    this.setLanguage(language)
     if (!storage.get(STORAGE_BASE_CURRENCY)) {
       this.baseCurrency = DEFAULT_BASE[language] || FALLBACK_BASE
     }
-    this.fetchRates()
+    void this.fetchRates()
+  }
+
+  setLanguage(language: string) {
+    this.language = language
+    this.currencyNames = new Intl.DisplayNames([language], { type: 'currency' })
   }
 
   async fetchRates(force = false) {
@@ -86,7 +97,7 @@ export class Store {
       })
     } catch (err) {
       runInAction(() => {
-        this.error = String(err)
+        this.error = errorMessage(err)
         this.isLoading = false
       })
     }

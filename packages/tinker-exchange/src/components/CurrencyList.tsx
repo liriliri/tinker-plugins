@@ -1,14 +1,15 @@
 import { observer } from 'mobx-react-lite'
 import className from 'licia/className'
+import map from 'licia/map'
 import { X } from 'lucide-react'
 import store from '../store'
 import Flag from './Flag'
 import { tw } from '../theme'
 
-const CurrencyList = observer(() => {
+const CurrencyList = observer(function CurrencyList() {
   return (
     <div className="flex flex-col gap-1.5">
-      {store.targetCodes.map((code) => {
+      {map(store.targetCodes, (code) => {
         const amount = store.convert(code)
         return (
           <div

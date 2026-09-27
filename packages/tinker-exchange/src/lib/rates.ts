@@ -1,4 +1,5 @@
 import isEmpty from 'licia/isEmpty'
+import { errorMessage } from 'tinker-share/lib/util'
 
 export interface RatesCache {
   rates: Record<string, number>
@@ -17,7 +18,7 @@ export async function fetchRatesWithFallback(): Promise<RatesCache> {
       return await fetchFallbackRates()
     } catch (fallbackErr) {
       throw new Error(
-        `XE failed (${toErrorMessage(xeErr)}); fallback failed (${toErrorMessage(fallbackErr)})`,
+        `XE failed (${errorMessage(xeErr)}); fallback failed (${errorMessage(fallbackErr)})`,
       )
     }
   }
@@ -47,8 +48,4 @@ async function fetchFallbackRates(): Promise<RatesCache> {
     timestamp:
       (data.time_last_update_unix || Math.floor(Date.now() / 1000)) * 1000,
   }
-}
-
-function toErrorMessage(err: unknown) {
-  return err instanceof Error ? err.message : String(err)
 }

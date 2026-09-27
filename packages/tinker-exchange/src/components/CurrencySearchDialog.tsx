@@ -3,6 +3,10 @@ import { useState, useEffect } from 'react'
 import className from 'licia/className'
 import contain from 'licia/contain'
 import filter from 'licia/filter'
+import isEmpty from 'licia/isEmpty'
+import lowerCase from 'licia/lowerCase'
+import map from 'licia/map'
+import slice from 'licia/slice'
 import * as Dialog from '@radix-ui/react-dialog'
 import { Search, X } from 'lucide-react'
 import store from '../store'
@@ -36,9 +40,9 @@ const CurrencySearchDialog = observer(
     const filtered = filter(store.currencyCodes, (code) => {
       if (contain(excludeCodes, code)) return false
       if (!search) return true
-      const q = search.toLowerCase()
-      const name = store.getCurrencyName(code).toLowerCase()
-      return code.toLowerCase().includes(q) || name.includes(q)
+      const q = lowerCase(search)
+      const name = lowerCase(store.getCurrencyName(code))
+      return contain(lowerCase(code), q) || contain(name, q)
     })
 
     return (
@@ -95,8 +99,8 @@ const CurrencySearchDialog = observer(
             </div>
 
             <div className="flex-1 min-h-0 overflow-auto">
-              {filtered.length > 0 ? (
-                filtered.slice(0, 100).map((code) => (
+              {!isEmpty(filtered) ? (
+                map(slice(filtered, 0, 100), (code) => (
                   <button
                     key={code}
                     onClick={() => {
