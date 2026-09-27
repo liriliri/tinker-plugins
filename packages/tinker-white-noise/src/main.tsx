@@ -1,12 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { createRoot } from 'react-dom/client'
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
-import i18n from 'i18next'
-import { initReactI18next } from 'react-i18next'
 import LunaShaderToyPlayer from 'luna-shader-toy-player/react'
 import 'luna-shader-toy-player/css'
 import fullscreen from 'licia/fullscreen'
+import renderApp from 'tinker-share/lib/renderApp'
 import snowy from './lib/snowy'
 import rainy from './lib/rainy'
 import seaside from './lib/seaside'
@@ -33,18 +31,6 @@ function calcShaderSize(w: number, h: number) {
 
 const VOLUME_VALUES = [0, 0.25, 0.5, 0.75, 1] as const
 
-i18n.use(initReactI18next).init({
-  resources: {
-    'en-US': { translation: enUS },
-    'zh-CN': { translation: zhCN },
-  },
-  lng: 'en-US',
-  fallbackLng: 'en-US',
-  interpolation: {
-    escapeValue: false,
-  },
-})
-
 const App = observer(() => {
   const { t } = useTranslation()
   const audioRef = useRef<HTMLAudioElement>(null)
@@ -57,7 +43,7 @@ const App = observer(() => {
     const audio = audioRef.current
     if (!audio) return
     audio.volume = volume
-    audio.play()
+    void audio.play()
   }, [scene, volume])
 
   useEffect(() => {
@@ -122,10 +108,4 @@ const App = observer(() => {
   )
 })
 
-;(async function () {
-  const language = await tinker.getLanguage()
-  i18n.changeLanguage(language)
-
-  const container = document.getElementById('app') as HTMLElement
-  createRoot(container).render(<App />)
-})()
+void renderApp(App, { 'en-US': enUS, 'zh-CN': zhCN })

@@ -1,8 +1,6 @@
 import { makeAutoObservable } from 'mobx'
-import LocalStore from 'licia/LocalStore'
+import { storage } from 'tinker-share/store/Base'
 import type { Scene } from './types'
-
-const storage = new LocalStore('tinker-white-noise')
 
 const STORAGE_SCENE = 'scene'
 const STORAGE_VOLUME = 'volume'
