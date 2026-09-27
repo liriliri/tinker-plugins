@@ -165,10 +165,6 @@ function toFileUrl(filePath: string) {
   return pathToFileURL(filePath).href
 }
 
-function parentDirUrl(dirPath: string) {
-  return toFileUrl(dirPath).replace(/\/?$/, '')
-}
-
 async function buildPreviewInfo(
   modelJsonPath: string,
 ): Promise<ModelPreviewInfo> {
@@ -184,10 +180,7 @@ async function buildPreviewInfo(
     return {
       sourcePath: modelJsonPath,
       displayName,
-      format: desc.format,
       modelUrl: toFileUrl(modelJsonPath),
-      basePath: parentDirUrl(path.dirname(desc.sourceDir)),
-      modelName: desc.modelName || desc.folderName,
     }
   }
 
@@ -209,10 +202,7 @@ async function buildPreviewInfo(
   return {
     sourcePath: modelJsonPath,
     displayName,
-    format: desc.format,
     modelUrl: toFileUrl(stagedJson),
-    basePath: parentDirUrl(stageRoot),
-    modelName: desc.modelName,
   }
 }
 
@@ -371,16 +361,8 @@ async function getModelWindowPayload(id: string): Promise<ModelWindowPayload> {
   const model = await readMeta(dir)
   if (!model) throw new Error('Model not found')
 
-  const modelPath = path.join(dir, model.modelFileName)
-  const modelDir = path.dirname(modelPath)
-  const modelName = path.basename(modelDir)
-
   return {
-    model,
-    modelUrl: toFileUrl(modelPath),
-    basePath: parentDirUrl(path.dirname(modelDir)),
-    modelName,
-    format: model.format,
+    modelUrl: toFileUrl(path.join(dir, model.modelFileName)),
   }
 }
 

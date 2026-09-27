@@ -3,7 +3,6 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* AIGODLIKE-inspired: charcoal stage + solid yellow/blue/green blocks */
 :root {
   --pet-desk: #262626;
   --pet-paper: #383838;
@@ -74,7 +73,6 @@ body {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  /* Keep a transparent ring so active/hover shadow never shifts layout. */
   box-shadow:
     0 0 0 2px transparent,
     0 4px 14px rgba(0, 0, 0, 0.28);

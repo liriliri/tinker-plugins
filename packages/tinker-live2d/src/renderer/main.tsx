@@ -1,11 +1,9 @@
-import { createRoot } from 'react-dom/client'
-import i18n from 'i18next'
-import { initReactI18next } from 'react-i18next'
 import { observer } from 'mobx-react-lite'
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import * as Toast from '@radix-ui/react-toast'
 import { X } from 'lucide-react'
+import renderApp from 'tinker-share/lib/renderApp'
 import ModelList from './components/ModelList'
 import SettingsView from './components/SettingsView'
 import PreviewDialog from './components/PreviewDialog'
@@ -15,18 +13,6 @@ import store from './store'
 import enUS from './i18n/en-US.json'
 import zhCN from './i18n/zh-CN.json'
 import './index.scss'
-
-i18n.use(initReactI18next).init({
-  resources: {
-    'en-US': { translation: enUS },
-    'zh-CN': { translation: zhCN },
-  },
-  lng: 'en-US',
-  fallbackLng: 'en-US',
-  interpolation: {
-    escapeValue: false,
-  },
-})
 
 const App = observer(function App() {
   const { t } = useTranslation()
@@ -103,13 +89,4 @@ const App = observer(function App() {
   )
 })
 
-;(async function () {
-  const language = await tinker.getLanguage()
-  i18n.changeLanguage(language)
-  tinker.on('changeLanguage', (next: string) => {
-    i18n.changeLanguage(next)
-  })
-
-  const container = document.getElementById('app') as HTMLElement
-  createRoot(container).render(<App />)
-})()
+renderApp(App, { 'en-US': enUS, 'zh-CN': zhCN })

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import sleep from 'licia/sleep'
 import { mountLive2d, type Live2dRuntime } from '../lib/live2dRuntime'
+import { nextFrame } from '../lib/util'
 
 interface Live2dMountProps {
   modelUrl: string
@@ -52,9 +53,7 @@ export default function Live2dMount({
         if (captureOnReady) {
           runtime.resetFocus()
           await sleep(50)
-          await new Promise<void>((resolve) => {
-            requestAnimationFrame(() => resolve())
-          })
+          await nextFrame()
           if (cancelled) return
           runtime.resetFocus()
           thumbnail = runtime.capture()

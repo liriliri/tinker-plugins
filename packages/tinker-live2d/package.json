@@ -1,7 +1,7 @@
 {
   "name": "tinker-live2d",
-  "version": "0.2.0",
-  "description": "Display Live2D models as animated desktop companions in Tinker",
+  "version": "0.2.1",
+  "description": "Run Live2D models as animated desktop companions",
   "files": [
     "dist/",
     "icon.png"
@@ -26,7 +26,7 @@
   ],
   "tinker": {
     "name": "Live2D",
-    "description": "Run Live2D models as animated desktop companions",
+    "category": "entertainment",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",

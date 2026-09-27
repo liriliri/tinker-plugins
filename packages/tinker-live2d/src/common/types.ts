@@ -16,19 +16,11 @@ export interface ModelPreviewInfo {
   /** Absolute path to the source model json */
   sourcePath: string
   displayName: string
-  format: ModelFormat
   modelUrl: string
-  basePath: string
-  modelName: string
 }
 
 export interface ModelWindowPayload {
-  model: InstalledModel
   modelUrl: string
-  /** file:// parent of the model folder (Live2dV3 basePath) */
-  basePath: string
-  modelName: string
-  format: ModelFormat
 }
 
 export interface PetStorage {

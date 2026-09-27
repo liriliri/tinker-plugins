@@ -14,7 +14,7 @@ interface PopupWindowOptions {
   transparent?: boolean
 }
 
-/** Same helper as Tinker share/lib/popupWindow (music-player MiniMode). */
+/** Popup BrowserWindow helper (same pattern as music-player MiniMode). */
 export function openPopupWindow(
   options: PopupWindowOptions,
   render: (popup: Window, onClose: () => void) => ReactNode,

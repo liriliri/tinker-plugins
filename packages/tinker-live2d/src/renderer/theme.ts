@@ -1,4 +1,3 @@
-/** AIGODLIKE-inspired tokens — yellow CTA + blue/green accents. */
 export const tw = {
   background: {
     app: 'app-stage',
@@ -8,6 +7,7 @@ export const tw = {
     primary: 'text-[var(--pet-ink)]',
     muted: 'text-[var(--pet-muted)]',
     danger: 'text-[var(--pet-coral)]',
+    accent: 'text-[var(--pet-sky)]',
   },
   border: {
     divide: 'divide-[var(--pet-line)]',

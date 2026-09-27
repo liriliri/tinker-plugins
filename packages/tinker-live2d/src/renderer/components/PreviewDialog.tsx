@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import { LoaderCircle } from 'lucide-react'
 import trim from 'licia/trim'
-import { errorMessage } from '../lib/util'
+import { failMessage } from '../lib/util'
 import store from '../store'
 import { tw } from '../theme'
 import OverlayPanel from './OverlayPanel'
@@ -37,7 +37,7 @@ const PreviewDialog = observer(function PreviewDialog() {
     (error: unknown) => {
       thumbnailRef.current = null
       setReady(false)
-      setLoadError(errorMessage(error, t('previewLoadFailed')))
+      setLoadError(failMessage(error, t('previewLoadFailed')))
     },
     [t],
   )
@@ -71,7 +71,7 @@ const PreviewDialog = observer(function PreviewDialog() {
             {!ready && !loadError ? (
               <div className={tw.preview.loading}>
                 <LoaderCircle
-                  className="w-6 h-6 animate-spin text-[var(--pet-sky)]"
+                  className={`w-6 h-6 animate-spin ${tw.text.accent}`}
                   strokeWidth={2.25}
                 />
               </div>

@@ -1,6 +1,7 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 import { t } from 'i18next'
 import find from 'licia/find'
+import BaseStore from 'tinker-share/store/Base'
 import {
   applyStorage,
   disposePetWindowController,
@@ -8,7 +9,7 @@ import {
   setStorageListener,
 } from './lib/petWindow'
 import { getRuntimeConfig, saveRuntimeConfig } from './lib/storage'
-import { clonePlain, errorMessage } from './lib/util'
+import { clonePlain, failMessage, nextFrame } from './lib/util'
 import { createMcpApi } from './mcp'
 import {
   DEFAULT_STORAGE,
@@ -18,7 +19,7 @@ import {
   type PetStorage,
 } from '../common/types'
 
-export class Store {
+export class Store extends BaseStore {
   readonly mcp = createMcpApi(() => this)
 
   overlay: PetOverlay | null = null
@@ -32,6 +33,7 @@ export class Store {
   deleting = false
 
   constructor() {
+    super()
     makeAutoObservable(this, { mcp: false }, { autoBind: true })
     void tinker.setBackgroundThrottling(false)
   }
@@ -100,7 +102,7 @@ export class Store {
       const message =
         error instanceof Error && error.message === 'ONLY_ONE_MODEL'
           ? t('importOneOnly')
-          : errorMessage(error, t('installFailed'))
+          : failMessage(error, t('installFailed'))
       this.showError(message)
     }
   }
@@ -120,15 +122,13 @@ export class Store {
         this.installing = false
         this.clearPreview()
       })
-      await new Promise<void>((resolve) => {
-        requestAnimationFrame(() => resolve())
-      })
+      await nextFrame()
       await this.enableModel(installed.id)
     } catch (error) {
       runInAction(() => {
         this.installing = false
       })
-      this.showError(errorMessage(error, t('installFailed')))
+      this.showError(failMessage(error, t('installFailed')))
     }
   }
 
@@ -158,7 +158,7 @@ export class Store {
         this.models,
       )
     } catch (error) {
-      this.showError(errorMessage(error, t('enablePetFailed')))
+      this.showError(failMessage(error, t('enablePetFailed')))
     }
   }
 
@@ -195,7 +195,7 @@ export class Store {
       runInAction(() => {
         this.deleting = false
       })
-      this.showError(errorMessage(error, t('uninstallFailed')))
+      this.showError(failMessage(error, t('uninstallFailed')))
     }
   }
 
@@ -221,7 +221,7 @@ export class Store {
         this.models,
       )
     } catch (error) {
-      this.showError(errorMessage(error, t('saveSettingsFailed')))
+      this.showError(failMessage(error, t('saveSettingsFailed')))
     }
   }
 

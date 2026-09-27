@@ -1,28 +1,10 @@
-import { defineConfig, UserConfig } from 'vite'
-import { builtinModules } from 'node:module'
-import path from 'node:path'
+import { definePreloadConfig } from 'tinker-share/vite'
 
-const external = builtinModules.filter((e) => !e.startsWith('_'))
-external.push('electron', ...external.map((m) => `node:${m}`))
-
-export default defineConfig(async (): Promise<UserConfig> => {
-  const pkg = require(path.join(process.cwd(), 'package.json'))
-
-  return {
-    base: '',
+export default definePreloadConfig({
+  overrides: {
     publicDir: false,
     build: {
-      outDir: path.dirname(pkg.tinker.preload),
       emptyOutDir: true,
-      lib: {
-        entry: 'src/preload/index.ts',
-        name: 'Main',
-        fileName: 'index',
-        formats: ['cjs'],
-      },
-      rollupOptions: {
-        external,
-      },
     },
-  }
+  },
 })
