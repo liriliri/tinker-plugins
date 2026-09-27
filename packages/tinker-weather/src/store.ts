@@ -1,10 +1,10 @@
 import { makeAutoObservable, runInAction } from 'mobx'
-import LocalStore from 'licia/LocalStore'
 import debounce from 'licia/debounce'
 import compact from 'licia/compact'
 import isMatch from 'licia/isMatch'
-import toStr from 'licia/toStr'
 import trim from 'licia/trim'
+import BaseStore, { storage } from 'tinker-share/store/Base'
+import { errorMessage } from 'tinker-share/lib/util'
 import type { GeoResult, WeatherData } from './types'
 import { geocode, fetchWeather } from './lib/weather'
 import { createMcpApi } from './mcp'
@@ -12,10 +12,9 @@ import { createMcpApi } from './mcp'
 const STORAGE_CITY = 'city'
 const STORAGE_RECENT_CITIES = 'recentCities'
 
-const storage = new LocalStore('tinker-weather')
 const MAX_RECENT = 8
 
-export class Store {
+export class Store extends BaseStore {
   readonly mcp = createMcpApi(() => this)
 
   language = 'en-US'
@@ -36,15 +35,19 @@ export class Store {
   )
 
   constructor() {
+    super()
     makeAutoObservable(this, {
       mcp: false,
     })
   }
 
-  init(language: string) {
-    this.language = language
+  async init() {
+    this.language = await tinker.getLanguage()
+    tinker.on('changeLanguage', (lang: string) => {
+      this.language = lang
+    })
     if (this.city) {
-      this.loadWeather()
+      void this.loadWeather()
     }
   }
 
@@ -124,7 +127,7 @@ export class Store {
       })
     } catch (err) {
       runInAction(() => {
-        this.error = toStr(err)
+        this.error = errorMessage(err)
         this.isLoading = false
       })
     }

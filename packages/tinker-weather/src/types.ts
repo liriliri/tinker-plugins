@@ -40,11 +40,4 @@ export interface WeatherData {
 }
 
 export type WeatherIconType =
-  | 'sun'
-  | 'cloud'
-  | 'fog'
-  | 'drizzle'
-  | 'rain'
-  | 'snow'
-  | 'thunder'
-  | 'wind'
+  'sun' | 'cloud' | 'fog' | 'drizzle' | 'rain' | 'snow' | 'thunder' | 'wind'

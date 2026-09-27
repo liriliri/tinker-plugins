@@ -1,9 +1,7 @@
-import { createRoot } from 'react-dom/client'
 import { observer } from 'mobx-react-lite'
 import className from 'licia/className'
 import contain from 'licia/contain'
-import i18n from 'i18next'
-import { initReactI18next } from 'react-i18next'
+import renderApp from 'tinker-share/lib/renderApp'
 import store from './store'
 import { wmoToIcon } from './lib/weather'
 import Sidebar from './components/Sidebar'
@@ -51,22 +49,7 @@ const App = observer(() => {
   )
 })
 
-i18n.use(initReactI18next).init({
-  resources: {
-    'en-US': { translation: enUS },
-    'zh-CN': { translation: zhCN },
-  },
-  lng: 'en-US',
-  fallbackLng: 'en-US',
-  interpolation: {
-    escapeValue: false,
-  },
-})
-;(async function () {
-  const language = await tinker.getLanguage()
-  i18n.changeLanguage(language)
-  store.init(language)
-
-  const container = document.getElementById('app') as HTMLElement
-  createRoot(container).render(<App />)
+void (async () => {
+  await store.init()
+  await renderApp(App, { 'en-US': enUS, 'zh-CN': zhCN })
 })()

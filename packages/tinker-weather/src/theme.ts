@@ -8,14 +8,6 @@ export const tw = {
     base: headerDecor,
     default:
       'bg-gradient-to-br from-[#38bdf8] to-[#7dd3fc] dark:from-[#0c4a6e] dark:to-[#0369a1]',
-    sun: 'bg-gradient-to-br from-[#c2410c] via-[#d97706] to-[#b45309] dark:from-[#b45309] dark:to-[#d97706]',
-    cloud:
-      'bg-gradient-to-br from-[#64748b] via-[#94a3b8] to-[#cbd5e1] dark:from-[#334155] dark:to-[#475569]',
-    rain: 'bg-gradient-to-br from-[#64748b] via-[#38bdf8] to-[#0284c7] dark:from-[#1e293b] dark:via-[#0c4a6e] dark:to-[#075985]',
-    snow: 'bg-gradient-to-br from-[#7dd3fc] via-[#e0f2fe] to-[#f8fafc] dark:from-[#0c4a6e] dark:to-[#0284c7]',
-    thunder:
-      'bg-gradient-to-br from-[#78716c] via-[#44403c] to-[#0c4a6e] dark:from-[#1c1917] dark:via-[#292524] dark:to-[#082f49]',
-    fog: 'bg-gradient-to-br from-[#9ca3af] via-[#d1d5db] to-[#e5e7eb] dark:from-[#4b5563] dark:to-[#6b7280]',
     byIcon: {
       sun: 'bg-gradient-to-br from-[#c2410c] via-[#d97706] to-[#b45309] dark:from-[#b45309] dark:to-[#d97706]',
       cloud:
@@ -54,6 +46,5 @@ export const tw = {
     fadeInUpDelay1: 'animate-fade-in-up-delay-1',
     fadeInUpDelay2: 'animate-fade-in-up-delay-2',
     spinSlow: 'animate-spin-slow',
-    pulseSlow: 'animate-pulse-slow',
   },
 }
