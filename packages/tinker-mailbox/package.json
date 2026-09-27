@@ -1,7 +1,7 @@
 {
   "name": "tinker-mailbox",
-  "version": "0.1.2",
-  "description": "Mailbox Plugin for TINKER",
+  "version": "0.1.3",
+  "description": "Email client for reading and sending mail",
   "files": [
     "dist/",
     "icon.png"
@@ -26,7 +26,7 @@
   ],
   "tinker": {
     "name": "Mailbox",
-    "description": "Email client for reading and sending mail",
+    "category": "productivity",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",

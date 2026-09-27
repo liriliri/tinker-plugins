@@ -4,9 +4,10 @@ import find from 'licia/find'
 import isArr from 'licia/isArr'
 import isEmpty from 'licia/isEmpty'
 import isStrBlank from 'licia/isStrBlank'
-import LocalStore from 'licia/LocalStore'
 import map from 'licia/map'
 import trim from 'licia/trim'
+import BaseStore, { storage } from 'tinker-share/store/Base'
+import { errorMessage } from 'tinker-share/lib/util'
 import type {
   Account,
   ComposePayload,
@@ -50,8 +51,6 @@ const MESSAGE_CACHE_KEEP = 2000
 const STORAGE_ACCOUNTS = 'accounts'
 const STORAGE_READER_DARK = 'readerDark'
 
-const storage = new LocalStore('tinker-mailbox')
-
 function loadStoredAccounts(): Account[] {
   const saved = storage.get(STORAGE_ACCOUNTS)
   return isArr(saved) ? (saved as Account[]) : []
@@ -61,7 +60,7 @@ function saveStoredAccounts(accounts: Account[]) {
   storage.set(STORAGE_ACCOUNTS, accounts)
 }
 
-export class Store {
+export class Store extends BaseStore {
   readonly mcp = createMcpApi(() => this)
 
   accounts: Account[] = []
@@ -96,6 +95,7 @@ export class Store {
   private folderSyncTail: Promise<void> = Promise.resolve()
 
   constructor() {
+    super()
     makeAutoObservable(this, {
       mcp: false,
     })
@@ -141,7 +141,7 @@ export class Store {
         return
       }
       void this.syncFolderMessages(path, { force }).catch((err) => {
-        this.showToast(String(err))
+        this.showToast(errorMessage(err))
       })
     }, 300)
   }
@@ -242,7 +242,7 @@ export class Store {
       await this.hydrateFromCache(account, session?.folderPath)
       void this.syncAccount(account)
     } catch (err) {
-      this.showToast(String(err))
+      this.showToast(errorMessage(err))
     }
   }
 
@@ -298,7 +298,7 @@ export class Store {
       })
       await this.refreshFolders()
     } catch (err) {
-      this.showToast(String(err))
+      this.showToast(errorMessage(err))
     } finally {
       runInAction(() => {
         this.connecting = false
@@ -340,7 +340,7 @@ export class Store {
         await this.selectFolder(nextFolder, { background: true })
       }
     } catch (err) {
-      this.showToast(String(err))
+      this.showToast(errorMessage(err))
     } finally {
       runInAction(() => {
         this.loadingFolders = false
@@ -407,7 +407,7 @@ export class Store {
       }
       return true
     } catch (err) {
-      this.showToast(String(err))
+      this.showToast(errorMessage(err))
       return false
     } finally {
       runInAction(() => {
@@ -701,7 +701,7 @@ export class Store {
         })
       }
     } catch (err) {
-      this.showToast(String(err))
+      this.showToast(errorMessage(err))
     } finally {
       runInAction(() => {
         this.loadingMore = false
@@ -753,7 +753,7 @@ export class Store {
     folderPath: string,
     uid: number,
   ) {
-    const message = String(err)
+    const message = errorMessage(err)
     if (/not found/i.test(message)) {
       await this.removeMessageLocally(accountId, folderPath, uid)
       await this.selectFolder(folderPath, { force: true })
@@ -824,7 +824,7 @@ export class Store {
         })
       }
     } catch (err) {
-      if (!cached) this.showToast(String(err))
+      if (!cached) this.showToast(errorMessage(err))
     } finally {
       runInAction(() => {
         this.loadingMessage = false
@@ -869,7 +869,7 @@ export class Store {
       this.showToast('accountSaved', 'success')
       await this.selectAccount(normalized)
     } catch (err) {
-      this.showToast(String(err))
+      this.showToast(errorMessage(err))
     } finally {
       runInAction(() => {
         this.testing = false
@@ -918,7 +918,7 @@ export class Store {
       }
       return true
     } catch (err) {
-      this.showToast(String(err))
+      this.showToast(errorMessage(err))
       return false
     } finally {
       if (this.sending) {
