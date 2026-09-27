@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import slice from 'licia/slice'
 import { colors } from '../theme'
 import { renderPath, stickVisualY } from '../lib/util'
 import type { GamepadState } from '../types'
@@ -20,7 +21,7 @@ function useStickPath(x: number, y: number) {
         ...prev,
         [x * RADIUS, stickVisualY(y) * RADIUS],
       ]
-      return updated.length > MAX_POINTS ? updated.slice(-MAX_POINTS) : updated
+      return updated.length > MAX_POINTS ? slice(updated, -MAX_POINTS) : updated
     })
   }, [x, y])
   return { path, clear: () => setPath([]) }

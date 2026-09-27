@@ -1,19 +1,10 @@
 import { makeAutoObservable } from 'mobx'
+import BaseStore from 'tinker-share/store/Base'
 
-class Store {
-  isDark: boolean = false
-
+class Store extends BaseStore {
   constructor() {
+    super()
     makeAutoObservable(this)
-    this.initTheme()
-  }
-
-  private async initTheme() {
-    this.isDark = (await tinker.getTheme()) === 'dark'
-
-    tinker.on('changeTheme', async () => {
-      this.isDark = (await tinker.getTheme()) === 'dark'
-    })
   }
 }
 

@@ -33,7 +33,7 @@ export function readGamepadState(gpad: Gamepad): GamepadState {
 }
 
 export function renderPath(points: [number, number][]) {
-  return points.map(([x, y], i) => `${i === 0 ? 'M' : 'L'}${x},${y}`).join(' ')
+  return map(points, ([x, y], i) => `${i === 0 ? 'M' : 'L'}${x},${y}`).join(' ')
 }
 
 export function stickVisualY(y: number) {

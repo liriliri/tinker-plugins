@@ -1,12 +1,14 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { createRoot } from 'react-dom/client'
 import { observer } from 'mobx-react-lite'
-import i18n from 'i18next'
-import { initReactI18next, useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next'
+import className from 'licia/className'
+import contain from 'licia/contain'
 import filter from 'licia/filter'
 import map from 'licia/map'
+import slice from 'licia/slice'
 import toArr from 'licia/toArr'
 import trim from 'licia/trim'
+import renderApp from 'tinker-share/lib/renderApp'
 import { XboxSVG } from './components/XboxSVG'
 import { AxesSVG } from './components/AxesSVG'
 import store from './store'
@@ -65,7 +67,11 @@ const DEFAULT_STATE: GamepadState = {
 
 const AXES_LABELS = ['leftX', 'leftY', 'rightX', 'rightY']
 
-function GridOverlay({ pattern }: { pattern: string }) {
+interface GridOverlayProps {
+  pattern: string
+}
+
+function GridOverlay({ pattern }: GridOverlayProps) {
   return (
     <div
       className="absolute inset-0 pointer-events-none"
@@ -91,19 +97,7 @@ function getConnectedIndices(gpads: GamepadList) {
   )
 }
 
-i18n.use(initReactI18next).init({
-  resources: {
-    'en-US': { translation: enUS },
-    'zh-CN': { translation: zhCN },
-  },
-  lng: 'en-US',
-  fallbackLng: 'en-US',
-  interpolation: {
-    escapeValue: false,
-  },
-})
-
-const Gamepad = observer(() => {
+const Gamepad = observer(function Gamepad() {
   const { isDark } = store
   const { t } = useTranslation()
   const [state, setState] = useState<GamepadState>(DEFAULT_STATE)
@@ -141,7 +135,7 @@ const Gamepad = observer(() => {
       })
 
       setSelectedIndex((prev) => {
-        if (connected.includes(prev)) return prev
+        if (contain(connected, prev)) return prev
         return connected[0] ?? 0
       })
 
@@ -163,29 +157,41 @@ const Gamepad = observer(() => {
   if (connectedIndices.length === 0) {
     return (
       <div
-        className={`h-screen flex items-center justify-center font-mono ${tw.appBg(isDark)}`}
+        className={className(
+          'h-screen flex items-center justify-center font-mono',
+          tw.appBg(isDark),
+        )}
       >
         <GridOverlay pattern={theme.gridPattern} />
         <div className="relative text-center space-y-5">
           <div className="flex justify-center">
             <div className="relative flex items-center justify-center w-24 h-24">
               <div
-                className={`absolute inset-0 rounded-full border animate-ping-slow ${tw.waitingRing}`}
+                className={className(
+                  'absolute inset-0 rounded-full border animate-ping-slow',
+                  tw.waitingRing,
+                )}
               />
               <div
-                className={`absolute inset-3 rounded-full border ${tw.waitingRingDim}`}
+                className={className(
+                  'absolute inset-3 rounded-full border',
+                  tw.waitingRingDim,
+                )}
               />
               <span className="text-5xl animate-float">🎮</span>
             </div>
           </div>
           <div>
             <p
-              className={`text-xs tracking-[0.25em] uppercase ${tw.waitingText}`}
+              className={className(
+                'text-xs tracking-[0.25em] uppercase',
+                tw.waitingText,
+              )}
             >
               {t('waitingForInput')}
               <span className="animate-blink">_</span>
             </p>
-            <p className={`text-xs mt-2 ${tw.connectHint(isDark)}`}>
+            <p className={className('text-xs mt-2', tw.connectHint(isDark))}>
               {t('connectPrompt')}
             </p>
           </div>
@@ -239,7 +245,10 @@ const Gamepad = observer(() => {
 
   return (
     <div
-      className={`h-screen overflow-hidden flex flex-col font-mono ${tw.appBg(isDark)}`}
+      className={className(
+        'h-screen overflow-hidden flex flex-col font-mono',
+        tw.appBg(isDark),
+      )}
     >
       <GridOverlay pattern={gridPattern} />
 
@@ -257,34 +266,43 @@ const Gamepad = observer(() => {
           >
             {deviceName}
           </div>
-          {deviceSub && (
-            <div className={`text-xs truncate ${tw.sectionLabel}`}>
+          {deviceSub ? (
+            <div className={className('text-xs truncate', tw.sectionLabel)}>
               {deviceSub}
             </div>
-          )}
+          ) : null}
         </div>
         <div className="flex items-center gap-1.5 ml-3 shrink-0">
-          {connectedIndices.length > 1 &&
-            connectedIndices.map((idx) => (
-              <button
-                key={idx}
-                onClick={() => setSelectedIndex(idx)}
-                className="text-xs tracking-widest uppercase px-2 py-0.5 rounded transition-colors"
-                style={{
-                  border: `1px solid ${idx === selectedIndex ? accentColor : panelBorder}`,
-                  color: idx === selectedIndex ? accentColor : btnUnpressedText,
-                  background: idx === selectedIndex ? accentDim : 'transparent',
-                }}
-              >
-                P{idx + 1}
-              </button>
-            ))}
+          {connectedIndices.length > 1
+            ? map(connectedIndices, (idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setSelectedIndex(idx)}
+                  className="text-xs tracking-widest uppercase px-2 py-0.5 rounded transition-colors"
+                  style={{
+                    border: `1px solid ${idx === selectedIndex ? accentColor : panelBorder}`,
+                    color:
+                      idx === selectedIndex ? accentColor : btnUnpressedText,
+                    background:
+                      idx === selectedIndex ? accentDim : 'transparent',
+                  }}
+                >
+                  P{idx + 1}
+                </button>
+              ))
+            : null}
           <div
-            className={`w-1.5 h-1.5 rounded-full ml-1 ${tw.connectedDot}`}
+            className={className(
+              'w-1.5 h-1.5 rounded-full ml-1',
+              tw.connectedDot,
+            )}
             style={{ boxShadow: CONNECTED_GLOW }}
           />
           <span
-            className={`text-xs tracking-widest uppercase ${tw.connectedText}`}
+            className={className(
+              'text-xs tracking-widest uppercase',
+              tw.connectedText,
+            )}
           >
             {t('connected')}
           </span>
@@ -298,11 +316,14 @@ const Gamepad = observer(() => {
             style={panelStyle(panelBg, panelBorder)}
           >
             <div
-              className={`text-xs tracking-[0.2em] uppercase ${tw.sectionLabel}`}
+              className={className(
+                'text-xs tracking-[0.2em] uppercase',
+                tw.sectionLabel,
+              )}
             >
               {t('axes')}
             </div>
-            {state.axes.map((val, i) => (
+            {map(state.axes, (val, i) => (
               <div key={i} className="space-y-0.5">
                 <div className="flex justify-between text-xs">
                   <span className={tw.sectionLabel}>
@@ -337,21 +358,24 @@ const Gamepad = observer(() => {
             style={panelStyle(panelBg, panelBorder)}
           >
             <div
-              className={`text-xs tracking-[0.2em] uppercase mb-2 ${tw.sectionLabel}`}
+              className={className(
+                'text-xs tracking-[0.2em] uppercase mb-2',
+                tw.sectionLabel,
+              )}
             >
               {t('buttons')}
             </div>
             <div className="grid grid-cols-4 gap-1">
-              {state.buttonValues.slice(0, 16).map((val, i) => (
+              {map(slice(state.buttonValues, 0, 16), (val, i) => (
                 <div
                   key={i}
                   className="flex flex-col items-center justify-center text-xs rounded py-2 transition-none h-10"
                   style={getButtonStyle(i, val)}
                 >
                   <span>{BUTTON_LABELS[i] ?? `B${i}`}</span>
-                  {(i === 6 || i === 7) && (
+                  {i === 6 || i === 7 ? (
                     <span className="text-[11px]">{val.toFixed(2)}</span>
-                  )}
+                  ) : null}
                 </div>
               ))}
             </div>
@@ -369,10 +393,7 @@ const Gamepad = observer(() => {
   )
 })
 
-;(async function () {
-  const language = await tinker.getLanguage()
-  i18n.changeLanguage(language)
-
-  const container = document.getElementById('app') as HTMLElement
-  createRoot(container).render(<Gamepad />)
-})()
+renderApp(Gamepad, {
+  'en-US': enUS,
+  'zh-CN': zhCN,
+})
