@@ -3,15 +3,18 @@ import clamp from 'licia/clamp'
 import filter from 'licia/filter'
 import find from 'licia/find'
 import findIdx from 'licia/findIdx'
+import isBool from 'licia/isBool'
 import isEmpty from 'licia/isEmpty'
-import isErr from 'licia/isErr'
 import isNaN from 'licia/isNaN'
-import LocalStore from 'licia/LocalStore'
+import lowerCase from 'licia/lowerCase'
 import rtrim from 'licia/rtrim'
+import slice from 'licia/slice'
 import some from 'licia/some'
 import splitPath from 'licia/splitPath'
 import toNum from 'licia/toNum'
 import toStr from 'licia/toStr'
+import BaseStore, { storage } from 'tinker-share/store/Base'
+import { errorMessage } from 'tinker-share/lib/util'
 import type { GltfItem, OptimizeOptions } from '../common/types'
 import {
   DEFAULT_QUALITY,
@@ -21,9 +24,12 @@ import {
 import { getOutputPath } from './lib/util'
 import { createMcpApi } from './mcp'
 
-const settings = new LocalStore('tinker-gltf-optimizer')
+const STORAGE_OUTPUT_DIR = 'outputDir'
+const STORAGE_QUALITY = 'quality'
+const STORAGE_DRACO = 'dracoEnabled'
+const STORAGE_SIMPLIFY = 'simplifyEnabled'
 
-export class Store {
+export class Store extends BaseStore {
   readonly mcp = createMcpApi(() => this)
 
   items: GltfItem[] = []
@@ -34,20 +40,21 @@ export class Store {
   private stopRequested = false
 
   constructor() {
+    super()
     makeAutoObservable(this, {
       mcp: false,
       stopRequested: false,
-    } as Record<string, false>)
+    })
     this.loadStorage()
   }
 
   private loadStorage() {
-    const savedOutputDir = settings.get('outputDir')
+    const savedOutputDir = storage.get(STORAGE_OUTPUT_DIR)
     if (savedOutputDir) {
       this.outputDir = savedOutputDir
     }
 
-    const savedQuality = settings.get('quality')
+    const savedQuality = storage.get(STORAGE_QUALITY)
     if (savedQuality != null) {
       const quality = clamp(toNum(savedQuality), 0, QUALITY_PRESETS.length - 1)
       if (!isNaN(quality)) {
@@ -55,13 +62,17 @@ export class Store {
       }
     }
 
-    const savedDracoEnabled = settings.get('dracoEnabled')
-    if (savedDracoEnabled != null) {
+    const savedDracoEnabled = storage.get(STORAGE_DRACO)
+    if (isBool(savedDracoEnabled)) {
+      this.dracoEnabled = savedDracoEnabled
+    } else if (savedDracoEnabled != null) {
       this.dracoEnabled = savedDracoEnabled === 'true'
     }
 
-    const savedSimplifyEnabled = settings.get('simplifyEnabled')
-    if (savedSimplifyEnabled != null) {
+    const savedSimplifyEnabled = storage.get(STORAGE_SIMPLIFY)
+    if (isBool(savedSimplifyEnabled)) {
+      this.simplifyEnabled = savedSimplifyEnabled
+    } else if (savedSimplifyEnabled != null) {
       this.simplifyEnabled = savedSimplifyEnabled === 'true'
     }
   }
@@ -93,14 +104,14 @@ export class Store {
   setSimplifyEnabled(enabled: boolean) {
     if (this.simplifyEnabled === enabled) return
     this.simplifyEnabled = enabled
-    settings.set('simplifyEnabled', enabled ? 'true' : 'false')
+    storage.set(STORAGE_SIMPLIFY, enabled)
     this.resetOptimizedItems()
   }
 
   setDracoEnabled(enabled: boolean) {
     if (this.dracoEnabled === enabled) return
     this.dracoEnabled = enabled
-    settings.set('dracoEnabled', enabled ? 'true' : 'false')
+    storage.set(STORAGE_DRACO, enabled)
     this.resetOptimizedItems()
   }
 
@@ -108,7 +119,7 @@ export class Store {
     const next = clamp(quality, 0, QUALITY_PRESETS.length - 1)
     if (next === this.quality) return
     this.quality = next
-    settings.set('quality', toStr(this.quality))
+    storage.set(STORAGE_QUALITY, toStr(this.quality))
     this.resetOptimizedItems()
   }
 
@@ -116,7 +127,7 @@ export class Store {
     const next = rtrim(dir, ['/', '\\'])
     if (next === this.outputDir) return
     this.outputDir = next
-    settings.set('outputDir', this.outputDir)
+    storage.set(STORAGE_OUTPUT_DIR, this.outputDir)
     this.resetOptimizedItems()
   }
 
@@ -168,7 +179,7 @@ export class Store {
     }
 
     const { ext, name } = splitPath(filePath)
-    if (!GLTF_EXTENSIONS.has(ext.slice(1).toLowerCase())) {
+    if (!GLTF_EXTENSIONS.has(lowerCase(slice(ext, 1)))) {
       return
     }
 
@@ -249,7 +260,7 @@ export class Store {
       })
     } catch (err) {
       runInAction(() => {
-        item.error = isErr(err) ? err.message : toStr(err)
+        item.error = errorMessage(err)
         item.isOptimizing = false
       })
     }

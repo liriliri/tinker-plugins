@@ -2,6 +2,7 @@ import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import { AlertCircle, Box, Check, Loader2 } from 'lucide-react'
 import type { MenuItemConstructorOptions } from 'electron'
+import className from 'licia/className'
 import map from 'licia/map'
 import type { GltfItem } from '../../common/types'
 import { tw } from '../theme'
@@ -57,31 +58,50 @@ const ModelRow = observer(function ModelRow({ item }: ModelRowProps) {
 
   return (
     <div
-      className={`relative flex items-center gap-3 pl-3 pr-3 py-2.5 border-b last:border-b-0 ${tw.border} ${
-        item.isOptimizing ? tw.bg.rowBusy : tw.bg.row
-      } select-none transition-colors`}
+      className={className(
+        'relative flex items-center gap-3 pl-3 pr-3 py-2.5 border-b last:border-b-0 select-none transition-colors',
+        tw.border,
+        item.isOptimizing ? tw.bg.rowBusy : tw.bg.row,
+      )}
       onContextMenu={(e) => {
         void handleContextMenu(e)
       }}
     >
       {item.isOptimizing ? (
         <div
-          className={`absolute left-0 top-0 bottom-0 w-0.5 ${tw.accent.bar} ${tw.busyBar}`}
+          className={className(
+            'absolute left-0 top-0 bottom-0 w-0.5',
+            tw.accent.bar,
+            tw.busyBar,
+          )}
         />
       ) : null}
 
       <div
-        className={`w-8 h-8 flex items-center justify-center rounded ${tw.bg.iconWell} ${tw.text.secondary} shrink-0`}
+        className={className(
+          'w-8 h-8 flex items-center justify-center rounded shrink-0',
+          tw.bg.iconWell,
+          tw.text.secondary,
+        )}
       >
         <Box size={15} strokeWidth={1.75} />
       </div>
 
       <div className="flex-1 min-w-0">
-        <div className={`text-[12px] font-medium truncate ${tw.text.primary}`}>
+        <div
+          className={className(
+            'text-[12px] font-medium truncate',
+            tw.text.primary,
+          )}
+        >
           {item.fileName}
         </div>
         <div
-          className={`mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[10px] ${tw.mono} ${tw.text.muted}`}
+          className={className(
+            'mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[10px]',
+            tw.mono,
+            tw.text.muted,
+          )}
         >
           <span>
             {t('size')} {formatSize(item.originalSize)}
@@ -102,29 +122,41 @@ const ModelRow = observer(function ModelRow({ item }: ModelRowProps) {
 
       <div className="shrink-0 flex items-center gap-2 min-w-[5.5rem] justify-end">
         {item.isOptimizing ? (
-          <Loader2 size={14} className={`${tw.accent.text} animate-spin`} />
+          <Loader2
+            size={14}
+            className={className(tw.accent.text, 'animate-spin')}
+          />
         ) : null}
 
         {item.isDone ? (
           <div className="flex items-center gap-2">
             <div className="text-right">
               <div
-                className={`text-[12px] font-medium ${tw.mono} ${tw.text.primary}`}
+                className={className(
+                  'text-[12px] font-medium',
+                  tw.mono,
+                  tw.text.primary,
+                )}
               >
                 {formatSize(item.outputSize)}
               </div>
               {item.originalSize > 0 ? (
                 <div
-                  className={`text-[10px] font-semibold ${tw.mono} ${
-                    isSmaller(item) ? tw.status.success : tw.status.error
-                  }`}
+                  className={className(
+                    'text-[10px] font-semibold',
+                    tw.mono,
+                    isSmaller(item) ? tw.status.success : tw.status.error,
+                  )}
                 >
                   {getReduction(item)}
                 </div>
               ) : null}
             </div>
             <div
-              className={`w-4 h-4 rounded-full flex items-center justify-center ${tw.accent.soft}`}
+              className={className(
+                'w-4 h-4 rounded-full flex items-center justify-center',
+                tw.accent.soft,
+              )}
             >
               <Check size={10} className={tw.status.success} strokeWidth={3} />
             </div>
@@ -133,8 +165,13 @@ const ModelRow = observer(function ModelRow({ item }: ModelRowProps) {
 
         {item.error ? (
           <div className="flex items-center gap-1 max-w-36" title={item.error}>
-            <AlertCircle size={13} className={`${tw.status.error} shrink-0`} />
-            <span className={`text-[10px] ${tw.status.error} truncate`}>
+            <AlertCircle
+              size={13}
+              className={className(tw.status.error, 'shrink-0')}
+            />
+            <span
+              className={className('text-[10px] truncate', tw.status.error)}
+            >
               {item.error.split('\n')[0]}
             </span>
           </div>
@@ -148,7 +185,12 @@ export default observer(function ModelList() {
   return (
     <div className="flex-1 overflow-y-auto px-2 py-2">
       <div
-        className={`rounded border overflow-hidden ${tw.border} ${tw.bg.surface} ${tw.panel}`}
+        className={className(
+          'rounded border overflow-hidden',
+          tw.border,
+          tw.bg.surface,
+          tw.panel,
+        )}
       >
         {map(store.items, (item) => (
           <ModelRow key={item.id} item={item} />

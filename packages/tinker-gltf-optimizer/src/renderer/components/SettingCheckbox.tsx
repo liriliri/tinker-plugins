@@ -1,3 +1,4 @@
+import className from 'licia/className'
 import { tw } from '../theme'
 
 interface SettingCheckboxProps {
@@ -22,7 +23,12 @@ export default function SettingCheckbox({
         disabled={disabled}
         className={tw.checkbox}
       />
-      <span className={`text-[11px] uppercase tracking-wide ${tw.text.muted}`}>
+      <span
+        className={className(
+          'text-[11px] uppercase tracking-wide',
+          tw.text.muted,
+        )}
+      >
         {label}
       </span>
     </label>

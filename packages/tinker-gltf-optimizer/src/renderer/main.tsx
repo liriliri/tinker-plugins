@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import { createRoot } from 'react-dom/client'
 import { observer } from 'mobx-react-lite'
-import i18n from 'i18next'
-import { initReactI18next, useTranslation } from 'react-i18next'
-import { Box } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
+import className from 'licia/className'
 import filter from 'licia/filter'
 import last from 'licia/last'
 import toArr from 'licia/toArr'
+import { Box } from 'lucide-react'
+import renderApp from 'tinker-share/lib/renderApp'
 import Toolbar from './components/Toolbar'
 import ModelList from './components/ModelList'
 import { tw } from './theme'
@@ -15,18 +15,6 @@ import { GLTF_EXTENSIONS } from './lib/constants'
 import enUS from './i18n/en-US.json'
 import zhCN from './i18n/zh-CN.json'
 import './index.scss'
-
-i18n.use(initReactI18next).init({
-  resources: {
-    'en-US': { translation: enUS },
-    'zh-CN': { translation: zhCN },
-  },
-  lng: 'en-US',
-  fallbackLng: 'en-US',
-  interpolation: {
-    escapeValue: false,
-  },
-})
 
 const App = observer(function App() {
   const { t } = useTranslation()
@@ -73,7 +61,7 @@ const App = observer(function App() {
 
   return (
     <div
-      className={`h-screen flex flex-col ${tw.bg.app} overflow-hidden`}
+      className={className('h-screen flex flex-col overflow-hidden', tw.bg.app)}
       onDragOver={handleDragOver}
       onDrop={handleDrop}
     >
@@ -85,31 +73,43 @@ const App = observer(function App() {
             onClick={() => store.openFileDialog()}
             onDragEnter={handleDragEnter}
             onDragLeave={handleDragLeave}
-            className={`relative flex-1 flex flex-col items-center justify-center cursor-pointer transition-colors ${
-              isDragging ? tw.dropzone.active : ''
-            }`}
+            className={className(
+              'relative flex-1 flex flex-col items-center justify-center cursor-pointer transition-colors',
+              isDragging && tw.dropzone.active,
+            )}
           >
             <div
-              className={`absolute inset-0 pointer-events-none opacity-60 ${tw.meshGrid}`}
+              className={className(
+                'absolute inset-0 pointer-events-none opacity-60',
+                tw.meshGrid,
+              )}
             />
             <div className="relative flex flex-col items-center gap-4 pointer-events-none">
               <div
-                className={`w-14 h-14 rounded-lg border-2 border-dashed flex items-center justify-center transition-colors ${
-                  isDragging ? tw.dropzone.frameActive : tw.dropzone.frame
-                } ${tw.bg.surface}`}
+                className={className(
+                  'w-14 h-14 rounded-lg border-2 border-dashed flex items-center justify-center transition-colors',
+                  isDragging ? tw.dropzone.frameActive : tw.dropzone.frame,
+                  tw.bg.surface,
+                )}
               >
                 <Box
-                  className={`w-7 h-7 transition-colors ${
-                    isDragging ? tw.accent.text : tw.text.muted
-                  }`}
+                  className={className(
+                    'w-7 h-7 transition-colors',
+                    isDragging ? tw.accent.text : tw.text.muted,
+                  )}
                   strokeWidth={1.5}
                 />
               </div>
               <div className="flex flex-col items-center gap-1">
-                <p className={`text-[13px] font-medium ${tw.text.primary}`}>
+                <p
+                  className={className(
+                    'text-[13px] font-medium',
+                    tw.text.primary,
+                  )}
+                >
                   {t('openTitle')}
                 </p>
-                <p className={`text-[11px] ${tw.mono} ${tw.text.muted}`}>
+                <p className={className('text-[11px]', tw.mono, tw.text.muted)}>
                   {t('supportedFormats')}
                 </p>
               </div>
@@ -123,14 +123,7 @@ const App = observer(function App() {
   )
 })
 
-;(async function () {
-  const language = await tinker.getLanguage()
-  i18n.changeLanguage(language)
-
-  tinker.on('changeLanguage', (lang) => {
-    i18n.changeLanguage(lang)
-  })
-
-  const container = document.getElementById('app') as HTMLElement
-  createRoot(container).render(<App />)
-})()
+renderApp(App, {
+  'en-US': enUS,
+  'zh-CN': zhCN,
+})

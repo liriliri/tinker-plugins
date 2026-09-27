@@ -1,14 +1,16 @@
+import endWith from 'licia/endWith'
 import fileSize from 'licia/fileSize'
 import normalizePath from 'licia/normalizePath'
 import rtrim from 'licia/rtrim'
+import slice from 'licia/slice'
 import splitPath from 'licia/splitPath'
 import toNum from 'licia/toNum'
 import type { GltfItem } from '../../common/types'
 
 function getStemName(inputPath: string): string {
   const { name, ext } = splitPath(inputPath)
-  if (ext && name.endsWith(ext)) {
-    return name.slice(0, -ext.length)
+  if (ext && endWith(name, ext)) {
+    return slice(name, 0, -ext.length)
   }
   return name
 }
