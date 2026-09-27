@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
-import { createRoot } from 'react-dom/client'
 import { observer } from 'mobx-react-lite'
-import i18n from 'i18next'
-import { initReactI18next } from 'react-i18next'
+import className from 'licia/className'
+import renderApp from 'tinker-share/lib/renderApp'
 import { MouseVisual } from './components/MouseVisual'
 import { MouseInfo } from './components/MouseInfo'
 import store from './store'
@@ -11,19 +10,7 @@ import enUS from './i18n/en-US.json'
 import zhCN from './i18n/zh-CN.json'
 import './index.scss'
 
-i18n.use(initReactI18next).init({
-  resources: {
-    'en-US': { translation: enUS },
-    'zh-CN': { translation: zhCN },
-  },
-  lng: 'en-US',
-  fallbackLng: 'en-US',
-  interpolation: {
-    escapeValue: false,
-  },
-})
-
-const MouseTester = observer(() => {
+const App = observer(function App() {
   const { isDark, padGlow } = store
   const panelRef = useRef<HTMLDivElement>(null)
   const [entered, setEntered] = useState(false)
@@ -89,7 +76,10 @@ const MouseTester = observer(() => {
   return (
     <div
       ref={panelRef}
-      className={`h-screen overflow-hidden relative select-none ${tw.appShell}`}
+      className={className(
+        'h-screen overflow-hidden relative select-none',
+        tw.appShell,
+      )}
       style={{
         background: `radial-gradient(ellipse 80% 60% at 40% 45%, ${colors.void(isDark)} 0%, ${colors.voidDeep(isDark)} 100%)`,
         color: colors.chalk(isDark),
@@ -104,7 +94,10 @@ const MouseTester = observer(() => {
 
       <div className="relative h-full flex items-center justify-center gap-12 px-8 flex-wrap">
         <div
-          className={`relative w-[360px] h-[360px] flex items-center justify-center shrink-0 transition-all duration-700 ${entered ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+          className={className(
+            'relative w-[360px] h-[360px] flex items-center justify-center shrink-0 transition-all duration-700',
+            entered ? 'opacity-100 scale-100' : 'opacity-0 scale-95',
+          )}
         >
           <div
             className="absolute inset-0 rounded-full pointer-events-none"
@@ -136,7 +129,10 @@ const MouseTester = observer(() => {
         </div>
 
         <div
-          className={`shrink-0 transition-all duration-700 delay-200 ${entered ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}`}
+          className={className(
+            'shrink-0 transition-all duration-700 delay-200',
+            entered ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4',
+          )}
         >
           <MouseInfo />
         </div>
@@ -145,10 +141,4 @@ const MouseTester = observer(() => {
   )
 })
 
-;(async function () {
-  const language = await tinker.getLanguage()
-  i18n.changeLanguage(language)
-
-  const container = document.getElementById('app') as HTMLElement
-  createRoot(container).render(<MouseTester />)
-})()
+renderApp(App, { 'en-US': enUS, 'zh-CN': zhCN })

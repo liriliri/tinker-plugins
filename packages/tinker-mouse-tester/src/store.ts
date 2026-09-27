@@ -1,11 +1,11 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 import clamp from 'licia/clamp'
 import debounce from 'licia/debounce'
+import BaseStore from 'tinker-share/store/Base'
 import { buttonName } from './lib/util'
 import type { MousePoint, WheelDirection } from './types'
 
-class Store {
-  isDark = false
+class Store extends BaseStore {
   pressed = new Set<number>()
   wheel: WheelDirection = null
   lastButton: string | null = null
@@ -28,8 +28,11 @@ class Store {
   }, 160)
 
   constructor() {
-    makeAutoObservable(this)
-    this.initTheme()
+    super()
+    makeAutoObservable(this, {
+      resetActivity: false,
+      resetWheel: false,
+    })
   }
 
   get tracking() {
@@ -71,14 +74,6 @@ class Store {
     this.pressed.clear()
     this.wheel = null
     this.activity = 0
-  }
-
-  private async initTheme() {
-    this.isDark = (await tinker.getTheme()) === 'dark'
-
-    tinker.on('changeTheme', async () => {
-      this.isDark = (await tinker.getTheme()) === 'dark'
-    })
   }
 }
 

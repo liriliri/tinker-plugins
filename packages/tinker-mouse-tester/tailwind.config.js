@@ -1,16 +1,25 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Familjen Grotesk', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: [
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'Segoe UI',
+          'PingFang SC',
+          'Hiragino Sans GB',
+          'Microsoft YaHei',
+          'sans-serif',
+        ],
         mono: [
-          'IBM Plex Mono',
           'ui-monospace',
           'SF Mono',
           'Menlo',
           'Consolas',
+          'Liberation Mono',
           'monospace',
         ],
       },

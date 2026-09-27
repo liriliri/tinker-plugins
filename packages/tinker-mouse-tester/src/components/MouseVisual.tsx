@@ -172,7 +172,7 @@ export const MouseVisual = observer(function MouseVisual() {
             fill={left ? textOn : text}
             fontSize="13"
             fontWeight="700"
-            fontFamily="Familjen Grotesk, sans-serif"
+            fontFamily="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
           >
             L
           </text>
@@ -198,7 +198,7 @@ export const MouseVisual = observer(function MouseVisual() {
             fill={right ? textOn : text}
             fontSize="13"
             fontWeight="700"
-            fontFamily="Familjen Grotesk, sans-serif"
+            fontFamily="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
           >
             R
           </text>
