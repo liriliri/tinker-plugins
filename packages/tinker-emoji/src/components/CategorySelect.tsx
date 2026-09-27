@@ -1,6 +1,7 @@
 import { observer } from 'mobx-react-lite'
 import * as Select from '@radix-ui/react-select'
 import className from 'licia/className'
+import map from 'licia/map'
 import safeGet from 'licia/safeGet'
 import { useTranslation } from 'react-i18next'
 import { ChevronDown } from 'lucide-react'
@@ -61,7 +62,7 @@ const CategorySelect = observer(() => {
           sideOffset={5}
         >
           <Select.Viewport className="p-1">
-            {store.categoryOptions.map((cat) => (
+            {map(store.categoryOptions, (cat) => (
               <Select.Item
                 key={cat}
                 value={cat}

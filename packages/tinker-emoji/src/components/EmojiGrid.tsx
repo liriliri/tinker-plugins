@@ -3,6 +3,7 @@ import * as ScrollArea from '@radix-ui/react-scroll-area'
 import * as Tooltip from '@radix-ui/react-tooltip'
 import className from 'licia/className'
 import isEmpty from 'licia/isEmpty'
+import map from 'licia/map'
 import { useTranslation } from 'react-i18next'
 import { tw } from '../theme'
 import store from '../store'
@@ -41,7 +42,7 @@ const EmojiGrid = observer(() => {
       <ScrollArea.Root className="h-full">
         <ScrollArea.Viewport className="h-full w-full">
           <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12 gap-1 px-2 py-2">
-            {emojis.map((emoji) => (
+            {map(emojis, (emoji) => (
               <EmojiCard key={emoji.emoji} emoji={emoji} />
             ))}
           </div>

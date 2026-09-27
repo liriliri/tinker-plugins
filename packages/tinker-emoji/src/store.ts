@@ -1,21 +1,23 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 import concat from 'licia/concat'
+import BaseStore from 'tinker-share/store/Base'
 import type { EmojiData } from './types'
 import { buildCategoryList, filterEmojis } from './lib/emoji'
 
-class Store {
+class Store extends BaseStore {
   emojis: EmojiData[] = []
   categoryList: string[] = []
 
-  selectedCategory: string = 'all'
-  searchQuery: string = ''
+  selectedCategory = 'all'
+  searchQuery = ''
 
-  isLoading: boolean = true
-  loadError: boolean = false
+  isLoading = true
+  loadError = false
 
   constructor() {
+    super()
     makeAutoObservable(this)
-    this.loadData()
+    void this.loadData()
   }
 
   async loadData() {
@@ -27,12 +29,11 @@ class Store {
         this.categoryList = buildCategoryList(this.emojis)
         this.isLoading = false
       })
-    } catch (err) {
+    } catch {
       runInAction(() => {
         this.loadError = true
         this.isLoading = false
       })
-      console.error('Failed to load emoji data:', err)
     }
   }
 
@@ -53,7 +54,7 @@ class Store {
   }
 
   copyToClipboard(emoji: string) {
-    navigator.clipboard.writeText(emoji)
+    void navigator.clipboard.writeText(emoji)
   }
 }
 
