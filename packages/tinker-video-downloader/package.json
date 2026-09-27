@@ -1,7 +1,7 @@
 {
   "name": "tinker-video-downloader",
-  "version": "0.1.0",
-  "description": "Video Downloader Plugin for TINKER (based on yt-dlp)",
+  "version": "0.1.1",
+  "description": "Download videos with yt-dlp",
   "files": [
     "dist/",
     "icon.png"
@@ -27,6 +27,7 @@
   ],
   "tinker": {
     "name": "Video Downloader",
+    "category": "media",
     "description": "Download videos with yt-dlp",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",

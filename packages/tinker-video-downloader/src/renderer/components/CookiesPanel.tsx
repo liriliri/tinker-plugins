@@ -8,8 +8,7 @@ import uuid from 'licia/uuid'
 import trim from 'licia/trim'
 import filter from 'licia/filter'
 import findIdx from 'licia/findIdx'
-import isErr from 'licia/isErr'
-import toStr from 'licia/toStr'
+import { errorMessage } from 'tinker-share/lib/util'
 import store from '../store'
 import { tw } from '../theme'
 import { parseCookiesTxt } from '../../common/cookies'
@@ -90,7 +89,7 @@ const CookiesPanel = observer(() => {
       store.setCookies(Array.from(byKey.values()))
       store.showToast('cookiesImportOk', 'success')
     } catch (err: unknown) {
-      store.showToast(isErr(err) ? err.message : toStr(err), 'error')
+      store.showToast(errorMessage(err), 'error')
     }
   }
 

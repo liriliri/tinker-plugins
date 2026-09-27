@@ -1,22 +1,20 @@
 import { makeAutoObservable, runInAction } from 'mobx'
-import LocalStore from 'licia/LocalStore'
 import uuid from 'licia/uuid'
 import map from 'licia/map'
 import filter from 'licia/filter'
+import isArr from 'licia/isArr'
 import startWith from 'licia/startWith'
 import trim from 'licia/trim'
-import isErr from 'licia/isErr'
-import toStr from 'licia/toStr'
+import BaseStore, { storage } from 'tinker-share/store/Base'
+import { errorMessage } from 'tinker-share/lib/util'
 import type { TaskData, Settings } from './types'
 import type { VideoInfo, VideoFormat } from '../common/types'
 import { createMcpApi } from './mcp'
 import { extractUrl, isYouTubeUrl, needsCookiesHint } from './lib/util'
 
-const storage = new LocalStore('tinker-video-downloader')
-
 export type ToastType = 'info' | 'error' | 'success'
 
-export class Store {
+export class Store extends BaseStore {
   readonly mcp = createMcpApi(() => this)
 
   settings: Settings = {
@@ -44,11 +42,11 @@ export class Store {
   toastType: ToastType = 'info'
 
   constructor() {
+    super()
     makeAutoObservable(this, {
       mcp: false,
     })
     this.loadSettings()
-    void this.init()
   }
 
   private loadSettings() {
@@ -56,10 +54,10 @@ export class Store {
     if (!saved) return
     this.settings.downloadPath = saved.downloadPath || ''
     this.settings.ytDlpPath = saved.ytDlpPath || ''
-    this.settings.cookies = Array.isArray(saved.cookies) ? saved.cookies : []
+    this.settings.cookies = isArr(saved.cookies) ? saved.cookies : []
   }
 
-  private async init() {
+  async init() {
     await this.refreshYtDlpStatus()
     if (this.ytDlpAvailable === false) {
       this.showToast('ytDlpMissing', 'error')
@@ -177,14 +175,14 @@ export class Store {
 
   get downloadingTasks(): TaskData[] {
     return filter(
-      Array.from(this.tasks.values()),
+      [...this.tasks.values()],
       (t) => t.status !== 'done' && t.status !== 'error',
     ).sort((a, b) => b.createdTime - a.createdTime)
   }
 
   get doneTasks(): TaskData[] {
     return filter(
-      Array.from(this.tasks.values()),
+      [...this.tasks.values()],
       (t) => t.status === 'done' || t.status === 'error',
     ).sort((a, b) => b.createdTime - a.createdTime)
   }
@@ -223,9 +221,8 @@ export class Store {
       })
     } catch (err: unknown) {
       console.error('Failed to parse URL:', err)
-      const message = isErr(err) ? err.message : toStr(err)
       runInAction(() => {
-        this.showToast(message, 'error')
+        this.showToast(errorMessage(err), 'error')
       })
     } finally {
       runInAction(() => this.setLoading(false))
@@ -338,7 +335,7 @@ export class Store {
       })
     } catch (err: unknown) {
       console.error('Download failed:', err)
-      const message = isErr(err) ? err.message : toStr(err)
+      const message = errorMessage(err)
       runInAction(() => {
         this.updateTask(taskId, {
           status: 'error',
