@@ -5,7 +5,7 @@ import { Copy, Check } from 'lucide-react'
 import store from '../store'
 import { tw } from '../theme'
 
-const CopyButton = observer(() => {
+const CopyButton = observer(function CopyButton() {
   const { t } = useTranslation()
 
   if (!store.currentResult) return null

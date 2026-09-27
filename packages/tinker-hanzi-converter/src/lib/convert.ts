@@ -1,8 +1,10 @@
 import { pinyin } from 'pinyin'
 import Nzh from 'nzh'
 import stcasc from 'switch-chinese'
-import trim from 'licia/trim'
+import isNaN from 'licia/isNaN'
 import map from 'licia/map'
+import toNum from 'licia/toNum'
+import trim from 'licia/trim'
 import type { IPinyinOptions } from 'pinyin/lib/types/declare'
 import type { PinyinStyle, ChineseMode } from '../types'
 
@@ -27,7 +29,7 @@ export function toRmb(input: string): string {
   const trimmed = trim(input)
   if (!trimmed) return ''
 
-  const num = parseFloat(trimmed)
+  const num = toNum(trimmed)
   if (isNaN(num)) return ''
 
   return Nzh.cn.toMoney(trimmed)

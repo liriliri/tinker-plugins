@@ -4,10 +4,7 @@ import type { Store } from './store'
 export function createMcpApi(getStore: () => Store) {
   const callTool = (name: string, args: Record<string, unknown>) => {
     if (name === 'to_pinyin') {
-      return toPinyin(
-        getStore(),
-        args as { text: string; style?: PinyinStyle },
-      )
+      return toPinyin(getStore(), args as { text: string; style?: PinyinStyle })
     }
     if (name === 'to_rmb') {
       return toRmb(getStore(), args as { amount: string })

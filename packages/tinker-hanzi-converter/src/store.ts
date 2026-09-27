@@ -1,18 +1,21 @@
 import { makeAutoObservable } from 'mobx'
+import delay from 'licia/delay'
+import BaseStore from 'tinker-share/store/Base'
 import { convertChinese, toPinyin, toRmb } from './lib/convert'
 import type { PinyinStyle, ChineseMode, Tool } from './types'
 import { createMcpApi } from './mcp'
 
-export class Store {
+export class Store extends BaseStore {
   readonly mcp = createMcpApi(() => this)
 
   currentTool: Tool = 'pinyin'
-  input: string = ''
+  input = ''
   pinyinStyle: PinyinStyle = 'tone'
   chineseMode: ChineseMode = 'toTraditional'
-  copied: boolean = false
+  copied = false
 
   constructor() {
+    super()
     makeAutoObservable(this, {
       mcp: false,
     })
@@ -62,9 +65,9 @@ export class Store {
 
   copyResult() {
     if (!this.currentResult) return
-    navigator.clipboard.writeText(this.currentResult)
+    void navigator.clipboard.writeText(this.currentResult)
     this.copied = true
-    setTimeout(() => {
+    delay(() => {
       this.copied = false
     }, 1500)
   }

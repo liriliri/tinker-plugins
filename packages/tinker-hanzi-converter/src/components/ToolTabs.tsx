@@ -1,5 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import className from 'licia/className'
+import map from 'licia/map'
 import { useTranslation } from 'react-i18next'
 import store from '../store'
 import { tw } from '../theme'
@@ -11,7 +12,7 @@ const tools: { key: Tool; label: string; icon: string }[] = [
   { key: 'chinese', label: 'tabChinese', icon: '繁' },
 ]
 
-const ToolTabs = observer(() => {
+const ToolTabs = observer(function ToolTabs() {
   const { t } = useTranslation()
 
   return (
@@ -21,14 +22,14 @@ const ToolTabs = observer(() => {
         tw.background.segmented,
       )}
     >
-      {tools.map(({ key, label, icon }) => (
+      {map(tools, ({ key, label, icon }) => (
         <button
           key={key}
           onClick={() => store.setCurrentTool(key)}
           className={className(
             'relative flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm transition-all duration-200',
             store.currentTool === key
-              ? `${tw.segmented.active} ${tw.segmented.tabText}`
+              ? [tw.segmented.active, tw.segmented.tabText]
               : tw.segmented.inactive,
           )}
         >

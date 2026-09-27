@@ -1,12 +1,10 @@
 import { observer } from 'mobx-react-lite'
 import className from 'licia/className'
 import { useTranslation } from 'react-i18next'
+import renderApp from 'tinker-share/lib/renderApp'
 import store from './store'
 import { tw } from './theme'
 import type { PinyinStyle, ChineseMode, Tool, OptionItem } from './types'
-import { createRoot } from 'react-dom/client'
-import i18n from 'i18next'
-import { initReactI18next } from 'react-i18next'
 import enUS from './i18n/en-US.json'
 import zhCN from './i18n/zh-CN.json'
 import ToolTabs from './components/ToolTabs'
@@ -32,7 +30,7 @@ const placeholderKeys: Record<Tool, string> = {
   chinese: 'chinesePlaceholder',
 }
 
-const App = observer(() => {
+const App = observer(function App() {
   const { t } = useTranslation()
 
   const placeholder = t(placeholderKeys[store.currentTool])
@@ -48,21 +46,21 @@ const App = observer(() => {
         <ToolTabs />
 
         <div className="animate-fade-in">
-          {store.currentTool === 'pinyin' && (
+          {store.currentTool === 'pinyin' ? (
             <OptionButtons
               items={pinyinStyles}
               value={store.pinyinStyle}
               onChange={(key) => store.setPinyinStyle(key)}
             />
-          )}
+          ) : null}
 
-          {store.currentTool === 'chinese' && (
+          {store.currentTool === 'chinese' ? (
             <OptionButtons
               items={chineseModes}
               value={store.chineseMode}
               onChange={(key) => store.setChineseMode(key)}
             />
-          )}
+          ) : null}
         </div>
       </div>
 
@@ -104,21 +102,7 @@ const App = observer(() => {
   )
 })
 
-i18n.use(initReactI18next).init({
-  resources: {
-    'en-US': { translation: enUS },
-    'zh-CN': { translation: zhCN },
-  },
-  lng: 'en-US',
-  fallbackLng: 'en-US',
-  interpolation: {
-    escapeValue: false,
-  },
+renderApp(App, {
+  'en-US': enUS,
+  'zh-CN': zhCN,
 })
-;(async function () {
-  const language = await tinker.getLanguage()
-  i18n.changeLanguage(language)
-
-  const container = document.getElementById('app') as HTMLElement
-  createRoot(container).render(<App />)
-})()
