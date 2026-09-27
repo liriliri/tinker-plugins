@@ -1,15 +1,16 @@
 @use 'tailwindcss';
 @config "../../tailwind.config.js";
 
-html.dark {
-  color-scheme: dark;
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
 }
 
 * {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 4px;
   height: 4px;

@@ -1,11 +1,9 @@
 import { useCallback, useState } from 'react'
-import { createRoot } from 'react-dom/client'
 import { observer } from 'mobx-react-lite'
 import { RotateCw, Plus, TrendingUp } from 'lucide-react'
 import { createPortal } from 'react-dom'
-import i18n from 'i18next'
-import { initReactI18next } from 'react-i18next'
 import { useTranslation } from 'react-i18next'
+import renderApp from 'tinker-share/lib/renderApp'
 import store from './store'
 import { tw, getColors } from './theme'
 import SourceCard from './components/SourceCard'
@@ -25,18 +23,6 @@ const SOURCE_GRID_STYLE = {
 }
 
 const DRAG_OVERLAY_STYLE = { height: '380px' }
-
-i18n.use(initReactI18next).init({
-  resources: {
-    'en-US': { translation: enUS },
-    'zh-CN': { translation: zhCN },
-  },
-  lng: 'en-US',
-  fallbackLng: 'en-US',
-  interpolation: {
-    escapeValue: false,
-  },
-})
 
 interface SortableCardProps {
   source: SourceMeta
@@ -78,7 +64,7 @@ function SortableCard({ source }: SortableCardProps) {
   )
 }
 
-const Trending = observer(() => {
+const App = observer(() => {
   const [dialogOpen, setDialogOpen] = useState(false)
   const { t } = useTranslation()
   const allLoading = store.activeSources.some((s) => store.loading[s.id])
@@ -141,10 +127,4 @@ const Trending = observer(() => {
   )
 })
 
-;(async function () {
-  const language = await tinker.getLanguage()
-  i18n.changeLanguage(language)
-
-  const container = document.getElementById('app') as HTMLElement
-  createRoot(container).render(<Trending />)
-})()
+renderApp(App, { 'en-US': enUS, 'zh-CN': zhCN })

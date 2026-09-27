@@ -1,7 +1,7 @@
 {
   "name": "tinker-trending",
-  "version": "0.2.1",
-  "description": "Trending Hot Search Plugin for TINKER",
+  "version": "0.2.2",
+  "description": "Browse trending topics from multiple platforms",
   "files": [
     "dist/",
     "icon.png"
@@ -25,6 +25,7 @@
   ],
   "tinker": {
     "name": "Trending",
+    "category": "productivity",
     "description": "Browse trending topics from multiple platforms",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
@@ -63,7 +64,8 @@
                   "toutiao",
                   "sspai",
                   "tieba",
-                  "steam"
+                  "steam",
+                  "tencent"
                 ],
                 "description": "Source id from list_sources"
               }
@@ -92,7 +94,8 @@
                   "toutiao",
                   "sspai",
                   "tieba",
-                  "steam"
+                  "steam",
+                  "tencent"
                 ],
                 "description": "Source id from list_sources"
               }
@@ -121,7 +124,8 @@
                   "toutiao",
                   "sspai",
                   "tieba",
-                  "steam"
+                  "steam",
+                  "tencent"
                 ],
                 "description": "Active source id to remove"
               }
@@ -134,7 +138,7 @@
       }
     }
   },
-  "devDependencies": {
+  "dependencies": {
     "node-html-parser": "^7.0.1"
   }
 }

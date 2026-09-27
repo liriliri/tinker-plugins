@@ -30,7 +30,7 @@ export async function fetchTencent(): Promise<NewsItem[]> {
   )
   const json = JSON.parse(data) as TencentResponse
   const list = json.idlist?.[0]?.newslist ?? []
-  // First item is a fixed banner, not a ranking entry.
+  // Skip the fixed banner entry at the head of the ranking list.
   const items = filter(list.slice(1), (item) => !!item.id && !!item.title)
   return map(items, (item) => {
     const hotScore = item.hotEvent?.hotScore

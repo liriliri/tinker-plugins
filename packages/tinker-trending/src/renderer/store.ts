@@ -1,14 +1,14 @@
 import { makeAutoObservable, runInAction } from 'mobx'
-import LocalStore from 'licia/LocalStore'
 import compact from 'licia/compact'
 import contain from 'licia/contain'
 import each from 'licia/each'
 import filter from 'licia/filter'
 import find from 'licia/find'
 import idxOf from 'licia/idxOf'
-import isErr from 'licia/isErr'
 import map from 'licia/map'
 import i18n from 'i18next'
+import { storage } from 'tinker-share/store/Base'
+import { errorMessage } from 'tinker-share/lib/util'
 import type { NewsItem, SourceId } from '../common/types'
 import { SOURCES } from './lib/sources'
 import type { SourceMeta } from './types'
@@ -20,10 +20,8 @@ interface CacheEntry {
 }
 
 function getFetchError(err: unknown): string {
-  return isErr(err) ? err.message : i18n.t('fetchFailed')
+  return errorMessage(err) || i18n.t('fetchFailed')
 }
-
-const storage = new LocalStore('tinker-trending')
 
 const STORAGE_ACTIVE_SOURCE_IDS = 'activeSourceIds'
 const STORAGE_LAST_REFRESH_DATE = 'lastRefreshDate'
