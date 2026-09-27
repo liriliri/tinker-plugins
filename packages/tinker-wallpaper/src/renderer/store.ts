@@ -1,27 +1,31 @@
 import { makeAutoObservable } from 'mobx'
 import base64 from 'licia/base64'
+import raf from 'licia/raf'
+import BaseStore from 'tinker-share/store/Base'
+import { errorMessage } from 'tinker-share/lib/util'
 import type { Wallpaper, ImageOption } from '../common/types'
 
-class Store {
-  query: string = ''
-  page: number = 1
+class Store extends BaseStore {
+  query = ''
+  page = 1
   wallpapers: Wallpaper[] = []
-  isLoading: boolean = false
-  hasMore: boolean = true
+  isLoading = false
+  hasMore = true
 
   selectedWallpaper: Wallpaper | null = null
   originalUrl: string | null = null
   imageOptions: ImageOption[] = []
-  selectedUrlIndex: number = -1
-  isLoadingOriginal: boolean = false
+  selectedUrlIndex = -1
+  isLoadingOriginal = false
 
-  isSaving: boolean = false
-  isSetting: boolean = false
+  isSaving = false
+  isSetting = false
 
-  toastOpen: boolean = false
-  toastMsg: string = ''
+  toastOpen = false
+  toastMsg = ''
 
   constructor() {
+    super()
     makeAutoObservable(this)
   }
 
@@ -34,7 +38,7 @@ class Store {
     this.originalUrl = null
     this.imageOptions = []
     this.selectedUrlIndex = -1
-    if (w) this.loadOriginal(w)
+    if (w) void this.loadOriginal(w)
   }
 
   selectUrl(index: number) {
@@ -70,7 +74,7 @@ class Store {
   showError(msg: string) {
     this.toastMsg = msg
     this.toastOpen = false
-    requestAnimationFrame(() => {
+    raf(() => {
       this.toastOpen = true
     })
   }
@@ -93,7 +97,7 @@ class Store {
       this.hasMore = results.length > 0
       if (results.length > 0) this.page++
     } catch (err) {
-      this.showError(String(err))
+      this.showError(errorMessage(err))
     } finally {
       this.isLoading = false
     }
@@ -139,7 +143,7 @@ class Store {
       )
       tinker.showItemInPath(result.filePath)
     } catch (err) {
-      this.showError(String(err))
+      this.showError(errorMessage(err))
     } finally {
       this.isSaving = false
     }
@@ -152,7 +156,7 @@ class Store {
       const base64Str = await wallpaper.fetchImageBase64(this.originalUrl)
       await wallpaper.setWallpaper(base64Str)
     } catch (err) {
-      this.showError(String(err))
+      this.showError(errorMessage(err))
     } finally {
       this.isSetting = false
     }

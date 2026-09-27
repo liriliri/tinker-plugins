@@ -3,10 +3,6 @@ export const tw = {
     app: 'bg-stone-100 dark:bg-stone-950',
     toolbar: 'bg-white dark:bg-stone-900',
   },
-  text: {
-    primary: 'text-stone-900 dark:text-stone-100',
-    muted: 'text-stone-400 dark:text-stone-500',
-  },
   border: {
     divider: 'border-stone-200 dark:border-stone-700',
   },
@@ -14,11 +10,8 @@ export const tw = {
     base: 'bg-stone-100 dark:bg-stone-800 text-stone-900 dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-500 rounded-md px-3 h-8 text-sm outline-none border border-transparent focus:border-emerald-500 transition-colors',
   },
   button: {
-    icon: 'flex items-center justify-center w-8 h-8 rounded-md bg-transparent border-none cursor-pointer text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-stone-800 dark:hover:text-stone-100 transition-colors disabled:opacity-40 disabled:cursor-not-allowed',
     primary:
       'flex items-center justify-center gap-1.5 px-3 h-8 rounded-md bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-medium border-none cursor-pointer transition-colors disabled:opacity-40 disabled:cursor-not-allowed',
-    secondary:
-      'flex items-center justify-center gap-1.5 px-3 h-8 rounded-md bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 text-sm font-medium border-none cursor-pointer transition-colors disabled:opacity-40 disabled:cursor-not-allowed',
   },
   toast: {
     root: 'bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-lg shadow-lg px-4 py-3 flex items-start gap-3',
@@ -32,8 +25,6 @@ export const tw = {
     wrapper:
       'relative overflow-hidden rounded-md bg-stone-200 dark:bg-stone-800 cursor-pointer border-none p-0 w-full aspect-video hover:opacity-90 transition-opacity',
     skeleton: 'absolute inset-0 bg-stone-200 dark:bg-stone-800 animate-pulse',
-    spinner:
-      'w-5 h-5 border-2 border-stone-300 dark:border-stone-600 border-t-emerald-500 rounded-full animate-spin',
   },
   grid: {
     empty:
