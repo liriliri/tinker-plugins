@@ -29,12 +29,8 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family:
-    'Hanken Grotesk',
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    sans-serif;
-  font-feature-settings: 'ss01', 'cv11';
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
   -webkit-font-smoothing: antialiased;
   letter-spacing: -0.005em;
 }
@@ -94,8 +90,9 @@ body {
 /* ---------- TYPOGRAPHY HELPERS ---------- */
 
 .ps-mono {
-  font-family: 'Geist Mono', ui-monospace, monospace;
-  font-feature-settings: 'ss01';
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
   letter-spacing: 0;
 }
 

@@ -1,8 +1,8 @@
-import { defineConfig, type Plugin } from 'vite'
-import react from '@vitejs/plugin-react'
 import path from 'node:path'
 import fs from 'node:fs'
 import fsp from 'node:fs/promises'
+import { type Plugin } from 'vite'
+import { defineRendererConfig } from 'tinker-share/vite'
 
 function gamesAssets(gamesDir: string, outGamesDir: () => string): Plugin {
   return {
@@ -54,29 +54,16 @@ function gamesAssets(gamesDir: string, outGamesDir: () => string): Plugin {
   }
 }
 
-export default defineConfig(() => {
-  const pkg = require(path.join(process.cwd(), 'package.json'))
-  const outDir = path.dirname(pkg.tinker.main)
-  const gamesDir = path.resolve(process.cwd(), 'games')
+const gamesDir = path.resolve(process.cwd(), 'games')
 
-  return {
-    base: '',
-    publicDir: false,
-    plugins: [react(), gamesAssets(gamesDir, () => path.join(outDir, 'games'))],
-    build: {
-      outDir,
-      rollupOptions: {
-        input: {
-          app: 'index.html',
-        },
-      },
-    },
-    css: {
-      preprocessorOptions: {
-        scss: {
-          api: 'modern',
-        },
-      },
-    },
-  }
+export default defineRendererConfig({
+  publicDir: false,
+  plugins: [
+    gamesAssets(gamesDir, () => {
+      const pkg = JSON.parse(
+        fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf-8'),
+      ) as { tinker: { main: string } }
+      return path.join(path.dirname(pkg.tinker.main), 'games')
+    }),
+  ],
 })

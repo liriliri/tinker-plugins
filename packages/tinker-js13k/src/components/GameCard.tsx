@@ -1,14 +1,16 @@
 import { observer } from 'mobx-react-lite'
 import { useState } from 'react'
+import className from 'licia/className'
 import { Play } from 'lucide-react'
 import type { Game } from '../types'
 import store from '../store'
+import { tw } from '../theme'
 
-interface Props {
+interface GameCardProps {
   game: Game
 }
 
-const GameCard = observer(({ game }: Props) => {
+const GameCard = observer(function GameCard({ game }: GameCardProps) {
   const [broken, setBroken] = useState(false)
 
   return (
@@ -25,7 +27,12 @@ const GameCard = observer(({ game }: Props) => {
           />
         ) : (
           <div className="ps-cover-fallback">
-            <span className="text-[color:var(--text-dim)] text-[13px] font-semibold px-4 text-center">
+            <span
+              className={className(
+                'text-[13px] font-semibold px-4 text-center',
+                tw.text.dim,
+              )}
+            >
               {game.name}
             </span>
           </div>
@@ -43,10 +50,20 @@ const GameCard = observer(({ game }: Props) => {
       </div>
 
       <div className="px-3.5 py-3">
-        <div className="font-semibold text-[13.5px] text-[color:var(--text)] leading-tight truncate">
+        <div
+          className={className(
+            'font-semibold text-[13.5px] leading-tight truncate',
+            tw.text.primary,
+          )}
+        >
           {game.name}
         </div>
-        <div className="ps-mono text-[11px] text-[color:var(--text-mute)] mt-1 truncate">
+        <div
+          className={className(
+            'ps-mono text-[11px] mt-1 truncate',
+            tw.text.mute,
+          )}
+        >
           @{game.author}
         </div>
       </div>

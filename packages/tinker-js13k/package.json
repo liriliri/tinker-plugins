@@ -1,7 +1,7 @@
 {
   "name": "tinker-js13k",
-  "version": "0.1.1",
-  "description": "JS13K Games Plugin for TINKER",
+  "version": "0.1.2",
+  "description": "Play curated JS13K games",
   "files": [
     "dist/",
     "icon.png"
@@ -22,7 +22,7 @@
   ],
   "tinker": {
     "name": "JS13K Games",
-    "description": "Play curated JS13K games",
+    "category": "entertainment",
     "main": "dist/index.html",
     "icon": "icon.png",
     "locales": {
