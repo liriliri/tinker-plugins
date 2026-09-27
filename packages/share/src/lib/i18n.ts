@@ -19,5 +19,4 @@ export async function initI18n(locales: Locales) {
 
   const language = await tinker.getLanguage()
   i18n.changeLanguage(language)
-  tinker.on('changeLanguage', (lang: string) => i18n.changeLanguage(lang))
 }
