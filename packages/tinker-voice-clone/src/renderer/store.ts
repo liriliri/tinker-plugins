@@ -5,7 +5,6 @@ import find from 'licia/find'
 import isErr from 'licia/isErr'
 import isStr from 'licia/isStr'
 import isStrBlank from 'licia/isStrBlank'
-import LocalStore from 'licia/LocalStore'
 import mime from 'licia/mime'
 import now from 'licia/now'
 import raf from 'licia/raf'
@@ -14,13 +13,13 @@ import splitPath from 'licia/splitPath'
 import toNum from 'licia/toNum'
 import trim from 'licia/trim'
 import uuid from 'licia/uuid'
+import BaseStore, { storage } from 'tinker-share/store/Base'
+import { errorMessage } from 'tinker-share/lib/util'
 import type { Backend, DownloadSource, ModelStatus } from '../common/types'
 import { modelNeedsReference } from '../common/catalog'
 import { DEFAULT_SAMPLE_FILE, DEFAULT_SAMPLE_TEXT } from '../common/sample'
-import { errorMessage } from '../common/util'
 import type { AudioItem, GenerateTask } from './types'
 
-const storage = new LocalStore('tinker-voice-clone')
 const STORAGE_TEXT = 'text'
 const STORAGE_LANGUAGE = 'language'
 const STORAGE_SPEED = 'speed'
@@ -37,7 +36,7 @@ function mimeFromPath(filePath: string): string {
   return mime(filePath) || 'audio/wav'
 }
 
-class Store {
+class Store extends BaseStore {
   text =
     (storage.get(STORAGE_TEXT) as string) ||
     '风过竹林，留下一阵清脆的声响。远山渐渐被暮色笼罩，灯火一盏盏亮起，像是在夜里低声说着故事。'
@@ -60,7 +59,6 @@ class Store {
   audios: AudioItem[] = []
   tasks: GenerateTask[] = []
   isDownloading = false
-  isDark = false
   toastOpen = false
   toastMsg = ''
 
@@ -68,25 +66,12 @@ class Store {
   private running = false
 
   constructor() {
+    super()
     makeAutoObservable(this, {
       cancelRequested: false,
       defaultSamplePath: false,
       running: false,
     } as Record<string, false>)
-    this.initTheme()
-  }
-
-  private async initTheme() {
-    const theme = await tinker.getTheme()
-    runInAction(() => {
-      this.isDark = theme === 'dark'
-    })
-    tinker.on('changeTheme', async () => {
-      const newTheme = await tinker.getTheme()
-      runInAction(() => {
-        this.isDark = newTheme === 'dark'
-      })
-    })
   }
 
   get selectedModel(): ModelStatus | undefined {

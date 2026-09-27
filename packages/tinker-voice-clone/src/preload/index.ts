@@ -4,7 +4,7 @@ import fsp from 'node:fs/promises'
 import path from 'node:path'
 import contain from 'licia/contain'
 import startWith from 'licia/startWith'
-import { errorMessage } from '../common/util'
+import { errorMessage } from 'tinker-share/lib/util'
 import type {
   Backend,
   DownloadItem,
