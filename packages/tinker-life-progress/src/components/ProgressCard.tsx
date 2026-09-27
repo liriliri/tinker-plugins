@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
 import clamp from 'licia/clamp'
 import className from 'licia/className'
-import { tw, progressColors, ProgressColorKey } from '../theme'
+import isEmpty from 'licia/isEmpty'
+import map from 'licia/map'
+import { tw, progressColors, type ProgressColorKey } from '../theme'
 
-interface Props {
+interface ProgressCardProps {
   label: string
   progress: number
   subtitle: string
@@ -17,7 +19,7 @@ export default function ProgressCard({
   subtitle,
   color,
   stats,
-}: Props) {
+}: ProgressCardProps) {
   const percent = clamp(progress * 100, 0, 100)
   const [displayPercent, setDisplayPercent] = useState(0)
 
@@ -25,8 +27,8 @@ export default function ProgressCard({
     const id = requestAnimationFrame(() => setDisplayPercent(percent))
     return () => cancelAnimationFrame(id)
   }, [percent])
-  const config = progressColors[color]
 
+  const config = progressColors[color]
   const radius = 26
   const strokeWidth = 5
   const circumference = 2 * Math.PI * radius
@@ -118,9 +120,9 @@ export default function ProgressCard({
             />
           </div>
 
-          {stats && stats.length > 0 && (
+          {stats && !isEmpty(stats) ? (
             <div className="flex gap-3 mt-2.5">
-              {stats.map((stat, i) => (
+              {map(stats, (stat, i) => (
                 <span
                   key={i}
                   className={className(
@@ -133,7 +135,7 @@ export default function ProgressCard({
                 </span>
               ))}
             </div>
-          )}
+          ) : null}
         </div>
       </div>
     </div>

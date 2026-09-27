@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import * as Dialog from '@radix-ui/react-dialog'
@@ -6,10 +6,16 @@ import className from 'licia/className'
 import { tw } from '../theme'
 import store from '../store'
 
-const Settings = observer(() => {
+const Settings = observer(function Settings() {
   const { t } = useTranslation()
-  const [bd, setBd] = useState(store.birthday)
-  const [ls, setLs] = useState(store.lifespan)
+  const [birthday, setBirthday] = useState(store.birthday)
+  const [lifespan, setLifespan] = useState(store.lifespan)
+
+  useEffect(() => {
+    if (!store.showSettings) return
+    setBirthday(store.birthday)
+    setLifespan(store.lifespan)
+  }, [store.showSettings, store.birthday, store.lifespan])
 
   return (
     <Dialog.Root
@@ -17,7 +23,7 @@ const Settings = observer(() => {
       onOpenChange={(open) => store.setShowSettings(open)}
     >
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 bg-black/50 backdrop-blur-sm animate-in" />
+        <Dialog.Overlay className={tw.dialog.overlay} />
         <Dialog.Content
           className={className(
             'fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
@@ -41,8 +47,8 @@ const Settings = observer(() => {
               </span>
               <input
                 type="date"
-                value={bd}
-                onChange={(e) => setBd(e.target.value)}
+                value={birthday}
+                onChange={(e) => setBirthday(e.target.value)}
                 className={className(
                   'rounded-lg px-3 py-2 text-sm',
                   tw.input.base,
@@ -56,8 +62,8 @@ const Settings = observer(() => {
               </span>
               <input
                 type="number"
-                value={ls}
-                onChange={(e) => setLs(Number(e.target.value))}
+                value={lifespan}
+                onChange={(e) => setLifespan(Number(e.target.value))}
                 min={1}
                 max={150}
                 className={className(
@@ -68,13 +74,11 @@ const Settings = observer(() => {
               />
             </label>
             <button
-              onClick={() => store.saveSettings(bd, ls)}
+              onClick={() => store.saveSettings(birthday, lifespan)}
               className={className(
                 'self-end px-5 py-2 rounded-md text-sm font-semibold mt-1',
-                'bg-gradient-to-r from-amber-400 to-amber-500',
-                'hover:from-amber-500 hover:to-amber-600',
-                'text-zinc-900 shadow-sm',
-                'transition-all duration-200 hover:shadow-md',
+                'transition-all duration-200',
+                tw.button.save,
               )}
             >
               {t('save')}

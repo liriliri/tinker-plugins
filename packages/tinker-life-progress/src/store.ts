@@ -1,19 +1,23 @@
 import { makeAutoObservable, runInAction } from 'mobx'
-import LocalStore from 'licia/LocalStore'
-
-const storage = new LocalStore('tinker-life-progress')
+import clamp from 'licia/clamp'
+import isNaN from 'licia/isNaN'
+import toNum from 'licia/toNum'
+import BaseStore, { storage } from 'tinker-share/store/Base'
 
 const STORAGE_BIRTHDAY = 'birthday'
 const STORAGE_LIFESPAN = 'lifespan'
 const MS_PER_DAY = 86400000
+const DEFAULT_BIRTHDAY = '1990-01-01'
+const DEFAULT_LIFESPAN = 80
 
-class Store {
-  birthday = '1990-01-01'
-  lifespan = 80
+class Store extends BaseStore {
+  birthday = DEFAULT_BIRTHDAY
+  lifespan = DEFAULT_LIFESPAN
   now = new Date()
   showSettings = false
 
   constructor() {
+    super()
     makeAutoObservable(this)
     this.loadStorage()
     this.startTimer()
@@ -133,17 +137,21 @@ class Store {
 
   saveSettings(birthday: string, lifespan: number) {
     this.birthday = birthday
-    this.lifespan = lifespan
+    this.lifespan = clamp(lifespan, 1, 150)
     this.showSettings = false
-    storage.set(STORAGE_BIRTHDAY, birthday)
-    storage.set(STORAGE_LIFESPAN, lifespan)
+    storage.set(STORAGE_BIRTHDAY, this.birthday)
+    storage.set(STORAGE_LIFESPAN, this.lifespan)
   }
 
   private loadStorage() {
     const birthday = storage.get(STORAGE_BIRTHDAY)
-    const lifespan = storage.get(STORAGE_LIFESPAN)
     if (birthday) this.birthday = birthday
-    if (lifespan) this.lifespan = lifespan
+
+    const lifespan = storage.get(STORAGE_LIFESPAN)
+    if (lifespan != null) {
+      const value = clamp(toNum(lifespan), 1, 150)
+      if (!isNaN(value)) this.lifespan = value
+    }
   }
 
   private startTimer() {

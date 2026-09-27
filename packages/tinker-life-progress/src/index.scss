@@ -7,13 +7,15 @@ html.dark {
 
 html,
 body,
-#root {
+#app {
   height: 100%;
   margin: 0;
   overflow: hidden;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
 }
 
-/* Noise grain overlay */
 .grain-overlay {
   position: fixed;
   inset: 0;
@@ -26,7 +28,6 @@ body,
   opacity: 0.05;
 }
 
-/* Radix UI animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -44,17 +45,6 @@ body,
   to {
     opacity: 1;
     transform: scale(1);
-  }
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
 
@@ -85,11 +75,6 @@ body,
   animation: zoomIn95 150ms ease-out;
 }
 
-.card-enter {
-  animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-/* Progress animations */
 .progress-bar {
   transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -98,13 +83,11 @@ body,
   transition: stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Gauge glow effect */
 .gauge-glow {
   filter: drop-shadow(0 0 3px currentColor);
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
-/* Shimmer on progress bar */
 .progress-shimmer {
   position: relative;
   overflow: hidden;
@@ -124,7 +107,6 @@ body,
   animation: shimmer 2s ease-in-out infinite;
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar {
   width: 4px;
 }

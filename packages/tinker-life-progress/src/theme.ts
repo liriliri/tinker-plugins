@@ -54,6 +54,7 @@ export const tw = {
     base: 'border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-amber-400/50',
   },
   dialog: {
+    overlay: 'fixed inset-0 bg-black/50 backdrop-blur-sm animate-in',
     content:
       'border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900',
   },
@@ -62,5 +63,6 @@ export const tw = {
   },
   button: {
     settingsHover: 'hover:bg-zinc-50 dark:hover:bg-zinc-800',
+    save: 'bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-zinc-900 shadow-sm hover:shadow-md',
   },
 }
