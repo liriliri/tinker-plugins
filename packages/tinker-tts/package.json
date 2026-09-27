@@ -1,7 +1,7 @@
 {
   "name": "tinker-tts",
-  "version": "0.2.1",
-  "description": "Edge TTS plugin for TINKER",
+  "version": "0.2.2",
+  "description": "Convert text to speech with Microsoft Edge TTS",
   "files": [
     "dist/",
     "icon.png"
@@ -25,6 +25,7 @@
   ],
   "tinker": {
     "name": "Text to Speech",
+    "category": "media",
     "description": "Convert text to speech with Microsoft Edge TTS",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",

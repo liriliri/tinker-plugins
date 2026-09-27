@@ -1,8 +1,10 @@
 @use 'tailwindcss';
 @config "../../tailwind.config.js";
 
-html.dark {
-  color-scheme: dark;
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
 }
 
 html,
@@ -25,12 +27,8 @@ body {
   scrollbar-color: rgb(212 212 216) transparent;
 }
 
-html.dark * {
-  scrollbar-color: rgb(63 63 70) transparent;
-}
-
 @media (prefers-color-scheme: dark) {
-  :root:not(.light) * {
+  * {
     scrollbar-color: rgb(63 63 70) transparent;
   }
 }
@@ -60,23 +58,13 @@ html.dark * {
   background: transparent;
 }
 
-html.dark ::-webkit-scrollbar-thumb {
-  background: rgb(63 63 70);
-  background-clip: padding-box;
-}
-
-html.dark ::-webkit-scrollbar-thumb:hover {
-  background: rgb(82 82 91);
-  background-clip: padding-box;
-}
-
 @media (prefers-color-scheme: dark) {
-  :root:not(.light) ::-webkit-scrollbar-thumb {
+  ::-webkit-scrollbar-thumb {
     background: rgb(63 63 70);
     background-clip: padding-box;
   }
 
-  :root:not(.light) ::-webkit-scrollbar-thumb:hover {
+  ::-webkit-scrollbar-thumb:hover {
     background: rgb(82 82 91);
     background-clip: padding-box;
   }
@@ -99,10 +87,6 @@ input[type='range'] {
   input[type='range'] {
     background: rgb(39 39 42);
   }
-}
-
-html.dark input[type='range'] {
-  background: rgb(39 39 42);
 }
 
 input[type='range']::-webkit-slider-thumb {
