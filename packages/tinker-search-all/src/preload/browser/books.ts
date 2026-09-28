@@ -8,7 +8,7 @@ import isObj from 'licia/isObj'
 import startWith from 'licia/startWith'
 import type { BrowserEntry, BrowserKind } from '../../common/types'
 
-export function isBookmarkUrl(url: string) {
+function isBookmarkUrl(url: string) {
   return (
     startWith(url, 'http://') ||
     startWith(url, 'https://') ||
@@ -16,12 +16,11 @@ export function isBookmarkUrl(url: string) {
   )
 }
 
-export function walkBookmarkNode(
+function walkBookmarkNode(
   node: unknown,
   folderPath: string,
   out: BrowserEntry[],
   browser: BrowserKind,
-  source: BrowserEntry['source'],
 ) {
   if (!isObj(node)) return
   const item = node as {
@@ -39,7 +38,6 @@ export function walkBookmarkNode(
         url,
         folder: folderPath || '',
         browser,
-        source,
       })
     }
     return
@@ -49,7 +47,7 @@ export function walkBookmarkNode(
       ? `${folderPath} / ${item.name || ''}`
       : item.name || ''
     each(item.children || [], (child) => {
-      walkBookmarkNode(child, folder, out, browser, source)
+      walkBookmarkNode(child, folder, out, browser)
     })
   }
 }
@@ -116,9 +114,9 @@ function readBrowserBookmarks(
       }
       const roots = data.roots
       if (!roots) return
-      walkBookmarkNode(roots.bookmark_bar, '', out, browser, 'bookmark')
-      walkBookmarkNode(roots.other, '', out, browser, 'bookmark')
-      walkBookmarkNode(roots.synced, '', out, browser, 'bookmark')
+      walkBookmarkNode(roots.bookmark_bar, '', out, browser)
+      walkBookmarkNode(roots.other, '', out, browser)
+      walkBookmarkNode(roots.synced, '', out, browser)
     } catch {
       // skip locked/corrupt profiles
     }

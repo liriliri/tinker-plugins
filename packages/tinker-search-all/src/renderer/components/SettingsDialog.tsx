@@ -3,22 +3,9 @@ import { useTranslation } from 'react-i18next'
 import * as Dialog from '@radix-ui/react-dialog'
 import { X } from 'lucide-react'
 import className from 'licia/className'
-import type { BrowserSourceConfig } from '../../common/types'
 import store from '../store'
 import { tw } from '../theme'
 import HotkeyInput from './HotkeyInput'
-
-const SOURCE_KEYS: (keyof BrowserSourceConfig)[] = [
-  'chrome',
-  'edge',
-  'imported',
-]
-
-const SOURCE_LABEL: Record<keyof BrowserSourceConfig, string> = {
-  chrome: 'sourceChrome',
-  edge: 'sourceEdge',
-  imported: 'sourceImported',
-}
 
 interface SettingsToggleProps {
   checked: boolean
@@ -72,9 +59,6 @@ function SettingsToggle({
 
 const SettingsDialog = observer(function SettingsDialog() {
   const { t } = useTranslation()
-  const importedCountLabel = t('importedCount', {
-    count: store.importedBookmarks.length,
-  })
 
   return (
     <Dialog.Root
@@ -97,12 +81,7 @@ const SettingsDialog = observer(function SettingsDialog() {
             </Dialog.Close>
           </div>
 
-          <div
-            className={className(
-              tw.dialog.body,
-              'flex flex-col gap-2 max-h-[70vh] overflow-y-auto',
-            )}
-          >
+          <div className={className(tw.dialog.body, 'flex flex-col gap-2')}>
             <div className={tw.dialog.rowStatic}>
               <span className="min-w-0 flex-1">
                 <span className={tw.dialog.rowTitle}>{t('hotkey')}</span>
@@ -128,56 +107,6 @@ const SettingsDialog = observer(function SettingsDialog() {
               kbd="↵"
               onToggle={() => store.setCloseOnOpen(!store.closeOnOpen)}
             />
-
-            <div className="pt-1 pb-0.5">
-              <div className={tw.dialog.rowTitle}>{t('browserSources')}</div>
-              <div className={`mt-0.5 ${tw.dialog.rowHint}`}>
-                {t('browserSourcesHint')}
-              </div>
-            </div>
-
-            {SOURCE_KEYS.map((key) => (
-              <SettingsToggle
-                key={key}
-                checked={store.browserSources[key]}
-                title={t(SOURCE_LABEL[key])}
-                onToggle={() =>
-                  store.setBrowserSource(key, !store.browserSources[key])
-                }
-              />
-            ))}
-
-            <div className="pt-1 pb-0.5">
-              <div className={tw.dialog.rowTitle}>{t('importBookmarks')}</div>
-              <div className={`mt-0.5 ${tw.dialog.rowHint}`}>
-                {t('importBookmarksHint')}
-              </div>
-            </div>
-
-            <div className="flex gap-2">
-              <button
-                type="button"
-                onClick={() => void store.importBookmarkFiles()}
-                className={tw.dialog.row}
-              >
-                <span className={tw.dialog.rowTitle}>{t('importSelect')}</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => store.clearImportedBookmarks()}
-                className={tw.dialog.row}
-              >
-                <span className={tw.dialog.rowTitle}>{t('importClear')}</span>
-              </button>
-            </div>
-
-            {store.importedBookmarks.length > 0 ? (
-              <div className={tw.dialog.rowHint}>{importedCountLabel}</div>
-            ) : null}
-
-            {store.importMessage ? (
-              <div className={tw.dialog.rowHint}>{t(store.importMessage)}</div>
-            ) : null}
           </div>
         </Dialog.Content>
       </Dialog.Portal>

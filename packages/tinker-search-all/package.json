@@ -1,6 +1,6 @@
 {
   "name": "tinker-search-all",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Unified search across files, apps, plugins, and bookmarks",
   "files": [
     "dist/",

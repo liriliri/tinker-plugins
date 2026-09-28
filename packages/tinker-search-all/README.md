@@ -8,7 +8,7 @@ A unified search plugin for [TINKER](https://github.com/liriliri/tinker), search
 
 - **Unified Search** across files, apps, plugins, and bookmarks
 - **Category Tabs** to filter by All / Apps / Plugins / Files / Bookmarks
-- **Browser Bookmarks** from Chrome and Edge (with optional imported bookmarks)
+- **Browser Bookmarks** from Chrome and Edge
 - **Recent Items** for quick re-open
 - **Keyboard Navigation** with ↑↓ to select and Enter to open
 - **Global Hotkey** to summon or hide the window
@@ -24,6 +24,6 @@ Download and install TINKER from `https://tinker.liriliri.io/`, then run `npm i 
 2. Use category tabs to narrow results
 3. Press ↑↓ to select an item, Enter to open it
 4. Press Esc to clear the query, or again to close the window
-5. Open Settings from the status bar to set a summon hotkey, close-on-open behavior, bookmark sources, and bookmark import
+5. Open Settings from the status bar to set a summon hotkey and close-on-open behavior
 
 > For the global hotkey to keep working after the window closes, right-click the plugin and enable **Run in Background**.

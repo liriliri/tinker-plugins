@@ -17,19 +17,5 @@
   "hotkeyHint": "全局快捷键显示或隐藏本窗口",
   "hotkeyError": "注册失败，快捷键可能已被占用",
   "recordHotkey": "点击录制",
-  "recording": "请按下按键…",
-  "browserSources": "书签数据源",
-  "browserSourcesHint": "选择要搜索的书签来源",
-  "sourceChrome": "Chrome 书签",
-  "sourceEdge": "Edge 书签",
-  "sourceImported": "导入的书签",
-  "importBookmarks": "导入书签",
-  "importBookmarksHint": "导入浏览器导出的 HTML 或 Chrome JSON 书签文件",
-  "importSelect": "选择文件",
-  "importClear": "清空导入",
-  "importedCount": "已导入 {{count}} 条",
-  "importSuccess": "书签导入成功",
-  "importEmpty": "未从文件中解析到书签",
-  "importFailed": "导入失败",
-  "importCleared": "已清空导入书签"
+  "recording": "请按下按键…"
 }

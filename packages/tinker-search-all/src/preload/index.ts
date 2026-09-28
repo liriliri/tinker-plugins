@@ -3,12 +3,8 @@ import { exec } from 'child_process'
 import isMac from 'licia/isMac'
 import isWindows from 'licia/isWindows'
 import replaceAll from 'licia/replaceAll'
-import type { BrowserEntry, BrowserSourceConfig } from '../common/types'
-import {
-  clearBrowserCache,
-  getBrowserBookmarks,
-  importBookmarkFiles,
-} from './browser/data'
+import type { BrowserEntry } from '../common/types'
+import { getBrowserBookmarks } from './browser/data'
 
 function quote(path: string) {
   return `"${replaceAll(path, '"', '\\"')}"`
@@ -39,16 +35,8 @@ const api = {
     await shell.openExternal(url)
   },
 
-  getBookmarks(sources: BrowserSourceConfig): BrowserEntry[] {
-    return getBrowserBookmarks(sources)
-  },
-
-  importBookmarks(filePaths: string[]): BrowserEntry[] {
-    return importBookmarkFiles(filePaths)
-  },
-
-  clearBrowserCache() {
-    clearBrowserCache()
+  getBookmarks(): BrowserEntry[] {
+    return getBrowserBookmarks()
   },
 }
 
