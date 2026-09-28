@@ -1,11 +1,21 @@
 import { makeAutoObservable, runInAction } from 'mobx'
+import contain from 'licia/contain'
 import filter from 'licia/filter'
-import BaseStore from 'tinker-share/store/Base'
-import { DEFAULT_KEYWORD, fetchSogouMemes } from './lib/sogou'
-import type { MemeItem } from './types'
+import BaseStore, { storage } from 'tinker-share/store/Base'
+import { fetchBaiduMemes } from './lib/baidu'
+import { fetchSogouMemes } from './lib/sogou'
+import { MEME_SOURCES, type MemeItem, type MemeSource } from './types'
+
+const STORAGE_SOURCE = 'source'
+
+function loadSource(): MemeSource {
+  const saved = storage.get(STORAGE_SOURCE) as MemeSource | null
+  return saved && contain(MEME_SOURCES, saved) ? saved : 'sogou'
+}
 
 class Store extends BaseStore {
-  keyword = DEFAULT_KEYWORD
+  keyword = ''
+  source: MemeSource = loadSource()
   memes: MemeItem[] = []
   loading = false
   error = ''
@@ -20,6 +30,13 @@ class Store extends BaseStore {
 
   setKeyword(keyword: string) {
     this.keyword = keyword
+  }
+
+  setSource(source: MemeSource) {
+    if (this.source === source) return
+    this.source = source
+    storage.set(STORAGE_SOURCE, source)
+    void this.search()
   }
 
   removeMeme(url: string) {
@@ -43,10 +60,9 @@ class Store extends BaseStore {
     this.loading = true
 
     try {
-      const { items, hasMore } = await fetchSogouMemes(
-        this.keyword,
-        this.pageNum,
-      )
+      const fetchMemes =
+        this.source === 'baidu' ? fetchBaiduMemes : fetchSogouMemes
+      const { items, hasMore } = await fetchMemes(this.keyword, this.pageNum)
 
       runInAction(() => {
         this.memes = append ? [...this.memes, ...items] : items

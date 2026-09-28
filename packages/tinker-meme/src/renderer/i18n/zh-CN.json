@@ -5,5 +5,7 @@
   "loadFailed": "加载失败",
   "copied": "已复制",
   "copyFailed": "复制失败",
-  "save": "保存"
+  "save": "保存",
+  "sourceSogou": "搜狗",
+  "sourceBaidu": "百度"
 }

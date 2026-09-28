@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { observer } from 'mobx-react-lite'
 import className from 'licia/className'
 import delay from 'licia/delay'
 import { useTranslation } from 'react-i18next'
@@ -13,7 +14,7 @@ interface MemeCardProps {
 
 type Feedback = 'copied' | 'failed' | null
 
-export default function MemeCard({ item }: MemeCardProps) {
+const MemeCard = observer(function MemeCard({ item }: MemeCardProps) {
   const { t } = useTranslation()
   const [feedback, setFeedback] = useState<Feedback>(null)
   const [failed, setFailed] = useState(false)
@@ -93,4 +94,6 @@ export default function MemeCard({ item }: MemeCardProps) {
       ) : null}
     </div>
   )
-}
+})
+
+export default MemeCard

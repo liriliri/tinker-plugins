@@ -5,5 +5,7 @@
   "loadFailed": "Failed to load memes",
   "copied": "Copied",
   "copyFailed": "Failed to copy",
-  "save": "Save"
+  "save": "Save",
+  "sourceSogou": "Sogou",
+  "sourceBaidu": "Baidu"
 }

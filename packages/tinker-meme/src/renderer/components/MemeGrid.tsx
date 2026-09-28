@@ -1,6 +1,7 @@
 import { observer } from 'mobx-react-lite'
 import * as ScrollArea from '@radix-ui/react-scroll-area'
 import className from 'licia/className'
+import map from 'licia/map'
 import { useTranslation } from 'react-i18next'
 import { tw } from '../theme'
 import store from '../store'
@@ -47,7 +48,7 @@ const MemeGrid = observer(() => {
     <ScrollArea.Root className="h-full relative">
       <ScrollArea.Viewport className="h-full w-full" onScroll={handleScroll}>
         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2">
-          {store.memes.map((item) => (
+          {map(store.memes, (item) => (
             <MemeCard key={item.url} item={item} />
           ))}
         </div>

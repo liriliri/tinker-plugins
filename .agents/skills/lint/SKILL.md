@@ -66,6 +66,7 @@ Prefer `tinker-share` (see `packages/share/README.md`); flag local copies of:
 ### 8. i18n
 - UI strings via `t()` (`react-i18next`), not hardcoded
 - Locales required: `en-US.json` + `zh-CN.json` at `src/renderer/i18n/` (or `src/i18n/` if no renderer)
+- Flat keys only — no nested objects (`sourceSogou`, not `source.sogou` / `{ "source": { "sogou": … } }`)
 
 ### 9. Comments
 - English only

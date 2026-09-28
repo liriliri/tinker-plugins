@@ -1,9 +1,8 @@
 import map from 'licia/map'
 import trim from 'licia/trim'
-import type { SogouSearchResult } from '../types'
+import { DEFAULT_KEYWORD, type MemeSearchResult } from '../types'
 
 const PAGE_SIZE = 47
-export const DEFAULT_KEYWORD = '搞笑'
 
 interface SogouSearchItem {
   locImageLink: string
@@ -19,7 +18,7 @@ interface SogouSearchResponse {
 export async function fetchSogouMemes(
   keyword: string,
   pageNum: number,
-): Promise<SogouSearchResult> {
+): Promise<MemeSearchResult> {
   const start = (pageNum - 1) * PAGE_SIZE
   const query = trim(keyword) || DEFAULT_KEYWORD
 

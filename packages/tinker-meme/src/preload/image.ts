@@ -21,9 +21,19 @@ export function createImageCache(cacheDir: string) {
     return path.join(cacheDir, `${fileName}.gif`)
   }
 
+  function refererFor(url: string): string {
+    try {
+      const host = new URL(url).hostname
+      if (host.includes('baidu') || host.includes('bdstatic')) {
+        return 'https://image.baidu.com/'
+      }
+    } catch {}
+    return 'https://pic.sogou.com/'
+  }
+
   async function fetchImageBuffer(url: string): Promise<Buffer> {
     const res = await fetch(url, {
-      headers: { Referer: 'https://pic.sogou.com/' },
+      headers: { Referer: refererFor(url) },
     })
 
     if (!res.ok) {
