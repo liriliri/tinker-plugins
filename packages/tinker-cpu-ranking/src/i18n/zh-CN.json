@@ -1,0 +1,22 @@
+{
+  "desktop": "桌面",
+  "laptop": "笔记本",
+  "brandAll": "全部",
+  "searchPlaceholder": "筛选…",
+  "refresh": "刷新",
+  "colRank": "#",
+  "colCpu": "CPU",
+  "colMulti": "多核",
+  "colSingle": "单核",
+  "colCores": "核心",
+  "empty": "无匹配",
+  "emptyNoData": "暂无数据",
+  "loading": "加载中…",
+  "toastTitleInfo": "提示",
+  "toastTitleSuccess": "成功",
+  "toastTitleError": "错误",
+  "toastTitleWarning": "提示",
+  "toastCooldown": "已是最新，{{minutes}} 分钟后再试",
+  "toastRefreshed": "已更新 · 桌面 {{desktop}} / 笔记本 {{laptop}}",
+  "toastRefreshFailed": "刷新失败：{{error}}"
+}

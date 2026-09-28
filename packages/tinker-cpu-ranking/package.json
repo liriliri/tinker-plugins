@@ -1,0 +1,35 @@
+{
+  "name": "tinker-cpu-ranking",
+  "version": "0.1.0",
+  "description": "Browse desktop and laptop CPU performance rankings",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "cpu",
+    "ranking"
+  ],
+  "tinker": {
+    "name": "CPU Ranking",
+    "category": "system",
+    "main": "dist/index.html",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "CPU 天梯",
+        "description": "查看桌面与笔记本 CPU 性能天梯图"
+      }
+    }
+  }
+}
