@@ -1,5 +1,5 @@
 import splitPath from 'licia/splitPath'
-import type { SearchResultItem } from '../../common/types'
+import type { BrowserEntry, SearchResultItem } from '../../common/types'
 import { buildSearchText } from './match'
 
 export interface AppEntry {
@@ -14,6 +14,10 @@ export interface PluginEntry {
   name: string
   description: string
   icon: string
+  searchText: string
+}
+
+export interface BrowserSearchEntry extends BrowserEntry {
   searchText: string
 }
 
@@ -70,5 +74,24 @@ export function toFileItem(
     title: fileName(file.path),
     subtitle: file.path,
     icon,
+  }
+}
+
+export function toBrowserSearchEntry(entry: BrowserEntry): BrowserSearchEntry {
+  return {
+    ...entry,
+    searchText: buildSearchText(entry.title, entry.url, entry.folder || ''),
+  }
+}
+
+export function toBookmarkItem(entry: BrowserSearchEntry): SearchResultItem {
+  const folder = entry.folder ? `${entry.folder} · ` : ''
+  return {
+    id: `bookmark:${entry.browser}:${entry.url}`,
+    category: 'bookmarks',
+    title: entry.title || entry.url,
+    subtitle: `${folder}${entry.url}`,
+    url: entry.url,
+    browser: entry.browser,
   }
 }

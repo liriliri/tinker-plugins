@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import {
   AppWindow,
+  Bookmark,
   File,
   Loader2,
   Package,
@@ -23,6 +24,7 @@ const CATEGORY_ICON: Record<ResultCategory, LucideIcon> = {
   apps: AppWindow,
   plugins: Package,
   files: File,
+  bookmarks: Bookmark,
 }
 
 interface ResultRowProps {

@@ -1,5 +1,7 @@
 import { makeAutoObservable, runInAction } from 'mobx'
+import clone from 'licia/clone'
 import compact from 'licia/compact'
+import concat from 'licia/concat'
 import debounce from 'licia/debounce'
 import each from 'licia/each'
 import filter from 'licia/filter'
@@ -12,8 +14,11 @@ import pluck from 'licia/pluck'
 import slice from 'licia/slice'
 import startWith from 'licia/startWith'
 import trim from 'licia/trim'
+import unique from 'licia/unique'
 import BaseStore from 'tinker-share/store/Base'
 import type {
+  BrowserSourceConfig,
+  ImportedBookmark,
   ResultSection,
   SearchCategory,
   SearchResultItem,
@@ -28,17 +33,24 @@ import {
 import {
   toAppEntry,
   toAppItem,
+  toBookmarkItem,
+  toBrowserSearchEntry,
   toFileItem,
   toPluginEntry,
   toPluginItem,
   type AppEntry,
+  type BrowserSearchEntry,
   type PluginEntry,
 } from './lib/result'
 import {
+  readBrowserSources,
   readCloseOnOpen,
   readHotkey,
+  readImportedBookmarks,
+  writeBrowserSources,
   writeCloseOnOpen,
   writeHotkey,
+  writeImportedBookmarks,
 } from './lib/settings'
 
 const ALL_LIMIT = 5
@@ -46,6 +58,12 @@ const CATEGORY_LIMIT = 50
 const FILE_MAX_RESULTS = 50
 const PLUGIN_ID_PREFIX = 'plugin:'
 const PLUGIN_ID = 'tinker-search-all'
+const BOOKMARK_DIALOG_FILTERS = [
+  {
+    name: 'Bookmarks',
+    extensions: ['html', 'htm', 'json'],
+  },
+]
 
 let shortcutOff: (() => void) | null = null
 
@@ -61,9 +79,13 @@ class Store extends BaseStore {
   apps: AppEntry[] = []
   plugins: PluginEntry[] = []
   files: tinker.SearchFileResult[] = []
+  bookmarks: BrowserSearchEntry[] = []
+  importedBookmarks: ImportedBookmark[] = readImportedBookmarks()
+  browserSources: BrowserSourceConfig = readBrowserSources()
   recents: SearchResultItem[] = []
   fileIcons = new Map<string, string>()
   searchingFiles = false
+  importMessage = ''
   selectedIndex = 0
   closeOnOpen = readCloseOnOpen()
   hotkey = readHotkey()
@@ -100,6 +122,7 @@ class Store extends BaseStore {
         void this.loadFileIcon(item.subtitle)
       }
     })
+    this.refreshBookmarks()
     await this.syncHotkey()
   }
 
@@ -120,6 +143,7 @@ class Store extends BaseStore {
 
   setShowSettings(open: boolean) {
     this.showSettings = open
+    if (!open) this.importMessage = ''
   }
 
   setCloseOnOpen(value: boolean) {
@@ -131,6 +155,13 @@ class Store extends BaseStore {
     this.hotkey = value
     writeHotkey(value)
     void this.syncHotkey()
+  }
+
+  setBrowserSource(key: keyof BrowserSourceConfig, value: boolean) {
+    this.browserSources = { ...this.browserSources, [key]: value }
+    writeBrowserSources(clone(this.browserSources))
+    searchAll.clearBrowserCache()
+    this.refreshBookmarks()
   }
 
   async summon() {
@@ -202,6 +233,35 @@ class Store extends BaseStore {
     )
   }
 
+  get allBookmarks(): BrowserSearchEntry[] {
+    if (!this.browserSources.imported) return this.bookmarks
+    return concat(
+      this.bookmarks,
+      map(this.importedBookmarks, (item) =>
+        toBrowserSearchEntry({
+          ...item,
+          browser: 'import',
+          source: 'imported',
+        }),
+      ),
+    )
+  }
+
+  get filteredBookmarks(): SearchResultItem[] {
+    const query = trim(this.query)
+    if (isStrBlank(query)) return []
+    return map(
+      slice(
+        filter(this.allBookmarks, (item) =>
+          matchSearchText(item.searchText, query),
+        ),
+        0,
+        CATEGORY_LIMIT,
+      ),
+      toBookmarkItem,
+    )
+  }
+
   get recentItems(): SearchResultItem[] {
     const items =
       this.category === 'all'
@@ -233,6 +293,10 @@ class Store extends BaseStore {
       { category: 'apps', items: slice(this.filteredApps, 0, limit) },
       { category: 'plugins', items: slice(this.filteredPlugins, 0, limit) },
       { category: 'files', items: slice(this.filteredFiles, 0, limit) },
+      {
+        category: 'bookmarks',
+        items: slice(this.filteredBookmarks, 0, limit),
+      },
     ]
 
     if (this.category === 'all') {
@@ -286,6 +350,8 @@ class Store extends BaseStore {
       await searchAll.openApp(item.subtitle)
     } else if (item.category === 'plugins') {
       await tinker.openPlugin(pluginId(item.id))
+    } else if (item.category === 'bookmarks') {
+      await searchAll.openUrl(item.url || item.subtitle)
     } else {
       await searchAll.openPath(item.subtitle)
     }
@@ -298,6 +364,56 @@ class Store extends BaseStore {
     if (item.category === 'files') {
       tinker.showItemInPath(item.subtitle)
     }
+  }
+
+  refreshBookmarks() {
+    try {
+      const bookmarks = searchAll.getBookmarks(clone(this.browserSources))
+      this.bookmarks = map(bookmarks, toBrowserSearchEntry)
+      if (this.selectedIndex >= this.flatResults.length) {
+        this.selectedIndex = 0
+      }
+    } catch {
+      this.bookmarks = []
+    }
+  }
+
+  async importBookmarkFiles() {
+    const result = await tinker.showOpenDialog({
+      properties: ['openFile', 'multiSelections'],
+      filters: BOOKMARK_DIALOG_FILTERS,
+    })
+    if (result.canceled || isEmpty(result.filePaths)) return
+
+    try {
+      const parsed = searchAll.importBookmarks(result.filePaths)
+      if (isEmpty(parsed)) {
+        this.importMessage = 'importEmpty'
+        return
+      }
+
+      const next = map(parsed, (item) => ({
+        title: item.title,
+        url: item.url,
+        folder: item.folder,
+      }))
+      const merged = unique(
+        [...this.importedBookmarks, ...next],
+        (a: ImportedBookmark, b: ImportedBookmark) => a.url === b.url,
+      ) as ImportedBookmark[]
+
+      writeImportedBookmarks(merged)
+      this.importedBookmarks = merged
+      this.importMessage = 'importSuccess'
+    } catch {
+      this.importMessage = 'importFailed'
+    }
+  }
+
+  clearImportedBookmarks() {
+    writeImportedBookmarks([])
+    this.importedBookmarks = []
+    this.importMessage = 'importCleared'
   }
 
   private addRecent(item: SearchResultItem) {

@@ -11,7 +11,12 @@ import { storage } from 'tinker-share/store/Base'
 import type { ResultCategory, SearchResultItem } from '../../common/types'
 
 const STORAGE_RECENT = 'recentItems'
-const RESULT_CATEGORIES: ResultCategory[] = ['apps', 'plugins', 'files']
+const RESULT_CATEGORIES: ResultCategory[] = [
+  'apps',
+  'plugins',
+  'files',
+  'bookmarks',
+]
 export const MAX_RECENT = 15
 
 interface RecentRecord {
@@ -20,6 +25,7 @@ interface RecentRecord {
   title: string
   subtitle: string
   icon?: string
+  url?: string
 }
 
 function isRecentRecord(value: unknown): value is RecentRecord {
@@ -44,6 +50,9 @@ function toRecord(item: SearchResultItem): RecentRecord {
   if (item.icon && !startWith(item.icon, 'data:')) {
     record.icon = item.icon
   }
+  if (item.url) {
+    record.url = item.url
+  }
   return record
 }
 
@@ -54,6 +63,7 @@ export function recordToItem(record: RecentRecord): SearchResultItem {
     title: record.title,
     subtitle: record.subtitle,
     icon: record.icon,
+    url: record.url,
   }
 }
 

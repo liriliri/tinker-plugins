@@ -1,9 +1,10 @@
 {
-  "placeholder": "Search files, apps, plugins…",
+  "placeholder": "Search files, apps, plugins, bookmarks…",
   "categoryAll": "All",
   "categoryFiles": "Files",
   "categoryApps": "Apps",
   "categoryPlugins": "Plugins",
+  "categoryBookmarks": "Bookmarks",
   "empty": "No content",
   "emptyHint": "Enter a keyword to search",
   "recent": "Recent",
@@ -16,5 +17,19 @@
   "hotkeyHint": "Global shortcut to show or hide this window",
   "hotkeyError": "Failed to register — key may already be in use",
   "recordHotkey": "Click to record",
-  "recording": "Press keys…"
+  "recording": "Press keys…",
+  "browserSources": "Bookmark sources",
+  "browserSourcesHint": "Choose which bookmark sources to search",
+  "sourceChrome": "Chrome bookmarks",
+  "sourceEdge": "Edge bookmarks",
+  "sourceImported": "Imported bookmarks",
+  "importBookmarks": "Import bookmarks",
+  "importBookmarksHint": "Import Netscape HTML or Chrome JSON bookmark files",
+  "importSelect": "Choose files",
+  "importClear": "Clear imported",
+  "importedCount": "{{count}} imported",
+  "importSuccess": "Bookmarks imported",
+  "importEmpty": "No bookmarks found in the file",
+  "importFailed": "Import failed",
+  "importCleared": "Imported bookmarks cleared"
 }

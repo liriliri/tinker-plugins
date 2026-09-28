@@ -1,7 +1,7 @@
 {
   "name": "tinker-search-all",
-  "version": "0.1.2",
-  "description": "Unified search across files, apps, and plugins",
+  "version": "0.2.0",
+  "description": "Unified search across files, apps, plugins, and bookmarks",
   "files": [
     "dist/",
     "icon.png"
@@ -32,7 +32,7 @@
     "locales": {
       "zh-CN": {
         "name": "全局搜索",
-        "description": "统一搜索文件、应用、插件"
+        "description": "统一搜索文件、应用、插件、书签"
       }
     }
   }
