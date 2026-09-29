@@ -1,0 +1,19 @@
+{
+  "error": "Error",
+  "node": "Node",
+  "unit": "Unit",
+  "start": "Start",
+  "stop": "Stop",
+  "publicIp": "Public IP",
+  "ping": "Ping",
+  "jitter": "Jitter",
+  "download": "Download",
+  "upload": "Upload",
+  "gaugeHint": "Live readout",
+  "phaseIdle": "Ready",
+  "phaseIp": "Connecting…",
+  "phaseLatency": "Measuring latency…",
+  "phaseDownload": "Testing download…",
+  "phaseUpload": "Testing upload…",
+  "phaseDone": "Done"
+}

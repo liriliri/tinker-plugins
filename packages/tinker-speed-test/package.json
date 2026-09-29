@@ -1,0 +1,40 @@
+{
+  "name": "tinker-speed-test",
+  "version": "0.1.0",
+  "description": "Test network latency, download and upload speed",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:preload\"",
+    "dev:renderer": "vite build --watch",
+    "dev:preload": "vite build --watch --config vite.preload.ts",
+    "build": "concurrently \"npm run build:renderer\" \"npm run build:preload\"",
+    "build:renderer": "vite build",
+    "build:preload": "vite build --config vite.preload.ts",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "speed-test"
+  ],
+  "tinker": {
+    "name": "Speed Test",
+    "description": "Test network latency, download and upload speed",
+    "main": "dist/renderer/index.html",
+    "preload": "dist/preload/index.js",
+    "icon": "icon.png",
+    "category": "system",
+    "locales": {
+      "zh-CN": {
+        "name": "网速测试",
+        "description": "测试网络延迟、下载与上传速度"
+      }
+    }
+  }
+}

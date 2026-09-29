@@ -1,0 +1,85 @@
+@use 'tailwindcss';
+@config "../../tailwind.config.js";
+
+:root {
+  --st-chrome: #e4e8ee;
+  --st-panel: #f7f8fa;
+  --st-cell: #ffffff;
+  --st-field: #ffffff;
+  --st-ink: #1a222c;
+  --st-muted: #6b7785;
+  --st-line: #c9d1db;
+  --st-shine: rgba(255, 255, 255, 0.7);
+  --st-accent: #1f7ae0;
+  --st-accent-edge: #1764b8;
+  --st-up: #0f9f8a;
+  --st-danger: #c94a4a;
+  --st-danger-edge: #b23b3b;
+  --st-track: #d5dce4;
+  --st-tick: #9aa7b5;
+  --st-lcd: #0e151c;
+  --st-lcd-glow: #7ad0ff;
+  --st-ui:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --st-mono:
+    ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+}
+
+html.dark {
+  color-scheme: dark;
+  --st-chrome: #151a20;
+  --st-panel: #1c222a;
+  --st-cell: #232b34;
+  --st-field: #1a2028;
+  --st-ink: #e7edf4;
+  --st-muted: #8b97a5;
+  --st-line: #323b47;
+  --st-shine: rgba(255, 255, 255, 0.04);
+  --st-accent: #3b8fef;
+  --st-accent-edge: #2f74c4;
+  --st-up: #2bb8a0;
+  --st-danger: #d45a5a;
+  --st-danger-edge: #b23b3b;
+  --st-track: #2c3540;
+  --st-tick: #5d6a79;
+  --st-lcd: #0a1016;
+  --st-lcd-glow: #5ec8ff;
+}
+
+html {
+  font-family: var(--st-ui);
+  font-size: 13px;
+  color: var(--st-ink);
+  background: var(--st-chrome);
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+select {
+  font-family: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--st-tick);
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

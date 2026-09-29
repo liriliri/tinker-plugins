@@ -1,0 +1,19 @@
+{
+  "error": "错误",
+  "node": "节点",
+  "unit": "单位",
+  "start": "开始",
+  "stop": "停止",
+  "publicIp": "本机 IP",
+  "ping": "延迟",
+  "jitter": "抖动",
+  "download": "下载",
+  "upload": "上传",
+  "gaugeHint": "实时读数",
+  "phaseIdle": "准备就绪",
+  "phaseIp": "正在连接节点…",
+  "phaseLatency": "正在测量延迟…",
+  "phaseDownload": "正在测试下载…",
+  "phaseUpload": "正在测试上传…",
+  "phaseDone": "测试完成"
+}
