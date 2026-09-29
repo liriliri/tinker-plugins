@@ -1,0 +1,23 @@
+{
+  "description": "Check dead pixels, bleed, and banding.",
+  "start": "Start Test",
+  "preview": "Preview",
+  "controls": "Controls",
+  "keyNext": "Next",
+  "keyPrev": "Prev",
+  "keyExit": "Exit",
+  "keyHint": "Hint",
+  "keysPrev": "←",
+  "keysNext": "→",
+  "keysExit": "Esc",
+  "keysHint": "H",
+  "hint": "{{name}}  {{current}}/{{total}}",
+  "slideWhite": "White",
+  "slideRed": "Red",
+  "slideGreen": "Green",
+  "slideBlue": "Blue",
+  "slideBlack": "Black",
+  "slideLightBleed": "Bleed",
+  "slideGrayRamp": "Ramp",
+  "slideCheckerboard": "Checkers"
+}

@@ -1,0 +1,23 @@
+{
+  "description": "检测坏点、漏光与色阶。",
+  "start": "开始测试",
+  "preview": "预览",
+  "controls": "操作",
+  "keyNext": "下一张",
+  "keyPrev": "上一张",
+  "keyExit": "退出",
+  "keyHint": "提示",
+  "keysPrev": "←",
+  "keysNext": "→",
+  "keysExit": "Esc",
+  "keysHint": "H",
+  "hint": "{{name}}  {{current}}/{{total}}",
+  "slideWhite": "白色",
+  "slideRed": "红色",
+  "slideGreen": "绿色",
+  "slideBlue": "蓝色",
+  "slideBlack": "黑色",
+  "slideLightBleed": "漏光",
+  "slideGrayRamp": "灰阶",
+  "slideCheckerboard": "棋盘格"
+}

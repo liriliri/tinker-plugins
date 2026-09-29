@@ -1,0 +1,34 @@
+{
+  "name": "tinker-screen-tester",
+  "version": "0.1.0",
+  "description": "Test screen for dead pixels, backlight bleed, and color issues",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "screen-tester"
+  ],
+  "tinker": {
+    "name": "Screen Tester",
+    "category": "system",
+    "main": "dist/index.html",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "屏幕测试",
+        "description": "全屏检测屏幕坏点、漏光与色阶问题"
+      }
+    }
+  }
+}
