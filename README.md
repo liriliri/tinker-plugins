@@ -224,5 +224,21 @@ All plugins in the list can be installed to TINKER by running `npm i -g tinker-x
       <th><img src="./packages/tinker-tcp-tunnel/screenshot.png"/></th>
       <th><img src="./packages/tinker-bongo-cat/screenshot.png"/></th>
     </tr>
+    <tr>
+      <th><a href="./packages/tinker-voice-clone/">tinker-voice-clone</a></th>
+      <th><a href="./packages/tinker-cpu-ranking/">tinker-cpu-ranking</a></th>
+    </tr>
+    <tr>
+      <th><img src="./packages/tinker-voice-clone/screenshot.png"/></th>
+      <th><img src="./packages/tinker-cpu-ranking/screenshot.png"/></th>
+    </tr>
+    <tr>
+      <th><a href="./packages/tinker-screen-tester/">tinker-screen-tester</a></th>
+      <th><a href="./packages/tinker-gpu-ranking/">tinker-gpu-ranking</a></th>
+    </tr>
+    <tr>
+      <th><img src="./packages/tinker-screen-tester/screenshot.png"/></th>
+      <th><img src="./packages/tinker-gpu-ranking/screenshot.png"/></th>
+    </tr>
   </tbody>
 </table>

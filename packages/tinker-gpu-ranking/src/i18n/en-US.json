@@ -1,0 +1,22 @@
+{
+  "desktop": "Desktop",
+  "laptop": "Laptop",
+  "brandAll": "All",
+  "searchPlaceholder": "Filter…",
+  "refresh": "Refresh",
+  "colRank": "#",
+  "colGpu": "GPU",
+  "colTflops": "TFLOPS",
+  "colRating": "Score",
+  "colVram": "VRAM",
+  "empty": "No matches",
+  "emptyNoData": "No data yet",
+  "loading": "Loading…",
+  "toastTitleInfo": "Info",
+  "toastTitleSuccess": "Success",
+  "toastTitleError": "Error",
+  "toastTitleWarning": "Notice",
+  "toastCooldown": "Up to date. Retry in {{minutes}} min.",
+  "toastRefreshed": "Updated · {{desktop}} desktop / {{laptop}} laptop",
+  "toastRefreshFailed": "Refresh failed: {{error}}"
+}
