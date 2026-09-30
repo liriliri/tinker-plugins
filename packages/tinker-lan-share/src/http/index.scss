@@ -1,0 +1,57 @@
+@use 'tailwindcss';
+@config "../../tailwind.config.js";
+
+:root {
+  color-scheme: light;
+  --bg: #f5f5f5;
+  --panel: #ffffff;
+  --text: #171717;
+  --muted: #a3a3a3;
+  --secondary: #737373;
+  --border: #e5e5e5;
+  --primary: #059669;
+  --primary-soft: #ecfdf5;
+  --error: #e11d48;
+}
+
+html.dark {
+  color-scheme: dark;
+  --bg: #171717;
+  --panel: #262626;
+  --text: #f5f5f5;
+  --muted: #737373;
+  --secondary: #a3a3a3;
+  --border: #404040;
+  --primary: #34d399;
+  --primary-soft: #064e3b;
+  --error: #fb7185;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+html,
+body,
+#app {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  font-size: 14px;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 2px;
+}

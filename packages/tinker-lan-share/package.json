@@ -1,0 +1,41 @@
+{
+  "name": "tinker-lan-share",
+  "version": "0.1.0",
+  "description": "Share files over LAN via HTTP",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:preload\" \"npm run dev:http\"",
+    "dev:renderer": "vite build --watch",
+    "dev:preload": "vite build --watch --config vite.preload.ts",
+    "dev:http": "vite build --watch --config vite.http.ts",
+    "build": "concurrently \"npm run build:renderer\" \"npm run build:preload\" \"npm run build:http\"",
+    "build:renderer": "vite build",
+    "build:preload": "vite build --config vite.preload.ts",
+    "build:http": "vite build --config vite.http.ts",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "lan-share"
+  ],
+  "tinker": {
+    "name": "Lan Share",
+    "category": "file",
+    "main": "dist/renderer/index.html",
+    "preload": "dist/preload/index.js",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "局域网分享",
+        "description": "在局域网内创建 HTTP 文件分享服务，其他设备可通过浏览器访问"
+      }
+    }
+  }
+}

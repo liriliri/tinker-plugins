@@ -1,0 +1,13 @@
+{
+  "port": "端口",
+  "start": "启动",
+  "stop": "停止",
+  "copyUrl": "复制",
+  "openFolder": "目录",
+  "showQrcode": "二维码",
+  "clear": "清空",
+  "clearConfirm": "确定要清空所有共享文件吗？此操作不可恢复。",
+  "cancel": "取消",
+  "qrcodeMissing": "未安装 tinker-qrcode",
+  "stoppedHint": "启动服务后，同一局域网内的设备可通过浏览器访问共享文件"
+}

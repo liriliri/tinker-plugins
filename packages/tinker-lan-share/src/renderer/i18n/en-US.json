@@ -1,0 +1,13 @@
+{
+  "port": "Port",
+  "start": "Start",
+  "stop": "Stop",
+  "copyUrl": "Copy",
+  "openFolder": "Folder",
+  "showQrcode": "QR code",
+  "clear": "Clear",
+  "clearConfirm": "Clear all shared files? This cannot be undone.",
+  "cancel": "Cancel",
+  "qrcodeMissing": "tinker-qrcode is not installed",
+  "stoppedHint": "Start the server to share files on your local network"
+}
