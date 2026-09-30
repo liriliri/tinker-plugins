@@ -1,6 +1,6 @@
 {
   "name": "tinker-lan-share",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Share files over LAN via HTTP",
   "files": [
     "dist/",

@@ -240,5 +240,13 @@ All plugins in the list can be installed to TINKER by running `npm i -g tinker-x
       <th><img src="./packages/tinker-screen-tester/screenshot.png"/></th>
       <th><img src="./packages/tinker-gpu-ranking/screenshot.png"/></th>
     </tr>
+    <tr>
+      <th><a href="./packages/tinker-speed-test/">tinker-speed-test</a></th>
+      <th><a href="./packages/tinker-lan-share/">tinker-lan-share</a></th>
+    </tr>
+    <tr>
+      <th><img src="./packages/tinker-speed-test/screenshot.png"/></th>
+      <th><img src="./packages/tinker-lan-share/screenshot.png"/></th>
+    </tr>
   </tbody>
 </table>
