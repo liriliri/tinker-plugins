@@ -13,7 +13,12 @@ import toNum from 'licia/toNum'
 import toStr from 'licia/toStr'
 import BaseStore, { storage } from 'tinker-share/store/Base'
 import { errorMessage } from 'tinker-share/lib/util'
-import type { GltfItem, OptimizeOptions } from '../common/types'
+import {
+  isCompressionMode,
+  type CompressionMode,
+  type GltfItem,
+  type OptimizeOptions,
+} from '../common/types'
 import {
   DEFAULT_QUALITY,
   GLTF_EXTENSIONS,
@@ -24,8 +29,13 @@ import { createMcpApi } from './mcp'
 
 const STORAGE_OUTPUT_DIR = 'outputDir'
 const STORAGE_QUALITY = 'quality'
-const STORAGE_DRACO = 'dracoEnabled'
+const STORAGE_COMPRESSION = 'compression'
 const STORAGE_SIMPLIFY = 'simplifyEnabled'
+
+function loadCompression(): CompressionMode {
+  const saved = storage.get(STORAGE_COMPRESSION)
+  return isCompressionMode(saved) ? saved : 'draco'
+}
 
 export class Store extends BaseStore {
   readonly mcp = createMcpApi(() => this)
@@ -33,7 +43,7 @@ export class Store extends BaseStore {
   items: GltfItem[] = []
   outputDir = ''
   quality = DEFAULT_QUALITY
-  dracoEnabled = true
+  compression: CompressionMode = 'draco'
   simplifyEnabled = true
   private stopRequested = false
 
@@ -60,12 +70,7 @@ export class Store extends BaseStore {
       }
     }
 
-    const savedDracoEnabled = storage.get(STORAGE_DRACO)
-    if (isBool(savedDracoEnabled)) {
-      this.dracoEnabled = savedDracoEnabled
-    } else if (savedDracoEnabled != null) {
-      this.dracoEnabled = savedDracoEnabled === 'true'
-    }
+    this.compression = loadCompression()
 
     const savedSimplifyEnabled = storage.get(STORAGE_SIMPLIFY)
     if (isBool(savedSimplifyEnabled)) {
@@ -90,7 +95,7 @@ export class Store extends BaseStore {
   get optimizeOptions(): OptimizeOptions {
     const preset = QUALITY_PRESETS[this.quality]
     return {
-      dracoEnabled: this.dracoEnabled,
+      compression: this.compression,
       simplifyEnabled: this.simplifyEnabled,
       simplifyRatio: preset.simplifyRatio,
       simplifyError: preset.simplifyError,
@@ -106,10 +111,10 @@ export class Store extends BaseStore {
     this.resetOptimizedItems()
   }
 
-  setDracoEnabled(enabled: boolean) {
-    if (this.dracoEnabled === enabled) return
-    this.dracoEnabled = enabled
-    storage.set(STORAGE_DRACO, enabled)
+  setCompression(mode: CompressionMode) {
+    if (this.compression === mode) return
+    this.compression = mode
+    storage.set(STORAGE_COMPRESSION, mode)
     this.resetOptimizedItems()
   }
 

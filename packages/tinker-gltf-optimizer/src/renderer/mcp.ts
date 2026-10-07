@@ -1,12 +1,13 @@
 import find from 'licia/find'
 import isStrBlank from 'licia/isStrBlank'
 import trim from 'licia/trim'
+import { COMPRESSION_MODES, isCompressionMode } from '../common/types'
 import type { Store } from './store'
 
 interface OptimizeToolArgs {
   path: string
   quality?: number
-  draco?: boolean
+  compression?: string
   simplify?: boolean
   output_dir?: string
 }
@@ -34,8 +35,12 @@ async function optimize(store: Store, args: OptimizeToolArgs) {
     store.setQuality(args.quality)
   }
 
-  if (args.draco != null) {
-    store.setDracoEnabled(args.draco)
+  if (args.compression != null) {
+    const mode = trim(args.compression)
+    if (!isCompressionMode(mode)) {
+      throw new Error(`compression must be ${COMPRESSION_MODES.join(', ')}`)
+    }
+    store.setCompression(mode)
   }
 
   if (args.simplify != null) {
@@ -73,7 +78,7 @@ async function optimize(store: Store, args: OptimizeToolArgs) {
     outputSize: item.outputSize,
     outputPath: item.outputPath,
     quality: store.quality,
-    dracoEnabled: options.dracoEnabled,
+    compression: options.compression,
     simplifyEnabled: options.simplifyEnabled,
     simplifyRatio: options.simplifyRatio,
     simplifyError: options.simplifyError,

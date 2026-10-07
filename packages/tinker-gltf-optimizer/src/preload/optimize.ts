@@ -4,31 +4,30 @@ import type { OptimizeOptions } from '../common/types'
 const require = createRequire(__filename)
 const goRequire = createRequire(require.resolve('gltf-optimizer/package.json'))
 
-const { nodeIO } = require('gltf-optimizer/dist/src/node/nodeIO') as {
-  nodeIO: () => Promise<{
-    readBinary: (input: Uint8Array) => Promise<GltfDoc>
-    writeBinary: (doc: GltfDoc) => Promise<Uint8Array>
-  }>
-}
+const draco3d = goRequire('draco3d')
+const { NodeIO, PropertyType } = goRequire('@gltf-transform/core')
+const {
+  DracoMeshCompression,
+  MaterialsEmissiveStrength,
+  MaterialsSpecular,
+  MeshoptCompression,
+  MeshQuantization,
+  TextureTransform,
+  TextureWebP,
+} = goRequire('@gltf-transform/extensions')
+const { dedup, draco, meshopt, prune, reorder, resample, simplify, weld } =
+  goRequire('@gltf-transform/functions')
+const { MeshoptDecoder, MeshoptEncoder, MeshoptSimplifier } =
+  goRequire('meshoptimizer')
 
 const { convertTextureWebP } =
   require('gltf-optimizer/dist/src/node/convertTextureWebP') as {
     convertTextureWebP: (doc: GltfDoc, resolution?: number) => Promise<void>
   }
 
-const { PropertyType } = goRequire('@gltf-transform/core')
-const { dedup, draco, prune, reorder, resample, simplify, weld } = goRequire(
-  '@gltf-transform/functions',
-)
-const { MeshoptEncoder, MeshoptSimplifier } = goRequire('meshoptimizer')
-
-let ioPromise: ReturnType<typeof nodeIO> | null = null
-
-function getIO() {
-  if (!ioPromise) {
-    ioPromise = nodeIO()
-  }
-  return ioPromise
+type GltfIO = {
+  readBinary: (input: Uint8Array) => Promise<GltfDoc>
+  writeBinary: (doc: GltfDoc) => Promise<Uint8Array>
 }
 
 type GltfDoc = {
@@ -41,6 +40,36 @@ type GltfDoc = {
     }>
   }
   transform: (...fns: unknown[]) => Promise<unknown>
+}
+
+let ioPromise: Promise<GltfIO> | null = null
+
+async function createIo(): Promise<GltfIO> {
+  await MeshoptDecoder.ready
+  await MeshoptEncoder.ready
+  return new NodeIO()
+    .registerExtensions([
+      DracoMeshCompression,
+      MeshoptCompression,
+      MeshQuantization,
+      MaterialsSpecular,
+      MaterialsEmissiveStrength,
+      TextureWebP,
+      TextureTransform,
+    ])
+    .registerDependencies({
+      'draco3d.decoder': await draco3d.createDecoderModule(),
+      'draco3d.encoder': await draco3d.createEncoderModule(),
+      'meshopt.decoder': MeshoptDecoder,
+      'meshopt.encoder': MeshoptEncoder,
+    }) as GltfIO
+}
+
+function getIO() {
+  if (!ioPromise) {
+    ioPromise = createIo()
+  }
+  return ioPromise
 }
 
 function hasNonIndexedPrimitive(doc: GltfDoc): boolean {
@@ -79,7 +108,6 @@ export async function optimizeGltf(
     doc,
     cappedTextureResolution(doc, options.textureResolution),
   )
-  await MeshoptEncoder.ready
 
   const functions: unknown[] = [resample()]
 
@@ -87,15 +115,15 @@ export async function optimizeGltf(
     functions.push(weld({ tolerance: options.weldTolerance }))
   }
 
-  if (options.dracoEnabled) {
+  if (options.compression === 'draco') {
     functions.push(draco({ method: 'edgebreaker' }))
   }
+  // meshopt() already reorders — only run a separate reorder otherwise.
+  if (options.compression !== 'meshopt') {
+    functions.push(reorder({ encoder: MeshoptEncoder }))
+  }
 
-  functions.push(
-    reorder({ encoder: MeshoptEncoder }),
-    prune(),
-    dedup({ propertyTypes: [PropertyType.MESH] }),
-  )
+  functions.push(prune(), dedup({ propertyTypes: [PropertyType.MESH] }))
 
   if (options.simplifyEnabled) {
     if (!nonIndexed) {
@@ -108,6 +136,10 @@ export async function optimizeGltf(
         error: options.simplifyError,
       }),
     )
+  }
+
+  if (options.compression === 'meshopt') {
+    functions.push(meshopt({ encoder: MeshoptEncoder, level: 'medium' }))
   }
 
   await doc.transform(...functions)

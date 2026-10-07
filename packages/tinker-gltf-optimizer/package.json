@@ -1,7 +1,7 @@
 {
   "name": "tinker-gltf-optimizer",
-  "version": "0.2.3",
-  "description": "Optimize GLB and GLTF models with Draco, WebP, and mesh simplify",
+  "version": "0.2.4",
+  "description": "Optimize GLB and GLTF models with Draco or Meshopt, WebP, and mesh simplify",
   "files": [
     "dist/",
     "icon.png"
@@ -34,13 +34,13 @@
     "locales": {
       "zh-CN": {
         "name": "GLTF 优化",
-        "description": "使用 Draco、WebP 和网格简化优化 GLB/GLTF 模型"
+        "description": "使用 Draco 或 Meshopt、WebP 和网格简化优化 GLB/GLTF 模型"
       }
     },
     "mcp": {
       "tools": {
         "optimize": {
-          "description": "Optimize a local GLB or GLTF model with Draco, WebP, and mesh simplify. Updates the plugin UI and returns original/output size and path.",
+          "description": "Optimize a local GLB or GLTF model with Draco or Meshopt, WebP, and mesh simplify. Updates the plugin UI and returns original/output size and path.",
           "inputSchema": {
             "type": "object",
             "properties": {
@@ -55,9 +55,14 @@
                 "maximum": 4,
                 "description": "Quality preset index: 0 very low, 1 low, 2 medium (default), 3 high, 4 excellent"
               },
-              "draco": {
-                "type": "boolean",
-                "description": "Enable Draco mesh compression. Defaults to true."
+              "compression": {
+                "type": "string",
+                "enum": [
+                  "none",
+                  "draco",
+                  "meshopt"
+                ],
+                "description": "Geometry compression. Draco and Meshopt are mutually exclusive. Defaults to the plugin setting (draco)."
               },
               "simplify": {
                 "type": "boolean",

@@ -5,6 +5,11 @@ import className from 'licia/className'
 import map from 'licia/map'
 import toNum from 'licia/toNum'
 import toStr from 'licia/toStr'
+import {
+  COMPRESSION_MODES,
+  isCompressionMode,
+  type CompressionMode,
+} from '../../common/types'
 import { tw } from '../theme'
 import store from '../store'
 import { QUALITY_PRESETS } from '../lib/constants'
@@ -13,12 +18,23 @@ import SettingCheckbox from './SettingCheckbox'
 
 const TOOLBAR_ICON_SIZE = 14
 
+const COMPRESSION_LABEL_KEYS: Record<CompressionMode, string> = {
+  none: 'compressionNone',
+  draco: 'compressionDraco',
+  meshopt: 'compressionMeshopt',
+}
+
 export default observer(function ToolbarComponent() {
   const { t } = useTranslation()
 
   const qualityOptions = map(QUALITY_PRESETS, (preset, index) => ({
     label: t(preset.labelKey),
     value: toStr(index),
+  }))
+
+  const compressionOptions = map(COMPRESSION_MODES, (mode) => ({
+    label: t(COMPRESSION_LABEL_KEYS[mode]),
+    value: mode,
   }))
 
   return (
@@ -119,11 +135,22 @@ export default observer(function ToolbarComponent() {
           className="flex items-center gap-1.5"
           style={{ WebkitAppRegion: 'no-drag' } as React.CSSProperties}
         >
-          <SettingCheckbox
-            checked={store.dracoEnabled}
-            onChange={(checked) => store.setDracoEnabled(checked)}
-            label={t('draco')}
+          <span
+            className={className(
+              'text-[11px] uppercase tracking-wide',
+              tw.text.muted,
+            )}
+          >
+            {t('compression')}
+          </span>
+          <SettingSelect
+            value={store.compression}
+            onChange={(value) => {
+              if (isCompressionMode(value)) store.setCompression(value)
+            }}
+            options={compressionOptions}
             disabled={store.isOptimizing}
+            widthClass="w-24"
           />
 
           <SettingCheckbox
