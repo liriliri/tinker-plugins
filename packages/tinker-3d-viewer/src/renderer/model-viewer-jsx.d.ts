@@ -7,6 +7,7 @@ type ModelViewerJSX = React.DetailedHTMLProps<
   src?: string
   poster?: string
   alt?: string
+  loading?: 'auto' | 'lazy' | 'eager'
   exposure?: string | number
   'camera-controls'?: boolean
   'touch-action'?: string

@@ -2,8 +2,7 @@ import className from 'licia/className'
 import { observer } from 'mobx-react-lite'
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import type { ModelViewerElement } from '@google/model-viewer'
-import '@google/model-viewer'
+import { ModelViewerElement } from '@google/model-viewer'
 import {
   applyFirstPersonState,
   createFirstPersonState,
@@ -17,6 +16,9 @@ import { tw } from '../theme'
 import type { FirstPersonState } from '../types'
 import InspectorPanel from './InspectorPanel'
 import Toolbar from './Toolbar'
+
+// Script URL only triggers model-viewer to attach its bundled MeshoptDecoder.
+ModelViewerElement.meshoptDecoderLocation = 'data:text/javascript,'
 
 function suppressFocusOutline(el: ModelViewerElement) {
   const root = el.shadowRoot
@@ -103,9 +105,15 @@ const ModelStage = observer(function ModelStage() {
       syncDisplayMode()
     }
 
+    const onError = () => {
+      store.showError('loadFailed')
+    }
+
     el.addEventListener('load', onLoad)
+    el.addEventListener('error', onError)
     return () => {
       el.removeEventListener('load', onLoad)
+      el.removeEventListener('error', onError)
       displayControllerRef.current?.dispose()
       displayControllerRef.current = null
     }
@@ -293,6 +301,7 @@ const ModelStage = observer(function ModelStage() {
             ref={viewerRef}
             className="model-stage-viewer"
             src={store.srcUrl}
+            loading="eager"
             camera-controls={isFirstPerson ? undefined : true}
             touch-action={isFirstPerson ? 'none' : 'pan-y'}
             shadow-intensity="1"

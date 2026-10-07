@@ -1,6 +1,6 @@
 {
   "name": "tinker-3d-viewer",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "Preview and export 3D models (GLB, glTF, OBJ, FBX, STL, and more)",
   "files": [
     "dist/",
