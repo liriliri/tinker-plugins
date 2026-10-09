@@ -11,11 +11,13 @@ import {
   createGoldfishSchool,
   createGuppySchool,
   createNeonTetraSchool,
+} from './fish'
+import {
   DEFAULT_ANGELFISH_COUNT,
   DEFAULT_FISH_COUNT,
   DEFAULT_GUPPY_COUNT,
   DEFAULT_NEON_COUNT,
-} from './fish'
+} from './fish/config'
 import { createGlassDirt } from './glassDirt'
 import { createReef } from './reef'
 import { DEFAULT_REEF, type ReefOptions } from './reef/types'

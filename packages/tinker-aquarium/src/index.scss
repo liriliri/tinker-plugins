@@ -16,7 +16,7 @@
   width: 100%;
   cursor: pointer;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(15, 23, 42, 0.12);
   outline: none;
 }
 
@@ -26,7 +26,7 @@
   height: 12px;
   border-radius: 999px;
   border: 0;
-  background: rgba(226, 232, 240, 0.9);
+  background: rgba(71, 85, 105, 0.95);
 }
 
 .aq-slider::-moz-range-thumb {
@@ -34,16 +34,32 @@
   height: 12px;
   border-radius: 999px;
   border: 0;
-  background: rgba(226, 232, 240, 0.9);
+  background: rgba(71, 85, 105, 0.95);
 }
 
 .aq-slider:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.35);
+}
+
+.dark .aq-slider {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.dark .aq-slider::-webkit-slider-thumb {
+  background: rgba(226, 232, 240, 0.9);
+}
+
+.dark .aq-slider::-moz-range-thumb {
+  background: rgba(226, 232, 240, 0.9);
+}
+
+.dark .aq-slider:focus-visible::-webkit-slider-thumb {
   box-shadow: 0 0 0 3px rgba(125, 211, 252, 0.35);
 }
 
 .aq-scroll {
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+  scrollbar-color: rgba(15, 23, 42, 0.2) transparent;
 }
 
 .aq-scroll::-webkit-scrollbar {
@@ -56,10 +72,22 @@
 
 .aq-scroll::-webkit-scrollbar-thumb {
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.16);
+  background: rgba(15, 23, 42, 0.16);
 }
 
 .aq-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(15, 23, 42, 0.28);
+}
+
+.dark .aq-scroll {
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+}
+
+.dark .aq-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.dark .aq-scroll::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.28);
 }
 

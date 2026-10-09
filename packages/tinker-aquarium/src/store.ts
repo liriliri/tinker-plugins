@@ -1,4 +1,4 @@
-import { makeAutoObservable } from 'mobx'
+import { action, makeObservable, observable } from 'mobx'
 import isNum from 'licia/isNum'
 import defaults from 'licia/defaults'
 import extend from 'licia/extend'
@@ -81,7 +81,35 @@ class Store extends BaseStore {
 
   constructor() {
     super()
-    makeAutoObservable(this)
+    makeObservable(this, {
+      reef: observable,
+      fishCount: observable,
+      angelfishCount: observable,
+      guppyCount: observable,
+      neonTetraCount: observable,
+      lighting: observable,
+      view: observable,
+      viewEpoch: observable,
+      activeSlot: observable,
+      panelOpen: observable,
+      showFps: observable,
+      fps: observable,
+      perf: observable,
+      renderScale: observable,
+      setPanelOpen: action,
+      setShowFps: action,
+      setRenderScale: action,
+      setFps: action,
+      setReef: action,
+      setFishCount: action,
+      setAngelfishCount: action,
+      setGuppyCount: action,
+      setNeonTetraCount: action,
+      setLighting: action,
+      setView: action,
+      applySlot: action,
+      regenerate: action,
+    })
     this.loadReef()
     this.loadFish()
     this.loadAngelfish()

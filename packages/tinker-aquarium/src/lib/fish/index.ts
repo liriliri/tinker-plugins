@@ -26,13 +26,6 @@ import { readFishModel, type FishModelId } from './catalog'
 import type { FishBounds, FishSchool } from './types'
 import { createClipFishSchool } from './clip'
 
-export {
-  DEFAULT_ANGELFISH_COUNT,
-  DEFAULT_FISH_COUNT,
-  DEFAULT_GUPPY_COUNT,
-  DEFAULT_NEON_COUNT,
-} from './config'
-
 const tmpQuaternion = new THREE.Quaternion()
 const tmpMatrix = new THREE.Matrix4()
 const tmpScale = new THREE.Vector3()

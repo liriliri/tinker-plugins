@@ -11,7 +11,8 @@
     "url": "git+https://github.com/liriliri/tinker-plugins.git"
   },
   "scripts": {
-    "dev": "vite build --watch",
+    "dev": "vite",
+    "dev:tinker": "vite build --watch",
     "build": "vite build",
     "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
   },

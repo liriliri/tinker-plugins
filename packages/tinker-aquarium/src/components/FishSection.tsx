@@ -1,6 +1,7 @@
 import { Fragment } from 'react'
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
+import className from 'licia/className'
 import map from 'licia/map'
 import store from '../store'
 import { tw } from '../theme'
@@ -47,9 +48,7 @@ const FishSection = observer(() => {
     <section className={tw.section}>
       {map(SPECIES, (item, index) => (
         <Fragment key={item.titleKey}>
-          <h3
-            className={index > 0 ? `${tw.sectionTitle} mt-4` : tw.sectionTitle}
-          >
+          <h3 className={className(tw.sectionTitle, index > 0 && 'mt-4')}>
             {t(item.titleKey)}
           </h3>
           <SliderField

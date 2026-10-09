@@ -6,6 +6,10 @@ export interface Locales {
   'zh-CN': object
 }
 
+function languageFromNavigator() {
+  return navigator.language.startsWith('zh') ? 'zh-CN' : 'en-US'
+}
+
 export async function initI18n(locales: Locales) {
   i18n.use(initReactI18next).init({
     resources: {
@@ -17,6 +21,13 @@ export async function initI18n(locales: Locales) {
     interpolation: { escapeValue: false },
   })
 
-  const language = await tinker.getLanguage()
+  let language = languageFromNavigator()
+  if (typeof tinker !== 'undefined') {
+    try {
+      language = await tinker.getLanguage()
+    } catch {
+      /* keep navigator fallback */
+    }
+  }
   i18n.changeLanguage(language)
 }

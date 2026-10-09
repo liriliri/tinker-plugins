@@ -1,0 +1,36 @@
+name: Deploy to Server
+
+run-name: Deploy ${{ github.event.inputs.plugin }} to Server
+
+on:
+  workflow_dispatch:
+    inputs:
+      plugin:
+        description: 'Plugin'
+        required: true
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+      - run: |
+          npm i
+          cd packages/tinker-${{ github.event.inputs.plugin }}
+          npm run build
+          node ../../script/ga.js dist/index.html
+          mkdir ../deploy
+          cp -r dist/* ../deploy/
+      - uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          source: "packages/deploy/"
+          target: "/var/www/liriliri/tinker/plugins/${{ github.event.inputs.plugin }}"
+          strip_components: 2

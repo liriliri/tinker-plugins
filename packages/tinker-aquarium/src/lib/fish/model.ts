@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js'
 import isArr from 'licia/isArr'
 import { bakeAxes, readFishModel, type FishModelId } from './catalog'
 import type { FishModelDef } from './types'
@@ -8,6 +9,7 @@ const tmpBox = new THREE.Box3()
 const tmpCenter = new THREE.Vector3()
 const tmpSize = new THREE.Vector3()
 const gltfLoader = new GLTFLoader()
+gltfLoader.setMeshoptDecoder(MeshoptDecoder)
 
 export function isFishMesh(object: THREE.Object3D): object is THREE.Mesh {
   return (object as THREE.Mesh).isMesh === true

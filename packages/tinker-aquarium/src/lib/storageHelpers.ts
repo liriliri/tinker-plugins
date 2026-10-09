@@ -13,7 +13,7 @@ import {
   type LightingOptions,
 } from '../types'
 
-export function isHexColor(value: unknown): value is string {
+function isHexColor(value: unknown): value is string {
   return isStr(value) && /^#[0-9a-fA-F]{6}$/.test(value)
 }
 
@@ -38,7 +38,7 @@ export function readLightTint(
   }
 }
 
-export function isVec3(value: unknown): value is [number, number, number] {
+function isVec3(value: unknown): value is [number, number, number] {
   return isArr(value) && value.length === 3 && every(value, isNum)
 }
 

@@ -33,7 +33,7 @@ export const storage = createPluginStorage()
 
 /**
  * Base store for Tinker plugins: theme management.
- * Subclasses should call `makeAutoObservable(this)` themselves.
+ * Subclasses should call `makeObservable` / `makeAutoObservable` themselves.
  */
 export default class BaseStore {
   isDark = false
@@ -44,19 +44,30 @@ export default class BaseStore {
 
   setIsDark(isDark: boolean) {
     this.isDark = isDark
+    // Tinker injects html.dark; browser preview does not.
+    if (typeof tinker === 'undefined') {
+      document.documentElement.classList.toggle('dark', isDark)
+    }
   }
 
   protected async initTheme() {
-    try {
-      const theme = await tinker.getTheme()
-      this.setIsDark(theme === 'dark')
+    if (typeof tinker !== 'undefined') {
+      try {
+        const theme = await tinker.getTheme()
+        this.setIsDark(theme === 'dark')
 
-      tinker.on('changeTheme', async () => {
-        const next = await tinker.getTheme()
-        this.setIsDark(next === 'dark')
-      })
-    } catch (err) {
-      console.error('Failed to initialize theme:', err)
+        tinker.on('changeTheme', async () => {
+          const next = await tinker.getTheme()
+          this.setIsDark(next === 'dark')
+        })
+        return
+      } catch (err) {
+        console.error('Failed to initialize theme:', err)
+      }
     }
+
+    const mq = window.matchMedia('(prefers-color-scheme: dark)')
+    this.setIsDark(mq.matches)
+    mq.addEventListener('change', (e) => this.setIsDark(e.matches))
   }
 }
