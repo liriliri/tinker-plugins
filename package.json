@@ -38,7 +38,7 @@
     "@types/node": "^24.0.0",
     "@types/react": "^19.1.9",
     "@types/react-dom": "^19.1.7",
-    "@vitejs/plugin-react": "^4.7.0",
+    "@vitejs/plugin-react": "^5.2.0",
     "@zenfs/core": "^2.5.2",
     "@zenfs/dom": "^1.2.7",
     "@zenfs/emscripten": "^1.0.5",
@@ -58,9 +58,9 @@
     "react-i18next": "^16.5.4",
     "sass": "^1.98.0",
     "tailwindcss": "^4.1.17",
-    "tinker-api-types": "^0.7.0",
+    "tinker-api-types": "^0.8.0",
     "typescript": "^5.8.3",
-    "vite": "^5.4.19",
+    "vite": "^7.3.6",
     "vite-plugin-svgr": "^5.2.0"
   }
 }
