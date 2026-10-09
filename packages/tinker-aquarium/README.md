@@ -16,7 +16,7 @@ A desktop aquarium plugin for [TINKER](https://github.com/liriliri/tinker), rend
 
 ## Installation
 
-Download and install TINKER from `https://tinker.liriliri.io/`, then run `npm i -g tinker-aquarium`.
+Play directly in [browser](https://tinker.liriliri.io/plugins/aquarium), or install via TINKER: download from `https://tinker.liriliri.io/`, then run `npm i -g tinker-aquarium`.
 
 ## Usage
 
