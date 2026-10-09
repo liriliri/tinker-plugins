@@ -14,7 +14,7 @@ A colorful abstract background generator plugin for [TINKER](https://github.com/
 
 ## Installation
 
-Download and install TINKER from `https://tinker.liriliri.io/`, then run `npm i -g tinker-color-bg`.
+Play directly in [browser](https://tinker.liriliri.io/plugins/color-bg), or install via TINKER: download from `https://tinker.liriliri.io/`, then run `npm i -g tinker-color-bg`.
 
 ## Usage
 

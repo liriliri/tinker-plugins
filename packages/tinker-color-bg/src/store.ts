@@ -1,4 +1,4 @@
-import { makeAutoObservable } from 'mobx'
+import { action, computed, makeObservable, observable } from 'mobx'
 import clone from 'licia/clone'
 import extend from 'licia/extend'
 import every from 'licia/every'
@@ -43,7 +43,29 @@ class Store extends BaseStore {
 
   constructor() {
     super()
-    makeAutoObservable(this)
+    makeObservable(this, {
+      style: observable,
+      colors: observable,
+      seed: observable,
+      loop: observable,
+      options: observable,
+      exportWidth: observable,
+      exportHeight: observable,
+      exporting: observable,
+      stylePanelOpen: observable,
+      config: computed,
+      openStylePanel: action,
+      setStyle: action,
+      setPalette: action,
+      setColor: action,
+      setSeed: action,
+      randomizeSeed: action,
+      setLoop: action,
+      setOption: action,
+      setExportWidth: action,
+      setExportHeight: action,
+      exportImage: action,
+    })
     this.loadSettings()
   }
 

@@ -19,11 +19,11 @@ function dataUrlToBytes(url: string): Uint8Array {
   return new Uint8Array(base64.decode(parsed.data))
 }
 
-async function renderToPng(
+async function renderToPngDataUrl(
   config: BgConfig,
   width: number,
   height: number,
-): Promise<Uint8Array> {
+): Promise<string> {
   const container = document.createElement('div')
   const id = `color-bg-export-${now()}`
   container.id = id
@@ -46,7 +46,7 @@ async function renderToPng(
   destroyBg(bg)
   container.remove()
 
-  return dataUrlToBytes(url)
+  return url
 }
 
 export async function exportPng(
@@ -54,13 +54,24 @@ export async function exportPng(
   width: number,
   height: number,
 ) {
-  const { filePath, canceled } = await tinker.showSaveDialog({
-    defaultPath: `color-bg-${config.style}.png`,
-    filters: [{ name: 'PNG Image', extensions: ['png'] }],
-  })
-  if (canceled || !filePath) return false
+  const filename = `color-bg-${config.style}.png`
 
-  const bytes = await renderToPng(config, width, height)
-  await tinker.writeFile(filePath, bytes)
+  if (typeof tinker !== 'undefined') {
+    const { filePath, canceled } = await tinker.showSaveDialog({
+      defaultPath: filename,
+      filters: [{ name: 'PNG Image', extensions: ['png'] }],
+    })
+    if (canceled || !filePath) return false
+    await tinker.writeFile(
+      filePath,
+      dataUrlToBytes(await renderToPngDataUrl(config, width, height)),
+    )
+    return true
+  }
+
+  const el = document.createElement('a')
+  el.href = await renderToPngDataUrl(config, width, height)
+  el.download = filename
+  el.click()
   return true
 }
