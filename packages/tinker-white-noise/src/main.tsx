@@ -5,6 +5,7 @@ import LunaShaderToyPlayer from 'luna-shader-toy-player/react'
 import 'luna-shader-toy-player/css'
 import fullscreen from 'licia/fullscreen'
 import renderApp from 'tinker-share/lib/renderApp'
+import { showContextMenu } from 'tinker-share/components/ContextMenu'
 import snowy from './lib/snowy'
 import rainy from './lib/rainy'
 import seaside from './lib/seaside'
@@ -56,7 +57,7 @@ const App = observer(() => {
 
   function onContextMenu(e: React.MouseEvent) {
     e.preventDefault()
-    tinker.showContextMenu(e.clientX, e.clientY, [
+    showContextMenu(e.clientX, e.clientY, [
       ...SCENES.map((key) => ({
         label: t(key),
         type: 'radio' as const,

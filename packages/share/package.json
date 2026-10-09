@@ -11,6 +11,7 @@
     "./lib/util": "./src/lib/util.ts",
     "./lib/i18n": "./src/lib/i18n.ts",
     "./lib/renderApp": "./src/lib/renderApp.tsx",
+    "./components/ContextMenu": "./src/components/ContextMenu.tsx",
     "./store/Base": "./src/store/Base.ts"
   }
 }
