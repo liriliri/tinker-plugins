@@ -20,27 +20,57 @@ export const tw = {
 }
 
 export const colors = {
-  chrome: (isDark: boolean) => (isDark ? '#141820' : '#e8edf3'),
-  panel: (isDark: boolean) => (isDark ? '#151a24' : '#e4eaf1'),
-  sidebar: (isDark: boolean) => (isDark ? '#222a38' : '#f7f9fc'),
-  panelRaised: (isDark: boolean) => (isDark ? '#2a3344' : '#ffffff'),
-  line: (isDark: boolean) =>
-    isDark ? 'rgba(140,190,210,0.12)' : 'rgba(24,40,56,0.10)',
-  chalk: (isDark: boolean) => (isDark ? '#e4eaf2' : '#182032'),
-  mist: (isDark: boolean) => (isDark ? '#8492a6' : '#5a6a7e'),
-  signal: (isDark: boolean) => (isDark ? '#6b9ef5' : '#3b6fd4'),
-  signalOn: (isDark: boolean) => (isDark ? '#0a1224' : '#f5f8ff'),
-  signalRing: (isDark: boolean) =>
-    isDark ? 'rgba(107,158,245,0.45)' : 'rgba(59,111,212,0.40)',
-  bezel: (isDark: boolean) => (isDark ? '#0e1218' : '#d0d8e2'),
-  bezelInset: (isDark: boolean) =>
-    isDark
-      ? 'inset 0 0 0 1px rgba(140,190,210,0.06)'
-      : 'inset 0 0 0 1px rgba(24,40,56,0.06)',
-  keycapBg: (isDark: boolean) => (isDark ? '#141820' : '#ffffff'),
-  keycapBorder: (isDark: boolean) =>
-    isDark ? 'rgba(140,190,210,0.18)' : 'rgba(24,40,56,0.14)',
+  chrome: 'var(--st-chrome)',
+  panel: 'var(--st-panel)',
+  sidebar: 'var(--st-sidebar)',
+  panelRaised: 'var(--st-panel-raised)',
+  line: 'var(--st-line)',
+  chalk: 'var(--st-chalk)',
+  mist: 'var(--st-mist)',
+  signal: 'var(--st-signal)',
+  signalOn: 'var(--st-signal-on)',
+  signalRing: 'var(--st-signal-ring)',
+  bezel: 'var(--st-bezel)',
+  bezelInset: 'var(--st-bezel-inset)',
+  keycapBg: 'var(--st-keycap-bg)',
+  keycapBorder: 'var(--st-keycap-border)',
   hintBg: 'rgba(10,16,24,0.92)',
   hintFg: '#e4eaf2',
   hintAccent: '#6b9ef5',
+}
+
+export const hintStyle = { background: colors.hintBg, color: colors.hintFg }
+export const hintAccentStyle = { color: colors.hintAccent }
+export const chromeStyle = {
+  background: colors.chrome,
+  color: colors.chalk,
+}
+export const panelStyle = {
+  background: colors.panel,
+  borderColor: colors.line,
+}
+export const sidebarStyle = {
+  background: colors.sidebar,
+  borderColor: colors.line,
+}
+export const raisedStyle = {
+  background: colors.panelRaised,
+  borderColor: colors.line,
+}
+export const mistStyle = { color: colors.mist }
+export const chalkStyle = { color: colors.chalk }
+export const signalBtnStyle = {
+  background: colors.signal,
+  color: colors.signalOn,
+  outlineColor: colors.signalRing,
+}
+export const keycapStyle = {
+  background: colors.keycapBg,
+  borderColor: colors.keycapBorder,
+  color: colors.chalk,
+}
+export const bezelStyle = {
+  background: colors.bezel,
+  borderColor: colors.line,
+  boxShadow: colors.bezelInset,
 }

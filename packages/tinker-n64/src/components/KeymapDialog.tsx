@@ -16,7 +16,6 @@ import {
 } from '../lib/keymap'
 
 interface KeymapDialogProps {
-  isDark: boolean
   keymap: PlayerKeymap
   onClose: () => void
   onSave: (keymap: PlayerKeymap) => void
@@ -28,7 +27,6 @@ type BindingTarget = {
 }
 
 export default function KeymapDialog({
-  isDark,
   keymap,
   onClose,
   onSave,
@@ -153,13 +151,6 @@ export default function KeymapDialog({
     onSave(draft)
   }, [draft, onSave])
 
-  const overlayBg = tw.dialogOverlay(isDark)
-  const dialogBg = tw.dialogBg(isDark)
-  const borderCls = tw.dialogBorder(isDark)
-  const tableBg = tw.tableBg(isDark)
-  const thCls = tw.tableHeader(isDark)
-  const btnCls = (active: boolean) => tw.dialogBindingBtn(isDark, active)
-
   const isListening = (button: N64Button, type: 'keyboard' | 'gamepad') =>
     listening?.button === button && listening?.type === type
 
@@ -192,10 +183,10 @@ export default function KeymapDialog({
         : (formatGamepadBinding(binding) ?? '—')
 
     return (
-      <td key={type} className={`py-1.5 px-3 border-b ${borderCls}`}>
+      <td key={type} className={`py-1.5 px-3 border-b ${tw.dialogBorder}`}>
         <button
           type="button"
-          className={`${btnCls(active)} w-full justify-between`}
+          className={`${tw.dialogBindingBtn(active)} w-full justify-between`}
           onClick={() =>
             active ? setListening(null) : setListening({ button, type })
           }
@@ -216,19 +207,19 @@ export default function KeymapDialog({
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center ${overlayBg}`}
+      className={`fixed inset-0 z-50 flex items-center justify-center ${tw.dialogOverlay}`}
       onClick={handleBackdrop}
     >
       <div
-        className={`rounded border shadow-xl w-[520px] max-h-[90vh] min-h-0 flex flex-col overflow-hidden font-mono ${dialogBg}`}
+        className={`rounded border shadow-xl w-[520px] max-h-[90vh] min-h-0 flex flex-col overflow-hidden font-mono ${tw.dialogBg}`}
       >
         <div
-          className={`shrink-0 flex items-center justify-between px-4 py-2.5 border-b ${borderCls}`}
+          className={`shrink-0 flex items-center justify-between px-4 py-2.5 border-b ${tw.dialogBorder}`}
         >
           <span className="text-[11px] tracking-wider uppercase">
             {t('keymap')}
           </span>
-          <button type="button" className={tw.btn(isDark)} onClick={onClose}>
+          <button type="button" className={tw.btn} onClick={onClose}>
             <X size={13} />
           </button>
         </div>
@@ -236,22 +227,22 @@ export default function KeymapDialog({
         <div className="flex-1 min-h-0 overflow-hidden flex flex-col">
           <ScrollArea.Root className={tw.scrollArea.root}>
             <ScrollArea.Viewport className={tw.scrollArea.viewport}>
-              <table className={`w-full text-[10px] ${tableBg}`}>
+              <table className={`w-full text-[10px] ${tw.tableBg}`}>
                 <thead>
                   <tr>
                     <th
-                      className={`sticky top-0 z-10 py-1.5 px-3 text-left font-normal tracking-wider uppercase ${tableBg} ${thCls}`}
+                      className={`sticky top-0 z-10 py-1.5 px-3 text-left font-normal tracking-wider uppercase ${tw.tableBg} ${tw.tableHeader}`}
                     >
                       {t('button')}
                     </th>
                     <th
-                      className={`sticky top-0 z-10 py-1.5 px-3 text-left font-normal tracking-wider uppercase ${tableBg} ${thCls}`}
+                      className={`sticky top-0 z-10 py-1.5 px-3 text-left font-normal tracking-wider uppercase ${tw.tableBg} ${tw.tableHeader}`}
                     >
                       <Keyboard size={10} className="inline mr-1" />
                       {t('keyboard')}
                     </th>
                     <th
-                      className={`sticky top-0 z-10 py-1.5 px-3 text-left font-normal tracking-wider uppercase ${tableBg} ${thCls}`}
+                      className={`sticky top-0 z-10 py-1.5 px-3 text-left font-normal tracking-wider uppercase ${tw.tableBg} ${tw.tableHeader}`}
                     >
                       <Gamepad2 size={10} className="inline mr-1" />
                       {t('gamepad')}
@@ -262,7 +253,7 @@ export default function KeymapDialog({
                   {N64_BUTTONS.map((btn) => (
                     <tr key={btn}>
                       <td
-                        className={`py-1.5 px-3 border-b tracking-wider uppercase ${borderCls} ${thCls}`}
+                        className={`py-1.5 px-3 border-b tracking-wider uppercase ${tw.dialogBorder} ${tw.tableHeader}`}
                       >
                         {t(`n64_${btn}`)}
                       </td>
@@ -277,17 +268,17 @@ export default function KeymapDialog({
               orientation="vertical"
               className={tw.scrollArea.scrollbar}
             >
-              <ScrollArea.Thumb className={tw.scrollArea.thumb(isDark)} />
+              <ScrollArea.Thumb className={tw.scrollArea.thumb} />
             </ScrollArea.Scrollbar>
           </ScrollArea.Root>
         </div>
 
         <div
-          className={`shrink-0 flex items-center justify-between px-4 py-2.5 border-t ${borderCls}`}
+          className={`shrink-0 flex items-center justify-between px-4 py-2.5 border-t ${tw.dialogBorder}`}
         >
           <button
             type="button"
-            className={tw.btn(isDark)}
+            className={tw.btn}
             onClick={handleReset}
             title={t('reset')}
           >

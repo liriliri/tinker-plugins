@@ -1,5 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
-import { observer } from 'mobx-react-lite'
+import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import className from 'licia/className'
 import contain from 'licia/contain'
@@ -11,7 +10,7 @@ import trim from 'licia/trim'
 import renderApp from 'tinker-share/lib/renderApp'
 import { XboxSVG } from './components/XboxSVG'
 import { AxesSVG } from './components/AxesSVG'
-import store from './store'
+import './store'
 import { colors, tw, BUTTON_COLORS, CONNECTED_GLOW } from './theme'
 import { readGamepadState } from './lib/util'
 import type { GamepadState } from './types'
@@ -67,24 +66,21 @@ const DEFAULT_STATE: GamepadState = {
 
 const AXES_LABELS = ['leftX', 'leftY', 'rightX', 'rightY']
 
-interface GridOverlayProps {
-  pattern: string
-}
-
-function GridOverlay({ pattern }: GridOverlayProps) {
+function GridOverlay() {
   return (
     <div
       className="absolute inset-0 pointer-events-none"
-      style={{ backgroundImage: pattern, backgroundSize: '22px 22px' }}
+      style={{
+        backgroundImage: colors.gridPattern,
+        backgroundSize: '22px 22px',
+      }}
     />
   )
 }
 
-function panelStyle(panelBg: string, panelBorder: string) {
-  return {
-    background: panelBg,
-    border: `1px solid ${panelBorder}`,
-  }
+const panelStyle = {
+  background: colors.panelBg,
+  border: `1px solid ${colors.panelBorder}`,
 }
 
 function getConnectedIndices(gpads: GamepadList) {
@@ -97,28 +93,12 @@ function getConnectedIndices(gpads: GamepadList) {
   )
 }
 
-const Gamepad = observer(function Gamepad() {
-  const { isDark } = store
+function Gamepad() {
   const { t } = useTranslation()
   const [state, setState] = useState<GamepadState>(DEFAULT_STATE)
   const [connectedIndices, setConnectedIndices] = useState<number[]>([])
   const [selectedIndex, setSelectedIndex] = useState(0)
   const stateHashRef = useRef('')
-
-  const theme = useMemo(
-    () => ({
-      accentColor: colors.accent(isDark),
-      accentDim: colors.accentDim(isDark),
-      accentGlow: colors.accentGlow(isDark),
-      panelBg: colors.panelBg(isDark),
-      panelBorder: colors.panelBorder(isDark),
-      gridPattern: colors.gridPattern(isDark),
-      axisBar: colors.axisBar(isDark),
-      valueText: colors.valueText(isDark),
-      btnUnpressedText: colors.btnUnpressedText(isDark),
-    }),
-    [isDark],
-  )
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -159,10 +139,10 @@ const Gamepad = observer(function Gamepad() {
       <div
         className={className(
           'h-screen flex items-center justify-center font-mono',
-          tw.appBg(isDark),
+          tw.appBg,
         )}
       >
-        <GridOverlay pattern={theme.gridPattern} />
+        <GridOverlay />
         <div className="relative text-center space-y-5">
           <div className="flex justify-center">
             <div className="relative flex items-center justify-center w-24 h-24">
@@ -191,7 +171,7 @@ const Gamepad = observer(function Gamepad() {
               {t('waitingForInput')}
               <span className="animate-blink">_</span>
             </p>
-            <p className={className('text-xs mt-2', tw.connectHint(isDark))}>
+            <p className={className('text-xs mt-2', tw.connectHint)}>
               {t('connectPrompt')}
             </p>
           </div>
@@ -199,18 +179,6 @@ const Gamepad = observer(function Gamepad() {
       </div>
     )
   }
-
-  const {
-    accentColor,
-    accentDim,
-    accentGlow,
-    panelBg,
-    panelBorder,
-    gridPattern,
-    axisBar,
-    valueText,
-    btnUnpressedText,
-  } = theme
 
   const deviceMatch = state.id.match(/^(.*?)\s*\(([^)]*)\)/)
   const deviceName = deviceMatch ? trim(deviceMatch[1]) : state.id
@@ -221,8 +189,8 @@ const Gamepad = observer(function Gamepad() {
     if (!pressed) {
       return {
         background: 'transparent',
-        border: `1px solid ${panelBorder}`,
-        color: btnUnpressedText,
+        border: `1px solid ${colors.panelBorder}`,
+        color: colors.btnUnpressedText,
         boxShadow: 'none',
       }
     }
@@ -236,10 +204,10 @@ const Gamepad = observer(function Gamepad() {
       }
     }
     return {
-      background: accentDim,
-      border: `1px solid ${accentColor}`,
-      color: accentColor,
-      boxShadow: accentGlow,
+      background: colors.accentDim,
+      border: `1px solid ${colors.accent}`,
+      color: colors.accent,
+      boxShadow: colors.accentGlow,
     }
   }
 
@@ -247,22 +215,22 @@ const Gamepad = observer(function Gamepad() {
     <div
       className={className(
         'h-screen overflow-hidden flex flex-col font-mono',
-        tw.appBg(isDark),
+        tw.appBg,
       )}
     >
-      <GridOverlay pattern={gridPattern} />
+      <GridOverlay />
 
       <div
         className="relative flex items-center justify-between px-3 py-2 shrink-0"
         style={{
-          background: panelBg,
-          borderBottom: `1px solid ${panelBorder}`,
+          background: colors.panelBg,
+          borderBottom: `1px solid ${colors.panelBorder}`,
         }}
       >
         <div className="min-w-0 flex-1">
           <div
             className="text-sm tracking-widest uppercase truncate"
-            style={{ color: accentColor }}
+            style={{ color: colors.accent }}
           >
             {deviceName}
           </div>
@@ -280,11 +248,13 @@ const Gamepad = observer(function Gamepad() {
                   onClick={() => setSelectedIndex(idx)}
                   className="text-xs tracking-widest uppercase px-2 py-0.5 rounded transition-colors"
                   style={{
-                    border: `1px solid ${idx === selectedIndex ? accentColor : panelBorder}`,
+                    border: `1px solid ${idx === selectedIndex ? colors.accent : colors.panelBorder}`,
                     color:
-                      idx === selectedIndex ? accentColor : btnUnpressedText,
+                      idx === selectedIndex
+                        ? colors.accent
+                        : colors.btnUnpressedText,
                     background:
-                      idx === selectedIndex ? accentDim : 'transparent',
+                      idx === selectedIndex ? colors.accentDim : 'transparent',
                   }}
                 >
                   P{idx + 1}
@@ -311,10 +281,7 @@ const Gamepad = observer(function Gamepad() {
 
       <div className="relative flex flex-1 min-h-0 gap-2.5 p-2.5">
         <div className="flex flex-col gap-2 w-56 shrink-0">
-          <div
-            className="rounded p-2 space-y-2"
-            style={panelStyle(panelBg, panelBorder)}
-          >
+          <div className="rounded p-2 space-y-2" style={panelStyle}>
             <div
               className={className(
                 'text-xs tracking-[0.2em] uppercase',
@@ -329,21 +296,21 @@ const Gamepad = observer(function Gamepad() {
                   <span className={tw.sectionLabel}>
                     {t(AXES_LABELS[i] ?? `Axis ${i}`)}
                   </span>
-                  <span className={valueText}>{val.toFixed(3)}</span>
+                  <span className={tw.valueText}>{val.toFixed(3)}</span>
                 </div>
                 <div
                   className="relative h-1 rounded-full overflow-hidden"
-                  style={{ background: axisBar }}
+                  style={{ background: colors.axisBar }}
                 >
                   <div
                     className="absolute top-0 bottom-0 w-px"
-                    style={{ left: '50%', background: panelBorder }}
+                    style={{ left: '50%', background: colors.panelBorder }}
                   />
                   <div
                     className="absolute top-0 h-full rounded-full"
                     style={{
-                      background: accentColor,
-                      boxShadow: `0 0 4px ${accentColor}`,
+                      background: colors.accent,
+                      boxShadow: `0 0 4px ${colors.accent}`,
                       left: val >= 0 ? '50%' : `${((val + 1) / 2) * 100}%`,
                       width: `${Math.abs(val) * 50}%`,
                     }}
@@ -353,10 +320,7 @@ const Gamepad = observer(function Gamepad() {
             ))}
           </div>
 
-          <div
-            className="rounded p-2 flex-1"
-            style={panelStyle(panelBg, panelBorder)}
-          >
+          <div className="rounded p-2 flex-1" style={panelStyle}>
             <div
               className={className(
                 'text-xs tracking-[0.2em] uppercase mb-2',
@@ -383,15 +347,15 @@ const Gamepad = observer(function Gamepad() {
         </div>
 
         <div className="flex-1 flex flex-col items-center justify-center gap-2 min-w-0 overflow-auto">
-          <XboxSVG isDark={isDark} state={state} />
+          <XboxSVG state={state} />
           <div className="-mt-4">
-            <AxesSVG isDark={isDark} state={state} />
+            <AxesSVG state={state} />
           </div>
         </div>
       </div>
     </div>
   )
-})
+}
 
 renderApp(Gamepad, {
   'en-US': enUS,

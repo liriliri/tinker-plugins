@@ -51,7 +51,7 @@ function SideButton({
 }
 
 export const MouseVisual = observer(function MouseVisual() {
-  const { isDark, pressed, wheel, activity } = store
+  const { pressed, wheel, activity } = store
 
   const left = pressed.has(0)
   const middle = pressed.has(1)
@@ -59,15 +59,15 @@ export const MouseVisual = observer(function MouseVisual() {
   const back = pressed.has(3)
   const fwd = pressed.has(4)
 
-  const shell = colors.mouseShell(isDark)
-  const shellLit = colors.mouseShellLit(isDark)
-  const stroke = colors.mouseStroke(isDark)
-  const btn = colors.mouseBtn(isDark)
-  const btnOn = colors.mouseBtnPressed(isDark)
-  const text = colors.mouseBtnText(isDark)
-  const textOn = colors.mouseBtnTextOn(isDark)
-  const copper = colors.copper(isDark)
-  const teal = colors.teal(isDark)
+  const shell = colors.mouseShell
+  const shellLit = colors.mouseShellLit
+  const stroke = colors.mouseStroke
+  const btn = colors.mouseBtn
+  const btnOn = colors.mouseBtnPressed
+  const text = colors.mouseBtnText
+  const textOn = colors.mouseBtnTextOn
+  const copper = colors.copper
+  const teal = colors.teal
 
   const sensorGlow = 0.22 + Math.min(activity, 1) * 0.78
   const sensorR = 10 + Math.min(activity, 1) * 4

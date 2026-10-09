@@ -1,25 +1,20 @@
 import { useEffect, useState } from 'react'
-import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import className from 'licia/className'
 import extend from 'licia/extend'
-import store from '../store'
 import { slides, slideStyle, slideThumbStyle } from '../lib/slides'
 import type { Slide } from '../types'
-import { colors, tw } from '../theme'
+import { bezelStyle, colors, mistStyle, raisedStyle, tw } from '../theme'
 
 interface SwatchDotProps {
   slide: Slide
   active: boolean
 }
 
-const SwatchDot = observer(function SwatchDot({
-  slide,
-  active,
-}: SwatchDotProps) {
+function SwatchDot({ slide, active }: SwatchDotProps) {
   const style = extend({}, slideThumbStyle(slide), {
-    borderColor: colors.line(store.isDark),
-    boxShadow: active ? `0 0 0 1px ${colors.signal(store.isDark)}` : 'none',
+    borderColor: colors.line,
+    boxShadow: active ? `0 0 0 1px ${colors.signal}` : 'none',
   })
 
   return (
@@ -31,11 +26,10 @@ const SwatchDot = observer(function SwatchDot({
       style={style}
     />
   )
-})
+}
 
-const PreviewBezel = observer(function PreviewBezel() {
+function PreviewBezel() {
   const { t } = useTranslation()
-  const { bezelStyle, mistStyle, raisedStyle } = store
   const [slideIndex, setSlideIndex] = useState(0)
 
   useEffect(() => {
@@ -80,6 +74,6 @@ const PreviewBezel = observer(function PreviewBezel() {
       </div>
     </div>
   )
-})
+}
 
 export default PreviewBezel

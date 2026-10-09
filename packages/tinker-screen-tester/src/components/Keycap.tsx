@@ -1,17 +1,13 @@
-import { observer } from 'mobx-react-lite'
-import store from '../store'
-import { tw } from '../theme'
+import { tw, keycapStyle } from '../theme'
 
 interface KeycapProps {
   label: string
 }
 
-const Keycap = observer(function Keycap({ label }: KeycapProps) {
+export default function Keycap({ label }: KeycapProps) {
   return (
-    <kbd className={tw.keycap} style={store.keycapStyle}>
+    <kbd className={tw.keycap} style={keycapStyle}>
       {label}
     </kbd>
   )
-})
-
-export default Keycap
+}

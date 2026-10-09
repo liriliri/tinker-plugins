@@ -13,20 +13,20 @@ interface SidebarProps {
 
 export default observer(function Sidebar({ onSelect }: SidebarProps) {
   const { t } = useTranslation()
-  const { isDark, playHistory, currentRomPath } = store
+  const { playHistory, currentRomPath } = store
 
   return (
-    <aside className={className(tw.sidebar(isDark), 'flex flex-col min-h-0')}>
+    <aside className={className(tw.sidebar, 'flex flex-col min-h-0')}>
       {isEmpty(playHistory) ? (
         <div className="flex flex-1 items-center justify-center">
-          <p className={tw.sidebarEmpty(isDark)}>{t('emptyHistory')}</p>
+          <p className={tw.sidebarEmpty}>{t('emptyHistory')}</p>
         </div>
       ) : (
         <div className="flex-1 min-h-0 overflow-y-auto">
           {map(playHistory, (item) => (
             <div
               key={item.path}
-              className={tw.sidebarItem(isDark, item.path === currentRomPath)}
+              className={tw.sidebarItem(item.path === currentRomPath)}
             >
               <button
                 type="button"
@@ -34,12 +34,12 @@ export default observer(function Sidebar({ onSelect }: SidebarProps) {
                 onClick={() => onSelect(item.path)}
                 title={item.path}
               >
-                <Gamepad2 size={12} className={tw.sidebarItemIcon(isDark)} />
+                <Gamepad2 size={12} className={tw.sidebarItemIcon} />
                 <span className="truncate">{item.name}</span>
               </button>
               <button
                 type="button"
-                className={tw.sidebarDeleteBtn(isDark)}
+                className={tw.sidebarDeleteBtn}
                 onClick={() => store.removeFromPlayHistory(item.path)}
                 title={t('deleteHistory')}
               >

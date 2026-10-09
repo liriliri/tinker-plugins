@@ -10,7 +10,6 @@ export interface ToolbarSearchDropdownItem {
 }
 
 interface Props {
-  isDark: boolean
   value: string
   onChange: (value: string) => void
   placeholder?: string
@@ -19,7 +18,6 @@ interface Props {
 }
 
 export default function ToolbarSearch({
-  isDark,
   value,
   onChange,
   placeholder,
@@ -63,7 +61,7 @@ export default function ToolbarSearch({
     <div ref={containerRef} className="relative w-44" onBlur={handleBlur}>
       <Search
         size={12}
-        className={`absolute left-2 top-1/2 -translate-y-1/2 ${tw.searchIcon(isDark)}`}
+        className={`absolute left-2 top-1/2 -translate-y-1/2 ${tw.searchIcon}`}
       />
       <input
         ref={inputRef}
@@ -72,31 +70,29 @@ export default function ToolbarSearch({
         onFocus={() => setIsFocused(true)}
         onKeyDown={handleKeyDown}
         placeholder={placeholder}
-        className={tw.searchInput(isDark)}
+        className={tw.searchInput}
       />
       {value && (
         <button
           onClick={() => onChange('')}
-          className={`absolute right-2 top-1/2 -translate-y-1/2 ${tw.searchClear(isDark)}`}
+          className={`absolute right-2 top-1/2 -translate-y-1/2 ${tw.searchClear}`}
         >
           <X size={12} />
         </button>
       )}
       {showDropdown && (
-        <div className={tw.searchDropdown(isDark)}>
+        <div className={tw.searchDropdown}>
           {dropdownItems?.map((item, index) => (
             <button
               key={item.id}
               tabIndex={-1}
-              className={tw.searchDropdownItem(isDark, index === activeIndex)}
+              className={tw.searchDropdownItem(index === activeIndex)}
               onMouseDown={(e) => e.preventDefault()}
               onClick={() => onDropdownSelect?.(item)}
               title={item.description}
             >
               {item.icon && (
-                <span
-                  className={`flex-shrink-0 ${tw.searchDropdownIcon(isDark)}`}
-                >
+                <span className={`flex-shrink-0 ${tw.searchDropdownIcon}`}>
                   {item.icon}
                 </span>
               )}

@@ -6,7 +6,6 @@ import { renderPath, stickVisualY } from '../lib/util'
 import type { GamepadState } from '../types'
 
 interface AxesSVGProps {
-  isDark: boolean
   state: GamepadState
 }
 
@@ -104,7 +103,7 @@ function StickView({
   )
 }
 
-export function AxesSVG({ isDark, state }: AxesSVGProps) {
+export function AxesSVG({ state }: AxesSVGProps) {
   const { t } = useTranslation()
   const { path: leftPath, clear: clearLeft } = useStickPath(
     state.leftX,
@@ -121,20 +120,14 @@ export function AxesSVG({ isDark, state }: AxesSVGProps) {
     clearRight()
   }
 
-  const accent = colors.accent(isDark)
-  const gridColor = colors.gridColor(isDark)
-  const dotColor = colors.dotColor(isDark)
-  const clearBtnText = colors.clearBtnText(isDark)
-  const clearBtnBorder = colors.clearBtnBorder(isDark)
-
   return (
     <div className="flex flex-col items-center gap-1.5">
       <button
         onClick={clearPaths}
         className="text-[11px] tracking-widest uppercase px-3 py-1 rounded transition-colors"
         style={{
-          border: `1px solid ${hovered ? accent : clearBtnBorder}`,
-          color: hovered ? accent : clearBtnText,
+          border: `1px solid ${hovered ? colors.accent : colors.clearBtnBorder}`,
+          color: hovered ? colors.accent : colors.clearBtnText,
           background: 'transparent',
         }}
         onMouseEnter={() => setHovered(true)}
@@ -158,9 +151,9 @@ export function AxesSVG({ isDark, state }: AxesSVGProps) {
           y={state.leftY}
           pressed={state.l3Pressed}
           path={leftPath}
-          accent={accent}
-          gridColor={gridColor}
-          dotColor={dotColor}
+          accent={colors.accent}
+          gridColor={colors.gridColor}
+          dotColor={colors.dotColor}
         />
         <StickView
           cx={258.5}
@@ -168,9 +161,9 @@ export function AxesSVG({ isDark, state }: AxesSVGProps) {
           y={state.rightY}
           pressed={state.r3Pressed}
           path={rightPath}
-          accent={accent}
-          gridColor={gridColor}
-          dotColor={dotColor}
+          accent={colors.accent}
+          gridColor={colors.gridColor}
+          dotColor={colors.dotColor}
         />
       </svg>
     </div>

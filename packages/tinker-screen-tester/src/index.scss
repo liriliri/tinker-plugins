@@ -1,8 +1,40 @@
 @use 'tailwindcss';
 @config "../tailwind.config.js";
 
+:root {
+  color-scheme: light;
+  --st-chrome: #e8edf3;
+  --st-panel: #e4eaf1;
+  --st-sidebar: #f7f9fc;
+  --st-panel-raised: #ffffff;
+  --st-line: rgba(24, 40, 56, 0.1);
+  --st-chalk: #182032;
+  --st-mist: #5a6a7e;
+  --st-signal: #3b6fd4;
+  --st-signal-on: #f5f8ff;
+  --st-signal-ring: rgba(59, 111, 212, 0.4);
+  --st-bezel: #d0d8e2;
+  --st-bezel-inset: inset 0 0 0 1px rgba(24, 40, 56, 0.06);
+  --st-keycap-bg: #ffffff;
+  --st-keycap-border: rgba(24, 40, 56, 0.14);
+}
+
 html.dark {
   color-scheme: dark;
+  --st-chrome: #141820;
+  --st-panel: #151a24;
+  --st-sidebar: #222a38;
+  --st-panel-raised: #2a3344;
+  --st-line: rgba(140, 190, 210, 0.12);
+  --st-chalk: #e4eaf2;
+  --st-mist: #8492a6;
+  --st-signal: #6b9ef5;
+  --st-signal-on: #0a1224;
+  --st-signal-ring: rgba(107, 158, 245, 0.45);
+  --st-bezel: #0e1218;
+  --st-bezel-inset: inset 0 0 0 1px rgba(140, 190, 210, 0.06);
+  --st-keycap-bg: #141820;
+  --st-keycap-border: rgba(140, 190, 210, 0.18);
 }
 
 html,

@@ -1,8 +1,15 @@
-import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import { Play } from 'lucide-react'
-import store from '../store'
-import { tw } from '../theme'
+import {
+  chalkStyle,
+  chromeStyle,
+  mistStyle,
+  panelStyle,
+  raisedStyle,
+  signalBtnStyle,
+  sidebarStyle,
+  tw,
+} from '../theme'
 import PreviewBezel from './PreviewBezel'
 import Keycap from './Keycap'
 
@@ -15,9 +22,7 @@ interface ShortcutProps {
   label: string
 }
 
-const Shortcut = observer(function Shortcut({ keys, label }: ShortcutProps) {
-  const { raisedStyle, chalkStyle } = store
-
+function Shortcut({ keys, label }: ShortcutProps) {
   return (
     <div className={tw.shortcutRow} style={raisedStyle}>
       <span className={tw.body} style={chalkStyle}>
@@ -26,12 +31,10 @@ const Shortcut = observer(function Shortcut({ keys, label }: ShortcutProps) {
       <Keycap label={keys} />
     </div>
   )
-})
+}
 
-const StartPanel = observer(function StartPanel({ onStart }: StartPanelProps) {
+function StartPanel({ onStart }: StartPanelProps) {
   const { t } = useTranslation()
-  const { chromeStyle, panelStyle, sidebarStyle, mistStyle, signalBtnStyle } =
-    store
 
   return (
     <div className={tw.appShell} style={chromeStyle}>
@@ -70,6 +73,6 @@ const StartPanel = observer(function StartPanel({ onStart }: StartPanelProps) {
       </div>
     </div>
   )
-})
+}
 
 export default StartPanel

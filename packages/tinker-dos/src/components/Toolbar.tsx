@@ -16,21 +16,14 @@ interface BtnProps {
   onClick: () => void
   icon: React.ReactNode
   label: string
-  isDark: boolean
   active?: boolean
 }
 
-const ToolbarBtn = ({
-  onClick,
-  icon,
-  label,
-  isDark,
-  active = false,
-}: BtnProps) => (
+const ToolbarBtn = ({ onClick, icon, label, active = false }: BtnProps) => (
   <button
     type="button"
     tabIndex={-1}
-    className={active ? tw.btnActive(isDark) : tw.btn(isDark)}
+    className={active ? tw.btnActive : tw.btn}
     onMouseDown={(e) => e.preventDefault()}
     onClick={onClick}
     title={label}
@@ -40,14 +33,12 @@ const ToolbarBtn = ({
 )
 
 interface Props {
-  isDark: boolean
   onOpenFile: () => void
   onReset: () => void
   onFullscreen: () => void
 }
 
 export default observer(function Toolbar({
-  isDark,
   onOpenFile,
   onReset,
   onFullscreen,
@@ -58,7 +49,7 @@ export default observer(function Toolbar({
     <div
       className={className(
         'flex items-center gap-0.5 h-9 px-2 shrink-0',
-        tw.toolbar(isDark),
+        tw.toolbar,
       )}
     >
       <ToolbarBtn
@@ -71,28 +62,24 @@ export default observer(function Toolbar({
           )
         }
         label={`${t('sidebar')}  ${shortcutLabel('B')}`}
-        isDark={isDark}
         active={store.sidebarOpen}
       />
-      <div className={tw.divider(isDark)} />
+      <div className={tw.divider} />
       <ToolbarBtn
         onClick={onOpenFile}
         icon={<FolderOpen size={15} />}
         label={`${t('openProgram')}  ${shortcutLabel('O')}`}
-        isDark={isDark}
       />
       <ToolbarBtn
         onClick={onReset}
         icon={<RotateCcw size={15} />}
         label={`${t('reset')}  ${shortcutLabel('R')}`}
-        isDark={isDark}
       />
       <div className="ml-auto" />
       <ToolbarBtn
         onClick={onFullscreen}
         icon={<Maximize size={15} />}
         label={`${t('fullscreen')}  ${shortcutLabel('F')}`}
-        isDark={isDark}
       />
     </div>
   )

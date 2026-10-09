@@ -5,7 +5,7 @@ import className from 'licia/className'
 import fullscreen from 'licia/fullscreen'
 import lowerCase from 'licia/lowerCase'
 import store from '../store'
-import { tw } from '../theme'
+import { hintAccentStyle, hintStyle, tw } from '../theme'
 
 function onContextMenu(e: MouseEvent) {
   e.preventDefault()
@@ -14,15 +14,7 @@ function onContextMenu(e: MouseEvent) {
 
 const TestStage = observer(function TestStage() {
   const { t } = useTranslation()
-  const {
-    index,
-    total,
-    hintVisible,
-    slideNameKey,
-    stageStyle,
-    hintStyle,
-    hintAccentStyle,
-  } = store
+  const { index, total, hintVisible, slideNameKey, stageStyle } = store
 
   useEffect(() => {
     const onChange = () => {

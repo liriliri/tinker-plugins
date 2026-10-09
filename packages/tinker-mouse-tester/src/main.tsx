@@ -11,7 +11,7 @@ import zhCN from './i18n/zh-CN.json'
 import './index.scss'
 
 const App = observer(function App() {
-  const { isDark, padGlow } = store
+  const { padGlow } = store
   const panelRef = useRef<HTMLDivElement>(null)
   const [entered, setEntered] = useState(false)
 
@@ -81,8 +81,8 @@ const App = observer(function App() {
         tw.appShell,
       )}
       style={{
-        background: `radial-gradient(ellipse 80% 60% at 40% 45%, ${colors.void(isDark)} 0%, ${colors.voidDeep(isDark)} 100%)`,
-        color: colors.chalk(isDark),
+        background: `radial-gradient(ellipse 80% 60% at 40% 45%, ${colors.void} 0%, ${colors.voidDeep} 100%)`,
+        color: colors.chalk,
       }}
     >
       <div
@@ -102,9 +102,9 @@ const App = observer(function App() {
           <div
             className="absolute inset-0 rounded-full pointer-events-none"
             style={{
-              background: colors.padFill(isDark),
-              border: `1px solid ${colors.padRingDim(isDark)}`,
-              boxShadow: `inset 0 0 60px ${colors.padDim(isDark)}, 0 0 ${40 + padGlow * 50}px ${colors.padGlow(isDark)}`,
+              background: colors.padFill,
+              border: `1px solid ${colors.padRingDim}`,
+              boxShadow: `inset 0 0 60px ${colors.padDim}, 0 0 ${40 + padGlow * 50}px ${colors.padGlow}`,
               opacity: 0.85 + padGlow * 0.15,
               transition: 'box-shadow 120ms ease, opacity 120ms ease',
             }}
@@ -114,7 +114,7 @@ const App = observer(function App() {
             style={{
               width: 280,
               height: 280,
-              border: `1.5px dashed ${colors.padRing(isDark)}`,
+              border: `1.5px dashed ${colors.padRing}`,
             }}
           />
           <div
@@ -122,7 +122,7 @@ const App = observer(function App() {
             style={{
               width: 200,
               height: 200,
-              border: `1.5px solid ${colors.padRing(isDark)}`,
+              border: `1.5px solid ${colors.padRing}`,
             }}
           />
           <MouseVisual />

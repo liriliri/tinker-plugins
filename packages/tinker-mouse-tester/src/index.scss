@@ -1,8 +1,56 @@
 @use 'tailwindcss';
 @config "../tailwind.config.js";
 
+:root {
+  color-scheme: light;
+  --mt-void: #d8dde6;
+  --mt-void-deep: #c5ccd8;
+  --mt-surface-raised: #f7f8fb;
+  --mt-chalk: #1a1f28;
+  --mt-mist: #5c6678;
+  --mt-line: rgba(26, 31, 40, 0.1);
+  --mt-copper: #c45f32;
+  --mt-copper-glow: rgba(196, 95, 50, 0.35);
+  --mt-copper-dim: rgba(196, 95, 50, 0.12);
+  --mt-teal: #2f8f82;
+  --mt-mouse-shell: #3a4150;
+  --mt-mouse-shell-lit: #4a5264;
+  --mt-mouse-stroke: #1a1f28;
+  --mt-mouse-btn: #454d5e;
+  --mt-mouse-btn-pressed: #c45f32;
+  --mt-mouse-btn-text: #c5ccd8;
+  --mt-mouse-btn-text-on: #fff8f4;
+  --mt-pad-fill: #6e92b0;
+  --mt-pad-ring: rgba(232, 240, 246, 0.7);
+  --mt-pad-ring-dim: rgba(232, 240, 246, 0.45);
+  --mt-pad-glow: rgba(110, 146, 176, 0.4);
+  --mt-pad-dim: rgba(40, 70, 95, 0.18);
+}
+
 html.dark {
   color-scheme: dark;
+  --mt-void: #12151a;
+  --mt-void-deep: #0c0e12;
+  --mt-surface-raised: #232933;
+  --mt-chalk: #e8ecf2;
+  --mt-mist: #8b95a5;
+  --mt-line: rgba(232, 236, 242, 0.1);
+  --mt-copper: #e8956a;
+  --mt-copper-glow: rgba(232, 149, 106, 0.45);
+  --mt-copper-dim: rgba(232, 149, 106, 0.14);
+  --mt-teal: #5eb8a8;
+  --mt-mouse-shell: #2a303a;
+  --mt-mouse-shell-lit: #343b48;
+  --mt-mouse-stroke: #0a0c10;
+  --mt-mouse-btn: #323844;
+  --mt-mouse-btn-pressed: #e8956a;
+  --mt-mouse-btn-text: #9aa3b2;
+  --mt-mouse-btn-text-on: #1a120e;
+  --mt-pad-fill: #3a5368;
+  --mt-pad-ring: rgba(168, 196, 216, 0.55);
+  --mt-pad-ring-dim: rgba(168, 196, 216, 0.28);
+  --mt-pad-glow: rgba(110, 146, 176, 0.55);
+  --mt-pad-dim: rgba(20, 36, 48, 0.35);
 }
 
 html,

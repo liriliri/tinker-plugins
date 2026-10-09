@@ -5,7 +5,6 @@ interface GameViewportProps {
   containerRef: React.RefObject<HTMLDivElement | null>
   romLoaded: boolean
   isDragging: boolean
-  isDark: boolean
   onOpenFile: () => void
   onDragOver: (e: React.DragEvent) => void
   onDragLeave: () => void
@@ -16,7 +15,6 @@ const GameViewport = ({
   containerRef,
   romLoaded,
   isDragging,
-  isDark,
   onOpenFile,
   onDragOver,
   onDragLeave,
@@ -43,7 +41,7 @@ const GameViewport = ({
         >
           <span className="text-5xl">🎮</span>
           <p
-            className={`text-[10px] tracking-[0.25em] uppercase nes-blink ${tw.emptyText(isDark)}`}
+            className={`text-[10px] tracking-[0.25em] uppercase nes-blink ${tw.emptyText}`}
           >
             {t('dropRom')}
           </p>
@@ -52,7 +50,7 @@ const GameViewport = ({
       {isDragging && (
         <div className={tw.dragOverlay}>
           <p
-            className={`text-[10px] tracking-[0.3em] uppercase animate-pulse ${tw.dragText(isDark)}`}
+            className={`text-[10px] tracking-[0.3em] uppercase animate-pulse ${tw.dragText}`}
           >
             {t('dropRom')}
           </p>

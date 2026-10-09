@@ -1,8 +1,54 @@
 @use 'tailwindcss';
 @config "../tailwind.config.js";
 
+:root {
+  color-scheme: light;
+  --gp-accent: #1a5cff;
+  --gp-accent-rgb: 26, 92, 255;
+  --gp-accent-dim: rgba(26, 92, 255, 0.1);
+  --gp-accent-glow: 0 0 6px rgba(26, 92, 255, 0.4);
+  --gp-panel-bg: rgba(0, 0, 0, 0.04);
+  --gp-panel-border: rgba(0, 0, 0, 0.1);
+  --gp-grid-pattern: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.06) 1px,
+    transparent 1px
+  );
+  --gp-axis-bar: rgba(0, 0, 0, 0.08);
+  --gp-btn-unpressed: #a1a1aa;
+  --gp-xbox-body: #eff0f8;
+  --gp-xbox-stroke: #9898be;
+  --gp-grid-color: rgba(0, 0, 0, 0.12);
+  --gp-dot-color: #1e1e2e;
+  --gp-clear-btn-text: #94a3b8;
+  --gp-clear-btn-border: rgba(0, 0, 0, 0.12);
+  --gp-stick-alpha-mul: 0.5;
+  --gp-trigger-alpha-mul: 0.6;
+}
+
 html.dark {
   color-scheme: dark;
+  --gp-accent: #00e5ff;
+  --gp-accent-rgb: 0, 229, 255;
+  --gp-accent-dim: rgba(0, 229, 255, 0.12);
+  --gp-accent-glow: 0 0 6px rgba(0, 229, 255, 0.5);
+  --gp-panel-bg: rgba(255, 255, 255, 0.03);
+  --gp-panel-border: rgba(255, 255, 255, 0.07);
+  --gp-grid-pattern: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.04) 1px,
+    transparent 1px
+  );
+  --gp-axis-bar: rgba(255, 255, 255, 0.06);
+  --gp-btn-unpressed: #52525b;
+  --gp-xbox-body: #18182a;
+  --gp-xbox-stroke: #35355a;
+  --gp-grid-color: rgba(255, 255, 255, 0.1);
+  --gp-dot-color: #e2e8f0;
+  --gp-clear-btn-text: #52525b;
+  --gp-clear-btn-border: rgba(255, 255, 255, 0.1);
+  --gp-stick-alpha-mul: 0.6;
+  --gp-trigger-alpha-mul: 0.7;
 }
 
 html,

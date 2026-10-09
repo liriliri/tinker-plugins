@@ -3,11 +3,10 @@ import { colors, ABXY_COLORS } from '../theme'
 import type { GamepadState } from '../types'
 
 interface XboxSVGProps {
-  isDark: boolean
   state: GamepadState
 }
 
-export function XboxSVG({ isDark, state }: XboxSVGProps) {
+export function XboxSVG({ state }: XboxSVGProps) {
   const {
     leftX,
     leftY,
@@ -31,22 +30,22 @@ export function XboxSVG({ isDark, state }: XboxSVGProps) {
     optionsPressed,
   } = state
 
-  const bodyFill = colors.xboxBody(isDark)
-  const bodyStroke = colors.xboxStroke(isDark)
-  const accent = colors.accent(isDark)
+  const bodyFill = colors.xboxBody
+  const bodyStroke = colors.xboxStroke
+  const accent = colors.accent
 
   const stickFill = (x: number, y: number, pressed: boolean) => {
     if (pressed) return accent
     if (Math.abs(x) > 0.1 || Math.abs(y) > 0.1) {
       const alpha = Math.min(Math.abs(x) + Math.abs(y), 0.9)
-      return colors.stickAlpha(isDark, alpha)
+      return colors.stickAlpha(alpha)
     }
     return bodyFill
   }
 
   const triggerFill = (val: number) => {
     if (!val) return bodyFill
-    return colors.triggerAlpha(isDark, val)
+    return colors.triggerAlpha(val)
   }
 
   const btnFill = (pressed: boolean, color?: string) => {

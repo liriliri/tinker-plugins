@@ -16,7 +16,7 @@ export default observer(function GameViewport({
   onDrop,
 }: Props) {
   const { t } = useTranslation()
-  const { isDark, isLoading, currentProgramName } = store
+  const { isLoading, currentProgramName } = store
 
   return (
     <div
@@ -30,13 +30,13 @@ export default observer(function GameViewport({
           <p
             className={className(
               'font-mono text-[11px] tracking-[0.32em] uppercase',
-              tw.screenText(isDark),
+              tw.screenText,
             )}
           >
             {currentProgramName || t('loading')}
           </p>
           <div className={tw.loadingTrack}>
-            <div className={tw.loadingBar(isDark)} />
+            <div className={tw.loadingBar} />
           </div>
         </div>
       )}

@@ -14,14 +14,12 @@ import ErrorToast from './components/ErrorToast'
 import './index.scss'
 
 const App = observer(function App() {
-  const { isDark } = store
   const emulator = useEmulator()
 
   return (
     <Toast.Provider duration={4000}>
-      <div className={className('h-screen flex flex-col', tw.appBg(isDark))}>
+      <div className={className('h-screen flex flex-col', tw.appBg)}>
         <Toolbar
-          isDark={isDark}
           onOpenFile={emulator.openFile}
           onReset={emulator.handleReset}
           onFullscreen={emulator.handleFullscreen}

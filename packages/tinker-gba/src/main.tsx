@@ -16,7 +16,6 @@ import ErrorToast from './components/ErrorToast'
 import './index.scss'
 
 const App = observer(function App() {
-  const { isDark } = store
   const [showKeymap, setShowKeymap] = useState(false)
   const emulator = useEmulator(showKeymap)
 
@@ -27,14 +26,8 @@ const App = observer(function App() {
 
   return (
     <Toast.Provider duration={4000}>
-      <div
-        className={className(
-          'h-screen flex flex-col font-mono',
-          tw.appBg(isDark),
-        )}
-      >
+      <div className={className('h-screen flex flex-col font-mono', tw.appBg)}>
         <Toolbar
-          isDark={isDark}
           romLoaded={emulator.romLoaded}
           isPaused={emulator.isPaused}
           isMuted={emulator.isMuted}
@@ -58,7 +51,6 @@ const App = observer(function App() {
             containerRef={emulator.containerRef}
             romLoaded={emulator.romLoaded}
             isDragging={emulator.isDragging}
-            isDark={isDark}
             onOpenFile={emulator.openFile}
             onDragOver={emulator.handleDragOver}
             onDragLeave={emulator.handleDragLeave}
@@ -68,7 +60,6 @@ const App = observer(function App() {
 
         {showKeymap ? (
           <KeymapDialog
-            isDark={isDark}
             keymap={store.keymap}
             onClose={() => setShowKeymap(false)}
             onSave={handleSaveKeymap}

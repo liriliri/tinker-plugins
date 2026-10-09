@@ -14,7 +14,6 @@ import {
 } from '../lib/keymap'
 
 interface KeymapDialogProps {
-  isDark: boolean
   keymap: Keymap
   onClose: () => void
   onSave: (keymap: Keymap) => void
@@ -26,7 +25,6 @@ type BindingTarget = {
 }
 
 export default function KeymapDialog({
-  isDark,
   keymap,
   onClose,
   onSave,
@@ -147,14 +145,6 @@ export default function KeymapDialog({
     onSave(draft)
   }, [draft, onSave])
 
-  const overlayBg = tw.dialogOverlay(isDark)
-  const dialogBg = tw.dialogBg(isDark)
-  const borderCls = tw.dialogBorder(isDark)
-  const tableBg = tw.tableBg(isDark)
-  const thCls = tw.tableHeader(isDark)
-
-  const btnCls = (active: boolean) => tw.dialogBindingBtn(isDark, active)
-
   const isListening = (button: GbaButton, type: 'keyboard' | 'gamepad') =>
     listening?.button === button && listening?.type === type
 
@@ -187,9 +177,9 @@ export default function KeymapDialog({
         : (formatGamepadBinding(binding) ?? '—')
 
     return (
-      <td key={type} className={`py-1.5 px-3 border-b ${borderCls}`}>
+      <td key={type} className={`py-1.5 px-3 border-b ${tw.dialogBorder}`}>
         <button
-          className={`${btnCls(active)} w-full justify-between`}
+          className={`${tw.dialogBindingBtn(active)} w-full justify-between`}
           onClick={() =>
             active ? setListening(null) : setListening({ button, type })
           }
@@ -210,40 +200,40 @@ export default function KeymapDialog({
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center ${overlayBg}`}
+      className={`fixed inset-0 z-50 flex items-center justify-center ${tw.dialogOverlay}`}
       onClick={handleBackdrop}
     >
       <div
-        className={`rounded border shadow-xl w-[520px] max-h-[90vh] flex flex-col font-mono ${dialogBg}`}
+        className={`rounded border shadow-xl w-[520px] max-h-[90vh] flex flex-col font-mono ${tw.dialogBg}`}
       >
         <div
-          className={`flex items-center justify-between px-4 py-2.5 border-b ${borderCls}`}
+          className={`flex items-center justify-between px-4 py-2.5 border-b ${tw.dialogBorder}`}
         >
           <span className="text-[11px] tracking-wider uppercase">
             {t('keymap')}
           </span>
-          <button className={tw.btn(isDark)} onClick={onClose}>
+          <button className={tw.btn} onClick={onClose}>
             <X size={13} />
           </button>
         </div>
 
         <div className="overflow-auto flex-1">
-          <table className={`w-full text-[10px] ${tableBg}`}>
+          <table className={`w-full text-[10px] ${tw.tableBg}`}>
             <thead>
               <tr>
                 <th
-                  className={`py-1.5 px-3 text-left font-normal tracking-wider uppercase ${thCls}`}
+                  className={`py-1.5 px-3 text-left font-normal tracking-wider uppercase ${tw.tableHeader}`}
                 >
                   {t('button')}
                 </th>
                 <th
-                  className={`py-1.5 px-3 text-left font-normal tracking-wider uppercase ${thCls}`}
+                  className={`py-1.5 px-3 text-left font-normal tracking-wider uppercase ${tw.tableHeader}`}
                 >
                   <Keyboard size={10} className="inline mr-1" />
                   {t('keyboard')}
                 </th>
                 <th
-                  className={`py-1.5 px-3 text-left font-normal tracking-wider uppercase ${thCls}`}
+                  className={`py-1.5 px-3 text-left font-normal tracking-wider uppercase ${tw.tableHeader}`}
                 >
                   <Gamepad2 size={10} className="inline mr-1" />
                   {t('gamepad')}
@@ -254,7 +244,7 @@ export default function KeymapDialog({
               {map(GBA_BUTTONS, (btn) => (
                 <tr key={btn}>
                   <td
-                    className={`py-1.5 px-3 border-b tracking-wider uppercase ${borderCls} ${thCls}`}
+                    className={`py-1.5 px-3 border-b tracking-wider uppercase ${tw.dialogBorder} ${tw.tableHeader}`}
                   >
                     {t(`gba_${btn}`)}
                   </td>
@@ -267,19 +257,15 @@ export default function KeymapDialog({
         </div>
 
         <div
-          className={`flex items-center justify-between px-4 py-2.5 border-t ${borderCls}`}
+          className={`flex items-center justify-between px-4 py-2.5 border-t ${tw.dialogBorder}`}
         >
-          <button
-            className={tw.btn(isDark)}
-            onClick={handleReset}
-            title={t('reset')}
-          >
+          <button className={tw.btn} onClick={handleReset} title={t('reset')}>
             <RotateCcw size={11} />
             <span className="text-[10px]">{t('reset')}</span>
           </button>
           <button
             type="button"
-            className={`px-4 py-1.5 rounded text-[10px] tracking-wider transition-all active:scale-95 ${tw.dialogSaveBtn()}`}
+            className={`px-4 py-1.5 rounded text-[10px] tracking-wider transition-all active:scale-95 ${tw.dialogSaveBtn}`}
             onClick={handleSave}
           >
             {t('save')}

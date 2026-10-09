@@ -26,20 +26,13 @@ interface ToolbarBtnProps {
   onClick: () => void
   icon: React.ReactNode
   label: string
-  isDark: boolean
   active?: boolean
 }
 
-function ToolbarBtn({
-  onClick,
-  icon,
-  label,
-  isDark,
-  active = false,
-}: ToolbarBtnProps) {
+function ToolbarBtn({ onClick, icon, label, active = false }: ToolbarBtnProps) {
   return (
     <button
-      className={active ? tw.btnActive(isDark) : tw.btn(isDark)}
+      className={active ? tw.btnActive : tw.btn}
       onClick={onClick}
       title={label}
     >
@@ -49,7 +42,6 @@ function ToolbarBtn({
 }
 
 interface ToolbarProps {
-  isDark: boolean
   romLoaded: boolean
   isPaused: boolean
   isMuted: boolean
@@ -65,7 +57,6 @@ interface ToolbarProps {
 }
 
 export default observer(function Toolbar({
-  isDark,
   romLoaded,
   isPaused,
   isMuted,
@@ -100,7 +91,7 @@ export default observer(function Toolbar({
     <div
       className={className(
         'flex items-center gap-0.5 px-2 py-1 shrink-0 border-b',
-        tw.toolbar(isDark),
+        tw.toolbar,
       )}
     >
       <ToolbarBtn
@@ -113,17 +104,14 @@ export default observer(function Toolbar({
           )
         }
         label={t('sidebar')}
-        isDark={isDark}
         active={store.sidebarOpen}
       />
       <ToolbarBtn
         onClick={onOpenFile}
         icon={<FolderOpen size={13} />}
         label={t('openRom')}
-        isDark={isDark}
       />
       <ToolbarSearch
-        isDark={isDark}
         value={store.searchQuery}
         onChange={(val) => store.setSearchQuery(val)}
         placeholder={t('search')}
@@ -136,32 +124,27 @@ export default observer(function Toolbar({
             onClick={onTogglePause}
             icon={isPaused ? <Play size={13} /> : <Pause size={13} />}
             label={isPaused ? t('resume') : t('pause')}
-            isDark={isDark}
           />
           <ToolbarBtn
             onClick={onReset}
             icon={<RotateCcw size={13} />}
             label={t('reset')}
-            isDark={isDark}
           />
           <ToolbarBtn
             onClick={onToggleMute}
             icon={isMuted ? <VolumeX size={13} /> : <Volume2 size={13} />}
             label={isMuted ? t('unmute') : t('mute')}
-            isDark={isDark}
           />
-          <div className={tw.divider(isDark)} />
+          <div className={tw.divider} />
           <ToolbarBtn
             onClick={onSaveState}
             icon={<Save size={13} />}
             label={t('saveState')}
-            isDark={isDark}
           />
           <ToolbarBtn
             onClick={onLoadState}
             icon={<History size={13} />}
             label={t('loadState')}
-            isDark={isDark}
           />
         </>
       )}
@@ -170,13 +153,11 @@ export default observer(function Toolbar({
         onClick={onOpenKeymap}
         icon={<Keyboard size={13} />}
         label={t('keymap')}
-        isDark={isDark}
       />
       <ToolbarBtn
         onClick={onFullscreen}
         icon={<Maximize size={13} />}
         label={t('fullscreen')}
-        isDark={isDark}
       />
     </div>
   )

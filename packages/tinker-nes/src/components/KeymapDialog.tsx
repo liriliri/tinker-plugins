@@ -14,7 +14,6 @@ import {
 } from '../lib/keymap'
 
 interface KeymapDialogProps {
-  isDark: boolean
   keymap: [PlayerKeymap, PlayerKeymap]
   onClose: () => void
   onSave: (keymap: [PlayerKeymap, PlayerKeymap]) => void
@@ -27,7 +26,6 @@ type BindingTarget = {
 }
 
 export default function KeymapDialog({
-  isDark,
   keymap,
   onClose,
   onSave,
@@ -170,13 +168,6 @@ export default function KeymapDialog({
     onSave(draft)
   }, [draft, onSave])
 
-  const overlayBg = tw.dialogOverlay(isDark)
-  const dialogBg = tw.dialogBg(isDark)
-  const borderCls = tw.dialogBorder(isDark)
-  const tableBg = tw.tableBg(isDark)
-  const thCls = tw.tableHeader(isDark)
-  const btnCls = (active: boolean) => tw.dialogBindingBtn(isDark, active)
-
   const isListening = (
     player: 0 | 1,
     button: NesButton,
@@ -199,11 +190,13 @@ export default function KeymapDialog({
   ) => (
     <td
       key={`${player}-${button}`}
-      className={`py-1.5 px-3 border-b ${borderCls}`}
+      className={`py-1.5 px-3 border-b ${tw.dialogBorder}`}
     >
       <div className="flex gap-1.5">
         <button
-          className={btnCls(isListening(player, button, 'keyboard'))}
+          className={tw.dialogBindingBtn(
+            isListening(player, button, 'keyboard'),
+          )}
           onClick={() =>
             isListening(player, button, 'keyboard')
               ? setListening(null)
@@ -228,7 +221,9 @@ export default function KeymapDialog({
           />
         </button>
         <button
-          className={btnCls(isListening(player, button, 'gamepad'))}
+          className={tw.dialogBindingBtn(
+            isListening(player, button, 'gamepad'),
+          )}
           onClick={() =>
             isListening(player, button, 'gamepad')
               ? setListening(null)
@@ -258,41 +253,39 @@ export default function KeymapDialog({
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center ${overlayBg}`}
+      className={`fixed inset-0 z-50 flex items-center justify-center ${tw.dialogOverlay}`}
       onClick={handleBackdrop}
     >
       <div
-        className={`rounded border shadow-xl w-[660px] max-h-[90vh] flex flex-col font-mono ${dialogBg}`}
+        className={`rounded border shadow-xl w-[660px] max-h-[90vh] flex flex-col font-mono ${tw.dialogBg}`}
       >
-        {/* header */}
         <div
-          className={`flex items-center justify-between px-4 py-2.5 border-b ${borderCls}`}
+          className={`flex items-center justify-between px-4 py-2.5 border-b ${tw.dialogBorder}`}
         >
           <span className="text-[11px] tracking-wider uppercase">
             {t('keymap')}
           </span>
-          <button className={tw.btn(isDark)} onClick={onClose}>
+          <button className={tw.btn} onClick={onClose}>
             <X size={13} />
           </button>
         </div>
 
-        {/* table */}
         <div className="overflow-auto flex-1">
-          <table className={`w-full text-[10px] ${tableBg}`}>
+          <table className={`w-full text-[10px] ${tw.tableBg}`}>
             <thead>
               <tr>
                 <th
-                  className={`py-1.5 px-3 text-left font-normal tracking-wider uppercase ${thCls}`}
+                  className={`py-1.5 px-3 text-left font-normal tracking-wider uppercase ${tw.tableHeader}`}
                 >
                   {t('button')}
                 </th>
                 <th
-                  className={`py-1.5 px-3 text-left font-normal tracking-wider uppercase ${thCls}`}
+                  className={`py-1.5 px-3 text-left font-normal tracking-wider uppercase ${tw.tableHeader}`}
                 >
                   {t('player1')}
                 </th>
                 <th
-                  className={`py-1.5 px-3 text-left font-normal tracking-wider uppercase ${thCls}`}
+                  className={`py-1.5 px-3 text-left font-normal tracking-wider uppercase ${tw.tableHeader}`}
                 >
                   {t('player2')}
                 </th>
@@ -302,7 +295,7 @@ export default function KeymapDialog({
               {NES_BUTTONS.map((btn) => (
                 <tr key={btn}>
                   <td
-                    className={`py-1.5 px-3 border-b tracking-wider uppercase ${borderCls} ${thCls}`}
+                    className={`py-1.5 px-3 border-b tracking-wider uppercase ${tw.dialogBorder} ${tw.tableHeader}`}
                   >
                     {t(`nes_${btn}`)}
                   </td>
@@ -314,15 +307,10 @@ export default function KeymapDialog({
           </table>
         </div>
 
-        {/* footer */}
         <div
-          className={`flex items-center justify-between px-4 py-2.5 border-t ${borderCls}`}
+          className={`flex items-center justify-between px-4 py-2.5 border-t ${tw.dialogBorder}`}
         >
-          <button
-            className={tw.btn(isDark)}
-            onClick={handleReset}
-            title={t('reset')}
-          >
+          <button className={tw.btn} onClick={handleReset} title={t('reset')}>
             <RotateCcw size={11} />
             <span className="text-[10px]">{t('reset')}</span>
           </button>

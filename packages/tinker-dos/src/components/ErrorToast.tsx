@@ -8,7 +8,6 @@ import { tw } from '../theme'
 
 const ErrorToast = observer(function ErrorToast() {
   const { t } = useTranslation()
-  const { isDark } = store
 
   return (
     <>
@@ -16,19 +15,17 @@ const ErrorToast = observer(function ErrorToast() {
         open={store.toastOpen}
         onOpenChange={(open) => store.setToastOpen(open)}
         className={className(
-          tw.toast.root(isDark),
+          tw.toast.root,
           'data-[state=open]:animate-fade-up data-[state=closed]:opacity-0 transition-opacity',
         )}
       >
         <div className="flex-1 min-w-0">
-          <Toast.Title className={tw.toast.title(isDark)}>
-            {t('error')}
-          </Toast.Title>
-          <Toast.Description className={tw.toast.description(isDark)}>
+          <Toast.Title className={tw.toast.title}>{t('error')}</Toast.Title>
+          <Toast.Description className={tw.toast.description}>
             {store.toastMsg}
           </Toast.Description>
         </div>
-        <Toast.Close className={tw.toast.close(isDark)}>
+        <Toast.Close className={tw.toast.close}>
           <X className="w-3.5 h-3.5" />
         </Toast.Close>
       </Toast.Root>
