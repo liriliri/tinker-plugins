@@ -1,4 +1,4 @@
-import { makeAutoObservable, runInAction } from 'mobx'
+import { action, computed, makeObservable, observable, runInAction } from 'mobx'
 import debounce from 'licia/debounce'
 import BaseStore from 'tinker-share/store/Base'
 import { slides, slideStyle } from './lib/slides'
@@ -16,8 +16,19 @@ class Store extends BaseStore {
 
   constructor() {
     super()
-    makeAutoObservable(this, {
-      hideHint: false,
+    makeObservable(this, {
+      active: observable,
+      index: observable,
+      hintVisible: observable,
+      total: computed,
+      slide: computed,
+      slideNameKey: computed,
+      stageStyle: computed,
+      start: action,
+      stop: action,
+      next: action,
+      prev: action,
+      showHint: action,
     })
   }
 

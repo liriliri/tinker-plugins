@@ -1,4 +1,4 @@
-import { makeAutoObservable } from 'mobx'
+import { action, computed, makeObservable, observable } from 'mobx'
 import delay from 'licia/delay'
 import BaseStore from 'tinker-share/store/Base'
 import { convertChinese, toPinyin, toRmb } from './lib/convert'
@@ -16,8 +16,21 @@ export class Store extends BaseStore {
 
   constructor() {
     super()
-    makeAutoObservable(this, {
-      mcp: false,
+    makeObservable(this, {
+      currentTool: observable,
+      input: observable,
+      pinyinStyle: observable,
+      chineseMode: observable,
+      copied: observable,
+      pinyinResult: computed,
+      rmbResult: computed,
+      chineseResult: computed,
+      currentResult: computed,
+      setCurrentTool: action,
+      setInput: action,
+      setPinyinStyle: action,
+      setChineseMode: action,
+      copyResult: action,
     })
   }
 

@@ -1,4 +1,4 @@
-import { makeAutoObservable } from 'mobx'
+import { action, computed, makeObservable, observable } from 'mobx'
 import { SolarMonth } from 'lunar-javascript'
 import BaseStore from 'tinker-share/store/Base'
 import {
@@ -27,8 +27,18 @@ export class Store extends BaseStore {
     this.selectedYear = today.year
     this.selectedMonth = today.month
     this.selectedDay = today.day
-    makeAutoObservable(this, {
-      mcp: false,
+    makeObservable(this, {
+      currentYear: observable,
+      currentMonth: observable,
+      selectedYear: observable,
+      selectedMonth: observable,
+      selectedDay: observable,
+      calendarDays: computed,
+      selectedDateInfo: computed,
+      ganZhiYearShengXiao: computed,
+      prevMonth: action,
+      nextMonth: action,
+      selectDate: action,
     })
   }
 

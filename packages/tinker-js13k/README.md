@@ -13,7 +13,7 @@ A JS13K games plugin for [TINKER](https://github.com/liriliri/tinker), featuring
 
 ## Installation
 
-Download and install TINKER from `https://tinker.liriliri.io/`, then run `npm i -g tinker-js13k`.
+Play directly in [browser](https://tinker.liriliri.io/plugins/js13k), or install via TINKER: download from `https://tinker.liriliri.io/`, then run `npm i -g tinker-js13k`.
 
 ## Usage
 

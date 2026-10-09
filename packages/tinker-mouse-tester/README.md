@@ -13,7 +13,7 @@ A mouse tester plugin for [TINKER](https://github.com/liriliri/tinker), with rea
 
 ## Installation
 
-Download and install TINKER from `https://tinker.liriliri.io/`, then run `npm i -g tinker-mouse-tester`.
+Play directly in [browser](https://tinker.liriliri.io/plugins/mouse-tester), or install via TINKER: download from `https://tinker.liriliri.io/`, then run `npm i -g tinker-mouse-tester`.
 
 ## Usage
 

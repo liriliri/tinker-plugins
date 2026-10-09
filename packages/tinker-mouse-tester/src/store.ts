@@ -1,4 +1,4 @@
-import { makeAutoObservable, runInAction } from 'mobx'
+import { action, computed, makeObservable, observable, runInAction } from 'mobx'
 import clamp from 'licia/clamp'
 import debounce from 'licia/debounce'
 import BaseStore from 'tinker-share/store/Base'
@@ -29,9 +29,23 @@ class Store extends BaseStore {
 
   constructor() {
     super()
-    makeAutoObservable(this, {
-      resetActivity: false,
-      resetWheel: false,
+    makeObservable(this, {
+      pressed: observable,
+      wheel: observable,
+      lastButton: observable,
+      position: observable,
+      delta: observable,
+      scroll: observable,
+      doubleClick: observable,
+      activity: observable,
+      tracking: computed,
+      padGlow: computed,
+      press: action,
+      release: action,
+      move: action,
+      wheelScroll: action,
+      markDoubleClick: action,
+      blur: action,
     })
   }
 

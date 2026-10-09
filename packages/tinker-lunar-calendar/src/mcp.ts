@@ -13,7 +13,9 @@ export function createMcpApi(getStore: () => Store) {
     )
   }
 
-  tinker.registerMcp({ callTool })
+  if (typeof tinker !== 'undefined') {
+    tinker.registerMcp({ callTool })
+  }
 
   return { callTool }
 }

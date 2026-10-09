@@ -13,7 +13,7 @@ A screen tester plugin for [TINKER](https://github.com/liriliri/tinker), with fu
 
 ## Installation
 
-Download and install TINKER from `https://tinker.liriliri.io/`, then run `npm i -g tinker-screen-tester`.
+Play directly in [browser](https://tinker.liriliri.io/plugins/screen-tester), or install via TINKER: download from `https://tinker.liriliri.io/`, then run `npm i -g tinker-screen-tester`.
 
 ## Usage
 

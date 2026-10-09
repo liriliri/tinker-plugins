@@ -13,7 +13,7 @@ A Chinese character tools plugin for [TINKER](https://github.com/liriliri/tinker
 
 ## Installation
 
-Download and install TINKER from `https://tinker.liriliri.io/`, then run `npm i -g tinker-hanzi-converter`.
+Play directly in [browser](https://tinker.liriliri.io/plugins/hanzi-converter), or install via TINKER: download from `https://tinker.liriliri.io/`, then run `npm i -g tinker-hanzi-converter`.
 
 ## Usage
 

@@ -42,8 +42,7 @@ function buildDayCell(
     day,
     lunarLabel,
     isCurrentMonth,
-    isToday:
-      year === today.year && month === today.month && day === today.day,
+    isToday: year === today.year && month === today.month && day === today.day,
     isWeekend: contain([0, 6], weekday),
     isHoliday,
     isWorkday,
