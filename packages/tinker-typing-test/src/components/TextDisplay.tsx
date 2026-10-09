@@ -9,7 +9,7 @@ import store from '../store'
 import { tw } from '../theme'
 
 const TextDisplay = observer(() => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const containerRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const isComposingRef = useRef(false)
@@ -246,7 +246,7 @@ const TextDisplay = observer(() => {
           className="lang-toggle-btn"
           onClick={(e) => {
             e.stopPropagation()
-            store.setLanguage(store.isEnglish ? 'zh-CN' : 'en-US')
+            void i18n.changeLanguage(store.isEnglish ? 'zh-CN' : 'en-US')
           }}
         >
           <Languages size={16} />

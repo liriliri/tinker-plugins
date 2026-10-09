@@ -1,5 +1,7 @@
+import { useEffect } from 'react'
 import { observer } from 'mobx-react-lite'
 import className from 'licia/className'
+import { useTranslation } from 'react-i18next'
 import renderApp from 'tinker-share/lib/renderApp'
 import store from './store'
 import { tw } from './theme'
@@ -11,7 +13,12 @@ import zhCN from './i18n/zh-CN.json'
 import './index.scss'
 
 const App = observer(() => {
+  const { i18n } = useTranslation()
   const { status } = store
+
+  useEffect(() => {
+    store.setLanguage(i18n.language)
+  }, [i18n.language])
 
   return (
     <div
@@ -32,7 +39,4 @@ const App = observer(() => {
   )
 })
 
-void (async () => {
-  await store.init()
-  await renderApp(App, { 'en-US': enUS, 'zh-CN': zhCN })
-})()
+void renderApp(App, { 'en-US': enUS, 'zh-CN': zhCN })

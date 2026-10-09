@@ -49,7 +49,7 @@ const ResultsCard = observer(() => {
       </div>
 
       <button
-        onClick={() => store.resetTest()}
+        onClick={() => store.initTest()}
         className="restart-btn mt-2"
         style={{ animationDelay: '400ms' }}
       >

@@ -1,4 +1,4 @@
-import { makeAutoObservable, runInAction } from 'mobx'
+import { action, computed, makeObservable, observable, runInAction } from 'mobx'
 import random from 'licia/random'
 import BaseStore from 'tinker-share/store/Base'
 import { articles } from './data/articles'
@@ -39,13 +39,32 @@ class Store extends BaseStore {
 
   constructor() {
     super()
-    makeAutoObservable(this)
-  }
-
-  async init() {
-    const lang = await tinker.getLanguage()
-    this.setLanguage(lang)
-    tinker.on('changeLanguage', (next) => this.setLanguage(next))
+    makeObservable(this, {
+      status: observable,
+      displayText: observable,
+      typedText: observable,
+      correctChars: observable,
+      errors: observable,
+      wpm: observable,
+      cpm: observable,
+      accuracy: observable,
+      timeLeft: observable,
+      startTime: observable,
+      cpmHistory: observable,
+      lastCorrectChars: observable,
+      language: observable,
+      isEnglish: computed,
+      normalizedDisplay: computed,
+      normalizedTyped: computed,
+      chars: computed,
+      setLanguage: action,
+      initTest: action,
+      startTest: action,
+      handleInput: action,
+      handleBackspace: action,
+      tick: action,
+      finishTest: action,
+    })
   }
 
   get isEnglish() {
@@ -152,10 +171,6 @@ class Store extends BaseStore {
   finishTest() {
     this.status = 'finished'
     this.stopTimer()
-  }
-
-  resetTest() {
-    this.initTest()
   }
 
   private startTimer() {
