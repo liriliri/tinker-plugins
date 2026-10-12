@@ -1,4 +1,4 @@
-import { action, computed, makeObservable, observable } from 'mobx'
+import { makeAutoObservable } from 'mobx'
 import findIdx from 'licia/findIdx'
 import keys from 'licia/keys'
 import BaseStore from 'tinker-share/store/Base'
@@ -13,24 +13,7 @@ class Store extends BaseStore {
 
   constructor() {
     super()
-    makeObservable(this, {
-      screen: observable,
-      currentQuestion: observable,
-      answers: observable,
-      resultType: observable,
-      totalQuestions: computed,
-      answeredCount: computed,
-      progress: computed,
-      isComplete: computed,
-      currentAnswer: computed,
-      dimensionScores: computed,
-      startTest: action,
-      answer: action,
-      goToPrev: action,
-      goToNext: action,
-      showResult: action,
-      restart: action,
-    })
+    makeAutoObservable(this)
   }
 
   get totalQuestions() {

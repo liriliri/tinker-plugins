@@ -1,29 +1,13 @@
-import { isOnline } from 'tinker-share/lib/util'
+import { createPluginMcpApi } from 'tinker-share/lib/mcp'
 import type { ChineseMode, PinyinStyle } from './types'
 import type { Store } from './store'
 
 export function createMcpApi(getStore: () => Store) {
-  const callTool = (name: string, args: Record<string, unknown>) => {
-    if (name === 'to_pinyin') {
-      return toPinyin(getStore(), args as { text: string; style?: PinyinStyle })
-    }
-    if (name === 'to_rmb') {
-      return toRmb(getStore(), args as { amount: string })
-    }
-    if (name === 'convert_chinese') {
-      return convertChinese(
-        getStore(),
-        args as { text: string; mode?: ChineseMode },
-      )
-    }
-    throw new Error(`Unknown tool "${name}"`)
-  }
-
-  if (!isOnline()) {
-    tinker.registerMcp({ callTool })
-  }
-
-  return { callTool }
+  return createPluginMcpApi(getStore, {
+    to_pinyin: toPinyin,
+    to_rmb: toRmb,
+    convert_chinese: convertChinese,
+  })
 }
 
 function toPinyin(store: Store, args: { text: string; style?: PinyinStyle }) {

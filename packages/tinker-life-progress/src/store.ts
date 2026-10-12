@@ -1,4 +1,4 @@
-import { action, computed, makeObservable, observable, runInAction } from 'mobx'
+import { makeAutoObservable, runInAction } from 'mobx'
 import clamp from 'licia/clamp'
 import isNaN from 'licia/isNaN'
 import toNum from 'licia/toNum'
@@ -18,38 +18,7 @@ class Store extends BaseStore {
 
   constructor() {
     super()
-    makeObservable(this, {
-      birthday: observable,
-      lifespan: observable,
-      now: observable,
-      showSettings: observable,
-      birthDate: computed,
-      deathDate: computed,
-      totalLifeDays: computed,
-      livedDays: computed,
-      lifeProgress: computed,
-      lifeDaysLeft: computed,
-      livedYears: computed,
-      yearStart: computed,
-      yearEnd: computed,
-      yearTotalDays: computed,
-      yearPassedDays: computed,
-      yearProgress: computed,
-      yearDaysLeft: computed,
-      dayProgress: computed,
-      dayHoursLeft: computed,
-      weekDay: computed,
-      weekProgress: computed,
-      weekDaysLeft: computed,
-      monthStart: computed,
-      monthEnd: computed,
-      monthTotalDays: computed,
-      monthPassedDays: computed,
-      monthProgress: computed,
-      monthDaysLeft: computed,
-      setShowSettings: action,
-      saveSettings: action,
-    })
+    makeAutoObservable(this)
     this.loadStorage()
     this.startTimer()
   }

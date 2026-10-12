@@ -1,4 +1,4 @@
-import { action, computed, makeObservable, observable, runInAction } from 'mobx'
+import { makeAutoObservable, runInAction } from 'mobx'
 import concat from 'licia/concat'
 import BaseStore from 'tinker-share/store/Base'
 import type { EmojiData } from './types'
@@ -16,20 +16,7 @@ class Store extends BaseStore {
 
   constructor() {
     super()
-    makeObservable(this, {
-      emojis: observable,
-      categoryList: observable,
-      selectedCategory: observable,
-      searchQuery: observable,
-      isLoading: observable,
-      loadError: observable,
-      categoryOptions: computed,
-      filteredEmojis: computed,
-      loadData: action,
-      setSelectedCategory: action,
-      setSearchQuery: action,
-      copyToClipboard: action,
-    })
+    makeAutoObservable(this)
     void this.loadData()
   }
 

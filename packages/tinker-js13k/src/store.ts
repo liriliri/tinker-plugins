@@ -1,4 +1,4 @@
-import { action, makeObservable, observable } from 'mobx'
+import { makeAutoObservable } from 'mobx'
 import { isOnline } from 'tinker-share/lib/util'
 
 import type { Game } from './types'
@@ -17,11 +17,7 @@ class Store {
   activeGame: Game | null = null
 
   constructor() {
-    makeObservable(this, {
-      activeGame: observable,
-      openGame: action,
-      closeGame: action,
-    })
+    makeAutoObservable(this)
   }
 
   openGame(game: Game) {

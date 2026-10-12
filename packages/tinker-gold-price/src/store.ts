@@ -27,8 +27,6 @@ export class Store extends BaseStore {
     super()
     makeAutoObservable(this, {
       mcp: false,
-      inited: false,
-      refreshTimer: false,
     })
   }
 

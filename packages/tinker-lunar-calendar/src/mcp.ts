@@ -1,23 +1,12 @@
-import { errorMessage, isOnline } from 'tinker-share/lib/util'
+import { errorMessage } from 'tinker-share/lib/util'
+import { createPluginMcpApi } from 'tinker-share/lib/mcp'
 import type { Store } from './store'
 import { getTodaySolar } from './lib/util'
 
 export function createMcpApi(getStore: () => Store) {
-  const callTool = (name: string, args: Record<string, unknown>) => {
-    if (name !== 'query') {
-      return `Error: Unknown tool "${name}"`
-    }
-    return query(
-      getStore(),
-      args as { year?: number; month?: number; day?: number },
-    )
-  }
-
-  if (!isOnline()) {
-    tinker.registerMcp({ callTool })
-  }
-
-  return { callTool }
+  return createPluginMcpApi(getStore, {
+    query,
+  })
 }
 
 function query(
