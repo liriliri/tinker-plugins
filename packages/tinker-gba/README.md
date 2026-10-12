@@ -16,7 +16,7 @@ A GBA emulator plugin for [TINKER](https://github.com/liriliri/tinker), supporti
 
 ## Installation
 
-Download and install TINKER from `https://tinker.liriliri.io/`, then run `npm i -g tinker-gba`.
+Play directly in [browser](https://tinker.liriliri.io/plugins/gba), or install via TINKER: download from `https://tinker.liriliri.io/`, then run `npm i -g tinker-gba`.
 
 ## Usage
 

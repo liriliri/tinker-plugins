@@ -12,6 +12,10 @@ export function isOnline(): boolean {
   return typeof tinker === 'undefined'
 }
 
+export function isDev(): boolean {
+  return import.meta.env.MODE === 'development'
+}
+
 export function setTitle(title: string, onlineFallback = '') {
   if (isOnline()) {
     document.title = title || onlineFallback

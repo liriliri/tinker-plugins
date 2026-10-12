@@ -87,10 +87,12 @@ class Store extends BaseStore {
 ## Util
 
 ```ts
-import { errorMessage, isOnline, setTitle } from 'tinker-share/lib/util'
+import { errorMessage, isDev, isOnline, setTitle } from 'tinker-share/lib/util'
 ```
 
 `isOnline()` is true outside TINKER (browser / online deploy), when the global `tinker` API is missing.
+
+`isDev()` is true when Vite `MODE === 'development'`. Prefer over `import.meta.env.DEV`, which is false under `NODE_ENV=production vite`.
 
 `setTitle(title, onlineFallback?)`: TINKER → `tinker.setTitle`; online → `document.title` (empty title uses `onlineFallback`).
 

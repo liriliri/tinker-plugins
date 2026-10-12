@@ -20,19 +20,19 @@ input_player1_select = "rshift"
 savestate_file_compression = false
 `
 
-interface EmWindow extends Window {
-  gameUrl: string
-  gameName: string
-  coreUrl: string
-}
-
 interface EmModule {
   FS: typeof FS
   callMain: (args: string[]) => void
   resumeMainLoop: () => void
 }
 
-const { gameUrl, gameName, coreUrl } = window as unknown as EmWindow
+interface EmWindow extends Window {
+  gameUrl: string
+  gameName: string
+  coreReady: Promise<{ default: (config: unknown) => Promise<EmModule> }>
+}
+
+const { gameUrl, gameName, coreReady } = window as unknown as EmWindow
 
 let emModule: EmModule
 let fsReady = false
@@ -130,7 +130,7 @@ window.addEventListener('message', (e) => {
 window.addEventListener('load', () => {
   window.focus()
   setupFs()
-  import(/* @vite-ignore */ coreUrl)
+  coreReady
     .then((m) => m.default(moduleConfig))
     .then((instance: EmModule) => {
       emModule = instance

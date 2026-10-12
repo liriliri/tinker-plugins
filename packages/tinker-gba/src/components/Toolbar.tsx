@@ -18,6 +18,7 @@ import {
   PanelLeftOpen,
   PanelLeftClose,
 } from 'lucide-react'
+import { isOnline } from 'tinker-share/lib/util'
 import store from '../store'
 import { tw } from '../theme'
 import ToolbarSearch, { type ToolbarSearchDropdownItem } from './ToolbarSearch'
@@ -87,6 +88,8 @@ export default observer(function Toolbar({
     store.clearSearch()
   }
 
+  const online = isOnline()
+
   return (
     <div
       className={className(
@@ -94,30 +97,34 @@ export default observer(function Toolbar({
         tw.toolbar,
       )}
     >
-      <ToolbarBtn
-        onClick={() => store.toggleSidebar()}
-        icon={
-          store.sidebarOpen ? (
-            <PanelLeftClose size={13} />
-          ) : (
-            <PanelLeftOpen size={13} />
-          )
-        }
-        label={t('sidebar')}
-        active={store.sidebarOpen}
-      />
+      {!online && (
+        <ToolbarBtn
+          onClick={() => store.toggleSidebar()}
+          icon={
+            store.sidebarOpen ? (
+              <PanelLeftClose size={13} />
+            ) : (
+              <PanelLeftOpen size={13} />
+            )
+          }
+          label={t('sidebar')}
+          active={store.sidebarOpen}
+        />
+      )}
       <ToolbarBtn
         onClick={onOpenFile}
         icon={<FolderOpen size={13} />}
         label={t('openRom')}
       />
-      <ToolbarSearch
-        value={store.searchQuery}
-        onChange={(val) => store.setSearchQuery(val)}
-        placeholder={t('search')}
-        dropdownItems={!isEmpty(dropdownItems) ? dropdownItems : undefined}
-        onDropdownSelect={handleDropdownSelect}
-      />
+      {!online && (
+        <ToolbarSearch
+          value={store.searchQuery}
+          onChange={(val) => store.setSearchQuery(val)}
+          placeholder={t('search')}
+          dropdownItems={!isEmpty(dropdownItems) ? dropdownItems : undefined}
+          onDropdownSelect={handleDropdownSelect}
+        />
+      )}
       {romLoaded && (
         <>
           <ToolbarBtn

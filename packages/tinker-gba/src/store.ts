@@ -7,6 +7,7 @@ import slice from 'licia/slice'
 import splitPath from 'licia/splitPath'
 import trim from 'licia/trim'
 import BaseStore, { storage } from 'tinker-share/store/Base'
+import { isOnline } from 'tinker-share/lib/util'
 import { DEFAULT_KEYMAP, GBA_BUTTONS, type Keymap } from './lib/keymap'
 import type { PlayHistoryItem } from './types'
 
@@ -41,7 +42,8 @@ class Store extends BaseStore {
     })
     this.playHistory = this.loadPlayHistory()
     this.keymap = this.loadKeymap()
-    this.sidebarOpen = storage.get(STORAGE_SIDEBAR_OPEN) ?? false
+    this.sidebarOpen =
+      !isOnline() && (storage.get(STORAGE_SIDEBAR_OPEN) ?? false)
   }
 
   private loadKeymap(): Keymap {
@@ -135,6 +137,8 @@ class Store extends BaseStore {
   }, 300)
 
   private async searchFiles(query: string) {
+    if (isOnline()) return
+
     if (this.searchFileTask) {
       this.searchFileTask.kill()
       this.searchFileTask = null
