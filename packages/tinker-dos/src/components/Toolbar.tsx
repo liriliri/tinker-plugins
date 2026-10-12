@@ -8,6 +8,7 @@ import {
   PanelLeftClose,
 } from 'lucide-react'
 import className from 'licia/className'
+import { isOnline } from 'tinker-share/lib/util'
 import store from '../store'
 import { tw } from '../theme'
 import { shortcutLabel } from '../lib/util'
@@ -44,6 +45,7 @@ export default observer(function Toolbar({
   onFullscreen,
 }: Props) {
   const { t } = useTranslation()
+  const online = isOnline()
 
   return (
     <div
@@ -52,19 +54,23 @@ export default observer(function Toolbar({
         tw.toolbar,
       )}
     >
-      <ToolbarBtn
-        onClick={() => store.toggleSidebar()}
-        icon={
-          store.sidebarOpen ? (
-            <PanelLeftClose size={15} />
-          ) : (
-            <PanelLeft size={15} />
-          )
-        }
-        label={`${t('sidebar')}  ${shortcutLabel('B')}`}
-        active={store.sidebarOpen}
-      />
-      <div className={tw.divider} />
+      {!online && (
+        <>
+          <ToolbarBtn
+            onClick={() => store.toggleSidebar()}
+            icon={
+              store.sidebarOpen ? (
+                <PanelLeftClose size={15} />
+              ) : (
+                <PanelLeft size={15} />
+              )
+            }
+            label={`${t('sidebar')}  ${shortcutLabel('B')}`}
+            active={store.sidebarOpen}
+          />
+          <div className={tw.divider} />
+        </>
+      )}
       <ToolbarBtn
         onClick={onOpenFile}
         icon={<FolderOpen size={15} />}

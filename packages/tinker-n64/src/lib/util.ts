@@ -1,4 +1,5 @@
 import escapeJsStr from 'licia/escapeJsStr'
+import { isDev } from 'tinker-share/lib/util'
 import type { PlayerKeymap } from './keymap'
 
 export function buildIframeHtml(
@@ -7,12 +8,14 @@ export function buildIframeHtml(
   baseUrl: string,
   loadingText: string,
   keymap: PlayerKeymap,
+  bootstrapUrl = isDev() ? '/src/bootstrap.ts' : `${baseUrl}bootstrap.js`,
 ) {
   const escapedGameUrl = escapeJsStr(gameUrl)
   const escapedGameName = escapeJsStr(gameName)
   const escapedBaseUrl = escapeJsStr(baseUrl)
   const escapedLoadingText = escapeJsStr(loadingText)
   const escapedKeymap = escapeJsStr(JSON.stringify(keymap))
+  const escapedBootstrapUrl = escapeJsStr(bootstrapUrl)
 
   return `<!DOCTYPE html>
 <html>
@@ -40,7 +43,7 @@ window.gameName='${escapedGameName}';
 window.baseUrl='${escapedBaseUrl}';
 window.keymapJson='${escapedKeymap}';
 </script>
-<script type="module" src="${baseUrl}bootstrap.js"></script>
+<script type="module" src="${escapedBootstrapUrl}"></script>
 </body>
 </html>`
 }

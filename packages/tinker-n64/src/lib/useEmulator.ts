@@ -1,10 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import i18n from 'i18next'
-import md5 from 'licia/md5'
 import endWith from 'licia/endWith'
 import fullscreen from 'licia/fullscreen'
 import lowerCase from 'licia/lowerCase'
+import md5 from 'licia/md5'
+import openFilePicker from 'licia/openFile'
 import splitPath from 'licia/splitPath'
+import { setTitle } from 'tinker-share/lib/util'
 import store from '../store'
 import { buildIframeHtml } from './util'
 import { N64Button, codeToKeyCode } from './keymap'
@@ -69,6 +71,7 @@ export function useEmulator(showKeymap: boolean) {
 
       setRomLoaded(true)
       setIsMuted(false)
+      setTitle(name, 'N64')
     },
     [],
   )
@@ -111,15 +114,9 @@ export function useEmulator(showKeymap: boolean) {
     [loadRomBuffer],
   )
 
-  const openFile = useCallback(() => {
-    const input = document.createElement('input')
-    input.type = 'file'
-    input.accept = '.n64,.v64,.z64'
-    input.onchange = () => {
-      const file = input.files?.[0]
-      if (file) loadRom(file)
-    }
-    input.click()
+  const openFile = useCallback(async () => {
+    const [file] = await openFilePicker({ accept: '.n64,.v64,.z64' })
+    if (file) void loadRom(file)
   }, [loadRom])
 
   const handleReset = useCallback(() => {

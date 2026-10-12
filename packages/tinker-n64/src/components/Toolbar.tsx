@@ -13,6 +13,7 @@ import {
   PanelLeftOpen,
   PanelLeftClose,
 } from 'lucide-react'
+import { isOnline } from 'tinker-share/lib/util'
 import store from '../store'
 import { tw } from '../theme'
 import ToolbarSearch, { type ToolbarSearchDropdownItem } from './ToolbarSearch'
@@ -61,13 +62,16 @@ export default observer(function Toolbar({
 }: Props) {
   const { t } = useTranslation()
 
-  const dropdownItems: ToolbarSearchDropdownItem[] =
-    store.fileSearchResults.map((r) => ({
-      id: r.path,
-      label: r.name,
-      description: r.path,
-      icon: <Gamepad2 size={12} />,
-    }))
+  const online = isOnline()
+
+  const dropdownItems: ToolbarSearchDropdownItem[] = online
+    ? []
+    : store.fileSearchResults.map((r) => ({
+        id: r.path,
+        label: r.name,
+        description: r.path,
+        icon: <Gamepad2 size={12} />,
+      }))
 
   const handleDropdownSelect = (item: ToolbarSearchDropdownItem) => {
     onLoadRomPath(item.id)
@@ -78,30 +82,34 @@ export default observer(function Toolbar({
     <div
       className={`flex items-center gap-0.5 px-2 py-1 shrink-0 border-b ${tw.toolbar}`}
     >
-      <ToolbarBtn
-        onClick={() => store.toggleSidebar()}
-        icon={
-          store.sidebarOpen ? (
-            <PanelLeftClose size={13} />
-          ) : (
-            <PanelLeftOpen size={13} />
-          )
-        }
-        label={t('sidebar')}
-        active={store.sidebarOpen}
-      />
+      {!online && (
+        <ToolbarBtn
+          onClick={() => store.toggleSidebar()}
+          icon={
+            store.sidebarOpen ? (
+              <PanelLeftClose size={13} />
+            ) : (
+              <PanelLeftOpen size={13} />
+            )
+          }
+          label={t('sidebar')}
+          active={store.sidebarOpen}
+        />
+      )}
       <ToolbarBtn
         onClick={onOpenFile}
         icon={<FolderOpen size={13} />}
         label={t('openRom')}
       />
-      <ToolbarSearch
-        value={store.searchQuery}
-        onChange={(val) => store.setSearchQuery(val)}
-        placeholder={t('search')}
-        dropdownItems={dropdownItems.length > 0 ? dropdownItems : undefined}
-        onDropdownSelect={handleDropdownSelect}
-      />
+      {!online && (
+        <ToolbarSearch
+          value={store.searchQuery}
+          onChange={(val) => store.setSearchQuery(val)}
+          placeholder={t('search')}
+          dropdownItems={dropdownItems.length > 0 ? dropdownItems : undefined}
+          onDropdownSelect={handleDropdownSelect}
+        />
+      )}
       {romLoaded && (
         <>
           <ToolbarBtn

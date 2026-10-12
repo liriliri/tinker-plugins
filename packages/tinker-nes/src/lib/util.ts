@@ -1,14 +1,17 @@
 import escapeJsStr from 'licia/escapeJsStr'
+import { isDev } from 'tinker-share/lib/util'
 
 export function buildIframeHtml(
   gameUrl: string,
   gameName: string,
   baseUrl: string,
   loadingText: string,
+  bootstrapUrl = isDev() ? '/src/bootstrap.ts' : `${baseUrl}bootstrap.js`,
 ) {
   const escapedGameUrl = escapeJsStr(gameUrl)
   const escapedGameName = escapeJsStr(gameName)
   const escapedCoreUrl = escapeJsStr(`${baseUrl}fceumm_libretro.js`)
+  const escapedBootstrapUrl = escapeJsStr(bootstrapUrl)
   const escapedLoadingText = escapeJsStr(loadingText)
 
   return `<!DOCTYPE html>
@@ -31,8 +34,9 @@ window.addEventListener('gamepaddisconnected', e => e.stopImmediatePropagation()
   <div id="loading">${escapedLoadingText}</div>
   <canvas id="canvas"></canvas>
 </div>
-<script>window.gameUrl='${escapedGameUrl}';window.gameName='${escapedGameName}';window.coreUrl='${escapedCoreUrl}';</script>
-<script type="module" src="${baseUrl}bootstrap.js"></script>
+<script>window.gameUrl='${escapedGameUrl}';window.gameName='${escapedGameName}';</script>
+<script type="module">window.coreReady=import('${escapedCoreUrl}');</script>
+<script type="module" src="${escapedBootstrapUrl}"></script>
 </body>
 </html>`
 }

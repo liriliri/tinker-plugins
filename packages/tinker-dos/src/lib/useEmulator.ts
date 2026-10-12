@@ -3,8 +3,10 @@ import i18n from 'i18next'
 import contain from 'licia/contain'
 import find from 'licia/find'
 import fullscreen from 'licia/fullscreen'
+import openFilePicker from 'licia/openFile'
 import splitPath from 'licia/splitPath'
 import toArr from 'licia/toArr'
+import { isOnline, setTitle } from 'tinker-share/lib/util'
 import store from '../store'
 import { getPluginBaseUrl } from './util'
 import { buildDosboxIframeHtml } from './dosboxLoader'
@@ -153,8 +155,14 @@ export function useEmulator() {
   const loadProgram = useCallback(
     async (file: File) => {
       await loadProgramBuffer(await file.arrayBuffer(), file.name)
-      const path = tinker.getPathForFile(file)
-      if (path) store.setCurrentProgram(path)
+      if (!isOnline()) {
+        const path = tinker.getPathForFile(file)
+        if (path) {
+          store.setCurrentProgram(path)
+          return
+        }
+      }
+      setTitle(file.name, 'DOS')
     },
     [loadProgramBuffer],
   )
@@ -184,15 +192,11 @@ export function useEmulator() {
     return () => window.removeEventListener('message', onMessage)
   }, [])
 
-  const openFile = useCallback(() => {
-    const input = document.createElement('input')
-    input.type = 'file'
-    input.accept = '.exe,.com,.bat,.zip'
-    input.onchange = () => {
-      const file = input.files?.[0]
-      if (file) void loadProgram(file)
-    }
-    input.click()
+  const openFile = useCallback(async () => {
+    const [file] = await openFilePicker({
+      accept: '.exe,.com,.bat,.zip',
+    })
+    if (file) void loadProgram(file)
   }, [loadProgram])
 
   const handleReset = useCallback(() => {

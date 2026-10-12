@@ -2,6 +2,7 @@ import { makeAutoObservable } from 'mobx'
 import filter from 'licia/filter'
 import splitPath from 'licia/splitPath'
 import BaseStore, { storage } from 'tinker-share/store/Base'
+import { isOnline, setTitle } from 'tinker-share/lib/util'
 import type { PlayHistoryItem } from './types'
 
 const STORAGE_PLAY_HISTORY = 'playHistory'
@@ -20,7 +21,8 @@ class Store extends BaseStore {
     super()
     makeAutoObservable(this)
     this.playHistory = this.loadPlayHistory()
-    this.sidebarOpen = storage.get(STORAGE_SIDEBAR_OPEN) ?? true
+    this.sidebarOpen =
+      !isOnline() && (storage.get(STORAGE_SIDEBAR_OPEN) ?? true)
   }
 
   get currentProgramName(): string {
@@ -44,6 +46,7 @@ class Store extends BaseStore {
   }
 
   toggleSidebar() {
+    if (isOnline()) return
     this.sidebarOpen = !this.sidebarOpen
     storage.set(STORAGE_SIDEBAR_OPEN, this.sidebarOpen)
   }
@@ -61,7 +64,7 @@ class Store extends BaseStore {
     ].slice(0, MAX_PLAY_HISTORY)
     this.playHistory = next
     this.savePlayHistory(next)
-    tinker.setTitle(entry.name)
+    setTitle(entry.name, 'DOS')
   }
 
   removeFromPlayHistory(filePath: string) {
@@ -70,7 +73,7 @@ class Store extends BaseStore {
     this.savePlayHistory(next)
     if (this.currentProgramPath === filePath) {
       this.currentProgramPath = ''
-      tinker.setTitle('')
+      setTitle('', 'DOS')
     }
   }
 

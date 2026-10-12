@@ -1,10 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import i18n from 'i18next'
-import md5 from 'licia/md5'
 import endWith from 'licia/endWith'
 import fullscreen from 'licia/fullscreen'
 import lowerCase from 'licia/lowerCase'
+import md5 from 'licia/md5'
+import openFilePicker from 'licia/openFile'
 import splitPath from 'licia/splitPath'
+import { setTitle } from 'tinker-share/lib/util'
 import store from '../store'
 import { buildIframeHtml } from './util'
 import { NesButton, INTERNAL_KEYS, TURBO_BUTTON_MAP } from './keymap'
@@ -72,34 +74,38 @@ export function useEmulator(showKeymap: boolean) {
     )
   }, [])
 
-  const loadRomBuffer = useCallback(async (buffer: ArrayBuffer) => {
-    const romMd5 = md5([...new Uint8Array(buffer)]) + ROM_EXT
-    if (blobUrlRef.current) URL.revokeObjectURL(blobUrlRef.current)
-    const url = URL.createObjectURL(new Blob([buffer]))
-    blobUrlRef.current = url
-    const base = import.meta.env.BASE_URL || './'
-    const baseUrl = endWith(base, '/') ? base : `${base}/`
-    const html = buildIframeHtml(url, romMd5, baseUrl, i18n.t('loading'))
-    if (iframeRef.current) {
-      iframeRef.current.remove()
-      iframeRef.current = null
-    }
+  const loadRomBuffer = useCallback(
+    async (buffer: ArrayBuffer, fileName: string) => {
+      const romMd5 = md5([...new Uint8Array(buffer)]) + ROM_EXT
+      if (blobUrlRef.current) URL.revokeObjectURL(blobUrlRef.current)
+      const url = URL.createObjectURL(new Blob([buffer]))
+      blobUrlRef.current = url
+      const base = import.meta.env.BASE_URL || './'
+      const baseUrl = endWith(base, '/') ? base : `${base}/`
+      const html = buildIframeHtml(url, romMd5, baseUrl, i18n.t('loading'))
+      if (iframeRef.current) {
+        iframeRef.current.remove()
+        iframeRef.current = null
+      }
 
-    const iframe = document.createElement('iframe')
-    iframe.style.cssText =
-      'position:absolute;inset:0;width:100%;height:100%;border:none;pointer-events:none;'
-    containerRef.current?.appendChild(iframe)
-    iframeRef.current = iframe
+      const iframe = document.createElement('iframe')
+      iframe.style.cssText =
+        'position:absolute;inset:0;width:100%;height:100%;border:none;pointer-events:none;'
+      containerRef.current?.appendChild(iframe)
+      iframeRef.current = iframe
 
-    const doc = iframe.contentWindow?.document as Document
-    doc.open()
-    doc.write(html)
-    doc.close()
+      const doc = iframe.contentWindow?.document as Document
+      doc.open()
+      doc.write(html)
+      doc.close()
 
-    setRomLoaded(true)
-    setIsPaused(false)
-    setIsMuted(false)
-  }, [])
+      setRomLoaded(true)
+      setIsPaused(false)
+      setIsMuted(false)
+      setTitle(fileName, 'NES')
+    },
+    [],
+  )
 
   const loadRomFromPath = useCallback(
     async (filePath: string) => {
@@ -119,7 +125,8 @@ export function useEmulator(showKeymap: boolean) {
                 data.byteOffset,
                 data.byteOffset + data.byteLength,
               )
-        await loadRomBuffer(buffer)
+        const name = splitPath(filePath).name
+        await loadRomBuffer(buffer, name)
         store.setCurrentRom(filePath)
       } catch {
         store.showError(
@@ -132,22 +139,16 @@ export function useEmulator(showKeymap: boolean) {
 
   const loadRom = useCallback(
     async (file: File) => {
-      await loadRomBuffer(await file.arrayBuffer())
+      await loadRomBuffer(await file.arrayBuffer(), file.name || 'rom.nes')
       const path = (file as File & { path?: string }).path
       if (path) store.setCurrentRom(path)
     },
     [loadRomBuffer],
   )
 
-  const openFile = useCallback(() => {
-    const input = document.createElement('input')
-    input.type = 'file'
-    input.accept = ROM_EXT
-    input.onchange = () => {
-      const file = input.files?.[0]
-      if (file) loadRom(file)
-    }
-    input.click()
+  const openFile = useCallback(async () => {
+    const [file] = await openFilePicker({ accept: ROM_EXT })
+    if (file) void loadRom(file)
   }, [loadRom])
 
   const handleReset = useCallback(

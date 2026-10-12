@@ -37,10 +37,10 @@ interface EmscriptenModule {
 interface BootstrapWindow {
   gameUrl: string
   gameName: string
-  coreUrl: string
+  coreReady: Promise<{ default: (config: unknown) => Promise<EmscriptenModule> }>
 }
 
-const { gameUrl, gameName, coreUrl } = window as unknown as BootstrapWindow
+const { gameUrl, gameName, coreReady } = window as unknown as BootstrapWindow
 
 let emModule: EmscriptenModule | null = null
 let fsReady = false
@@ -139,7 +139,7 @@ window.addEventListener('message', (e) => {
 window.addEventListener('load', () => {
   window.focus()
   setupFs()
-  import(/* @vite-ignore */ coreUrl)
+  coreReady
     .then((m) => m.default(moduleConfig))
     .then((instance: EmscriptenModule) => {
       emModule = instance

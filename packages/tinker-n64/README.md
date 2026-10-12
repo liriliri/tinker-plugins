@@ -17,7 +17,7 @@ A N64 emulator plugin for [TINKER](https://github.com/liriliri/tinker), supporti
 
 ## Installation
 
-Download and install TINKER from `https://tinker.liriliri.io/`, then run `npm i -g tinker-n64`.
+Play directly in [browser](https://tinker.liriliri.io/plugins/n64), or install via TINKER: download from `https://tinker.liriliri.io/`, then run `npm i -g tinker-n64`.
 
 ## Usage
 
