@@ -1,16 +1,10 @@
+import { createPluginMcpApi } from 'tinker-share/lib/mcp'
 import type { Store } from './store'
 
 export function createMcpApi(getStore: () => Store) {
-  const callTool = (name: string, args: Record<string, unknown>) => {
-    if (name === 'query') {
-      return query(getStore())
-    }
-    throw new Error(`Unknown tool "${name}"`)
-  }
-
-  tinker.registerMcp({ callTool })
-
-  return { callTool }
+  return createPluginMcpApi(getStore, {
+    query,
+  })
 }
 
 async function query(store: Store) {

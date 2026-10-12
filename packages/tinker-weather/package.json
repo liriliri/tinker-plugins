@@ -22,7 +22,6 @@
   ],
   "tinker": {
     "name": "Weather",
-    "description": "Check real-time weather and forecasts",
     "main": "dist/index.html",
     "icon": "icon.png",
     "category": "productivity",

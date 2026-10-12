@@ -9,8 +9,6 @@ import { errorMessage } from 'tinker-share/lib/util'
 import type { ChartPoint, GoldQuote } from '../types'
 
 const SECID = '118.AU9999'
-const UA = 'Mozilla/5.0'
-const REFERER = 'https://quote.eastmoney.com/'
 
 const API_HOSTS = [
   'https://push2delay.eastmoney.com',
@@ -20,12 +18,7 @@ const API_HOSTS = [
 const QUOTE_FIELDS = 'f43,f44,f45,f46,f57,f58,f60,f86,f169,f170'
 
 async function fetchJson(url: string): Promise<unknown> {
-  const res = await fetch(url, {
-    headers: {
-      'User-Agent': UA,
-      Referer: REFERER,
-    },
-  })
+  const res = await fetch(url)
   if (!res.ok) throw new Error(`HTTP ${res.status}`)
   return res.json()
 }

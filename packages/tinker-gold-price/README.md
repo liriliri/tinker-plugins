@@ -12,7 +12,7 @@ A gold price plugin for [TINKER](https://github.com/liriliri/tinker), showing Sh
 
 ## Installation
 
-Download and install TINKER from `https://tinker.liriliri.io/`, then run `npm i -g tinker-gold-price`.
+Play directly in [browser](https://tinker.liriliri.io/plugins/gold-price), or install via TINKER: download from `https://tinker.liriliri.io/`, then run `npm i -g tinker-gold-price`.
 
 ## Usage
 

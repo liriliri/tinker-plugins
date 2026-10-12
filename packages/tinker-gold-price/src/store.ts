@@ -1,5 +1,6 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 import BaseStore from 'tinker-share/store/Base'
+import { getLanguage } from 'tinker-share/lib/i18n'
 import { errorMessage } from 'tinker-share/lib/util'
 import type { ChartPoint, GoldQuote } from './types'
 import { fetchChart, fetchQuote } from './lib/eastmoney'
@@ -31,18 +32,14 @@ export class Store extends BaseStore {
     })
   }
 
-  init(language: string) {
-    this.setLanguage(language)
+  async init() {
+    this.language = await getLanguage()
     if (this.inited) return
     this.inited = true
     void this.load()
     this.refreshTimer = setInterval(() => {
       void this.refresh()
     }, REFRESH_MS)
-  }
-
-  setLanguage(language: string) {
-    this.language = language
   }
 
   async load() {
