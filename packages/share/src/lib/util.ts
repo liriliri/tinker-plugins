@@ -7,3 +7,7 @@ export function errorMessage(err: unknown): string {
   if (isStr(err) && err) return err
   return toStr(err)
 }
+
+export function isOnline(): boolean {
+  return typeof tinker === 'undefined'
+}

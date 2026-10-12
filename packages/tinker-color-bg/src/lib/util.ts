@@ -4,6 +4,7 @@ import dataUrl from 'licia/dataUrl'
 import extend from 'licia/extend'
 import now from 'licia/now'
 import toInt from 'licia/toInt'
+import { isOnline } from 'tinker-share/lib/util'
 import { createBg, destroyBg, waitFrames } from './backgrounds'
 import type { BgConfig } from '../types'
 
@@ -56,7 +57,7 @@ export async function exportPng(
 ) {
   const filename = `color-bg-${config.style}.png`
 
-  if (typeof tinker !== 'undefined') {
+  if (!isOnline()) {
     const { filePath, canceled } = await tinker.showSaveDialog({
       defaultPath: filename,
       filters: [{ name: 'PNG Image', extensions: ['png'] }],

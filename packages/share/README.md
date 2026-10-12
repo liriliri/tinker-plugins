@@ -87,5 +87,7 @@ class Store extends BaseStore {
 ## Util
 
 ```ts
-import { errorMessage } from 'tinker-share/lib/util'
+import { errorMessage, isOnline } from 'tinker-share/lib/util'
 ```
+
+`isOnline()` is true outside TINKER (browser / online deploy), when the global `tinker` API is missing.

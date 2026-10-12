@@ -1,4 +1,4 @@
-import { errorMessage } from 'tinker-share/lib/util'
+import { errorMessage, isOnline } from 'tinker-share/lib/util'
 import type { Store } from './store'
 import { getTodaySolar } from './lib/util'
 
@@ -13,7 +13,7 @@ export function createMcpApi(getStore: () => Store) {
     )
   }
 
-  if (typeof tinker !== 'undefined') {
+  if (!isOnline()) {
     tinker.registerMcp({ callTool })
   }
 

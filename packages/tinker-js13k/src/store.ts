@@ -1,11 +1,12 @@
 import { action, makeObservable, observable } from 'mobx'
+import { isOnline } from 'tinker-share/lib/util'
 
 import type { Game } from './types'
 
 const DEFAULT_TITLE = 'JS13K Games'
 
 function setWindowTitle(title: string) {
-  if (typeof tinker !== 'undefined') {
+  if (!isOnline()) {
     tinker.setTitle(title)
     return
   }

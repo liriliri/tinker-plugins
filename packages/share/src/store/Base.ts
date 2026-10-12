@@ -1,4 +1,5 @@
 import LocalStore from 'licia/LocalStore'
+import { isOnline } from '../lib/util'
 
 const STORAGE_PROP = '__TINKER_PLUGIN_STORAGE__'
 
@@ -45,13 +46,13 @@ export default class BaseStore {
   setIsDark(isDark: boolean) {
     this.isDark = isDark
     // Tinker injects html.dark; browser preview does not.
-    if (typeof tinker === 'undefined') {
+    if (isOnline()) {
       document.documentElement.classList.toggle('dark', isDark)
     }
   }
 
   protected async initTheme() {
-    if (typeof tinker !== 'undefined') {
+    if (!isOnline()) {
       try {
         const theme = await tinker.getTheme()
         this.setIsDark(theme === 'dark')

@@ -1,6 +1,7 @@
 import { useEffect, useState, type ReactNode } from 'react'
 import { createRoot } from 'react-dom/client'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
+import { isOnline } from '../lib/util'
 import './ContextMenu.scss'
 
 export type ContextMenuItem = {
@@ -65,9 +66,7 @@ function renderItems(items: ContextMenuItem[]): ReactNode[] {
     const item = items[i]
 
     if (item.type === 'separator') {
-      nodes.push(
-        <DropdownMenu.Separator key={i} className="tinker-ctx-sep" />,
-      )
+      nodes.push(<DropdownMenu.Separator key={i} className="tinker-ctx-sep" />)
       i += 1
       continue
     }
@@ -213,7 +212,7 @@ export function showContextMenu(
   y: number,
   items: ContextMenuItem[],
 ) {
-  if (typeof tinker !== 'undefined') {
+  if (!isOnline()) {
     tinker.showContextMenu(x, y, items)
     return
   }

@@ -1,3 +1,4 @@
+import { isOnline } from 'tinker-share/lib/util'
 import type { ChineseMode, PinyinStyle } from './types'
 import type { Store } from './store'
 
@@ -18,7 +19,7 @@ export function createMcpApi(getStore: () => Store) {
     throw new Error(`Unknown tool "${name}"`)
   }
 
-  if (typeof tinker !== 'undefined') {
+  if (!isOnline()) {
     tinker.registerMcp({ callTool })
   }
 

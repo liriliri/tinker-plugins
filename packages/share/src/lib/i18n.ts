@@ -1,5 +1,6 @@
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
+import { isOnline } from './util'
 
 export interface Locales {
   'en-US': object
@@ -22,7 +23,7 @@ export async function initI18n(locales: Locales) {
   })
 
   let language = languageFromNavigator()
-  if (typeof tinker !== 'undefined') {
+  if (!isOnline()) {
     try {
       language = await tinker.getLanguage()
     } catch {
