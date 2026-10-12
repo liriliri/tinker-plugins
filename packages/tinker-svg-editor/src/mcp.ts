@@ -1,27 +1,14 @@
+import { createPluginMcpApi } from 'tinker-share/lib/mcp'
 import type { Store } from './store'
 
 export function createMcpApi(getStore: () => Store) {
-  const callTool = (name: string, args: Record<string, unknown>) => {
-    const store = getStore()
-    switch (name) {
-      case 'open':
-        return openSvg(store, args as { path: string })
-      case 'get':
-        return get(store)
-      case 'set':
-        return setSvg(store, args as { content: string })
-      case 'save':
-        return saveSvg(store, args as { path?: string })
-      case 'export_png':
-        return exportPng(store, args as { path: string })
-      default:
-        throw new Error(`Unknown tool "${name}"`)
-    }
-  }
-
-  tinker.registerMcp({ callTool })
-
-  return { callTool }
+  return createPluginMcpApi(getStore, {
+    open: openSvg,
+    get,
+    set: setSvg,
+    save: saveSvg,
+    export_png: exportPng,
+  })
 }
 
 function get(store: Store) {

@@ -87,10 +87,12 @@ class Store extends BaseStore {
 ## Util
 
 ```ts
-import { errorMessage, isOnline } from 'tinker-share/lib/util'
+import { errorMessage, isOnline, setTitle } from 'tinker-share/lib/util'
 ```
 
 `isOnline()` is true outside TINKER (browser / online deploy), when the global `tinker` API is missing.
+
+`setTitle(title, onlineFallback?)`: TINKER → `tinker.setTitle`; online → `document.title` (empty title uses `onlineFallback`).
 
 `getLanguage()`: online uses `Intl` locale (`zh-*` → `zh-CN`, else `en-US`); inside TINKER uses `tinker.getLanguage()`.
 

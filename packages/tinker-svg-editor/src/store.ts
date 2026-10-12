@@ -1,11 +1,14 @@
 import clamp from 'licia/clamp'
 import compact from 'licia/compact'
+import download from 'licia/download'
+import openFile from 'licia/openFile'
 import splitPath from 'licia/splitPath'
 import startWith from 'licia/startWith'
 import toNum from 'licia/toNum'
 import { makeAutoObservable, runInAction } from 'mobx'
 import SvgCanvasCtor from '@svgedit/svgcanvas'
 import BaseStore from 'tinker-share/store/Base'
+import { isOnline, setTitle } from 'tinker-share/lib/util'
 import type { SvgCanvas } from './lib/canvasTypes'
 import { buildSelectionInfo } from './lib/selection'
 import { displayColor, normalizeHex, toPaintHex } from './lib/palette'
@@ -175,7 +178,7 @@ export class Store extends BaseStore {
 
   setFileName(name: string) {
     this.fileName = name
-    tinker.setTitle(name)
+    setTitle(name, 'SVG Editor')
   }
 
   getSvgString() {
@@ -207,10 +210,8 @@ export class Store extends BaseStore {
       throw new Error(`SVG file not found: ${path}`)
     }
     const content = (await tinker.readFile(path, 'utf-8')) as string
-    this.loadSvgString(content)
-    this.filePath = path
     const { name } = splitPath(path)
-    this.setFileName(name)
+    this.applyOpenedSvg(content, name, path)
   }
 
   async saveSvgToPath(path: string) {
@@ -223,11 +224,19 @@ export class Store extends BaseStore {
   }
 
   async exportPngToPath(path: string) {
-    const svg = this.getSvgString()
-    const { width, height } = this.canvasSize
-    const png = await svgToPngBytes(svg, width, height)
-    await tinker.writeFile(path, png)
+    await tinker.writeFile(path, await this.getPngBytes())
     return path
+  }
+
+  private applyOpenedSvg(content: string, name: string, path: string | null) {
+    this.loadSvgString(content)
+    this.filePath = path
+    this.setFileName(name)
+  }
+
+  private getPngBytes() {
+    const { width, height } = this.canvasSize
+    return svgToPngBytes(this.getSvgString(), width, height)
   }
 
   setSvgContent(content: string) {
@@ -623,6 +632,12 @@ export class Store extends BaseStore {
   }
 
   async openSvg() {
+    if (isOnline()) {
+      const [file] = await openFile({ accept: '.svg,image/svg+xml' })
+      if (!file) return
+      this.applyOpenedSvg(await file.text(), file.name || 'untitled.svg', null)
+      return
+    }
     const result = await tinker.showOpenDialog({
       properties: ['openFile'],
       filters: [{ name: 'SVG', extensions: ['svg'] }],
@@ -633,6 +648,10 @@ export class Store extends BaseStore {
 
   async saveSvg() {
     if (!this._canvas) return
+    if (isOnline()) {
+      download(this.getSvgString(), this.fileName, 'image/svg+xml')
+      return
+    }
     const result = await tinker.showSaveDialog({
       defaultPath: this.filePath || this.fileName,
       filters: [{ name: 'SVG', extensions: ['svg'] }],
@@ -645,8 +664,13 @@ export class Store extends BaseStore {
     if (!this._canvas) return
     const { name, ext } = splitPath(this.fileName)
     const stem = ext ? name.slice(0, -ext.length) : name
+    const filename = `${stem || 'untitled'}.png`
+    if (isOnline()) {
+      download(new Blob([await this.getPngBytes()]), filename, 'image/png')
+      return
+    }
     const result = await tinker.showSaveDialog({
-      defaultPath: `${stem}.png`,
+      defaultPath: filename,
       filters: [{ name: 'PNG', extensions: ['png'] }],
     })
     if (result.canceled || !result.filePath) return

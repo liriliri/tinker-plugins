@@ -1,17 +1,9 @@
 import { makeAutoObservable } from 'mobx'
-import { isOnline } from 'tinker-share/lib/util'
+import { setTitle } from 'tinker-share/lib/util'
 
 import type { Game } from './types'
 
 const DEFAULT_TITLE = 'JS13K Games'
-
-function setWindowTitle(title: string) {
-  if (!isOnline()) {
-    tinker.setTitle(title)
-    return
-  }
-  document.title = title || DEFAULT_TITLE
-}
 
 class Store {
   activeGame: Game | null = null
@@ -22,12 +14,12 @@ class Store {
 
   openGame(game: Game) {
     this.activeGame = game
-    setWindowTitle(game.name)
+    setTitle(game.name, DEFAULT_TITLE)
   }
 
   closeGame() {
     this.activeGame = null
-    setWindowTitle('')
+    setTitle('', DEFAULT_TITLE)
   }
 }
 

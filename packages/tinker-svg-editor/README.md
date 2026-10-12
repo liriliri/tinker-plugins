@@ -16,7 +16,7 @@ An SVG editor plugin for [TINKER](https://github.com/liriliri/tinker), powered b
 
 ## Installation
 
-Download and install TINKER from `https://tinker.liriliri.io/`, then run `npm i -g tinker-svg-editor`.
+Play directly in [browser](https://tinker.liriliri.io/plugins/svg-editor), or install via TINKER: download from `https://tinker.liriliri.io/`, then run `npm i -g tinker-svg-editor`.
 
 ## Usage
 

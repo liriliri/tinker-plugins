@@ -3,6 +3,7 @@ import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import className from 'licia/className'
 import trim from 'licia/trim'
+import { showContextMenu } from 'tinker-share/components/ContextMenu'
 import store from '../store'
 import { updateRulers } from '../lib/rulers'
 
@@ -53,7 +54,7 @@ const WorkArea = observer(() => {
       },
     ]
 
-    tinker.showContextMenu(clientX, clientY, [
+    showContextMenu(clientX, clientY, [
       {
         label: t('cut'),
         enabled: hasSel,

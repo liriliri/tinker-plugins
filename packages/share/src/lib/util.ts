@@ -11,3 +11,11 @@ export function errorMessage(err: unknown): string {
 export function isOnline(): boolean {
   return typeof tinker === 'undefined'
 }
+
+export function setTitle(title: string, onlineFallback = '') {
+  if (isOnline()) {
+    document.title = title || onlineFallback
+    return
+  }
+  tinker.setTitle(title)
+}
