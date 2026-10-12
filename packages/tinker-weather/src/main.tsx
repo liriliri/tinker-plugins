@@ -13,12 +13,14 @@ import enUS from './i18n/en-US.json'
 import zhCN from './i18n/zh-CN.json'
 import './index.scss'
 
+const LIGHT_BG_ICONS = ['snow', 'fog', 'cloud']
+
 const App = observer(() => {
   const hasWeather = !!store.weatherData
   const iconType = hasWeather
     ? wmoToIcon(store.weatherData!.current.weatherCode)
     : null
-  const isLightBg = contain(['snow', 'fog', 'cloud'], iconType)
+  const isLightBg = contain(LIGHT_BG_ICONS, iconType)
   const headerBg = iconType ? tw.header.byIcon[iconType] : tw.header.default
 
   return (

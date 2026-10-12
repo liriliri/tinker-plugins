@@ -91,3 +91,18 @@ import { errorMessage, isOnline } from 'tinker-share/lib/util'
 ```
 
 `isOnline()` is true outside TINKER (browser / online deploy), when the global `tinker` API is missing.
+
+`getLanguage()`: online uses `Intl` locale (`zh-*` → `zh-CN`, else `en-US`); inside TINKER uses `tinker.getLanguage()`.
+
+## MCP
+
+```ts
+import { createPluginMcpApi } from 'tinker-share/lib/mcp'
+import type { Store } from './store'
+
+export function createMcpApi(getStore: () => Store) {
+  return createPluginMcpApi(getStore, { query })
+}
+```
+
+Dispatches by handler map; registers with `tinker.registerMcp` only inside TINKER.

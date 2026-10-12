@@ -1,5 +1,6 @@
 import { pinyin } from 'pinyin'
 import Lru from 'licia/Lru'
+import compact from 'licia/compact'
 import contain from 'licia/contain'
 import findIdx from 'licia/findIdx'
 import flatten from 'licia/flatten'
@@ -158,9 +159,13 @@ function dedupeGeoResults(results: GeoResult[]): GeoResult[] {
 const hasChinese = (s: string) => /[\u4e00-\u9fff]/.test(s)
 
 function toPinyin(s: string): string {
-  return pinyin(s, { style: 'normal' })
-    .map((p) => p[0])
-    .join('')
+  return map(pinyin(s, { style: 'normal' }), (p) => p[0]).join('')
+}
+
+export function formatCityName(
+  city: Pick<GeoResult, 'name' | 'admin1' | 'country'>,
+): string {
+  return compact([city.name, city.admin1, city.country]).join(' · ')
 }
 
 export async function geocode(
@@ -202,12 +207,8 @@ export async function fetchWeather(
       'apparent_temperature',
       'relative_humidity_2m',
       'wind_speed_10m',
-      'wind_direction_10m',
       'weather_code',
-      'is_day',
       'uv_index',
-      'visibility',
-      'cloud_cover',
     ].join(','),
     daily: [
       'weather_code',
@@ -215,8 +216,6 @@ export async function fetchWeather(
       'temperature_2m_min',
       'precipitation_probability_max',
       'precipitation_sum',
-      'wind_speed_10m_max',
-      'uv_index_max',
       'sunrise',
       'sunset',
     ].join(','),
@@ -232,15 +231,12 @@ export async function fetchWeather(
     apparentTemperature: json.current.apparent_temperature,
     humidity: json.current.relative_humidity_2m,
     windSpeed: json.current.wind_speed_10m,
-    windDirection: json.current.wind_direction_10m,
     weatherCode: json.current.weather_code,
-    isDay: !!json.current.is_day,
     uvIndex: json.current.uv_index,
-    visibility: json.current.visibility,
-    cloudCover: json.current.cloud_cover,
   }
 
-  const daily: DailyForecast[] = json.daily.time.map(
+  const daily: DailyForecast[] = map(
+    json.daily.time,
     (_: string, i: number) => ({
       date: json.daily.time[i],
       weatherCode: json.daily.weather_code[i],
@@ -248,8 +244,6 @@ export async function fetchWeather(
       tempMin: json.daily.temperature_2m_min[i],
       precipProbability: json.daily.precipitation_probability_max[i],
       precipSum: json.daily.precipitation_sum[i],
-      windSpeedMax: json.daily.wind_speed_10m_max[i],
-      uvIndexMax: json.daily.uv_index_max[i],
       sunrise: json.daily.sunrise[i],
       sunset: json.daily.sunset[i],
     }),

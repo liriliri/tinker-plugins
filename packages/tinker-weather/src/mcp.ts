@@ -1,34 +1,29 @@
-import compact from 'licia/compact'
+import map from 'licia/map'
 import sleep from 'licia/sleep'
+import trim from 'licia/trim'
 import waitUntil from 'licia/waitUntil'
-import { wmoDescription } from './lib/weather'
+import { createPluginMcpApi } from 'tinker-share/lib/mcp'
+import { formatCityName, wmoDescription } from './lib/weather'
 import type { Store } from './store'
 import type { GeoResult } from './types'
 
+const NO_CITY = 'No city selected. Call search first, then query with an index.'
+
 export function createMcpApi(getStore: () => Store) {
-  const callTool = (name: string, args: Record<string, unknown>) => {
-    if (name === 'search') {
-      return search(getStore(), args as { city: string })
-    }
-    if (name === 'query') {
-      return query(getStore(), args as { index?: number })
-    }
-    throw new Error(`Unknown tool "${name}"`)
-  }
-
-  tinker.registerMcp({ callTool })
-
-  return { callTool }
+  return createPluginMcpApi(getStore, {
+    search,
+    query,
+  })
 }
 
 async function search(store: Store, args: { city: string }) {
-  store.setSearchQuery(args.city.trim())
+  store.setSearchQuery(trim(args.city))
   await sleep(350)
   await waitUntil(() => !store.isSearching, 0, 50)
 
   return {
     query: store.searchQuery,
-    cities: store.searchResults.map((city, index) => ({
+    cities: map(store.searchResults, (city, index) => ({
       index,
       ...toCitySummary(city),
     })),
@@ -44,12 +39,9 @@ async function query(store: Store, args: { index?: number }) {
       )
     }
     await store.selectCity(city)
+  } else if (!store.city) {
+    throw new Error(NO_CITY)
   } else {
-    if (!store.city) {
-      throw new Error(
-        'No city selected. Call search first, then query with an index.',
-      )
-    }
     await store.loadWeather()
   }
 
@@ -57,9 +49,7 @@ async function query(store: Store, args: { index?: number }) {
     throw new Error(store.error)
   }
   if (!store.city || !store.weatherData) {
-    throw new Error(
-      'No city selected. Call search first, then query with an index.',
-    )
+    throw new Error(NO_CITY)
   }
 
   const { current, daily } = store.weatherData
@@ -70,7 +60,7 @@ async function query(store: Store, args: { index?: number }) {
       ...current,
       description: wmoDescription(current.weatherCode, store.language),
     },
-    daily: daily.map((day) => ({
+    daily: map(daily, (day) => ({
       ...day,
       description: wmoDescription(day.weatherCode, store.language),
     })),
@@ -79,7 +69,7 @@ async function query(store: Store, args: { index?: number }) {
 
 function toCitySummary(city: GeoResult) {
   return {
-    name: compact([city.name, city.admin1, city.country]).join(' · '),
+    name: formatCityName(city),
     latitude: city.latitude,
     longitude: city.longitude,
     timezone: city.timezone,

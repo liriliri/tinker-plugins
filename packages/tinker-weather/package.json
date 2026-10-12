@@ -1,6 +1,6 @@
 {
   "name": "tinker-weather",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Check real-time weather and forecasts",
   "files": [
     "dist/",
@@ -11,7 +11,8 @@
     "url": "git+https://github.com/liriliri/tinker-plugins.git"
   },
   "scripts": {
-    "dev": "vite build --watch",
+    "dev": "NODE_ENV=production vite",
+    "dev:tinker": "vite build --watch",
     "build": "vite build",
     "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
   },

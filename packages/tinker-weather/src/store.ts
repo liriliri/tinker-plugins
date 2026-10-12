@@ -1,12 +1,13 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 import debounce from 'licia/debounce'
-import compact from 'licia/compact'
+import filter from 'licia/filter'
 import isMatch from 'licia/isMatch'
 import trim from 'licia/trim'
 import BaseStore, { storage } from 'tinker-share/store/Base'
+import { getLanguage } from 'tinker-share/lib/i18n'
 import { errorMessage } from 'tinker-share/lib/util'
 import type { GeoResult, WeatherData } from './types'
-import { geocode, fetchWeather } from './lib/weather'
+import { formatCityName, geocode, fetchWeather } from './lib/weather'
 import { createMcpApi } from './mcp'
 
 const STORAGE_CITY = 'city'
@@ -42,10 +43,7 @@ export class Store extends BaseStore {
   }
 
   async init() {
-    this.language = await tinker.getLanguage()
-    tinker.on('changeLanguage', (lang: string) => {
-      this.language = lang
-    })
+    this.language = await getLanguage()
     if (this.city) {
       void this.loadWeather()
     }
@@ -100,7 +98,7 @@ export class Store extends BaseStore {
   }
 
   private addRecentCity(city: GeoResult) {
-    const filtered = this.recentCities.filter((c) => !this.isSameCity(c, city))
+    const filtered = filter(this.recentCities, (c) => !this.isSameCity(c, city))
     this.recentCities = [city, ...filtered].slice(0, MAX_RECENT)
     storage.set(STORAGE_RECENT_CITIES, this.recentCities)
   }
@@ -134,10 +132,7 @@ export class Store extends BaseStore {
   }
 
   get cityDisplayName(): string {
-    if (!this.city) return ''
-    return compact([this.city.name, this.city.admin1, this.city.country]).join(
-      ' · ',
-    )
+    return this.city ? formatCityName(this.city) : ''
   }
 }
 

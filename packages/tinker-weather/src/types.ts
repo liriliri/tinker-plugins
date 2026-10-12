@@ -13,12 +13,8 @@ export interface CurrentWeather {
   apparentTemperature: number
   humidity: number
   windSpeed: number
-  windDirection: number
   weatherCode: number
-  isDay: boolean
   uvIndex: number
-  visibility: number
-  cloudCover: number
 }
 
 export interface DailyForecast {
@@ -28,8 +24,6 @@ export interface DailyForecast {
   tempMin: number
   precipProbability: number
   precipSum: number
-  windSpeedMax: number
-  uvIndexMax: number
   sunrise: string
   sunset: string
 }

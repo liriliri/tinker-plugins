@@ -13,6 +13,7 @@ import WeatherIcon from './WeatherIcon'
 import { tw } from '../theme'
 
 const DAY_KEYS = ['today', 'tomorrow', 'dayAfter']
+const PLACEHOLDER_DAYS = [0, 1, 2]
 
 interface TempBarProps {
   min: number
@@ -59,7 +60,7 @@ const ForecastList = observer(() => {
           tw.glass.card,
         )}
       >
-        {[0, 1, 2].map((i) => (
+        {PLACEHOLDER_DAYS.map((i) => (
           <div
             key={i}
             className={className(

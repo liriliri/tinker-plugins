@@ -9,6 +9,7 @@
   "exports": {
     "./vite": "./src/vite.ts",
     "./lib/util": "./src/lib/util.ts",
+    "./lib/mcp": "./src/lib/mcp.ts",
     "./lib/i18n": "./src/lib/i18n.ts",
     "./lib/renderApp": "./src/lib/renderApp.tsx",
     "./components/ContextMenu": "./src/components/ContextMenu.tsx",

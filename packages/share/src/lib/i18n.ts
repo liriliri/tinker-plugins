@@ -7,8 +7,22 @@ export interface Locales {
   'zh-CN': object
 }
 
-function languageFromNavigator() {
-  return navigator.language.startsWith('zh') ? 'zh-CN' : 'en-US'
+export type PluginLanguage = keyof Locales
+
+function languageFromIntl(): PluginLanguage {
+  const locale = Intl.DateTimeFormat().resolvedOptions().locale.toLowerCase()
+  return locale.startsWith('zh') ? 'zh-CN' : 'en-US'
+}
+
+/** Online → `Intl`; TINKER → `tinker.getLanguage()`. */
+export async function getLanguage(): Promise<PluginLanguage> {
+  if (isOnline()) return languageFromIntl()
+
+  try {
+    return (await tinker.getLanguage()) as PluginLanguage
+  } catch {
+    return languageFromIntl()
+  }
 }
 
 export async function initI18n(locales: Locales) {
@@ -22,13 +36,5 @@ export async function initI18n(locales: Locales) {
     interpolation: { escapeValue: false },
   })
 
-  let language = languageFromNavigator()
-  if (!isOnline()) {
-    try {
-      language = await tinker.getLanguage()
-    } catch {
-      /* keep navigator fallback */
-    }
-  }
-  i18n.changeLanguage(language)
+  i18n.changeLanguage(await getLanguage())
 }
