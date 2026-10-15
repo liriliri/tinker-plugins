@@ -1,0 +1,146 @@
+@use 'tailwindcss';
+@config "../../tailwind.config.js";
+
+:root {
+  /* Graphite cabinet + cartridge coral */
+  --gm-cabinet: #1b1e24;
+  --gm-cabinet-hover: #252932;
+  --gm-cabinet-active: #2e3440;
+  --gm-chrome: #f2f1ef;
+  --gm-panel: #f7f6f4;
+  --gm-header: #eceae7;
+  --gm-header-hover: #e2dfdb;
+  --gm-input: #ffffff;
+  --gm-hover: #ebe8e4;
+  --gm-active-row: #fdece8;
+  --gm-edge: #cfcbc4;
+  --gm-edge-soft: #ddd9d3;
+  --gm-ink: #1a1c20;
+  --gm-steel: #5f646e;
+  --gm-muted: #8b909a;
+  --gm-led: #e85d4c;
+  --gm-hud: #5a7d8a;
+  --gm-on-cabinet: #f0eeeb;
+  --gm-on-cabinet-muted: #9aa0ab;
+  --gm-seek-rail: #101216;
+  --gm-font-ui:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --gm-font-hud:
+    ui-monospace, 'SF Mono', 'Cascadia Mono', 'Menlo', 'Consolas', monospace;
+}
+
+html.dark {
+  color-scheme: dark;
+  --gm-cabinet: #121418;
+  --gm-cabinet-hover: #1a1e24;
+  --gm-cabinet-active: #242830;
+  --gm-chrome: #16181d;
+  --gm-panel: #12141a;
+  --gm-header: #1a1d24;
+  --gm-header-hover: #22262e;
+  --gm-input: #1c2028;
+  --gm-hover: #22262e;
+  --gm-active-row: #2a1a18;
+  --gm-edge: #2e333c;
+  --gm-edge-soft: #262a32;
+  --gm-ink: #eceae7;
+  --gm-steel: #9aa0ab;
+  --gm-muted: #6e7480;
+  --gm-led: #f07162;
+  --gm-hud: #7a9eab;
+  --gm-on-cabinet: #eceae7;
+  --gm-on-cabinet-muted: #858b96;
+  --gm-seek-rail: #0a0b0e;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--gm-font-ui);
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gm-edge);
+  border-radius: 1px;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: var(--gm-edge-soft);
+}
+
+.gm-seek-rail {
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 3px,
+    color-mix(in srgb, var(--gm-led) 18%, transparent) 3px,
+    color-mix(in srgb, var(--gm-led) 18%, transparent) 4px
+  );
+}
+
+.gm-blink {
+  animation: gmBlink 1s steps(1, end) infinite;
+}
+
+.gm-eq {
+  height: 35%;
+  animation: gmEq 0.55s ease-in-out infinite alternate;
+}
+.gm-eq:nth-child(2) {
+  height: 60%;
+  animation-delay: 0.1s;
+}
+.gm-eq:nth-child(3) {
+  height: 90%;
+  animation-delay: 0.2s;
+}
+.gm-eq:nth-child(4) {
+  height: 45%;
+  animation-delay: 0.05s;
+}
+.gm-eq:nth-child(5) {
+  height: 75%;
+  animation-delay: 0.15s;
+}
+
+@keyframes gmBlink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes gmEq {
+  from {
+    height: 20%;
+  }
+  to {
+    height: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gm-blink,
+  .gm-eq {
+    animation: none;
+  }
+  .gm-blink {
+    opacity: 1;
+  }
+  .gm-eq {
+    height: 60%;
+  }
+}

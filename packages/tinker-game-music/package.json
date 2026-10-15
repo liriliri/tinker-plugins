@@ -1,0 +1,118 @@
+{
+  "name": "tinker-game-music",
+  "version": "0.1.0",
+  "description": "Browse and preview video game MIDI music from VGMusic",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:preload\"",
+    "dev:renderer": "vite build --watch",
+    "dev:preload": "vite build --watch --config vite.preload.ts",
+    "build": "concurrently \"npm run build:renderer\" \"npm run build:preload\"",
+    "build:renderer": "vite build",
+    "build:preload": "vite build --config vite.preload.ts",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "game-music",
+    "midi",
+    "vgmusic"
+  ],
+  "tinker": {
+    "name": "Game Music",
+    "main": "dist/renderer/index.html",
+    "preload": "dist/preload/index.js",
+    "icon": "icon.png",
+    "category": "entertainment",
+    "locales": {
+      "zh-CN": {
+        "name": "游戏音乐",
+        "description": "浏览并试听 VGMusic 上的游戏 MIDI 音乐"
+      }
+    },
+    "mcp": {
+      "tools": {
+        "list_systems": {
+          "description": "List all video game systems (consoles/computers) available in the Game Music catalog.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        "load_system": {
+          "description": "Load the MIDI song catalog for a system into the plugin UI. Call list_systems first to get valid system ids.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "system": {
+                "type": "string",
+                "minLength": 1,
+                "description": "System id or name (e.g. nes, snes, genesis, ps1)"
+              }
+            },
+            "required": [
+              "system"
+            ]
+          }
+        },
+        "search_songs": {
+          "description": "Search songs in the currently loaded system by title, game, or sequencer. Updates the plugin search box and returns matching tracks with indexes for download_song.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "query": {
+                "type": "string",
+                "description": "Search text. Empty string returns the first page of all songs in the loaded system."
+              },
+              "limit": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 50,
+                "description": "Max results to return (default 20, max 50)"
+              }
+            }
+          }
+        },
+        "download_song": {
+          "description": "Download a MIDI file to a local path. Prefer index from the latest search_songs results; url must belong to the loaded system catalog.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Absolute file path to write the .mid file"
+              },
+              "index": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "Index from search_songs results"
+              },
+              "url": {
+                "type": "string",
+                "description": "Direct MIDI url from a search_songs result"
+              }
+            },
+            "required": [
+              "path"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "cheerio": "^1.2.0"
+  },
+  "devDependencies": {
+    "@tonejs/midi": "^2.0.28",
+    "tone": "^15.1.22"
+  }
+}

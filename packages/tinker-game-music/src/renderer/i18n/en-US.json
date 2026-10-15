@@ -1,0 +1,14 @@
+{
+  "searchPlaceholder": "Search songs, games, or sequencers...",
+  "loading": "Loading stage...",
+  "songCount": "{{count}} tracks",
+  "noResults": "No tracks in this stage",
+  "random": "Random",
+  "refresh": "Refresh",
+  "play": "Play",
+  "pause": "Pause",
+  "stop": "Stop",
+  "save": "Save",
+  "idle": "Select a track to preview",
+  "error": "Error"
+}

@@ -1,0 +1,14 @@
+{
+  "searchPlaceholder": "搜索曲目、游戏或作者...",
+  "loading": "关卡加载中...",
+  "songCount": "{{count}} 首",
+  "noResults": "本关没有曲目",
+  "random": "随机",
+  "refresh": "刷新",
+  "play": "播放",
+  "pause": "暂停",
+  "stop": "停止",
+  "save": "保存",
+  "idle": "选择曲目开始试听",
+  "error": "错误"
+}

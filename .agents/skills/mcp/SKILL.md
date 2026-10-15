@@ -10,22 +10,24 @@ Wire MCP tools into an existing Tinker plugin.
 
 ## Arguments
 
-- `plugin-name`: plugin folder name (e.g. `tinker-lunar-calendar`)
+- `plugin-name`: folder name (e.g. `tinker-weather`)
 
 ## Reference
 
-Use `packages/tinker-whois` as the canonical example. Read these first and mirror them — do not reinvent the pattern:
+Use `createPluginMcpApi` from `tinker-share/lib/mcp` (see `packages/share/README.md`). Mirror a plugin that already uses it:
 
-- `packages/tinker-whois/AGENTS.md` — MCP section (schema, handlers, return rules)
-- `packages/tinker-whois/package.json` — `tinker.mcp.tools`
-- `packages/tinker-whois/src/renderer/mcp.ts`
-- `packages/tinker-whois/src/renderer/store.ts` — `readonly mcp`, `mcp: false`, `export class Store`
+- Flat `src/`: `tinker-weather`, `tinker-lunar-calendar`, `tinker-hanzi-converter`
+- Advanced `src/renderer/`: `tinker-game-music`
 
-For flat `src/` plugins (no `renderer/`), put `mcp.ts` next to `store.ts` (see `packages/tinker-lunar-calendar`).
+Do not copy hand-rolled `tinker.registerMcp` (e.g. older `tinker-whois`).
 
 ## Steps
 
-1. Confirm the plugin has useful UI actions to automate; otherwise skip MCP.
-2. Copy the whois wiring pattern into the target plugin (`package.json` tools + `mcp.ts` + store).
-3. Map each tool to existing store/UI methods: call them first (like a UI action), then return current store state from `mcp.ts`.
-4. Build: `cd packages/<plugin-name> && npm run build`
+1. Skip if nothing useful to automate.
+2. Mirror the closest example above:
+   - `package.json` → `tinker.mcp.tools` (snake_case; constraints in `inputSchema`)
+   - `mcp.ts` → `createPluginMcpApi(getStore, { tool: handler })`; handlers call store methods, return plain state or `throw`
+   - Store → `export class Store`, `readonly mcp = createMcpApi(() => this)`, `mcp: false` in `makeAutoObservable`
+3. `mcp.ts` lives next to the store (`src/` or `src/renderer/`).
+4. `cd packages/<plugin-name> && npm run build`
+5. After changing tools: `tinker relaunch` → `tinker open <name>` → `tinker tools <name>`.
