@@ -1,6 +1,6 @@
 {
-  "landTitle": "随机一站，听见世界。",
-  "landSub": "按下播放，目的地交给运气。",
+  "landTitle": "听见世界",
+  "landSub": "点播放，随机一站",
   "searchPlaceholder": "搜电台",
   "tabSaved": "收藏",
   "allLanguages": "全部语言",
@@ -14,13 +14,13 @@
   "tagFolk": "民谣",
   "kbps": "{{n}} kbps",
   "globeCount": "{{n}} 个电台",
-  "globeEmpty": "这个筛选下没有能画到球上的台",
-  "loadFailed": "电台数据载入失败",
-  "noWebGL": "当前环境没有图形加速，星图画不出来。",
+  "globeEmpty": "没有匹配的电台",
+  "loadFailed": "电台载入失败",
+  "noWebGL": "无法绘制星图",
   "retry": "重试",
-  "noHit": "没有找到，换个关键词",
-  "savedEmpty": "还没有收藏。听到喜欢的台，点爱心。",
-  "noStation": "当前筛选下没有可播的台，放宽一下筛选？",
+  "noHit": "没有找到",
+  "savedEmpty": "还没有收藏",
+  "noStation": "没有可播的电台",
   "unnamed": "未命名电台",
   "startListening": "开始收听",
   "keepListening": "继续收听",
@@ -34,6 +34,6 @@
   "mute": "静音",
   "unmute": "取消静音",
   "volume": "音量",
-  "failed": "这一站暂时连接不上，试试下一站。",
-  "blocked": "点一下开始收听。"
+  "failed": "连接不上",
+  "blocked": "点播放开始"
 }

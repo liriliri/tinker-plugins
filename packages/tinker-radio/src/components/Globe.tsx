@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { observer } from 'mobx-react-lite'
+import clamp from 'licia/clamp'
 import className from 'licia/className'
 import { useTranslation } from 'react-i18next'
 import { stationTitle } from '../lib/format'
@@ -9,11 +10,23 @@ import store from '../store'
 import { globe, tw } from '../theme'
 import Reticle from './Reticle'
 
+const BREATHE = 'motion-safe:animate-breathe'
+
+function ringEnergy(bands: Float32Array) {
+  let low = 0
+  const lowCount = Math.min(12, bands.length)
+  for (let i = 0; i < lowCount; i++) {
+    if (bands[i] > low) low = bands[i]
+  }
+  return low
+}
+
 const Globe = observer(function Globe() {
   const { t } = useTranslation()
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const labelRef = useRef<HTMLDivElement>(null)
   const markRef = useRef<HTMLDivElement>(null)
+  const ringRef = useRef<HTMLDivElement>(null)
   const viewRef = useRef<GlobeView | null>(null)
   const [failed, setFailed] = useState(false)
 
@@ -21,7 +34,8 @@ const Globe = observer(function Globe() {
     const canvas = canvasRef.current
     const label = labelRef.current
     const mark = markRef.current
-    if (!canvas || !label || !mark) return
+    const ring = ringRef.current
+    if (!canvas || !label || !mark || !ring) return
     let view: GlobeView
     try {
       view = createGlobeView(canvas)
@@ -33,11 +47,28 @@ const Globe = observer(function Globe() {
     viewRef.current = view
     let frame = 0
     let last = performance.now()
+    let follow = false
+    let shown = 0
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const tick = (now: number) => {
       const dt = Math.min(0.05, (now - last) / 1000)
       last = now
       const activeId = store.current?.stationuuid ?? ''
-      view.frame(dt, globe, activeId, readSound())
+      const sound = readSound()
+      view.frame(dt, globe, activeId, sound)
+      const playing = store.playback === 'playing' && !reduce
+      if (playing !== follow) {
+        follow = playing
+        ring.classList.toggle(BREATHE, !playing)
+        if (!playing) {
+          shown = 0
+          ring.style.transform = ''
+        }
+      }
+      if (playing) {
+        shown += (ringEnergy(sound.bands) - shown) * 0.42
+        ring.style.transform = `scale(${clamp(0.92 + shown * 0.36, 0.92, 1.28)})`
+      }
       const point = view.activeScreen(activeId)
       if (!point) {
         mark.style.opacity = '0'
@@ -128,7 +159,15 @@ const Globe = observer(function Globe() {
         ref={markRef}
         className="pointer-events-none absolute z-10 h-0 w-0 opacity-0"
       >
-        <Reticle />
+        <div
+          ref={ringRef}
+          className={className(
+            'absolute -left-10 -top-10 h-20 w-20',
+            tw.breathe,
+          )}
+        >
+          <Reticle />
+        </div>
       </div>
       <div
         ref={labelRef}

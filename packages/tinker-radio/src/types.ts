@@ -3,7 +3,6 @@ export interface Station {
   name: string
   url: string
   urlResolved: string
-  favicon: string
   tags: string[]
   country: string
   countrycode: string
@@ -25,7 +24,6 @@ export type Playback =
   'idle' | 'connecting' | 'playing' | 'paused' | 'failed' | 'blocked'
 
 export const TAGS = [
-  '',
   'pop',
   'rock',
   'jazz',

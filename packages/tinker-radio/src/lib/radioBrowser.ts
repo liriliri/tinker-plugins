@@ -12,7 +12,7 @@ import trim from 'licia/trim'
 import unique from 'licia/unique'
 import type { Station } from '../types'
 
-export interface CatalogHit {
+interface CatalogHit {
   station: Station
   votes: number
   clicks: number
@@ -58,7 +58,6 @@ function parseStation(row: unknown): CatalogHit | null {
       name: clean(raw.name),
       url,
       urlResolved: httpUrl(raw.url_resolved),
-      favicon: httpUrl(raw.favicon),
       tags,
       country: clean(raw.country),
       countrycode: clean(raw.countrycode),
@@ -91,7 +90,7 @@ async function discoverHosts(): Promise<string[]> {
       )
       if (names.length) return shuffle(names)
     } catch {
-      // Try the next bootstrap host.
+      // Keep walking bootstrap hosts when one is down.
     }
   }
   return [...FALLBACKS]

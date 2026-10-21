@@ -1,8 +1,12 @@
 import { useEffect, useRef } from 'react'
+import className from 'licia/className'
 import map from 'licia/map'
+import range from 'licia/range'
 import { readSound } from '../lib/sound'
+import { tw } from '../theme'
 
 const BARS = 32
+const BAR_INDEX = range(BARS)
 
 function levels() {
   const { bands } = readSound()
@@ -46,13 +50,13 @@ function Meter() {
       aria-hidden="true"
       className="pointer-events-none absolute bottom-4 right-[clamp(16px,3.5vw,40px)] z-20 flex h-14 items-end gap-[3px]"
     >
-      {map(Array.from({ length: BARS }), (_, index) => (
+      {map(BAR_INDEX, (index) => (
         <div
           key={index}
           ref={(el) => {
             bars.current[index] = el
           }}
-          className="h-[8%] w-1.5 rounded-[1px] bg-cream"
+          className={className('h-[8%] w-1.5 rounded-[1px]', tw.bar)}
         />
       ))}
     </div>

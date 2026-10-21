@@ -1,20 +1,10 @@
 import className from 'licia/className'
 import { tw } from '../theme'
 
-interface ReticleProps {
-  spin?: boolean
-}
-
-function Reticle({ spin }: ReticleProps) {
+function Reticle() {
   return (
     <svg
-      className={className(
-        'absolute -left-10 -top-10 overflow-visible',
-        tw.text.primary,
-        tw.breathe,
-      )}
-      width="80"
-      height="80"
+      className={className('h-full w-full overflow-visible', tw.text.primary)}
       viewBox="-40 -40 80 80"
       aria-hidden="true"
     >
@@ -24,8 +14,6 @@ function Reticle({ spin }: ReticleProps) {
         stroke="currentColor"
         strokeWidth="1"
         opacity="0.4"
-        strokeDasharray={spin ? '48 96.5' : undefined}
-        className={spin ? tw.orbit : undefined}
       />
       <circle
         r="15"

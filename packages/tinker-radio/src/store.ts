@@ -1,14 +1,11 @@
+import type { CSSProperties } from 'react'
 import { makeAutoObservable, runInAction } from 'mobx'
 import clamp from 'licia/clamp'
 import contain from 'licia/contain'
 import each from 'licia/each'
 import filter from 'licia/filter'
-import find from 'licia/find'
 import findIdx from 'licia/findIdx'
-import isArr from 'licia/isArr'
-import isNum from 'licia/isNum'
-import isObj from 'licia/isObj'
-import isStr from 'licia/isStr'
+import some from 'licia/some'
 import lowerCase from 'licia/lowerCase'
 import randomItem from 'licia/randomItem'
 import trim from 'licia/trim'
@@ -19,53 +16,20 @@ import { languageFacets } from './lib/facets'
 import { languageCodes } from './lib/languageName'
 import { stationPlayUrl } from './lib/radioBrowser'
 import { armAudio, audio } from './lib/sound'
+import {
+  STORAGE_CURRENT,
+  STORAGE_SAVED,
+  STORAGE_VOLUME,
+  matchesQuery,
+  readCurrent,
+  readStations,
+  readVolume,
+  toggleValue,
+} from './lib/station'
 import { resolvePlayable } from './lib/stream'
 import { TAGS, type Facet, type Playback, type Station } from './types'
 
-const STORAGE_SAVED = 'saved'
-const STORAGE_CURRENT = 'current'
-const STORAGE_VOLUME = 'volume'
-
 const MAX_SAVED = 200
-
-function isStation(value: unknown): value is Station {
-  if (!isObj(value)) return false
-  const row = value as Partial<Station>
-  return isStr(row.stationuuid) && isStr(row.name) && isStr(row.url)
-}
-
-function readStations(key: string): Station[] {
-  const raw = storage.get(key)
-  if (!isArr(raw)) return []
-  return filter(raw, isStation) as Station[]
-}
-
-function readCurrent(): Station | null {
-  const saved = storage.get(STORAGE_CURRENT)
-  if (isStation(saved)) return saved
-  const recent = storage.get('recent')
-  if (!isArr(recent)) return null
-  return (find(recent, isStation) as Station | undefined) ?? null
-}
-
-function readVolume() {
-  const value = storage.get(STORAGE_VOLUME)
-  return clamp(isNum(value) ? value : 0.8, 0, 1)
-}
-
-function matchesQuery(station: Station, query: string) {
-  if (!query) return true
-  const haystack = lowerCase(
-    [
-      station.name,
-      station.country,
-      station.state,
-      station.language,
-      station.tags.join(' '),
-    ].join(' '),
-  )
-  return contain(haystack, query)
-}
 
 class Store extends BaseStore {
   query = ''
@@ -103,7 +67,7 @@ class Store extends BaseStore {
   private hasLanguage(station: Station) {
     const selected = this.selectedLanguages
     if (!selected.length) return true
-    return !!find(languageCodes(station.language), (code) =>
+    return some(languageCodes(station.language), (code) =>
       contain(selected, code),
     )
   }
@@ -111,37 +75,36 @@ class Store extends BaseStore {
   private hasTag(station: Station) {
     const selected = this.selectedTags
     if (!selected.length) return true
-    return !!find(station.tags, (item) => contain(selected, lowerCase(item)))
+    return some(station.tags, (item) => contain(selected, lowerCase(item)))
   }
 
-  private stationsForTags(): Station[] {
-    return filter(this.globeStations, (station) =>
-      this.hasTag(station),
-    ) as Station[]
+  private stationsMatching(match: (station: Station) => boolean) {
+    return filter(this.globeStations, match) as Station[]
   }
 
-  private stationsForLanguages(): Station[] {
-    return filter(this.globeStations, (station) =>
-      this.hasLanguage(station),
-    ) as Station[]
+  private get stationsForTags() {
+    return this.stationsMatching((station) => this.hasTag(station))
+  }
+
+  private get stationsForLanguages() {
+    return this.stationsMatching((station) => this.hasLanguage(station))
   }
 
   get languages(): Facet[] {
-    return languageFacets(this.stationsForTags())
+    return languageFacets(this.stationsForTags)
   }
 
   get languageTotal(): number {
-    return this.stationsForTags().length
+    return this.stationsForTags.length
   }
 
   get tagFacets(): Facet[] {
-    const stations = this.stationsForLanguages()
+    const stations = this.stationsForLanguages
     const facets: Facet[] = []
     each(TAGS, (tag) => {
-      if (!tag) return
       let count = 0
       each(stations, (station) => {
-        if (find(station.tags, (item) => lowerCase(item) === tag)) count += 1
+        if (some(station.tags, (item) => lowerCase(item) === tag)) count += 1
       })
       facets.push({ name: tag, code: tag, count })
     })
@@ -149,7 +112,12 @@ class Store extends BaseStore {
   }
 
   get tagTotal(): number {
-    return this.stationsForLanguages().length
+    return this.stationsForLanguages.length
+  }
+
+  get volumeTrack(): CSSProperties {
+    const amount = this.muted ? 0 : this.volume
+    return { ['--p' as string]: `${amount * 100}%` }
   }
 
   get searchHits(): Station[] {
@@ -168,7 +136,7 @@ class Store extends BaseStore {
   }
 
   isSaved(uuid: string) {
-    return !!find(this.saved, (station) => station.stationuuid === uuid)
+    return some(this.saved, (station) => station.stationuuid === uuid)
   }
 
   setQuery(query: string) {
@@ -176,11 +144,8 @@ class Store extends BaseStore {
   }
 
   toggleLanguage(code: string) {
-    const key = lowerCase(code)
-    if (!key) return
-    this.selectedLanguages = contain(this.selectedLanguages, key)
-      ? (filter(this.selectedLanguages, (item) => item !== key) as string[])
-      : [...this.selectedLanguages, key]
+    const next = toggleValue(this.selectedLanguages, code)
+    if (next !== this.selectedLanguages) this.selectedLanguages = next
   }
 
   clearLanguages() {
@@ -188,11 +153,8 @@ class Store extends BaseStore {
   }
 
   toggleTag(tag: string) {
-    const key = lowerCase(tag)
-    if (!key) return
-    this.selectedTags = contain(this.selectedTags, key)
-      ? (filter(this.selectedTags, (item) => item !== key) as string[])
-      : [...this.selectedTags, key]
+    const next = toggleValue(this.selectedTags, tag)
+    if (next !== this.selectedTags) this.selectedTags = next
   }
 
   clearTags() {
@@ -298,7 +260,7 @@ class Store extends BaseStore {
   }
 
   random() {
-    const station = randomItem(this.pool()) as Station | undefined
+    const station = randomItem(this.visibleGlobe) as Station | undefined
     if (!station) {
       this.playback = 'idle'
       this.note = 'noStation'
@@ -322,12 +284,8 @@ class Store extends BaseStore {
     void this.loadCatalog(true)
   }
 
-  private pool(): Station[] {
-    return this.visibleGlobe
-  }
-
   private step(delta: number) {
-    const list = this.pool()
+    const list = this.visibleGlobe
     if (!list.length) {
       void this.random()
       return

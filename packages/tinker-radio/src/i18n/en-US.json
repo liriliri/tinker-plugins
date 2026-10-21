@@ -1,6 +1,6 @@
 {
-  "landTitle": "Listen somewhere new.",
-  "landSub": "Press play. Leave the destination to chance.",
+  "landTitle": "Hear the world",
+  "landSub": "Press play for a random stop",
   "searchPlaceholder": "Search stations",
   "tabSaved": "Saved",
   "allLanguages": "All languages",
@@ -14,13 +14,13 @@
   "tagFolk": "Folk",
   "kbps": "{{n}} kbps",
   "globeCount": "{{n}} stations",
-  "globeEmpty": "No plotted stations match. Widen the filters?",
-  "loadFailed": "Could not load stations",
-  "noWebGL": "Graphics acceleration is off, so the sky can't be drawn.",
+  "globeEmpty": "No matching stations",
+  "loadFailed": "Couldn't load stations",
+  "noWebGL": "Can't draw the sky",
   "retry": "Retry",
-  "noHit": "Nothing found. Try another word.",
-  "savedEmpty": "Nothing saved yet. Tap the heart on a station you like.",
-  "noStation": "Nothing to play with these filters. Widen them?",
+  "noHit": "Nothing found",
+  "savedEmpty": "Nothing saved yet",
+  "noStation": "Nothing to play",
   "unnamed": "Untitled station",
   "startListening": "Start listening",
   "keepListening": "Keep listening",
@@ -34,6 +34,6 @@
   "mute": "Mute",
   "unmute": "Unmute",
   "volume": "Volume",
-  "failed": "This station is unavailable. Try the next one.",
-  "blocked": "Tap play to start."
+  "failed": "Can't connect",
+  "blocked": "Press play to start"
 }

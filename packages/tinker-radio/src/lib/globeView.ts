@@ -597,7 +597,7 @@ export function createGlobeView(canvas: HTMLCanvasElement): GlobeView {
       }
       cam += (camTarget - cam) * (motion.matches ? 1 : 0.06)
       time += motion.matches ? 0 : dt
-      const live = Math.min(1, Math.max(0, sound.level))
+      const live = clamp(sound.level, 0, 1)
       twinkle += motion.matches ? 0 : dt * (1 + live * 0.6)
       const active = stationIndex(activeId)
       modelMatrix(yaw, pitch, model)
@@ -698,31 +698,29 @@ export function createGlobeView(canvas: HTMLCanvasElement): GlobeView {
         gl.uniform1i(loc(prog, 'uTex'), 0)
         gl.drawArrays(gl.TRIANGLES, 0, 3)
       }
+      const pingPong = (
+        source: Target,
+        other: Target,
+        step: number,
+        times: number,
+      ) => {
+        for (let i = 0; i < times; i++) {
+          gl.uniform2f(loc(blur, 'uDir'), step / source.w, 0)
+          pass(blur, source.tex, other.fb, other.w, other.h)
+          gl.uniform2f(loc(blur, 'uDir'), 0, step / other.h)
+          pass(blur, other.tex, source.fb, source.w, source.h)
+        }
+        return source
+      }
       pass(bright, scene.tex, ping.fb, ping.w, ping.h)
       gl.useProgram(blur)
-      let src = ping
-      let dst = pong
-      for (let i = 0; i < 2; i++) {
-        gl.uniform2f(loc(blur, 'uDir'), 1.6 / src.w, 0)
-        pass(blur, src.tex, dst.fb, dst.w, dst.h)
-        gl.uniform2f(loc(blur, 'uDir'), 0, 1.6 / dst.h)
-        pass(blur, dst.tex, src.fb, src.w, src.h)
-      }
-      const core = src
+      const core = pingPong(ping, pong, 1.6, 2)
       let wide = core
       let wideStrength = 0
       if (wideA && wideB) {
         gl.uniform2f(loc(blur, 'uDir'), 3.2 / core.w, 0)
         pass(blur, core.tex, wideA.fb, wideA.w, wideA.h)
-        src = wideA
-        dst = wideB
-        for (let i = 0; i < 3; i++) {
-          gl.uniform2f(loc(blur, 'uDir'), 3.2 / src.w, 0)
-          pass(blur, src.tex, dst.fb, dst.w, dst.h)
-          gl.uniform2f(loc(blur, 'uDir'), 0, 3.2 / dst.h)
-          pass(blur, dst.tex, src.fb, src.w, src.h)
-        }
-        wide = src
+        wide = pingPong(wideA, wideB, 3.2, 3)
         wideStrength = 1.15
       }
       gl.bindFramebuffer(gl.FRAMEBUFFER, null)

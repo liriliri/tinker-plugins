@@ -1,6 +1,8 @@
 import each from 'licia/each'
 import fnv1a from 'licia/fnv1a'
 import lowerCase from 'licia/lowerCase'
+import trim from 'licia/trim'
+import upperCase from 'licia/upperCase'
 import countries from './globe-data-min.json'
 
 const STEP = 0.72
@@ -259,10 +261,10 @@ export function countryPoint(
   uuid: string,
 ): [number, number] | null {
   const pools = landIndex().pools
-  let code = countrycode.trim().toUpperCase()
+  let code = upperCase(trim(countrycode))
   if (code === 'UK') code = 'GB'
   if (!pools.has(code)) {
-    code = namesFor(pools).get(lowerCase(country.trim())) || ''
+    code = namesFor(pools).get(lowerCase(trim(country))) || ''
   }
   const pool = pools.get(code)
   if (!pool?.length) return null

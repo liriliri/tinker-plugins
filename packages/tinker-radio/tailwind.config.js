@@ -27,13 +27,9 @@ export default {
           '0%, 100%': { transform: 'scale(0.92)', opacity: '0.45' },
           '50%': { transform: 'scale(1)', opacity: '1' },
         },
-        orbit: {
-          to: { strokeDashoffset: '-144.5' },
-        },
       },
       animation: {
         breathe: 'breathe 2.8s ease-in-out infinite',
-        orbit: 'orbit 2.4s linear infinite',
       },
       colors: {
         night: { DEFAULT: '#080a10', card: '#12141c' },

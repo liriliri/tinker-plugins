@@ -3,9 +3,10 @@ import { ChevronDown } from 'lucide-react'
 import className from 'licia/className'
 import contain from 'licia/contain'
 import map from 'licia/map'
+import { useOutsidePointer } from '../lib/useOutsidePointer'
 import { tw } from '../theme'
 
-export interface FacetItem {
+interface FacetItem {
   code: string
   label: string
   count: number
@@ -23,17 +24,14 @@ interface FacetSelectProps {
   onClear: () => void
 }
 
-function FacetOption({
-  label,
-  count,
-  active,
-  onSelect,
-}: {
+interface FacetOptionProps {
   label: string
   count: number
   active: boolean
   onSelect: () => void
-}) {
+}
+
+function FacetOption({ label, count, active, onSelect }: FacetOptionProps) {
   return (
     <button
       type="button"
@@ -46,7 +44,12 @@ function FacetOption({
       )}
     >
       {active ? (
-        <span className="absolute left-[11px] top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-signal" />
+        <span
+          className={className(
+            'absolute left-[11px] top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full',
+            tw.dot,
+          )}
+        />
       ) : null}
       <span className={className('min-w-0 flex-1 truncate', tw.text.primary)}>
         {label}
@@ -73,25 +76,18 @@ function FacetSelect({
   const onOpenChangeRef = useRef(onOpenChange)
   onOpenChangeRef.current = onOpenChange
 
+  useOutsidePointer(open, rootRef, () => onOpenChangeRef.current(false))
+
   useEffect(() => {
     if (!open) return
-    const onDown = (event: PointerEvent) => {
-      const target = event.target
-      if (!(target instanceof Node) || rootRef.current?.contains(target)) return
-      onOpenChangeRef.current(false)
-    }
     const onKey = (event: KeyboardEvent) => {
       if (event.key === 'Escape') onOpenChangeRef.current(false)
     }
-    document.addEventListener('pointerdown', onDown)
     document.addEventListener('keydown', onKey)
     rootRef.current
       ?.querySelector('[aria-selected="true"]')
       ?.scrollIntoView({ block: 'nearest' })
-    return () => {
-      document.removeEventListener('pointerdown', onDown)
-      document.removeEventListener('keydown', onKey)
-    }
+    return () => document.removeEventListener('keydown', onKey)
   }, [open])
 
   return (

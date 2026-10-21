@@ -3,8 +3,12 @@ import contain from 'licia/contain'
 import each from 'licia/each'
 import lowerCase from 'licia/lowerCase'
 import map from 'licia/map'
+import some from 'licia/some'
+import times from 'licia/times'
+import toStr from 'licia/toStr'
 import trim from 'licia/trim'
 import unique from 'licia/unique'
+import upperFirst from 'licia/upperFirst'
 
 const TAGS: Record<string, string> = {
   english: 'en',
@@ -146,11 +150,12 @@ function namesFor(locale: string) {
 }
 
 function fold(value: string) {
-  return lowerCase(value)
-    .normalize('NFD')
-    .replace(/\p{M}/gu, '')
-    .replace(/[^\p{L}\p{N}]+/gu, ' ')
-    .trim()
+  return trim(
+    lowerCase(value)
+      .normalize('NFD')
+      .replace(/\p{M}/gu, '')
+      .replace(/[^\p{L}\p{N}]+/gu, ' '),
+  )
 }
 
 function canonical(code: string) {
@@ -227,9 +232,7 @@ function names() {
 
 function titleCase(value: string) {
   if (value !== lowerCase(value)) return value
-  return map(value.split(' '), (word) =>
-    word ? word.charAt(0).toUpperCase() + word.slice(1) : word,
-  ).join(' ')
+  return map(value.split(' '), upperFirst).join(' ')
 }
 
 function withinOne(a: string, b: string): boolean {
@@ -305,19 +308,12 @@ function fromTag(key: string) {
 
 function phraseCodes(folded: string) {
   const table = names()
-  const words = folded.split(' ').filter(Boolean)
-  const taken: boolean[] = []
-  each(words, () => {
-    taken.push(false)
-  })
+  const words = compact(folded.split(' ')) as string[]
+  const taken = times(words.length, () => false)
   const found: string[] = []
   for (let size = words.length; size >= 1; size--) {
     for (let i = 0; i <= words.length - size; i++) {
-      let blocked = false
-      for (let k = i; k < i + size; k++) {
-        if (taken[k]) blocked = true
-      }
-      if (blocked) continue
+      if (some(taken.slice(i, i + size))) continue
       const code = table[words.slice(i, i + size).join(' ')]
       if (!code) continue
       found.push(code)
@@ -368,7 +364,7 @@ export function languageCodes(raw: string) {
   const cached = codeCache.get(raw)
   if (cached) return cached
   const codes: string[] = []
-  const source = String(raw || '').replace(/https?:\/\/\S+/gi, ' ')
+  const source = toStr(raw).replace(/https?:\/\/\S+/gi, ' ')
   each(source.split(/[,;/|،，+]+|\s+&\s+|\s+and\s+/), (piece) => {
     each(codesForPiece(piece), (code) => {
       codes.push(code)
@@ -392,11 +388,12 @@ function oneName(value: string, locale: string) {
   }
 }
 
+export function listJoiner(locale: string) {
+  return lowerCase(locale).startsWith('zh') ? '、' : ', '
+}
+
 export function languageName(raw: string, locale: string) {
-  const parts = map(raw.split(','), (part) => trim(part)).filter(
-    Boolean,
-  ) as string[]
+  const parts = compact(map(raw.split(','), (part) => trim(part))) as string[]
   if (!parts.length) return raw
-  const joiner = lowerCase(locale).startsWith('zh') ? '、' : ', '
-  return map(parts, (part) => oneName(part, locale)).join(joiner)
+  return map(parts, (part) => oneName(part, locale)).join(listJoiner(locale))
 }

@@ -147,10 +147,8 @@ const PlayerBar = observer(function PlayerBar() {
           value={store.muted ? 0 : store.volume}
           aria-label={t('volume')}
           onChange={(e) => store.setVolume(Number(e.target.value))}
-          style={{
-            ['--p' as string]: `${(store.muted ? 0 : store.volume) * 100}%`,
-          }}
-          className="volume"
+          style={store.volumeTrack}
+          className={tw.volume}
         />
       </div>
     </div>

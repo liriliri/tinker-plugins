@@ -1,14 +1,14 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { observer } from 'mobx-react-lite'
 import { Heart, Search } from 'lucide-react'
 import className from 'licia/className'
 import isEmpty from 'licia/isEmpty'
-import lowerCase from 'licia/lowerCase'
 import map from 'licia/map'
 import trim from 'licia/trim'
 import { useTranslation } from 'react-i18next'
 import { stationMeta, stationTitle, tagName } from '../lib/format'
-import { languageName } from '../lib/languageName'
+import { languageName, listJoiner } from '../lib/languageName'
+import { useOutsidePointer } from '../lib/useOutsidePointer'
 import store from '../store'
 import { tw } from '../theme'
 import type { Station } from '../types'
@@ -20,13 +20,12 @@ function pickStation(station: Station) {
   document.getElementById('station-search')?.blur()
 }
 
-function HitButton({
-  station,
-  onPick,
-}: {
+interface HitButtonProps {
   station: Station
   onPick: () => void
-}) {
+}
+
+function HitButton({ station, onPick }: HitButtonProps) {
   return (
     <button
       type="button"
@@ -59,8 +58,9 @@ const Header = observer(function Header() {
     store.selectedLanguages.join(','),
     i18n.language,
   )
-  const tagJoiner = lowerCase(i18n.language).startsWith('zh') ? '、' : ', '
-  const tagLabel = map(store.selectedTags, tagName).join(tagJoiner)
+  const tagLabel = map(store.selectedTags, tagName).join(
+    listJoiner(i18n.language),
+  )
   const languageItems = map(store.languages, (facet) => ({
     code: facet.code,
     label: languageName(facet.name, i18n.language),
@@ -71,22 +71,25 @@ const Header = observer(function Header() {
     label: tagName(facet.name),
     count: facet.count,
   }))
+  const query = trim(store.query)
   const expanded = open || !!store.query
-  const hits = open && trim(store.query) ? store.searchHits : []
-  const showMenu = open && !!trim(store.query)
+  const showMenu = open && !!query
+  const hits = showMenu ? store.searchHits : []
 
-  useEffect(() => {
-    if (!savedOpen) return
-    const onDown = (event: PointerEvent) => {
-      const target = event.target
-      if (!(target instanceof Node) || savedRef.current?.contains(target)) {
-        return
-      }
-      setSavedOpen(false)
-    }
-    document.addEventListener('pointerdown', onDown)
-    return () => document.removeEventListener('pointerdown', onDown)
-  }, [savedOpen])
+  useOutsidePointer(savedOpen, savedRef, () => setSavedOpen(false))
+
+  const openSearch = () => {
+    setSavedOpen(false)
+    setLangOpen(false)
+    setTagOpen(false)
+    setOpen(true)
+  }
+  const openFacet = (which: 'lang' | 'tag', next: boolean) => {
+    setSavedOpen(false)
+    setOpen(false)
+    setLangOpen(which === 'lang' && next)
+    setTagOpen(which === 'tag' && next)
+  }
 
   return (
     <>
@@ -99,12 +102,7 @@ const Header = observer(function Header() {
             selected={store.selectedLanguages}
             total={store.languageTotal}
             open={langOpen}
-            onOpenChange={(next) => {
-              setSavedOpen(false)
-              setOpen(false)
-              setTagOpen(false)
-              setLangOpen(next)
-            }}
+            onOpenChange={(next) => openFacet('lang', next)}
             onToggle={(code) => store.toggleLanguage(code)}
             onClear={() => store.clearLanguages()}
           />
@@ -115,12 +113,7 @@ const Header = observer(function Header() {
             selected={store.selectedTags}
             total={store.tagTotal}
             open={tagOpen}
-            onOpenChange={(next) => {
-              setSavedOpen(false)
-              setOpen(false)
-              setLangOpen(false)
-              setTagOpen(next)
-            }}
+            onOpenChange={(next) => openFacet('tag', next)}
             onToggle={(code) => store.toggleTag(code)}
             onClear={() => store.clearTags()}
           />
@@ -146,10 +139,7 @@ const Header = observer(function Header() {
               )}
               title={t('searchPlaceholder')}
               onClick={() => {
-                setSavedOpen(false)
-                setLangOpen(false)
-                setTagOpen(false)
-                setOpen(true)
+                openSearch()
                 document.getElementById('station-search')?.focus()
               }}
             >
@@ -159,12 +149,7 @@ const Header = observer(function Header() {
               id="station-search"
               value={store.query}
               onChange={(e) => store.setQuery(e.target.value)}
-              onFocus={() => {
-                setSavedOpen(false)
-                setLangOpen(false)
-                setTagOpen(false)
-                setOpen(true)
-              }}
+              onFocus={openSearch}
               onBlur={() => setOpen(false)}
               onKeyDown={(e) => {
                 if (e.key === 'Escape') {
