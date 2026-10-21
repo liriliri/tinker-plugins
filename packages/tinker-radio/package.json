@@ -1,0 +1,38 @@
+{
+  "name": "tinker-radio",
+  "version": "0.1.0",
+  "description": "Search and play internet radio stations",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "NODE_ENV=production vite",
+    "dev:tinker": "vite build --watch",
+    "build": "vite build",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "radio"
+  ],
+  "tinker": {
+    "name": "Radio",
+    "category": "entertainment",
+    "main": "dist/index.html",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "电台",
+        "description": "搜索并收听网络电台"
+      }
+    }
+  },
+  "devDependencies": {
+    "idb": "^8.0.3"
+  }
+}
