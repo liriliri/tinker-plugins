@@ -15,7 +15,15 @@ import { loadGeoCatalog } from './lib/catalog'
 import { languageFacets } from './lib/facets'
 import { languageCodes } from './lib/languageName'
 import { stationPlayUrl } from './lib/radioBrowser'
-import { armAudio, audio } from './lib/sound'
+import {
+  armAudio,
+  onOutputError,
+  pauseOutput,
+  playSource,
+  resumeOutput,
+  setOutputMuted,
+  setOutputVolume,
+} from './lib/sound'
 import {
   STORAGE_CURRENT,
   STORAGE_LANGUAGES,
@@ -57,8 +65,8 @@ class Store extends BaseStore {
   constructor() {
     super()
     makeAutoObservable(this)
-    audio.volume = this.volume
-    audio.addEventListener('error', () => {
+    setOutputVolume(this.volume)
+    onOutputError(() => {
       runInAction(() => {
         if (this.playback === 'connecting' || this.playback === 'playing') {
           this.playback = 'failed'
@@ -175,17 +183,17 @@ class Store extends BaseStore {
 
   setVolume(volume: number) {
     this.volume = clamp(volume, 0, 1)
-    audio.volume = this.volume
+    setOutputVolume(this.volume)
     if (this.volume > 0) {
       this.muted = false
-      audio.muted = false
+      setOutputMuted(false)
     }
     storage.set(STORAGE_VOLUME, this.volume)
   }
 
   toggleMute() {
     this.muted = !this.muted
-    audio.muted = this.muted
+    setOutputMuted(this.muted)
   }
 
   toggleSaved(station: Station) {
@@ -211,12 +219,11 @@ class Store extends BaseStore {
       return
     }
     if (this.playback === 'playing' || this.playback === 'connecting') {
-      audio.pause()
+      pauseOutput()
       this.playback = 'paused'
       return
     }
-    armAudio()
-    void audio.play().then(
+    void resumeOutput().then(
       () => {
         runInAction(() => {
           this.playback = 'playing'
@@ -236,7 +243,7 @@ class Store extends BaseStore {
     this.current = station
     this.playback = 'connecting'
     this.note = ''
-    audio.pause()
+    pauseOutput()
     this.remember(station)
     setTitle(station.name, 'Radio')
 
@@ -255,9 +262,7 @@ class Store extends BaseStore {
       ])
       if (token !== this.playToken) return
       if (!src) throw new Error('no stream')
-      audio.pause()
-      audio.src = src
-      await audio.play()
+      await playSource(src)
       runInAction(() => {
         if (token === this.playToken) this.playback = 'playing'
       })

@@ -1,5 +1,11 @@
 const BANDS = 64
-export const audio = new Audio()
+const audio = new Audio()
+const direct = new Audio()
+audio.crossOrigin = 'anonymous'
+
+let routed: HTMLAudioElement = audio
+let recovering = false
+let playGen = 0
 let audioCtx: AudioContext | null = null
 let analyser: AnalyserNode | null = null
 let freq = new Uint8Array(0)
@@ -26,6 +32,70 @@ export function armAudio() {
   void audioCtx.resume()
 }
 
+export function setOutputVolume(volume: number) {
+  audio.volume = volume
+  direct.volume = volume
+}
+
+export function setOutputMuted(muted: boolean) {
+  audio.muted = muted
+  direct.muted = muted
+}
+
+export function pauseOutput() {
+  audio.pause()
+  direct.pause()
+}
+
+export function resumeOutput() {
+  armAudio()
+  return routed.play()
+}
+
+export function onOutputError(handler: () => void) {
+  const listener = (event: Event) => {
+    if (recovering) return
+    const element = event.currentTarget
+    if (!(element instanceof HTMLAudioElement)) return
+    if (!element.getAttribute('src')) return
+    handler()
+  }
+  audio.addEventListener('error', listener)
+  direct.addEventListener('error', listener)
+}
+
+function release(element: HTMLAudioElement) {
+  element.pause()
+  if (!element.getAttribute('src')) return
+  element.removeAttribute('src')
+  element.load()
+}
+
+export async function playSource(src: string) {
+  const gen = ++playGen
+  pauseOutput()
+  recovering = true
+  routed = audio
+  audio.src = src
+  try {
+    await audio.play()
+    if (gen !== playGen) return
+    release(direct)
+  } catch (err) {
+    if (gen !== playGen) return
+    const blocked =
+      err instanceof DOMException && err.name === 'NotAllowedError'
+    if (blocked) throw err
+    release(audio)
+    routed = direct
+    direct.src = src
+    await direct.play()
+    if (gen !== playGen && routed !== direct) release(direct)
+  } finally {
+    if (gen === playGen) recovering = false
+  }
+}
+
 function shapeBands(readBin: (index: number) => number) {
   let maxBin = 0
   for (let i = 0; i < BANDS; i++) {
@@ -40,9 +110,10 @@ function shapeBands(readBin: (index: number) => number) {
 }
 
 export function readSound() {
-  const playing = !audio.paused && !audio.ended
+  const playing = !routed.paused && !routed.ended
+  const metered = routed === audio
   let real = false
-  if (analyser && audioCtx && playing) {
+  if (analyser && audioCtx && playing && metered) {
     analyser.getByteFrequencyData(freq)
     let energy = 0
     for (let i = 0; i < freq.length; i++) energy += freq[i]
