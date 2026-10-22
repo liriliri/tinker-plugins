@@ -18,11 +18,15 @@ import { stationPlayUrl } from './lib/radioBrowser'
 import { armAudio, audio } from './lib/sound'
 import {
   STORAGE_CURRENT,
+  STORAGE_LANGUAGES,
   STORAGE_SAVED,
+  STORAGE_TAGS,
   STORAGE_VOLUME,
   matchesQuery,
   readCurrent,
+  readLanguages,
   readStations,
+  readTags,
   readVolume,
   toggleValue,
 } from './lib/station'
@@ -33,8 +37,8 @@ const MAX_SAVED = 200
 
 class Store extends BaseStore {
   query = ''
-  selectedLanguages: string[] = []
-  selectedTags: string[] = []
+  selectedLanguages: string[] = readLanguages()
+  selectedTags: string[] = readTags()
 
   globeStations: Station[] = []
   saved: Station[] = readStations(STORAGE_SAVED)
@@ -145,20 +149,28 @@ class Store extends BaseStore {
 
   toggleLanguage(code: string) {
     const next = toggleValue(this.selectedLanguages, code)
-    if (next !== this.selectedLanguages) this.selectedLanguages = next
+    if (next === this.selectedLanguages) return
+    this.selectedLanguages = next
+    storage.set(STORAGE_LANGUAGES, next)
   }
 
   clearLanguages() {
+    if (!this.selectedLanguages.length) return
     this.selectedLanguages = []
+    storage.set(STORAGE_LANGUAGES, [])
   }
 
   toggleTag(tag: string) {
     const next = toggleValue(this.selectedTags, tag)
-    if (next !== this.selectedTags) this.selectedTags = next
+    if (next === this.selectedTags) return
+    this.selectedTags = next
+    storage.set(STORAGE_TAGS, next)
   }
 
   clearTags() {
+    if (!this.selectedTags.length) return
     this.selectedTags = []
+    storage.set(STORAGE_TAGS, [])
   }
 
   setVolume(volume: number) {

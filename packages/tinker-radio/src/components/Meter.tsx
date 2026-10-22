@@ -48,7 +48,7 @@ function Meter() {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none absolute bottom-4 right-[clamp(16px,3.5vw,40px)] z-20 flex h-14 items-end gap-[3px]"
+      className="pointer-events-none absolute bottom-4 right-[clamp(16px,3.5vw,40px)] z-20 flex h-20 items-end gap-[3px]"
     >
       {map(BAR_INDEX, (index) => (
         <div

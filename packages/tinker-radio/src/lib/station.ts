@@ -1,4 +1,5 @@
 import clamp from 'licia/clamp'
+import compact from 'licia/compact'
 import contain from 'licia/contain'
 import difference from 'licia/difference'
 import filter from 'licia/filter'
@@ -7,12 +8,17 @@ import isNum from 'licia/isNum'
 import isObj from 'licia/isObj'
 import isStr from 'licia/isStr'
 import lowerCase from 'licia/lowerCase'
+import map from 'licia/map'
+import trim from 'licia/trim'
+import unique from 'licia/unique'
 import { storage } from 'tinker-share/store/Base'
-import type { Station } from '../types'
+import { TAGS, type Station } from '../types'
 
 export const STORAGE_SAVED = 'saved'
 export const STORAGE_CURRENT = 'current'
 export const STORAGE_VOLUME = 'volume'
+export const STORAGE_LANGUAGES = 'languages'
+export const STORAGE_TAGS = 'tags'
 
 function isStation(value: unknown): value is Station {
   if (!isObj(value)) return false
@@ -34,6 +40,28 @@ export function readCurrent(): Station | null {
 export function readVolume() {
   const value = storage.get(STORAGE_VOLUME)
   return clamp(isNum(value) ? value : 0.8, 0, 1)
+}
+
+function readStrings(key: string) {
+  const raw = storage.get(key)
+  if (!isArr(raw)) return []
+  return unique(
+    compact(
+      map(filter(raw, isStr) as string[], (item) => lowerCase(trim(item))),
+    ),
+  ) as string[]
+}
+
+export function readLanguages() {
+  return filter(readStrings(STORAGE_LANGUAGES), (code) =>
+    /^[a-z]{2,3}$/.test(code),
+  ) as string[]
+}
+
+export function readTags() {
+  return filter(readStrings(STORAGE_TAGS), (code) =>
+    contain(TAGS, code),
+  ) as string[]
 }
 
 export function matchesQuery(station: Station, query: string) {

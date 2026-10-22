@@ -248,5 +248,13 @@ All plugins in the list can be installed to TINKER by running `npm i -g tinker-x
       <th><img src="./packages/tinker-speed-test/screenshot.png"/></th>
       <th><img src="./packages/tinker-lan-share/screenshot.png"/></th>
     </tr>
+    <tr>
+      <th><a href="./packages/tinker-game-music/">tinker-game-music</a></th>
+      <th><a href="./packages/tinker-radio/">tinker-radio</a></th>
+    </tr>
+    <tr>
+      <th><img src="./packages/tinker-game-music/screenshot.png"/></th>
+      <th><img src="./packages/tinker-radio/screenshot.png"/></th>
+    </tr>
   </tbody>
 </table>

@@ -2,6 +2,7 @@ export interface GlobePalette {
   sky: [number, number, number]
   glow: [number, number, number]
   star: [number, number, number]
+  meteor: [number, number, number]
   land: [number, number, number]
   haze: [number, number, number]
   station: [number, number, number]
@@ -13,6 +14,7 @@ export const globe: GlobePalette = {
   sky: [0.031, 0.039, 0.063],
   glow: [0.006, 0.008, 0.016],
   star: [0.14, 0.15, 0.18],
+  meteor: [0.55, 0.51, 0.44],
   land: [0.08, 0.1, 0.14],
   haze: [0.008, 0.01, 0.018],
   station: [0.95, 0.9, 0.82],

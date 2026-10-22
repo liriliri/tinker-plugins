@@ -1,7 +1,18 @@
 import clamp from 'licia/clamp'
 import findIdx from 'licia/findIdx'
 import fnv1a from 'licia/fnv1a'
+import template from 'licia/template'
 import { countryPoint, landPositions, place } from './land'
+import blurFrag from './shaders/blur.frag?raw'
+import brightFrag from './shaders/bright.frag?raw'
+import composeFrag from './shaders/compose.frag?raw'
+import dotFrag from './shaders/dot.frag?raw'
+import dotVert from './shaders/dot.vert?raw'
+import hazeFrag from './shaders/haze.frag?raw'
+import landFrag from './shaders/land.frag?raw'
+import landVert from './shaders/land.vert?raw'
+import screenVert from './shaders/screen.vert?raw'
+import skyFrag from './shaders/sky.frag?raw'
 import type { GlobePalette } from '../theme'
 import type { Station } from '../types'
 
@@ -21,87 +32,13 @@ const FAR_SPAN = 3.2
 const SWAY = 0.28
 const SWAY_SPAN = 0.85
 
-const SKY_VS = `attribute vec2 aPos; varying vec2 vUv; void main(){ vUv = aPos * 0.5 + 0.5; gl_Position = vec4(aPos, 0.0, 1.0); }`
-
-const SKY_FS = `precision mediump float; uniform float uAspect, uTime; uniform vec3 uSky, uGlow, uStar; varying vec2 vUv;
-float hh(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
-float stars(vec2 q, float dens, float rad){ vec2 c = floor(q); float h1 = hh(c); if (h1 > dens) return 0.0;
-  vec2 o = vec2(hh(c + 7.1), hh(c + 13.7)) - 0.5; float d = length(fract(q) - 0.5 - o * 0.6); float h2 = hh(c + 3.3);
-  return smoothstep(rad, 0.0, d) * (0.35 + 0.65 * hh(c + 5.9)) * (0.55 + 0.45 * sin(uTime * (0.3 + h2 * 1.2) + h2 * 40.0)); }
-void main(){ vec2 p = vUv - 0.5; p.x *= uAspect; float g = exp(-dot(p, p) * 3.0); vec3 c = uSky + uGlow * g;
-  vec2 s = vUv * vec2(uAspect, 1.0);
-  float st = stars(s * 120.0 + uTime * vec2(0.02, 0.006), 0.16, 0.2) * 0.5 + stars(s * 70.0 + uTime * vec2(0.04, 0.012), 0.2, 0.14) + stars(s * 32.0 + uTime * vec2(0.05, 0.015), 0.11, 0.09) * 2.2;
-  c += uStar * st; gl_FragColor = vec4(c, 1.0); }`
-
-const LAND_VS = `uniform mat4 uModel, uView, uProj; uniform vec3 uCam; uniform float uPR;
-attribute vec3 aPos; varying float vF;
-void main(){ vec3 world = (uModel * vec4(aPos, 1.0)).xyz; vec3 wn = normalize((uModel * vec4(aPos, 0.0)).xyz);
-  vF = smoothstep(-0.05, 0.35, dot(wn, normalize(uCam))); vec4 mv = uView * vec4(world, 1.0);
-  gl_PointSize = 2.05 * uPR * (6.0 / -mv.z); gl_Position = uProj * mv; }`
-
-const LAND_FS = `precision mediump float; uniform vec3 uColor; uniform float uGain, uAdd; varying float vF;
-void main(){ vec2 c = gl_PointCoord - 0.5; if (length(c) > 0.5) discard;
-  float a = vF * uGain;
-  if (uAdd > 0.5) gl_FragColor = vec4(uColor * a, 1.0); else gl_FragColor = vec4(uColor, a); }`
-
-const HAZE_FS = `precision mediump float; uniform float uAspect, uRadius; uniform vec2 uCenter; uniform vec3 uHaze; varying vec2 vUv;
-void main(){ vec2 p = vUv - uCenter; p.x *= uAspect; float d = length(p) / max(uRadius, 0.001);
-  float h = smoothstep(1.04, 0.42, d);
-  gl_FragColor = vec4(uHaze * h, 1.0); }`
-
-const BRIGHT_FS = `precision mediump float; uniform sampler2D uTex; varying vec2 vUv;
-void main(){ vec3 c = texture2D(uTex, vUv).rgb; float l = max(c.r, max(c.g, c.b));
-  gl_FragColor = vec4(c * smoothstep(0.2, 0.48, l), 1.0); }`
-
-const BLUR_FS = `precision mediump float; uniform sampler2D uTex; uniform vec2 uDir; varying vec2 vUv;
-void main(){ vec3 c = texture2D(uTex, vUv).rgb * 0.227;
-  c += texture2D(uTex, vUv + uDir * 1.6).rgb * 0.194; c += texture2D(uTex, vUv - uDir * 1.6).rgb * 0.194;
-  c += texture2D(uTex, vUv + uDir * 3.8).rgb * 0.122; c += texture2D(uTex, vUv - uDir * 3.8).rgb * 0.122;
-  c += texture2D(uTex, vUv + uDir * 6.4).rgb * 0.07; c += texture2D(uTex, vUv - uDir * 6.4).rgb * 0.07;
-  gl_FragColor = vec4(c, 1.0); }`
-
-const COMPOSE_FS = `precision mediump float; uniform sampler2D uScene, uBloom, uWide; uniform float uStrength, uWideStrength; varying vec2 vUv;
-void main(){ vec2 d = vUv - 0.5; float r2 = dot(d, d); vec2 o = d * 0.0022 * (0.35 + r2 * 2.6);
-  vec3 scene = vec3(texture2D(uScene, vUv + o).r, texture2D(uScene, vUv).g, texture2D(uScene, vUv - o).b);
-  scene += texture2D(uBloom, vUv).rgb * uStrength + texture2D(uWide, vUv).rgb * uWideStrength;
-  scene *= 1.0 - smoothstep(0.28, 1.05, r2) * 0.22;
-  gl_FragColor = vec4(scene, 1.0); }`
-
-const DOT_VS = `uniform mat4 uModel, uView, uProj; uniform vec3 uCam; uniform float uPR, uSel, uLevel, uTime, uTwinkle;
-uniform float uBand[64];
-attribute vec3 aPos; attribute float aPop, aDen, aIdx, aSeed, aBorn; varying float vA; varying float vSel;
-float ease(float t){ return t<0.5 ? 4.0*t*t*t : 1.0-pow(-2.0*t+2.0,3.0)/2.0; }
-void main(){
-  float ie = ease(clamp((uTime - aBorn) / ${ARRIVE}, 0.0, 1.0));
-  vec3 n = normalize(aPos);
-  vec3 jitter = vec3(aSeed - 0.5, fract(aSeed * 13.1) - 0.5, fract(aSeed * 7.7) - 0.5);
-  vec3 from = normalize(aPos + jitter * 2.0) * (${FAR_NEAR} + aSeed * ${FAR_SPAN});
-  vec3 pos = mix(from, aPos, ie);
-  float mid = sin(3.14159265 * ie);
-  vec3 up = abs(n.y) > 0.9 ? vec3(1.0, 0.0, 0.0) : vec3(0.0, 1.0, 0.0);
-  vec3 side = normalize(cross(n, up));
-  vec3 lift = cross(n, side);
-  pos += (side * sin(aSeed * 9.0) + lift * cos(aSeed * 5.0)) * mid * (${SWAY} + aSeed * ${SWAY_SPAN});
-  vec3 world = (uModel * vec4(pos, 1.0)).xyz; vec3 wn = normalize((uModel * vec4(aPos, 0.0)).xyz);
-  float face = smoothstep(-0.08, 0.28, dot(wn, normalize(uCam)));
-  float back = mix(mix(0.05, 1.0, face), 1.0, 1.0 - ie);
-  vec4 mv = uView * vec4(world, 1.0); gl_Position = uProj * mv; vSel = 1.0 - step(0.5, abs(aIdx - uSel));
-  float seed = fract(sin(aIdx * 12.9898) * 43758.5453);
-  float a = uBand[int(min(seed * 64.0, 63.0))];
-  float live = clamp(uLevel, 0.0, 1.0);
-  float tw = mix(0.4, 0.75, live);
-  float shimmer = max(0.0, 1.0 - tw + tw * sin(uTwinkle * (0.3 + aSeed * 1.2) + aSeed * 40.0));
-  float sz = (1.1 + aPop * 2.3) * (6.0 / -mv.z) * (1.0 + a * 0.7 * uLevel) * shimmer * mix(1.45, 1.0, ie) + vSel * (5.0 + uLevel * 2.0);
-  gl_PointSize = clamp(sz * uPR, 1.0, 46.0);
-  vA = ((0.16 + aPop * 0.7) * aDen * back * (1.0 + a * uLevel) * shimmer) * smoothstep(0.0, 0.35, ie) + vSel * 2.2; }`
-
-const DOT_FS = `precision mediump float; uniform vec3 uStation, uActive; uniform float uAdd; varying float vA; varying float vSel;
-void main(){ vec2 c = gl_PointCoord - 0.5; float r = length(c); if (r > 0.5) discard;
-  float soft = smoothstep(0.5, 0.0, r); soft *= soft;
-  float solid = smoothstep(0.42, 0.0, r);
-  float a = mix(soft, solid, vSel);
-  vec3 col = mix(uStation, uActive, vSel); float k = vA * a;
-  if (uAdd > 0.5) gl_FragColor = vec4(col * k, 1.0); else gl_FragColor = vec4(col, k); }`
+const dotVs = template(dotVert)({
+  ARRIVE,
+  FAR_NEAR,
+  FAR_SPAN,
+  SWAY,
+  SWAY_SPAN,
+})
 
 interface GlobeHover {
   name: string
@@ -245,13 +182,13 @@ export function createGlobeView(canvas: HTMLCanvasElement): GlobeView {
   })
   if (!gl) throw new Error('webgl')
 
-  const sky = program(gl, SKY_VS, SKY_FS)
-  const land = program(gl, LAND_VS, LAND_FS)
-  const dots = program(gl, DOT_VS, DOT_FS)
-  const haze = program(gl, SKY_VS, HAZE_FS)
-  const bright = program(gl, SKY_VS, BRIGHT_FS)
-  const blur = program(gl, SKY_VS, BLUR_FS)
-  const compose = program(gl, SKY_VS, COMPOSE_FS)
+  const sky = program(gl, screenVert, skyFrag)
+  const land = program(gl, landVert, landFrag)
+  const dots = program(gl, dotVs, dotFrag)
+  const haze = program(gl, screenVert, hazeFrag)
+  const bright = program(gl, screenVert, brightFrag)
+  const blur = program(gl, screenVert, blurFrag)
+  const compose = program(gl, screenVert, composeFrag)
   const tri = gl.createBuffer()
   gl.bindBuffer(gl.ARRAY_BUFFER, tri)
   gl.bufferData(
@@ -621,6 +558,8 @@ export function createGlobeView(canvas: HTMLCanvasElement): GlobeView {
         gl.uniform3fv(loc(sky, 'uSky'), palette.sky)
         gl.uniform3fv(loc(sky, 'uGlow'), palette.glow)
         gl.uniform3fv(loc(sky, 'uStar'), palette.star)
+        gl.uniform3fv(loc(sky, 'uStreak'), palette.meteor)
+        gl.uniform1f(loc(sky, 'uMeteor'), motion.matches ? 0 : 1)
         gl.drawArrays(gl.TRIANGLES, 0, 3)
 
         gl.enable(gl.BLEND)
