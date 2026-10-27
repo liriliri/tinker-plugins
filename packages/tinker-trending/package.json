@@ -26,7 +26,6 @@
   "tinker": {
     "name": "Trending",
     "category": "productivity",
-    "description": "Browse trending topics from multiple platforms",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",

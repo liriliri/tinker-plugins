@@ -1,0 +1,100 @@
+{
+  "name": "tinker-asar",
+  "version": "0.1.0",
+  "description": "Browse and extract Electron asar archives",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:preload\"",
+    "dev:renderer": "vite build --watch",
+    "dev:preload": "vite build --watch --config vite.preload.ts",
+    "build": "concurrently \"npm run build:renderer\" \"npm run build:preload\"",
+    "build:renderer": "vite build",
+    "build:preload": "vite build --config vite.preload.ts",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "asar"
+  ],
+  "tinker": {
+    "name": "Asar Viewer",
+    "main": "dist/renderer/index.html",
+    "preload": "dist/preload/index.js",
+    "icon": "icon.png",
+    "category": "file",
+    "locales": {
+      "zh-CN": {
+        "name": "ASAR 查看器",
+        "description": "浏览并解压 Electron asar 文件"
+      }
+    },
+    "mcp": {
+      "tools": {
+        "open": {
+          "description": "Open a .asar archive and update the plugin UI. Returns the archive path and file list.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Absolute path to the .asar file"
+              }
+            },
+            "required": [
+              "path"
+            ]
+          }
+        },
+        "list_files": {
+          "description": "List files in the currently open asar archive.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        "extract": {
+          "description": "Extract specified files (or directory prefixes) from the open archive to an output directory.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "paths": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "description": "Archive-relative file paths or directory prefixes to extract"
+              },
+              "output_dir": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Absolute path to the output directory"
+              }
+            },
+            "required": [
+              "paths",
+              "output_dir"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "@electron/asar": "^3.4.1"
+  },
+  "devDependencies": {
+    "@monaco-editor/react": "^4.7.0",
+    "@radix-ui/react-alert-dialog": "^1.1.23",
+    "monaco-editor": "^0.52.2"
+  }
+}

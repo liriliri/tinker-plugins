@@ -28,7 +28,6 @@
   "tinker": {
     "name": "Token Usage",
     "category": "dev",
-    "description": "Track token usage statistics for AI coding tools",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.mjs",
     "icon": "icon.png",

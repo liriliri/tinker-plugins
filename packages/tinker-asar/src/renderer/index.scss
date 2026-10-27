@@ -1,0 +1,197 @@
+@use 'tailwindcss';
+@config "../../tailwind.config.js";
+
+:root {
+  --as-bg: #eef1f5;
+  --as-surface: #ffffff;
+  --as-surface-raised: #f7f8fa;
+  --as-sidebar: #e4e8ef;
+  --as-ink: #111827;
+  --as-ink-muted: #4b5563;
+  --as-ink-faint: #8b95a5;
+  --as-border: #cdd5e0;
+  --as-border-subtle: #dde3ec;
+  --as-accent: #2563eb;
+  --as-accent-hover: #1d4ed8;
+  --as-accent-dim: rgba(37, 99, 235, 0.1);
+  --as-accent-glow: rgba(37, 99, 235, 0.22);
+  --as-modified: #d97706;
+  --as-unpacked: #b45309;
+  --as-unpacked-dim: rgba(180, 83, 9, 0.1);
+  --as-error: #c43c3c;
+  --as-error-dim: rgba(196, 60, 60, 0.08);
+  --as-font-ui:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --as-font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
+  --as-file-js: #b45309;
+  --as-file-json: #0d7a6f;
+  --as-file-html: #2563eb;
+  --as-file-css: #7c3aed;
+  --as-radius: 6px;
+  --as-radius-lg: 10px;
+}
+
+html.dark {
+  color-scheme: dark;
+
+  --as-bg: #0b0e12;
+  --as-surface: #12161c;
+  --as-surface-raised: #1a2129;
+  --as-sidebar: #0e1217;
+  --as-ink: #e5e7eb;
+  --as-ink-muted: #9ca3af;
+  --as-ink-faint: #4b5563;
+  --as-border: #273040;
+  --as-border-subtle: #1c2430;
+  --as-accent: #3b82f6;
+  --as-accent-hover: #60a5fa;
+  --as-accent-dim: rgba(59, 130, 246, 0.14);
+  --as-accent-glow: rgba(59, 130, 246, 0.22);
+  --as-modified: #fbbf24;
+  --as-unpacked: #fbbf24;
+  --as-unpacked-dim: rgba(251, 191, 36, 0.12);
+  --as-error: #f07070;
+  --as-error-dim: rgba(240, 112, 112, 0.1);
+  --as-file-js: #fbbf24;
+  --as-file-json: #2dd4bf;
+  --as-file-html: #60a5fa;
+  --as-file-css: #a78bfa;
+}
+
+body {
+  font-family: var(--as-font-ui);
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes as-float-back {
+  0%,
+  100% {
+    transform: rotate(-7deg) translate(-6px, 4px);
+  }
+  50% {
+    transform: rotate(-7deg) translate(-6px, -1px);
+  }
+}
+
+@keyframes as-float-mid {
+  0%,
+  100% {
+    transform: rotate(4deg) translate(5px, -2px);
+  }
+  50% {
+    transform: rotate(4deg) translate(5px, -7px);
+  }
+}
+
+@keyframes as-float-front {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes as-pulse-ring {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.03);
+  }
+}
+
+@keyframes as-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes as-toast-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.package-hero {
+  position: relative;
+  width: 88px;
+  height: 96px;
+  margin: 0 auto 1.75rem;
+}
+
+.package-layer {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--as-radius-lg);
+  border: 1px solid var(--as-border);
+  will-change: transform;
+}
+
+.package-layer--back {
+  z-index: 1;
+  background: var(--as-sidebar);
+  transform: rotate(-7deg) translate(-6px, 4px);
+  animation: as-float-back 5s ease-in-out infinite;
+}
+
+.package-layer--mid {
+  z-index: 2;
+  background: var(--as-surface-raised);
+  transform: rotate(4deg) translate(5px, -2px);
+  animation: as-float-mid 5s ease-in-out infinite 0.6s;
+}
+
+.package-layer--front {
+  z-index: 3;
+  background: var(--as-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.07);
+  animation: as-float-front 5s ease-in-out infinite 1.2s;
+
+  &::after {
+    content: '';
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--as-accent-dim);
+    border: 2px solid var(--as-accent);
+    animation: as-pulse-ring 3s ease-in-out infinite;
+  }
+}
+
+html.dark .package-layer--front {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .package-layer--back,
+  .package-layer--mid,
+  .package-layer--front {
+    animation: none;
+    will-change: auto;
+  }
+
+  .package-layer--front::after {
+    animation: none;
+  }
+}

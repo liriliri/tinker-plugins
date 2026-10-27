@@ -26,7 +26,6 @@
   "tinker": {
     "name": "Text to Speech",
     "category": "media",
-    "description": "Convert text to speech with Microsoft Edge TTS",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",

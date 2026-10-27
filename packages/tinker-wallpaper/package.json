@@ -25,7 +25,6 @@
   ],
   "tinker": {
     "name": "Wallpaper",
-    "description": "Search, preview and set desktop wallpapers",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",

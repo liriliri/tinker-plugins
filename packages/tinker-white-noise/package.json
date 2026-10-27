@@ -22,7 +22,6 @@
   ],
   "tinker": {
     "name": "White Noise",
-    "description": "Play ambient white noise with visual effects",
     "main": "dist/index.html",
     "icon": "icon.png",
     "category": "entertainment",

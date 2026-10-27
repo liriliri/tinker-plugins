@@ -25,7 +25,6 @@
   ],
   "tinker": {
     "name": "Speed Test",
-    "description": "Test network latency, download and upload speed",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",

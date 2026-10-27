@@ -23,7 +23,6 @@
   "tinker": {
     "name": "Video Converter",
     "category": "media",
-    "description": "Convert video formats with FFmpeg",
     "main": "dist/index.html",
     "icon": "icon.png",
     "locales": {

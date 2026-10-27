@@ -32,7 +32,6 @@
   "tinker": {
     "name": "TCP Tunnel",
     "category": "dev",
-    "description": "Expose local TCP ports through a public relay",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",

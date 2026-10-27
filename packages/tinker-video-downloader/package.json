@@ -28,7 +28,6 @@
   "tinker": {
     "name": "Video Downloader",
     "category": "media",
-    "description": "Download videos with yt-dlp",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",

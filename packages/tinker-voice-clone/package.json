@@ -27,7 +27,6 @@
   ],
   "tinker": {
     "name": "Voice Clone",
-    "description": "Clone voices and synthesize speech locally with audio.cpp",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",

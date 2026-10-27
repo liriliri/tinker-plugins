@@ -26,7 +26,6 @@
   "tinker": {
     "name": "Translate",
     "category": "productivity",
-    "description": "Translate text with multiple translation services",
     "main": "dist/renderer/index.html",
     "preload": "dist/preload/index.js",
     "icon": "icon.png",

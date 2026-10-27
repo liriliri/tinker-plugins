@@ -23,7 +23,6 @@
   "tinker": {
     "name": "Typing Test",
     "category": "entertainment",
-    "description": "Test and improve your typing speed",
     "main": "dist/index.html",
     "icon": "icon.png",
     "locales": {
