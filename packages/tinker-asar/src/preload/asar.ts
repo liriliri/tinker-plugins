@@ -1,5 +1,6 @@
 import * as asar from '@electron/asar'
 import contain from 'licia/contain'
+import isWindows from 'licia/isWindows'
 import each from 'licia/each'
 import endWith from 'licia/endWith'
 import filter from 'licia/filter'
@@ -52,6 +53,21 @@ function isDirectoryEntry(entry: object): boolean {
   return 'files' in entry
 }
 
+// @electron/asar traverses with path.sep; on Windows dirs stat with `/`, files with `\`.
+function withAsarPackagePath<T>(
+  packagePath: string,
+  run: (resolvedPath: string) => T,
+): T {
+  if (!isWindows) {
+    return run(packagePath)
+  }
+  try {
+    return run(packagePath)
+  } catch {
+    return run(packagePath.replace(/\//g, '\\'))
+  }
+}
+
 function getFileData(packagePath: string): Buffer | null {
   const entry = files.get(packagePath)
   if (!entry) {
@@ -63,7 +79,9 @@ function getFileData(packagePath: string): Buffer | null {
   if (!asarPath) {
     return null
   }
-  const data = asar.extractFile(asarPath, packagePath)
+  const data = withAsarPackagePath(packagePath, (p) =>
+    asar.extractFile(asarPath, p),
+  )
   entry.data = data
   return data
 }
@@ -108,7 +126,9 @@ export async function openAsar(filePath: string): Promise<OpenAsarResult> {
         return
       }
 
-      const stat = asar.statFile(filePath, packagePath)
+      const stat = withAsarPackagePath(packagePath, (p) =>
+        asar.statFile(filePath, p),
+      )
       if (isDirectoryEntry(stat)) {
         if (isEmpty(stat.files)) {
           emptyDirectories.push(packagePath)
