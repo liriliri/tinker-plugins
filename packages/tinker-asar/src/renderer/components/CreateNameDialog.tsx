@@ -36,8 +36,8 @@ const CreateNameDialog = observer(() => {
         <AlertDialog.Overlay className="fixed inset-0 z-50 bg-black/40" />
         <AlertDialog.Content
           className={className(
-            'fixed left-1/2 top-1/2 z-50 w-full max-w-sm -translate-x-1/2 -translate-y-1/2',
-            'rounded-lg border p-5 shadow-lg focus:outline-none',
+            'fixed left-1/2 top-1/2 z-50 w-full max-w-xs -translate-x-1/2 -translate-y-1/2',
+            'rounded border p-3.5 shadow-lg focus:outline-none',
             tw.surface,
             tw.border.default,
           )}
@@ -45,7 +45,7 @@ const CreateNameDialog = observer(() => {
         >
           <form onSubmit={handleSubmit}>
             <AlertDialog.Title
-              className={className('text-sm font-semibold', tw.text.primary)}
+              className={className('text-xs font-semibold', tw.text.primary)}
             >
               {pending?.type === 'directory'
                 ? t('createFolderTitle')
@@ -54,7 +54,7 @@ const CreateNameDialog = observer(() => {
 
             <AlertDialog.Description
               className={className(
-                'mt-2 text-sm leading-relaxed',
+                'mt-1.5 text-[11px] leading-relaxed',
                 tw.text.muted,
               )}
             >
@@ -71,7 +71,7 @@ const CreateNameDialog = observer(() => {
                 store.clearCreateError()
               }}
               className={className(
-                'mt-4 w-full px-3 py-2 rounded text-sm outline-none',
+                'mt-3 w-full px-2 py-1.5 rounded text-[11px] outline-none',
                 tw.input,
                 tw.mono,
               )}
@@ -81,18 +81,18 @@ const CreateNameDialog = observer(() => {
             />
 
             {store.createError && (
-              <p className={className('mt-2 text-xs', tw.text.error)}>
+              <p className={className('mt-1.5 text-[11px]', tw.text.error)}>
                 {store.createError}
               </p>
             )}
 
-            <div className="mt-5 flex justify-end gap-2">
+            <div className="mt-3.5 flex justify-end gap-1.5">
               <AlertDialog.Cancel asChild>
                 <button
                   type="button"
                   className={className(
-                    'px-3 py-1.5 rounded text-xs font-medium',
-                    'transition-colors duration-150',
+                    'px-2.5 py-1 rounded text-[11px] font-medium',
+                    'transition-colors duration-100',
                     tw.focusRing,
                     tw.btn.secondary,
                   )}
@@ -104,8 +104,8 @@ const CreateNameDialog = observer(() => {
               <button
                 type="submit"
                 className={className(
-                  'px-3 py-1.5 rounded text-xs font-medium',
-                  'transition-colors duration-150',
+                  'px-2.5 py-1 rounded text-[11px] font-medium',
+                  'transition-colors duration-100',
                   tw.focusRing,
                   tw.btn.primary,
                 )}

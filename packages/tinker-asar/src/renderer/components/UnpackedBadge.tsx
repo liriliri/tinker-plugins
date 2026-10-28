@@ -13,7 +13,7 @@ export default function UnpackedBadge({ size = 'sm' }: UnpackedBadgeProps) {
     <span
       className={className(
         'leading-none rounded shrink-0',
-        size === 'sm' ? 'text-[9px] px-1 py-0.5' : 'text-[10px] px-1.5 py-0.5',
+        size === 'sm' ? 'text-[8px] px-0.5 py-px' : 'text-[9px] px-1 py-px',
         tw.unpackedBadge,
       )}
       title={t('unpackedHint')}

@@ -15,8 +15,8 @@ const EDITOR_OPTIONS = {
   readOnly: false,
   minimap: { enabled: false },
   scrollBeyondLastLine: false,
-  fontSize: 12,
-  lineHeight: 20,
+  fontSize: 11,
+  lineHeight: 17,
   fontFamily:
     'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
   lineNumbers: 'on' as const,
@@ -24,10 +24,10 @@ const EDITOR_OPTIONS = {
   automaticLayout: true,
   folding: true,
   renderWhitespace: 'selection' as const,
-  padding: { top: 12, bottom: 12 },
+  padding: { top: 6, bottom: 6 },
   scrollbar: {
-    verticalScrollbarSize: 8,
-    horizontalScrollbarSize: 8,
+    verticalScrollbarSize: 6,
+    horizontalScrollbarSize: 6,
   },
   overviewRulerLanes: 0,
   hideCursorInOverviewRuler: true,
@@ -57,7 +57,7 @@ const TextPreview = observer(({ path, language, value }: TextPreviewProps) => {
             tw.surfaceRaised,
           )}
         >
-          <span className={className('text-xs', tw.mono, tw.text.faint)}>
+          <span className={className('text-[11px]', tw.mono, tw.text.faint)}>
             {t('loadingEditor')}
           </span>
         </div>

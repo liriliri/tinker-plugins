@@ -97,7 +97,7 @@ const AsarViewer = observer(() => {
           >
             <p
               className={className(
-                'text-sm font-medium px-4 py-2 rounded-md',
+                'text-xs font-medium px-3 py-1.5 rounded',
                 tw.surfaceRaised,
                 tw.text.accent,
               )}
@@ -110,7 +110,7 @@ const AsarViewer = observer(() => {
         <CreateNameDialog />
         <header
           className={className(
-            'shrink-0 flex items-center gap-3 px-4 h-12 border-b',
+            'shrink-0 flex items-center gap-2 px-2.5 h-9 border-b',
             tw.surface,
             tw.border.subtle,
           )}
@@ -119,8 +119,8 @@ const AsarViewer = observer(() => {
             onClick={() => store.openDialog()}
             disabled={loading}
             className={className(
-              'inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-medium',
-              'transition-all duration-200',
+              'inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-medium',
+              'transition-colors duration-100',
               tw.focusRing,
               tw.btn.primary,
               'disabled:cursor-not-allowed',
@@ -137,7 +137,7 @@ const AsarViewer = observer(() => {
           {packageName && (
             <span
               className={className(
-                'text-sm truncate max-w-[240px]',
+                'text-[11px] truncate max-w-[200px]',
                 tw.mono,
                 tw.text.muted,
               )}
@@ -148,10 +148,10 @@ const AsarViewer = observer(() => {
           )}
 
           {hasPackage && (
-            <div className="ml-auto flex items-center gap-2">
+            <div className="ml-auto flex items-center gap-1.5">
               <span
                 className={className(
-                  'text-xs font-medium px-2 py-0.5 rounded-full',
+                  'text-[10px] font-medium px-1.5 py-px rounded',
                   tw.badge,
                 )}
               >
@@ -161,8 +161,8 @@ const AsarViewer = observer(() => {
                 onClick={() => store.extractAllToDialog()}
                 disabled={extracting || files.length === 0}
                 className={className(
-                  'inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-medium',
-                  'transition-all duration-200',
+                  'inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-medium',
+                  'transition-colors duration-100',
                   tw.focusRing,
                   tw.btn.secondary,
                   'disabled:opacity-45 disabled:cursor-not-allowed',
@@ -179,8 +179,8 @@ const AsarViewer = observer(() => {
                 onClick={() => store.save()}
                 disabled={!store.isDirty || store.saving}
                 className={className(
-                  'inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-medium',
-                  'transition-all duration-200',
+                  'inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-medium',
+                  'transition-colors duration-100',
                   tw.focusRing,
                   store.isDirty ? tw.btn.primary : tw.btn.secondary,
                   'disabled:opacity-45 disabled:cursor-not-allowed',
@@ -198,39 +198,29 @@ const AsarViewer = observer(() => {
         </header>
 
         {!hasPackage && !loading && (
-          <div className="flex-1 flex items-center justify-center px-8">
-            <div className="text-center max-w-sm">
-              <div className="package-hero" aria-hidden>
-                <div className="package-layer package-layer--back" />
-                <div className="package-layer package-layer--mid" />
-                <div className="package-layer package-layer--front" />
-              </div>
+          <div className="flex-1 flex items-center justify-center px-6">
+            <div className="text-center max-w-xs">
               <h2
                 className={className(
-                  'text-lg font-semibold mb-2 tracking-tight',
+                  'text-sm font-semibold mb-1 tracking-tight',
                   tw.text.primary,
                 )}
               >
                 {t('emptyTitle')}
               </h2>
-              <p
-                className={className(
-                  'text-sm leading-relaxed mb-6',
-                  tw.text.muted,
-                )}
-              >
+              <p className={className('text-[11px] mb-4', tw.text.muted)}>
                 {t('emptyDescription')}
               </p>
               <button
                 onClick={() => store.openDialog()}
                 className={className(
-                  'inline-flex items-center gap-2 px-5 py-2 rounded-md text-sm font-medium',
-                  'transition-all duration-200',
+                  'inline-flex items-center gap-1.5 px-3 py-1 rounded text-[11px] font-medium',
+                  'transition-colors duration-100',
                   tw.focusRing,
                   tw.btn.primary,
                 )}
               >
-                <PackageOpen className="w-4 h-4" strokeWidth={2.2} />
+                <PackageOpen className="w-3.5 h-3.5" strokeWidth={2.2} />
                 {t('openFile')}
               </button>
             </div>
@@ -241,7 +231,7 @@ const AsarViewer = observer(() => {
           <div className="flex-1 flex min-h-0">
             <aside
               className={className(
-                'w-[272px] shrink-0 flex flex-col border-r',
+                'w-[220px] shrink-0 flex flex-col border-r',
                 tw.sidebar,
                 tw.border.subtle,
               )}
@@ -256,11 +246,11 @@ const AsarViewer = observer(() => {
         )}
 
         {loading && !hasPackage && (
-          <div className="flex-1 flex flex-col items-center justify-center gap-3">
+          <div className="flex-1 flex flex-col items-center justify-center gap-2">
             <Loader2
-              className={className('w-6 h-6 animate-spin', tw.text.accent)}
+              className={className('w-4 h-4 animate-spin', tw.text.accent)}
             />
-            <p className={className('text-sm', tw.text.muted)}>
+            <p className={className('text-[11px]', tw.text.muted)}>
               {t('opening')}
             </p>
           </div>

@@ -86,39 +86,39 @@ function TreeNode({
         onClick={handleClick}
         onContextMenu={handleContextMenu}
         className={className(
-          'group w-full flex items-center gap-1.5 py-[5px] pr-2.5 text-left',
-          'transition-colors duration-150',
+          'group w-full flex items-center gap-1 py-[3px] pr-1.5 text-left',
+          'transition-colors duration-100',
           tw.focusRingSm,
           isSelected ? tw.treeSelected : className(tw.text.muted, tw.treeHover),
         )}
-        style={{ paddingLeft: `${depth * 14 + 10}px` }}
+        style={{ paddingLeft: `${depth * 12 + 8}px` }}
       >
         {isDirectory ? (
           <>
             {isExpanded ? (
-              <ChevronDown className="w-3 h-3 shrink-0 opacity-50" />
+              <ChevronDown className="w-2.5 h-2.5 shrink-0 opacity-50" />
             ) : (
-              <ChevronRight className="w-3 h-3 shrink-0 opacity-50" />
+              <ChevronRight className="w-2.5 h-2.5 shrink-0 opacity-50" />
             )}
             {isExpanded ? (
-              <FolderOpen className="w-3.5 h-3.5 shrink-0 opacity-60" />
+              <FolderOpen className="w-3 h-3 shrink-0 opacity-55" />
             ) : (
-              <Folder className="w-3.5 h-3.5 shrink-0 opacity-60" />
+              <Folder className="w-3 h-3 shrink-0 opacity-55" />
             )}
-            <span className={className('truncate text-xs', tw.mono)}>
+            <span className={className('truncate text-[11px]', tw.mono)}>
               {node.name}
             </span>
           </>
         ) : (
           <>
-            <span className="w-3 shrink-0" />
+            <span className="w-2.5 shrink-0" />
             <span
-              className="w-1.5 h-1.5 rounded-full shrink-0"
+              className="w-1 h-1 rounded-full shrink-0"
               style={{ backgroundColor: `var(${accentVar})` }}
             />
             <span
               className={className(
-                'min-w-0 flex-1 truncate text-xs',
+                'min-w-0 flex-1 truncate text-[11px]',
                 tw.mono,
                 isSelected ? tw.text.primary : tw.text.muted,
                 isFileModified && tw.text.modified,
@@ -130,7 +130,7 @@ function TreeNode({
             {isFileModified && (
               <span
                 className={className(
-                  'w-1.5 h-1.5 rounded-full shrink-0',
+                  'w-1 h-1 rounded-full shrink-0',
                   tw.modifiedDot,
                 )}
                 aria-label="modified"
@@ -139,7 +139,7 @@ function TreeNode({
             {node.size != null && (
               <span
                 className={className(
-                  'text-[10px] shrink-0 opacity-0 group-hover:opacity-100 transition-opacity',
+                  'text-[9px] shrink-0 opacity-0 group-hover:opacity-100 transition-opacity',
                   tw.text.faint,
                 )}
               >
@@ -269,7 +269,7 @@ const FileList = observer(() => {
         className="h-full w-full"
         onContextMenu={handleRootContextMenu}
       >
-        <div className="py-2">
+        <div className="py-1">
           {tree.map((node) => (
             <TreeNode
               key={node.path}

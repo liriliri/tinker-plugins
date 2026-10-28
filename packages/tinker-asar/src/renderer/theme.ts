@@ -21,11 +21,11 @@ export const tw = {
 
   btn: {
     primary:
-      'bg-[var(--as-accent)] hover:bg-[var(--as-accent-hover)] text-white shadow-[0_1px_2px_var(--as-accent-glow)] disabled:opacity-45 disabled:shadow-none',
+      'bg-[var(--as-accent)] hover:bg-[var(--as-accent-hover)] text-white disabled:opacity-45 dark:text-[#0e1013]',
     secondary:
       'bg-[var(--as-surface-raised)] text-[var(--as-ink-muted)] border border-[var(--as-border)] hover:bg-[var(--as-sidebar)]',
     danger: 'bg-[var(--as-error)] hover:opacity-90 text-white',
-    icon: 'p-1 rounded text-[var(--as-ink-faint)] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-1',
+    icon: 'p-0.5 rounded text-[var(--as-ink-faint)] transition-colors duration-100 focus-visible:outline-none focus-visible:ring-1',
     iconAccent:
       'hover:text-[var(--as-accent)] hover:bg-[var(--as-accent-dim)] focus-visible:ring-[var(--as-accent-glow)]',
     iconDanger:
@@ -61,12 +61,12 @@ export const tw = {
   modifiedDot: 'bg-[var(--as-modified)]',
 
   toast: {
-    root: 'bg-[var(--as-surface)] border border-[var(--as-border)] rounded-lg shadow-[0_12px_40px_rgba(0,0,0,0.12)] px-4 py-3 flex items-start gap-3',
-    title: 'text-xs font-semibold text-[var(--as-error)]',
-    description: 'text-xs text-[var(--as-ink-muted)] mt-0.5',
+    root: 'bg-[var(--as-surface)] border border-[var(--as-border)] rounded shadow-[0_8px_24px_rgba(0,0,0,0.1)] px-3 py-2 flex items-start gap-2',
+    title: 'text-[11px] font-semibold text-[var(--as-error)]',
+    description: 'text-[11px] text-[var(--as-ink-muted)] mt-0.5',
     close:
       'text-[var(--as-ink-faint)] hover:text-[var(--as-ink-muted)] cursor-pointer',
-    viewport: 'fixed bottom-4 right-4 flex flex-col gap-2 w-72 z-[100]',
+    viewport: 'fixed bottom-3 right-3 flex flex-col gap-1.5 w-64 z-[100]',
   },
 
   mono: 'font-[family-name:var(--as-font-mono)]',
