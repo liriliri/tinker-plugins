@@ -1,0 +1,211 @@
+@use 'tailwindcss';
+@config "../tailwind.config.js";
+
+:root {
+  --rm-app: #eef0f3;
+  --rm-panel: #fbfbfc;
+  --rm-well: #e4e7ec;
+  --rm-chrome: rgba(251, 251, 252, 0.88);
+  --rm-fill: #eceef2;
+  --rm-hover: #e2e5eb;
+  --rm-ink: #1a1d23;
+  --rm-secondary: #5c6570;
+  --rm-muted: #8a929c;
+  --rm-line: #d5dae2;
+  --rm-accent: #d97706;
+  --rm-accent-soft: color-mix(in srgb, #d97706 14%, transparent);
+  --rm-on-accent: #ffffff;
+  --rm-danger: #dc2626;
+  --rm-grid: rgba(26, 29, 35, 0.07);
+  --rm-slider-track: #d5dae2;
+  --rm-slider-fill: #d97706;
+  --rm-slider-thumb: #fbfbfc;
+  --rm-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --rm-sans:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  color-scheme: light;
+}
+
+html.dark {
+  --rm-app: #101214;
+  --rm-panel: #171a1e;
+  --rm-well: #0c0e11;
+  --rm-chrome: rgba(23, 26, 30, 0.9);
+  --rm-fill: #22262c;
+  --rm-hover: #2a2f36;
+  --rm-ink: #e8eaed;
+  --rm-secondary: #9aa3ad;
+  --rm-muted: #6f7882;
+  --rm-line: #2c323a;
+  --rm-accent: #f0a23a;
+  --rm-accent-soft: color-mix(in srgb, #f0a23a 18%, transparent);
+  --rm-on-accent: #1a1208;
+  --rm-danger: #ef4444;
+  --rm-grid: rgba(255, 255, 255, 0.05);
+  --rm-slider-track: #2c323a;
+  --rm-slider-fill: #f0a23a;
+  --rm-slider-thumb: #171a1e;
+  color-scheme: dark;
+}
+
+@layer base {
+  html,
+  body,
+  #app {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    overflow: hidden;
+    background: var(--rm-app);
+    color: var(--rm-ink);
+    font-family: var(--rm-sans);
+    font-size: 12px;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+model-viewer {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  --progress-bar-color: var(--rm-accent);
+  --progress-bar-height: 2px;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--rm-line);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--rm-muted);
+}
+
+.rm-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  flex: 1;
+  min-width: 0;
+  height: 18px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.rm-slider:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.rm-slider:focus-visible {
+  outline: none;
+}
+
+.rm-slider:focus-visible::-webkit-slider-thumb {
+  box-shadow:
+    0 0 0 3px var(--rm-accent-soft),
+    0 1px 2px rgba(0, 0, 0, 0.18);
+}
+
+.rm-slider::-webkit-slider-runnable-track {
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--rm-slider-fill) 0%,
+    var(--rm-slider-fill) var(--rm-slider-pct, 0%),
+    var(--rm-slider-track) var(--rm-slider-pct, 0%),
+    var(--rm-slider-track) 100%
+  );
+}
+
+.rm-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 11px;
+  height: 11px;
+  margin-top: -4px;
+  border-radius: 2px;
+  border: 1.5px solid var(--rm-slider-fill);
+  background: var(--rm-slider-thumb);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.14);
+  transition: transform 120ms ease;
+}
+
+.rm-slider:hover:not(:disabled)::-webkit-slider-thumb {
+  transform: scale(1.08);
+}
+
+.rm-slider:active:not(:disabled)::-webkit-slider-thumb {
+  transform: scale(0.96);
+}
+
+.rm-slider::-moz-range-track {
+  height: 3px;
+  border-radius: 999px;
+  background: var(--rm-slider-track);
+}
+
+.rm-slider::-moz-range-progress {
+  height: 3px;
+  border-radius: 999px;
+  background: var(--rm-slider-fill);
+}
+
+.rm-slider::-moz-range-thumb {
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+  border: 1.5px solid var(--rm-slider-fill);
+  background: var(--rm-slider-thumb);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.14);
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 0.18;
+  }
+  100% {
+    transform: scale(0.85);
+    opacity: 0.55;
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse-ring,
+  .animate-spin {
+    animation: none;
+  }
+
+  .rm-slider::-webkit-slider-thumb {
+    transition: none;
+  }
+}

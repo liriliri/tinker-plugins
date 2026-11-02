@@ -1,0 +1,86 @@
+{
+  "name": "tinker-remesher",
+  "version": "0.1.0",
+  "description": "Quad and isotropic remeshing for GLB models",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "NODE_ENV=production vite",
+    "dev:tinker": "vite build --watch",
+    "build": "vite build",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "remesher",
+    "remesh",
+    "3d",
+    "glb"
+  ],
+  "tinker": {
+    "name": "Remesher",
+    "category": "media",
+    "main": "dist/index.html",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "重拓扑",
+        "description": "对 GLB 模型做四边形或各向同性重网格"
+      }
+    },
+    "mcp": {
+      "tools": {
+        "remesh": {
+          "description": "Remesh a local GLB model with quad or isotropic remeshing. Updates the plugin UI and returns mesh stats plus the output path when saved.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Absolute path to a .glb file"
+              },
+              "mode": {
+                "type": "string",
+                "enum": [
+                  "quad",
+                  "isotropic"
+                ],
+                "description": "Remesh mode. Defaults to the plugin setting (quad)."
+              },
+              "target_triangles": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "Target triangle count used to size the remesh"
+              },
+              "output_path": {
+                "type": "string",
+                "description": "Optional absolute .glb output path. When omitted, remesh runs in-memory for preview only."
+              }
+            },
+            "required": [
+              "path"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "devDependencies": {
+    "@gltf-transform/core": "^4.4.2",
+    "@gltf-transform/extensions": "^4.4.2",
+    "@gltf-transform/functions": "^4.4.2",
+    "@google/model-viewer": "^4.3.1",
+    "autoremesher": "^0.1.1",
+    "gl-matrix": "^3.4.4",
+    "isotropicremesher": "^0.1.1",
+    "meshoptimizer": "^0.25.0",
+    "three": "^0.183.2"
+  }
+}
