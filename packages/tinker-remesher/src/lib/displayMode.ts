@@ -1,5 +1,6 @@
 import type { ModelViewerElement } from '@google/model-viewer'
 import each from 'licia/each'
+import filter from 'licia/filter'
 import find from 'licia/find'
 import map from 'licia/map'
 import toArr from 'licia/toArr'
@@ -15,6 +16,9 @@ import {
 } from 'three'
 import porcelainMatcapUrl from '../assets/matcaps/porcelain.png'
 import type { DisplayMode } from '../types'
+
+const OVERLAY_NAME = '__tinkerWireOverlay'
+const WIREFRAME_COLOR = 0x9aa3ad
 
 interface MeshBackup {
   mesh: Mesh
@@ -61,10 +65,23 @@ function disposeMaterials(material: Material | Material[]) {
   each(materialList(material), (item) => item.dispose())
 }
 
+function clearOverlays(mesh: Mesh) {
+  const overlays = filter(
+    mesh.children,
+    (child) => child.name === OVERLAY_NAME,
+  ) as Mesh[]
+  each(overlays, (overlay) => {
+    mesh.remove(overlay)
+    disposeMaterials(overlay.material)
+  })
+}
+
 function collectMeshes(root: Object3D): Mesh[] {
   const meshes: Mesh[] = []
   root.traverse((obj) => {
-    if (obj instanceof Mesh && obj.material) meshes.push(obj)
+    if (!(obj instanceof Mesh) || !obj.material) return
+    if (obj.name === OVERLAY_NAME) return
+    meshes.push(obj)
   })
   return meshes
 }
@@ -78,6 +95,7 @@ function captureBackups(meshes: Mesh[]): MeshBackup[] {
 
 function restoreBackups(backups: MeshBackup[]) {
   each(backups, ({ mesh, materials }) => {
+    clearOverlays(mesh)
     disposeMaterials(mesh.material)
     assignMaterials(
       mesh,
@@ -91,6 +109,7 @@ function replaceMaterials(
   create: (source: Material) => Material,
 ) {
   each(backups, ({ mesh, materials }) => {
+    clearOverlays(mesh)
     disposeMaterials(mesh.material)
     assignMaterials(mesh, map(materials, create))
   })
@@ -112,24 +131,29 @@ function applyClay(backups: MeshBackup[], texture: Texture) {
   )
 }
 
-function applyWireframe(backups: MeshBackup[]) {
-  replaceMaterials(
-    backups,
-    (source) =>
-      new MeshBasicMaterial({
-        name: source.name,
-        color: 0x9aa3ad,
-        wireframe: true,
-        side: source.side,
-        depthTest: true,
-        depthWrite: false,
-        transparent: true,
-        opacity: 0.95,
-        polygonOffset: true,
-        polygonOffsetFactor: -1,
-        polygonOffsetUnits: -1,
-      }),
-  )
+function createWireMaterial() {
+  return new MeshBasicMaterial({
+    color: WIREFRAME_COLOR,
+    wireframe: true,
+    depthTest: true,
+    depthWrite: false,
+    transparent: true,
+    opacity: 0.95,
+    polygonOffset: true,
+    polygonOffsetFactor: -1,
+    polygonOffsetUnits: -1,
+  })
+}
+
+function applyWireframeOverlay(backups: MeshBackup[]) {
+  each(backups, ({ mesh }) => {
+    clearOverlays(mesh)
+    const overlay = new Mesh(mesh.geometry, createWireMaterial())
+    overlay.name = OVERLAY_NAME
+    overlay.frustumCulled = mesh.frustumCulled
+    overlay.renderOrder = (mesh.renderOrder || 0) + 1
+    mesh.add(overlay)
+  })
 }
 
 export function createDisplayModeController(
@@ -153,8 +177,12 @@ export function createDisplayModeController(
   return {
     apply(mode) {
       restoreBackups(backups)
-      if (mode === 'wireframe') applyWireframe(backups)
-      else applyClay(backups, matcap)
+      if (mode === 'wireframe') {
+        applyClay(backups, matcap)
+        applyWireframeOverlay(backups)
+      } else {
+        applyClay(backups, matcap)
+      }
       requestRender()
     },
     dispose() {
