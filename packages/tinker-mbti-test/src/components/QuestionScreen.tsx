@@ -18,13 +18,13 @@ export const QuestionScreen = observer(() => {
   const atEnd = store.currentQuestion >= store.totalQuestions - 1
 
   return (
-    <div className="flex flex-col min-h-full px-3 py-3">
-      <div className="shrink-0 mb-3">
+    <div className="flex h-full flex-col px-3 py-3">
+      <div className="mb-3 shrink-0">
         <ProgressBar />
       </div>
 
-      <div className="flex-1 flex items-center">
-        <div className="w-full">
+      <div className="flex flex-1 items-center justify-center">
+        <div className="w-full max-w-md">
           <div
             className={className(
               'rounded-lg p-4',

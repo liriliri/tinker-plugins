@@ -7,7 +7,7 @@ export function IntroScreen() {
   const { t } = useTranslation()
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-full px-4 py-8">
+    <div className="flex h-full flex-col items-center justify-center px-4 py-8">
       <div className="text-center max-w-sm">
         <h1 className={className('text-xl font-bold mb-2', tw.text.primary)}>
           {t('introTitle')}

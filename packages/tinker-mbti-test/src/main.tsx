@@ -11,7 +11,7 @@ import './index.scss'
 
 const App = observer(function App() {
   return (
-    <div className={`min-h-full ${tw.background.primary}`}>
+    <div className={`h-full ${tw.background.primary}`}>
       {store.screen === 'intro' ? <IntroScreen /> : null}
       {store.screen === 'question' ? <QuestionScreen /> : null}
       {store.screen === 'result' ? <ResultScreen /> : null}
