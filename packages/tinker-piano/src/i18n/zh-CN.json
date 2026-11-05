@@ -1,0 +1,15 @@
+{
+  "labelNone": "无",
+  "labelName": "音名",
+  "labelKey": "键位",
+  "loadError": "采样加载失败",
+  "pressAny": "按下任意琴键开始",
+  "openMidi": "打开",
+  "demo": "演示",
+  "stop": "停止",
+  "lowerOctave": "低八度",
+  "higherOctave": "高八度",
+  "octaveRange": "C{{start}} – C{{end}}",
+  "songHesAPirate": "加勒比海盗",
+  "songCastle": "天空之城"
+}

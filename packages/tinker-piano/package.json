@@ -1,0 +1,40 @@
+{
+  "name": "tinker-piano",
+  "version": "0.1.0",
+  "description": "Virtual piano with Salamander grand piano samples",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "NODE_ENV=production vite",
+    "dev:tinker": "vite build --watch",
+    "build": "vite build",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "piano"
+  ],
+  "tinker": {
+    "name": "Piano",
+    "category": "entertainment",
+    "main": "dist/index.html",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "钢琴",
+        "description": "可弹奏的虚拟钢琴，使用真实钢琴采样"
+      }
+    }
+  },
+  "devDependencies": {
+    "@tonejs/midi": "^2.0.28",
+    "@tonejs/piano": "^0.2.1",
+    "tone": "^14.9.17"
+  }
+}

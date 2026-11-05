@@ -1,0 +1,15 @@
+{
+  "labelNone": "Off",
+  "labelName": "Note",
+  "labelKey": "Keys",
+  "loadError": "Failed to load samples",
+  "pressAny": "Press any key to start",
+  "openMidi": "Open",
+  "demo": "Demo",
+  "stop": "Stop",
+  "lowerOctave": "Lower",
+  "higherOctave": "Higher",
+  "octaveRange": "C{{start}} – C{{end}}",
+  "songHesAPirate": "He's a Pirate",
+  "songCastle": "Castle in the Sky"
+}
