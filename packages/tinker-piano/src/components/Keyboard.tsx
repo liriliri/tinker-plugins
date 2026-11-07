@@ -8,6 +8,7 @@ import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
 import clamp from 'licia/clamp'
 import contain from 'licia/contain'
+import each from 'licia/each'
 import isFinite from 'licia/isFinite'
 import map from 'licia/map'
 import toInt from 'licia/toInt'
@@ -36,7 +37,8 @@ function blackKeyStyle(pos: number, whitePct: number): CSSProperties {
 const Keyboard = observer(function Keyboard() {
   const { t } = useTranslation()
   const wrapRef = useRef<HTMLDivElement>(null)
-  const pointers = useRef(new Map<number, number>())
+  /** Active pointer → midi, or null while dragging off the keybed. */
+  const pointers = useRef(new Map<number, number | null>())
   const wasFull = useRef(false)
 
   useEffect(() => {
@@ -89,14 +91,28 @@ const Keyboard = observer(function Keyboard() {
     const onUp = (e: KeyboardEvent) => {
       store.unbindComputerKey(e.code)
     }
-    const onBlur = () => store.releaseComputerKeys()
+    const releasePointers = () => {
+      each([...pointers.current.values()], (midi) => {
+        if (midi !== null) store.noteOff(midi)
+      })
+      pointers.current.clear()
+    }
+    const releaseAll = () => {
+      store.releaseComputerKeys()
+      releasePointers()
+    }
+    const onVisibility = () => {
+      if (document.hidden) releaseAll()
+    }
     window.addEventListener('keydown', onDown)
     window.addEventListener('keyup', onUp)
-    window.addEventListener('blur', onBlur)
+    window.addEventListener('blur', releaseAll)
+    document.addEventListener('visibilitychange', onVisibility)
     return () => {
       window.removeEventListener('keydown', onDown)
       window.removeEventListener('keyup', onUp)
-      window.removeEventListener('blur', onBlur)
+      window.removeEventListener('blur', releaseAll)
+      document.removeEventListener('visibilitychange', onVisibility)
     }
   }, [])
 
@@ -116,24 +132,24 @@ const Keyboard = observer(function Keyboard() {
     e.preventDefault()
     e.currentTarget.setPointerCapture(e.pointerId)
     pointers.current.set(e.pointerId, midi)
-    void store.noteOn(midi)
+    store.noteOn(midi)
   }
 
   const onPointerMove = (e: ReactPointerEvent<HTMLDivElement>) => {
-    const prev = pointers.current.get(e.pointerId)
-    if (prev === undefined) return
+    if (!pointers.current.has(e.pointerId)) return
+    const prev = pointers.current.get(e.pointerId) ?? null
     const midi = hitMidi(e.clientX, e.clientY)
-    if (midi === null || midi === prev) return
-    store.noteOff(prev)
+    if (midi === prev) return
+    if (prev !== null) store.noteOff(prev)
     pointers.current.set(e.pointerId, midi)
-    void store.noteOn(midi)
+    if (midi !== null) store.noteOn(midi)
   }
 
   const onPointerUp = (e: ReactPointerEvent<HTMLDivElement>) => {
-    const midi = pointers.current.get(e.pointerId)
-    if (midi === undefined) return
+    if (!pointers.current.has(e.pointerId)) return
+    const midi = pointers.current.get(e.pointerId) ?? null
     pointers.current.delete(e.pointerId)
-    store.noteOff(midi)
+    if (midi !== null) store.noteOff(midi)
   }
 
   const visual = (midi: number): KeyVisualState => {
@@ -178,6 +194,7 @@ const Keyboard = observer(function Keyboard() {
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
         onPointerCancel={onPointerUp}
+        onLostPointerCapture={onPointerUp}
         onContextMenu={(e) => e.preventDefault()}
       >
         <div className="piano-keys">

@@ -1,6 +1,6 @@
 {
   "name": "tinker-piano",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Virtual piano with Salamander grand piano samples",
   "files": [
     "dist/",

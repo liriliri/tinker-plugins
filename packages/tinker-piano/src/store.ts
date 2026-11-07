@@ -149,7 +149,7 @@ class Store extends BaseStore {
       if (isOnline()) {
         const file = await pickMidiFileWeb()
         if (!file) return
-        await this.loadCustomMidi(await file.arrayBuffer(), file.name)
+        await this.openMidiFromFile(file)
         return
       }
 
@@ -166,10 +166,18 @@ class Store extends BaseStore {
       try {
         const file = await pickMidiFileWeb()
         if (!file) return
-        await this.loadCustomMidi(await file.arrayBuffer(), file.name)
+        await this.openMidiFromFile(file)
       } catch (fallbackErr) {
         console.error(errorMessage(fallbackErr || err))
       }
+    }
+  }
+
+  async openMidiFromFile(file: File) {
+    try {
+      await this.loadCustomMidi(await file.arrayBuffer(), file.name)
+    } catch (err) {
+      console.error(errorMessage(err))
     }
   }
 
@@ -197,16 +205,16 @@ class Store extends BaseStore {
     return KEY_LABEL_BY_OFFSET.get(this.bindingOffset(midi)) ?? ''
   }
 
-  async noteOn(midi: number, velocity = 0.85) {
-    if (!this.ready) await this.init()
-    if (!this.ready) return
-    void pianoEngine.noteOn(midi, velocity)
+  noteOn(midi: number, velocity = 0.85) {
+    // Keep pressed + engine.wanted in lockstep — never await between them.
     this.bumpPressed(midi, 1)
+    pianoEngine.noteOn(midi, velocity)
+    if (!this.ready) void this.init()
   }
 
   noteOff(midi: number) {
-    pianoEngine.noteOff(midi)
     this.bumpPressed(midi, -1)
+    pianoEngine.noteOff(midi)
   }
 
   private bumpPressed(midi: number, delta: number) {
@@ -292,8 +300,9 @@ class Store extends BaseStore {
   }
 
   bindComputerKey(code: string, midi: number) {
+    if (this.keyCodeToMidi.has(code)) return
     this.keyCodeToMidi.set(code, midi)
-    void this.noteOn(midi)
+    this.noteOn(midi)
   }
 
   unbindComputerKey(code: string) {

@@ -3,6 +3,7 @@ import each from 'licia/each'
 import endWith from 'licia/endWith'
 import find from 'licia/find'
 import last from 'licia/last'
+import lowerCase from 'licia/lowerCase'
 import max from 'licia/max'
 import range from 'licia/range'
 import replaceAll from 'licia/replaceAll'
@@ -96,6 +97,15 @@ export function toArrayBuffer(
     data.byteOffset,
     data.byteOffset + data.byteLength,
   ) as ArrayBuffer
+}
+
+export function isMidiFile(file: File) {
+  const name = lowerCase(file.name)
+  return (
+    endWith(name, '.mid') ||
+    endWith(name, '.midi') ||
+    contain(['audio/midi', 'audio/x-midi'], file.type)
+  )
 }
 
 export function pickMidiFileWeb(): Promise<File | null> {
