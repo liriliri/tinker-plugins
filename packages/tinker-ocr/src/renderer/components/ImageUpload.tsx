@@ -5,7 +5,6 @@ import { Image as ImageIcon } from 'lucide-react'
 import store from '../store'
 import { tw } from '../theme'
 import className from 'licia/className'
-import map from 'licia/map'
 import startWith from 'licia/startWith'
 
 const CORNERS = ['tl', 'tr', 'bl', 'br'] as const
@@ -76,7 +75,7 @@ const ImageUpload = observer(() => {
       {input}
 
       <div className="absolute inset-5 pointer-events-none">
-        {map(CORNERS, (corner) => (
+        {CORNERS.map((corner) => (
           <div
             key={corner}
             className={className(

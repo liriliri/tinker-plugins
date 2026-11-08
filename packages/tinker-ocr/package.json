@@ -1,6 +1,6 @@
 {
   "name": "tinker-ocr",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Recognize text from images using ONNX PaddleOCR",
   "files": [
     "dist/",
