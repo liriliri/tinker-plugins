@@ -3,12 +3,16 @@ import { useTranslation } from 'react-i18next'
 import { useEffect, useState, useRef } from 'react'
 import { Camera, Copy, Check, Save, WrapText } from 'lucide-react'
 import className from 'licia/className'
+import find from 'licia/find'
+import isEmpty from 'licia/isEmpty'
+import startWith from 'licia/startWith'
+import toArr from 'licia/toArr'
+import waitUntil from 'licia/waitUntil'
 import renderApp from 'tinker-share/lib/renderApp'
 import store from './store'
 import { tw } from './theme'
 import ImageUpload from './components/ImageUpload'
 import ResultPanel from './components/ResultPanel'
-import LangSelect from './components/LangSelect'
 import enUS from './i18n/en-US.json'
 import zhCN from './i18n/zh-CN.json'
 import './index.scss'
@@ -27,7 +31,7 @@ const App = observer(function App() {
   }
 
   const copyText = () => {
-    if (!store.result) return
+    if (isEmpty(store.result)) return
     navigator.clipboard.writeText(store.displayResult)
     setCopied(true)
     if (timerRef.current) clearTimeout(timerRef.current)
@@ -35,7 +39,7 @@ const App = observer(function App() {
   }
 
   const saveText = async () => {
-    if (!store.result) return
+    if (isEmpty(store.result)) return
     const { filePath } = await tinker.showSaveDialog({
       defaultPath: 'ocr-result.txt',
       filters: [{ name: 'Text', extensions: ['txt'] }],
@@ -47,17 +51,11 @@ const App = observer(function App() {
     const onPaste = (e: ClipboardEvent) => {
       const items = e.clipboardData?.items
       if (!items) return
-      for (const item of items) {
-        if (item.type.startsWith('image/')) {
-          const file = item.getAsFile()
-          if (file) {
-            const url = URL.createObjectURL(file)
-            store.setImage(url)
-            store.recognize()
-          }
-          break
-        }
-      }
+      const item = find(toArr(items), (it) => startWith(it.type, 'image/'))
+      const file = item?.getAsFile()
+      if (!file) return
+      store.setImage(URL.createObjectURL(file))
+      store.recognize()
     }
     window.addEventListener('paste', onPaste)
     return () => window.removeEventListener('paste', onPaste)
@@ -115,8 +113,6 @@ const App = observer(function App() {
             <WrapText className="w-4 h-4" />
           </button>
           <div className={className('w-px h-3.5 mx-1', tw.divider)} />
-          <LangSelect />
-          <div className={className('w-px h-3.5 mx-1', tw.divider)} />
           <button
             title={copied ? t('copied') : t('copy')}
             disabled={!store.result}
@@ -168,4 +164,7 @@ const App = observer(function App() {
   )
 })
 
-renderApp(App, { 'en-US': enUS, 'zh-CN': zhCN })
+void (async () => {
+  await waitUntil(() => typeof ocrApi !== 'undefined')
+  await renderApp(App, { 'en-US': enUS, 'zh-CN': zhCN })
+})()

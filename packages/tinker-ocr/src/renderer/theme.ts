@@ -23,18 +23,6 @@ export const tw = {
     blue: 'text-blue-500 dark:text-blue-400',
     border: 'border-blue-500 dark:border-blue-400',
   },
-  select: {
-    trigger:
-      'text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-700',
-    chevron: 'text-zinc-400 dark:text-zinc-500',
-    content: 'border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800',
-    item: 'text-zinc-700 dark:text-zinc-300 data-highlighted:bg-zinc-100 dark:data-highlighted:bg-zinc-700',
-    itemChecked:
-      'data-[state=checked]:text-blue-600 dark:data-[state=checked]:text-blue-400',
-    itemIndicator: 'text-blue-500 dark:text-blue-400',
-    shadow:
-      'shadow-[0_8px_24px_rgba(0,0,0,0.1),0_2px_6px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.5)]',
-  },
   button: {
     icon: 'text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-200 dark:hover:bg-zinc-700',
     disabled: 'cursor-not-allowed text-zinc-300 dark:text-zinc-600',

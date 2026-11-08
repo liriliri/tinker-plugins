@@ -8,8 +8,5 @@
   "save": "Save",
   "stripNewlines": "Strip Newlines",
   "recognizing": "Recognizing...",
-  "placeholder": "Recognition result will appear here",
-  "langChiSimEng": "Chinese + English",
-  "langChiSim": "Chinese",
-  "langEng": "English"
+  "placeholder": "Recognition result will appear here"
 }

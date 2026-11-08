@@ -5,15 +5,18 @@ import { Image as ImageIcon } from 'lucide-react'
 import store from '../store'
 import { tw } from '../theme'
 import className from 'licia/className'
+import map from 'licia/map'
+import startWith from 'licia/startWith'
+
+const CORNERS = ['tl', 'tr', 'bl', 'br'] as const
 
 const ImageUpload = observer(() => {
   const { t } = useTranslation()
   const inputRef = useRef<HTMLInputElement>(null)
 
   const handleFile = (file: File) => {
-    if (!file.type.startsWith('image/')) return
-    const url = URL.createObjectURL(file)
-    store.setImage(url)
+    if (!startWith(file.type, 'image/')) return
+    store.setImage(URL.createObjectURL(file))
     store.recognize()
   }
 
@@ -73,7 +76,7 @@ const ImageUpload = observer(() => {
       {input}
 
       <div className="absolute inset-5 pointer-events-none">
-        {(['tl', 'tr', 'bl', 'br'] as const).map((corner) => (
+        {map(CORNERS, (corner) => (
           <div
             key={corner}
             className={className(

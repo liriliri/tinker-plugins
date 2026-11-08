@@ -1,18 +1,12 @@
 import { makeAutoObservable, runInAction } from 'mobx'
-import { createWorker } from 'tesseract.js'
+import isEmpty from 'licia/isEmpty'
 import mime from 'licia/mime'
+import replaceAll from 'licia/replaceAll'
 import trim from 'licia/trim'
 import BaseStore, { storage } from 'tinker-share/store/Base'
-import type { OcrLang } from './types'
 import { createMcpApi } from './mcp'
+import { cleanChiSpaces } from './lib/util'
 
-const LANG_OPTIONS: { value: OcrLang; labelKey: string }[] = [
-  { value: 'chi_sim+eng', labelKey: 'langChiSimEng' },
-  { value: 'chi_sim', labelKey: 'langChiSim' },
-  { value: 'eng', labelKey: 'langEng' },
-]
-
-const STORAGE_LANG = 'lang'
 const STORAGE_STRIP_NEWLINES = 'stripNewlines'
 
 export class Store extends BaseStore {
@@ -21,31 +15,23 @@ export class Store extends BaseStore {
   imageUrl = ''
   result = ''
   isRecognizing = false
-  lang: OcrLang = storage.get(STORAGE_LANG) ?? 'chi_sim+eng'
-  langOptions = LANG_OPTIONS
   stripNewlines: boolean = storage.get(STORAGE_STRIP_NEWLINES) ?? false
 
   constructor() {
     super()
     makeAutoObservable(this, {
       mcp: false,
-      langOptions: false,
     })
   }
 
   get displayResult() {
-    if (!this.result) return ''
-    return this.stripNewlines ? this.result.replace(/\n/g, '') : this.result
+    if (isEmpty(this.result)) return ''
+    return this.stripNewlines ? replaceAll(this.result, '\n', '') : this.result
   }
 
   setImage(url: string) {
     this.imageUrl = url
     this.result = ''
-  }
-
-  setLang(lang: OcrLang) {
-    this.lang = lang
-    storage.set(STORAGE_LANG, lang)
   }
 
   setStripNewlines(value: boolean) {
@@ -57,14 +43,10 @@ export class Store extends BaseStore {
     this.setStripNewlines(!this.stripNewlines)
   }
 
-  async recognizeFromPath(
-    path: string,
-    options?: { lang?: OcrLang; stripNewlines?: boolean },
-  ) {
+  async recognizeFromPath(path: string, options?: { stripNewlines?: boolean }) {
     const filePath = trim(path)
-    if (!filePath) throw new Error('Image path is required')
+    if (isEmpty(filePath)) throw new Error('Image path is required')
 
-    if (options?.lang) this.setLang(options.lang)
     if (options?.stripNewlines != null) {
       this.setStripNewlines(options.stripNewlines)
     }
@@ -78,22 +60,17 @@ export class Store extends BaseStore {
   }
 
   async recognize() {
-    if (!this.imageUrl || this.isRecognizing) return
+    if (isEmpty(this.imageUrl) || this.isRecognizing) return
     runInAction(() => {
       this.isRecognizing = true
       this.result = ''
     })
     try {
-      const worker = await createWorker(this.lang)
-      const { data } = await worker.recognize(this.imageUrl)
-      await worker.terminate()
+      const res = await fetch(this.imageUrl)
+      const buffer = await res.arrayBuffer()
+      const text = await ocrApi.recognize(buffer)
       runInAction(() => {
-        this.result = this.lang.includes('chi_sim')
-          ? data.text.replace(
-              /(?<=[\u4e00-\u9fa5\u3000-\u303f\uff00-\uffef]) +(?=[\u4e00-\u9fa5\u3000-\u303f\uff00-\uffef])/g,
-              '',
-            )
-          : data.text
+        this.result = cleanChiSpaces(text)
       })
     } finally {
       runInAction(() => {
