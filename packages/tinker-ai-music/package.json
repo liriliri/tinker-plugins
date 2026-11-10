@@ -1,0 +1,47 @@
+{
+  "name": "tinker-ai-music",
+  "version": "0.1.0",
+  "description": "Local lyrics-to-song plugin for TINKER (ACE-Step via audio.cpp)",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:preload\"",
+    "dev:renderer": "vite build --watch",
+    "dev:preload": "vite build --watch --config vite.preload.ts",
+    "build": "concurrently \"npm run build:renderer\" \"npm run build:preload\"",
+    "build:renderer": "vite build",
+    "build:preload": "vite build --config vite.preload.ts",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "ai-music",
+    "music",
+    "audiocpp"
+  ],
+  "tinker": {
+    "name": "AI Music",
+    "main": "dist/renderer/index.html",
+    "preload": "dist/preload/index.js",
+    "icon": "icon.png",
+    "category": "media",
+    "locales": {
+      "zh-CN": {
+        "name": "AI 音乐",
+        "description": "使用 ACE-Step 在本地根据风格与歌词生成带人声的歌曲"
+      }
+    }
+  },
+  "dependencies": {
+    "audiocpp-static": "^0.1.0"
+  },
+  "devDependencies": {
+    "wavesurfer.js": "^7.12.12"
+  }
+}

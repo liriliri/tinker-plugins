@@ -1,0 +1,24 @@
+[
+  {
+    "id": "ace-step-1.5-turbo-q8",
+    "name": "ACE-Step 1.5 Turbo",
+    "family": "ace_step",
+    "version": "1.5",
+    "precision": "Q8",
+    "remotePath": "ACE-Step1.5-GGUF/turbo/ace-step-1.5-turbo-q8_0.gguf",
+    "size": 6185468096,
+    "sha256": "1f0015f81c10a1182531e6207c7aeaa060b8cad3470a2f88daa3cb74ed636e63",
+    "task": "gen"
+  },
+  {
+    "id": "ace-step-1.5-turbo-bf16",
+    "name": "ACE-Step 1.5 Turbo",
+    "family": "ace_step",
+    "version": "1.5",
+    "precision": "BF16",
+    "remotePath": "ACE-Step1.5-GGUF/turbo/ace-step-1.5-turbo-bf16.gguf",
+    "size": 10090406336,
+    "sha256": "7aa8cc911bb7e47647bba619cf25afc22a42e35c568a102cd9a3b28a54b94013",
+    "task": "gen"
+  }
+]

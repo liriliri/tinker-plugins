@@ -1,0 +1,60 @@
+import { observer } from 'mobx-react-lite'
+import { useEffect } from 'react'
+import * as Toast from '@radix-ui/react-toast'
+import className from 'licia/className'
+import renderApp from 'tinker-share/lib/renderApp'
+import TextPanel from './components/TextPanel'
+import OptionsPanel from './components/OptionsPanel'
+import AudioList from './components/AudioList'
+import ErrorToast from './components/ErrorToast'
+import { tw } from './theme'
+import store from './store'
+import enUS from './i18n/en-US.json'
+import zhCN from './i18n/zh-CN.json'
+import './index.scss'
+
+const App = observer(() => {
+  useEffect(() => {
+    void store.load()
+    return () => {
+      aiMusic.stopEngine()
+    }
+  }, [])
+
+  return (
+    <Toast.Provider swipeDirection="right">
+      <div
+        className={className(
+          'h-screen overflow-hidden flex flex-col',
+          tw.background.app,
+          tw.text.primary,
+        )}
+      >
+        <div
+          className={className(
+            'min-h-0 flex flex-[7_1_0%] border-b',
+            tw.border.soft,
+          )}
+        >
+          <div
+            className={className('flex-1 min-w-0 min-h-0', tw.background.panel)}
+          >
+            <TextPanel />
+          </div>
+          <OptionsPanel />
+        </div>
+        <div
+          className={className(
+            'min-h-[150px] flex-[3_1_0%]',
+            tw.background.recessed,
+          )}
+        >
+          <AudioList />
+        </div>
+      </div>
+      <ErrorToast />
+    </Toast.Provider>
+  )
+})
+
+void renderApp(App, { 'en-US': enUS, 'zh-CN': zhCN })
