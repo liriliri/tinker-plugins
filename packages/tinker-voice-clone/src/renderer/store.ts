@@ -15,7 +15,7 @@ import trim from 'licia/trim'
 import uuid from 'licia/uuid'
 import BaseStore, { storage } from 'tinker-share/store/Base'
 import { errorMessage } from 'tinker-share/lib/util'
-import type { Backend, DownloadSource, ModelStatus } from '../common/types'
+import type { DownloadSource, ModelStatus } from '../common/types'
 import { modelNeedsReference } from '../common/catalog'
 import { DEFAULT_SAMPLE_FILE, DEFAULT_SAMPLE_TEXT } from '../common/sample'
 import type { AudioItem, GenerateTask } from './types'
@@ -53,7 +53,6 @@ class Store extends BaseStore {
 
   models: ModelStatus[] = []
   selectedModelId = 'index-2.5-q8'
-  backend: Backend = 'metal'
   downloadSource: DownloadSource = 'modelscope'
 
   audios: AudioItem[] = []
@@ -196,14 +195,13 @@ class Store extends BaseStore {
 
   async load() {
     try {
-      const [models, settings, samplePath] = await Promise.all([
+      const [models, settings] = await Promise.all([
         voiceClone.listModels(),
         voiceClone.getSettings(),
-        Promise.resolve(voiceClone.getDefaultSamplePath()),
       ])
+      const samplePath = voiceClone.getDefaultSamplePath()
       runInAction(() => {
         this.models = models
-        this.backend = settings.backend
         this.downloadSource = settings.downloadSource
         this.selectedModelId = settings.selectedModelId
         this.defaultSamplePath = samplePath || ''
@@ -218,11 +216,6 @@ class Store extends BaseStore {
     this.selectedModelId = id
     void voiceClone.setSelectedModelId(id)
     this.models = voiceClone.listModels()
-  }
-
-  setBackend(backend: Backend) {
-    this.backend = backend
-    voiceClone.setBackend(backend)
   }
 
   setDownloadSource(source: DownloadSource) {

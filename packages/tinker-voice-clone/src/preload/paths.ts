@@ -4,7 +4,7 @@ import path from 'node:path'
 
 const STORAGE_NAME = 'tinker-voice-clone'
 
-export function getStorageRoot(): string {
+function getStorageRoot(): string {
   const root = path.join(os.homedir(), '.tinker', STORAGE_NAME)
   fs.mkdirSync(root, { recursive: true })
   return root

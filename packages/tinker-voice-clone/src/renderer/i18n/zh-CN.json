@@ -29,7 +29,6 @@
   "speed": "语速",
   "emotion": "情绪文本",
   "emotionHint": "可选，IndexTTS 风格指导",
-  "backend": "推理后端",
   "downloadSource": "下载来源",
   "sourceModelscope": "ModelScope",
   "sourceHuggingface": "Hugging Face",

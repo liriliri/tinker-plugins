@@ -35,15 +35,12 @@ export function loadState(): PluginState {
   }
 }
 
-export function saveState(state: PluginState) {
+function saveState(state: PluginState) {
   fs.writeFileSync(getStatePath(), JSON.stringify(state, null, 2), 'utf-8')
 }
 
-export function updateState(
-  patch: Partial<PluginState> | ((prev: PluginState) => PluginState),
-): PluginState {
-  const prev = loadState()
-  const next = typeof patch === 'function' ? patch(prev) : { ...prev, ...patch }
+export function updateState(patch: Partial<PluginState>): PluginState {
+  const next = { ...loadState(), ...patch }
   saveState(next)
   return next
 }

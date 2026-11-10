@@ -1,6 +1,6 @@
 {
   "name": "tinker-voice-clone",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Local voice cloning plugin for TINKER (audio.cpp)",
   "files": [
     "dist/",

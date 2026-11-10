@@ -29,7 +29,6 @@
   "speed": "Speed",
   "emotion": "Emotion text",
   "emotionHint": "Optional IndexTTS style guidance",
-  "backend": "Backend",
   "downloadSource": "Download source",
   "sourceModelscope": "ModelScope",
   "sourceHuggingface": "Hugging Face",

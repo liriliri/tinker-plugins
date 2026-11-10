@@ -10,7 +10,7 @@ A local voice cloning plugin for [TINKER](https://github.com/liriliri/tinker), p
 - **Reference audio** with default sample, or voice design text for supported models
 - **Auto model download** via Downloader into `~/.tinker/models/` when missing
 - **Generation queue** with WaveSurfer preview, play, and save as WAV
-- **Local inference** backends: Metal / CPU / CUDA / Vulkan
+- **Local inference** with auto-selected backend (Metal on macOS, CPU elsewhere)
 
 ## Installation
 
@@ -18,7 +18,7 @@ Download and install TINKER from `https://tinker.liriliri.io/`, then run `npm i 
 
 ## Usage
 
-1. Select a model, language, and backend in the options panel
+1. Select a model and language in the options panel
 2. Keep the default sample or pick a short reference WAV (1–60s works best)
 3. Enter text and click **Generate** — missing models start downloading automatically
 4. Preview queued results in the audio list; save WAV when ready

@@ -1,9 +1,9 @@
 export const tw = {
   background: {
-    app: 'bg-zinc-200 dark:bg-zinc-950',
-    panel: 'bg-zinc-100 dark:bg-zinc-900',
-    sidebar: 'bg-zinc-50 dark:bg-zinc-900',
-    recessed: 'bg-zinc-200/70 dark:bg-zinc-950',
+    app: 'bg-zinc-200 dark:bg-zinc-900',
+    panel: 'bg-zinc-100 dark:bg-zinc-800',
+    sidebar: 'bg-zinc-50 dark:bg-zinc-800',
+    recessed: 'bg-zinc-200/70 dark:bg-zinc-900',
     card: 'bg-white dark:bg-zinc-800',
     divider: 'bg-zinc-300/70 dark:bg-zinc-700/80',
   },
@@ -48,11 +48,11 @@ export const tw = {
   },
   select: {
     trigger:
-      'vc-select text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-950 shadow-sm hover:border-zinc-300 dark:hover:border-zinc-600 disabled:opacity-50 disabled:cursor-not-allowed transition-[border-color,box-shadow,background-color] duration-150',
+      'vc-select text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-600 bg-white dark:bg-zinc-900 shadow-sm hover:border-zinc-300 dark:hover:border-zinc-500 disabled:opacity-50 disabled:cursor-not-allowed transition-[border-color,box-shadow,background-color] duration-150',
   },
   field: {
     control:
-      'border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-950 shadow-sm transition-[border-color,box-shadow] duration-150',
+      'border border-zinc-200 dark:border-zinc-600 bg-white dark:bg-zinc-900 shadow-sm transition-[border-color,box-shadow] duration-150',
   },
   card: {
     hover:

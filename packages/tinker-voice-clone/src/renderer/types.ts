@@ -7,10 +7,8 @@ export interface AudioItem {
   createdAt: number
 }
 
-export type TaskStatus = 'wait' | 'generating'
-
 export interface GenerateTask {
   id: string
   text: string
-  status: TaskStatus
+  status: 'wait' | 'generating'
 }

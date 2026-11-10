@@ -9,7 +9,6 @@ import {
   modelRelativeDir,
 } from '../common/catalog'
 import type {
-  Backend,
   DownloadItem,
   DownloadSource,
   ModelPackage,
@@ -26,7 +25,7 @@ function existsFile(filePath: string): boolean {
   }
 }
 
-export function getExpectedModelPath(model: ModelPackage): string {
+function getExpectedModelPath(model: ModelPackage): string {
   return path.join(
     getModelsDir(),
     modelRelativeDir(model),
@@ -56,14 +55,9 @@ export function listModels(): ModelStatus[] {
 export function getSettings() {
   const state = loadState()
   return {
-    backend: state.backend,
     downloadSource: state.downloadSource,
     selectedModelId: state.selectedModelId,
   }
-}
-
-export function setBackend(backend: Backend) {
-  return updateState({ backend })
 }
 
 export function setDownloadSource(source: DownloadSource) {

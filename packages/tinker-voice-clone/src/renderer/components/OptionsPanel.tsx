@@ -9,7 +9,7 @@ import { tw } from '../theme'
 import WaveSurferPlayer from './WaveSurferPlayer'
 
 interface FieldLabelProps {
-  children: React.ReactNode
+  children: string
 }
 
 function FieldLabel({ children }: FieldLabelProps) {
@@ -36,7 +36,7 @@ const fieldClass = className(
 
 const OptionsPanel = observer(() => {
   const { t } = useTranslation()
-  const busy = store.isDownloading
+  const disabled = store.isDownloading || store.isGenerating
 
   return (
     <aside
@@ -62,7 +62,7 @@ const OptionsPanel = observer(() => {
           >
             <button
               type="button"
-              disabled={busy || store.isGenerating}
+              disabled={disabled}
               className={className(
                 'inline-flex items-center justify-center w-6 h-6 rounded-sm cursor-pointer',
                 tw.button.ghost,
@@ -138,7 +138,7 @@ const OptionsPanel = observer(() => {
           <select
             className={selectClass}
             value={store.selectedModelId}
-            disabled={busy || store.isGenerating}
+            disabled={disabled}
             onChange={(e) => store.selectModel(e.target.value)}
           >
             {map(store.models, (m) => (
@@ -155,7 +155,7 @@ const OptionsPanel = observer(() => {
           <FieldLabel>{t('referenceText')}</FieldLabel>
           <textarea
             value={store.referenceText}
-            disabled={busy || store.isGenerating}
+            disabled={disabled}
             rows={2}
             placeholder={t('referenceTextHint')}
             onChange={(e) => store.setReferenceText(e.target.value)}
@@ -168,7 +168,7 @@ const OptionsPanel = observer(() => {
             <FieldLabel>{t('voiceDescription')}</FieldLabel>
             <textarea
               value={store.voiceDescription}
-              disabled={busy || store.isGenerating}
+              disabled={disabled}
               rows={2}
               placeholder={t('voiceDescriptionHint')}
               onChange={(e) => store.setVoiceDescription(e.target.value)}
@@ -184,7 +184,7 @@ const OptionsPanel = observer(() => {
           <select
             className={selectClass}
             value={store.language}
-            disabled={busy || store.isGenerating}
+            disabled={disabled}
             onChange={(e) => store.setLanguage(e.target.value)}
           >
             <option value="zh">{t('langZh')}</option>
@@ -216,7 +216,7 @@ const OptionsPanel = observer(() => {
                 max={200}
                 step={5}
                 value={Math.round(store.speed * 100)}
-                disabled={busy || store.isGenerating}
+                disabled={disabled}
                 onChange={(e) => store.setSpeed(Number(e.target.value) / 100)}
                 className={className('w-full', tw.input.range)}
               />
@@ -225,7 +225,7 @@ const OptionsPanel = observer(() => {
               <FieldLabel>{t('emotion')}</FieldLabel>
               <textarea
                 value={store.emotionText}
-                disabled={busy || store.isGenerating}
+                disabled={disabled}
                 rows={2}
                 placeholder={t('emotionHint')}
                 onChange={(e) => store.setEmotionText(e.target.value)}
@@ -238,28 +238,11 @@ const OptionsPanel = observer(() => {
         <div className={className('h-px', tw.background.divider)} />
 
         <div>
-          <FieldLabel>{t('backend')}</FieldLabel>
-          <select
-            className={selectClass}
-            value={store.backend}
-            disabled={busy || store.isGenerating}
-            onChange={(e) =>
-              store.setBackend(e.target.value as typeof store.backend)
-            }
-          >
-            <option value="metal">Metal</option>
-            <option value="cpu">CPU</option>
-            <option value="cuda">CUDA</option>
-            <option value="vulkan">Vulkan</option>
-          </select>
-        </div>
-
-        <div>
           <FieldLabel>{t('downloadSource')}</FieldLabel>
           <select
             className={selectClass}
             value={store.downloadSource}
-            disabled={busy || store.isGenerating}
+            disabled={disabled}
             onChange={(e) =>
               store.setDownloadSource(
                 e.target.value as typeof store.downloadSource,

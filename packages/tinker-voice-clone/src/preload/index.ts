@@ -6,7 +6,6 @@ import contain from 'licia/contain'
 import startWith from 'licia/startWith'
 import { errorMessage } from 'tinker-share/lib/util'
 import type {
-  Backend,
   DownloadItem,
   DownloadSource,
   GenerateOptions,
@@ -19,7 +18,6 @@ import {
   getSettings,
   listModels,
   resolveDownloadPath,
-  setBackend,
   setDownloadSource,
   setSelectedModelId,
 } from './models'
@@ -68,10 +66,6 @@ const api = {
 
   getDefaultSamplePath(): string | null {
     return fs.existsSync(DEFAULT_SAMPLE_PATH) ? DEFAULT_SAMPLE_PATH : null
-  },
-
-  setBackend(backend: Backend) {
-    return setBackend(backend)
   },
 
   setDownloadSource(source: DownloadSource) {
