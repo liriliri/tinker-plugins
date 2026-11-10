@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import { useTranslation } from 'react-i18next'
-import { Clipboard, Trash2 } from 'lucide-react'
+import { Clipboard, Languages, Loader2, Trash2 } from 'lucide-react'
 import className from 'licia/className'
 import store from '../store'
 import { tw } from '../theme'
@@ -9,6 +9,7 @@ const TextPanel = observer(() => {
   const { t } = useTranslation()
   const hasText = !!store.text.length
   const busy = store.isDownloading || store.isGenerating
+  const translating = store.isTranslating
 
   return (
     <section className="h-full min-h-0 flex flex-col p-2.5 gap-2">
@@ -26,6 +27,27 @@ const TextPanel = observer(() => {
         >
           {store.text.length.toLocaleString()}
         </span>
+        {store.hasTranslatePlugin && (
+          <button
+            type="button"
+            disabled={!hasText || translating || busy}
+            className={className(
+              'inline-flex items-center justify-center w-6 h-6 rounded-sm cursor-pointer',
+              tw.button.ghost,
+              'disabled:opacity-40 disabled:cursor-not-allowed',
+            )}
+            title={t('translateToEn')}
+            onClick={() => void store.translateToEnglish()}
+          >
+            {translating ? (
+              <Loader2
+                className={className('w-3.5 h-3.5 animate-spin', tw.spin)}
+              />
+            ) : (
+              <Languages className="w-3.5 h-3.5" />
+            )}
+          </button>
+        )}
         <button
           type="button"
           className={className(

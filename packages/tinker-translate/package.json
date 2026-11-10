@@ -1,6 +1,6 @@
 {
   "name": "tinker-translate",
-  "version": "0.2.6",
+  "version": "0.3.0",
   "description": "Translate text with multiple translation services",
   "files": [
     "dist/",
@@ -33,6 +33,46 @@
       "zh-CN": {
         "name": "翻译",
         "description": "使用多种翻译服务翻译文本"
+      }
+    },
+    "mcp": {
+      "tools": {
+        "translate": {
+          "description": "Translate text with Google, Bing, DeepL, or AI. Updates the plugin UI and returns the translation.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Text to translate"
+              },
+              "source_lang": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Source language code (e.g. auto, en, zh-CN, ja). For Bing use zh-Hans/zh-Hant. Defaults to the plugin's current setting."
+              },
+              "target_lang": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Target language code (e.g. en, zh-CN, ja). Cannot be auto. For Bing use zh-Hans/zh-Hant. Defaults to the plugin's current setting."
+              },
+              "service": {
+                "type": "string",
+                "enum": [
+                  "google",
+                  "bing",
+                  "deepl",
+                  "ai"
+                ],
+                "description": "Translation service. AI requires a configured Tinker AI provider. Defaults to the plugin's current setting."
+              }
+            },
+            "required": [
+              "text"
+            ]
+          }
+        }
       }
     }
   }

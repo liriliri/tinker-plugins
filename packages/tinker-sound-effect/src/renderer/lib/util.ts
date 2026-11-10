@@ -12,6 +12,8 @@ const I18N_ERROR_KEYS = [
   'textTooLong',
   'cancelled',
   'portUnavailable',
+  'translateMissing',
+  'translateFailed',
 ] as const
 
 export function resolveErrorLabel(

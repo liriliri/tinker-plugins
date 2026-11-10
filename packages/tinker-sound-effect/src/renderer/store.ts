@@ -3,6 +3,7 @@ import clamp from 'licia/clamp'
 import filter from 'licia/filter'
 import find from 'licia/find'
 import isErr from 'licia/isErr'
+import isObj from 'licia/isObj'
 import isStr from 'licia/isStr'
 import isStrBlank from 'licia/isStrBlank'
 import raf from 'licia/raf'
@@ -19,6 +20,7 @@ import type { AudioItem, GenerateTask } from './types'
 const STORAGE_TEXT = 'text'
 const STORAGE_DURATION = 'durationSec'
 const STORAGE_NEGATIVE = 'negativePrompt'
+const TRANSLATE_PLUGIN = 'tinker-translate'
 
 function storedStr(key: string, fallback = '') {
   const value = storage.get(key)
@@ -40,6 +42,8 @@ class Store extends BaseStore {
   audios: AudioItem[] = []
   tasks: GenerateTask[] = []
   isDownloading = false
+  isTranslating = false
+  hasTranslatePlugin = false
   toastOpen = false
   toastMsg = ''
 
@@ -96,6 +100,42 @@ class Store extends BaseStore {
     }
   }
 
+  async translateToEnglish() {
+    if (isStrBlank(this.text) || this.isTranslating) return
+
+    if (!(await tinker.hasPlugin(TRANSLATE_PLUGIN))) {
+      runInAction(() => {
+        this.hasTranslatePlugin = false
+        this.showError('translateMissing')
+      })
+      return
+    }
+
+    runInAction(() => {
+      this.hasTranslatePlugin = true
+      this.isTranslating = true
+    })
+
+    try {
+      await tinker.openPlugin(TRANSLATE_PLUGIN)
+      const raw = await tinker.callMcpTool(TRANSLATE_PLUGIN, 'translate', {
+        text: this.text,
+        source_lang: 'auto',
+        target_lang: 'en',
+      })
+      const translated = parseTranslated(raw)
+      runInAction(() => {
+        this.setText(translated)
+      })
+    } catch (err) {
+      this.showError(errorMessage(err) || 'translateFailed')
+    } finally {
+      runInAction(() => {
+        this.isTranslating = false
+      })
+    }
+  }
+
   setDurationSec(sec: number) {
     this.durationSec = clamp(sec, 1, 30)
     storage.set(STORAGE_DURATION, this.durationSec)
@@ -108,14 +148,16 @@ class Store extends BaseStore {
 
   async load() {
     try {
-      const [models, settings] = await Promise.all([
+      const [models, settings, hasTranslatePlugin] = await Promise.all([
         soundEffect.listModels(),
         soundEffect.getSettings(),
+        tinker.hasPlugin(TRANSLATE_PLUGIN),
       ])
       runInAction(() => {
         this.models = models
         this.downloadSource = settings.downloadSource
         this.selectedModelId = settings.selectedModelId
+        this.hasTranslatePlugin = hasTranslatePlugin
       })
     } catch (err) {
       this.showError(errorMessage(err))
@@ -266,6 +308,16 @@ class Store extends BaseStore {
     if (canceled || !filePath) return
     await soundEffect.saveAudio(item.audioPath, filePath)
   }
+}
+
+function parseTranslated(raw: string) {
+  const data = JSON.parse(raw)
+  if (!isObj(data)) throw new Error('translateFailed')
+  const translated = (data as Record<string, unknown>).translated
+  if (!isStr(translated) || isStrBlank(translated)) {
+    throw new Error('translateFailed')
+  }
+  return translated
 }
 
 const store = new Store()

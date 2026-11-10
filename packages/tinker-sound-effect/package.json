@@ -1,6 +1,6 @@
 {
   "name": "tinker-sound-effect",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Local sound effect generation plugin for TINKER (audio.cpp)",
   "files": [
     "dist/",

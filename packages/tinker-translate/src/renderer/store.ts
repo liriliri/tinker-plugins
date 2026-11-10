@@ -8,12 +8,15 @@ import { errorMessage } from 'tinker-share/lib/util'
 import { type Service } from '../common/types'
 import { translateWithAI } from './lib/ai'
 import { services, aiService, toBingLang, fromBingLang } from './lib/languages'
+import { createMcpApi } from './mcp'
 
 const STORAGE_SOURCE_LANG = 'sourceLang'
 const STORAGE_TARGET_LANG = 'targetLang'
 const STORAGE_SERVICE = 'service'
 
-class Store {
+export class Store {
+  readonly mcp = createMcpApi(() => this)
+
   sourceText = ''
   translatedText = ''
   sourceLang: string = storage.get(STORAGE_SOURCE_LANG) ?? 'auto'
@@ -26,7 +29,9 @@ class Store {
   hasAI = false
 
   constructor() {
-    makeAutoObservable(this)
+    makeAutoObservable(this, {
+      mcp: false,
+    })
   }
 
   async init() {
