@@ -1,0 +1,24 @@
+[
+  {
+    "id": "stable-audio-3-small-sfx-q8",
+    "name": "Stable Audio 3 Small SFX",
+    "family": "stable_audio",
+    "version": "3",
+    "precision": "Q8",
+    "remotePath": "Stable-Audio-3-Small-SFX-GGUF/stable-audio-3-small-sfx-q8_0.gguf",
+    "size": 1683576512,
+    "sha256": "bfe435d2c5841868a7025433929ee250e51e491be369a279f341221539c71841",
+    "task": "gen"
+  },
+  {
+    "id": "stable-audio-3-small-sfx-f16",
+    "name": "Stable Audio 3 Small SFX",
+    "family": "stable_audio",
+    "version": "3",
+    "precision": "F16",
+    "remotePath": "Stable-Audio-3-Small-SFX-GGUF/stable-audio-3-small-sfx-f16.gguf",
+    "size": 2358472992,
+    "sha256": "0ecda5dbf3b4107eb63678535b387e6e53289b622db2164f17ff13f9d0eb19a9",
+    "task": "gen"
+  }
+]
