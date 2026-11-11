@@ -264,5 +264,13 @@ All plugins in the list can be installed to TINKER by running `npm i -g tinker-x
       <th><img src="./packages/tinker-remesher/screenshot.png"/></th>
       <th><img src="./packages/tinker-piano/screenshot.png"/></th>
     </tr>
+    <tr>
+      <th><a href="./packages/tinker-sound-effect/">tinker-sound-effect</a></th>
+      <th><a href="./packages/tinker-ai-music/">tinker-ai-music</a></th>
+    </tr>
+    <tr>
+      <th><img src="./packages/tinker-sound-effect/screenshot.png"/></th>
+      <th><img src="./packages/tinker-ai-music/screenshot.png"/></th>
+    </tr>
   </tbody>
 </table>
