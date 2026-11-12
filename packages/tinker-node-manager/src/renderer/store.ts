@@ -1,3 +1,4 @@
+import cmpVersion from 'licia/cmpVersion'
 import contain from 'licia/contain'
 import each from 'licia/each'
 import filter from 'licia/filter'
@@ -7,6 +8,7 @@ import lowerCase from 'licia/lowerCase'
 import map from 'licia/map'
 import pluck from 'licia/pluck'
 import some from 'licia/some'
+import startWith from 'licia/startWith'
 import trim from 'licia/trim'
 import { makeAutoObservable } from 'mobx'
 import { errorMessage } from 'tinker-share/lib/util'
@@ -49,6 +51,18 @@ function isInstalledId(ids: string[], item: { id: string; version: string }) {
   return some(ids, (id) => id === item.id || id === item.version)
 }
 
+function normalizeVersion(version: string) {
+  return version[0] === 'v' || version[0] === 'V' ? version.slice(1) : version
+}
+
+function isZeroVersion(version: string) {
+  return startWith(normalizeVersion(version), '0.')
+}
+
+function compareVersionDesc(a: string, b: string) {
+  return cmpVersion(normalizeVersion(b), normalizeVersion(a))
+}
+
 export class Store {
   readonly mcp = createMcpApi(() => this)
 
@@ -83,19 +97,28 @@ export class Store {
       ltsById[item.id] = item.lts
     })
 
-    const installed = map(this.versions, (item) =>
-      toInstalledEntry(item, ltsById[item.id] ?? null),
+    const installed = filter(
+      map(this.versions, (item) =>
+        toInstalledEntry(item, ltsById[item.id] ?? null),
+      ),
+      (item) => !isZeroVersion(item.version),
+    )
+    const system = filter(installed, (item) => item.isSystem)
+    const local = filter(installed, (item) => !item.isSystem).sort((a, b) =>
+      compareVersionDesc(a.version, b.version),
     )
 
     const available = map(
       filter(
         this.remoteVersions,
-        (item) => !isInstalledId(this.installedVersionIds, item),
+        (item) =>
+          !isZeroVersion(item.version) &&
+          !isInstalledId(this.installedVersionIds, item),
       ),
       toRemoteEntry,
     )
 
-    return [...installed, ...available]
+    return [...local, ...system, ...available]
   }
 
   get filteredEntries() {

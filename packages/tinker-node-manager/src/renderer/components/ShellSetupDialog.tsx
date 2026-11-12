@@ -12,7 +12,6 @@ const ShellSetupDialog = observer(() => {
       open={Boolean(preview)}
       title={t('setupShell')}
       description={t('setupShellConfirm', {
-        shell: preview?.shell ?? '',
         rcPath: preview?.rcPath ?? '',
       })}
       cancelLabel={t('cancel')}
