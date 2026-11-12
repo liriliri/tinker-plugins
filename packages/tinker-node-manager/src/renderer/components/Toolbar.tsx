@@ -14,7 +14,7 @@ const Toolbar = observer(() => {
     <Tooltip.Provider delayDuration={500}>
       <div
         className={className(
-          'flex items-center gap-1.5 px-2.5 h-9 border-b shrink-0',
+          'flex items-center gap-2 px-3 py-2 border-b shrink-0',
           tw.background.toolbar,
           tw.border.divider,
         )}

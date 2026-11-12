@@ -1,6 +1,6 @@
 {
   "name": "tinker-node-manager",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Manage local Node.js versions with fnm",
   "files": [
     "dist/",

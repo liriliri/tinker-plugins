@@ -28,7 +28,7 @@ export const tw = {
     bar: 'h-full w-2/5 rounded-full bg-[var(--select)] progress-indeterminate',
   },
   input:
-    'h-7 px-2.5 text-[12px] rounded-md outline-none border border-[var(--line)] bg-[var(--input)] text-[var(--ink)] placeholder:text-[var(--muted)] focus:border-[var(--select)] focus:shadow-[0_0_0_3px_var(--focus-ring)]',
+    'h-8 px-2.5 text-[12px] rounded-md outline-none border border-[var(--line)] bg-[var(--input)] text-[var(--ink)] placeholder:text-[var(--muted)] focus:border-[var(--select)] focus:shadow-[inset_0_0_0_1px_var(--select),0_0_0_3px_var(--focus-ring)]',
   toast: {
     root: 'bg-[var(--window)] border border-[var(--line)] rounded-md shadow-md px-3 py-2 flex items-center gap-2',
     success: 'text-[var(--ink)]',

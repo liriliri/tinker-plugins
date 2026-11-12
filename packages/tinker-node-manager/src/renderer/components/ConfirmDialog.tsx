@@ -56,7 +56,7 @@ export default function ConfirmDialog({
             </Dialog.Title>
             <Dialog.Description
               className={className(
-                'mt-1.5 text-[12px] leading-snug m-0',
+                'mt-1.5 text-[12px] leading-snug m-0 break-words',
                 tw.text.secondary,
               )}
             >
