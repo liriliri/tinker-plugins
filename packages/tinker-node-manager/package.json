@@ -1,0 +1,120 @@
+{
+  "name": "tinker-node-manager",
+  "version": "0.1.0",
+  "description": "Manage local Node.js versions with fnm",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:preload\"",
+    "dev:renderer": "vite build --watch",
+    "dev:preload": "vite build --watch --config vite.preload.ts",
+    "build": "concurrently \"npm run build:renderer\" \"npm run build:preload\"",
+    "build:renderer": "vite build",
+    "build:preload": "vite build --config vite.preload.ts",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "node",
+    "fnm",
+    "version",
+    "manager"
+  ],
+  "tinker": {
+    "name": "Node Manager",
+    "category": "dev",
+    "main": "dist/renderer/index.html",
+    "preload": "dist/preload/index.js",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "Node 管理",
+        "description": "使用 fnm 管理本机 Node.js 版本"
+      }
+    },
+    "mcp": {
+      "tools": {
+        "list_versions": {
+          "description": "List locally installed Node.js versions managed by fnm, including aliases and default status.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        "list_remote_versions": {
+          "description": "List remote Node.js versions from the Node.js distribution mirror (fnm list-remote). Optionally filter by text or LTS-only.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "lts_only": {
+                "type": "boolean",
+                "description": "If true, only return LTS releases"
+              },
+              "filter": {
+                "type": "string",
+                "description": "Optional filter matched against version or LTS codename (e.g. 22, Jod)"
+              }
+            }
+          }
+        },
+        "install_version": {
+          "description": "Install a Node.js version via fnm. Accepts a version string (e.g. 22, 22.11.0, lts/jod), or lts / latest.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Version to install (e.g. 22, v22.11.0, lts, latest)"
+              }
+            },
+            "required": [
+              "version"
+            ]
+          }
+        },
+        "uninstall_version": {
+          "description": "Uninstall a locally installed Node.js version by version id (e.g. v22.11.0).",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Installed version id or number (e.g. v22.11.0)"
+              }
+            },
+            "required": [
+              "version"
+            ]
+          }
+        },
+        "set_default": {
+          "description": "Set the default Node.js version used by fnm.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Installed version id or number (e.g. v22.11.0)"
+              }
+            },
+            "required": [
+              "version"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "fnm-static": "^0.1.0"
+  }
+}

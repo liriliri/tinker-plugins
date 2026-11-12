@@ -1,0 +1,93 @@
+@use 'tailwindcss';
+@config "../../tailwind.config.js";
+
+/* Node.js site-inspired tokens: leaf green #5FA04E / forest #3F873F, ink #1F2328 */
+:root {
+  --window: #ffffff;
+  --toolbar: #f6f7f9;
+  --header: #f0f2f4;
+  --ink: #1f2328;
+  --muted: #656d76;
+  --line: #d8dee4;
+  --hover: #eef1f4;
+  --select: #5fa04e;
+  --select-strong: #3f873f;
+  --row-default: #eaf5e7;
+  --row-default-hover: #dcefd6;
+  --badge-lts: #5fa04e;
+  --badge-lts-text: #ffffff;
+  --progress-track: #e6ebe8;
+  --danger: #cf222e;
+  --danger-text: #ffffff;
+  --input: #ffffff;
+  --focus-ring: color-mix(in srgb, var(--select) 45%, transparent);
+  color-scheme: light;
+}
+
+html.dark {
+  --window: #0d1117;
+  --toolbar: #161b22;
+  --header: #12171e;
+  --ink: #e6edf3;
+  --muted: #9198a1;
+  --line: #30363d;
+  --hover: #1c2128;
+  --select: #5fa04e;
+  --select-strong: #7fbb42;
+  --row-default: #1a2e1c;
+  --row-default-hover: #213824;
+  --badge-lts: #5fa04e;
+  --badge-lts-text: #0d1117;
+  --progress-track: #21262d;
+  --danger: #ff7b72;
+  --danger-text: #0d1117;
+  --input: #0d1117;
+  --focus-ring: color-mix(in srgb, var(--select) 40%, transparent);
+  color-scheme: dark;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  font-size: 12px;
+  color: var(--ink);
+  background: var(--window);
+  -webkit-font-smoothing: antialiased;
+}
+
+.version-mono {
+  font-family:
+    ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+@keyframes progressIndeterminate {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(250%);
+  }
+}
+
+.progress-indeterminate {
+  animation: progressIndeterminate 1.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress-indeterminate {
+    animation: none;
+    width: 100%;
+    opacity: 0.7;
+  }
+}
