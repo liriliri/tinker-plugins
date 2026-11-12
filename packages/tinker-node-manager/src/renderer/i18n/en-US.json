@@ -4,7 +4,6 @@
   "meta": "Aliases / LTS",
   "lts": "LTS",
   "status": "Status",
-  "default": "Default",
   "system": "System",
   "installed": "Installed",
   "installSuccess": "Installed",

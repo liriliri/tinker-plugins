@@ -45,6 +45,10 @@ function toRemoteEntry(item: IRemoteVersion): IVersionEntry {
   }
 }
 
+function isInstalledId(ids: string[], item: { id: string; version: string }) {
+  return some(ids, (id) => id === item.id || id === item.version)
+}
+
 export class Store {
   readonly mcp = createMcpApi(() => this)
 
@@ -84,12 +88,10 @@ export class Store {
     )
 
     const available = map(
-      filter(this.remoteVersions, (item) => {
-        return !some(
-          this.installedVersionIds,
-          (id) => id === item.id || id === item.version,
-        )
-      }),
+      filter(
+        this.remoteVersions,
+        (item) => !isInstalledId(this.installedVersionIds, item),
+      ),
       toRemoteEntry,
     )
 
@@ -108,10 +110,7 @@ export class Store {
   }
 
   isRemoteInstalled(item: IRemoteVersion) {
-    return some(
-      this.installedVersionIds,
-      (id) => id === item.id || id === item.version,
-    )
+    return isInstalledId(this.installedVersionIds, item)
   }
 
   setFilter(value: string) {

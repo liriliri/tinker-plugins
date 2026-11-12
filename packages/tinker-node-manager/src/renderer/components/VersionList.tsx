@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import type { ReactNode } from 'react'
 import * as Tooltip from '@radix-ui/react-tooltip'
 import className from 'licia/className'
+import filter from 'licia/filter'
 import isEmpty from 'licia/isEmpty'
 import map from 'licia/map'
 import type { IVersionEntry } from '../../common/types'
@@ -47,15 +48,17 @@ interface VersionRowProps {
 
 const VersionRow = observer(function VersionRow({ item }: VersionRowProps) {
   const { t } = useTranslation()
-  const metaParts = item.installed ? item.aliases : item.lts ? [item.lts] : []
+  const metaParts = item.installed
+    ? filter(item.aliases, (alias) => alias !== 'default')
+    : item.lts
+      ? [item.lts]
+      : []
   const metaText = isEmpty(metaParts) ? '—' : metaParts.join(', ')
-  const status = item.isDefault
-    ? t('default')
-    : item.isSystem
-      ? t('system')
-      : item.installed
-        ? t('installed')
-        : t('available')
+  const status = item.isSystem
+    ? t('system')
+    : item.installed
+      ? t('installed')
+      : t('available')
 
   return (
     <tr

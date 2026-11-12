@@ -19,7 +19,9 @@ Download and install TINKER from `https://tinker.liriliri.io/`, then run `npm i 
 
 ## Requirements
 
-Versions are managed by the bundled fnm binary. Node installs live under fnm’s data directory (typically `~/.local/share/fnm`). For terminal `node` to follow the default version, use **Set up terminal** in the toolbar (writes init into your shell rc and links fnm under `~/.tinker/tinker-node-manager/bin`), then open a new terminal.
+Versions are managed by the bundled fnm binary. Node installs live under fnm’s data directory (typically `~/.local/share/fnm`). For terminal `node` to follow the default version, use **Set up terminal** in the toolbar (links fnm under `~/.tinker/tinker-node-manager/bin` and writes init into your shell rc), then open a new terminal.
+
+Shell targets: **zsh** → `~/.zshrc`, **bash** → `~/.bashrc`, **fish** → `~/.config/fish/config.fish`, **Windows** → PowerShell profile (`Documents/PowerShell/Microsoft.PowerShell_profile.ps1`, or Windows PowerShell’s profile if that is the one already present).
 
 ## Usage
 

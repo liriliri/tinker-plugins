@@ -4,8 +4,7 @@ export const tw = {
     toolbar: 'bg-[var(--toolbar)]',
     header: 'bg-[var(--header)]',
     row: 'bg-[var(--window)] hover:bg-[var(--hover)]',
-    rowDefault:
-      'bg-[var(--row-default)] hover:bg-[var(--row-default-hover)]',
+    rowDefault: 'bg-[var(--row-default)] hover:bg-[var(--row-default-hover)]',
     dialog: 'bg-[var(--window)]',
   },
   text: {

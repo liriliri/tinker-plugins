@@ -4,7 +4,6 @@
   "meta": "别名 / LTS",
   "lts": "LTS",
   "status": "状态",
-  "default": "默认",
   "system": "系统",
   "installed": "已安装",
   "installSuccess": "安装完成",
