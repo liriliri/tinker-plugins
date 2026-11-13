@@ -1,0 +1,144 @@
+{
+  "name": "tinker-npm",
+  "version": "0.1.0",
+  "description": "Search npm packages, install globally, or download and extract tarballs",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:preload\"",
+    "dev:renderer": "vite build --watch",
+    "dev:preload": "vite build --watch --config vite.preload.ts",
+    "build": "concurrently \"npm run build:renderer\" \"npm run build:preload\"",
+    "build:renderer": "vite build",
+    "build:preload": "vite build --config vite.preload.ts",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "npm",
+    "package",
+    "registry"
+  ],
+  "tinker": {
+    "name": "NPM",
+    "main": "dist/renderer/index.html",
+    "preload": "dist/preload/index.js",
+    "icon": "icon.png",
+    "category": "dev",
+    "locales": {
+      "zh-CN": {
+        "name": "NPM",
+        "description": "搜索查看 npm 包信息，全局安装或下载解压到本地"
+      }
+    },
+    "mcp": {
+      "tools": {
+        "search": {
+          "description": "Search npm packages by keyword. Updates the plugin UI and returns matching packages with indexes for get_package / install_global / download.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "query": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Search text (package name or keywords)"
+              }
+            },
+            "required": [
+              "query"
+            ]
+          }
+        },
+        "get_package": {
+          "description": "Load package metadata into the plugin UI. Prefer index from the latest search results, or pass a package name. Optionally pin a version.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Package name (e.g. lodash, @types/node)"
+              },
+              "index": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "Index from the latest search results"
+              },
+              "version": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Exact version to load (defaults to latest)"
+              }
+            }
+          }
+        },
+        "install_global": {
+          "description": "Install a package globally with npm install -g. Prefer index from search, or pass name. Uses the currently selected package when name/index are omitted.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Package name to install"
+              },
+              "index": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "Index from the latest search results"
+              },
+              "version": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Exact version to install (defaults to latest)"
+              }
+            }
+          }
+        },
+        "download": {
+          "description": "Download a package tarball and extract it into a local directory. Prefer index from search, or pass name. Returns the extract path.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Absolute directory path to extract into"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Package name to download"
+              },
+              "index": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "Index from the latest search results"
+              },
+              "version": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Exact version to download (defaults to latest)"
+              }
+            },
+            "required": [
+              "path"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "devDependencies": {
+    "react-markdown": "^10.1.0",
+    "rehype-raw": "^7.0.0",
+    "rehype-sanitize": "^6.0.0",
+    "remark-gfm": "^4.0.1"
+  }
+}
