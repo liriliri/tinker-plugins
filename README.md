@@ -280,5 +280,13 @@ All plugins in the list can be installed to TINKER by running `npm i -g tinker-x
       <th><img src="./packages/tinker-node-manager/screenshot.png"/></th>
       <th><img src="./packages/tinker-npm/screenshot.png"/></th>
     </tr>
+    <tr>
+      <th><a href="./packages/tinker-asar/">tinker-asar</a></th>
+      <th><a href="./packages/tinker-vrm-viewer/">tinker-vrm-viewer</a></th>
+    </tr>
+    <tr>
+      <th><img src="./packages/tinker-asar/screenshot.png"/></th>
+      <th><img src="./packages/tinker-vrm-viewer/screenshot.png"/></th>
+    </tr>
   </tbody>
 </table>

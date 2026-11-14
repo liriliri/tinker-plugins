@@ -1,0 +1,42 @@
+{
+  "name": "tinker-vrm-viewer",
+  "version": "0.1.0",
+  "description": "Preview VRM 3D avatar models",
+  "files": [
+    "dist/",
+    "icon.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liriliri/tinker-plugins.git"
+  },
+  "scripts": {
+    "dev": "NODE_ENV=production vite",
+    "dev:tinker": "vite build --watch",
+    "build": "vite build",
+    "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
+  },
+  "keywords": [
+    "tinker",
+    "vrm-viewer",
+    "vrm"
+  ],
+  "tinker": {
+    "name": "VRM Viewer",
+    "category": "media",
+    "main": "dist/index.html",
+    "icon": "icon.png",
+    "locales": {
+      "zh-CN": {
+        "name": "VRM 预览",
+        "description": "预览 VRM 3D 角色模型"
+      }
+    }
+  },
+  "devDependencies": {
+    "@pixiv/three-vrm": "^3.5.5",
+    "@pixiv/three-vrm-animation": "^3.5.5",
+    "@types/three": "^0.185.4",
+    "three": "^0.185.1"
+  }
+}

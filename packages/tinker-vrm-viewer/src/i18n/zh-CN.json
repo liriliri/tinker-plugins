@@ -1,0 +1,12 @@
+{
+  "dropHint": "把 VRM 角色拖进来，或点击打开",
+  "open": "打开",
+  "close": "关闭",
+  "resetCamera": "重置视角",
+  "autoRotate": "自动旋转",
+  "loading": "登场准备中…",
+  "loadFailed": "角色加载失败",
+  "notVrm": "这不是有效的 VRM 角色",
+  "version": "VRM {{version}}",
+  "authors": "{{authors}}"
+}

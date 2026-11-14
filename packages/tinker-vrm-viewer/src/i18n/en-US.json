@@ -1,0 +1,12 @@
+{
+  "dropHint": "Drop a VRM character here, or click to open",
+  "open": "Open",
+  "close": "Close",
+  "resetCamera": "Reset camera",
+  "autoRotate": "Auto rotate",
+  "loading": "Getting ready…",
+  "loadFailed": "Couldn’t load this character",
+  "notVrm": "This isn’t a valid VRM character",
+  "version": "VRM {{version}}",
+  "authors": "by {{authors}}"
+}

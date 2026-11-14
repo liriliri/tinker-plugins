@@ -1,0 +1,224 @@
+@use 'tailwindcss';
+@config "../tailwind.config.js";
+
+:root {
+  --vrm-app: #f4eef2;
+  --vrm-preview: #e4dde8;
+  --vrm-chrome: rgba(255, 250, 253, 0.82);
+  --vrm-hover: #eadfe8;
+  --vrm-ink: #3d2a35;
+  --vrm-secondary: #7a5f6d;
+  --vrm-muted: #a88b99;
+  --vrm-line: color-mix(in srgb, #e84b7f 22%, #e5d6df);
+  --vrm-accent: #e84b7f;
+  --vrm-accent-soft: color-mix(in srgb, #e84b7f 16%, transparent);
+  --vrm-sky: #6ba3d9;
+  --vrm-glow: color-mix(in srgb, #e84b7f 18%, transparent);
+  --vrm-danger: #e11d48;
+  --vrm-display:
+    'Hiragino Maru Gothic ProN', 'Yu Gothic UI', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei UI', 'Segoe UI', sans-serif;
+  --vrm-sans:
+    'PingFang SC', 'Hiragino Sans GB', 'Hiragino Maru Gothic ProN',
+    'Yu Gothic UI', 'Segoe UI', 'Microsoft YaHei', sans-serif;
+  color-scheme: light;
+}
+
+html.dark {
+  --vrm-app: #241c28;
+  --vrm-preview: #e4dde8;
+  --vrm-chrome: rgba(42, 34, 50, 0.88);
+  --vrm-hover: #463c52;
+  --vrm-ink: #f6eef4;
+  --vrm-secondary: #c4a8b8;
+  --vrm-muted: #947e8c;
+  --vrm-line: color-mix(in srgb, #ff8ab0 28%, #4a3f55);
+  --vrm-accent: #ff8ab0;
+  --vrm-accent-soft: color-mix(in srgb, #ff8ab0 20%, transparent);
+  --vrm-sky: #8ec5f0;
+  --vrm-glow: color-mix(in srgb, #ff8ab0 22%, transparent);
+  --vrm-danger: #fb7185;
+  color-scheme: dark;
+}
+
+@layer base {
+  html,
+  body,
+  #app {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    overflow: hidden;
+    background: var(--vrm-app);
+    color: var(--vrm-ink);
+    font-family: var(--vrm-sans);
+    font-size: 12px;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+.vrm-app-wash {
+  background:
+    radial-gradient(
+      ellipse 90% 70% at 18% 12%,
+      color-mix(in srgb, var(--vrm-accent) 14%, transparent),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 70% 55% at 88% 78%,
+      color-mix(in srgb, var(--vrm-sky) 16%, transparent),
+      transparent 50%
+    ),
+    var(--vrm-app);
+}
+
+.vrm-preview-wash {
+  background:
+    radial-gradient(
+      ellipse 100% 80% at 50% 100%,
+      var(--vrm-glow),
+      transparent 55%
+    ),
+    var(--vrm-preview);
+}
+
+.vrm-dropzone {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  border: none;
+  background:
+    radial-gradient(
+      circle at 30% 28%,
+      color-mix(in srgb, var(--vrm-accent) 10%, transparent),
+      transparent 42%
+    ),
+    radial-gradient(
+      circle at 72% 70%,
+      color-mix(in srgb, var(--vrm-sky) 12%, transparent),
+      transparent 45%
+    ),
+    transparent;
+  box-shadow: none;
+  transition:
+    background-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.vrm-dropzone::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.45;
+  background-image: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--vrm-accent) 35%, transparent) 0 1.1px,
+    transparent 1.3px
+  );
+  background-size: 22px 22px;
+  background-position: 8px 10px;
+  mask-image: radial-gradient(
+    ellipse 70% 60% at 50% 48%,
+    #000 20%,
+    transparent 75%
+  );
+}
+
+.vrm-dropzone-hot {
+  background: radial-gradient(
+    circle at 50% 45%,
+    var(--vrm-accent-soft),
+    transparent 70%
+  );
+  box-shadow: none;
+}
+
+.vrm-chrome {
+  border-radius: 14px;
+  border: 1px solid var(--vrm-line);
+  background: var(--vrm-chrome);
+  backdrop-filter: blur(14px) saturate(1.2);
+  box-shadow:
+    0 1px 0 color-mix(in srgb, #ffffff 50%, transparent) inset,
+    0 10px 28px color-mix(in srgb, #3d2a35 8%, transparent);
+}
+
+.vrm-tool-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--vrm-ink);
+  cursor: pointer;
+  transition:
+    color 160ms ease,
+    background 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.vrm-tool-btn:hover {
+  background: var(--vrm-hover);
+  color: var(--vrm-accent);
+}
+
+.vrm-tool-btn:disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.vrm-tool-btn-active {
+  background: var(--vrm-accent-soft);
+  color: var(--vrm-accent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--vrm-accent) 24%, transparent);
+}
+
+.vrm-tool-btn-active:hover {
+  filter: brightness(1.04);
+}
+
+.vrm-meta-title {
+  font-family: var(--vrm-display);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.vrm-meta-sub {
+  letter-spacing: 0.04em;
+}
+
+.vrm-toast {
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, #ffffff 25%, transparent);
+  box-shadow: 0 10px 28px color-mix(in srgb, var(--vrm-danger) 28%, transparent);
+}
+
+@keyframes vrm-fade-up {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.vrm-fade-in {
+  animation: vrm-fade-up 280ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vrm-fade-in {
+    animation: none;
+  }
+
+  .vrm-dropzone {
+    transition: none;
+  }
+}
