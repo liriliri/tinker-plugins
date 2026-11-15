@@ -6,11 +6,14 @@ export interface HookTypeDef {
   event: string
   matcher?: string
   cursorEvent?: string
+  minimaxEvent?: string
 }
 
 export interface Hook {
   type: string
   command?: string
+  /** Command timeout in seconds. */
+  timeout?: number
 }
 
 export interface HookEntry {
@@ -18,7 +21,7 @@ export interface HookEntry {
   hooks?: Hook[]
 }
 
-/** Default format uses HookEntry; Cursor format stores Hook directly. */
+/** Claude and MiniMax formats use HookEntry; Cursor stores Hook directly. */
 export type HookConfigEntry = HookEntry | Hook
 
 export interface Settings {

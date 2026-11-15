@@ -13,8 +13,19 @@ import naturalSort from 'licia/naturalSort'
 import some from 'licia/some'
 import BaseStore from 'tinker-share/store/Base'
 import type { HooksFormat } from './lib/hooksFormat'
-import { resolveFormat } from './lib/hooksFormat'
+import {
+  MINIMAX_HOOK_FILE,
+  MINIMAX_PLUGIN_DIR,
+  resolveFormat,
+  stripSoundHooks,
+  writeMiniMaxPlugin,
+} from './lib/hooksFormat'
 import type { HookType, HookTypeDef, Settings } from './types'
+
+interface AgentPackageTarget {
+  dir: string
+  hookFile: string
+}
 
 interface AgentDef {
   id: string
@@ -22,7 +33,9 @@ interface AgentDef {
   configDir: string
   configFile?: string
   requireDir?: boolean
-  format?: 'default' | 'cursor'
+  format?: 'default' | 'cursor' | 'minimax'
+  /** Agents that load Hooks from a Plugin package instead of a settings file. */
+  package?: AgentPackageTarget
 }
 
 export const soundPackIds = [
@@ -66,6 +79,16 @@ const agents: AgentDef[] = [
     configFile: 'hooks.json',
     format: 'cursor',
   },
+  {
+    id: 'minimax-code',
+    name: 'MiniMax Code',
+    configDir: '.minimax',
+    format: 'minimax',
+    package: {
+      dir: MINIMAX_PLUGIN_DIR,
+      hookFile: MINIMAX_HOOK_FILE,
+    },
+  },
 ]
 
 const hookTypes: HookTypeDef[] = [
@@ -87,6 +110,7 @@ const hookTypes: HookTypeDef[] = [
     file: 'permission.mp3',
     event: 'Notification',
     matcher: 'permission_prompt',
+    minimaxEvent: 'PermissionRequest',
   },
 ]
 
@@ -106,37 +130,10 @@ async function readSettings(path: string): Promise<Settings> {
   }
 }
 
-function stripSoundHooks(
-  settings: Settings,
-  hookDefs: HookTypeDef[],
-  format: HooksFormat,
-) {
-  if (!settings.hooks) return
-
-  for (const hookDef of hookDefs) {
-    const eventName = format.getEventName(hookDef)
-    if (!settings.hooks[eventName] || !isArr(settings.hooks[eventName])) {
-      continue
-    }
-
-    settings.hooks[eventName] = format.filterEntries(
-      settings.hooks[eventName],
-      hookDef,
-    )
-
-    if (settings.hooks[eventName].length === 0) {
-      delete settings.hooks[eventName]
-    }
-  }
-
-  if (isEmpty(settings.hooks)) {
-    delete settings.hooks
-  }
-}
-
 class AgentStore {
   agent: AgentDef
   settingsPath: string = ''
+  packageRoot: string = ''
   selectedPack: string = 'default'
   customSoundPaths: Record<HookType, string> = {
     ready: '',
@@ -159,8 +156,14 @@ class AgentStore {
   }
 
   async init(home: string) {
-    const configFile = this.agent.configFile || 'settings.json'
-    this.settingsPath = `${home}/${this.agent.configDir}/${configFile}`
+    const target = this.agent.package
+    if (target) {
+      this.packageRoot = `${home}/${this.agent.configDir}/plugins/${target.dir}`
+      this.settingsPath = `${this.packageRoot}/${target.hookFile}`
+    } else {
+      const configFile = this.agent.configFile || 'settings.json'
+      this.settingsPath = `${home}/${this.agent.configDir}/${configFile}`
+    }
     await this.loadCurrentConfig()
   }
 
@@ -227,7 +230,7 @@ class AgentStore {
         })
       }
     } catch {
-      // settings.json not found or invalid
+      // Config file not found or invalid
     }
   }
 
@@ -267,6 +270,7 @@ class AgentStore {
       extend(settings, this.hooksFormat.initialSettings())
 
       stripSoundHooks(settings, this.enabledHookTypes, this.hooksFormat)
+      if (!settings.hooks) settings.hooks = {}
 
       for (const hookDef of this.enabledHookTypes) {
         if (!this.enabledHooks[hookDef.id]) continue
@@ -275,7 +279,6 @@ class AgentStore {
         if (!soundPath) continue
 
         const eventName = this.hooksFormat.getEventName(hookDef)
-        if (!settings.hooks) settings.hooks = {}
         if (!settings.hooks[eventName]) settings.hooks[eventName] = []
 
         settings.hooks[eventName].push(
@@ -287,11 +290,7 @@ class AgentStore {
         delete settings.hooks
       }
 
-      await tinker.writeFile(
-        this.settingsPath,
-        JSON.stringify(settings, null, 2),
-        'utf-8',
-      )
+      await this.writeConfig(settings)
 
       runInAction(() => {
         this.isConfigured = true
@@ -311,6 +310,14 @@ class AgentStore {
     this.saving = true
 
     try {
+      if (this.agent.package) {
+        await tinker.rm(this.packageRoot, { recursive: true, force: true })
+        runInAction(() => {
+          this.isConfigured = false
+        })
+        return true
+      }
+
       const settings = await readSettings(this.settingsPath)
       stripSoundHooks(settings, hookTypes, this.hooksFormat)
 
@@ -338,6 +345,23 @@ class AgentStore {
         this.saving = false
       })
     }
+  }
+
+  private async writeConfig(settings: Settings) {
+    if (!this.agent.package) {
+      await tinker.writeFile(
+        this.settingsPath,
+        JSON.stringify(settings, null, 2),
+        'utf-8',
+      )
+      return
+    }
+
+    await writeMiniMaxPlugin({
+      packageRoot: this.packageRoot,
+      hooks: settings.hooks || {},
+      iconSource: agentNotification.getIconPath(),
+    })
   }
 }
 

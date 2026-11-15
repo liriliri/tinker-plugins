@@ -1,6 +1,6 @@
 {
   "name": "tinker-agent-notification",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "description": "Configure notification sounds for coding agents like Claude, Cursor, and Codex",
   "files": [
     "dist/",
