@@ -1,3 +1,4 @@
+import filter from 'licia/filter'
 import map from 'licia/map'
 import trim from 'licia/trim'
 import { DEFAULT_KEYWORD, type MemeSearchResult } from '../types'
@@ -5,13 +6,13 @@ import { DEFAULT_KEYWORD, type MemeSearchResult } from '../types'
 const PAGE_SIZE = 47
 
 interface SogouSearchItem {
-  locImageLink: string
+  thumbUrl?: string
 }
 
 interface SogouSearchResponse {
-  data: {
-    maxEnd: number
-    items: SogouSearchItem[]
+  data?: {
+    totalItems?: number
+    items?: SogouSearchItem[]
   }
 }
 
@@ -29,10 +30,15 @@ export async function fetchSogouMemes(
   })
   const res = await fetch(`https://pic.sogou.com/napi/wap/pic?${params}`)
   const json = (await res.json()) as SogouSearchResponse
-  const { maxEnd, items } = json.data
+  const { totalItems = 0, items = [] } = json.data ?? {}
+
+  const urls = filter(
+    map(items, (img) => img.thumbUrl || ''),
+    (url) => !!url,
+  )
 
   return {
-    items: map(items, (img) => ({ url: img.locImageLink })),
-    hasMore: maxEnd >= pageNum * PAGE_SIZE,
+    items: map(urls, (url) => ({ url })),
+    hasMore: start + urls.length < totalItems,
   }
 }
