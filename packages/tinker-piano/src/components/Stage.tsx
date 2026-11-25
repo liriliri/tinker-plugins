@@ -12,6 +12,7 @@ import {
   drawBursts,
   syncCanvasSize,
   type BurstParticle,
+  type DirtyRect,
 } from '../lib/burstField'
 import { keyLayout, keyXRatio } from '../lib/util'
 
@@ -24,6 +25,8 @@ const Stage = observer(function Stage() {
   const rafRef = useRef(0)
   const prevPressed = useRef(new Set<number>())
   const pressAt = useRef(new Map<number, number>())
+  /** Region painted by the particles last frame */
+  const dirtyRef = useRef<DirtyRect | null>(null)
   const [hasPlayed, setHasPlayed] = useState(false)
 
   const pressedKey = [...store.pressed.keys()].sort().join(',')
@@ -35,7 +38,10 @@ const Stage = observer(function Stage() {
 
     const measure = () => {
       deskSize.current = { w: desk.clientWidth, h: desk.clientHeight }
-      syncCanvasSize(canvas, desk.clientWidth, desk.clientHeight)
+      if (syncCanvasSize(canvas, desk.clientWidth, desk.clientHeight)) {
+        // Resizing the canvas resets its content, so drop the dirty rect
+        dirtyRef.current = null
+      }
     }
     measure()
     const ro = new ResizeObserver(measure)
@@ -57,7 +63,14 @@ const Stage = observer(function Stage() {
       const ctx = canvas.getContext('2d')
       if (ctx) {
         const { w, h } = deskSize.current
-        drawBursts(ctx, burstsRef.current, now, w, h)
+        dirtyRef.current = drawBursts(
+          ctx,
+          burstsRef.current,
+          now,
+          w,
+          h,
+          dirtyRef.current,
+        )
       }
       if (burstsRef.current.length) {
         rafRef.current = requestAnimationFrame(tick)

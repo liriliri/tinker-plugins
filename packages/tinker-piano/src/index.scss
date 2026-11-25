@@ -315,6 +315,9 @@
   height: 100%;
   gap: 0;
   background: #aaa;
+  /* Isolate layout: key state changes no longer ripple up the tree.
+     No paint containment, it would clip the drop shadows of the keys. */
+  contain: layout;
 }
 
 .piano-key-white {
@@ -337,14 +340,14 @@
     inset 1px 0 0 #fff,
     inset -1px 0 0 #fff,
     0 4px 3px rgba(0, 0, 0, 0.7);
+  /* Only animate compositor-friendly properties: top/height force a full layout every frame */
   transition:
-    top 60ms ease,
-    height 60ms ease,
+    transform 60ms ease,
     box-shadow 60ms ease;
 }
 
 .piano-key-white.is-down {
-  top: 2px;
+  transform: translateY(2px);
   background: linear-gradient(-30deg, #d8d8d8, #e8e8e8);
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
 }
@@ -379,6 +382,9 @@
   height: 55%;
   align-items: flex-end;
   justify-content: center;
+  /* The 7px bottom border is the front lip of the key. It stays a real border
+     so the drop shadow is cast from the bottom edge of the key, like a real
+     black key. */
   border-width: 1px 2px 7px;
   border-style: solid;
   border-color: #666 #222 #111 #555;
@@ -388,24 +394,70 @@
   color: #8a847c;
   font-size: 9px;
   font-weight: 600;
+  /* The highlight at the bottom of the body is a separate pseudo element, so
+     it can travel down together with the body when the key is pressed.
+     The shadow lists have the same length so they can interpolate. */
   box-shadow:
-    inset 0 -1px 2px rgba(255, 255, 255, 0.4),
-    0 2px 3px rgba(0, 0, 0, 0.4);
-  transition:
-    border-bottom-width 60ms ease,
-    box-shadow 60ms ease,
-    height 60ms ease;
+    0 0 0 rgba(0, 0, 0, 0),
+    0 2px 3px rgba(0, 0, 0, 0.4),
+    0 0 0 rgba(0, 0, 0, 0);
+  transition: box-shadow 60ms ease;
 }
 
-/* Border lip 7→2px; grow height by 5px so overall length stays the same */
+/*
+ * Pressed state: the lip shrinks 7px -> 2px while the body grows 5px, so the
+ * key keeps its overall length. Animating border-width/height would relayout
+ * the whole keyboard on every frame, so the body extension is a pseudo
+ * element that covers the top 5px of the lip instead.
+ */
+.piano-key-black::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #333, #2f2f2f, #333);
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: transform 60ms ease;
+}
+
+/* Highlight at the bottom edge of the body. It sinks 5px with the body. */
+.piano-key-black::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 1px;
+  height: 3px;
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.42),
+    rgba(255, 255, 255, 0)
+  );
+  transform: translateY(0);
+  transition: transform 60ms ease;
+}
+
 .piano-key-black.is-down {
-  border-bottom-width: 2px;
-  height: calc(55% + 5px);
   box-shadow:
-    inset 0 -1px 1px rgba(255, 255, 255, 0.4),
     0 1px 0 rgba(0, 0, 0, 0.8),
     0 2px 2px rgba(0, 0, 0, 0.4),
     0 -1px 0 #000;
+}
+
+.piano-key-black.is-down::before {
+  transform: scaleY(1);
+}
+
+.piano-key-black.is-down::after {
+  transform: translateY(5px);
+}
+
+/* Label sinks 5px together with the body */
+.piano-key-black.is-down .piano-key-label {
+  transform: translateY(5px);
 }
 
 .piano-key-label {
@@ -413,9 +465,17 @@
   line-height: 1;
 }
 
+/* Only the black key label moves on its own */
+.piano-key-black .piano-key-label {
+  transition: transform 60ms ease;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .piano-key-white,
-  .piano-key-black {
+  .piano-key-black,
+  .piano-key-black::before,
+  .piano-key-black::after,
+  .piano-key-black .piano-key-label {
     transition: none;
   }
 }

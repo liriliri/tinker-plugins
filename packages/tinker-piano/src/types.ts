@@ -1,6 +1,5 @@
 export type LabelMode = 'none' | 'name' | 'key'
 export type PlayMode = 'free' | 'demo'
-export type KeyVisualState = 'idle' | 'down'
 
 export interface Song {
   id: string
