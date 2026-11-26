@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import className from 'licia/className'
 import map from 'licia/map'
 import store from '../store'
-import type { ModelSize } from '../../common/types'
+import type { ModelSize } from '../types'
 import { tw } from '../theme'
 
 const MODEL_OPTIONS: ModelSize[] = ['small', 'medium']

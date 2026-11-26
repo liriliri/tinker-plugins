@@ -6,5 +6,6 @@
   "reset": "Reset",
   "dropHint": "Drop image here or click to open",
   "model_small": "Fast",
-  "model_medium": "Balanced"
+  "model_medium": "Balanced",
+  "downloadingModel": "Downloading model"
 }

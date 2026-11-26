@@ -1,6 +1,6 @@
 {
   "name": "tinker-bg-remover",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Remove image backgrounds locally with AI",
   "files": [
     "dist/",
@@ -11,12 +11,9 @@
     "url": "git+https://github.com/liriliri/tinker-plugins.git"
   },
   "scripts": {
-    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:preload\"",
-    "dev:renderer": "vite build --watch",
-    "dev:preload": "vite build --watch --config vite.preload.ts",
-    "build": "concurrently \"npm run build:renderer\" \"npm run build:preload\"",
-    "build:renderer": "vite build",
-    "build:preload": "vite build --config vite.preload.ts",
+    "dev": "NODE_ENV=production vite",
+    "dev:tinker": "vite build --watch",
+    "build": "vite build",
     "format": "prettier \"src/**/*.{ts,tsx,scss}\" \"*.{html,json,js,ts}\" --write"
   },
   "keywords": [
@@ -26,8 +23,7 @@
   "tinker": {
     "name": "Background Remover",
     "category": "media",
-    "main": "dist/renderer/index.html",
-    "preload": "dist/preload/index.js",
+    "main": "dist/index.html",
     "icon": "icon.png",
     "locales": {
       "zh-CN": {
@@ -36,7 +32,8 @@
       }
     }
   },
-  "dependencies": {
-    "@imgly/background-removal-node": "^1.4.5"
+  "devDependencies": {
+    "@imgly/background-removal": "^1.7.0",
+    "onnxruntime-web": "1.21.0"
   }
 }

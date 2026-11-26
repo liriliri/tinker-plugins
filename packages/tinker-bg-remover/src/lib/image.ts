@@ -1,4 +1,3 @@
-import base64 from 'licia/base64'
 import dataUrl from 'licia/dataUrl'
 import mime from 'licia/mime'
 import splitPath from 'licia/splitPath'
@@ -22,13 +21,16 @@ function getImageMime(name: string, fallback = DEFAULT_IMAGE_MIME) {
 }
 
 export function bytesToDataUrl(bytes: Uint8Array, name: string) {
-  return dataUrl.stringify(
-    base64.encode(Array.from(bytes)),
-    getImageMime(name),
-    {
-      base64: true,
-    },
-  )
+  return dataUrl.stringify(bytes, getImageMime(name))
+}
+
+export function toBlob(inputDataUrl: string): Promise<Blob> {
+  return fetch(inputDataUrl).then((res) => res.blob())
+}
+
+export async function blobToDataUrl(blob: Blob): Promise<string> {
+  const buffer = await blob.arrayBuffer()
+  return bytesToDataUrl(new Uint8Array(buffer), 'result.png')
 }
 
 export function toPng(inputDataUrl: string): Promise<string> {

@@ -39,6 +39,9 @@ export const tw = {
     processing: 'bg-neutral-900/30 dark:bg-black/50 backdrop-blur-sm',
     ring: 'border-teal-400/30 dark:border-teal-400/30',
     icon: 'text-white dark:text-white',
+    text: 'text-white/90 dark:text-white/90',
+    progressTrack: 'bg-white/30 dark:bg-white/20',
+    progressBar: 'bg-teal-400 dark:bg-teal-300',
   },
 
   checkerboard:
